@@ -1,0 +1,193 @@
+AppointmentAccessPolicyTest exit=0
+PASS P06-B0004 8 verified tenant/facility/patient/capability denial assertions (unit)
+
+AppointmentActorFenceTest exit=0
+
+AppointmentActorPseudonymTest exit=0
+PASS AppointmentActorPseudonymTest assertions=8
+
+AppointmentAggregateTest exit=0
+PASS P06-B0002 8 state/revision/terminal safety assertions (unit)
+
+AppointmentAttendancePreflightTest exit=0
+PASS 9 attendance assertions
+
+AppointmentAuditChainTest exit=0
+PASS 9 audit chain assertions
+
+AppointmentAuditIntegrityReaderTest exit=0
+PASS AppointmentAuditIntegrityReaderTest assertions=18
+
+AppointmentAuditSequenceTest exit=0
+PASS AppointmentAuditSequence 6
+
+AppointmentAuditStoreTest exit=0
+PASS AppointmentAuditStoreTest assertions=14
+
+AppointmentCancellationPreflightTest exit=0
+PASS 9 cancellation assertions
+
+AppointmentCommandAdmissionTest exit=0
+PASS AppointmentCommandAdmissionTest assertions=11
+
+AppointmentCommandFingerprintTest exit=0
+PASS P06-B0005 7 stable scoped command fingerprint assertions (unit)
+
+AppointmentCommitProofTest exit=0
+PASS AppointmentCommitProofTest assertions=12
+
+AppointmentDigestValidationTest exit=0
+PASS six digest validation cases
+
+AppointmentEventIntegrityProofTest exit=0
+PASS AppointmentEventIntegrityProofTest assertions=18
+
+AppointmentFreshConnectionRetryTest exit=0
+PASS AppointmentFreshConnectionRetryTest assertions=17
+
+AppointmentIdempotencyKeyTest exit=0
+PASS AppointmentIdempotencyKey 7
+
+AppointmentIdempotencyLedgerTest exit=0
+PASS 8 idempotency assertions
+
+AppointmentIdempotencyStoreTest exit=0
+PASS AppointmentIdempotencyStoreTest assertions=17
+
+AppointmentJdbcSafetyGateTest exit=0
+PASS 12 mocked JDBC gate assertions; NO PostgreSQL integration
+
+AppointmentJdbcScopeTest exit=0
+PASS AppointmentJdbcScopeTest assertions=14
+
+AppointmentLifecycleParityTest exit=0
+PASS AppointmentLifecycleParityTest assertions=38 (36 transition pairs + 2 denial checks)
+
+AppointmentLimitFenceTest exit=0
+
+AppointmentLockedSnapshotTest exit=0
+PASS AppointmentLockedSnapshotTest assertions=13
+
+AppointmentOutboxEventValidatorTest exit=0
+PASS P06-B0039 assertions=11
+
+AppointmentOutboxFenceTest exit=0
+
+AppointmentOutboxHeadersTest exit=0
+PASS P06-B0036 assertions=6
+
+AppointmentOutboxStoreTest exit=0
+PASS AppointmentOutboxStoreTest assertions=13
+
+AppointmentPatientFenceTest exit=0
+
+AppointmentReleaseFenceTest exit=0
+
+AppointmentReplayFenceTest exit=0
+
+AppointmentReplayProofTest exit=0
+PASS AppointmentReplayProofTest assertions=6
+
+AppointmentRequestIntakeTest exit=0
+PASS 7 request intake assertions
+
+AppointmentReschedulePreflightTest exit=0
+PASS 8 reschedule assertions
+
+AppointmentResourceCapacityTest exit=0
+PASS AppointmentResourceCapacity 6
+
+AppointmentResourceFenceTest exit=0
+
+AppointmentRestrictedTransactionTest exit=0
+PASS AppointmentRestrictedTransactionTest assertions=10
+
+AppointmentRetryExecutorTest exit=0
+PASS P06-B0038 assertions=4
+
+AppointmentRetryPolicyTest exit=0
+PASS P06-B0037 assertions=11
+
+AppointmentRevisionFenceTest exit=0
+AppointmentRevisionFenceTest PASS 5 checks
+
+AppointmentRevisionUpdateTest exit=0
+PASS scoped revision update: 5 assertions (mock only)
+
+AppointmentRevisionValidationTest exit=0
+PASS five revision cases
+
+AppointmentSchemaAlignmentTest exit=0
+PASS AppointmentSchemaAlignmentTest assertions=18
+
+AppointmentScopeFenceTest exit=0
+AppointmentScopeFenceTest PASS 5 checks
+
+AppointmentScopeKeysTest exit=0
+PASS AppointmentScopeKeys 6
+
+AppointmentScopedCursorTest exit=0
+PASS P06-B0040 assertions=9
+
+AppointmentScopedMutationTest exit=0
+PASS P06-B0041 assertions=14
+
+AppointmentScopedSearchTest exit=0
+PASS 9 scoped query assertions
+
+AppointmentSqlBudgetTest exit=0
+PASS AppointmentSqlBudgetTest assertions=18
+
+AppointmentSqlIdentifierTest exit=0
+PASS P06-B0035 assertions=10
+
+AppointmentStateCodecTest exit=0
+AppointmentStateCodecTest PASS 12 checks
+
+AppointmentStatusReadServiceTest exit=0
+PASS AppointmentStatusReadServiceTest assertions=11
+
+AppointmentTableRoleFenceTest exit=0
+PASS AppointmentTableRoleFenceTest assertions=12
+
+AppointmentTenantContextTest exit=0
+PASS tenant context: 4 assertions
+
+AppointmentTimeBoundsTest exit=0
+PASS AppointmentTimeBounds 6
+
+AppointmentTimeFenceTest exit=0
+
+AppointmentTransactionBoundaryTest exit=0
+PASS fail closed without PostgreSQL
+
+AppointmentTransactionExecutorTest exit=0
+PASS AppointmentTransactionExecutor 5
+
+AppointmentTransitionCommandTest exit=0
+PASS AppointmentTransitionCommandTest assertions=11
+
+AppointmentTransitionFailureMatrixTest exit=0
+PASS AppointmentTransitionFailureMatrixTest assertions=25
+
+AppointmentTransitionMutationHistoricalTest exit=0
+PASS AppointmentTransitionMutationTest assertions=5
+
+AppointmentTransitionPolicyTest exit=0
+PASS AppointmentTransitionPolicyTest assertions=31
+
+AppointmentTransitionServiceTest exit=0
+PASS AppointmentTransitionServiceTest assertions=12
+
+AppointmentVersionFenceTest exit=0
+
+AppointmentWindowTest exit=0
+PASS P06-B0001 8 DST, zone, interval and overlap assertions (unit)
+
+AppointmentWorkflowPreflightTest exit=0
+PASS P06-B0006 11 preflight authorization/transition/conflict/outbox assertions (no DB write)
+
+AppointmentWriteFenceTest exit=0
+
+ResourceReservationIndexTest exit=0
+PASS P06-B0003 13 overlap/isolation/release/concurrency assertions (in-memory only)

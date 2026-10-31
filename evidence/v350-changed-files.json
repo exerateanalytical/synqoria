@@ -1,0 +1,8 @@
+[
+  "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentResourceCapacity.java",
+  "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentIdempotencyKey.java",
+  "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentAuditSequence.java",
+  "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentResourceCapacityTest.java",
+  "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentIdempotencyKeyTest.java",
+  "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentAuditSequenceTest.java"
+]

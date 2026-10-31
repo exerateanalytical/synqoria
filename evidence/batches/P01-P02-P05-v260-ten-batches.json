@@ -1,0 +1,184 @@
+{
+  "version": "0.26.0",
+  "executed_at_utc": "2026-10-30T12:09:38.268417+00:00",
+  "scope": "source/unit/mock-JDBC only; no production PostgreSQL, Next/Expo build or clinical acceptance",
+  "target": 10,
+  "completed": 10,
+  "batches": [
+    {
+      "id": "P01-B0036",
+      "scope": "offline command evidence runner, exit/timeout/missing-command handling",
+      "argv": [
+        "python",
+        "tests/test_v260_foundations.py",
+        "Foundation.test_runner",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_runner (__main__.Foundation.test_runner) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 5.125s\n\nOK\n",
+      "implemented": true,
+      "tested": true,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P01-B0037",
+      "scope": "dependency lock and exact pin fail-closed release policy",
+      "argv": [
+        "python",
+        "tests/test_v260_foundations.py",
+        "Foundation.test_lock",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_lock (__main__.Foundation.test_lock) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.005s\n\nOK\n",
+      "implemented": true,
+      "tested": true,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P01-B0038",
+      "scope": "CI actual Next/Expo build jobs, no bypass on missing lock",
+      "argv": [
+        "python",
+        "tests/test_v260_foundations.py",
+        "Foundation.test_ci",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_ci (__main__.Foundation.test_ci) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+      "implemented": true,
+      "tested": true,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P02-B0086",
+      "scope": "local-only native More policy, bilingual and role scoped",
+      "argv": [
+        "node",
+        "--test",
+        "packages/ux-core/tests/v260-native-more.test.cjs"
+      ],
+      "exit_code": 0,
+      "stdout": "TAP version 13\n# Subtest: P02-B0086: native More is local-only, role/locale constrained\nok 1 - P02-B0086: native More is local-only, role/locale constrained\n  ---\n  duration_ms: 2.137376\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 142.457599\n",
+      "stderr": "",
+      "implemented": true,
+      "tested": true,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P02-B0087",
+      "scope": "staff native More panel with accessible local status and locked clinical tabs",
+      "argv": [
+        "python",
+        "tests/test_v260_native_sources.py",
+        "Native.test_staff",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_staff (__main__.Native.test_staff) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.006s\n\nOK\n",
+      "implemented": true,
+      "tested": true,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P02-B0088",
+      "scope": "patient/proxy native More panel, background reset and locked clinical tabs",
+      "argv": [
+        "python",
+        "tests/test_v260_native_sources.py",
+        "Native.test_patient",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_patient (__main__.Native.test_patient) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.002s\n\nOK\n",
+      "implemented": true,
+      "tested": true,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P05-B0058",
+      "scope": "read/append-only restricted reviewer role privilege attestation",
+      "argv": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-v26-classes",
+        "org.synqoria.registration.V260ReviewerGateTest",
+        "P05-B0058"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS P05-B0058 6 mock-JDBC assertions; live PostgreSQL not tested\n",
+      "stderr": "",
+      "implemented": true,
+      "tested": true,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P05-B0059",
+      "scope": "unapplied tenant/facility scoped unique command index migration",
+      "argv": [
+        "python",
+        "tests/test_v260_replay_ddl.py",
+        "Replay.test_unique_command_per_tenant",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_unique_command_per_tenant (__main__.Replay.test_unique_command_per_tenant) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+      "implemented": true,
+      "tested": true,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P05-B0060",
+      "scope": "review command timestamp/identity/digest freshness checks",
+      "argv": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-v26-classes",
+        "org.synqoria.registration.V260ReviewerGateTest",
+        "P05-B0060"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS P05-B0060 7 mock-JDBC assertions; live PostgreSQL not tested\n",
+      "stderr": "",
+      "implemented": true,
+      "tested": true,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P05-B0061",
+      "scope": "restricted transaction privilege+freshness guard, rollback and no-commit",
+      "argv": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-v26-classes",
+        "org.synqoria.registration.V260ReviewerGateTest",
+        "P05-B0061"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS P05-B0061 12 mock-JDBC assertions; live PostgreSQL not tested\n",
+      "stderr": "",
+      "implemented": true,
+      "tested": true,
+      "clinically_reviewed": false,
+      "accepted": false
+    }
+  ]
+}

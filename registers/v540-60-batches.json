@@ -1,0 +1,1618 @@
+{
+  "checkpoint": "v0.54.0",
+  "target": 60,
+  "verified": 60,
+  "qualification": "Each batch is a distinct, executed acceptance scenario linked to new genesis/HTTP/SQL work. They are not 60 standalone clinical features.",
+  "batches": [
+    {
+      "id": "P06-B0229",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Genesis event and receipt commit",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandCoordinator.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcPersistence.java",
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageGenesisBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0229.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "synthetic atomic transaction",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0230",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Intake idempotent replay",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandCoordinator.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcPersistence.java",
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageGenesisBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0230.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "synthetic atomic transaction",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0231",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Appointment fingerprint replay rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandCoordinator.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcPersistence.java",
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageGenesisBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0231.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "synthetic atomic transaction",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0232",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Duplicate intake conflict",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandCoordinator.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcPersistence.java",
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageGenesisBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0232.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "synthetic atomic transaction",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0233",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Intake tenant isolation",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandCoordinator.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcPersistence.java",
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageGenesisBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0233.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "synthetic atomic transaction",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0234",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Intake patient isolation",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandCoordinator.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcPersistence.java",
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageGenesisBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0234.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "synthetic atomic transaction",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0235",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Intake actor isolation",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandCoordinator.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcPersistence.java",
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageGenesisBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0235.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "synthetic atomic transaction",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0236",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Intake capability authorization",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandCoordinator.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcPersistence.java",
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageGenesisBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0236.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "synthetic atomic transaction",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0237",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Intake expired clinical proof rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandCoordinator.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcPersistence.java",
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageGenesisBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0237.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "synthetic atomic transaction",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0238",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Intake rollback after case write",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandCoordinator.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcPersistence.java",
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageGenesisBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0238.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "synthetic atomic transaction",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0239",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Intake rollback after audit/outbox",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandCoordinator.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcPersistence.java",
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageGenesisBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0239.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "synthetic atomic transaction",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0240",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Intake rollback after receipt",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandCoordinator.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcPersistence.java",
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageGenesisBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0240.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "synthetic atomic transaction",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0241",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Authenticated loopback HTTP mutation success",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0241.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0242",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP idempotent replay without duplicate outbox",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0242.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0243",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP bearer authentication denial",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0243.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0244",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP missing clinical proof denial",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0244.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0245",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP mismatched patient proof denial",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0245.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0246",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP missing capability denial",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0246.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0247",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP method allowlist",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0247.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0248",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP query parameter rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0248.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0249",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP wrong patient scope rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0249.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0250",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP spoofed tenant header rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0250.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0251",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP cross-site Origin rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0251.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0252",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP Accept negotiation restriction",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0252.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0253",
+      "phase": "P06",
+      "module": "M03",
+      "title": "JSON control escape rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0253.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0254",
+      "phase": "P06",
+      "module": "M03",
+      "title": "JSON duplicate field rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0254.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0255",
+      "phase": "P06",
+      "module": "M03",
+      "title": "JSON caller-controlled tenant field rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0255.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0256",
+      "phase": "P06",
+      "module": "M03",
+      "title": "JSON revision type enforcement",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0256.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0257",
+      "phase": "P06",
+      "module": "M03",
+      "title": "JSON nonzero revision requirement",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0257.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0258",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Canonical command UUID enforcement",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0258.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0259",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Unknown triage action rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0259.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0260",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Oversized text field rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0260.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0261",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Superfluous reference parameter rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0261.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0262",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Stale HTTP revision maps to 412",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0262.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0263",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Trailing JSON object injection rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0263.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0264",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Unpaired Unicode surrogate rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0264.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0265",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Nested JSON injection rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0265.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0266",
+      "phase": "P06",
+      "module": "M03",
+      "title": "Malformed JSON framing rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0266.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0267",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP spoofed actor header rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0267.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0268",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP spoofed clinical evidence header rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0268.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0269",
+      "phase": "P06",
+      "module": "M03",
+      "title": "V018 legacy revision constraint removal mutation gate",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql",
+        "tools/triage_genesis_migration_gate.py"
+      ],
+      "test_file": "tools/triage_genesis_migration_gate.py",
+      "evidence": [
+        "evidence/v540/P06-B0269.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "static SQL negative mutation/lock",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0270",
+      "phase": "P06",
+      "module": "M03",
+      "title": "V018 genesis revision >=1 mutation gate",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql",
+        "tools/triage_genesis_migration_gate.py"
+      ],
+      "test_file": "tools/triage_genesis_migration_gate.py",
+      "evidence": [
+        "evidence/v540/P06-B0270.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "static SQL negative mutation/lock",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0271",
+      "phase": "P06",
+      "module": "M03",
+      "title": "V018 scoped receipt event FK mutation gate",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql",
+        "tools/triage_genesis_migration_gate.py"
+      ],
+      "test_file": "tools/triage_genesis_migration_gate.py",
+      "evidence": [
+        "evidence/v540/P06-B0271.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "static SQL negative mutation/lock",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0272",
+      "phase": "P06",
+      "module": "M03",
+      "title": "V018 scoped event FK target mutation gate",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql",
+        "tools/triage_genesis_migration_gate.py"
+      ],
+      "test_file": "tools/triage_genesis_migration_gate.py",
+      "evidence": [
+        "evidence/v540/P06-B0272.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "static SQL negative mutation/lock",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0273",
+      "phase": "P06",
+      "module": "M03",
+      "title": "V018 append-only trigger mutation gate",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql",
+        "tools/triage_genesis_migration_gate.py"
+      ],
+      "test_file": "tools/triage_genesis_migration_gate.py",
+      "evidence": [
+        "evidence/v540/P06-B0273.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "static SQL negative mutation/lock",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0274",
+      "phase": "P06",
+      "module": "M03",
+      "title": "V018 trigger rejection mutation gate",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql",
+        "tools/triage_genesis_migration_gate.py"
+      ],
+      "test_file": "tools/triage_genesis_migration_gate.py",
+      "evidence": [
+        "evidence/v540/P06-B0274.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "static SQL negative mutation/lock",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0275",
+      "phase": "P06",
+      "module": "M03",
+      "title": "V018 forced RLS mutation gate",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql",
+        "tools/triage_genesis_migration_gate.py"
+      ],
+      "test_file": "tools/triage_genesis_migration_gate.py",
+      "evidence": [
+        "evidence/v540/P06-B0275.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "static SQL negative mutation/lock",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0276",
+      "phase": "P06",
+      "module": "M03",
+      "title": "V018 PUBLIC privilege revocation mutation gate",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql",
+        "tools/triage_genesis_migration_gate.py"
+      ],
+      "test_file": "tools/triage_genesis_migration_gate.py",
+      "evidence": [
+        "evidence/v540/P06-B0276.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "static SQL negative mutation/lock",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0277",
+      "phase": "P06",
+      "module": "M03",
+      "title": "V018 premature grants rejection mutation gate",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql",
+        "tools/triage_genesis_migration_gate.py"
+      ],
+      "test_file": "tools/triage_genesis_migration_gate.py",
+      "evidence": [
+        "evidence/v540/P06-B0277.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "static SQL negative mutation/lock",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0278",
+      "phase": "P06",
+      "module": "M03",
+      "title": "V018 immutable migration SHA-256 lock",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql",
+        "tools/triage_genesis_migration_gate.py"
+      ],
+      "test_file": "tools/triage_genesis_migration_gate.py",
+      "evidence": [
+        "evidence/v540/P06-B0278.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "static SQL negative mutation/lock",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0279",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP wrong media type rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0279.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0280",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP missing content type rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0280.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0281",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP missing bearer rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0281.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0282",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP Cookie rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0282.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0283",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP spoofed facility header rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0283.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0284",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP unsupported observation JSON rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0284.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0285",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP typed reference mutation integration",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0285.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0286",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP wrong case scope rejection",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0286.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0287",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP storage outage mapped to safe 503",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0287.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    },
+    {
+      "id": "P06-B0288",
+      "phase": "P06",
+      "module": "M03",
+      "title": "HTTP invalid state conflict mapped to safe 409",
+      "description": "Distinct executable implementation/security acceptance scenario; synthetic HTTP/transaction or static SQL only, not a deployed or clinically accepted feature.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandHttpHandler.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageStrictJson.java",
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandConflict.java"
+      ],
+      "test_file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageHttpBoundaryBatchesTest.java",
+      "evidence": [
+        "evidence/v540/P06-B0288.log",
+        "evidence/v540/execution.json"
+      ],
+      "implemented": true,
+      "individually_tested": true,
+      "passed": true,
+      "test_kind": "loopback HTTP with synthetic identity and persistence",
+      "real_postgres_tested": false,
+      "production_oidc_verified": false,
+      "clinical_screen_accepted": false,
+      "clinical_release_approved": false,
+      "external_certification": false,
+      "status": "INTERNALLY_VERIFIED_TEST_SCENARIO_NOT_PRODUCTION_CERTIFIED"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+COMMAND ['python', 'tests/test_v260_foundations.py', 'Foundation.test_lock', '-v']
+EXIT 0
+STDOUT
+
+STDERR
+test_lock (__main__.Foundation.test_lock) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.005s
+
+OK

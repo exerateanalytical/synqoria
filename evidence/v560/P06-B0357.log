@@ -1,0 +1,4 @@
+COMMAND: java -cp <classes> org.synqoria.triage.TriageV56WorklistHttpTest SAFETY_HOLDS
+EXIT: 0
+STDOUT:
+TRIAGE_V56_WORKLIST_HTTP PASS view=SAFETY_HOLDS assertions=16

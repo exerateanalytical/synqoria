@@ -1,0 +1,19 @@
+{
+  "version": "0.42.0",
+  "starting_point": "0.41.0",
+  "verified_batches": [
+    "P06-B0045",
+    "P06-B0046",
+    "P06-B0047"
+  ],
+  "target_batches": 50,
+  "tests": [
+    "javac all scheduling sources: pass",
+    "AppointmentTransitionMutationTest: pass",
+    "AppointmentTransactionalTransitionTest: pass"
+  ],
+  "limitations": [
+    "mocked JDBC; live database and RLS unverified",
+    "no clinical acceptance or production certification"
+  ]
+}

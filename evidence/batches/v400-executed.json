@@ -1,0 +1,12 @@
+[
+  {
+    "batch": "P06-B0043",
+    "compiled": true,
+    "compile_stdout": "",
+    "compile_stderr": "",
+    "test_exit_code": 0,
+    "test_stdout": "PASS AppointmentTransitionMutationTest assertions=16\n",
+    "test_stderr": "",
+    "scope": "transition validation integrated with scoped prepared statement binding; mocked JDBC only"
+  }
+]

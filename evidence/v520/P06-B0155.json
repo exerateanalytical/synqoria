@@ -1,0 +1,20 @@
+{
+  "batch_id": "P06-B0155",
+  "module": "M03",
+  "phase": "P06",
+  "scope": "Snapshot version, truncation, size and canonical ordering guards",
+  "implementation": [
+    "services/clinical-core/src/main/java/org/synqoria/triage/TriageSnapshotCodec.java"
+  ],
+  "focused_tests": [
+    "evidence/v520/scenario-codec-determinism.log",
+    "evidence/v520/scenario-codec-bad-magic.log",
+    "evidence/v520/scenario-codec-truncation.log",
+    "evidence/v520/scenario-codec-trailing.log",
+    "evidence/v520/scenario-codec-oversize.log"
+  ],
+  "verified": true,
+  "verification_scope": "synthetic_java_and_static_source_only",
+  "live_postgresql_tested": false,
+  "clinical_accepted": false
+}

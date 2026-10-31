@@ -1,0 +1,7 @@
+command=["python", "tests/test_v200_native_sources.py", "P02-B0058"]
+exit=0 P02-B0058
+STDOUT:
+PASS P02-B0058 both RN sources keyboard/safe area integration; package/config source only
+
+STDERR:
+

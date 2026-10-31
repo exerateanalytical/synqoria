@@ -1,0 +1,149 @@
+{
+  "version": "0.45.0",
+  "created_utc": "2026-10-30T17:16:44.210050+00:00",
+  "source_checkpoint": "SYNQORIA_v0.44.0_5BATCH_cumulative.zip",
+  "source_sha256": "61efe14fa0f0f59d365f26a3b9e66ddca80b8cb5ebe3940bce8885e3116a1176",
+  "target_batched": 60,
+  "completed_count": 15,
+  "remaining_target": 45,
+  "batch_range": [
+    "P06-B0070",
+    "P06-B0084"
+  ],
+  "verification_scope": "local Java compilation, Java main tests with JDBC mocks, npm TypeScript UX tests, source/metadata checks; NOT PostgreSQL integration",
+  "compile_sources": 312,
+  "scheduling_tests_runnable": 68,
+  "scheduling_tests_failed": 0,
+  "ux_core_node_tests_passed": 109,
+  "clinical_screens_accepted": 0,
+  "modules_certified": 0,
+  "blocked_gates": [
+    "live PostgreSQL/restricted RLS",
+    "production OIDC/MFA",
+    "Next.js build",
+    "Expo Android/iOS builds",
+    "clinical safety/security sign-off"
+  ],
+  "results": [
+    {
+      "batch": "P06-B0070",
+      "test_class": "AppointmentJdbcScopeTest",
+      "command": "java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentJdbcScopeTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentJdbcScopeTest assertions=14",
+      "verification": "JDBC mock / Java unit only"
+    },
+    {
+      "batch": "P06-B0071",
+      "test_class": "AppointmentSqlBudgetTest",
+      "command": "java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentSqlBudgetTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentSqlBudgetTest assertions=18",
+      "verification": "JDBC mock / Java unit only"
+    },
+    {
+      "batch": "P06-B0072",
+      "test_class": "AppointmentEventIntegrityProofTest",
+      "command": "java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentEventIntegrityProofTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentEventIntegrityProofTest assertions=18",
+      "verification": "JDBC mock / Java unit only"
+    },
+    {
+      "batch": "P06-B0073",
+      "test_class": "AppointmentCommitProofTest",
+      "command": "java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentCommitProofTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentCommitProofTest assertions=12",
+      "verification": "JDBC mock / Java unit only"
+    },
+    {
+      "batch": "P06-B0074",
+      "test_class": "AppointmentReplayProofTest",
+      "command": "java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentReplayProofTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentReplayProofTest assertions=6",
+      "verification": "JDBC mock / Java unit only"
+    },
+    {
+      "batch": "P06-B0075",
+      "test_class": "AppointmentAuditIntegrityReaderTest",
+      "command": "java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentAuditIntegrityReaderTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentAuditIntegrityReaderTest assertions=18",
+      "verification": "JDBC mock / Java unit only"
+    },
+    {
+      "batch": "P06-B0076",
+      "test_class": "AppointmentAuditIntegrityReaderTest",
+      "command": "java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentAuditIntegrityReaderTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentAuditIntegrityReaderTest assertions=18",
+      "verification": "JDBC mock / Java unit only"
+    },
+    {
+      "batch": "P06-B0077",
+      "test_class": "AppointmentReplayProofTest",
+      "command": "java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentReplayProofTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentReplayProofTest assertions=6",
+      "verification": "JDBC mock / Java unit only"
+    },
+    {
+      "batch": "P06-B0078",
+      "test_class": "AppointmentCommitProofTest",
+      "command": "java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentCommitProofTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentCommitProofTest assertions=12",
+      "verification": "JDBC mock / Java unit only"
+    },
+    {
+      "batch": "P06-B0079",
+      "test_class": "AppointmentAuditStoreTest",
+      "command": "java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentAuditStoreTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentAuditStoreTest assertions=14",
+      "verification": "JDBC mock / Java unit only"
+    },
+    {
+      "batch": "P06-B0080",
+      "test_class": "AppointmentIdempotencyStoreTest",
+      "command": "java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentIdempotencyStoreTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentIdempotencyStoreTest assertions=17",
+      "verification": "JDBC mock / Java unit only"
+    },
+    {
+      "batch": "P06-B0081",
+      "test_class": "AppointmentTransitionServiceTest",
+      "command": "java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentTransitionServiceTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentTransitionServiceTest assertions=12",
+      "verification": "JDBC mock / Java unit only"
+    },
+    {
+      "batch": "P06-B0082",
+      "test_class": "AppointmentTransitionServiceTest",
+      "command": "java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentTransitionServiceTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentTransitionServiceTest assertions=12",
+      "verification": "JDBC mock / Java unit only"
+    },
+    {
+      "batch": "P06-B0083",
+      "test_class": "AppointmentTransitionPolicyTest",
+      "command": "java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentTransitionPolicyTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentTransitionPolicyTest assertions=31",
+      "verification": "JDBC mock / Java unit only"
+    },
+    {
+      "batch": "P06-B0084",
+      "test_class": "registers consistency",
+      "command": "npm run check:registers",
+      "exit_code": 0,
+      "stdout": "> synqoria@0.45.0 check:registers\n> python tests/test_baseline.py && python tests/test_navigation_contract.py && python tests/test_v240_checkpoint.py\n\nPASS: planning integrity, 40 unique modules, 261 unique canonical screens, 20 phases, non-fabricated code statuses\nPASS: 261 honest screen route records, 3 shell roots, 40 module IDs; no false canonical screen implementation claims\nPASS historical v0.24.0 evidence in current 0.45.0 checkpoint; 40 modules; 261 screens; release denied",
+      "verification": "local static register tests only"
+    }
+  ]
+}

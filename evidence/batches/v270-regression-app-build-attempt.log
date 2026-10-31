@@ -1,0 +1,7 @@
+COMMAND ['python', 'tools/run_app_builds.py']
+EXIT 4
+EXPECTED 4
+STDOUT
+{"status": "BLOCKED", "blockers": ["missing_installed_dependency:patient-mobile:expo", "missing_installed_dependency:patient-mobile:react-native", "missing_installed_dependency:staff-mobile:expo", "missing_installed_dependency:staff-mobile:react-native", "missing_installed_dependency:web:next", "missing_installed_dependency:web:react", "missing_installed_dependency:web:react-dom", "missing_or_invalid_lockfile", "missing_root_lockfile"], "builds_passed": 0}
+
+STDERR

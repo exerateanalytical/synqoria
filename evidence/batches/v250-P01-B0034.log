@@ -1,0 +1,13 @@
+BATCH: P01-B0034
+COMMAND: python tests/test_v250_engineering_probes.py Checks.test_pg_probe -v
+EXIT: 0
+STDOUT:
+
+STDERR:
+test_pg_probe (__main__.Checks.test_pg_probe) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+

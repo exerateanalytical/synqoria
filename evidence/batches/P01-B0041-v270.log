@@ -1,0 +1,11 @@
+COMMAND ['python', 'tests/test_v270_engineering.py', 'Engineering.test_build_attempt_fail_closed', '-v']
+EXIT 0
+STDOUT
+
+STDERR
+test_build_attempt_fail_closed (__main__.Engineering.test_build_attempt_fail_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+OK

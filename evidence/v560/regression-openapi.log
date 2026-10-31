@@ -1,0 +1,8 @@
+test_catalog_parity (tests.test_v560_triage_contract.V560Contract.test_catalog_parity) ... ok
+test_paths_and_permissions (tests.test_v560_triage_contract.V560Contract.test_paths_and_permissions) ... ok
+test_privacy_and_boundaries (tests.test_v560_triage_contract.V560Contract.test_privacy_and_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.036s
+
+OK

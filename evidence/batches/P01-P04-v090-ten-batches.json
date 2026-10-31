@@ -1,0 +1,133 @@
+{
+  "version": "0.9.0",
+  "parent_version": "0.8.0",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "scope": "Java local HTTP, Java units, proxy JDBC and TypeScript unit/source verification; application build and real database/identity remain blocked",
+  "results": [
+    {
+      "batch": "P01-B0017",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "real_localhost_java",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/http/RequestEnvelopePolicy.java",
+        "services/clinical-core/src/test/java/org/synqoria/http/ClinicalGatewayIntegrationTest.java"
+      ],
+      "status": "unit_or_source_verified_only",
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P01-B0018",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "real_localhost_java",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/http/ClinicalResponse.java",
+        "services/clinical-core/src/test/java/org/synqoria/http/ClinicalGatewayIntegrationTest.java"
+      ],
+      "status": "unit_or_source_verified_only",
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P01-B0019",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "typescript_node",
+      "source_files": [
+        "packages/ux-core/src/clinical-api-client.ts",
+        "packages/ux-core/tests/v090-integration.test.cjs"
+      ],
+      "status": "unit_or_source_verified_only",
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P02-B0018",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "typescript_node",
+      "source_files": [
+        "packages/ux-core/src/sensitive-state-clear.ts",
+        "packages/ux-core/tests/v090-integration.test.cjs"
+      ],
+      "status": "unit_or_source_verified_only",
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P02-B0019",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "typescript_node_and_native_source",
+      "source_files": [
+        "packages/ux-core/src/mobile-session-gate.ts",
+        "apps/staff-mobile/App.tsx",
+        "apps/patient-mobile/App.tsx",
+        "packages/ux-core/tests/v090-integration.test.cjs"
+      ],
+      "status": "unit_or_source_verified_only",
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P02-B0020",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "typescript_node",
+      "source_files": [
+        "packages/ux-core/src/clinical-nav-safe.ts",
+        "packages/ux-core/tests/v090-integration.test.cjs"
+      ],
+      "status": "unit_or_source_verified_only",
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P03-B0011",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "local_file_java_unit_not_immutable",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/audit/BoundedAuditJournal.java",
+        "services/clinical-core/src/test/java/org/synqoria/audit/BoundedAuditJournalTest.java"
+      ],
+      "status": "unit_or_source_verified_only",
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P03-B0012",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "java_unit_test_claims",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/security/SessionEpochFence.java",
+        "services/clinical-core/src/test/java/org/synqoria/security/SessionEpochFenceTest.java"
+      ],
+      "status": "unit_or_source_verified_only",
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P04-B0008",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "jdbc_mock_and_ddl_source_static",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/persistence/TenantScopedPatientJdbc.java",
+        "services/clinical-core/src/test/java/org/synqoria/persistence/JdbcScopeIntegrationTest.java",
+        "tests/test_v090_jdbc_schema.py"
+      ],
+      "status": "unit_or_source_verified_only",
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P04-B0009",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "jdbc_mock_and_ddl_source_static",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/persistence/TenantScopedFacilityJdbc.java",
+        "services/clinical-core/src/test/java/org/synqoria/persistence/JdbcScopeIntegrationTest.java",
+        "tests/test_v090_jdbc_schema.py"
+      ],
+      "status": "unit_or_source_verified_only",
+      "not_clinically_certified": true
+    }
+  ]
+}

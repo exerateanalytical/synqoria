@@ -1,0 +1,5 @@
+COMMAND ["python", "tests/test_v280_ci_candidate.py"]
+EXIT_CODE 0
+PASS P01-B0044: manual candidate, no unreviewed lock adoption, CI fail-closed
+
+STDERR

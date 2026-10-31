@@ -1,0 +1,37 @@
+test_bypass_rls_denied (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_bypass_rls_denied) ... ok
+test_clean_migration (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_clean_migration) ... ok
+test_forged_outbox_fk_denied (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_forged_outbox_fk_denied) ... ok
+test_forged_receipt_fk_denied (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_forged_receipt_fk_denied) ... ok
+test_genesis_anchor_rule (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_genesis_anchor_rule) ... ok
+test_genesis_only_operation_rule (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_genesis_only_operation_rule) ... ok
+test_missing_force_rls_denied (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_missing_force_rls_denied) ... ok
+test_missing_receipt_append_only_denied (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_missing_receipt_append_only_denied) ... ok
+test_missing_revoked_public_denied (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_missing_revoked_public_denied) ... ok
+test_no_drop_table (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_no_drop_table) ... ok
+test_unsafe_grant_denied (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_unsafe_grant_denied) ... ok
+test_unsafe_policy_denied (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_unsafe_policy_denied) ... ok
+test_disconnected_receipt_revision_denied (tests.test_triage_jdbc_evidence_contract.JdbcEvidenceSourceTests.test_disconnected_receipt_revision_denied) ... ok
+test_integrity_guard_present (tests.test_triage_jdbc_evidence_contract.JdbcEvidenceSourceTests.test_integrity_guard_present) ... ok
+test_no_full_chain_denied (tests.test_triage_jdbc_evidence_contract.JdbcEvidenceSourceTests.test_no_full_chain_denied) ... ok
+test_no_verified_ledger_call_denied (tests.test_triage_jdbc_evidence_contract.JdbcEvidenceSourceTests.test_no_verified_ledger_call_denied) ... ok
+test_timeout_missing_denied (tests.test_triage_jdbc_evidence_contract.JdbcEvidenceSourceTests.test_timeout_missing_denied) ... ok
+test_unscoped_event_query_denied (tests.test_triage_jdbc_evidence_contract.JdbcEvidenceSourceTests.test_unscoped_event_query_denied) ... ok
+test_unscoped_outbox_join_denied (tests.test_triage_jdbc_evidence_contract.JdbcEvidenceSourceTests.test_unscoped_outbox_join_denied) ... ok
+test_unscoped_receipt_join_denied (tests.test_triage_jdbc_evidence_contract.JdbcEvidenceSourceTests.test_unscoped_receipt_join_denied) ... ok
+test_authoritative_quarantine (tests.test_triage_secure_migration_v520.Tests.test_authoritative_quarantine) ... ok
+test_bypass_not_allowed (tests.test_triage_secure_migration_v520.Tests.test_bypass_not_allowed) ... ok
+test_force_rls_removed (tests.test_triage_secure_migration_v520.Tests.test_force_rls_removed) ... ok
+test_grants_not_allowed (tests.test_triage_secure_migration_v520.Tests.test_grants_not_allowed) ... ok
+test_new_policy_not_allowed (tests.test_triage_secure_migration_v520.Tests.test_new_policy_not_allowed) ... ok
+test_no_plaintext_clinical_text (tests.test_triage_secure_migration_v520.Tests.test_no_plaintext_clinical_text) ... ok
+test_outbox_integrity_link (tests.test_triage_secure_migration_v520.Tests.test_outbox_integrity_link) ... ok
+test_public_revoke_removed (tests.test_triage_secure_migration_v520.Tests.test_public_revoke_removed) ... ok
+test_row_level_security_removed (tests.test_triage_secure_migration_v520.Tests.test_row_level_security_removed) ... ok
+test_scope_pk_required (tests.test_triage_secure_migration_v520.Tests.test_scope_pk_required) ... ok
+test_snapshot_must_be_encrypted (tests.test_triage_secure_migration_v520.Tests.test_snapshot_must_be_encrypted) ... ok
+test_unpublished_index_required (tests.test_triage_secure_migration_v520.Tests.test_unpublished_index_required) ... ok
+
+----------------------------------------------------------------------
+Ran 32 tests in 0.029s
+
+OK

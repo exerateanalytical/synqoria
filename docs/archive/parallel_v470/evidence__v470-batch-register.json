@@ -1,0 +1,19 @@
+{
+  "version": "0.47.0",
+  "target": 60,
+  "completed": 2,
+  "next": "P06-B0074",
+  "batches": [
+    {
+      "id": "P06-B0072",
+      "status": "tested",
+      "tests": "migration regression 15 and preflight 5"
+    },
+    {
+      "id": "P06-B0073",
+      "status": "tested",
+      "tests": "preflight adversarial tests 5"
+    }
+  ],
+  "clinical_release": "DENIED"
+}

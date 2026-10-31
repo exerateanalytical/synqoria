@@ -1,0 +1,108 @@
+name: Engineering checks (not clinical certification)
+on:
+  push:
+  pull_request:
+jobs:
+  foundation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Install TypeScript toolchain
+        run: npm install --no-save typescript@5.8.3
+      - name: Validate UX core and route registers
+        run: npm run check
+      - name: Java scope policy unit tests
+        run: bash tools/check_java_security.sh
+      - name: Source design rules
+        run: python tests/test_source_safety.py
+      - name: Contract YAML parse
+        run: |
+          python -m pip install 'PyYAML==6.0.3' 'jsonschema==4.26.0'
+          python tests/test_contract.py
+
+      - name: Bilingual source shell and TSX syntax (not app compilation)
+        run: npm run check:source
+      - name: v0.27.0 pinned manifests, lock audit, build-runner and archive tests
+        run: |
+          python tools/dependency_compatibility.py
+          python tests/test_v270_engineering.py
+          python tests/test_v270_shell_sources.py
+      - name: v0.28 source and quarantined scheduling contract (NOT live database or app build)
+        run: |
+          PYTHONPATH=. python tests/test_v280_build_attestation.py
+          python tests/test_v280_ci_candidate.py
+          python tests/test_v280_scheduling_ddl.py
+      # v0.28 Chromium controller/reflow tests require a separate runner with installed
+      # browser binaries; they are not silently treated as CI passes.
+      - name: v0.26.0 engineering source regression (NOT application/device tests)
+        run: |
+          python tests/test_v260_foundations.py
+          python tests/test_v260_native_sources.py
+          python tests/test_v260_replay_ddl.py
+      - name: Draft SQL source and event contract (NOT PostgreSQL execution)
+        run: |
+          python tests/test_sql_scope_foundation.py
+          python tests/test_sql_outbox.py
+          python tests/test_sql_identity.py
+          python tests/test_event_envelope.py
+      - name: Clinical scope status and batch evidence gates
+        run: |
+          python tools/verify_status_matrix.py
+          python tests/test_batch_ledger.py
+      - name: v0.16.0 reviewer release lock and native intake source checks
+        run: |
+          python tests/test_v160_release_gate.py
+          python tests/test_v160_native_integration.py
+          python tests/test_v150_checkpoint.py
+          python tests/test_v160_checkpoint.py
+      - name: v0.25 offline PostgreSQL DDL guard (NOT database execution)
+        run: |
+          python tools/audit_postgres_migrations.py
+          python tests/test_v250_review_audit_ddl.py
+          python tests/test_v250_engineering_probes.py -v
+      - name: v0.25 build prerequisites (expected fail-closed until dependencies installed)
+        run: |
+          python - <<'PY'
+          import sys
+          sys.path.insert(0,'tools')
+          from probe_application_builds import audit
+          from pathlib import Path
+          result=audit(Path('.'))
+          assert isinstance(result['build_ready'],bool)
+          print('Build preflight:', 'READY_FOR_BUILD_ATTEMPT' if result['build_ready'] else 'BLOCKED_NOT_BUILT')
+          PY
+
+  application-builds-not-clinical-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Require pinned dependency lock
+        run: |
+          python3 tools/dependency_compatibility.py
+          python3 tools/dependency_release_gate.py
+          python3 tools/verify_lock_integrity.py
+      - name: Install exact locked dependencies
+        run: npm ci --ignore-scripts
+      - name: Execute and record real Next/Expo build attempts (NOT clinical release)
+        run: python3 tools/run_app_builds.py
+      - name: Preserve build attempt evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synqoria-application-build-evidence
+          path: evidence/batches/v280-actual-build-attempt.json
+          if-no-files-found: warn
+      # No CI result can grant clinical release without independent human signoffs.

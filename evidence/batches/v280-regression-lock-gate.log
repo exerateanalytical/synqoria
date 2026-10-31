@@ -1,0 +1,13 @@
+COMMAND ["python", "tools/dependency_release_gate.py"]
+EXIT_CODE 4
+STDOUT
+{
+  "reproducible": false,
+  "issues": [
+    "missing_package_lock"
+  ],
+  "clinical_release": false
+}
+
+STDERR
+

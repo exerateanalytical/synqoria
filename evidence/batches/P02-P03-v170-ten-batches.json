@@ -1,0 +1,101 @@
+{
+  "checkpoint": "v0.17.0",
+  "base": "v0.16.0",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "results": [
+    {
+      "batch": "P03-B0018",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "RS256 signature primitive with 2048-bit key minimum, signature tamper and algorithm-confusion refusal",
+      "verification_level": "java_crypto_unit",
+      "source": "services/clinical-core/src/main/java/org/synqoria/security/OidcRs256Primitive.java",
+      "evidence_log": "evidence/batches/v170-P03-B0018.log"
+    },
+    {
+      "batch": "P03-B0019",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Strict compact-JWS envelope size/canonical base64url validation; decoded content remains untrusted",
+      "verification_level": "java_unit",
+      "source": "services/clinical-core/src/main/java/org/synqoria/security/OidcCompactEnvelope.java",
+      "evidence_log": "evidence/batches/v170-P03-B0019.log"
+    },
+    {
+      "batch": "P03-B0020",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Exact HTTPS issuer/audience/authorized-party trust pins for externally verified claims",
+      "verification_level": "java_unit",
+      "source": "services/clinical-core/src/main/java/org/synqoria/security/OidcTrustPins.java",
+      "evidence_log": "evidence/batches/v170-P03-B0020.log"
+    },
+    {
+      "batch": "P03-B0021",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Bounded token issuance/not-before/expiry and recent MFA temporal fence",
+      "verification_level": "java_unit",
+      "source": "services/clinical-core/src/main/java/org/synqoria/security/OidcTemporalFence.java",
+      "evidence_log": "evidence/batches/v170-P03-B0021.log"
+    },
+    {
+      "batch": "P03-B0022",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Pinned key-rotation metadata, revoked-key and duplicate key ID refusal",
+      "verification_level": "java_unit",
+      "source": "services/clinical-core/src/main/java/org/synqoria/security/OidcKeyRotationFence.java",
+      "evidence_log": "evidence/batches/v170-P03-B0022.log"
+    },
+    {
+      "batch": "P03-B0023",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Fresh authoritative tenant/facility/actor/session/capability/shift grant comparison",
+      "verification_level": "java_unit",
+      "source": "services/clinical-core/src/main/java/org/synqoria/security/FacilitySessionGrantFence.java",
+      "evidence_log": "evidence/batches/v170-P03-B0023.log"
+    },
+    {
+      "batch": "P02-B0044",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Strict privacy-safe return navigation allowlist rejects open redirects and patient identifiers",
+      "verification_level": "typescript_node_unit",
+      "source": "packages/ux-core/src/private-return-route.ts",
+      "evidence_log": "evidence/batches/v170-P02-B0044.log"
+    },
+    {
+      "batch": "P02-B0045",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Patient/proxy presentation context expires, revokes and clears on subject/background transitions",
+      "verification_level": "typescript_node_unit_plus_native_source",
+      "source": "packages/ux-core/src/patient-proxy-context.ts",
+      "evidence_log": "evidence/batches/v170-P02-B0045.log"
+    },
+    {
+      "batch": "P02-B0046",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Mobile protected-view epoch fence and native AppState background integration in both app shells",
+      "verification_level": "typescript_node_unit_plus_native_source",
+      "source": "packages/ux-core/src/mobile-visibility-fence.ts",
+      "evidence_log": "evidence/batches/v170-P02-B0046.log"
+    },
+    {
+      "batch": "P02-B0047",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Bilingual accessible locked registration status, wired to staff native preview",
+      "verification_level": "typescript_node_unit_plus_native_source",
+      "source": "packages/ux-core/src/accessible-locked-status.ts",
+      "evidence_log": "evidence/batches/v170-P02-B0047.log"
+    }
+  ],
+  "clinical_screen_implementation": 0,
+  "clinical_release": "NOT_CERTIFIED",
+  "created_utc": "2026-10-30T03:04:49.280115+00:00"
+}

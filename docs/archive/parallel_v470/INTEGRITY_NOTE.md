@@ -1,0 +1,1 @@
+Parallel v0.47.0 ZIP outer SHA/CRC matched but embedded manifest had 9 stale/missing entries. Only two named source files were independently adopted and retested; parallel IDs P06-B0072/B0073 remapped to P06-B0087/B0088. No DB runtime certification.

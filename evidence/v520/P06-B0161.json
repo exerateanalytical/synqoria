@@ -1,0 +1,19 @@
+{
+  "batch_id": "P06-B0161",
+  "module": "M03",
+  "phase": "P06",
+  "scope": "Patient-scoped FOR UPDATE encrypted hydration and row/snapshot consistency",
+  "implementation": [
+    "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcStore.java"
+  ],
+  "focused_tests": [
+    "evidence/v520/scenario-jdbc-happy-path.log",
+    "evidence/v520/scenario-jdbc-missing-row.log",
+    "evidence/v520/scenario-jdbc-snapshot-tamper.log",
+    "evidence/v520/scenario-jdbc-row-stage-mismatch.log"
+  ],
+  "verified": true,
+  "verification_scope": "synthetic_java_and_static_source_only",
+  "live_postgresql_tested": false,
+  "clinical_accepted": false
+}

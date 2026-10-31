@@ -1,0 +1,134 @@
+{
+  "checkpoint": "0.12.0",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "results": [
+    {
+      "batch": "P01-B0028",
+      "scope": "Draft registration data model with three composite-key, RLS default-deny tables including scoped command claims; no live SQL execution.",
+      "source_files": [
+        "services/clinical-core/db/migration/V005__patient_registration_foundation.sql",
+        "tests/test_v120_registration_source.py"
+      ],
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "verification_level": "draft_sql_static_tested"
+    },
+    {
+      "batch": "P03-B0017",
+      "scope": "Backend provisional-registration admission requires trusted actor with registration and identity-review privileges, matching facility, active shift and fresh grants.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/registration/RegistrationAuthorization.java",
+        "services/clinical-core/src/test/java/org/synqoria/registration/V120RegistrationTest.java"
+      ],
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "verification_level": "java_domain_unit_tested"
+    },
+    {
+      "batch": "P05-B0001",
+      "scope": "Validate provisional demographic draft, including unknown DOB, optional name and deterministic age states without invented clinical facts.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/registration/RegistrationDraft.java",
+        "services/clinical-core/src/test/java/org/synqoria/registration/V120RegistrationTest.java"
+      ],
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "verification_level": "java_domain_unit_tested"
+    },
+    {
+      "batch": "P05-B0002",
+      "scope": "Require reviewed identity candidate status; explicitly reject automatic merge and unresolved duplicate candidates.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/registration/DuplicateReviewGate.java",
+        "services/clinical-core/src/test/java/org/synqoria/registration/V120RegistrationTest.java"
+      ],
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "verification_level": "java_domain_unit_tested"
+    },
+    {
+      "batch": "P05-B0003",
+      "scope": "Defensive registration command with opaque UUID IDs and copied 32-byte server-side HMAC token; no plaintext identifier logs.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/registration/RegistrationCommand.java",
+        "services/clinical-core/src/test/java/org/synqoria/registration/V120RegistrationTest.java"
+      ],
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "verification_level": "java_domain_unit_tested"
+    },
+    {
+      "batch": "P05-B0004",
+      "scope": "Registration preflight rejects stale commands, invalid estimated birth data, inactive facilities and missing review evidence.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/registration/RegistrationRequestPolicy.java",
+        "services/clinical-core/src/test/java/org/synqoria/registration/V120RegistrationTest.java"
+      ],
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "verification_level": "java_domain_unit_tested"
+    },
+    {
+      "batch": "P05-B0005",
+      "scope": "JDBC transactional provisional patient, demographics, audit, outbox and command-claim inserts with rollback on each injected failure; mock JDBC only.",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/registration/RegistrationJdbc.java",
+        "services/clinical-core/src/test/java/org/synqoria/registration/V120RegistrationTest.java"
+      ],
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "verification_level": "java_mock_jdbc_tested"
+    },
+    {
+      "batch": "P02-B0027",
+      "scope": "Cross-platform TypeScript patient demographic draft validator for actual vs estimated vs unknown birth, EN/FR input and missing identity review.",
+      "source_files": [
+        "packages/ux-core/src/registration-draft.ts",
+        "packages/ux-core/tests/v120-registration.test.cjs"
+      ],
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "verification_level": "typescript_node_unit_tested"
+    },
+    {
+      "batch": "P02-B0028",
+      "scope": "Registration workflow gate denies offline writes, unverified sessions, missing facility/shift and unavailable backend or reviewer.",
+      "source_files": [
+        "packages/ux-core/src/registration-intake-gate.ts",
+        "packages/ux-core/tests/v120-registration.test.cjs"
+      ],
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "verification_level": "typescript_node_unit_tested"
+    },
+    {
+      "batch": "P02-B0029",
+      "scope": "PII-free intake telemetry and source-only bilingual responsive M01-S02 prototype; submit remains locked; 19 static Chromium checks incl 320px 200% FR.",
+      "source_files": [
+        "packages/ux-core/src/registration-privacy.ts",
+        "apps/web/app/workforce/patients/new/page.tsx",
+        "apps/web/app/globals.css",
+        "packages/ux-core/tests/v120-registration.test.cjs",
+        "tests/test_v120_registration_source.py",
+        "tests/test_v120_registration_browser.py",
+        "preview/registration-intake.html",
+        "evidence/batches/P02-v120-registration-browser.json"
+      ],
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "verification_level": "typescript_static_specimen_tested"
+    }
+  ],
+  "test_scope": "Java policy and mock JDBC; TS node unit; SQL static; static Chromium only. No PostgreSQL, OIDC or compiled Next/Expo."
+}

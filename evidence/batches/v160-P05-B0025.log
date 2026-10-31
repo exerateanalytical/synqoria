@@ -1,0 +1,4 @@
+$ java -ea -cp /tmp/synqoria-security-classes org.synqoria.registration.V160ReviewSafetyTest P05-B0025
+PASS P05-B0025 6 assertions (Java unit; production write LOCKED)
+
+exit=0

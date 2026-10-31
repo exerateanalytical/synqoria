@@ -1,0 +1,34 @@
+PASS: 11 Java tenant/facility/patient scope assertions
+PASS: 19 Java clinical proof assertions; NO OIDC/database clinical authorization integration
+PASS: 20 patient read non-disclosure assertions
+PASS: 13 Java facility directory assertions
+PASS: 13 idempotency guard assertions (in-memory only)
+PASS: 11 outbox fencing assertions (in-memory only)
+PASS: 14 session admission assertions (verifier stub, NO OIDC signature test)
+PASS: 11 explicit consent predicate assertions (no legal policy approval)
+PASS: 11 facility lifecycle assertions (in-memory only)
+PASS: 15 cell routing assertions (no network/TLS)
+PASS: 15 scoped idempotency contract assertions (in-memory only)
+PASS: 9 deterministic outbox intent assertions (no transaction yet)
+PASS: 11 inbox sequence assertions (in-memory only)
+PASS: 20 allowlisted API problem assertions
+PASS: 11 externally verified session evidence policy assertions; OIDC still not integrated
+PASS: 9 location hierarchy fail-closed assertions; no repository integration
+PASS: 14 precondition assertions
+PASS: 15 retry assertions
+PASS: 8 purpose assertions
+PASS: 7 emergency request assertions
+PASS: 6 facility grant assertions
+PASS: 7 directory move assertions
+PASS P01-B0014: canonical URI assertions
+PASS P03-B0009: verifier admission assertions
+PASS P04-B0007: facility-cell assertions
+PASS P03-B0010: audited patient read assertions
+PASS P01-B0017/B0018: request framing and trace assertions
+PASS P01-B0015: protected JSON and response headers
+PASS P01-B0016: real localhost HTTP routes
+PASS: 41 loopback integration assertions (test verifier only; no OIDC or PostgreSQL)
+PASS P03-B0011: 10 local audit journal assertions; not production immutability
+PASS P03-B0012: 5 session freshness fence assertions (test claims only)
+PASS P04-B0008/B0009: 22 JDBC scoped-query assertions (mock JDBC, not PostgreSQL)
+PASS v1.0.0: 19 transaction/audit/scope/session assertions (JDBC mocks only)

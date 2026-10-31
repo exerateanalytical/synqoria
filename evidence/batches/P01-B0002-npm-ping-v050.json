@@ -1,0 +1,13 @@
+{
+  "timestamp_utc": "2026-10-29T23:04:51.765337+00:00",
+  "command": [
+    "npm",
+    "ping",
+    "--fetch-retries=0",
+    "--fetch-timeout=5000"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "npm notice PING https://registry.npmjs.org/\nnpm error code EAI_AGAIN\nnpm error syscall getaddrinfo\nnpm error errno EAI_AGAIN\nnpm error request to https://registry.npmjs.org/-/ping failed, reason: getaddrinfo EAI_AGAIN registry.npmjs.org\nnpm error A complete log of this run can be found in: /home/oai/.npm/_logs/2026-10-29T23_04_51_598Z-debug-0.log\n",
+  "status": "blocked_not_completed"
+}

@@ -1,0 +1,109 @@
+openapi: 3.1.0
+info:
+  title: SYNQORIA Foundation API (design contract only)
+  version: 0.2.0-draft
+  description: >-
+    Initial API contract. Not implemented, integrated or approved for clinical use.
+    All patient and facility scope is derived from authenticated server-side context.
+servers:
+  - url: https://{hospitalCellHost}/api/v1
+    variables:
+      hospitalCellHost:
+        default: example.invalid
+security:
+  - oauth2: [synqoria.read]
+paths:
+  /system/readiness:
+    get:
+      operationId: getReadiness
+      summary: Cell readiness without protected health information
+      security:
+        - oauth2: [synqoria.read]
+      responses:
+        '200':
+          description: Readiness state, not clinical safety certification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Readiness'
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /patients/{patientId}:
+    get:
+      operationId: getPatientById
+      summary: Read a patient only within authorized facility and purpose-of-use scope
+      description: >-
+        Never reveal patient existence to unauthorized callers. Recheck access at the
+        authoritative service; do not trust route, client menu, or caller-supplied tenant header.
+      parameters:
+        - name: patientId
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+      responses:
+        '200':
+          description: Authorized patient record
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/PatientSummary'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '404': {$ref: '#/components/responses/NotDisclosed'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://identity.example.invalid/authorize
+          tokenUrl: https://identity.example.invalid/token
+          scopes:
+            synqoria.read: Read only resources authorized by facility, patient scope and purpose
+  schemas:
+    Readiness:
+      type: object
+      additionalProperties: false
+      required: [status, cellId, checkedAt]
+      properties:
+        status: {type: string, enum: [ready, degraded, unavailable]}
+        cellId: {type: string}
+        checkedAt: {type: string, format: date-time}
+    PatientSummary:
+      type: object
+      additionalProperties: false
+      required: [id, identifiers, identityStatus]
+      properties:
+        id: {type: string, format: uuid}
+        identifiers:
+          type: array
+          items:
+            type: object
+            required: [system, value]
+            properties:
+              system: {type: string}
+              value: {type: string}
+        identityStatus: {type: string, enum: [provisional, verified, merged]}
+    Problem:
+      type: object
+      required: [type, title, status, correlationId]
+      properties:
+        type: {type: string}
+        title: {type: string}
+        status: {type: integer}
+        correlationId: {type: string}
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/problem+json:
+          schema: {$ref: '#/components/schemas/Problem'}
+    NotDisclosed:
+      description: Not found or not authorized to disclose existence
+      content:
+        application/problem+json:
+          schema: {$ref: '#/components/schemas/Problem'}
+    Unavailable:
+      description: Cell temporarily unavailable; outcome not inferred
+      content:
+        application/problem+json:
+          schema: {$ref: '#/components/schemas/Problem'}

@@ -1,0 +1,94 @@
+{
+  "checkpoint": "v0.18.0",
+  "base": "v0.17.0",
+  "created_utc": "2026-10-30T04:09:52.255356+00:00",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "java_new_assertions": 38,
+  "typescript_node_tests": 85,
+  "static_chromium_checks": 48,
+  "python_source_contract_tests": 35,
+  "checks": [
+    {
+      "command": "python tools/verify_initial_manifest.py",
+      "exit_code": 0,
+      "result": "19/19 baseline seed files matched"
+    },
+    {
+      "command": "python tools/verify_status_matrix.py",
+      "exit_code": 0,
+      "result": "40 module and 261 screen status rows preserved"
+    },
+    {
+      "command": "python tools/verify_v180_batches.py",
+      "exit_code": 0,
+      "result": "10 independently executed batches",
+      "evidence": "evidence/batches/P02-P03-v180-ten-batches.json"
+    },
+    {
+      "command": "npm run check",
+      "exit_code": 0,
+      "result": "85/85 TypeScript/Node plus register tests",
+      "evidence": "evidence/batches/v180-typescript-regression.log"
+    },
+    {
+      "command": "npm run check:source",
+      "exit_code": 0,
+      "result": "4 TSX syntax-only parses plus static source checks",
+      "evidence": "evidence/batches/v180-source-regression.log"
+    },
+    {
+      "command": "bash tools/check_java_security.sh",
+      "exit_code": 0,
+      "result": "inherited Java suite plus 5 new programs passed",
+      "evidence": "evidence/batches/v180-java-regression.log"
+    },
+    {
+      "command": "python tests/test_preview_browser.py",
+      "exit_code": 0,
+      "result": "10 static Chromium checks",
+      "evidence": "evidence/batches/v180-chromium-legacy.log"
+    },
+    {
+      "command": "python tests/test_i18n_preview_browser.py",
+      "exit_code": 0,
+      "result": "19 static Chromium checks",
+      "evidence": "evidence/batches/v180-chromium-bilingual.log"
+    },
+    {
+      "command": "python tests/test_v120_registration_browser.py",
+      "exit_code": 0,
+      "result": "19 static Chromium checks",
+      "evidence": "evidence/batches/v180-chromium-registration.log"
+    },
+    {
+      "command": "python tools/verify_release_gate.py --check-locked",
+      "exit_code": 0,
+      "result": "locked",
+      "evidence": "evidence/batches/v180-release-locked.log"
+    },
+    {
+      "command": "python tools/verify_release_gate.py --request-release",
+      "exit_code": 3,
+      "result": "expected DENIED",
+      "evidence": "evidence/batches/v180-release-denied.log"
+    },
+    {
+      "command": "npm ping --fetch-timeout=6000 --fetch-retries=0",
+      "exit_code": 1,
+      "result": "EAI_AGAIN; cannot compile Next/Expo",
+      "evidence": "evidence/batches/v180-npm-connectivity.log"
+    }
+  ],
+  "not_executed": [
+    "PostgreSQL restricted-role/RLS/transaction/concurrency",
+    "real IdP/JWKS/MFA",
+    "Next.js/Expo compiled applications",
+    "physical mobile devices/screen readers",
+    "clinical approval/pilot"
+  ],
+  "clinical_screens_implemented": 0,
+  "clinical_screens_total": 261,
+  "modules_preserved": 40,
+  "release": "NOT_CERTIFIED"
+}

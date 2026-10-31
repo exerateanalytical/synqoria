@@ -1,0 +1,22 @@
+command=["node", "--test", "--test-name-pattern=P02-B0059", "packages/ux-core/tests/v200-native-safety.test.cjs"]
+exit=0 P02-B0059
+STDOUT:
+TAP version 13
+# Subtest: P02-B0059 dynamic type critical fields wrap at 200–300% without ellipsis
+ok 1 - P02-B0059 dynamic type critical fields wrap at 200–300% without ellipsis
+  ---
+  duration_ms: 1.030993
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 110.893551
+
+STDERR:
+

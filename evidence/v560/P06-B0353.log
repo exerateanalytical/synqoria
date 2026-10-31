@@ -1,0 +1,4 @@
+COMMAND: java -cp <classes> org.synqoria.triage.TriageV56WorklistHttpTest STATION_QUEUE
+EXIT: 0
+STDOUT:
+TRIAGE_V56_WORKLIST_HTTP PASS view=STATION_QUEUE assertions=17

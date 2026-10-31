@@ -1,0 +1,4 @@
+COMMAND: java -cp <classes> org.synqoria.triage.TriageV56WorklistHttpTest MANUAL_ESCALATIONS
+EXIT: 0
+STDOUT:
+TRIAGE_V56_WORKLIST_HTTP PASS view=MANUAL_ESCALATIONS assertions=16

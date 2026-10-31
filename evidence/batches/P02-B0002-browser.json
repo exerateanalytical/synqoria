@@ -1,0 +1,138 @@
+{
+  "scope": "static standalone EN/FR specimen; NOT Next or native application",
+  "chromium_checks": [
+    {
+      "width": 320,
+      "locale": "en",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "locale": "fr",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "locale": "en",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "locale": "fr",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 412,
+      "locale": "en",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 412,
+      "locale": "fr",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 768,
+      "locale": "fr",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 1024,
+      "locale": "fr",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "locale": "en",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "locale": "fr",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 1920,
+      "locale": "fr",
+      "overflow": false,
+      "unauthorized_workspace_links": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "locale": "fr",
+      "simulated_text_scale": "200%",
+      "overflow": false,
+      "status": "PASS"
+    }
+  ]
+}

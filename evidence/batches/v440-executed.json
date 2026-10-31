@@ -1,0 +1,57 @@
+{
+  "version": "0.44.0",
+  "created_utc": "2026-10-30T16:29:26.924871+00:00",
+  "source_archive_sha256": "9d42bd15e509d85c444f35db45e605aa28a3ade1b6d65fb3a9640e1b01212389",
+  "target_batches": 5,
+  "completed_batches": 5,
+  "batch_results": [
+    {
+      "batch": "P06-B0065",
+      "scope": "Quarantine and privilege escalation drift guard",
+      "test": "tests/appointment_migration_gate_test.py",
+      "exit_code": 0,
+      "verification": "static SQL source audit with negative mutation tests; NOT PostgreSQL integration"
+    },
+    {
+      "batch": "P06-B0066",
+      "scope": "FORCE RLS and PUBLIC revocation source guard",
+      "test": "tests/appointment_migration_gate_test.py",
+      "exit_code": 0,
+      "verification": "static SQL source audit with negative mutation tests; NOT PostgreSQL integration"
+    },
+    {
+      "batch": "P06-B0067",
+      "scope": "Tenant/facility/patient scope schema drift guard",
+      "test": "tests/appointment_migration_gate_test.py",
+      "exit_code": 0,
+      "verification": "static SQL source audit with negative mutation tests; NOT PostgreSQL integration"
+    },
+    {
+      "batch": "P06-B0068",
+      "scope": "Resource overlap exclusion integrity guard",
+      "test": "tests/appointment_migration_gate_test.py",
+      "exit_code": 0,
+      "verification": "static SQL source audit with negative mutation tests; NOT PostgreSQL integration"
+    },
+    {
+      "batch": "P06-B0069",
+      "scope": "Durable idempotency key/replay proof schema guard",
+      "test": "tests/appointment_migration_gate_test.py",
+      "exit_code": 0,
+      "verification": "static SQL source audit with negative mutation tests; NOT PostgreSQL integration"
+    }
+  ],
+  "test_command": "python -m unittest discover -s tests -p appointment_migration_gate_test.py -v",
+  "test_exit_code": 0,
+  "test_stdout": "",
+  "test_stderr": "test_b0065_quarantine_and_grants (appointment_migration_gate_test.GateTests.test_b0065_quarantine_and_grants) ... ok\ntest_b0066_rls_force_and_public_revoke (appointment_migration_gate_test.GateTests.test_b0066_rls_force_and_public_revoke) ... ok\ntest_b0067_scoped_table_columns (appointment_migration_gate_test.GateTests.test_b0067_scoped_table_columns) ... ok\ntest_b0068_concurrent_reservation_exclusion (appointment_migration_gate_test.GateTests.test_b0068_concurrent_reservation_exclusion) ... ok\ntest_b0069_idempotency_replay_integrity (appointment_migration_gate_test.GateTests.test_b0069_idempotency_replay_integrity) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.008s\n\nOK\n",
+  "audit_exit_code": 0,
+  "audit_stdout": "{\n  \"V012__appointment_reservation_quarantine.sql\": {\n    \"quarantine\": [\n      \"synqoria_appointment_reservations_quarantine\"\n    ],\n    \"rls\": true,\n    \"scope\": true\n  },\n  \"V013__appointment_restricted_audit_quarantine.sql\": {\n    \"quarantine\": [\n      \"synqoria_appointment_command_audit_quarantine\",\n      \"synqoria_appointment_outbox_quarantine\"\n    ],\n    \"rls\": true,\n    \"scope\": true\n  },\n  \"V014__appointment_idempotency_quarantine.sql\": {\n    \"quarantine\": [\n      \"synqoria_appointment_idempotency_quarantine\"\n    ],\n    \"rls\": true,\n    \"scope\": true\n  },\n  \"exclusion\": true,\n  \"idempotency\": true\n}\n",
+  "audit_stderr": "",
+  "blockers": [
+    "No PostgreSQL server/DBA approval; migration source checks only",
+    "No restricted-role RLS runtime verification",
+    "No clinical release or patient screen acceptance"
+  ],
+  "next_batch": "P06-B0070"
+}

@@ -1,0 +1,1114 @@
+TAP version 13
+# Subtest: EN/FR dictionary is complete and does not return missing interface copy
+ok 1 - EN/FR dictionary is complete and does not return missing interface copy
+  ---
+  duration_ms: 2.618081
+  type: 'test'
+  ...
+# Subtest: every navigation workspace has usable translations
+ok 2 - every navigation workspace has usable translations
+  ---
+  duration_ms: 0.286636
+  type: 'test'
+  ...
+# Subtest: exact routing denies ungranted, unlicensed, wrong-shell and arbitrary descendants
+ok 3 - exact routing denies ungranted, unlicensed, wrong-shell and arbitrary descendants
+  ---
+  duration_ms: 0.422692
+  type: 'test'
+  ...
+# Subtest: shell identification does not confuse similar routes
+ok 4 - shell identification does not confuse similar routes
+  ---
+  duration_ms: 0.214014
+  type: 'test'
+  ...
+# Subtest: both mobile shells keep four translated, distinct destinations
+ok 5 - both mobile shells keep four translated, distinct destinations
+  ---
+  duration_ms: 0.826955
+  type: 'test'
+  ...
+# Subtest: all tested mobile widths keep critical actions without squeeze
+ok 6 - all tested mobile widths keep critical actions without squeeze
+  ---
+  duration_ms: 1.017569
+  type: 'test'
+  ...
+# Subtest: compact layout moves only secondary actions into More
+ok 7 - compact layout moves only secondary actions into More
+  ---
+  duration_ms: 0.603049
+  type: 'test'
+  ...
+# Subtest: invalid action IDs and dimensions are rejected
+ok 8 - invalid action IDs and dimensions are rejected
+  ---
+  duration_ms: 0.232309
+  type: 'test'
+  ...
+# Subtest: canonical detail surface only on exact registered independently tested screen
+ok 9 - canonical detail surface only on exact registered independently tested screen
+  ---
+  duration_ms: 1.880339
+  type: 'test'
+  ...
+# Subtest: unimplemented screens cannot masquerade as routable pages
+ok 10 - unimplemented screens cannot masquerade as routable pages
+  ---
+  duration_ms: 0.368282
+  type: 'test'
+  ...
+# Subtest: wrong shell, missing capability and license fail closed
+ok 11 - wrong shell, missing capability and license fail closed
+  ---
+  duration_ms: 1.158251
+  type: 'test'
+  ...
+# Subtest: registry validator rejects duplicate routes, duplicate IDs and fictitious path mappings
+ok 12 - registry validator rejects duplicate routes, duplicate IDs and fictitious path mappings
+  ---
+  duration_ms: 0.301447
+  type: 'test'
+  ...
+# Subtest: P02-B0014 rejects insecure origin and malformed identifiers
+ok 13 - P02-B0014 rejects insecure origin and malformed identifiers
+  ---
+  duration_ms: 1.31071
+  type: 'test'
+  ...
+# Subtest: P02-B0014 backend status and validation govern clinical reads
+ok 14 - P02-B0014 backend status and validation govern clinical reads
+  ---
+  duration_ms: 26.174964
+  type: 'test'
+  ...
+# Subtest: drug, dose, allergy, route, ID and critical instruction never truncate
+ok 15 - drug, dose, allergy, route, ID and critical instruction never truncate
+  ---
+  duration_ms: 1.971722
+  type: 'test'
+  ...
+# Subtest: noncritical text ellipsis requires accessible expansion
+ok 16 - noncritical text ellipsis requires accessible expansion
+  ---
+  duration_ms: 1.530307
+  type: 'test'
+  ...
+# Subtest: P02-B0017 all clinical outcomes show distinguishable English/French text and icons
+ok 17 - P02-B0017 all clinical outcomes show distinguishable English/French text and icons
+  ---
+  duration_ms: 2.862671
+  type: 'test'
+  ...
+# Subtest: both apps expose exactly four stable destinations with More at end
+ok 18 - both apps expose exactly four stable destinations with More at end
+  ---
+  duration_ms: 0.780267
+  type: 'test'
+  ...
+# Subtest: only verified capabilities may unlock a tab after authenticated session
+ok 19 - only verified capabilities may unlock a tab after authenticated session
+  ---
+  duration_ms: 0.69991
+  type: 'test'
+  ...
+# Subtest: arbitrary paths and tab name injection fail closed
+ok 20 - arbitrary paths and tab name injection fail closed
+  ---
+  duration_ms: 0.12483
+  type: 'test'
+  ...
+# Subtest: P02-B0015 patient switch clears sensitive data and checks actual server response
+ok 21 - P02-B0015 patient switch clears sensitive data and checks actual server response
+  ---
+  duration_ms: 24.888666
+  type: 'test'
+  ...
+# Subtest: P02-B0015 denial must not activate patient context
+ok 22 - P02-B0015 denial must not activate patient context
+  ---
+  duration_ms: 0.436063
+  type: 'test'
+  ...
+# Subtest: cache clear precedes backend verification, no authorization from UI alone
+ok 23 - cache clear precedes backend verification, no authorization from UI alone
+  ---
+  duration_ms: 3.259539
+  type: 'test'
+  ...
+# Subtest: clear failure and authorization denial fail closed
+ok 24 - clear failure and authorization denial fail closed
+  ---
+  duration_ms: 0.833601
+  type: 'test'
+  ...
+# Subtest: dispose invalidates late asynchronous authorization response
+ok 25 - dispose invalidates late asynchronous authorization response
+  ---
+  duration_ms: 6.796932
+  type: 'test'
+  ...
+# Subtest: a new target clears old context and enters reauthorization
+ok 26 - a new target clears old context and enters reauthorization
+  ---
+  duration_ms: 2.391787
+  type: 'test'
+  ...
+# Subtest: unsaved work requires confirmation; cancel preserves draft
+ok 27 - unsaved work requires confirmation; cancel preserves draft
+  ---
+  duration_ms: 0.549816
+  type: 'test'
+  ...
+# Subtest: save requests do not imply server persistence; failed saves remain guarded
+ok 28 - save requests do not imply server persistence; failed saves remain guarded
+  ---
+  duration_ms: 0.409034
+  type: 'test'
+  ...
+# Subtest: discard requires explicit confirmation and cannot bypass backend authorization
+ok 29 - discard requires explicit confirmation and cannot bypass backend authorization
+  ---
+  duration_ms: 0.194586
+  type: 'test'
+  ...
+# Subtest: invalid IDs cannot enter patient navigation state
+ok 30 - invalid IDs cannot enter patient navigation state
+  ---
+  duration_ms: 0.701704
+  type: 'test'
+  ...
+# Subtest: same patient and invalid action order do not change state
+ok 31 - same patient and invalid action order do not change state
+  ---
+  duration_ms: 0.290288
+  type: 'test'
+  ...
+# Subtest: authorized root appears, child is never promoted to sidebar
+ok 32 - authorized root appears, child is never promoted to sidebar
+  ---
+  duration_ms: 1.785602
+  type: 'test'
+  ...
+# Subtest: cross-shell, missing grants and unlicensed modules deny
+ok 33 - cross-shell, missing grants and unlicensed modules deny
+  ---
+  duration_ms: 0.254164
+  type: 'test'
+  ...
+# Subtest: sensitive URLs, traversal, unsupported children and invalid IDs deny
+ok 34 - sensitive URLs, traversal, unsupported children and invalid IDs deny
+  ---
+  duration_ms: 0.163007
+  type: 'test'
+  ...
+# Subtest: P02-B0016 lease refresh is server-backed, bounded, expired and invalidated on logout
+ok 35 - P02-B0016 lease refresh is server-backed, bounded, expired and invalidated on logout
+  ---
+  duration_ms: 1.210526
+  type: 'test'
+  ...
+# Subtest: P02-B0016 stale verification cannot restore a logged-out lease
+ok 36 - P02-B0016 stale verification cannot restore a logged-out lease
+  ---
+  duration_ms: 0.208086
+  type: 'test'
+  ...
+# Subtest: sidebar is root-only, child detail receives generic breadcrumb
+ok 37 - sidebar is root-only, child detail receives generic breadcrumb
+  ---
+  duration_ms: 1.470294
+  type: 'test'
+  ...
+# Subtest: French labels, denied root and malformed child never leak into hierarchy
+ok 38 - French labels, denied root and malformed child never leak into hierarchy
+  ---
+  duration_ms: 0.303695
+  type: 'test'
+  ...
+# Subtest: locally queued write is never silently labelled saved or synchronized
+ok 39 - locally queued write is never silently labelled saved or synchronized
+  ---
+  duration_ms: 1.197884
+  type: 'test'
+  ...
+# Subtest: only matching, verified server acknowledgement may resolve unknown outcome
+ok 40 - only matching, verified server acknowledgement may resolve unknown outcome
+  ---
+  duration_ms: 0.649449
+  type: 'test'
+  ...
+# Subtest: no invented operation identifiers or state shortcuts
+ok 41 - no invented operation identifiers or state shortcuts
+  ---
+  duration_ms: 0.434973
+  type: 'test'
+  ...
+# Subtest: catalog aligns exactly with 49 actual Java M03 mutation handlers
+ok 42 - catalog aligns exactly with 49 actual Java M03 mutation handlers
+  ---
+  duration_ms: 4.093132
+  type: 'test'
+  ...
+# Subtest: transport contract: ARRIVAL_REASON
+ok 43 - transport contract: ARRIVAL_REASON
+  ---
+  duration_ms: 1.023738
+  type: 'test'
+  ...
+# Subtest: transport contract: LANGUAGE
+ok 44 - transport contract: LANGUAGE
+  ---
+  duration_ms: 0.168735
+  type: 'test'
+  ...
+# Subtest: transport contract: INTERPRETER_REQUEST
+ok 45 - transport contract: INTERPRETER_REQUEST
+  ---
+  duration_ms: 0.249967
+  type: 'test'
+  ...
+# Subtest: transport contract: ACCESSIBILITY_SUPPORT
+ok 46 - transport contract: ACCESSIBILITY_SUPPORT
+  ---
+  duration_ms: 0.127735
+  type: 'test'
+  ...
+# Subtest: transport contract: IDENTITY_VERIFICATION
+ok 47 - transport contract: IDENTITY_VERIFICATION
+  ---
+  duration_ms: 0.085492
+  type: 'test'
+  ...
+# Subtest: transport contract: ARRIVAL_CHANNEL
+ok 48 - transport contract: ARRIVAL_CHANNEL
+  ---
+  duration_ms: 0.286922
+  type: 'test'
+  ...
+# Subtest: transport contract: REFERRAL_REFERENCE
+ok 49 - transport contract: REFERRAL_REFERENCE
+  ---
+  duration_ms: 0.219856
+  type: 'test'
+  ...
+# Subtest: transport contract: ATTENDANT_CONTACT
+ok 50 - transport contract: ATTENDANT_CONTACT
+  ---
+  duration_ms: 0.506489
+  type: 'test'
+  ...
+# Subtest: transport contract: CONSENT_EVIDENCE
+ok 51 - transport contract: CONSENT_EVIDENCE
+  ---
+  duration_ms: 0.529728
+  type: 'test'
+  ...
+# Subtest: transport contract: QUEUE_ENQUEUE
+ok 52 - transport contract: QUEUE_ENQUEUE
+  ---
+  duration_ms: 0.336233
+  type: 'test'
+  ...
+# Subtest: transport contract: QUEUE_MOVE_STATION
+ok 53 - transport contract: QUEUE_MOVE_STATION
+  ---
+  duration_ms: 0.097482
+  type: 'test'
+  ...
+# Subtest: transport contract: QUEUE_CALL
+ok 54 - transport contract: QUEUE_CALL
+  ---
+  duration_ms: 0.164448
+  type: 'test'
+  ...
+# Subtest: transport contract: QUEUE_RECALL
+ok 55 - transport contract: QUEUE_RECALL
+  ---
+  duration_ms: 0.062777
+  type: 'test'
+  ...
+# Subtest: transport contract: QUEUE_RETURN
+ok 56 - transport contract: QUEUE_RETURN
+  ---
+  duration_ms: 0.1059
+  type: 'test'
+  ...
+# Subtest: transport contract: QUEUE_PAUSE
+ok 57 - transport contract: QUEUE_PAUSE
+  ---
+  duration_ms: 0.118
+  type: 'test'
+  ...
+# Subtest: transport contract: QUEUE_RESUME
+ok 58 - transport contract: QUEUE_RESUME
+  ---
+  duration_ms: 0.193052
+  type: 'test'
+  ...
+# Subtest: transport contract: QUEUE_PATIENT_UNAVAILABLE
+ok 59 - transport contract: QUEUE_PATIENT_UNAVAILABLE
+  ---
+  duration_ms: 0.804592
+  type: 'test'
+  ...
+# Subtest: transport contract: SAFETY_HOLD
+ok 60 - transport contract: SAFETY_HOLD
+  ---
+  duration_ms: 0.064626
+  type: 'test'
+  ...
+# Subtest: transport contract: SAFETY_HOLD_RELEASE
+ok 61 - transport contract: SAFETY_HOLD_RELEASE
+  ---
+  duration_ms: 0.150259
+  type: 'test'
+  ...
+# Subtest: transport contract: ASSESSMENT_BEGIN
+ok 62 - transport contract: ASSESSMENT_BEGIN
+  ---
+  duration_ms: 0.171226
+  type: 'test'
+  ...
+# Subtest: transport contract: OBSERVATION_RECORD
+ok 63 - transport contract: OBSERVATION_RECORD
+  ---
+  duration_ms: 1.850367
+  type: 'test'
+  ...
+# Subtest: transport contract: OBSERVATION_CORRECTION
+ok 64 - transport contract: OBSERVATION_CORRECTION
+  ---
+  duration_ms: 0.961515
+  type: 'test'
+  ...
+# Subtest: transport contract: ASSESSMENT_NARRATIVE
+ok 65 - transport contract: ASSESSMENT_NARRATIVE
+  ---
+  duration_ms: 0.19445
+  type: 'test'
+  ...
+# Subtest: transport contract: ASSESSMENT_DEVICE_SOURCE
+ok 66 - transport contract: ASSESSMENT_DEVICE_SOURCE
+  ---
+  duration_ms: 0.076016
+  type: 'test'
+  ...
+# Subtest: transport contract: PATIENT_STATEMENT
+ok 67 - transport contract: PATIENT_STATEMENT
+  ---
+  duration_ms: 0.062199
+  type: 'test'
+  ...
+# Subtest: transport contract: ALLERGY_REVIEW_REFERENCE
+ok 68 - transport contract: ALLERGY_REVIEW_REFERENCE
+  ---
+  duration_ms: 0.059075
+  type: 'test'
+  ...
+# Subtest: transport contract: MEASUREMENT_DECLINED
+ok 69 - transport contract: MEASUREMENT_DECLINED
+  ---
+  duration_ms: 0.092899
+  type: 'test'
+  ...
+# Subtest: transport contract: ASSESSMENT_ATTEST
+ok 70 - transport contract: ASSESSMENT_ATTEST
+  ---
+  duration_ms: 0.135897
+  type: 'test'
+  ...
+# Subtest: transport contract: ASSESSMENT_ADDENDUM
+ok 71 - transport contract: ASSESSMENT_ADDENDUM
+  ---
+  duration_ms: 0.335716
+  type: 'test'
+  ...
+# Subtest: transport contract: CLINICIAN_PRIORITY_SET
+ok 72 - transport contract: CLINICIAN_PRIORITY_SET
+  ---
+  duration_ms: 0.165192
+  type: 'test'
+  ...
+# Subtest: transport contract: CLINICIAN_PRIORITY_REVISED
+ok 73 - transport contract: CLINICIAN_PRIORITY_REVISED
+  ---
+  duration_ms: 0.065679
+  type: 'test'
+  ...
+# Subtest: transport contract: REASSESSMENT_DOCUMENTED
+ok 74 - transport contract: REASSESSMENT_DOCUMENTED
+  ---
+  duration_ms: 0.05615
+  type: 'test'
+  ...
+# Subtest: transport contract: PRIORITY_EVIDENCE_LINK
+ok 75 - transport contract: PRIORITY_EVIDENCE_LINK
+  ---
+  duration_ms: 0.056989
+  type: 'test'
+  ...
+# Subtest: transport contract: REASSESSMENT_REQUESTED
+ok 76 - transport contract: REASSESSMENT_REQUESTED
+  ---
+  duration_ms: 0.080175
+  type: 'test'
+  ...
+# Subtest: transport contract: REASSESSMENT_STARTED
+ok 77 - transport contract: REASSESSMENT_STARTED
+  ---
+  duration_ms: 0.048285
+  type: 'test'
+  ...
+# Subtest: transport contract: REASSESSMENT_COMPLETED
+ok 78 - transport contract: REASSESSMENT_COMPLETED
+  ---
+  duration_ms: 0.045578
+  type: 'test'
+  ...
+# Subtest: transport contract: ESCALATION_RAISED
+ok 79 - transport contract: ESCALATION_RAISED
+  ---
+  duration_ms: 0.048792
+  type: 'test'
+  ...
+# Subtest: transport contract: ESCALATION_ACKNOWLEDGED
+ok 80 - transport contract: ESCALATION_ACKNOWLEDGED
+  ---
+  duration_ms: 0.046211
+  type: 'test'
+  ...
+# Subtest: transport contract: ESCALATION_RESOLVED
+ok 81 - transport contract: ESCALATION_RESOLVED
+  ---
+  duration_ms: 0.119427
+  type: 'test'
+  ...
+# Subtest: transport contract: CLINICIAN_ASSIGNMENT
+ok 82 - transport contract: CLINICIAN_ASSIGNMENT
+  ---
+  duration_ms: 0.066793
+  type: 'test'
+  ...
+# Subtest: transport contract: CLINICIAN_REASSIGNMENT
+ok 83 - transport contract: CLINICIAN_REASSIGNMENT
+  ---
+  duration_ms: 0.125511
+  type: 'test'
+  ...
+# Subtest: transport contract: HANDOVER_REQUEST
+ok 84 - transport contract: HANDOVER_REQUEST
+  ---
+  duration_ms: 0.100531
+  type: 'test'
+  ...
+# Subtest: transport contract: HANDOVER_FINALIZED
+ok 85 - transport contract: HANDOVER_FINALIZED
+  ---
+  duration_ms: 0.055634
+  type: 'test'
+  ...
+# Subtest: transport contract: TRIAGE_CLOSED
+ok 86 - transport contract: TRIAGE_CLOSED
+  ---
+  duration_ms: 0.047108
+  type: 'test'
+  ...
+# Subtest: transport contract: HANDOVER_NOTE
+ok 87 - transport contract: HANDOVER_NOTE
+  ---
+  duration_ms: 0.059423
+  type: 'test'
+  ...
+# Subtest: transport contract: HANDOVER_DESTINATION
+ok 88 - transport contract: HANDOVER_DESTINATION
+  ---
+  duration_ms: 0.087544
+  type: 'test'
+  ...
+# Subtest: transport contract: HANDOVER_ACCEPT
+ok 89 - transport contract: HANDOVER_ACCEPT
+  ---
+  duration_ms: 0.052476
+  type: 'test'
+  ...
+# Subtest: transport contract: HANDOVER_REJECT
+ok 90 - transport contract: HANDOVER_REJECT
+  ---
+  duration_ms: 0.04666
+  type: 'test'
+  ...
+# Subtest: transport contract: RECEIVER_ACKNOWLEDGEMENT
+ok 91 - transport contract: RECEIVER_ACKNOWLEDGEMENT
+  ---
+  duration_ms: 0.045548
+  type: 'test'
+  ...
+# Subtest: patient-scoped bounded worklist: FACILITY_QUEUE
+ok 92 - patient-scoped bounded worklist: FACILITY_QUEUE
+  ---
+  duration_ms: 0.274355
+  type: 'test'
+  ...
+# Subtest: patient-scoped bounded worklist: STATION_QUEUE
+ok 93 - patient-scoped bounded worklist: STATION_QUEUE
+  ---
+  duration_ms: 0.072292
+  type: 'test'
+  ...
+# Subtest: patient-scoped bounded worklist: PENDING_HANDOVERS
+ok 94 - patient-scoped bounded worklist: PENDING_HANDOVERS
+  ---
+  duration_ms: 0.061773
+  type: 'test'
+  ...
+# Subtest: patient-scoped bounded worklist: MANUAL_ESCALATIONS
+ok 95 - patient-scoped bounded worklist: MANUAL_ESCALATIONS
+  ---
+  duration_ms: 0.089295
+  type: 'test'
+  ...
+# Subtest: patient-scoped bounded worklist: PENDING_REASSESSMENTS
+ok 96 - patient-scoped bounded worklist: PENDING_REASSESSMENTS
+  ---
+  duration_ms: 0.113411
+  type: 'test'
+  ...
+# Subtest: patient-scoped bounded worklist: SAFETY_HOLDS
+ok 97 - patient-scoped bounded worklist: SAFETY_HOLDS
+  ---
+  duration_ms: 0.069837
+  type: 'test'
+  ...
+# Subtest: patient-scoped bounded worklist: CLINICIAN_WORKLIST
+ok 98 - patient-scoped bounded worklist: CLINICIAN_WORKLIST
+  ---
+  duration_ms: 0.065301
+  type: 'test'
+  ...
+# Subtest: patient-scoped bounded worklist: ARRIVALS_SINCE
+ok 99 - patient-scoped bounded worklist: ARRIVALS_SINCE
+  ---
+  duration_ms: 0.072769
+  type: 'test'
+  ...
+# Subtest: observation correction requires lineage, not pseudo-medical inference
+ok 100 - observation correction requires lineage, not pseudo-medical inference
+  ---
+  duration_ms: 0.140898
+  type: 'test'
+  ...
+# Subtest: client rejects offline clinical writes and never invokes network
+ok 101 - client rejects offline clinical writes and never invokes network
+  ---
+  duration_ms: 0.703213
+  type: 'test'
+  ...
+# Subtest: network transport uses volatile bearer, no credentials, no-store, redirect denial
+ok 102 - network transport uses volatile bearer, no credentials, no-store, redirect denial
+  ---
+  duration_ms: 0.502481
+  type: 'test'
+  ...
+# Subtest: client rejects wrong network status and malformed receipts
+ok 103 - client rejects wrong network status and malformed receipts
+  ---
+  duration_ms: 0.583683
+  type: 'test'
+  ...
+# Subtest: worklist path never includes case IDs or free text in URL
+ok 104 - worklist path never includes case IDs or free text in URL
+  ---
+  duration_ms: 1.476632
+  type: 'test'
+  ...
+# Subtest: HTTP origin must be secure except local integration fixture
+ok 105 - HTTP origin must be secure except local integration fixture
+  ---
+  duration_ms: 0.494124
+  type: 'test'
+  ...
+# Subtest: P06-B0352 strict M03 transport contract
+ok 106 - P06-B0352 strict M03 transport contract
+  ---
+  duration_ms: 3.23537
+  type: 'test'
+  ...
+# Subtest: P06-B0353 strict M03 transport contract
+ok 107 - P06-B0353 strict M03 transport contract
+  ---
+  duration_ms: 0.342587
+  type: 'test'
+  ...
+# Subtest: P06-B0354 strict M03 transport contract
+ok 108 - P06-B0354 strict M03 transport contract
+  ---
+  duration_ms: 0.249847
+  type: 'test'
+  ...
+# Subtest: P06-B0355 strict M03 transport contract
+ok 109 - P06-B0355 strict M03 transport contract
+  ---
+  duration_ms: 0.560705
+  type: 'test'
+  ...
+# Subtest: P06-B0356 strict M03 transport contract
+ok 110 - P06-B0356 strict M03 transport contract
+  ---
+  duration_ms: 0.429902
+  type: 'test'
+  ...
+# Subtest: P06-B0357 strict M03 transport contract
+ok 111 - P06-B0357 strict M03 transport contract
+  ---
+  duration_ms: 0.241668
+  type: 'test'
+  ...
+# Subtest: P06-B0358 strict M03 transport contract
+ok 112 - P06-B0358 strict M03 transport contract
+  ---
+  duration_ms: 0.357268
+  type: 'test'
+  ...
+# Subtest: P06-B0359 strict M03 transport contract
+ok 113 - P06-B0359 strict M03 transport contract
+  ---
+  duration_ms: 0.216787
+  type: 'test'
+  ...
+# Subtest: P06-B0360 strict M03 transport contract
+ok 114 - P06-B0360 strict M03 transport contract
+  ---
+  duration_ms: 0.644204
+  type: 'test'
+  ...
+# Subtest: P06-B0361 strict M03 transport contract
+ok 115 - P06-B0361 strict M03 transport contract
+  ---
+  duration_ms: 0.935693
+  type: 'test'
+  ...
+# Subtest: P06-B0362 strict M03 transport contract
+ok 116 - P06-B0362 strict M03 transport contract
+  ---
+  duration_ms: 2.023809
+  type: 'test'
+  ...
+# Subtest: approved colour pairs meet 4.5:1 text contrast
+ok 117 - approved colour pairs meet 4.5:1 text contrast
+  ---
+  duration_ms: 1.115356
+  type: 'test'
+  ...
+# Subtest: design tokens preserve approved palette
+ok 118 - design tokens preserve approved palette
+  ---
+  duration_ms: 0.150202
+  type: 'test'
+  ...
+# Subtest: navigation only includes licensed and granted stable workspace roots
+ok 119 - navigation only includes licensed and granted stable workspace roots
+  ---
+  duration_ms: 1.157441
+  type: 'test'
+  ...
+# Subtest: sidebar roots contain no details/edit/create routes or duplicate paths
+ok 120 - sidebar roots contain no details/edit/create routes or duplicate paths
+  ---
+  duration_ms: 0.241529
+  type: 'test'
+  ...
+# Subtest: native mobile navigation has four labelled destinations and More
+ok 121 - native mobile navigation has four labelled destinations and More
+  ---
+  duration_ms: 0.201061
+  type: 'test'
+  ...
+# Subtest: unsaved patient switch requires decision; clean switch reauthorizes and clears cache
+ok 122 - unsaved patient switch requires decision; clean switch reauthorizes and clears cache
+  ---
+  duration_ms: 0.194106
+  type: 'test'
+  ...
+# Subtest: synchronization labels distinguish outcome unknown from confirmed success
+ok 123 - synchronization labels distinguish outcome unknown from confirmed success
+  ---
+  duration_ms: 0.372264
+  type: 'test'
+  ...
+# Subtest: P01-B0019 bounded HTTP streaming rejects oversized content without content-length
+ok 124 - P01-B0019 bounded HTTP streaming rejects oversized content without content-length
+  ---
+  duration_ms: 58.786249
+  type: 'test'
+  ...
+# Subtest: P02-B0018 clear caches and draft index before new patient authorization, failures deny access
+ok 125 - P02-B0018 clear caches and draft index before new patient authorization, failures deny access
+  ---
+  duration_ms: 1.911862
+  type: 'test'
+  ...
+# Subtest: P02-B0019 mobile gate refuses offline, stale, and unentitled clinical tasks
+ok 126 - P02-B0019 mobile gate refuses offline, stale, and unentitled clinical tasks
+  ---
+  duration_ms: 0.19509
+  type: 'test'
+  ...
+# Subtest: P02-B0020 sidebar contains authorized module roots only, no details
+ok 127 - P02-B0020 sidebar contains authorized module roots only, no details
+  ---
+  duration_ms: 0.205929
+  type: 'test'
+  ...
+# Subtest: patient-bound response: active epoch only
+ok 128 - patient-bound response: active epoch only
+  ---
+  duration_ms: 1.343949
+  type: 'test'
+  ...
+# Subtest: offline task control never asserts a server clinical effect
+ok 129 - offline task control never asserts a server clinical effect
+  ---
+  duration_ms: 0.384573
+  type: 'test'
+  ...
+# Subtest: endpoint provision gate rejects unverified, credentials, localhost, IP and custom ports
+ok 130 - endpoint provision gate rejects unverified, credentials, localhost, IP and custom ports
+  ---
+  duration_ms: 0.734084
+  type: 'test'
+  ...
+# Subtest: P02-B0024 scoped cache denies wrong patient/facility, old epoch, and logout
+ok 131 - P02-B0024 scoped cache denies wrong patient/facility, old epoch, and logout
+  ---
+  duration_ms: 0.895949
+  type: 'test'
+  ...
+# Subtest: P02-B0025 stale response is rejected even if transport ignores AbortSignal
+ok 132 - P02-B0025 stale response is rejected even if transport ignores AbortSignal
+  ---
+  duration_ms: 0.372326
+  type: 'test'
+  ...
+# Subtest: P02-B0025 transport error and denied result are never accepted
+ok 133 - P02-B0025 transport error and denied result are never accepted
+  ---
+  duration_ms: 0.191639
+  type: 'test'
+  ...
+# Subtest: P02-B0026 staff/patient navigation is four labelled tabs and data destinations are locked
+ok 134 - P02-B0026 staff/patient navigation is four labelled tabs and data destinations are locked
+  ---
+  duration_ms: 0.642791
+  type: 'test'
+  ...
+# Subtest: P02-B0027 unknown birth information and optional name are valid without fabricating demographics
+ok 135 - P02-B0027 unknown birth information and optional name are valid without fabricating demographics
+  ---
+  duration_ms: 3.640087
+  type: 'test'
+  ...
+# Subtest: P02-B0027 requires actual dates and prevents future birth dates and contradictory input
+ok 136 - P02-B0027 requires actual dates and prevents future birth dates and contradictory input
+  ---
+  duration_ms: 0.976016
+  type: 'test'
+  ...
+# Subtest: P02-B0028 registration submission gate denies unverified access, offline mode and service outages
+ok 137 - P02-B0028 registration submission gate denies unverified access, offline mode and service outages
+  ---
+  duration_ms: 0.529181
+  type: 'test'
+  ...
+# Subtest: P02-B0029 telemetry never reveals names, birthdate, identifiers or correlation IDs
+ok 138 - P02-B0029 telemetry never reveals names, birthdate, identifiers or correlation IDs
+  ---
+  duration_ms: 0.243481
+  type: 'test'
+  ...
+# Subtest: P02-B0030 volatile draft clears on facility, actor and epoch switches; cannot accept review flag
+ok 139 - P02-B0030 volatile draft clears on facility, actor and epoch switches; cannot accept review flag
+  ---
+  duration_ms: 1.334663
+  type: 'test'
+  ...
+# Subtest: P02-B0031 bilingual issue summary deduplicates and never includes submitted PHI
+ok 140 - P02-B0031 bilingual issue summary deduplicates and never includes submitted PHI
+  ---
+  duration_ms: 0.479809
+  type: 'test'
+  ...
+# Subtest: P02-B0032 native staff model has four tabs and never enables local registration submission
+ok 141 - P02-B0032 native staff model has four tabs and never enables local registration submission
+  ---
+  duration_ms: 0.244508
+  type: 'test'
+  ...
+# Subtest: P02-B0033 registration fields are bilingual, unique, and avoid invented identifying values
+ok 142 - P02-B0033 registration fields are bilingual, unique, and avoid invented identifying values
+  ---
+  duration_ms: 2.795231
+  type: 'test'
+  ...
+# Subtest: P02-B0034 staff patient registration remains subroute and denies untrusted workspace navigation
+ok 143 - P02-B0034 staff patient registration remains subroute and denies untrusted workspace navigation
+  ---
+  duration_ms: 0.302489
+  type: 'test'
+  ...
+# Subtest: P02-B0035 registration cannot be submitted on any local-only ready state
+ok 144 - P02-B0035 registration cannot be submitted on any local-only ready state
+  ---
+  duration_ms: 0.368303
+  type: 'test'
+  ...
+# Subtest: P02-B0036 native accessibility copy maintains locked action and 48px targets
+ok 145 - P02-B0036 native accessibility copy maintains locked action and 48px targets
+  ---
+  duration_ms: 0.412526
+  type: 'test'
+  ...
+# Subtest: P02-B0037 review UI never discloses candidate identity/count or enables submission
+ok 146 - P02-B0037 review UI never discloses candidate identity/count or enables submission
+  ---
+  duration_ms: 1.160984
+  type: 'test'
+  ...
+# Subtest: P02-B0038 context switch, logout and session epoch invalidate volatile PHI draft
+ok 147 - P02-B0038 context switch, logout and session epoch invalidate volatile PHI draft
+  ---
+  duration_ms: 0.279935
+  type: 'test'
+  ...
+# Subtest: P02-B0039 mobile action never becomes active based on client conditions
+ok 148 - P02-B0039 mobile action never becomes active based on client conditions
+  ---
+  duration_ms: 0.260609
+  type: 'test'
+  ...
+# Subtest: P02-B0040 canonical route only; no query/deep-link escalation
+ok 149 - P02-B0040 canonical route only; no query/deep-link escalation
+  ---
+  duration_ms: 3.164316
+  type: 'test'
+  ...
+# Subtest: P02-B0041 bilingual accessible summary has stable nonidentifying messages
+ok 150 - P02-B0041 bilingual accessible summary has stable nonidentifying messages
+  ---
+  duration_ms: 2.617354
+  type: 'test'
+  ...
+# Subtest: P02-B0042 background and offline destroy synthetic volatile intake draft
+ok 151 - P02-B0042 background and offline destroy synthetic volatile intake draft
+  ---
+  duration_ms: 0.709552
+  type: 'test'
+  ...
+# Subtest: P02-B0044 strict private navigation rejects patient ids, open redirects, mixed shell and encoded paths
+ok 152 - P02-B0044 strict private navigation rejects patient ids, open redirects, mixed shell and encoded paths
+  ---
+  duration_ms: 0.955337
+  type: 'test'
+  ...
+# Subtest: P02-B0045 proxy context expires, revokes and clears on subject change and background
+ok 153 - P02-B0045 proxy context expires, revokes and clears on subject change and background
+  ---
+  duration_ms: 0.348222
+  type: 'test'
+  ...
+# Subtest: P02-B0046 mobile foreground cannot reuse a stale protected-view generation
+ok 154 - P02-B0046 mobile foreground cannot reuse a stale protected-view generation
+  ---
+  duration_ms: 0.194826
+  type: 'test'
+  ...
+# Subtest: P02-B0047 bilingual accessible release status is semantic, nonidentifying and never authorizes submit
+ok 155 - P02-B0047 bilingual accessible release status is semantic, nonidentifying and never authorizes submit
+  ---
+  duration_ms: 0.355755
+  type: 'test'
+  ...
+# Subtest: P02-B0048 staff navigation allows only static roots and never patient identifiers
+ok 156 - P02-B0048 staff navigation allows only static roots and never patient identifiers
+  ---
+  duration_ms: 1.256664
+  type: 'test'
+  ...
+# Subtest: P02-B0049 foreground reauthorization denies stale, offline, revoked and wrong generation
+ok 157 - P02-B0049 foreground reauthorization denies stale, offline, revoked and wrong generation
+  ---
+  duration_ms: 0.203037
+  type: 'test'
+  ...
+# Subtest: P02-B0050 device notifications never contain patient or appointment data
+ok 158 - P02-B0050 device notifications never contain patient or appointment data
+  ---
+  duration_ms: 2.172808
+  type: 'test'
+  ...
+# Subtest: P02-B0051 registration journey is readonly and bilingual at every step
+ok 159 - P02-B0051 registration journey is readonly and bilingual at every step
+  ---
+  duration_ms: 0.386766
+  type: 'test'
+  ...
+# Subtest: P02-B0052 both mobile apps have four distinct disabled accessible bottom tabs
+ok 160 - P02-B0052 both mobile apps have four distinct disabled accessible bottom tabs
+  ---
+  duration_ms: 0.332598
+  type: 'test'
+  ...
+# Subtest: P02-B0053 critical field text never truncates and touch targets remain safe
+ok 161 - P02-B0053 critical field text never truncates and touch targets remain safe
+  ---
+  duration_ms: 1.286402
+  type: 'test'
+  ...
+# Subtest: P02-B0054 facility switch revokes access before clear and requires matching new generation
+ok 162 - P02-B0054 facility switch revokes access before clear and requires matching new generation
+  ---
+  duration_ms: 0.441554
+  type: 'test'
+  ...
+# Subtest: P02-B0055 proxy grant must match exact patient, facility, proxy, expiry and scope
+ok 163 - P02-B0055 proxy grant must match exact patient, facility, proxy, expiry and scope
+  ---
+  duration_ms: 0.566663
+  type: 'test'
+  ...
+# Subtest: P02-B0056 only authorized static roots can appear as sidebar destinations
+ok 164 - P02-B0056 only authorized static roots can appear as sidebar destinations
+  ---
+  duration_ms: 0.274986
+  type: 'test'
+  ...
+# Subtest: P02-B0057 every registration state remains non-actionable in EN and FR
+ok 165 - P02-B0057 every registration state remains non-actionable in EN and FR
+  ---
+  duration_ms: 0.472568
+  type: 'test'
+  ...
+# Subtest: P02-B0059 dynamic type critical fields wrap at 200–300% without ellipsis
+ok 166 - P02-B0059 dynamic type critical fields wrap at 200–300% without ellipsis
+  ---
+  duration_ms: 1.153538
+  type: 'test'
+  ...
+# Subtest: P02-B0060 app background revokes private presentation and requires new grant
+ok 167 - P02-B0060 app background revokes private presentation and requires new grant
+  ---
+  duration_ms: 0.338501
+  type: 'test'
+  ...
+# Subtest: P02-B0062 verified context cannot leak IDs and fails closed for offline, expiry, missing shift or proxy
+ok 168 - P02-B0062 verified context cannot leak IDs and fails closed for offline, expiry, missing shift or proxy
+  ---
+  duration_ms: 0.583133
+  type: 'test'
+  ...
+# Subtest: P02-B0063: unverified navigation denies deep links and even valid roots
+ok 169 - P02-B0063: unverified navigation denies deep links and even valid roots
+  ---
+  duration_ms: 2.093926
+  type: 'test'
+  ...
+# Subtest: P02-B0064: return tickets expire and bind scope epoch and shell
+ok 170 - P02-B0064: return tickets expire and bind scope epoch and shell
+  ---
+  duration_ms: 0.315475
+  type: 'test'
+  ...
+# Subtest: P02-B0065: native status is bilingual and screen-reader accessible
+ok 171 - P02-B0065: native status is bilingual and screen-reader accessible
+  ---
+  duration_ms: 0.439559
+  type: 'test'
+  ...
+# Subtest: P02-B0066: background invalidates previous authorization epoch
+ok 172 - P02-B0066: background invalidates previous authorization epoch
+  ---
+  duration_ms: 0.291487
+  type: 'test'
+  ...
+# Subtest: P02-B0067: offline and online clinical writes are release-locked
+ok 173 - P02-B0067: offline and online clinical writes are release-locked
+  ---
+  duration_ms: 0.31627
+  type: 'test'
+  ...
+# Subtest: P02-B0068: background covers private display and stale re-entry cannot unlock
+ok 174 - P02-B0068: background covers private display and stale re-entry cannot unlock
+  ---
+  duration_ms: 1.752405
+  type: 'test'
+  ...
+# Subtest: P02-B0069: bilingual safe access statuses never expose clinical identifiers
+ok 175 - P02-B0069: bilingual safe access statuses never expose clinical identifiers
+  ---
+  duration_ms: 0.75689
+  type: 'test'
+  ...
+# Subtest: P02-B0070: staff facility/role/shift scope requires verified current lease and safe labels
+ok 176 - P02-B0070: staff facility/role/shift scope requires verified current lease and safe labels
+  ---
+  duration_ms: 1.294475
+  type: 'test'
+  ...
+# Subtest: P02-B0071: proxy access refuses wrong subject, wrong proxy, revoked and stale epoch
+ok 177 - P02-B0071: proxy access refuses wrong subject, wrong proxy, revoked and stale epoch
+  ---
+  duration_ms: 0.330281
+  type: 'test'
+  ...
+# Subtest: P02-B0072: privacy announcement is accessible and does not reveal identifiers
+ok 178 - P02-B0072: privacy announcement is accessible and does not reveal identifiers
+  ---
+  duration_ms: 0.846137
+  type: 'test'
+  ...
+# Subtest: P02-B0073: native deep link gate rejects encoded traversal, query, unauthorized root and locked session
+ok 179 - P02-B0073: native deep link gate rejects encoded traversal, query, unauthorized root and locked session
+  ---
+  duration_ms: 1.484892
+  type: 'test'
+  ...
+# Subtest: P02-B0074: facility/role/shift transition wipes staged sensitive state and invalidates epochs
+ok 180 - P02-B0074: facility/role/shift transition wipes staged sensitive state and invalidates epochs
+  ---
+  duration_ms: 0.922594
+  type: 'test'
+  ...
+# Subtest: P02-B0075: late native async response is aborted and discarded on scope switch
+ok 181 - P02-B0075: late native async response is aborted and discarded on scope switch
+  ---
+  duration_ms: 0.574641
+  type: 'test'
+  ...
+# Subtest: P02-B0076: critical clinical field policy never clips dose, medication or allergy labels
+ok 182 - P02-B0076: critical clinical field policy never clips dose, medication or allergy labels
+  ---
+  duration_ms: 0.313211
+  type: 'test'
+  ...
+# Subtest: P02-B0077: offline queue always rejects clinical writes and cannot replay
+ok 183 - P02-B0077: offline queue always rejects clinical writes and cannot replay
+  ---
+  duration_ms: 0.278248
+  type: 'test'
+  ...
+# Subtest: P02-B0086: native More is local-only, role/locale constrained
+ok 184 - P02-B0086: native More is local-only, role/locale constrained
+  ---
+  duration_ms: 2.872794
+  type: 'test'
+  ...
+1..184
+# tests 184
+# suites 0
+# pass 184
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1273.636228

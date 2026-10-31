@@ -1,0 +1,12 @@
+test_outbox_evidence_removed_denied (test_triage_migration_gate.TriageMigrationGateTests.test_outbox_evidence_removed_denied) ... ok
+test_patient_scope_removed_denied (test_triage_migration_gate.TriageMigrationGateTests.test_patient_scope_removed_denied) ... ok
+test_policy_creation_denied (test_triage_migration_gate.TriageMigrationGateTests.test_policy_creation_denied) ... ok
+test_public_grant_denied (test_triage_migration_gate.TriageMigrationGateTests.test_public_grant_denied) ... ok
+test_rls_removed_denied (test_triage_migration_gate.TriageMigrationGateTests.test_rls_removed_denied) ... ok
+test_unreviewed_table_denied (test_triage_migration_gate.TriageMigrationGateTests.test_unreviewed_table_denied) ... ok
+test_valid_quarantine (test_triage_migration_gate.TriageMigrationGateTests.test_valid_quarantine) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.005s
+
+OK

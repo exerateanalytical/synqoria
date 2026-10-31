@@ -1,0 +1,4 @@
+COMMAND: java -cp <classes> org.synqoria.triage.TriageV56WorklistHttpTest ARRIVALS_SINCE
+EXIT: 0
+STDOUT:
+TRIAGE_V56_WORKLIST_HTTP PASS view=ARRIVALS_SINCE assertions=18

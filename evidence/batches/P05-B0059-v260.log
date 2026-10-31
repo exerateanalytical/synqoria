@@ -1,0 +1,11 @@
+COMMAND ['python', 'tests/test_v260_replay_ddl.py', 'Replay.test_unique_command_per_tenant', '-v']
+EXIT 0
+STDOUT
+
+STDERR
+test_unique_command_per_tenant (__main__.Replay.test_unique_command_per_tenant) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK

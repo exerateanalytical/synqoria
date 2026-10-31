@@ -1,0 +1,11 @@
+COMMAND ['python', 'tests/test_v270_shell_sources.py', 'Shell.test_more_focus', '-v']
+EXIT 0
+STDOUT
+
+STDERR
+test_more_focus (__main__.Shell.test_more_focus) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK

@@ -1,0 +1,8 @@
+{
+  "batch": "P06-B0044",
+  "verified": true,
+  "compile_exit_code": 0,
+  "test_exit_code": 0,
+  "stdout": "PASS AppointmentTransitionMutationTest assertions=5",
+  "scope": "unit test with mocked PreparedStatement; no live DB"
+}

@@ -1,0 +1,429 @@
+{
+  "requested": 60,
+  "executed": 60,
+  "verified": 60,
+  "remaining": 0,
+  "scope": "independent source-level domain/read feature tests; not PostgreSQL, UI/device, security audit or clinical release tests",
+  "batch_results": [
+    {
+      "batch_id": "P06-B0094",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0094.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0094"
+    },
+    {
+      "batch_id": "P06-B0095",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0095.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0095"
+    },
+    {
+      "batch_id": "P06-B0096",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0096.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0096"
+    },
+    {
+      "batch_id": "P06-B0097",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0097.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0097"
+    },
+    {
+      "batch_id": "P06-B0098",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0098.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0098"
+    },
+    {
+      "batch_id": "P06-B0099",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0099.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0099"
+    },
+    {
+      "batch_id": "P06-B0100",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0100.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0100"
+    },
+    {
+      "batch_id": "P06-B0101",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0101.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0101"
+    },
+    {
+      "batch_id": "P06-B0102",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0102.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0102"
+    },
+    {
+      "batch_id": "P06-B0103",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0103.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0103"
+    },
+    {
+      "batch_id": "P06-B0104",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0104.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0104"
+    },
+    {
+      "batch_id": "P06-B0105",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0105.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0105"
+    },
+    {
+      "batch_id": "P06-B0106",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0106.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0106"
+    },
+    {
+      "batch_id": "P06-B0107",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0107.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0107"
+    },
+    {
+      "batch_id": "P06-B0108",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0108.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0108"
+    },
+    {
+      "batch_id": "P06-B0109",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0109.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0109"
+    },
+    {
+      "batch_id": "P06-B0110",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0110.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0110"
+    },
+    {
+      "batch_id": "P06-B0111",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0111.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0111"
+    },
+    {
+      "batch_id": "P06-B0112",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0112.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0112"
+    },
+    {
+      "batch_id": "P06-B0113",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0113.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0113"
+    },
+    {
+      "batch_id": "P06-B0114",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0114.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0114"
+    },
+    {
+      "batch_id": "P06-B0115",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0115.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0115"
+    },
+    {
+      "batch_id": "P06-B0116",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0116.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0116"
+    },
+    {
+      "batch_id": "P06-B0117",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0117.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0117"
+    },
+    {
+      "batch_id": "P06-B0118",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0118.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0118"
+    },
+    {
+      "batch_id": "P06-B0119",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0119.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0119"
+    },
+    {
+      "batch_id": "P06-B0120",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0120.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0120"
+    },
+    {
+      "batch_id": "P06-B0121",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0121.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0121"
+    },
+    {
+      "batch_id": "P06-B0122",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0122.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0122"
+    },
+    {
+      "batch_id": "P06-B0123",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0123.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0123"
+    },
+    {
+      "batch_id": "P06-B0124",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0124.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0124"
+    },
+    {
+      "batch_id": "P06-B0125",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0125.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0125"
+    },
+    {
+      "batch_id": "P06-B0126",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0126.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0126"
+    },
+    {
+      "batch_id": "P06-B0127",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0127.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0127"
+    },
+    {
+      "batch_id": "P06-B0128",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0128.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0128"
+    },
+    {
+      "batch_id": "P06-B0129",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0129.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0129"
+    },
+    {
+      "batch_id": "P06-B0130",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0130.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0130"
+    },
+    {
+      "batch_id": "P06-B0131",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0131.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0131"
+    },
+    {
+      "batch_id": "P06-B0132",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0132.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0132"
+    },
+    {
+      "batch_id": "P06-B0133",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0133.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0133"
+    },
+    {
+      "batch_id": "P06-B0134",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0134.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0134"
+    },
+    {
+      "batch_id": "P06-B0135",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0135.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0135"
+    },
+    {
+      "batch_id": "P06-B0136",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0136.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0136"
+    },
+    {
+      "batch_id": "P06-B0137",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0137.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0137"
+    },
+    {
+      "batch_id": "P06-B0138",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0138.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0138"
+    },
+    {
+      "batch_id": "P06-B0139",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0139.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0139"
+    },
+    {
+      "batch_id": "P06-B0140",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0140.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0140"
+    },
+    {
+      "batch_id": "P06-B0141",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0141.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0141"
+    },
+    {
+      "batch_id": "P06-B0142",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0142.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0142"
+    },
+    {
+      "batch_id": "P06-B0143",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0143.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0143"
+    },
+    {
+      "batch_id": "P06-B0144",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0144.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0144"
+    },
+    {
+      "batch_id": "P06-B0145",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0145.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0145"
+    },
+    {
+      "batch_id": "P06-B0146",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0146.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0146"
+    },
+    {
+      "batch_id": "P06-B0147",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0147.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0147"
+    },
+    {
+      "batch_id": "P06-B0148",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0148.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0148"
+    },
+    {
+      "batch_id": "P06-B0149",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0149.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0149"
+    },
+    {
+      "batch_id": "P06-B0150",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0150.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0150"
+    },
+    {
+      "batch_id": "P06-B0151",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0151.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0151"
+    },
+    {
+      "batch_id": "P06-B0152",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0152.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0152"
+    },
+    {
+      "batch_id": "P06-B0153",
+      "pass": true,
+      "exit_code": 0,
+      "evidence": "evidence/v510/P06-B0153.log",
+      "command": "java -cp /mnt/data/synqoria_v51_work/evidence/v510/classes org.synqoria.triage.TriageWorkflowBatchesTest P06-B0153"
+    }
+  ]
+}

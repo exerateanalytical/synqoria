@@ -1,0 +1,706 @@
+{
+  "checkpoint": "v0.57.0",
+  "blockers": [
+    {
+      "id": "BLK-001",
+      "severity": "engineering",
+      "affects": [
+        "P01",
+        "P02"
+      ],
+      "issue": "npm registry DNS EAI_AGAIN reconfirmed 30 Oct 2026 in v0.18.0 (evidence/batches/v180-npm-connectivity.log); no installed Next.js/Expo dependencies or lockfile, no compiled applications.",
+      "mitigation": "Continue dependency-free TypeScript/Java unit work and static Chromium checks. Re-run dependency install and real builds in network-enabled CI or Work environment.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-002",
+      "severity": "engineering",
+      "affects": [
+        "P01",
+        "P19"
+      ],
+      "issue": "Connected GitHub installation repository search for synqoria returned zero repositories during v0.5.0; no push/CI verified.",
+      "mitigation": "Keep complete checkpoint in persistent Library; create or authorize a SYNQORIA repository and push with verified commit SHA.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-003",
+      "severity": "clinical_release",
+      "affects": [
+        "P03",
+        "P05",
+        "P06",
+        "P08",
+        "P12",
+        "P19"
+      ],
+      "issue": "Hospital clinical safety owners, terminology/medication content, consent/legal wording and operating policies not yet approved.",
+      "mitigation": "Keep high-risk clinical actions disabled and clinical certification fail-closed; obtain qualified review and signed approvals.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-004",
+      "severity": "mobile",
+      "affects": [
+        "P02",
+        "P13",
+        "P19"
+      ],
+      "issue": "No Android/iOS dependency installation, native compilation, device/emulator, screen reader or offline storage verification.",
+      "mitigation": "Run Expo build, accessibility and real device tests when build environments are available; do not claim mobile readiness.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-005",
+      "severity": "infrastructure",
+      "affects": [
+        "P01",
+        "P03",
+        "P04",
+        "P19"
+      ],
+      "issue": "v0.11.0 loopback HTTP to transaction-bound clinical JDBC adapter verified with JDBC proxies, NOT actual PostgreSQL, JDBC driver, restricted role or RLS. Independent DB readiness and scope enforcement unverified.",
+      "mitigation": "Continue contracts/domain tests independently; provision sandbox and run integration, tenant isolation and recovery tests before phase gates.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-006",
+      "severity": "visual",
+      "affects": [
+        "P02",
+        "P19"
+      ],
+      "issue": "Static Chromium bilingual specimen passed EN/FR at 9 widths plus 320px 200% text simulation, but Next.js application, native devices, screen readers and full visual matrix unverified.",
+      "mitigation": "Run Next.js and mobile visual matrix and assistive technology testing in available environments.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-007",
+      "severity": "visual",
+      "affects": [
+        "P02",
+        "P19"
+      ],
+      "issue": "Inter is declared as font-family fallback only; local font asset, font licensing review and browser native typography metrics not verified.",
+      "mitigation": "Add a properly licensed application-local Inter font asset, keep source typography and re-run build/layout/assistive checks.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-008",
+      "severity": "integration",
+      "affects": [
+        "P02",
+        "P03",
+        "P04"
+      ],
+      "issue": "ClinicalHTTPGateway now accepts JDBC transactional patient adapter with single trace/audit correlation and dynamic scoped facility adapter; TEST identity only; no production OIDC, real DB or compiled Next/Expo.",
+      "mitigation": "Integrate only after server-owned scopes and verified OIDC; test unauthorized HTTP outcomes, actual UI switch events, cache invalidation, and real device behavior.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-009",
+      "severity": "clinical_data_integrity",
+      "affects": [
+        "P01",
+        "P03",
+        "P04",
+        "P05",
+        "P19"
+      ],
+      "issue": "In-memory idempotency, outbox fencing and facility lifecycle cannot survive restart/multi-node concurrency. No authoritative transaction, durable audit or exactly-once effect has been demonstrated.",
+      "mitigation": "Implement transactional PostgreSQL repository with revision/idempotency constraints, outbox/inbox transaction coupling, crash/retry tests, security review and failure injection.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-010",
+      "severity": "identity_security",
+      "affects": [
+        "P03",
+        "P05",
+        "P19"
+      ],
+      "issue": "TrustedSessionAdmission still uses test-only identity claims. Epoch-fence hook covered with unit assertions but no real revocation store; OIDC/JWKS signature verification and key lifecycle not implemented.",
+      "mitigation": "Select version-pinned supported OIDC library, integrate trusted provider and test forged/expired/wrong-audience/wrong-key/revoked sessions against actual HTTP endpoints.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-011",
+      "severity": "engineering",
+      "affects": [
+        "P01",
+        "P03",
+        "P18"
+      ],
+      "issue": "Reference scoped idempotency, outbox, inbox and safe error contract have unit coverage but are not authoritative durable database or HTTP implementations.",
+      "mitigation": "Implement PostgreSQL transactional APIs, restart/replay/concurrency and no-double-effects integration tests.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-012",
+      "severity": "engineering",
+      "affects": [
+        "P02",
+        "P04"
+      ],
+      "issue": "Merged two independently produced v0.5.0 lineages from a shared v0.4.0 baseline. FacilityLifecycle overlapping implementation intentionally retained from one source, alternative excluded. Need review duplicate designs before wiring.",
+      "mitigation": "Keep original v0.5 archives for audit; ensure one canonical lifecycle API and run full merged regression before future changes.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-013",
+      "severity": "patient_safety",
+      "affects": [
+        "P03",
+        "P06",
+        "P07",
+        "P08",
+        "P19"
+      ],
+      "issue": "Purpose-of-use and emergency request predicate prototypes are not durable approvals and must never grant clinical record or medication access. No real issuer, consent rules, incident audit or hospital approved emergency procedure.",
+      "mitigation": "Server-side verified grants and per-request audit persistence; hospital clinical/privacy owner sign-off; tested revocation and bounded emergency expiry.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-014",
+      "severity": "clinical_release",
+      "affects": [
+        "P05",
+        "P19"
+      ],
+      "issue": "M01-S02 provisional registration source and JDBC proxy tests exist, but duplicate review evidence, approved create privileges, patient ID generation, secure HMAC keys, actual command replay, PostgreSQL RLS/role controls and approved audit custody are not production integrated.",
+      "mitigation": "Keep save disabled; verify vetted server identity, trusted duplicate review and grant source, real database migrations/RLS and concurrency integration before protected command endpoint or clinical acceptance.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-015",
+      "severity": "clinical_data_integrity",
+      "affects": [
+        "P04",
+        "P05",
+        "P19"
+      ],
+      "issue": "v0.13.0 review permit and replay predicates are INTERNAL test seams; no trusted issuer, signed reviewer decision, authoritative duplicate search/index, durable replay claim, restricted-role RLS or real DB execution. Quarantined V006 lookup table has no access policies or grants.",
+      "mitigation": "Require hospital-approved reviewer workflow, server-owned signed/revision-bound proof, restricted PostgreSQL roles and real cross-tenant/facility adversarial tests before exposing patient registration.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V150-REVIEW",
+      "severity": "clinical_release",
+      "affects": [
+        "P03",
+        "P05",
+        "P19"
+      ],
+      "issue": "Reviewer session and event-chain models are unit/static tested only. No production IAM, approval service, PostgreSQL RLS role, audit record or release signature.",
+      "mitigation": "Obtain reviewer credential provider, human owner, least-privilege PostgreSQL environment, transactional approval/revocation audit, and independent clinical review before enabling registration.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V160-RELEASE",
+      "severity": "clinical_release",
+      "affects": [
+        "P01",
+        "P02",
+        "P03",
+        "P05",
+        "P19"
+      ],
+      "issue": "Review state/event hash chain and IAM epoch are local unit implementations, not durable PostgreSQL or externally verified identity. Native screen is source-only; production registration remains locked.",
+      "mitigation": "Provision PostgreSQL least-privilege roles and verified OIDC; run real isolation, transaction, mobile builds and clinical safety approvals before release.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V170-PG",
+      "severity": "engineering_and_clinical_release",
+      "affects": [
+        "P05-B0027",
+        "P03",
+        "P19"
+      ],
+      "issue": "No PostgreSQL executable/service/privileged restricted-role integration environment in this run; durable reviewer event, RLS, transaction isolation and audit/outbox cannot be verified.",
+      "mitigation": "Provision PostgreSQL with restricted roles, run real migration and concurrent tenant-isolation/rollback/revocation tests. Do not open registration endpoint.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V170-OIDC",
+      "severity": "security",
+      "affects": [
+        "P03-B0024",
+        "P05",
+        "P19"
+      ],
+      "issue": "v0.18.0 adds operator-pinned JWK and signed payload byte checks but still NO vetted duplicate-rejecting JOSE JSON parser, claims-to-signed-payload binding, production JWKS/IdP, MFA, or trusted grants. Never accept claims with these primitives alone.",
+      "mitigation": "Integrate supported JOSE library, trusted IdP and current IAM/shift/tenant grants; run signature/alg/issuer/audience/azp/replay/revocation tests against real provider.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V180-OIDC-BINDING",
+      "severity": "security",
+      "affects": [
+        "P03-B0029",
+        "P05",
+        "P19"
+      ],
+      "issue": "v0.18.0 tests operator-pinned RSA key construction, protected-header policy, cryptographic JWS payload bytes and separately trusted claims, but DOES NOT have a vetted duplicate-rejecting JSON parser, signed-byte-to-claims binding, real IdP/JWKS, MFA, grant authority or revocation backend. No production JWT admission.",
+      "mitigation": "Install and pin supported JOSE/JWT library and IdP in network-enabled build; bind claims strictly to verified payload bytes, enforce tenant/facility grants and independently test rotation, revocation and token tampering.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V190-REVIEW-PERSISTENCE",
+      "severity": "clinical_release",
+      "affects": [
+        "P05-B0027",
+        "P05-B0028",
+        "P05-B0029",
+        "P05-B0030",
+        "P05-B0031",
+        "P05-B0032"
+      ],
+      "issue": "v0.19.0 reviewer fences and audit/outbox metadata are pure Java unit components; no actual PostgreSQL transaction, RLS, immutable audit custody, outbox persistence or hospital-approved reviewer identity. They MUST NOT be used as authorization to submit registration.",
+      "mitigation": "Provision PostgreSQL with restricted DB roles, verify migrations and RLS cross-tenant tests, wire audited transactional reviewer decision and outbox, obtain independent security/clinical review.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V200-EXPO",
+      "severity": "mobile",
+      "affects": [
+        "P02-B0058",
+        "P02-B0059",
+        "P02-B0060",
+        "P02-B0061",
+        "P02-B0062"
+      ],
+      "issue": "Native app source uses react-native-safe-area-context; dependency install, Expo compilation, Android/iOS device and screen-reader/keyboard behavior remain unverified.",
+      "mitigation": "Install locked Expo dependencies in network-enabled CI; run native typecheck, emulator/device tests at 320–1920 widths and 200% text, test keyboard and screen reader.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V200-OIDC",
+      "severity": "security",
+      "affects": [
+        "P03-B0029",
+        "P03-B0030",
+        "P03-B0031",
+        "P03-B0032",
+        "P03-B0033"
+      ],
+      "issue": "OIDC primitives are independent Java models; no trusted discovery fetch, vetted JOSE JSON parser, verified issuer, durable/distributed replay store, or real facility grant authority.",
+      "mitigation": "Use pinned IdP, audited JOSE implementation, durable replay/session/grant storage and adversarial integration tests; do not connect to clinical admission before independent security review.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V220-REVIEW-PG",
+      "severity": "clinical_release",
+      "affects": [
+        "P05-B0027",
+        "P05-B0042",
+        "P19"
+      ],
+      "issue": "v0.22.0 JDBC history port exercised with a proxy, not real PostgreSQL. V009 event-digest columns are unapplied, nullable draft, and reviewer IAM/RLS/outbox persistence are not deployed.",
+      "mitigation": "Provision a disposable PostgreSQL instance with non-owner restricted roles; approve/backfill V009, execute isolation and rollback tests, then independently review before any clinical writes.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V220-LIBRARY-QUOTA",
+      "severity": "artifact_persistence",
+      "affects": [
+        "v0.22.0 checkpoint",
+        "future hourly continuity"
+      ],
+      "issue": "Persistent /SYNQORIA Library rejected all v0.22.0 versioned ZIP, checksum, status and latest-alias uploads: library_storage_limit_exceeded. Existing CURRENT overwrite separately returned container_session_expired. v0.22.0 is available as a generated conversation sandbox artifact, but NOT saved to Library.",
+      "mitigation": "Keep verified cumulative ZIP and SHA-256 as conversation artifacts. In next run prefer v0.22.0 conversation artifact if available; otherwise resume from verified Library v0.21.0 and reconcile. User should free Library space or approve redundant alias cleanup; never overwrite historical versioned checkpoints silently.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V230-001",
+      "severity": "clinical_data_integrity",
+      "affects": [
+        "P05",
+        "P19"
+      ],
+      "issue": "V2 review digest and event verifier are local Java domain components; V1 event rows cannot be silently interpreted as V2, no migration/backfill/DB enforcement or external custody.",
+      "mitigation": "Version-pin V2 SQL and event envelope; DBA/security-reviewed migration, restricted-role RLS and tamper/failure-injection integration tests before wiring any approval writer.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V230-002",
+      "severity": "persistence",
+      "affects": [
+        "P00",
+        "P01"
+      ],
+      "issue": "v0.23.0 Library versioned ZIP, checksum and status uploads all failed library_storage_limit_exceeded; overwriting SYNQORIA_CURRENT.zip also failed with same error. No persistent Library v0.23.0 checkpoint exists.",
+      "mitigation": "Preserve complete conversation download artifact. User must free Library space or authorize alternate persistent storage; do not delete prior checkpoints automatically.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V240-POSTGRES",
+      "severity": "infrastructure",
+      "affects": [
+        "P05",
+        "P03",
+        "P19"
+      ],
+      "issue": "V2 JDBC reader exercised only with a dynamic JDBC proxy; SQL INSERT plan not executed. No PostgreSQL server, RLS restricted role or transaction/outbox atomicity test.",
+      "mitigation": "Provision PostgreSQL 17/18 test cell with restricted service role, apply human-reviewed migrations and execute real transaction isolation, replay, audit/outbox and rollback tests.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V240-NEXT-BUILD",
+      "severity": "engineering",
+      "affects": [
+        "P01",
+        "P02",
+        "P19"
+      ],
+      "issue": "npm registry DNS EAI_AGAIN observed again in this run; no Next.js/Expo dependencies or native binaries. Chromium evidence is interactive static specimen, not compiled application.",
+      "mitigation": "Restore npm access and run pinned lockfile install, Next.js build, Expo Android/iOS builds, device and accessibility tests.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V240-LIBRARY-QUOTA",
+      "severity": "persistence",
+      "affects": [
+        "P00",
+        "P01",
+        "P19"
+      ],
+      "issue": "Versioned v0.24.0 ZIP, checksum, status and CURRENT overwrite all rejected by Library with library_storage_limit_exceeded. No persistent v0.24.0 checkpoint was saved.",
+      "mitigation": "Preserve downloadable full cumulative archive in conversation; user must free Library capacity or authorize a different persistent destination. Never delete historical checkpoints without permission.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V250-POSTGRES",
+      "severity": "infrastructure",
+      "affects": [
+        "P01",
+        "P03",
+        "P05",
+        "P19"
+      ],
+      "issue": "v0.25.0 reviewer transaction adapter passed mock JDBC but no PostgreSQL executable/driver/DSN, no restricted role or actual FORCE-RLS policy grants; V010 migration UNAPPLIED.",
+      "mitigation": "Provision PostgreSQL >=16, reviewed restricted role and RLS policies; execute migrations, negative cross-tenant tests, transaction rollback and concurrency tests with synthetic data. Clinical release remains denied.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V250-BUILDS",
+      "severity": "engineering",
+      "affects": [
+        "P01",
+        "P02",
+        "P13",
+        "P19"
+      ],
+      "issue": "npm registry EAI_AGAIN, missing root lockfile and Next/Expo installed dependencies; dependency preflight returned blocked; no compiled web/mobile binaries.",
+      "mitigation": "Run pinned npm lock/install and actual Next/Expo builds in network-enabled CI; capture build logs and device tests.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V250-LIBRARY",
+      "severity": "persistence",
+      "affects": [
+        "P00",
+        "P01"
+      ],
+      "issue": "Earlier v0.22–v0.24 uploads were rejected by Library storage quota; v0.25 upload must be independently verified.",
+      "mitigation": "Keep complete ZIP and checksum in conversation; recover quota or authorized external GitHub/Drive backup; never claim Library saved unless upload confirms.",
+      "status": "resolved",
+      "resolution": "v0.25.0 Library versioned and CURRENT archives independently verified at start of v0.26.0"
+    },
+    {
+      "id": "BLK-V260-APP-BUILD",
+      "severity": "engineering",
+      "affects": [
+        "P01",
+        "P02",
+        "P13",
+        "P19"
+      ],
+      "issue": "No package-lock.json, unpinned external dependency ranges, npm registry DNS failure, no installed Next.js/Expo dependencies. CI build job exists but no compiled web/native build executed.",
+      "mitigation": "In network-enabled CI generate reviewed npm lock, pin exact supported versions, npm ci, build Next.js and Expo bundles, then Android/iOS native/device tests. Do not treat CI workflow source as passing CI.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V260-POSTGRES",
+      "severity": "clinical_security",
+      "affects": [
+        "P03",
+        "P05",
+        "P19"
+      ],
+      "issue": "No live PostgreSQL, restricted role/DSN, approved RLS policy, actual concurrency or cross-tenant denial tests. V011 unique command migration is UNAPPLIED.",
+      "mitigation": "DBA/clinical security review migrations and role; provision PostgreSQL 16+ with synthetic test cell; test restricted role, tenant isolation, unique replay, serializable rollback and outbox atomicity.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V260-NATIVE-DEVICE",
+      "severity": "clinical_ui",
+      "affects": [
+        "P02",
+        "P13",
+        "P19"
+      ],
+      "issue": "More panels are React Native source only. No compiled Expo bundle, Android/iOS device, keyboard, 200% font or screen-reader acceptance tests.",
+      "mitigation": "Compile both native apps and test on Android/iOS physical devices with EN/FR, accessibility and background privacy checks.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V270-BUILDS",
+      "severity": "engineering",
+      "affects": [
+        "P01-B0043",
+        "P02-B0093",
+        "P19"
+      ],
+      "issue": "Exact npm manifest pins now audited but registry EAI_AGAIN; no actual root package-lock, installed Next/Expo packages or compiled apps. Build runner exited 4 BLOCKED, zero builds attempted. Expo dependency compatibility unverified.",
+      "mitigation": "In network-enabled trusted CI generate and review npm lockfile, run lock integrity audit, npm ci, Next build and both Expo exports; capture real logs and signed artifact provenance.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V270-POSTGRES",
+      "severity": "safety",
+      "affects": [
+        "P05-B0027",
+        "P05-B0062",
+        "P05-B0063",
+        "P19"
+      ],
+      "issue": "Reviewer event reconciliation and replay probes tested only with synthetic JDBC proxy; no live PostgreSQL, restricted role, RLS, schema deployment or race/rollback verification.",
+      "mitigation": "DBA review V008–V011 quarantined migrations, provision isolated PostgreSQL restricted role, test tenant and patient isolation, unique command replay and atomic audit/outbox under concurrency before enabling any write.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V270-VISUAL",
+      "severity": "engineering",
+      "affects": [
+        "P02-B0089",
+        "P02-B0090",
+        "P02-B0091",
+        "P02-B0092",
+        "P19"
+      ],
+      "issue": "Chromium passed static specimen tests at nine widths and 200% text; real compiled Next application, device screen reader, native More and Inter font asset acceptance remain unverified.",
+      "mitigation": "Run compiled Next/Expo application and Android/iOS accessibility/zoom/keyboard screenshots, compare with UX01–UX10 before phase certification.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V280-BUILDS",
+      "severity": "engineering",
+      "affects": [
+        "P01-B0045",
+        "P02-B0095",
+        "P19"
+      ],
+      "issue": "npm registry DNS EAI_AGAIN reconfirmed; no reviewed package-lock.json, no installed Next.js/Expo dependencies, no compiled builds. Manual CI candidate workflow is source-only and has not run.",
+      "mitigation": "Run manual dependency-lock-candidate workflow in trusted network-enabled CI; review lock/integrity/peer compatibility; merge reviewed lock; npm ci, Next build and both Expo exports with artifact attestation.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V280-P06-DATABASE",
+      "severity": "security_and_clinical",
+      "affects": [
+        "P06",
+        "M02",
+        "M02-S01",
+        "M02-S02",
+        "M02-S03",
+        "M02-S04",
+        "M02-S05"
+      ],
+      "issue": "Scheduling primitives tested only in memory. PostgreSQL exclusion constraint and FORCE RLS are draft quarantine SQL; no live PostgreSQL/restricted role/approved patient-scope policy/serializable outbox tests.",
+      "mitigation": "DBA/security review migration, run real PostgreSQL concurrency, row-level isolation, command replay and atomic audit/outbox integration tests. No booking writes before gates.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V280-UI-DEVICES",
+      "severity": "engineering",
+      "affects": [
+        "P02",
+        "P19"
+      ],
+      "issue": "Mobile More focus trap executed in Chromium DOM and CSS in static specimen, not compiled Next.js or native Expo devices. No screen-reader/keyboard/200% font physical-device certification.",
+      "mitigation": "Build apps with reviewed lock and test EN/FR navigation at all widths, physical Android/iOS, assistive technologies and verified locally hosted Inter.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V300-P06-INTEGRATION",
+      "severity": "release_blocker",
+      "affects": [
+        "P06-B0020",
+        "M02",
+        "P19"
+      ],
+      "issue": "v0.30.0 appointment utilities and quarantine migration are unit/static tested only. No live PostgreSQL restricted-role/RLS/exclusion constraint transaction or end-to-end OIDC authorization evidence.",
+      "mitigation": "Run reviewed migrations in isolated PostgreSQL with non-owner, non-BYPASSRLS role; test serializable conflicts, rollback, row scope, outbox atomicity; obtain independent clinical/security approval before enabling clinical writes.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V410-M02-DB",
+      "severity": "clinical_release",
+      "affects": [
+        "P06",
+        "M02",
+        "P19"
+      ],
+      "issue": "V012-V014 quarantined appointment migrations not executed on live PostgreSQL. No reviewed RLS policies, non-owner restricted DB role, real concurrent double-booking/rollback, recovery, outbox delivery or database-backed idempotency tests.",
+      "mitigation": "Provision isolated synthetic PostgreSQL test cell; independent DBA/security review of schema, RLS and grants; execute restricted-role integration and concurrency suites before any application endpoint activation.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V410-M02-CLINICAL",
+      "severity": "clinical_release",
+      "affects": [
+        "P06",
+        "M02",
+        "M03",
+        "P19"
+      ],
+      "issue": "No signed hospital clinical safety/operational review, no 261-screen acceptance or certified 40-module inventory. Triage/medication/clinical writes remain disabled.",
+      "mitigation": "Obtain qualified hospital clinical and security sign-offs; review patient consent, triage protocols, workflow hazards and operational downtime/recovery before pilot release.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-M03-051",
+      "severity": "clinical_release",
+      "affects": [
+        "P06",
+        "M03",
+        "P19"
+      ],
+      "issue": "60 M03 domain/read features are source-unit-tested only; Java services not wired to authenticated HTTP, restricted-role live PostgreSQL transactions, approved priority terminology, protected clinical audit or patient staff mobile builds. V015 remains quarantined and never granted to application roles.",
+      "mitigation": "Provision isolated PostgreSQL and vetted OIDC, design reviewed triage schema/RLS/encryption and outbox, integrate API/UI, clinician terminology governance, test concurrent tenant-scoped writes, and obtain qualified clinical/security sign-offs.",
+      "status": "open"
+    },
+    {
+      "id": "BLK-V520-PG-RLS",
+      "severity": "release-blocking",
+      "affects": [
+        "P06",
+        "M03"
+      ],
+      "issue": "V016 encrypted SQL migration and JDBC adapter have only static checks and synthetic transaction tests. No actual PostgreSQL migrations, restricted app role, reviewed RLS policy, concurrent writer or rollback tests executed. V016 deliberately has no application grants or policies.",
+      "mitigation": "Security review roles and policies, deploy to dedicated PostgreSQL test cell, run role-isolation, concurrency, rollback and recovery tests.",
+      "status": "OPEN"
+    },
+    {
+      "id": "BLK-V520-KMS",
+      "severity": "release-blocking",
+      "affects": [
+        "P03",
+        "P06",
+        "M03"
+      ],
+      "issue": "AES-256-GCM encryption codec is tested, but no real KMS key management, rotation, escrow, backup restore, metadata retention or protected-secret audit has been configured.",
+      "mitigation": "Integrate approved KMS, key rotation, PHI backup/restore and incident response procedures; test in security environment.",
+      "status": "OPEN"
+    },
+    {
+      "id": "BLK-V520-API",
+      "severity": "release-blocking",
+      "affects": [
+        "P06",
+        "M03"
+      ],
+      "issue": "Application-level command/read gateways compile and have synthetic transactional integration tests, but are not connected to authenticated HTTP runtime, production OIDC or healthcare device clients.",
+      "mitigation": "Implement authenticated HTTP contract, rate limits, structured errors, request DTO validation and true role-scoped integration suite.",
+      "status": "OPEN"
+    },
+    {
+      "id": "BLK-V520-CLINICAL",
+      "severity": "release-blocking",
+      "affects": [
+        "P06",
+        "M03"
+      ],
+      "issue": "Clinical priority terminology, handover rules, documentation and clinical safety workflow require human review; 0/261 screens accepted and 0/40 modules certified.",
+      "mitigation": "Qualified clinical safety review, usability validation, native app builds and pilot qualification before release.",
+      "status": "OPEN"
+    },
+    {
+      "id": "BLK-V550-POSTGRES-EVIDENCE",
+      "severity": "release-blocking",
+      "affects": [
+        "P03",
+        "P06",
+        "M03"
+      ],
+      "issue": "V019 correlation constraints, scoped JDBC ledger verifier and end-to-end atomicity were not run on real PostgreSQL, with restricted roles, RLS or concurrent writers.",
+      "mitigation": "Deploy reviewed, deny-all quarantined schema in a dedicated PostgreSQL test cell; test policies, exact event FKs, retries, rollback and concurrent writers before application grants.",
+      "status": "OPEN"
+    },
+    {
+      "id": "BLK-V550-LEGACY-SNAPSHOT",
+      "severity": "release-blocking",
+      "affects": [
+        "P06",
+        "M03"
+      ],
+      "issue": "Snapshot v1 lacks a revision-one anchor. v2 decoder can parse it but full JDBC verification rejects unanchored legacy data; an authorized, independently reviewed migration/recovery path is absent.",
+      "mitigation": "Design audit-preserving migration with event-source reconciliation; do not forge missing genesis or allow writes to unanchored clinical cases.",
+      "status": "OPEN"
+    },
+    {
+      "id": "BLK-V550-HTTP-INTEGRATION",
+      "severity": "release-blocking",
+      "affects": [
+        "P06",
+        "M03",
+        "P19"
+      ],
+      "issue": "GET summary/history endpoints passed synthetic loopback tests but are not deployed behind production OIDC/MFA, clinical-proof services, rate limits or native client builds.",
+      "mitigation": "Wire to approved authenticated runtime, enforce RLS in live cell, verify end-to-end clinical access denials, usability and security review.",
+      "status": "OPEN"
+    },
+    {
+      "id": "BLK-V560-REAL-DB",
+      "severity": "release-blocking",
+      "affects": [
+        "P03",
+        "P06",
+        "M03"
+      ],
+      "issue": "New M03 command/intake/worklist HTTP paths tested only against synthetic atomic store, not actual PostgreSQL V019 with restricted roles, forced RLS, rollback and concurrent writers.",
+      "mitigation": "Run isolated PostgreSQL test cell with application role, apply reviewed migrations and verify scope/replay/rollback under concurrency before any clinical deployment.",
+      "status": "OPEN"
+    },
+    {
+      "id": "BLK-V560-IDENTITY-CLINICAL-PROOF",
+      "severity": "release-blocking",
+      "affects": [
+        "P03",
+        "P06",
+        "M03",
+        "P19"
+      ],
+      "issue": "Trusted session and clinical evidence sources remain synthetic; no production OIDC/MFA, authorization service, consent/legal policy or identity revocation integration verified.",
+      "mitigation": "Integrate approved server-side identity, access and clinical proof services, add independent threat model and external penetration test.",
+      "status": "OPEN"
+    },
+    {
+      "id": "BLK-V560-WEB-MOBILE",
+      "severity": "release-blocking",
+      "affects": [
+        "P02",
+        "P06",
+        "P19"
+      ],
+      "issue": "Shared TypeScript M03 transport compiled and unit tested but not wired into compiled Next.js/Expo applications, device accessibility, real navigation or production transport.",
+      "mitigation": "Resolve dependency/build environment, integrate with guarded staff UI and test mobile/desktop responsive, EN/FR and privacy lifecycle flows.",
+      "status": "OPEN"
+    },
+    {
+      "id": "BLK-V560-CLINICAL-SAFETY",
+      "severity": "release-blocking",
+      "affects": [
+        "M03",
+        "P06",
+        "P19"
+      ],
+      "issue": "49 action transports and 11 client guards are engineering tests, not clinician-approved triage protocols or certified clinical workflows. 0/261 screens accepted, 0/40 modules certified.",
+      "mitigation": "Complete signed clinical safety case, terminology review, usability and independent security validation; preserve release denial until approvals.",
+      "status": "OPEN"
+    }
+  ],
+  "note": "15 new local batches, 4 independently retested parallel migration-gate components; parallel archives had stale manifests. Live DB and clinical release blocked.",
+  "last_reviewed_utc": "2026-10-30T20:09:00.100461+00:00"
+}

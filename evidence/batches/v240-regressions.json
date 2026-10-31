@@ -1,0 +1,53 @@
+{
+  "checkpoint": "v0.24.0",
+  "results": [
+    {
+      "command": "npm run check",
+      "exit_code": 0,
+      "result": "108/108 TypeScript Node tests and 3 register integrity scripts passed",
+      "log": "evidence/batches/v240-npm-check.log"
+    },
+    {
+      "command": "npm run check:source",
+      "exit_code": 0,
+      "result": "TSX syntax-only and source safety assertions passed; no app build",
+      "log": "evidence/batches/v240-source-check.log"
+    },
+    {
+      "command": "bash tools/check_java_security.sh",
+      "exit_code": 0,
+      "result": "85 PASS lines from inherited Java regression; includes mock JDBC and loopback tests",
+      "log": "evidence/batches/v240-java-regression.log"
+    },
+    {
+      "command": "python tests/test_preview_browser.py",
+      "exit_code": 0,
+      "result": "10 static Chromium preview checks passed",
+      "log": "evidence/batches/v240-browser-inherited.log"
+    },
+    {
+      "command": "python tests/test_i18n_preview_browser.py",
+      "exit_code": 0,
+      "result": "19 static Chromium bilingual checks passed",
+      "log": "evidence/batches/v240-i18n-inherited.log"
+    },
+    {
+      "command": "python tools/verify_release_gate.py --check-locked",
+      "exit_code": 0,
+      "result": "Release remains locked",
+      "log": "docs/program/STATUS.md"
+    },
+    {
+      "command": "python tools/verify_release_gate.py --request-release",
+      "exit_code": 3,
+      "result": "EXPECTED DENIAL: release refused",
+      "log": "evidence/batches/v240-release-denied.log"
+    },
+    {
+      "command": "npm view next@15.5.6 version --fetch-retries=0 --fetch-timeout=8000",
+      "exit_code": 1,
+      "result": "BLOCKED EAI_AGAIN DNS; no Next.js/Expo dependency installation",
+      "log": "evidence/batches/v240-npm-connectivity.log"
+    }
+  ]
+}

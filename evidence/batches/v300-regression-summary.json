@@ -1,0 +1,180 @@
+{
+  "version": "0.30.0",
+  "executed_utc": "2026-10-30T15:04:16.265383+00:00",
+  "checks": [
+    {
+      "name": "ux-core",
+      "argv": [
+        "npm",
+        "run",
+        "check:ux"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matched_expected": true,
+      "duration_seconds": 1.91,
+      "log": "evidence/batches/v280-regression-ux-core.log",
+      "blocked_as_expected": false
+    },
+    {
+      "name": "source-check",
+      "argv": [
+        "npm",
+        "run",
+        "check:source"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matched_expected": true,
+      "duration_seconds": 5.407,
+      "log": "evidence/batches/v280-regression-source-check.log",
+      "blocked_as_expected": false
+    },
+    {
+      "name": "canonical-registers",
+      "argv": [
+        "python",
+        "tools/verify_status_matrix.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matched_expected": true,
+      "duration_seconds": 0.7,
+      "log": "evidence/batches/v280-regression-canonical-registers.log",
+      "blocked_as_expected": false
+    },
+    {
+      "name": "baseline",
+      "argv": [
+        "python",
+        "tests/test_baseline.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matched_expected": true,
+      "duration_seconds": 0.69,
+      "log": "evidence/batches/v280-regression-baseline.log",
+      "blocked_as_expected": false
+    },
+    {
+      "name": "navigation-contract",
+      "argv": [
+        "python",
+        "tests/test_navigation_contract.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matched_expected": true,
+      "duration_seconds": 0.722,
+      "log": "evidence/batches/v280-regression-navigation-contract.log",
+      "blocked_as_expected": false
+    },
+    {
+      "name": "java-security-regression",
+      "argv": [
+        "bash",
+        "tools/check_java_security.sh"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matched_expected": true,
+      "duration_seconds": 14.639,
+      "log": "evidence/batches/v280-regression-java-security-regression.log",
+      "blocked_as_expected": false
+    },
+    {
+      "name": "contract-schema",
+      "argv": [
+        "python",
+        "tests/test_contract.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matched_expected": true,
+      "duration_seconds": 0.932,
+      "log": "evidence/batches/v280-regression-contract-schema.log",
+      "blocked_as_expected": false
+    },
+    {
+      "name": "sql-static-audit",
+      "argv": [
+        "python",
+        "tools/audit_postgres_migrations.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matched_expected": true,
+      "duration_seconds": 0.909,
+      "log": "evidence/batches/v280-regression-sql-static-audit.log",
+      "blocked_as_expected": false
+    },
+    {
+      "name": "v270-engineering",
+      "argv": [
+        "python",
+        "tests/test_v270_engineering.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matched_expected": true,
+      "duration_seconds": 0.76,
+      "log": "evidence/batches/v280-regression-v270-engineering.log",
+      "blocked_as_expected": false
+    },
+    {
+      "name": "v270-shell",
+      "argv": [
+        "python",
+        "tests/test_v270_shell_sources.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matched_expected": true,
+      "duration_seconds": 0.727,
+      "log": "evidence/batches/v280-regression-v270-shell.log",
+      "blocked_as_expected": false
+    },
+    {
+      "name": "dependency-pins",
+      "argv": [
+        "python",
+        "tools/dependency_compatibility.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matched_expected": true,
+      "duration_seconds": 0.705,
+      "log": "evidence/batches/v280-regression-dependency-pins.log",
+      "blocked_as_expected": false
+    },
+    {
+      "name": "lock-gate",
+      "argv": [
+        "python",
+        "tools/dependency_release_gate.py"
+      ],
+      "exit_code": 4,
+      "expected_exit_code": 4,
+      "matched_expected": true,
+      "duration_seconds": 0.682,
+      "log": "evidence/batches/v280-regression-lock-gate.log",
+      "blocked_as_expected": true
+    },
+    {
+      "name": "application-build",
+      "argv": [
+        "python",
+        "tools/run_app_builds.py"
+      ],
+      "exit_code": 4,
+      "expected_exit_code": 4,
+      "matched_expected": true,
+      "duration_seconds": 0.72,
+      "log": "evidence/batches/v280-regression-application-build.log",
+      "blocked_as_expected": true
+    }
+  ],
+  "matched_expected": 13,
+  "clinical_release": false,
+  "notes": "Executed against v0.30.0 source; expected exit code 4 for unavailable build gates is a block, not a successful build."
+}

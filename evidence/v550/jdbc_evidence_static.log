@@ -1,0 +1,13 @@
+test_disconnected_receipt_revision_denied (tests.test_triage_jdbc_evidence_contract.JdbcEvidenceSourceTests.test_disconnected_receipt_revision_denied) ... ok
+test_integrity_guard_present (tests.test_triage_jdbc_evidence_contract.JdbcEvidenceSourceTests.test_integrity_guard_present) ... ok
+test_no_full_chain_denied (tests.test_triage_jdbc_evidence_contract.JdbcEvidenceSourceTests.test_no_full_chain_denied) ... ok
+test_no_verified_ledger_call_denied (tests.test_triage_jdbc_evidence_contract.JdbcEvidenceSourceTests.test_no_verified_ledger_call_denied) ... ok
+test_timeout_missing_denied (tests.test_triage_jdbc_evidence_contract.JdbcEvidenceSourceTests.test_timeout_missing_denied) ... ok
+test_unscoped_event_query_denied (tests.test_triage_jdbc_evidence_contract.JdbcEvidenceSourceTests.test_unscoped_event_query_denied) ... ok
+test_unscoped_outbox_join_denied (tests.test_triage_jdbc_evidence_contract.JdbcEvidenceSourceTests.test_unscoped_outbox_join_denied) ... ok
+test_unscoped_receipt_join_denied (tests.test_triage_jdbc_evidence_contract.JdbcEvidenceSourceTests.test_unscoped_receipt_join_denied) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+OK

@@ -1,0 +1,7 @@
+COMMAND: java -cp /mnt/data/synqoria_v56_classes org.synqoria.triage.TriageJourneyIntegrationTest
+EXIT: 0
+
+STDOUT:
+TRIAGE_SYNTHETIC_JOURNEY_PASS checks=12 events=14 terminal=CLOSED
+
+STDERR:

@@ -1,0 +1,52 @@
+{
+  "target_version": "0.47.0",
+  "source_authority": "v0.44.0 verified ZIP",
+  "new_batched_verified": [
+    "P06-B0070",
+    "P06-B0071",
+    "P06-B0072",
+    "P06-B0073",
+    "P06-B0074",
+    "P06-B0075",
+    "P06-B0076",
+    "P06-B0077",
+    "P06-B0078",
+    "P06-B0079",
+    "P06-B0080",
+    "P06-B0081",
+    "P06-B0082",
+    "P06-B0083",
+    "P06-B0084"
+  ],
+  "parallel_batched_reconciled": [
+    "P06-B0085",
+    "P06-B0086"
+  ],
+  "parallel_source_zip": "SYNQORIA_v0.46.0_cumulative.zip",
+  "parallel_source_sha256": "52ba4db73ea0f3f77e5864960a68df792ce5d4cabe748bf6177b26902d5f73db",
+  "parallel_manifest_valid": false,
+  "parallel_manifest_mismatches": 9,
+  "parallel_original_batch_id_collision": [
+    "P06-B0070",
+    "P06-B0071"
+  ],
+  "parallel_reassigned_ids": [
+    "P06-B0085",
+    "P06-B0086"
+  ],
+  "independent_tests": {
+    "migration_inventory_gate_test.py": {
+      "cases": 4,
+      "exit": 0
+    },
+    "migration_checksum_gate_test.py": {
+      "cases": 6,
+      "exit": 0
+    },
+    "checksum_gate_real_14_migrations": {
+      "exit": 0,
+      "locked": 14
+    }
+  },
+  "double_counted_in_new_run": false
+}

@@ -1,0 +1,70 @@
+{
+  "checkpoint": "0.22.0",
+  "predecessor_sha256": "bc025b50ca968b73d3d48ebe739294a5e46a9855c54e3ebd51d2a10e43dc2c43",
+  "predecessor_manifest_files_verified": 631,
+  "recorded_utc": "2026-10-30T08:11:20.389475+00:00",
+  "batch_target": 10,
+  "batch_verified": 10,
+  "java_batch_assertions": 45,
+  "java_batch_commands": 5,
+  "typescript_batch_commands": 5,
+  "full_java_regression": {
+    "exit_code": 0,
+    "evidence": "evidence/batches/v220-java-full-regression.log",
+    "note": "inherited Java security regression; no PostgreSQL"
+  },
+  "ux_core": {
+    "exit_code": 0,
+    "node_tests_passed": 103,
+    "node_tests_failed": 0,
+    "evidence": "evidence/batches/v220-ux-full-regression.log"
+  },
+  "python_source_contract": {
+    "exit_code": 0,
+    "scripts_passed": 43,
+    "scripts_failed": 0,
+    "evidence": "evidence/batches/v220-python-regression.json"
+  },
+  "chromium_static_preview": {
+    "exit_code": 0,
+    "checks_passed": 48,
+    "note": "static specimens only, NOT compiled Next.js/Expo",
+    "evidence": "evidence/batches/v220-chromium-regression.json"
+  },
+  "tsx_syntax": {
+    "exit_code": 0,
+    "files_parsed": 4,
+    "note": "syntax-only, not type-check or build"
+  },
+  "clinical_release_request": {
+    "exit_code": 3,
+    "result": "DENIED",
+    "evidence": "evidence/batches/v220-release-denial.log"
+  },
+  "canonical_modules": 40,
+  "canonical_screens": 261,
+  "clinical_screens_implemented": 0,
+  "phases_certified": 0,
+  "blocked": [
+    "PostgreSQL/RLS restricted role",
+    "production OIDC",
+    "Next.js/Expo dependencies/build",
+    "Android/iOS device tests",
+    "human clinical/security approval",
+    "GitHub repository not verified"
+  ],
+  "persistent_library": {
+    "status": "FAILED",
+    "reason": "library_storage_limit_exceeded",
+    "current_overwrite": "container_session_expired",
+    "latest_verified_library": "v0.21.0",
+    "conversation_artifact": "v0.22.0 generated ZIP"
+  },
+  "interrupted_attempts": [
+    {
+      "command": "sequential Python source/contract suite",
+      "result": "container tool timeout before aggregate report; no success counted",
+      "resolution": "43 individual scripts subsequently completed with exit_code=0 in bounded parallel execution"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "batch": "P06-B0029",
+    "component": "AppointmentTransactionExecutor",
+    "exit_code": 0,
+    "stdout": "PASS AppointmentTransactionExecutor 5\n",
+    "stderr": ""
+  },
+  {
+    "batch": "P06-B0030",
+    "component": "AppointmentTimeBounds",
+    "exit_code": 0,
+    "stdout": "PASS AppointmentTimeBounds 6\n",
+    "stderr": ""
+  },
+  {
+    "batch": "P06-B0031",
+    "component": "AppointmentScopeKeys",
+    "exit_code": 0,
+    "stdout": "PASS AppointmentScopeKeys 6\n",
+    "stderr": ""
+  }
+]

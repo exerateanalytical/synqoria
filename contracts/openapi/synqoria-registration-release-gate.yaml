@@ -1,0 +1,25 @@
+openapi: 3.1.0
+info:
+  title: SYNQORIA Registration Release Boundary
+  version: 0.14.0-draft
+  description: No registration write path is enabled until external clinical/security/data gates are verified.
+paths: {}
+components:
+  schemas:
+    RegistrationReleaseGate:
+      type: object
+      additionalProperties: false
+      required: [serverIdentityVerified, committedReviewEvidence, liveDatabaseRlsVerified, clinicalSafetySignedOff, patientCreationEnabled]
+      properties:
+        serverIdentityVerified: {type: boolean, const: false}
+        committedReviewEvidence: {type: boolean, const: false}
+        liveDatabaseRlsVerified: {type: boolean, const: false}
+        clinicalSafetySignedOff: {type: boolean, const: false}
+        patientCreationEnabled: {type: boolean, const: false}
+    RegistrationUnavailable:
+      type: object
+      additionalProperties: false
+      required: [code, retrySameCommandOnly]
+      properties:
+        code: {type: string, enum: [REGISTRATION_NOT_AUTHORIZED, REGISTRATION_OUTCOME_UNKNOWN]}
+        retrySameCommandOnly: {type: boolean}

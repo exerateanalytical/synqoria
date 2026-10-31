@@ -1,0 +1,246 @@
+{
+  "total": 40,
+  "passed": 40,
+  "results": [
+    {
+      "name": "test_baseline.py",
+      "exit": 0,
+      "stdout": "PASS: planning integrity, 40 unique modules, 261 unique canonical screens, 20 phases, non-fabricated code statuses\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_batch_ledger.py",
+      "exit": 0,
+      "stdout": "PASS: ten independent batch evidence records, monotonic phase counts, no false certification\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_contract.py",
+      "exit": 0,
+      "stdout": "PASS: draft OpenAPI YAML parsed; secured patient path, 404 nondisclosure and placeholder identity endpoints\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_event_envelope.py",
+      "exit": 0,
+      "stdout": "PASS: 8 event metadata schema validation cases; no broker integration\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_locked_mobile_shells.py",
+      "exit": 0,
+      "stdout": "PASS: 2 unauthenticated Expo shells have disabled tab navigation source guards\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_loopback_http_contract.py",
+      "exit": 0,
+      "stdout": "PASS: loopback adapter contract routes and fail-closed status definition; no OIDC claim\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_merge_ledger.py",
+      "exit": 0,
+      "stdout": "PASS: 19 reconciled historical increments retained, 30 historical batches incl P00, no clinical screens or certifications\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_navigation_contract.py",
+      "exit": 0,
+      "stdout": "PASS: 261 honest screen route records, 3 shell roots, 40 module IDs; no false canonical screen implementation claims\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_shell_sources.py",
+      "exit": 0,
+      "stdout": "PASS: bilingual, denied-by-default web shell and restrained responsive style source assertions\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_source_safety.py",
+      "exit": 0,
+      "stdout": "PASS: static design prohibitions, native shell source and 3 web shell sources\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_sql_identity.py",
+      "exit": 0,
+      "stdout": "PASS: 13 patient/consent SQL static assertions; PostgreSQL NOT executed\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_sql_new_migrations.py",
+      "exit": 0,
+      "stdout": "PASS: 28 static SQL assertions across V002/V003; no DB execution\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_sql_outbox.py",
+      "exit": 0,
+      "stdout": "PASS: 12 outbox/inbox static assertions; PostgreSQL NOT executed\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_sql_scope_foundation.py",
+      "exit": 0,
+      "stdout": "PASS: 5 domain scope DDL definitions, composite FKs, default-deny RLS source (SQL NOT EXECUTED)\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v090_batches.py",
+      "exit": 0,
+      "stdout": "PASS: 10 evidence-verified new batch IDs, no fictitious screen/certification completion\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v090_jdbc_schema.py",
+      "exit": 0,
+      "stdout": "PASS: JDBC SQL selectors aligned with exact source DDL tables and column names (static only)\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v100_audit_schema.py",
+      "exit": 0,
+      "stdout": "PASS v100 clinical audit schema/statement alignment; STATIC only, PostgreSQL not executed\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v100_batches.py",
+      "exit": 0,
+      "stdout": "PASS v0.10.0: 10 batch files and fail-closed phase/certification counters\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v110_batches.py",
+      "exit": 0,
+      "stdout": "PASS v0.11.0: 10 distinct implemented+tested source records; no clinical or release certification\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v110_mobile_source.py",
+      "exit": 0,
+      "stdout": "PASS: both native shell sources use shared bilingual safe navigation with disabled data tabs; NOT Expo-tested\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v120_batches.py",
+      "exit": 0,
+      "stdout": "PASS v0.12.0: 10 distinct source/unit batches, 261 clinical screens still unimplemented and release gates closed\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v120_registration_source.py",
+      "exit": 0,
+      "stdout": "PASS v0.12.0 registration SQL + locked responsive screen source (static only, no compiled Next/PG)\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v130_batches.py",
+      "exit": 0,
+      "stdout": "PASS v0.13.0: 10 tested increments, canonical inventory and fail-closed clinical gates\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v130_registration_contract.py",
+      "exit": 0,
+      "stdout": "PASS P01-B0029: draft schema forbids client trusted fields and exposes zero paths\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v130_registration_source.py",
+      "exit": 0,
+      "stdout": "PASS v0.13.0: quarantined identity lookup SQL and locked bilingual web/native intake source\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v140_source_contract.py",
+      "exit": 0,
+      "stdout": "PASS P01-B0030/P02-B0033-36: unexposed contract, RLS quarantine, read-only UI sources, intact canonical inventory\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v150_checkpoint.py",
+      "exit": 0,
+      "stdout": "PASS v0.15.0 10 unique verified non-clinical increments, 261 unimplemented screens, no release claims\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v150_review_events.py",
+      "exit": 0,
+      "stdout": "PASS P01-B0031 draft SQL constraints and fail-closed RLS: STATIC ONLY, PostgreSQL not run\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v160_checkpoint.py",
+      "exit": 0,
+      "stdout": "PASS v0.16.0 10 individually tested nonclinical increments, 40 modules, 261 locked screens, no release\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v160_native_integration.py",
+      "exit": 0,
+      "stdout": "PASS P02-B0043 native source integration; source-only, not Expo build\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v160_release_gate.py",
+      "exit": 0,
+      "stdout": "PASS P01-B0032 release gate denies promotion and validates canonical scope\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v170_checkpoint.py",
+      "exit": 0,
+      "stdout": "PASS v0.17.0 10 individually tested foundation batches, 40 modules, 261 locked screens, no clinical release\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v170_native_integration.py",
+      "exit": 0,
+      "stdout": "PASS v0.17 native source integration: staff/patient AppState, proxy clear, accessible locked status; NO native build\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v180_checkpoint.py",
+      "exit": 0,
+      "stdout": "PASS v0.18.0: 10 separately tested nonclinical increments; 40 modules, 261 unimplemented screens; release locked\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v180_native_source.py",
+      "exit": 0,
+      "stdout": "PASS: native read-only models wired in staff/patient source; Expo/device NOT built\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v190_checkpoint.py",
+      "exit": 0,
+      "stdout": "PASS v0.19.0 10 independently tested components, 40 modules, 261 unimplemented screens; release locked\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v200_checkpoint.py",
+      "exit": 0,
+      "stdout": "PASS v0.20.0 ten individually evidenced foundations; 40 modules/261 screens unchanged and clinical release locked\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v200_native_sources.py",
+      "exit": 0,
+      "stdout": "PASS P02-B0058 both RN sources keyboard/safe area integration; package/config source only\nPASS P02-B0061 native disabled action has disabled button semantics; no clinical write\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v210_checkpoint.py",
+      "exit": 0,
+      "stdout": "PASS v0.21.0: 10 individually evidenced source/unit batches, 40 modules, 261 unimplemented clinical screens, release locked\n",
+      "stderr": ""
+    },
+    {
+      "name": "test_v210_native_integration.py",
+      "exit": 0,
+      "stdout": "PASS P02 native source integration: 2 separate apps, locked and accessible; not compiled/device-tested\n",
+      "stderr": ""
+    }
+  ]
+}

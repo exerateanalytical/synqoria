@@ -1,0 +1,160 @@
+{
+  "version": "0.28.0",
+  "created_utc": "2026-10-30T14:05:45.430088+00:00",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "java_compile_exit_code": 0,
+  "results": [
+    {
+      "batch": "P01-B0043",
+      "scope": "Real-file build artifact integrity verifier; synthetic fixtures only",
+      "argv": [
+        "python",
+        "tests/test_v280_build_attestation.py"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "duration_seconds": 0.818,
+      "log": "evidence/batches/P01-B0043-v280.log",
+      "verification_level": "unit_or_static_browser_only"
+    },
+    {
+      "batch": "P01-B0044",
+      "scope": "Manual reviewed-lock proposal CI, fail-closed build prerequisite",
+      "argv": [
+        "python",
+        "tests/test_v280_ci_candidate.py"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "duration_seconds": 0.942,
+      "log": "evidence/batches/P01-B0044-v280.log",
+      "verification_level": "unit_or_static_browser_only"
+    },
+    {
+      "batch": "P02-B0093",
+      "scope": "Compiled TypeScript disclosure controller in real Chromium DOM",
+      "argv": [
+        "python",
+        "tests/test_v280_more_focus.py"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "duration_seconds": 2.739,
+      "log": "evidence/batches/P02-B0093-v280.log",
+      "verification_level": "unit_or_static_browser_only"
+    },
+    {
+      "batch": "P02-B0094",
+      "scope": "Chromium short-viewport/200% EN-FR responsive reflow specimen",
+      "argv": [
+        "python",
+        "tests/test_v280_short_viewport.py"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "duration_seconds": 2.492,
+      "log": "evidence/batches/P02-B0094-v280.log",
+      "verification_level": "unit_or_static_browser_only"
+    },
+    {
+      "batch": "P06-B0001",
+      "scope": "DST-aware local appointment time windows and overlap semantics",
+      "argv": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-v280-classes",
+        "org.synqoria.scheduling.AppointmentWindowTest"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "duration_seconds": 0.119,
+      "log": "evidence/batches/P06-B0001-v280.log",
+      "verification_level": "unit_or_static_browser_only"
+    },
+    {
+      "batch": "P06-B0002",
+      "scope": "Appointment lifecycle with optimistic revision and cancellation reasons",
+      "argv": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-v280-classes",
+        "org.synqoria.scheduling.AppointmentAggregateTest"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "duration_seconds": 0.091,
+      "log": "evidence/batches/P06-B0002-v280.log",
+      "verification_level": "unit_or_static_browser_only"
+    },
+    {
+      "batch": "P06-B0003",
+      "scope": "Tenant/facility/resource conflict prevention under concurrency (memory only)",
+      "argv": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-v280-classes",
+        "org.synqoria.scheduling.ResourceReservationIndexTest"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "duration_seconds": 0.141,
+      "log": "evidence/batches/P06-B0003-v280.log",
+      "verification_level": "unit_or_static_browser_only"
+    },
+    {
+      "batch": "P06-B0004",
+      "scope": "Trusted tenant/facility/patient/capability authorization",
+      "argv": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-v280-classes",
+        "org.synqoria.scheduling.AppointmentAccessPolicyTest"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "duration_seconds": 0.093,
+      "log": "evidence/batches/P06-B0004-v280.log",
+      "verification_level": "unit_or_static_browser_only"
+    },
+    {
+      "batch": "P06-B0005",
+      "scope": "Length-prefixed scoped SHA-256 command fingerprint",
+      "argv": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-v280-classes",
+        "org.synqoria.scheduling.AppointmentCommandFingerprintTest"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "duration_seconds": 0.084,
+      "log": "evidence/batches/P06-B0005-v280.log",
+      "verification_level": "unit_or_static_browser_only"
+    },
+    {
+      "batch": "P06-B0006",
+      "scope": "Denied-safe workflow preflight and outbox intent (no DB writes)",
+      "argv": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-v280-classes",
+        "org.synqoria.scheduling.AppointmentWorkflowPreflightTest"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "duration_seconds": 0.132,
+      "log": "evidence/batches/P06-B0006-v280.log",
+      "verification_level": "unit_or_static_browser_only"
+    }
+  ],
+  "clinical_release": false,
+  "app_builds_verified": false,
+  "live_postgres_verified": false
+}

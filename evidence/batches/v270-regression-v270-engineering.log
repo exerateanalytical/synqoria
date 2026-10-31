@@ -1,0 +1,15 @@
+COMMAND ['python', 'tests/test_v270_engineering.py', '-v']
+EXIT 0
+EXPECTED 0
+STDOUT
+
+STDERR
+test_archive_integrity (__main__.Engineering.test_archive_integrity) ... ok
+test_build_attempt_fail_closed (__main__.Engineering.test_build_attempt_fail_closed) ... ok
+test_lock_integrity (__main__.Engineering.test_lock_integrity) ... ok
+test_pins (__main__.Engineering.test_pins) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.006s
+
+OK

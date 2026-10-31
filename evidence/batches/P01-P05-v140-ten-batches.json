@@ -1,0 +1,147 @@
+{
+  "checkpoint": "v0.14.0",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "scope": "Java pure unit / JDBC proxy, TypeScript Node unit, static OpenAPI/SQL/source checks only; no real web/mobile or DB build",
+  "recorded_utc": "2026-10-30T01:14:14.002415+00:00",
+  "results": [
+    {
+      "batch": "P05-B0011",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-security-classes",
+        "org.synqoria.registration.V140ReviewBoundaryTest",
+        "P05-B0011"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS P05-B0011 6 assertions; pure Java/JDBC proxy only\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P05-B0012",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-security-classes",
+        "org.synqoria.registration.V140ReviewBoundaryTest",
+        "P05-B0012"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS P05-B0012 8 assertions; pure Java/JDBC proxy only\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P05-B0013",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-security-classes",
+        "org.synqoria.registration.V140ReviewBoundaryTest",
+        "P05-B0013"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS P05-B0013 7 assertions; pure Java/JDBC proxy only\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P05-B0014",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-security-classes",
+        "org.synqoria.registration.V140ReviewBoundaryTest",
+        "P05-B0014"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS P05-B0014 10 assertions; pure Java/JDBC proxy only\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P05-B0015",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-security-classes",
+        "org.synqoria.registration.V140ReviewBoundaryTest",
+        "P05-B0015"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS P05-B0015 6 assertions; pure Java/JDBC proxy only\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P02-B0033",
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=P02-B0033",
+        "packages/ux-core/tests/v140-review-navigation.test.cjs"
+      ],
+      "exit_code": 0,
+      "stdout": "TAP version 13\n# Subtest: P02-B0033 registration fields are bilingual, unique, and avoid invented identifying values\nok 1 - P02-B0033 registration fields are bilingual, unique, and avoid invented identifying values\n  ---\n  duration_ms: 1.456836\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 64.157096\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P02-B0034",
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=P02-B0034",
+        "packages/ux-core/tests/v140-review-navigation.test.cjs"
+      ],
+      "exit_code": 0,
+      "stdout": "TAP version 13\n# Subtest: P02-B0034 staff patient registration remains subroute and denies untrusted workspace navigation\nok 1 - P02-B0034 staff patient registration remains subroute and denies untrusted workspace navigation\n  ---\n  duration_ms: 0.866573\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 64.270138\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P02-B0035",
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=P02-B0035",
+        "packages/ux-core/tests/v140-review-navigation.test.cjs"
+      ],
+      "exit_code": 0,
+      "stdout": "TAP version 13\n# Subtest: P02-B0035 registration cannot be submitted on any local-only ready state\nok 1 - P02-B0035 registration cannot be submitted on any local-only ready state\n  ---\n  duration_ms: 1.207737\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 68.442749\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P02-B0036",
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=P02-B0036",
+        "packages/ux-core/tests/v140-review-navigation.test.cjs"
+      ],
+      "exit_code": 0,
+      "stdout": "TAP version 13\n# Subtest: P02-B0036 native accessibility copy maintains locked action and 48px targets\nok 1 - P02-B0036 native accessibility copy maintains locked action and 48px targets\n  ---\n  duration_ms: 0.931538\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 60.990834\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P01-B0030",
+      "command": [
+        "python",
+        "tests/test_v140_source_contract.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS P01-B0030/P02-B0033-36: unexposed contract, RLS quarantine, read-only UI sources, intact canonical inventory\n",
+      "stderr": "",
+      "verified": true
+    }
+  ]
+}

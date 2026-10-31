@@ -1,0 +1,407 @@
+openapi: 3.0.3
+info:
+  title: SYNQORIA M03 restricted triage HTTP contract
+  version: 0.57.0
+  description: Internal evidence-only contract. Requires verified production OIDC/RLS/clinical
+    review before deployment; no clinical priority inference.
+servers:
+- url: https://{cellHost}
+  variables:
+    cellHost:
+      default: hospital.example.invalid
+tags:
+- name: M03 Triage
+paths:
+  /api/v1/triage/patients/{patientId}/cases/{caseId}/commands:
+    post:
+      summary: Authenticated scoped command; actor, tenant and proof never accepted
+        from JSON
+      security:
+      - bearerAuth: []
+      parameters: &id001
+      - name: patientId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: caseId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriageCommand'
+      responses:
+        '200': &id002
+          description: Minimal evidence receipt; no patient details
+          headers:
+            Cache-Control:
+              schema:
+                type: string
+                enum:
+                - no-store, private
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriageReceipt'
+        '400':
+          description: Malformed/untrusted request
+        '401':
+          description: Session not verified
+        '404':
+          description: Resource hidden or access denied
+        '409':
+          description: Workflow state conflict
+        '412':
+          description: Optimistic revision conflict
+        '422':
+          description: Invalid clinical command evidence
+        '503':
+          description: Service unavailable; fail closed
+  /api/v1/triage/patients/{patientId}/cases/{caseId}/intake:
+    post:
+      summary: Transactional first arrival; revision one auditable genesis
+      security:
+      - bearerAuth: []
+      parameters: *id001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriageIntake'
+      responses:
+        '201': *id002
+        '400':
+          description: Malformed/untrusted request
+        '401':
+          description: Session not verified
+        '404':
+          description: Resource hidden or access denied
+        '409':
+          description: Workflow state conflict
+        '412':
+          description: Optimistic revision conflict
+        '422':
+          description: Invalid clinical command evidence
+        '503':
+          description: Service unavailable; fail closed
+  /api/v1/triage/patients/{patientId}/views/{view}:
+    post:
+      summary: Explicit-case patient-scoped worklist; no unrestricted search
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: patientId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: view
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - FACILITY_QUEUE
+          - STATION_QUEUE
+          - PENDING_HANDOVERS
+          - MANUAL_ESCALATIONS
+          - PENDING_REASSESSMENTS
+          - SAFETY_HOLDS
+          - CLINICIAN_WORKLIST
+          - ARRIVALS_SINCE
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriageWorklist'
+      responses:
+        '200': *id002
+        '400':
+          description: Malformed/untrusted request
+        '401':
+          description: Session not verified
+        '404':
+          description: Resource hidden or access denied
+        '409':
+          description: Workflow state conflict
+        '412':
+          description: Optimistic revision conflict
+        '422':
+          description: Invalid clinical command evidence
+        '503':
+          description: Service unavailable; fail closed
+  /api/v1/triage/patients/{patientId}/cases/{caseId}:
+    get:
+      summary: Authorized minimal case state; never clinical free text
+      security:
+      - bearerAuth: []
+      parameters: *id001
+      responses:
+        '200':
+          description: Patient-scoped summary, no-store private
+          headers:
+            Cache-Control:
+              schema:
+                type: string
+                enum: ['no-store, private']
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required: [case]
+                properties:
+                  case:
+                    $ref: '#/components/schemas/TriageCaseSummary'
+        '400': {description: Invalid request}
+        '401': {description: Verified session required}
+        '404': {description: Patient or case not disclosed}
+        '503': {description: Service unavailable}
+  /api/v1/triage/patients/{patientId}/cases/{caseId}/history:
+    get:
+      summary: Patient-scoped bounded audit page; no patient note content
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: patientId
+        in: path
+        required: true
+        schema: {type: string, format: uuid}
+      - name: caseId
+        in: path
+        required: true
+        schema: {type: string, format: uuid}
+      - name: afterRevision
+        in: query
+        required: false
+        schema: {type: integer, minimum: 0, maximum: 2147483647}
+      responses:
+        '200':
+          description: At most 100 strictly increasing audit events with revision cursor
+          headers:
+            Cache-Control:
+              schema:
+                type: string
+                enum: ['no-store, private']
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriageAuditPage'
+        '400': {description: Invalid request}
+        '401': {description: Verified session required}
+        '404': {description: Patient or case not disclosed}
+        '503': {description: Service unavailable}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OIDC access token (verified server-side)
+  schemas:
+    TriageReceipt:
+      type: object
+      additionalProperties: false
+      required:
+      - revision
+      - eventDigest
+      - replay
+      properties:
+        revision:
+          type: integer
+          minimum: 1
+        eventDigest:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+        replay:
+          type: boolean
+    TriageIntake:
+      type: object
+      additionalProperties: false
+      required:
+      - commandId
+      - expectedRevision
+      properties:
+        commandId:
+          type: string
+          format: uuid
+        expectedRevision:
+          type: integer
+          enum:
+          - 0
+        appointment:
+          type: string
+          format: uuid
+    ObservationEvidence:
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - code
+      - value
+      - unit
+      - takenAt
+      properties:
+        id:
+          type: string
+          format: uuid
+        code:
+          type: string
+          minLength: 1
+          maxLength: 64
+        value:
+          type: string
+          minLength: 1
+          maxLength: 256
+        unit:
+          type: string
+          minLength: 1
+          maxLength: 48
+        takenAt:
+          type: string
+          format: date-time
+          description: UTC instant only; recordedBy injected from verified actor
+        replaces:
+          type: string
+          format: uuid
+    TriageCommand:
+      type: object
+      additionalProperties: false
+      required:
+      - commandId
+      - expectedRevision
+      - action
+      properties:
+        commandId:
+          type: string
+          format: uuid
+        expectedRevision:
+          type: integer
+          minimum: 1
+        action:
+          type: string
+          enum:
+          - ARRIVAL_REASON
+          - LANGUAGE
+          - INTERPRETER_REQUEST
+          - ACCESSIBILITY_SUPPORT
+          - IDENTITY_VERIFICATION
+          - ARRIVAL_CHANNEL
+          - REFERRAL_REFERENCE
+          - ATTENDANT_CONTACT
+          - CONSENT_EVIDENCE
+          - QUEUE_ENQUEUE
+          - QUEUE_CALL
+          - QUEUE_RECALL
+          - QUEUE_RETURN
+          - QUEUE_PAUSE
+          - QUEUE_RESUME
+          - QUEUE_MOVE_STATION
+          - QUEUE_PATIENT_UNAVAILABLE
+          - SAFETY_HOLD
+          - SAFETY_HOLD_RELEASE
+          - ASSESSMENT_BEGIN
+          - OBSERVATION_RECORD
+          - OBSERVATION_CORRECTION
+          - ASSESSMENT_NARRATIVE
+          - ASSESSMENT_DEVICE_SOURCE
+          - PATIENT_STATEMENT
+          - ALLERGY_REVIEW_REFERENCE
+          - ASSESSMENT_ATTEST
+          - ASSESSMENT_ADDENDUM
+          - MEASUREMENT_DECLINED
+          - CLINICIAN_PRIORITY_SET
+          - CLINICIAN_PRIORITY_REVISED
+          - REASSESSMENT_REQUESTED
+          - REASSESSMENT_STARTED
+          - REASSESSMENT_DOCUMENTED
+          - REASSESSMENT_COMPLETED
+          - ESCALATION_RAISED
+          - ESCALATION_ACKNOWLEDGED
+          - ESCALATION_RESOLVED
+          - PRIORITY_EVIDENCE_LINK
+          - CLINICIAN_ASSIGNMENT
+          - CLINICIAN_REASSIGNMENT
+          - HANDOVER_REQUEST
+          - HANDOVER_ACCEPT
+          - HANDOVER_REJECT
+          - HANDOVER_NOTE
+          - RECEIVER_ACKNOWLEDGEMENT
+          - HANDOVER_FINALIZED
+          - TRIAGE_CLOSED
+          - HANDOVER_DESTINATION
+        rationale:
+          type: string
+          maxLength: 500
+        text:
+          type: string
+          maxLength: 4000
+        reference:
+          type: string
+          format: uuid
+        observation:
+          $ref: '#/components/schemas/ObservationEvidence'
+    TriageWorklist:
+      type: object
+      additionalProperties: false
+      required:
+      - caseIds
+      properties:
+        caseIds:
+          type: array
+          minItems: 1
+          maxItems: 50
+          uniqueItems: true
+          items:
+            type: string
+            format: uuid
+        stationOrClinician:
+          type: string
+          format: uuid
+        after:
+          type: string
+          format: date-time
+    TriageCaseSummary:
+      type: object
+      additionalProperties: false
+      required: [caseId, stage, revision, station, assignee, arrivedAt, paused, safetyHold, manualEscalation]
+      properties:
+        caseId: {type: string, format: uuid}
+        stage:
+          type: string
+          enum: [ARRIVED, WAITING, CALLED, ASSESSING, ASSESSED, PRIORITIZED, ASSIGNED, HANDED_OVER, CLOSED]
+        revision: {type: integer, minimum: 1, maximum: 2147483647}
+        station: {type: string, format: uuid, nullable: true}
+        assignee: {type: string, format: uuid, nullable: true}
+        arrivedAt: {type: string, format: date-time, description: UTC instant}
+        paused: {type: boolean}
+        safetyHold: {type: boolean}
+        manualEscalation: {type: boolean}
+    TriageAuditEvent:
+      type: object
+      additionalProperties: false
+      required: [revision, operation, occurredAt, digest]
+      properties:
+        revision: {type: integer, minimum: 1, maximum: 2147483647}
+        operation: {type: string, pattern: '^[A-Z_]{2,80}$'}
+        occurredAt: {type: string, format: date-time, description: UTC instant}
+        digest: {type: string, pattern: '^[0-9a-f]{64}$'}
+    TriageAuditPage:
+      type: object
+      additionalProperties: false
+      required: [history, nextAfterRevision]
+      properties:
+        history:
+          type: array
+          maxItems: 100
+          items: {$ref: '#/components/schemas/TriageAuditEvent'}
+        nextAfterRevision: {type: integer, minimum: 1, maximum: 2147483647, nullable: true}

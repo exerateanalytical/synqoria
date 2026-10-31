@@ -1,0 +1,43 @@
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.000s
+
+NO TESTS RAN
+PASS: planning integrity, 40 unique modules, 261 unique canonical screens, 20 phases, non-fabricated code statuses
+PASS: ten independent batch evidence records, monotonic phase counts, no false certification
+PASS: draft OpenAPI YAML parsed; secured patient path, 404 nondisclosure and placeholder identity endpoints
+PASS: 8 event metadata schema validation cases; no broker integration
+PASS: 19 static Chromium bilingual/viewport checks; NOT an application build
+PASS: 2 unauthenticated Expo shells have disabled tab navigation source guards
+PASS: loopback adapter contract routes and fail-closed status definition; no OIDC claim
+PASS: 19 reconciled historical increments retained, 30 historical batches incl P00, no clinical screens or certifications
+PASS: 261 honest screen route records, 3 shell roots, 40 module IDs; no false canonical screen implementation claims
+PASS: 10 Chromium preview checks (9 widths plus 200% text simulation)
+PASS: bilingual, denied-by-default web shell and restrained responsive style source assertions
+PASS: static design prohibitions, native shell source and 3 web shell sources
+PASS: 13 patient/consent SQL static assertions; PostgreSQL NOT executed
+PASS: 28 static SQL assertions across V002/V003; no DB execution
+PASS: 12 outbox/inbox static assertions; PostgreSQL NOT executed
+PASS: 5 domain scope DDL definitions, composite FKs, default-deny RLS source (SQL NOT EXECUTED)
+PASS: 10 evidence-verified new batch IDs, no fictitious screen/certification completion
+PASS: JDBC SQL selectors aligned with exact source DDL tables and column names (static only)
+PASS v100 clinical audit schema/statement alignment; STATIC only, PostgreSQL not executed
+PASS v0.10.0: 10 batch files and fail-closed phase/certification counters
+PASS v0.11.0: 10 distinct implemented+tested source records; no clinical or release certification
+PASS: both native shell sources use shared bilingual safe navigation with disabled data tabs; NOT Expo-tested
+PASS v0.12.0: 10 distinct source/unit batches, 261 clinical screens still unimplemented and release gates closed
+PASS registration static specimen: 19 viewport/locale checks; no compiled application
+PASS v0.12.0 registration SQL + locked responsive screen source (static only, no compiled Next/PG)
+PASS v0.13.0: 10 tested increments, canonical inventory and fail-closed clinical gates
+PASS P01-B0029: draft schema forbids client trusted fields and exposes zero paths
+PASS v0.13.0: quarantined identity lookup SQL and locked bilingual web/native intake source
+PASS P01-B0030/P02-B0033-36: unexposed contract, RLS quarantine, read-only UI sources, intact canonical inventory
+PASS v0.15.0 10 unique verified non-clinical increments, 261 unimplemented screens, no release claims
+PASS P01-B0031 draft SQL constraints and fail-closed RLS: STATIC ONLY, PostgreSQL not run
+PASS v0.16.0 10 individually tested nonclinical increments, 40 modules, 261 locked screens, no release
+PASS P02-B0043 native source integration; source-only, not Expo build
+PASS P01-B0032 release gate denies promotion and validates canonical scope
+PASS v0.17.0 10 individually tested foundation batches, 40 modules, 261 locked screens, no clinical release
+PASS v0.17 native source integration: staff/patient AppState, proxy clear, accessible locked status; NO native build
+PASS v0.18.0: 10 separately tested nonclinical increments; 40 modules, 261 unimplemented screens; release locked
+PASS: native read-only models wired in staff/patient source; Expo/device NOT built

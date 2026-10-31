@@ -1,0 +1,82 @@
+{
+  "checkpoint": "v0.55.0",
+  "parent": "v0.54.0",
+  "requested": 60,
+  "actual_implemented_and_tested": 14,
+  "not_counted": 46,
+  "batches": [
+    {
+      "id": "P06-B0289",
+      "description": "Persisted arrival/genesis audit anchor in M03 case aggregate; rejects invalid or replayed arrival genesis",
+      "verified_by": "genesis_audit"
+    },
+    {
+      "id": "P06-B0290",
+      "description": "Versioned deterministic encrypted snapshot payload codec v2, with explicit v1 parsing and strict unanchored-ledger denial",
+      "verified_by": "genesis_audit"
+    },
+    {
+      "id": "P06-B0291",
+      "description": "Intake and mutation idempotency replay now prove committed receipt corresponds to stored event",
+      "verified_by": "genesis_audit"
+    },
+    {
+      "id": "P06-B0292",
+      "description": "Mutation coordinator preserves immutable case scope, arrival timestamp, genesis and full prior audit chain",
+      "verified_by": "genesis_audit"
+    },
+    {
+      "id": "P06-B0293",
+      "description": "Full revision-by-revision continuity reconciliation of genesis, mutations, actor digests, receipt digests and outbox digests",
+      "verified_by": "genesis_audit"
+    },
+    {
+      "id": "P06-B0294",
+      "description": "Scoped JDBC row-lock loading verifies protected event, receipt and outbox rows with bounded timeouts and fail-closed evidence",
+      "verified_by": "jdbc_evidence_static"
+    },
+    {
+      "id": "P06-B0295",
+      "description": "Quarantined V019 schema correlates exact event revision/digest with receipts/outbox and preserves deny-all RLS",
+      "verified_by": "migration_gate_new"
+    },
+    {
+      "id": "P06-B0296",
+      "description": "Adversarial V019 source-review gates and immutable 19-migration SHA-256 lock",
+      "verified_by": "migration_gate_new"
+    },
+    {
+      "id": "P06-B0297",
+      "description": "Clinical case-history projection includes revision-one arrival evidence when anchored",
+      "verified_by": "read_http"
+    },
+    {
+      "id": "P06-B0298",
+      "description": "Authenticated single-case patient-scoped HTTP summary transport, no sensitive free-text serialization",
+      "verified_by": "read_http"
+    },
+    {
+      "id": "P06-B0299",
+      "description": "Authenticated patient-scoped HTTP audit-history transport with digest provenance",
+      "verified_by": "read_http"
+    },
+    {
+      "id": "P06-B0300",
+      "description": "HTTP patient/tenant access-denial, trusted evidence injection, safe errors and no-store security boundary",
+      "verified_by": "read_http"
+    },
+    {
+      "id": "P06-B0301",
+      "description": "Bounded 100-event revision-cursor HTTP history pagination with strict parameter validation",
+      "verified_by": "read_http"
+    },
+    {
+      "id": "P06-B0302",
+      "description": "Escaped JSON output and adversarial URI/header tests for read-only clinical transport",
+      "verified_by": "read_http"
+    }
+  ],
+  "next_batch": "P06-B0303",
+  "modules_certified": 0,
+  "screens_accepted": 0
+}

@@ -1,0 +1,296 @@
+[
+  {
+    "batch": "P06-B0169",
+    "previous_feature": "P06-B0095",
+    "operation": "ARRIVAL_REASON",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0170",
+    "previous_feature": "P06-B0096",
+    "operation": "LANGUAGE",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0171",
+    "previous_feature": "P06-B0097",
+    "operation": "INTERPRETER_REQUEST",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0172",
+    "previous_feature": "P06-B0098",
+    "operation": "ACCESSIBILITY_SUPPORT",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0173",
+    "previous_feature": "P06-B0099",
+    "operation": "IDENTITY_VERIFICATION",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0174",
+    "previous_feature": "P06-B0100",
+    "operation": "ARRIVAL_CHANNEL",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0175",
+    "previous_feature": "P06-B0101",
+    "operation": "REFERRAL_REFERENCE",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0176",
+    "previous_feature": "P06-B0102",
+    "operation": "ATTENDANT_CONTACT",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0177",
+    "previous_feature": "P06-B0103",
+    "operation": "CONSENT_EVIDENCE",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0178",
+    "previous_feature": "P06-B0104",
+    "operation": "QUEUE_ENQUEUE",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0179",
+    "previous_feature": "P06-B0105",
+    "operation": "QUEUE_CALL",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0180",
+    "previous_feature": "P06-B0106",
+    "operation": "QUEUE_RECALL",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0181",
+    "previous_feature": "P06-B0107",
+    "operation": "QUEUE_RETURN",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0182",
+    "previous_feature": "P06-B0108",
+    "operation": "QUEUE_PAUSE",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0183",
+    "previous_feature": "P06-B0109",
+    "operation": "QUEUE_RESUME",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0184",
+    "previous_feature": "P06-B0110",
+    "operation": "QUEUE_MOVE_STATION",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0185",
+    "previous_feature": "P06-B0111",
+    "operation": "QUEUE_PATIENT_UNAVAILABLE",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0186",
+    "previous_feature": "P06-B0112",
+    "operation": "SAFETY_HOLD",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0187",
+    "previous_feature": "P06-B0113",
+    "operation": "SAFETY_HOLD_RELEASE",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0188",
+    "previous_feature": "P06-B0114",
+    "operation": "ASSESSMENT_BEGIN",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0189",
+    "previous_feature": "P06-B0115",
+    "operation": "OBSERVATION_RECORD",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0190",
+    "previous_feature": "P06-B0116",
+    "operation": "OBSERVATION_CORRECTION",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0191",
+    "previous_feature": "P06-B0117",
+    "operation": "ASSESSMENT_NARRATIVE",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0192",
+    "previous_feature": "P06-B0118",
+    "operation": "ASSESSMENT_DEVICE_SOURCE",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0193",
+    "previous_feature": "P06-B0119",
+    "operation": "PATIENT_STATEMENT",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0194",
+    "previous_feature": "P06-B0120",
+    "operation": "ALLERGY_REVIEW_REFERENCE",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0195",
+    "previous_feature": "P06-B0121",
+    "operation": "ASSESSMENT_ATTEST",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0196",
+    "previous_feature": "P06-B0122",
+    "operation": "ASSESSMENT_ADDENDUM",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0197",
+    "previous_feature": "P06-B0123",
+    "operation": "MEASUREMENT_DECLINED",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0198",
+    "previous_feature": "P06-B0124",
+    "operation": "CLINICIAN_PRIORITY_SET",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0199",
+    "previous_feature": "P06-B0125",
+    "operation": "CLINICIAN_PRIORITY_REVISED",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0200",
+    "previous_feature": "P06-B0126",
+    "operation": "REASSESSMENT_REQUESTED",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0201",
+    "previous_feature": "P06-B0127",
+    "operation": "REASSESSMENT_STARTED",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0202",
+    "previous_feature": "P06-B0128",
+    "operation": "REASSESSMENT_DOCUMENTED",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0203",
+    "previous_feature": "P06-B0129",
+    "operation": "REASSESSMENT_COMPLETED",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0204",
+    "previous_feature": "P06-B0130",
+    "operation": "ESCALATION_RAISED",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0205",
+    "previous_feature": "P06-B0131",
+    "operation": "ESCALATION_ACKNOWLEDGED",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0206",
+    "previous_feature": "P06-B0132",
+    "operation": "ESCALATION_RESOLVED",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0207",
+    "previous_feature": "P06-B0133",
+    "operation": "PRIORITY_EVIDENCE_LINK",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0208",
+    "previous_feature": "P06-B0134",
+    "operation": "CLINICIAN_ASSIGNMENT",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0209",
+    "previous_feature": "P06-B0135",
+    "operation": "CLINICIAN_REASSIGNMENT",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0210",
+    "previous_feature": "P06-B0136",
+    "operation": "HANDOVER_REQUEST",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0211",
+    "previous_feature": "P06-B0137",
+    "operation": "HANDOVER_ACCEPT",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0212",
+    "previous_feature": "P06-B0138",
+    "operation": "HANDOVER_REJECT",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0213",
+    "previous_feature": "P06-B0139",
+    "operation": "HANDOVER_NOTE",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0214",
+    "previous_feature": "P06-B0140",
+    "operation": "RECEIVER_ACKNOWLEDGEMENT",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0215",
+    "previous_feature": "P06-B0141",
+    "operation": "HANDOVER_FINALIZED",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0216",
+    "previous_feature": "P06-B0142",
+    "operation": "TRIAGE_CLOSED",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  },
+  {
+    "batch": "P06-B0217",
+    "previous_feature": "P06-B0143",
+    "operation": "HANDOVER_DESTINATION",
+    "test": "TriageAuthenticatedFeatureBatchesTest"
+  }
+]

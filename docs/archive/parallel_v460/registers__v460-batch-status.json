@@ -1,0 +1,10 @@
+{
+  "version": "v0.46.0",
+  "verified_batches": [
+    "P06-B0071"
+  ],
+  "next": "P06-B0072",
+  "phase_certified": false,
+  "clinical_screens_accepted": 0,
+  "modules_certified": 0
+}

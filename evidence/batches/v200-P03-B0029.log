@@ -1,0 +1,7 @@
+command=["java", "-ea", "-cp", "/mnt/data/synqoria_v20_build/classes", "org.synqoria.security.V200OidcFoundationsTest", "P03-B0029"]
+exit=0 P03-B0029
+STDOUT:
+PASS P03-B0029 11 assertions; no production identity admission
+
+STDERR:
+

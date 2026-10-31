@@ -1,0 +1,8 @@
+
+> synqoria@0.16.0 check:source
+> node tests/test_tsx_syntax.cjs && python tests/test_shell_sources.py && python tests/test_source_safety.py && python tests/test_locked_mobile_shells.py
+
+PASS: 4 TSX syntax-only parses; NO dependency/type/native build assertions
+PASS: bilingual, denied-by-default web shell and restrained responsive style source assertions
+PASS: static design prohibitions, native shell source and 3 web shell sources
+PASS: 2 unauthenticated Expo shells have disabled tab navigation source guards

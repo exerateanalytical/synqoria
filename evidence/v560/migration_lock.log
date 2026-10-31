@@ -1,0 +1,7 @@
+COMMAND: python tools/migration_checksum_gate.py services/clinical-core/db/migration registers/migration-sha256-lock.json
+EXIT: 0
+
+STDOUT:
+{"latest": 19, "locked": 19}
+
+STDERR:

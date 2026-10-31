@@ -1,0 +1,80 @@
+$ java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentJdbcScopeTest
+exit=0
+PASS AppointmentJdbcScopeTest assertions=14
+
+
+$ java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentSqlBudgetTest
+exit=0
+PASS AppointmentSqlBudgetTest assertions=18
+
+
+$ java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentEventIntegrityProofTest
+exit=0
+PASS AppointmentEventIntegrityProofTest assertions=18
+
+
+$ java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentCommitProofTest
+exit=0
+PASS AppointmentCommitProofTest assertions=12
+
+
+$ java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentReplayProofTest
+exit=0
+PASS AppointmentReplayProofTest assertions=6
+
+
+$ java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentAuditIntegrityReaderTest
+exit=0
+PASS AppointmentAuditIntegrityReaderTest assertions=18
+
+
+$ java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentAuditIntegrityReaderTest
+exit=0
+PASS AppointmentAuditIntegrityReaderTest assertions=18
+
+
+$ java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentReplayProofTest
+exit=0
+PASS AppointmentReplayProofTest assertions=6
+
+
+$ java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentCommitProofTest
+exit=0
+PASS AppointmentCommitProofTest assertions=12
+
+
+$ java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentAuditStoreTest
+exit=0
+PASS AppointmentAuditStoreTest assertions=14
+
+
+$ java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentIdempotencyStoreTest
+exit=0
+PASS AppointmentIdempotencyStoreTest assertions=17
+
+
+$ java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentTransitionServiceTest
+exit=0
+PASS AppointmentTransitionServiceTest assertions=12
+
+
+$ java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentTransitionServiceTest
+exit=0
+PASS AppointmentTransitionServiceTest assertions=12
+
+
+$ java -ea -cp /mnt/data/synqoria_hourly_20261030/classes org.synqoria.scheduling.AppointmentTransitionPolicyTest
+exit=0
+PASS AppointmentTransitionPolicyTest assertions=31
+
+
+$ npm run check:registers
+exit=0
+
+> synqoria@0.45.0 check:registers
+> python tests/test_baseline.py && python tests/test_navigation_contract.py && python tests/test_v240_checkpoint.py
+
+PASS: planning integrity, 40 unique modules, 261 unique canonical screens, 20 phases, non-fabricated code statuses
+PASS: 261 honest screen route records, 3 shell roots, 40 module IDs; no false canonical screen implementation claims
+PASS historical v0.24.0 evidence in current 0.45.0 checkpoint; 40 modules; 261 screens; release denied
+

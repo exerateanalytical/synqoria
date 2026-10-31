@@ -1,0 +1,11 @@
+COMMAND ['python', 'tests/test_v270_engineering.py', 'Engineering.test_lock_integrity', '-v']
+EXIT 0
+STDOUT
+
+STDERR
+test_lock_integrity (__main__.Engineering.test_lock_integrity) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.005s
+
+OK

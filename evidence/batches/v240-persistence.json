@@ -1,0 +1,33 @@
+{
+  "checkpoint": "v0.24.0",
+  "library_folder": "/SYNQORIA",
+  "attempts": [
+    {
+      "operation": "upload",
+      "destination": "/SYNQORIA/SYNQORIA_v0.24.0_cumulative.zip",
+      "status": "failed",
+      "error_code": "library_storage_limit_exceeded"
+    },
+    {
+      "operation": "upload",
+      "destination": "/SYNQORIA/SYNQORIA_v0.24.0_SHA256.txt",
+      "status": "failed",
+      "error_code": "library_storage_limit_exceeded"
+    },
+    {
+      "operation": "upload",
+      "destination": "/SYNQORIA/SYNQORIA_STATUS_v0.24.0.md",
+      "status": "failed",
+      "error_code": "library_storage_limit_exceeded"
+    },
+    {
+      "operation": "overwrite",
+      "destination": "/SYNQORIA/SYNQORIA_CURRENT.zip",
+      "status": "failed",
+      "error_code": "library_storage_limit_exceeded"
+    }
+  ],
+  "latest_verified_library_checkpoint": "v0.21.0",
+  "latest_downloadable_conversation_checkpoint": "v0.24.0",
+  "deleted_historical_checkpoints": false
+}

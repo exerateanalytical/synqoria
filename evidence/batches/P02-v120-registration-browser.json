@@ -1,0 +1,119 @@
+{
+  "scope": "standalone HTML + actual global CSS; NOT compiled Next.js, NOT React behavior, NOT native",
+  "checks": [
+    {
+      "width": 320,
+      "locale": "en",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 320,
+      "locale": "fr",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 360,
+      "locale": "en",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 360,
+      "locale": "fr",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 412,
+      "locale": "en",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 412,
+      "locale": "fr",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 768,
+      "locale": "fr",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 1024,
+      "locale": "fr",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 1280,
+      "locale": "en",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 1280,
+      "locale": "fr",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 1920,
+      "locale": "fr",
+      "overflow": false,
+      "submit": "disabled"
+    },
+    {
+      "width": 320,
+      "locale": "fr",
+      "text_scale": "simulated_200_percent",
+      "overflow": false
+    }
+  ]
+}

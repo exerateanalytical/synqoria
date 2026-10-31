@@ -1,0 +1,22 @@
+command=["node", "--test", "--test-name-pattern=P02-B0062", "packages/ux-core/tests/v200-native-safety.test.cjs"]
+exit=0 P02-B0062
+STDOUT:
+TAP version 13
+# Subtest: P02-B0062 verified context cannot leak IDs and fails closed for offline, expiry, missing shift or proxy
+ok 1 - P02-B0062 verified context cannot leak IDs and fails closed for offline, expiry, missing shift or proxy
+  ---
+  duration_ms: 1.479086
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 105.630473
+
+STDERR:
+

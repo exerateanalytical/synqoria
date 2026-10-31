@@ -1,0 +1,34 @@
+[
+  {
+    "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentStateCodec.java",
+    "sha256": "76e71e899fab589d4fbdea7ccf2ada4a2514d216fcc9595881c25717e7e3dde3"
+  },
+  {
+    "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentRevisionFence.java",
+    "sha256": "8ef22fdc9355f963c9a07809015ec44ee858defa05adbb6e7e1832a226f8462c"
+  },
+  {
+    "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentScopeFence.java",
+    "sha256": "770ab0f56509abd848d929ce41692de3134ba7eea5cfd79dfa33dc941cc3e775"
+  },
+  {
+    "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentStateCodecTest.java",
+    "sha256": "d03e0c04c25eb48b1389bed22179fce52954931095a09f793d1a834e3b4db9b1"
+  },
+  {
+    "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentRevisionFenceTest.java",
+    "sha256": "e78dfb9780da138e3c30f9f82099584b93f3e0783cd5d468132871444c62f3c0"
+  },
+  {
+    "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentScopeFenceTest.java",
+    "sha256": "4360c6ddbb66d0ff64c1a571142fc5be25f0af4dce8c8751f7b771a1cd153694"
+  },
+  {
+    "path": "docs/program/STATUS.md",
+    "sha256": "dfb3ec928252cc0b06814c48afccfa6945bad0c9ec716ac8e3ea1204eee8869a"
+  },
+  {
+    "path": "evidence/batches/P06-v290-verified-batches.json",
+    "sha256": "a2fc628d24568b74e1bbad6ad0ce6ad83a9851f129288f613bcb460d4adb3148"
+  }
+]

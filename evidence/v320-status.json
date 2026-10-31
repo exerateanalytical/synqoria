@@ -1,0 +1,14 @@
+{
+  "version": "v0.32.0",
+  "inherited": "v0.31.0",
+  "batches_verified": 10,
+  "scope": "P06 isolated appointment safety components",
+  "clinical_screens_accepted": 0,
+  "canonical_modules": 40,
+  "canonical_screens": 261,
+  "postgres_integration": "blocked",
+  "application_builds": "blocked",
+  "clinical_release": "denied",
+  "next_batch": "P06-B0026",
+  "notes": "Isolated Java unit checks; no live database, production clinical writes or device tests."
+}

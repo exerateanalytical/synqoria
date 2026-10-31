@@ -1,0 +1,21 @@
+{
+  "README.md": "7108387fc53b1a3da913173c9926c105ebd6ff15d924a43c8406873265e90c0a",
+  "apps/patient-mobile/README.md": "13c9614a317a00c3c358024a50902fb3bd09957303ce2d08a78118b512cd7873",
+  "apps/staff-mobile/README.md": "c11c48068066bccfbc43e7d1e07ff6238eb3dd9b2e495374c7c014ecae373f28",
+  "apps/web/README.md": "fdba597d38769c362c91eb5b8fe024f744b2b1fea8e15e025c0b3cc7b6990c75",
+  "contracts/openapi/README.md": "d8306485dd067bd85efefb9ab8a3f73a2061ed5e7db4cffa8069ea92cd9435f0",
+  "docs/authority/SYNQORIA_Platform_Architecture_v2.1.md": "8f2573401159d097a3e2fdd2bf36eb70b6f2601e8518e774a66b9a72574588f8",
+  "docs/authority/SYNQORIA_UIUX_Master_v1.1.md": "be584dfc3228869f7dcc8526383af4fc4cb5f985014685ce2e890540df488016",
+  "docs/program/BATCH_PROTOCOL.md": "fc299dc9ea0a8758baa1b65a2e8d4b57609eeceb484b90e57e1a273d5d15f08e",
+  "docs/program/MOBILE_APP_CONTRACT.md": "67a5666d891f7093555f4e8abe5bb0bfea4568838441905ad7f8648b666d23bd",
+  "docs/program/NAVIGATION_AND_VISUAL_GATES.md": "a24c1b97badaae488c73f5bed44fce1acf0866200ebeb9880829ea6acb233b03",
+  "docs/program/PHASES.md": "636a629c86b8e1bb1c343d792d64a5fbd4244a8ac2bfe36c50b77e0a64964c6e",
+  "docs/program/STATUS.md": "70888711b6431c2b845fe9c2b3d920f90797e5ff321776f98e739960bbea9d41",
+  "evidence/README.md": "32b7ed8052ec5938c2782da7ab4e038553793472165445369d25cc0ea118e8a4",
+  "registers/canonical-modules.json": "1b1b9dd0b0b88b6060096db80f2d54f3b489a50a3e6b4c2b8269e6a020f19bea",
+  "registers/canonical-screens.json": "fa9f1bb264207a98d13572d89f6c0e8223cf553557c88ce885c51cbc61aff63f",
+  "registers/phases.json": "9f777e5403c1aefe7d05f5f8cff5929246b5946faae4bcbb67ec2c98d9d4b33f",
+  "services/clinical-core/README.md": "5f73d827b15bfeed4d363504f073ac7f02c0b0678d4a347e30e51f1d36f6b278",
+  "services/integration/README.md": "91ca1282e7547cd1c605664ddf56b58cc30632c1db29a1fc1ccdba7b404b1f17",
+  "tests/test_baseline.py": "42b1923af50153c508f9156d2351d71ba1bb0eca95c5cb9aaa3238f80a65e7e1"
+}

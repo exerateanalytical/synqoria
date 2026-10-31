@@ -1,0 +1,9 @@
+BATCH: P05-B0053
+COMMAND: bash -lc 'python tests/test_v250_review_audit_ddl.py && java -ea -cp /tmp/synqoria-v25-classes org.synqoria.registration.V250ReviewTransactionTest P05-B0053'
+EXIT: 0
+STDOUT:
+PASS P05-B0053 9 DDL static checks; migration UNAPPLIED
+PASS P05-B0053 2 mock-JDBC assertions; no live PostgreSQL/clinical authorization
+
+STDERR:
+

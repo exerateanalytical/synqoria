@@ -1,0 +1,14 @@
+COMMAND ['python', 'tests/test_v260_foundations.py', '-v']
+EXIT 0
+EXPECTED 0
+STDOUT
+
+STDERR
+test_ci (__main__.Foundation.test_ci) ... ok
+test_lock (__main__.Foundation.test_lock) ... ok
+test_runner (__main__.Foundation.test_runner) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 2.117s
+
+OK

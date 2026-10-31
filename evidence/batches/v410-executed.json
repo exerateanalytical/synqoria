@@ -1,0 +1,336 @@
+{
+  "version": "0.41.0",
+  "source_version": "0.40.0",
+  "created_utc": "2026-10-30T16:06:31.413453+00:00",
+  "target_batches": 20,
+  "completed_batches": 20,
+  "remaining_batches": 0,
+  "compile": {
+    "command": "javac -d <temporary build dir> <all clinical-core main/test java sources>",
+    "main_source_count": 194,
+    "test_source_count": 113,
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "limitations": [
+    "No PostgreSQL server, restricted-role RLS, native app, production OIDC, independent clinical sign-off or HTTP endpoint execution",
+    "Migration V014 source/static checked only; no SQL applied"
+  ],
+  "results": [
+    {
+      "batch": "P06-B0044",
+      "scope": "appointment scoped SQL and transition CAS",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentSchemaAlignmentTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentSchemaAlignmentTest assertions=18\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    },
+    {
+      "batch": "P06-B0045",
+      "scope": "locked patient-scoped snapshot",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentLockedSnapshotTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentLockedSnapshotTest assertions=13\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    },
+    {
+      "batch": "P06-B0046",
+      "scope": "idempotency quarantine migration",
+      "command": [
+        "python",
+        "tests/test_v410_idempotency_sql.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS idempotency quarantine migration static checks=18; PostgreSQL not executed\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "source_static_only"
+    },
+    {
+      "batch": "P06-B0047",
+      "scope": "durable idempotency JDBC adapter",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentIdempotencyStoreTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentIdempotencyStoreTest assertions=16\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    },
+    {
+      "batch": "P06-B0048",
+      "scope": "audit chain append JDBC adapter",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentAuditStoreTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentAuditStoreTest assertions=13\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    },
+    {
+      "batch": "P06-B0049",
+      "scope": "outbox append JDBC adapter",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentOutboxStoreTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentOutboxStoreTest assertions=13\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    },
+    {
+      "batch": "P06-B0050",
+      "scope": "clinical access admission gate",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentCommandAdmissionTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentCommandAdmissionTest assertions=11\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    },
+    {
+      "batch": "P06-B0051",
+      "scope": "restricted serializable transaction",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentRestrictedTransactionTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentRestrictedTransactionTest assertions=10\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    },
+    {
+      "batch": "P06-B0052",
+      "scope": "server-side canonical command digest",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentTransitionCommandTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentTransitionCommandTest assertions=11\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    },
+    {
+      "batch": "P06-B0053",
+      "scope": "atomic appointment transition orchestrator",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentTransitionServiceTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentTransitionServiceTest assertions=12\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    },
+    {
+      "batch": "P06-B0054",
+      "scope": "migration/JDBC source schema alignment",
+      "command": [
+        "python",
+        "tests/test_v410_schema_alignment.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS M02 schema/JDBC static alignment checks=116; live DB and restricted-role RLS unverified\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "source_static_only"
+    },
+    {
+      "batch": "P06-B0055",
+      "scope": "four-table RLS and non-owner role proof",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentTableRoleFenceTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentTableRoleFenceTest assertions=12\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    },
+    {
+      "batch": "P06-B0056",
+      "scope": "server-keyed actor pseudonym",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentActorPseudonymTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentActorPseudonymTest assertions=8\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    },
+    {
+      "batch": "P06-B0057",
+      "scope": "scoped audit chain integrity readback",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentAuditIntegrityReaderTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentAuditIntegrityReaderTest assertions=10\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    },
+    {
+      "batch": "P06-B0058",
+      "scope": "scoped administrative status read",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentStatusReadServiceTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentStatusReadServiceTest assertions=11\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    },
+    {
+      "batch": "P06-B0059",
+      "scope": "atomic transition failure matrix",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentTransitionFailureMatrixTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentTransitionFailureMatrixTest assertions=25\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    },
+    {
+      "batch": "P06-B0060",
+      "scope": "same-transaction four-record consistency proof",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentCommitProofTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentCommitProofTest assertions=6\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    },
+    {
+      "batch": "P06-B0061",
+      "scope": "fresh-connection bounded transaction retry",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentFreshConnectionRetryTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentFreshConnectionRetryTest assertions=17\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    },
+    {
+      "batch": "P06-B0062",
+      "scope": "bounded transaction-local SQL timeouts",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentSqlBudgetTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentSqlBudgetTest assertions=6\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    },
+    {
+      "batch": "P06-B0063",
+      "scope": "domain/SQL exhaustive lifecycle parity",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_run/v410_classes",
+        "org.synqoria.scheduling.AppointmentLifecycleParityTest"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS AppointmentLifecycleParityTest assertions=38 (36 transition pairs + 2 denial checks)\n",
+      "stderr": "",
+      "verified": true,
+      "test_type": "java_unit_or_mock_jdbc"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+COMMAND ["java", "-ea", "-cp", "/tmp/synqoria-v280-classes", "org.synqoria.scheduling.AppointmentWorkflowPreflightTest"]
+EXIT_CODE 0
+PASS P06-B0006 11 preflight authorization/transition/conflict/outbox assertions (no DB write)
+
+STDERR

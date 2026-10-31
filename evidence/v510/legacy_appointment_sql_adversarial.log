@@ -1,0 +1,12 @@
+
+---- STDERR ----
+test_b0065_quarantine_and_grants (appointment_migration_gate_test.GateTests.test_b0065_quarantine_and_grants) ... ok
+test_b0066_rls_force_and_public_revoke (appointment_migration_gate_test.GateTests.test_b0066_rls_force_and_public_revoke) ... ok
+test_b0067_scoped_table_columns (appointment_migration_gate_test.GateTests.test_b0067_scoped_table_columns) ... ok
+test_b0068_concurrent_reservation_exclusion (appointment_migration_gate_test.GateTests.test_b0068_concurrent_reservation_exclusion) ... ok
+test_b0069_idempotency_replay_integrity (appointment_migration_gate_test.GateTests.test_b0069_idempotency_replay_integrity) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.010s
+
+OK

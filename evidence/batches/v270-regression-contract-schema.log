@@ -1,0 +1,7 @@
+COMMAND ['python', 'tests/test_contract.py']
+EXIT 0
+EXPECTED 0
+STDOUT
+PASS: draft OpenAPI YAML parsed; secured patient path, 404 nondisclosure and placeholder identity endpoints
+
+STDERR

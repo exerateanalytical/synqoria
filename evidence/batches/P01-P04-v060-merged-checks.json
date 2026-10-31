@@ -1,0 +1,133 @@
+{
+  "recorded_utc": "2026-10-29T23:13:09.115030+00:00",
+  "scope": "unit/domain/independent in-memory prototypes/draft SQL-static/schema/source/syntax and standalone static Chromium specimens ONLY; no Next/Expo/OIDC/DB/HTTP integration",
+  "results": [
+    {
+      "id": "seed-manifest",
+      "command": "python tools/verify_initial_manifest.py",
+      "exit_code": 0,
+      "stdout": "PASS: 19 original seed ZIP entries match embedded SHA-256 manifest\n",
+      "stderr": ""
+    },
+    {
+      "id": "canonical-register",
+      "command": "python tests/test_baseline.py",
+      "exit_code": 0,
+      "stdout": "PASS: planning integrity, 40 unique modules, 261 unique canonical screens, 20 phases, non-fabricated code statuses\n",
+      "stderr": ""
+    },
+    {
+      "id": "route-integrity",
+      "command": "python tests/test_navigation_contract.py",
+      "exit_code": 0,
+      "stdout": "PASS: 261 honest screen route records, 3 shell roots, 40 module IDs; no false canonical screen implementation claims\n",
+      "stderr": ""
+    },
+    {
+      "id": "ux-typescript-node",
+      "command": "npm run check:ux",
+      "exit_code": 0,
+      "stdout": "\n> synqoria@0.6.0 check:ux\n> tsc -p packages/ux-core/tsconfig.json && node --test packages/ux-core/tests/*.test.cjs\n\nTAP version 13\n# Subtest: EN/FR dictionary is complete and does not return missing interface copy\nok 1 - EN/FR dictionary is complete and does not return missing interface copy\n  ---\n  duration_ms: 1.261386\n  type: 'test'\n  ...\n# Subtest: every navigation workspace has usable translations\nok 2 - every navigation workspace has usable translations\n  ---\n  duration_ms: 0.182039\n  type: 'test'\n  ...\n# Subtest: exact routing denies ungranted, unlicensed, wrong-shell and arbitrary descendants\nok 3 - exact routing denies ungranted, unlicensed, wrong-shell and arbitrary descendants\n  ---\n  duration_ms: 0.326063\n  type: 'test'\n  ...\n# Subtest: shell identification does not confuse similar routes\nok 4 - shell identification does not confuse similar routes\n  ---\n  duration_ms: 0.132466\n  type: 'test'\n  ...\n# Subtest: both mobile shells keep four translated, distinct destinations\nok 5 - both mobile shells keep four translated, distinct destinations\n  ---\n  duration_ms: 0.310189\n  type: 'test'\n  ...\n# Subtest: canonical detail surface only on exact registered independently tested screen\nok 6 - canonical detail surface only on exact registered independently tested screen\n  ---\n  duration_ms: 2.113157\n  type: 'test'\n  ...\n# Subtest: unimplemented screens cannot masquerade as routable pages\nok 7 - unimplemented screens cannot masquerade as routable pages\n  ---\n  duration_ms: 0.144353\n  type: 'test'\n  ...\n# Subtest: wrong shell, missing capability and license fail closed\nok 8 - wrong shell, missing capability and license fail closed\n  ---\n  duration_ms: 0.183872\n  type: 'test'\n  ...\n# Subtest: registry validator rejects duplicate routes, duplicate IDs and fictitious path mappings\nok 9 - registry validator rejects duplicate routes, duplicate IDs and fictitious path mappings\n  ---\n  duration_ms: 0.280024\n  type: 'test'\n  ...\n# Subtest: both apps expose exactly four stable destinations with More at end\nok 10 - both apps expose exactly four stable destinations with More at end\n  ---\n  duration_ms: 1.746985\n  type: 'test'\n  ...\n# Subtest: only verified capabilities may unlock a tab after authenticated session\nok 11 - only verified capabilities may unlock a tab after authenticated session\n  ---\n  duration_ms: 0.687077\n  type: 'test'\n  ...\n# Subtest: arbitrary paths and tab name injection fail closed\nok 12 - arbitrary paths and tab name injection fail closed\n  ---\n  duration_ms: 0.139236\n  type: 'test'\n  ...\n# Subtest: cache clear precedes backend verification, no authorization from UI alone\nok 13 - cache clear precedes backend verification, no authorization from UI alone\n  ---\n  duration_ms: 2.582842\n  type: 'test'\n  ...\n# Subtest: clear failure and authorization denial fail closed\nok 14 - clear failure and authorization denial fail closed\n  ---\n  duration_ms: 0.281066\n  type: 'test'\n  ...\n# Subtest: dispose invalidates late asynchronous authorization response\nok 15 - dispose invalidates late asynchronous authorization response\n  ---\n  duration_ms: 3.124383\n  type: 'test'\n  ...\n# Subtest: a new target clears old context and enters reauthorization\nok 16 - a new target clears old context and enters reauthorization\n  ---\n  duration_ms: 1.139546\n  type: 'test'\n  ...\n# Subtest: unsaved work requires confirmation; cancel preserves draft\nok 17 - unsaved work requires confirmation; cancel preserves draft\n  ---\n  duration_ms: 0.199826\n  type: 'test'\n  ...\n# Subtest: save requests do not imply server persistence; failed saves remain guarded\nok 18 - save requests do not imply server persistence; failed saves remain guarded\n  ---\n  duration_ms: 0.1892\n  type: 'test'\n  ...\n# Subtest: discard requires explicit confirmation and cannot bypass backend authorization\nok 19 - discard requires explicit confirmation and cannot bypass backend authorization\n  ---\n  duration_ms: 0.130883\n  type: 'test'\n  ...\n# Subtest: invalid IDs cannot enter patient navigation state\nok 20 - invalid IDs cannot enter patient navigation state\n  ---\n  duration_ms: 0.244492\n  type: 'test'\n  ...\n# Subtest: same patient and invalid action order do not change state\nok 21 - same patient and invalid action order do not change state\n  ---\n  duration_ms: 0.169921\n  type: 'test'\n  ...\n# Subtest: authorized root appears, child is never promoted to sidebar\nok 22 - authorized root appears, child is never promoted to sidebar\n  ---\n  duration_ms: 2.364068\n  type: 'test'\n  ...\n# Subtest: cross-shell, missing grants and unlicensed modules deny\nok 23 - cross-shell, missing grants and unlicensed modules deny\n  ---\n  duration_ms: 0.405871\n  type: 'test'\n  ...\n# Subtest: sensitive URLs, traversal, unsupported children and invalid IDs deny\nok 24 - sensitive URLs, traversal, unsupported children and invalid IDs deny\n  ---\n  duration_ms: 0.343759\n  type: 'test'\n  ...\n# Subtest: locally queued write is never silently labelled saved or synchronized\nok 25 - locally queued write is never silently labelled saved or synchronized\n  ---\n  duration_ms: 1.779784\n  type: 'test'\n  ...\n# Subtest: only matching, verified server acknowledgement may resolve unknown outcome\nok 26 - only matching, verified server acknowledgement may resolve unknown outcome\n  ---\n  duration_ms: 0.188579\n  type: 'test'\n  ...\n# Subtest: no invented operation identifiers or state shortcuts\nok 27 - no invented operation identifiers or state shortcuts\n  ---\n  duration_ms: 0.226014\n  type: 'test'\n  ...\n# Subtest: approved colour pairs meet 4.5:1 text contrast\nok 28 - approved colour pairs meet 4.5:1 text contrast\n  ---\n  duration_ms: 1.430837\n  type: 'test'\n  ...\n# Subtest: design tokens preserve approved palette\nok 29 - design tokens preserve approved palette\n  ---\n  duration_ms: 0.161169\n  type: 'test'\n  ...\n# Subtest: navigation only includes licensed and granted stable workspace roots\nok 30 - navigation only includes licensed and granted stable workspace roots\n  ---\n  duration_ms: 1.158314\n  type: 'test'\n  ...\n# Subtest: sidebar roots contain no details/edit/create routes or duplicate paths\nok 31 - sidebar roots contain no details/edit/create routes or duplicate paths\n  ---\n  duration_ms: 0.260746\n  type: 'test'\n  ...\n# Subtest: native mobile navigation has four labelled destinations and More\nok 32 - native mobile navigation has four labelled destinations and More\n  ---\n  duration_ms: 0.216771\n  type: 'test'\n  ...\n# Subtest: unsaved patient switch requires decision; clean switch reauthorizes and clears cache\nok 33 - unsaved patient switch requires decision; clean switch reauthorizes and clears cache\n  ---\n  duration_ms: 0.136962\n  type: 'test'\n  ...\n# Subtest: synchronization labels distinguish outcome unknown from confirmed success\nok 34 - synchronization labels distinguish outcome unknown from confirmed success\n  ---\n  duration_ms: 0.104415\n  type: 'test'\n  ...\n1..34\n# tests 34\n# suites 0\n# pass 34\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 170.509947\n",
+      "stderr": ""
+    },
+    {
+      "id": "tsx-syntax-only",
+      "command": "node tests/test_tsx_syntax.cjs",
+      "exit_code": 0,
+      "stdout": "PASS: 3 TSX syntax-only parses; NO dependency/type/native build assertions\n",
+      "stderr": ""
+    },
+    {
+      "id": "web-shell-source",
+      "command": "python tests/test_shell_sources.py",
+      "exit_code": 0,
+      "stdout": "PASS: bilingual, denied-by-default web shell and restrained responsive style source assertions\n",
+      "stderr": ""
+    },
+    {
+      "id": "source-style",
+      "command": "python tests/test_source_safety.py",
+      "exit_code": 0,
+      "stdout": "PASS: static design prohibitions, native shell source and 3 web shell sources\n",
+      "stderr": ""
+    },
+    {
+      "id": "openapi-parse",
+      "command": "python tests/test_contract.py",
+      "exit_code": 0,
+      "stdout": "PASS: draft OpenAPI YAML parsed; secured patient path, 404 nondisclosure and placeholder identity endpoints\n",
+      "stderr": ""
+    },
+    {
+      "id": "postgresql-sql-static",
+      "command": "python tests/test_sql_scope_foundation.py",
+      "exit_code": 0,
+      "stdout": "PASS: 5 domain scope DDL definitions, composite FKs, default-deny RLS source (SQL NOT EXECUTED)\n",
+      "stderr": ""
+    },
+    {
+      "id": "postgresql-outbox-sql-static",
+      "command": "python tests/test_sql_outbox.py",
+      "exit_code": 0,
+      "stdout": "PASS: 12 outbox/inbox static assertions; PostgreSQL NOT executed\n",
+      "stderr": ""
+    },
+    {
+      "id": "postgresql-identity-sql-static",
+      "command": "python tests/test_sql_identity.py",
+      "exit_code": 0,
+      "stdout": "PASS: 13 patient/consent SQL static assertions; PostgreSQL NOT executed\n",
+      "stderr": ""
+    },
+    {
+      "id": "event-envelope-schema",
+      "command": "python tests/test_event_envelope.py",
+      "exit_code": 0,
+      "stdout": "PASS: 8 event metadata schema validation cases; no broker integration\n",
+      "stderr": ""
+    },
+    {
+      "id": "clinical-status-matrix",
+      "command": "python tools/verify_status_matrix.py",
+      "exit_code": 0,
+      "stdout": "PASS: 261 screen + 40 module separate status rows; all clinical acceptance gates remain false\n",
+      "stderr": ""
+    },
+    {
+      "id": "batch-evidence-ledger",
+      "command": "python tests/test_batch_ledger.py",
+      "exit_code": 0,
+      "stdout": "PASS: ten independent batch evidence records, monotonic phase counts, no false certification\n",
+      "stderr": ""
+    },
+    {
+      "id": "parallel-checkpoint-merge",
+      "command": "python tests/test_merge_ledger.py",
+      "exit_code": 0,
+      "stdout": "PASS: reconciled two lineages, 19 distinct increments, 30 historical batches incl P00, 0 clinical screens, 0 certifications\n",
+      "stderr": ""
+    },
+    {
+      "id": "java-domain-policy",
+      "command": "bash tools/check_java_security.sh",
+      "exit_code": 0,
+      "stdout": "PASS: 11 Java tenant/facility/patient scope assertions\nPASS: 19 Java clinical proof assertions; NO OIDC/database clinical authorization integration\nPASS: 20 patient read non-disclosure assertions\nPASS: 13 Java facility directory assertions\nPASS: 13 idempotency guard assertions (in-memory only)\nPASS: 11 outbox fencing assertions (in-memory only)\nPASS: 14 session admission assertions (verifier stub, NO OIDC signature test)\nPASS: 11 explicit consent predicate assertions (no legal policy approval)\nPASS: 11 facility lifecycle assertions (in-memory only)\nPASS: 15 cell routing assertions (no network/TLS)\nPASS: 15 scoped idempotency contract assertions (in-memory only)\nPASS: 9 deterministic outbox intent assertions (no transaction yet)\nPASS: 11 inbox sequence assertions (in-memory only)\nPASS: 20 allowlisted API problem assertions\nPASS: 11 externally verified session evidence policy assertions; OIDC still not integrated\nPASS: 9 location hierarchy fail-closed assertions; no repository integration\n",
+      "stderr": ""
+    },
+    {
+      "id": "chromium-legacy-static-preview",
+      "command": "python tests/test_preview_browser.py",
+      "exit_code": 0,
+      "stdout": "PASS: 10 Chromium preview checks (9 widths plus 200% text simulation)\n",
+      "stderr": ""
+    },
+    {
+      "id": "chromium-bilingual-static-specimen",
+      "command": "python tests/test_i18n_preview_browser.py",
+      "exit_code": 0,
+      "stdout": "PASS: 19 static Chromium bilingual/viewport checks; NOT an application build\n",
+      "stderr": ""
+    }
+  ],
+  "all_passed": true
+}

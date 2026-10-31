@@ -1,0 +1,5 @@
+COMMAND ["python", "tests/test_v280_build_attestation.py"]
+EXIT_CODE 0
+PASS P01-B0043: build artifact integrity, absent output, symlink, failure gates (synthetic fixtures)
+
+STDERR

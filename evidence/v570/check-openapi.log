@@ -1,0 +1,10 @@
+test_audit_history_bounded_and_not_disclosing_notes (test_triage_v570_read_contract.TriageReadContractTests.test_audit_history_bounded_and_not_disclosing_notes) ... ok
+test_client_backend_summary_fields_align (test_triage_v570_read_contract.TriageReadContractTests.test_client_backend_summary_fields_align) ... ok
+test_reject_permissive_api_for_new_read_routes (test_triage_v570_read_contract.TriageReadContractTests.test_reject_permissive_api_for_new_read_routes) ... ok
+test_revision_cursor_and_backend_limit_align (test_triage_v570_read_contract.TriageReadContractTests.test_revision_cursor_and_backend_limit_align) ... ok
+test_summary_get_requires_bearer_and_no_store (test_triage_v570_read_contract.TriageReadContractTests.test_summary_get_requires_bearer_and_no_store) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.016s
+
+OK

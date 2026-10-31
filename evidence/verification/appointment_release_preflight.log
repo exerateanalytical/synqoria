@@ -1,0 +1,12 @@
+test_cli_exit_status (appointment_release_preflight_test.PreflightTests.test_cli_exit_status) ... {"status": "FAIL", "reason": "migration checksum lock missing", "database_runtime_verified": false}
+ok
+test_missing_lock_denied (appointment_release_preflight_test.PreflightTests.test_missing_lock_denied) ... ok
+test_mutated_migration_denied (appointment_release_preflight_test.PreflightTests.test_mutated_migration_denied) ... ok
+test_real_migrations_pass_without_runtime_certification (appointment_release_preflight_test.PreflightTests.test_real_migrations_pass_without_runtime_certification) ... ok
+test_unreviewed_new_migration_denied (appointment_release_preflight_test.PreflightTests.test_unreviewed_new_migration_denied) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.022s
+
+OK
+{"appointment_security_audit": "PASS", "clinical_release_approved": false, "database_runtime_verified": false, "immutable_lock_count": 14, "latest_version": 14, "migration_count": 14, "status": "PASS"}

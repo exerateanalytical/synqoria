@@ -1,0 +1,129 @@
+{
+  "checkpoint": "v0.10.0",
+  "parent": "v0.9.0",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "test_scope": "Java 21 JDBC mock + TypeScript Node + SQL static; NO PostgreSQL, OIDC, Next.js, Expo or clinical approval",
+  "results": [
+    {
+      "batch": "P01-B0020",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "sql_static_only",
+      "source_files": [
+        "services/clinical-core/db/migration/V004__clinical_read_audit_foundation.sql",
+        "tests/test_v100_audit_schema.py"
+      ],
+      "not_clinically_certified": true,
+      "note": "Default-deny, tenant- and facility-scoped clinical read audit migration; PostgreSQL static only"
+    },
+    {
+      "batch": "P01-B0021",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "java_mock_unit",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/persistence/ClinicalAuditEntry.java",
+        "services/clinical-core/src/test/java/org/synqoria/persistence/V100TransactionIntegrationTest.java"
+      ],
+      "not_clinically_certified": true,
+      "note": "Validated minimal clinical-read audit envelope without patient names or medical content"
+    },
+    {
+      "batch": "P01-B0022",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "java_mock_jdbc",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/persistence/AuditWriteJdbc.java",
+        "services/clinical-core/src/test/java/org/synqoria/persistence/V100TransactionIntegrationTest.java"
+      ],
+      "not_clinically_certified": true,
+      "note": "Same-connection parameterized JDBC audit insert enforcing a caller-owned writable transaction"
+    },
+    {
+      "batch": "P01-B0023",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "java_mock_jdbc",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/persistence/TransactionalPatientReadJdbc.java",
+        "services/clinical-core/src/test/java/org/synqoria/persistence/V100TransactionIntegrationTest.java"
+      ],
+      "not_clinically_certified": true,
+      "note": "Transactional, authorization-gated JDBC patient read with fail-closed audit insert and commit-before-release"
+    },
+    {
+      "batch": "P02-B0021",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "typescript_node",
+      "source_files": [
+        "packages/ux-core/src/patient-request-fence.ts",
+        "packages/ux-core/tests/v100-boundaries.test.cjs"
+      ],
+      "not_clinically_certified": true,
+      "note": "Patient-response generation fence prevents stale HTTP response replay after patient or facility switch"
+    },
+    {
+      "batch": "P02-B0022",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "typescript_node",
+      "source_files": [
+        "packages/ux-core/src/offline-action-policy.ts",
+        "packages/ux-core/tests/v100-boundaries.test.cjs"
+      ],
+      "not_clinically_certified": true,
+      "note": "Offline clinical task gate disallows self-authorized sign/prescribe/administer actions"
+    },
+    {
+      "batch": "P02-B0023",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "typescript_node",
+      "source_files": [
+        "packages/ux-core/src/verified-cell-endpoint.ts",
+        "packages/ux-core/tests/v100-boundaries.test.cjs"
+      ],
+      "not_clinically_certified": true,
+      "note": "Verified provisioning gate rejects caller-selected, non-HTTPS, local or custom-port hospital endpoints"
+    },
+    {
+      "batch": "P03-B0013",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "java_unit",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/security/SessionLifetimeFence.java",
+        "services/clinical-core/src/test/java/org/synqoria/persistence/V100TransactionIntegrationTest.java"
+      ],
+      "not_clinically_certified": true,
+      "note": "Time-bounded server session and revocation-check freshness fence"
+    },
+    {
+      "batch": "P03-B0014",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "java_unit",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/security/PatientReadReleaseFence.java",
+        "services/clinical-core/src/test/java/org/synqoria/persistence/V100TransactionIntegrationTest.java"
+      ],
+      "not_clinically_certified": true,
+      "note": "Clinical patient read release guard only maps successfully committed transaction results"
+    },
+    {
+      "batch": "P04-B0010",
+      "verified": true,
+      "exit_code": 0,
+      "verification": "java_unit",
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/facility/FacilityAdmissionFence.java",
+        "services/clinical-core/src/test/java/org/synqoria/persistence/V100TransactionIntegrationTest.java"
+      ],
+      "not_clinically_certified": true,
+      "note": "Hospital facility/tenant/cell/revision active-state admission predicate"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "SYNQORIA Patient",
+    "slug": "synqoria-patient",
+    "version": "0.2.0",
+    "orientation": "default",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "edgeToEdgeEnabled": true,
+      "softwareKeyboardLayoutMode": "resize"
+    }
+  }
+}

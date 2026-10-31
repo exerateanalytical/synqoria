@@ -1,0 +1,338 @@
+[
+  {
+    "batch": "P06-B0010",
+    "deliverables": [
+      "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentRequestIntake.java",
+      "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentRequestIntakeTest.java"
+    ],
+    "commands": [
+      {
+        "command": [
+          "javac",
+          "-encoding",
+          "UTF-8",
+          "-d",
+          "/mnt/data/.synqoria_v30_classes/P06-B0010",
+          "-sourcepath",
+          "/mnt/data/synqoria_v30/services/clinical-core/src/main/java:/mnt/data/synqoria_v30/services/clinical-core/src/test/java",
+          "/mnt/data/synqoria_v30/services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentRequestIntakeTest.java"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "java",
+          "-cp",
+          "/mnt/data/.synqoria_v30_classes/P06-B0010",
+          "org.synqoria.scheduling.AppointmentRequestIntakeTest"
+        ],
+        "exit_code": 0,
+        "stdout": "PASS 7 request intake assertions\n",
+        "stderr": ""
+      }
+    ],
+    "verified": true,
+    "verification_scope": "isolated Java unit/mock JDBC only"
+  },
+  {
+    "batch": "P06-B0011",
+    "deliverables": [
+      "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentReschedulePreflight.java",
+      "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentReschedulePreflightTest.java"
+    ],
+    "commands": [
+      {
+        "command": [
+          "javac",
+          "-encoding",
+          "UTF-8",
+          "-d",
+          "/mnt/data/.synqoria_v30_classes/P06-B0011",
+          "-sourcepath",
+          "/mnt/data/synqoria_v30/services/clinical-core/src/main/java:/mnt/data/synqoria_v30/services/clinical-core/src/test/java",
+          "/mnt/data/synqoria_v30/services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentReschedulePreflightTest.java"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "java",
+          "-cp",
+          "/mnt/data/.synqoria_v30_classes/P06-B0011",
+          "org.synqoria.scheduling.AppointmentReschedulePreflightTest"
+        ],
+        "exit_code": 0,
+        "stdout": "PASS 8 reschedule assertions\n",
+        "stderr": ""
+      }
+    ],
+    "verified": true,
+    "verification_scope": "isolated Java unit/mock JDBC only"
+  },
+  {
+    "batch": "P06-B0012",
+    "deliverables": [
+      "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentCancellationPreflight.java",
+      "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentCancellationPreflightTest.java"
+    ],
+    "commands": [
+      {
+        "command": [
+          "javac",
+          "-encoding",
+          "UTF-8",
+          "-d",
+          "/mnt/data/.synqoria_v30_classes/P06-B0012",
+          "-sourcepath",
+          "/mnt/data/synqoria_v30/services/clinical-core/src/main/java:/mnt/data/synqoria_v30/services/clinical-core/src/test/java",
+          "/mnt/data/synqoria_v30/services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentCancellationPreflightTest.java"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "java",
+          "-cp",
+          "/mnt/data/.synqoria_v30_classes/P06-B0012",
+          "org.synqoria.scheduling.AppointmentCancellationPreflightTest"
+        ],
+        "exit_code": 0,
+        "stdout": "PASS 9 cancellation assertions\n",
+        "stderr": ""
+      }
+    ],
+    "verified": true,
+    "verification_scope": "isolated Java unit/mock JDBC only"
+  },
+  {
+    "batch": "P06-B0013",
+    "deliverables": [
+      "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentAttendancePreflight.java",
+      "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentAttendancePreflightTest.java"
+    ],
+    "commands": [
+      {
+        "command": [
+          "javac",
+          "-encoding",
+          "UTF-8",
+          "-d",
+          "/mnt/data/.synqoria_v30_classes/P06-B0013",
+          "-sourcepath",
+          "/mnt/data/synqoria_v30/services/clinical-core/src/main/java:/mnt/data/synqoria_v30/services/clinical-core/src/test/java",
+          "/mnt/data/synqoria_v30/services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentAttendancePreflightTest.java"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "java",
+          "-cp",
+          "/mnt/data/.synqoria_v30_classes/P06-B0013",
+          "org.synqoria.scheduling.AppointmentAttendancePreflightTest"
+        ],
+        "exit_code": 0,
+        "stdout": "PASS 9 attendance assertions\n",
+        "stderr": ""
+      }
+    ],
+    "verified": true,
+    "verification_scope": "isolated Java unit/mock JDBC only"
+  },
+  {
+    "batch": "P06-B0014",
+    "deliverables": [
+      "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentScopedSearch.java",
+      "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentScopedSearchTest.java"
+    ],
+    "commands": [
+      {
+        "command": [
+          "javac",
+          "-encoding",
+          "UTF-8",
+          "-d",
+          "/mnt/data/.synqoria_v30_classes/P06-B0014",
+          "-sourcepath",
+          "/mnt/data/synqoria_v30/services/clinical-core/src/main/java:/mnt/data/synqoria_v30/services/clinical-core/src/test/java",
+          "/mnt/data/synqoria_v30/services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentScopedSearchTest.java"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "java",
+          "-cp",
+          "/mnt/data/.synqoria_v30_classes/P06-B0014",
+          "org.synqoria.scheduling.AppointmentScopedSearchTest"
+        ],
+        "exit_code": 0,
+        "stdout": "PASS 9 scoped query assertions\n",
+        "stderr": ""
+      }
+    ],
+    "verified": true,
+    "verification_scope": "isolated Java unit/mock JDBC only"
+  },
+  {
+    "batch": "P06-B0015",
+    "deliverables": [
+      "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentAuditChain.java",
+      "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentAuditChainTest.java"
+    ],
+    "commands": [
+      {
+        "command": [
+          "javac",
+          "-encoding",
+          "UTF-8",
+          "-d",
+          "/mnt/data/.synqoria_v30_classes/P06-B0015",
+          "-sourcepath",
+          "/mnt/data/synqoria_v30/services/clinical-core/src/main/java:/mnt/data/synqoria_v30/services/clinical-core/src/test/java",
+          "/mnt/data/synqoria_v30/services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentAuditChainTest.java"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "java",
+          "-cp",
+          "/mnt/data/.synqoria_v30_classes/P06-B0015",
+          "org.synqoria.scheduling.AppointmentAuditChainTest"
+        ],
+        "exit_code": 0,
+        "stdout": "PASS 9 audit chain assertions\n",
+        "stderr": ""
+      }
+    ],
+    "verified": true,
+    "verification_scope": "isolated Java unit/mock JDBC only"
+  },
+  {
+    "batch": "P06-B0016",
+    "deliverables": [
+      "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentIdempotencyLedger.java",
+      "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentIdempotencyLedgerTest.java"
+    ],
+    "commands": [
+      {
+        "command": [
+          "javac",
+          "-encoding",
+          "UTF-8",
+          "-d",
+          "/mnt/data/.synqoria_v30_classes/P06-B0016",
+          "-sourcepath",
+          "/mnt/data/synqoria_v30/services/clinical-core/src/main/java:/mnt/data/synqoria_v30/services/clinical-core/src/test/java",
+          "/mnt/data/synqoria_v30/services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentIdempotencyLedgerTest.java"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "java",
+          "-cp",
+          "/mnt/data/.synqoria_v30_classes/P06-B0016",
+          "org.synqoria.scheduling.AppointmentIdempotencyLedgerTest"
+        ],
+        "exit_code": 0,
+        "stdout": "PASS 8 idempotency assertions\n",
+        "stderr": ""
+      }
+    ],
+    "verified": true,
+    "verification_scope": "isolated Java unit/mock JDBC only"
+  },
+  {
+    "batch": "P06-B0017",
+    "deliverables": [
+      "services/clinical-core/db/migration/V013__appointment_restricted_audit_quarantine.sql",
+      "tests/test_v300_appointment_quarantine.py"
+    ],
+    "commands": [
+      {
+        "command": [
+          "python",
+          "/mnt/data/synqoria_v30/tests/test_v300_appointment_quarantine.py"
+        ],
+        "exit_code": 0,
+        "stdout": "PASS 8 static quarantine migration assertions; no live database executed\n",
+        "stderr": ""
+      }
+    ],
+    "verified": true,
+    "verification_scope": "static SQL/contract only"
+  },
+  {
+    "batch": "P06-B0018",
+    "deliverables": [
+      "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentJdbcSafetyGate.java",
+      "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentJdbcSafetyGateTest.java"
+    ],
+    "commands": [
+      {
+        "command": [
+          "javac",
+          "-encoding",
+          "UTF-8",
+          "-d",
+          "/mnt/data/.synqoria_v30_classes/P06-B0018",
+          "-sourcepath",
+          "/mnt/data/synqoria_v30/services/clinical-core/src/main/java:/mnt/data/synqoria_v30/services/clinical-core/src/test/java",
+          "/mnt/data/synqoria_v30/services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentJdbcSafetyGateTest.java"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "java",
+          "-cp",
+          "/mnt/data/.synqoria_v30_classes/P06-B0018",
+          "org.synqoria.scheduling.AppointmentJdbcSafetyGateTest"
+        ],
+        "exit_code": 0,
+        "stdout": "PASS 12 mocked JDBC gate assertions; NO PostgreSQL integration\n",
+        "stderr": ""
+      }
+    ],
+    "verified": true,
+    "verification_scope": "isolated Java unit/mock JDBC only"
+  },
+  {
+    "batch": "P06-B0019",
+    "deliverables": [
+      "contracts/openapi/synqoria-appointments-quarantine.yaml",
+      "tests/test_v300_appointment_contract.py"
+    ],
+    "commands": [
+      {
+        "command": [
+          "python",
+          "/mnt/data/synqoria_v30/tests/test_v300_appointment_contract.py"
+        ],
+        "exit_code": 0,
+        "stdout": "PASS 10 static contract assertions; no endpoint deployed\n",
+        "stderr": ""
+      }
+    ],
+    "verified": true,
+    "verification_scope": "static SQL/contract only"
+  }
+]

@@ -1,0 +1,646 @@
+{
+  "checkpoint": "v0.51.0",
+  "from_checkpoint": "v0.50.0",
+  "changes": [
+    {
+      "file": "package.json",
+      "change": "modified",
+      "sha256": "80950d6fd28b46929b7b2d22808b793dfb55bb49590a90fc72fe2393bd46e10b"
+    },
+    {
+      "file": "README.md",
+      "change": "modified",
+      "sha256": "ceb6d494fa5da4d39d519b8a185a7914ea80bb17a6117a6576d65a59b1435efe"
+    },
+    {
+      "file": "registers/phases.json",
+      "change": "modified",
+      "sha256": "4a71d6aeb8d234ae6c9130b31e277f313742739279bf874da7e3f44e8b784972"
+    },
+    {
+      "file": "registers/blockers.json",
+      "change": "modified",
+      "sha256": "e2b5c5b132b3de10d21579decff30853ad5470eef893d8e2a71b34a10bdd74df"
+    },
+    {
+      "file": "registers/batch-ledger.json",
+      "change": "modified",
+      "sha256": "46f0973df581c21c008aedef7f350764b15f115493c1d3cf7c061657b9609e8f"
+    },
+    {
+      "file": "registers/module-status-matrix.json",
+      "change": "modified",
+      "sha256": "53b650d1ca362709a442fb5942df5fb40e825fefbe9f6bffa9494eb3fc8e109f"
+    },
+    {
+      "file": "registers/screen-status-matrix.json",
+      "change": "modified",
+      "sha256": "a91ef8043a1f34c4da692ef0049dabcff05f8598843efe1c1eb1256da5ede1d5"
+    },
+    {
+      "file": "registers/v510-feature-batches.json",
+      "change": "created",
+      "sha256": "be8d174997d5935e6e8d63d23120aaa87a5b4119dd7af80a49fa2a524293a4df"
+    },
+    {
+      "file": "registers/migration-sha256-lock.json",
+      "change": "modified",
+      "sha256": "e78bd36e2e70a865c5fae58adc8640842f18c9982af32c03a486168b735bf68f"
+    },
+    {
+      "file": "tools/verify_v510_triage.py",
+      "change": "created",
+      "sha256": "81159547a643c23c2f78eb2d21c4df583417c82138587094930ece900089c5a5"
+    },
+    {
+      "file": "tools/triage_migration_gate.py",
+      "change": "created",
+      "sha256": "cfcd8b815b384cf9d20aa5da8c154fbbeb17d6f16de63b066307cc9d74459c8d"
+    },
+    {
+      "file": "tools/capture_v510_evidence.py",
+      "change": "created",
+      "sha256": "ed6f61bf885419f954156466c911bd0f16d0a1ffeeb13edb13f0b1475dcc5a8d"
+    },
+    {
+      "file": "tests/test_triage_migration_gate.py",
+      "change": "created",
+      "sha256": "a9c92891d431468705d7016036a1c367394936069f7ecd66b42505895b4b6ab7"
+    },
+    {
+      "file": "apps/staff-mobile/package.json",
+      "change": "modified",
+      "sha256": "29845324f17f62c37bd523cb3b7ee1c609b0914d81bdd01aea9dc8a6bd937ce9"
+    },
+    {
+      "file": "apps/patient-mobile/package.json",
+      "change": "modified",
+      "sha256": "4794d474c63306b574f4b149e8d538e8745f9d88e7661b9df062dd5b6c7abff0"
+    },
+    {
+      "file": "apps/web/package.json",
+      "change": "modified",
+      "sha256": "e39ffeb5b83bb5610b36c10577d2ef05c863665206b98f785f119c89cbe9b4f2"
+    },
+    {
+      "file": "packages/ux-core/package.json",
+      "change": "modified",
+      "sha256": "922522003fb3df41423fd12fea5e4d29a7714849879a0d6b7b93c6c966f0fe2a"
+    },
+    {
+      "file": "services/clinical-core/src/main/java/org/synqoria/triage/TriageReadService.java",
+      "change": "created",
+      "sha256": "f47b2190dab87f7d7fd920645443e084bae603666790adf318fef3bdf9534d52"
+    },
+    {
+      "file": "services/clinical-core/src/main/java/org/synqoria/triage/TriageAudit.java",
+      "change": "created",
+      "sha256": "f3560d8bc20a29b6c377c370c0bb0e4a57afbef99230b9acc7cea35e186643a3"
+    },
+    {
+      "file": "services/clinical-core/src/main/java/org/synqoria/triage/TriageHandoverService.java",
+      "change": "created",
+      "sha256": "1dbc59507a569f19d969c881cea293cc251ef1fd6fabd9777c27869c57f22e4a"
+    },
+    {
+      "file": "services/clinical-core/src/main/java/org/synqoria/triage/TriageQueueService.java",
+      "change": "created",
+      "sha256": "97547c8fb4bea1350afd88c077ee5467c84b0d4edcbec3ccbfc805629b7e1763"
+    },
+    {
+      "file": "services/clinical-core/src/main/java/org/synqoria/triage/TriageMutation.java",
+      "change": "created",
+      "sha256": "ac6fa0c5288f126b2788da1e2e4b288423cd758cf1591a9928bf19df3235f1fd"
+    },
+    {
+      "file": "services/clinical-core/src/main/java/org/synqoria/triage/TriageAssessmentService.java",
+      "change": "created",
+      "sha256": "ef988fabff3eb33d11d118659877fdaf48f5382da7ccdffca0bae9bbcf057b69"
+    },
+    {
+      "file": "services/clinical-core/src/main/java/org/synqoria/triage/TriageCase.java",
+      "change": "created",
+      "sha256": "d1cb754e8e0b1865798661312d3fa57f7aaadbb446227b281a408f53dd9de372"
+    },
+    {
+      "file": "services/clinical-core/src/main/java/org/synqoria/triage/TriagePriorityService.java",
+      "change": "created",
+      "sha256": "b6b2dd8a78f35daf1e50a257d556af06db8a885133ececec34584eaa367f6271"
+    },
+    {
+      "file": "services/clinical-core/src/main/java/org/synqoria/triage/TriageAuthorization.java",
+      "change": "created",
+      "sha256": "0b25d888c9a5a9bf1c45f8e502632852066e18ed4a09494414a115532bfa8144"
+    },
+    {
+      "file": "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommand.java",
+      "change": "created",
+      "sha256": "495c7eb09a5f65a4f29c422fa80febd1a43416e2922e81d6c307af57b78ff576"
+    },
+    {
+      "file": "services/clinical-core/src/main/java/org/synqoria/triage/TriageIntakeService.java",
+      "change": "created",
+      "sha256": "95a4ff8c76ca224276c2ff003af90b1264f1f5ae8103fe68987f45aae02c7096"
+    },
+    {
+      "file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageWorkflowBatchesTest.java",
+      "change": "created",
+      "sha256": "bf1b783d81a66839d2f7fdd8de0518f3811d6c6830544ef8e6b610dc87383447"
+    },
+    {
+      "file": "services/clinical-core/src/test/java/org/synqoria/triage/TriageJourneyIntegrationTest.java",
+      "change": "created",
+      "sha256": "698715e89ed879eac8baf91dc4a0cffa0cf16a9a4d9247d9a56d2c17217ef8bb"
+    },
+    {
+      "file": "services/clinical-core/db/migration/V015__triage_workflow_quarantine.sql",
+      "change": "created",
+      "sha256": "3f5c204b9033900af56a5d877c53b47aa06d4ec26d6097a56ab01295b93a4c98"
+    },
+    {
+      "file": "evidence/v510/P06-B0104.log",
+      "change": "created",
+      "sha256": "c8fd320e8e83a56f0509470e15159bf6f1806ef9a77e06ff4381b1c336cfcd0a"
+    },
+    {
+      "file": "evidence/v510/P06-B0131.log",
+      "change": "created",
+      "sha256": "3f3d0aceeb593d64b95a6e02780789ba6aa80e02f8baa953674846be8543bed1"
+    },
+    {
+      "file": "evidence/v510/P06-B0121.log",
+      "change": "created",
+      "sha256": "6d8d4f395e548ddbf43f5f100c162396ef214c1ee0e99084b9d97f9b15505290"
+    },
+    {
+      "file": "evidence/v510/flyway_checksums.log",
+      "change": "created",
+      "sha256": "69baa894f7f63410b55fac34bcba2fac21a02819dd9439a40e11b1de0d4f54f8"
+    },
+    {
+      "file": "evidence/v510/P06-B0148.log",
+      "change": "created",
+      "sha256": "880eb30b8217d93870ec46f1d11a4c2db9a17f8dee78713581e3d273d4e68124"
+    },
+    {
+      "file": "evidence/v510/P06-B0139.log",
+      "change": "created",
+      "sha256": "61b16d6e5af32b51f85e647d210479cc51855554cda195c6191fc1ec69c3afbd"
+    },
+    {
+      "file": "evidence/v510/triage_sql_audit.log",
+      "change": "created",
+      "sha256": "39969fb0d275ae70ba0258fcd8359fb2c19fabff5ea71356e686ad9b4f1aed5e"
+    },
+    {
+      "file": "evidence/v510/P06-B0097.log",
+      "change": "created",
+      "sha256": "632d6ca4ec14574fc7bd8d21a8b35a443c5e2680eade81f9f3da77033ac2fca1"
+    },
+    {
+      "file": "evidence/v510/P06-B0124.log",
+      "change": "created",
+      "sha256": "8c5ef10868c35d734b6d3c05fec4c0fc0e5adf2c709f175b6260d4991280d30c"
+    },
+    {
+      "file": "evidence/v510/P06-B0137.log",
+      "change": "created",
+      "sha256": "edd9a7a055acec7dd733a8894ed1d91d19e7f02fb9a78883957e31358ce3bcd4"
+    },
+    {
+      "file": "evidence/v510/final_python_tools_migration_checksum_gate.py_services_clinical-core_db.exit",
+      "change": "created",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "evidence/v510/final_triage_journey.exit",
+      "change": "created",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "evidence/v510/P06-B0132.log",
+      "change": "created",
+      "sha256": "5c38176840eb373b5a61a32094fba616843c27df5331e98aff2b513ada516f48"
+    },
+    {
+      "file": "evidence/v510/final_python_-m_unittest_discover_-s_tests_-p_test_triage_migration_gat.exit",
+      "change": "created",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "evidence/v510/P06-B0106.log",
+      "change": "created",
+      "sha256": "ce44d427518d366d4f1afabb47a1ee3e6b97f4540cab7af8cb46759f882d0c5e"
+    },
+    {
+      "file": "evidence/v510/final_python_-m_unittest_discover_-s_tests_-p_test_triage_migration_gat.log",
+      "change": "created",
+      "sha256": "c162c48e094938e20e51ab0520d3f2e810f9ff270d166cc2a79c7e38a0156ce8"
+    },
+    {
+      "file": "evidence/v510/P06-B0107.log",
+      "change": "created",
+      "sha256": "7cc01869ffcb8ccac4a5db98e58230f3f9157d9f32f2a361ac1ea9c3d86589dd"
+    },
+    {
+      "file": "evidence/v510/final_triage_sql_audit.exit",
+      "change": "created",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "evidence/v510/P06-B0095.log",
+      "change": "created",
+      "sha256": "a1ebd316990db8eaa0c6e16e4549640855eb4766f779bef7e8659bf31072ee81"
+    },
+    {
+      "file": "evidence/v510/legacy_AppointmentBookingHorizonPolicyTest.log",
+      "change": "created",
+      "sha256": "f1160b46453f5b6dcaa4c3f7c7c65013ba5de1f66a53543b594ff1f7766ab735"
+    },
+    {
+      "file": "evidence/v510/P06-B0141.log",
+      "change": "created",
+      "sha256": "7ce88bd270305514f87ed95a6dc591a82e4abe4ee6df538f96cb3e57d3f24fa0"
+    },
+    {
+      "file": "evidence/v510/P06-B0118.log",
+      "change": "created",
+      "sha256": "a7dcc64e627b5e995fc612db3f8f5181af497a3c453092686834f7f6e745250d"
+    },
+    {
+      "file": "evidence/v510/P06-B0103.log",
+      "change": "created",
+      "sha256": "47604202f941371ba89902f1382c0748d771d04b2239a98e8ae35d5157d96964"
+    },
+    {
+      "file": "evidence/v510/P06-B0142.log",
+      "change": "created",
+      "sha256": "5cef18c45ca1c759d672450f81ce82f3f1ca526b36b31e3f292cddee356b20e3"
+    },
+    {
+      "file": "evidence/v510/P06-B0105.log",
+      "change": "created",
+      "sha256": "407ab1a028fab88b58da89b595a72ccb61b79cfa9db3722bf13723f04f003efd"
+    },
+    {
+      "file": "evidence/v510/final_npm_run_check_ux.log",
+      "change": "created",
+      "sha256": "602aa365b1000ce775f3c43466c418af86595a475513ca0d88e123d5eb00e8d7"
+    },
+    {
+      "file": "evidence/v510/P06-B0112.log",
+      "change": "created",
+      "sha256": "6847672ca16bb106c679c90efbef0324554d83e1ab36cc4e0f86770b29b59981"
+    },
+    {
+      "file": "evidence/v510/P06-B0111.log",
+      "change": "created",
+      "sha256": "019df559a6926c83e5ee160bb4888cb167105eb1608bf48d57946e04e71d4d4f"
+    },
+    {
+      "file": "evidence/v510/P06-B0122.log",
+      "change": "created",
+      "sha256": "f3a894921b4cc46fdfe7e5b64ee784979b73fc962fc4bd8f1a53790bcd0d522d"
+    },
+    {
+      "file": "evidence/v510/P06-B0109.log",
+      "change": "created",
+      "sha256": "b05756759b0683d0db6263d8f44f869dd725102f3a3ec1012c2cf68ad76a18dc"
+    },
+    {
+      "file": "evidence/v510/legacy_appointment_sql_adversarial.log",
+      "change": "created",
+      "sha256": "4492ad4bee41bfade5544917206463f630ba3cdac598e48d8ab78fc81ffbdedc"
+    },
+    {
+      "file": "evidence/v510/final_npm_run_check_ux.exit",
+      "change": "created",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "evidence/v510/P06-B0123.log",
+      "change": "created",
+      "sha256": "30dfe8ed3843103e8645026d632bd0024ba7f125f7afa71040f1c55688703a90"
+    },
+    {
+      "file": "evidence/v510/flyway_inventory.log",
+      "change": "created",
+      "sha256": "6d46558f6d1493ffda3be0cdaaf6af10ee4501243af501ea620aaf408b462772"
+    },
+    {
+      "file": "evidence/v510/P06-B0110.log",
+      "change": "created",
+      "sha256": "ddcdb6b3d28a9576af293dc5ff4ab66e50bebc45cece006e6d450c86b24ce13b"
+    },
+    {
+      "file": "evidence/v510/P06-B0115.log",
+      "change": "created",
+      "sha256": "6cf3568374aa96bf970afcb6b86399c88898fb5967fa624886c5325d04fe5fbf"
+    },
+    {
+      "file": "evidence/v510/P06-B0126.log",
+      "change": "created",
+      "sha256": "e37dd43300d414d88526fa2df4e41d28787b8c15311b5b7c1f8c335fcbd3b5fa"
+    },
+    {
+      "file": "evidence/v510/final_npm_run_check_source.log",
+      "change": "created",
+      "sha256": "08c24fbded4b1f5b1034c1350d7834082f323a26b181ad9488c64817a3c2918f"
+    },
+    {
+      "file": "evidence/v510/final_triage_sql_audit.log",
+      "change": "created",
+      "sha256": "0af4152515fd1a004d2ace5e319e27963eb4d107064e7ff7a1c302a56ee05a92"
+    },
+    {
+      "file": "evidence/v510/final_npm_run_check_registers.log",
+      "change": "created",
+      "sha256": "08b472bfbb36538753d9d41e4fc8c940dddee0e8da017b17d0b6497c42527a45"
+    },
+    {
+      "file": "evidence/v510/existing_source_register_checks.log",
+      "change": "created",
+      "sha256": "c8b2a378a0e5af8ddc62cf010fa8cd383b72d91c8817171e5f3bcc831d637656"
+    },
+    {
+      "file": "evidence/v510/P06-B0099.log",
+      "change": "created",
+      "sha256": "8f92e64ad5f263ad1d644ac4c30d7e4284c40b3cf04e2106b2b0175e0ea1984c"
+    },
+    {
+      "file": "evidence/v510/P06-B0129.log",
+      "change": "created",
+      "sha256": "2719f5129359ba4467d2c0f4db763fece240af2ef71a5b889fa904323fa15171"
+    },
+    {
+      "file": "evidence/v510/P06-B0108.log",
+      "change": "created",
+      "sha256": "a818c57c131d3d867598bfadc9af340e0add79afc72c34178503d075c68e54e7"
+    },
+    {
+      "file": "evidence/v510/individual-batch-results.json",
+      "change": "created",
+      "sha256": "03d7d4ee14fb0d5bf6ed81b3784249e31485cefa7cbadd02d2b152e6a02a3a5f"
+    },
+    {
+      "file": "evidence/v510/final_full_java_compile.log",
+      "change": "created",
+      "sha256": "ec0197a52cf2a7e0fc82e5d3e7acb66318829b382d9b1a5bd14bc605873dad7c"
+    },
+    {
+      "file": "evidence/v510/P06-B0133.log",
+      "change": "created",
+      "sha256": "67d5205cc078bbf37b62fa2a87809e3b624fc9cfd3fee5094b387d2108ecef31"
+    },
+    {
+      "file": "evidence/v510/P06-B0117.log",
+      "change": "created",
+      "sha256": "edef95d7bcd7f9a06d850e60ce6c2513af8ad2ae90252fca96381cb3d51e50a3"
+    },
+    {
+      "file": "evidence/v510/P06-B0140.log",
+      "change": "created",
+      "sha256": "4c5f56e5e4f6f5c93438159577daa5bc00d4159c2a3722a88827d7110eea8f82"
+    },
+    {
+      "file": "evidence/v510/P06-B0134.log",
+      "change": "created",
+      "sha256": "60889edaf9304fea9fcafbaf2601cd4c288a3e9b455f8935152a84ebc2af2f64"
+    },
+    {
+      "file": "evidence/v510/P06-B0125.log",
+      "change": "created",
+      "sha256": "8a881f155e2a7fd29ee851a64a2e3e6420d968f58b26d9b5683fef6b1ad59f53"
+    },
+    {
+      "file": "evidence/v510/P06-B0130.log",
+      "change": "created",
+      "sha256": "ea3d6506ea501a6b26fc008ef913802b3c17f287c3553171f6c06f7b5053fe65"
+    },
+    {
+      "file": "evidence/v510/P06-B0096.log",
+      "change": "created",
+      "sha256": "40c82e230a00575a3c8fadb38a18726f7feb77e285e361c965a38b4be4a2b5e2"
+    },
+    {
+      "file": "evidence/v510/triage_sql_adversarial.log",
+      "change": "created",
+      "sha256": "88cb476f83970fcb7681e6918f747ea5b039114ea6741cf5131f70d9df3e1af8"
+    },
+    {
+      "file": "evidence/v510/P06-B0149.log",
+      "change": "created",
+      "sha256": "bcb4f1bcfd98a58cb381971196d3ccd9a2545097cec97ca181ef4b048fee862d"
+    },
+    {
+      "file": "evidence/v510/legacy_AppointmentPatientConflictPolicyTest.log",
+      "change": "created",
+      "sha256": "7153953d5e7570dd7b35cadb4a8a221378429eb6e379fb0f5cd82115f1169282"
+    },
+    {
+      "file": "evidence/v510/P06-B0119.log",
+      "change": "created",
+      "sha256": "bfef42aba4a2c1f601f1b2b5a885cfee838d602dc327bfb69bb8c3477b9312ea"
+    },
+    {
+      "file": "evidence/v510/triage_full_journey.log",
+      "change": "created",
+      "sha256": "84230ff0ff49bea96e757c3eb070d84198eb6c6764bc0e028bd8675cbbff8959"
+    },
+    {
+      "file": "evidence/v510/legacy_AppointmentWindowConflictPolicyTest.log",
+      "change": "created",
+      "sha256": "5d519fb629ab87ccb822e60275bfffe4cd01416a8e836b608c1cb553f2864aa1"
+    },
+    {
+      "file": "evidence/v510/npm_source_contracts.log",
+      "change": "created",
+      "sha256": "2dfe6545028c97dd56d277ea985266f1540eaa60a1fbdc7f43c9ab5cc118d516"
+    },
+    {
+      "file": "evidence/v510/P06-B0136.log",
+      "change": "created",
+      "sha256": "fb3cc0906e8d6a88e35fbd60dcbaa281e98ecb6e26f3653e6da98feeae810eea"
+    },
+    {
+      "file": "evidence/v510/P06-B0127.log",
+      "change": "created",
+      "sha256": "c8253c73ccdbccd2a0250e62d9896e33da0574bbcbcd9ee9bade7bcacf739eab"
+    },
+    {
+      "file": "evidence/v510/P06-B0102.log",
+      "change": "created",
+      "sha256": "a2e1eb2e50e3a117e38ef8a4fc0faad0f1a5149e8a88e77cc915c0550036668f"
+    },
+    {
+      "file": "evidence/v510/final_triage_journey.log",
+      "change": "created",
+      "sha256": "b4432a6290b53c95b3819b432bd145948d2477d30a09d0ae74a0e9ec98408f20"
+    },
+    {
+      "file": "evidence/v510/P06-B0120.log",
+      "change": "created",
+      "sha256": "1c26e594c88775f3739d4221e326996056241be4ee80c7b6c1b2d3b891d453fd"
+    },
+    {
+      "file": "evidence/v510/P06-B0113.log",
+      "change": "created",
+      "sha256": "7f0469ec7cac10b000fbad23f5532ca52de9300abbd16bb0dd9749405a3dd401"
+    },
+    {
+      "file": "evidence/v510/P06-B0146.log",
+      "change": "created",
+      "sha256": "0a626a0ceb71b3a5830b28b9a8c3a823ba11f53d469e62b9ab34558ed99bba05"
+    },
+    {
+      "file": "evidence/v510/legacy_AppointmentLocalTimeResolverTest.log",
+      "change": "created",
+      "sha256": "102a76e173c8a43616df63916292683847f3d2e8f08d3ade81a19fc9ae3db2e8"
+    },
+    {
+      "file": "evidence/v510/final_python_tools_migration_checksum_gate.py_services_clinical-core_db.log",
+      "change": "created",
+      "sha256": "df823f9bed26fba703518e76ca7e4f680d5167c52426ec0d8999048d2cc38fe9"
+    },
+    {
+      "file": "evidence/v510/P06-B0138.log",
+      "change": "created",
+      "sha256": "f0373ebece2481a099a806f9714ba02938279955a80848681c2dcff7e9b4d38e"
+    },
+    {
+      "file": "evidence/v510/P06-B0116.log",
+      "change": "created",
+      "sha256": "e5ac719722c58b3ae536451af2721981712b5b3c5f4001b4622c91cc0bb56ef1"
+    },
+    {
+      "file": "evidence/v510/final_appointment_sql_audit.exit",
+      "change": "created",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "evidence/v510/P06-B0098.log",
+      "change": "created",
+      "sha256": "f8007c427c128595abc9f5c9aabbe0cfe0935be760397b68fc6fd5902d03282d"
+    },
+    {
+      "file": "evidence/v510/final_full_java_compile.exit",
+      "change": "created",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "evidence/v510/final_appointment_sql_audit.log",
+      "change": "created",
+      "sha256": "67fe7395a6d4f23b5dfbdaf1bd5c3e170bd5bf1ee5b31ddad16ca7f741b4bafc"
+    },
+    {
+      "file": "evidence/v510/P06-B0153.log",
+      "change": "created",
+      "sha256": "64a5386c86cdbf6e746ad0d4d73b8dda0441aed0cc4c24c207c4cf781d1debf5"
+    },
+    {
+      "file": "evidence/v510/P06-B0147.log",
+      "change": "created",
+      "sha256": "bb489f65b21bf88c68cafb02461b62139f1c9ff6e6400f630b727171115e4582"
+    },
+    {
+      "file": "evidence/v510/P06-B0143.log",
+      "change": "created",
+      "sha256": "3ddcfc1532fbd8ef5cd1ea816502069c94fd4dc9db06a6f4a04892d6b45179af"
+    },
+    {
+      "file": "evidence/v510/P06-B0100.log",
+      "change": "created",
+      "sha256": "860e3f9a6f2c956fa3f8c4af21456b44443a9dc3527e4344f9153fdd76ea7dce"
+    },
+    {
+      "file": "evidence/v510/final_npm_run_check_registers.exit",
+      "change": "created",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "evidence/v510/npm_ux_core.log",
+      "change": "created",
+      "sha256": "18f5e36455c4e8f5a23b16db9b6228d879d79802f0a4ebdfeb0501fd50ca4d9b"
+    },
+    {
+      "file": "evidence/v510/appointment_sql_audit.log",
+      "change": "created",
+      "sha256": "f4742931a4a9f19a9a520a17d2f4219284e672f17a94ee62f37a774c87e96b6d"
+    },
+    {
+      "file": "evidence/v510/final_npm_run_check_source.exit",
+      "change": "created",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "evidence/v510/P06-B0145.log",
+      "change": "created",
+      "sha256": "0ff8d65fb8257913033ecac4ae99251ca35822c1a9fcdafb25da8e6362b6376e"
+    },
+    {
+      "file": "evidence/v510/triage_60_feature_regression.log",
+      "change": "created",
+      "sha256": "c00e97876f3f57ec74985cad084adb8681d3693bcc7d5e9cc1402364c899ba42"
+    },
+    {
+      "file": "evidence/v510/execution.json",
+      "change": "created",
+      "sha256": "2b5ea529b17e91f3d17b9f84ed2178c105795ae824a9ed8a42ff092797777c05"
+    },
+    {
+      "file": "evidence/v510/P06-B0152.log",
+      "change": "created",
+      "sha256": "3b4351c538dbee726c2e3b1b3f2b2a7abb4f0996b29e4ab19ebc9d8705de22c1"
+    },
+    {
+      "file": "evidence/v510/P06-B0101.log",
+      "change": "created",
+      "sha256": "e722d230e8ff972fda9f72498fe2bbb6e1e2b3dcb8a7b67a13bd3a90feb2e8e9"
+    },
+    {
+      "file": "evidence/v510/P06-B0114.log",
+      "change": "created",
+      "sha256": "64f8ba5b3413f5885c52b9347736f20a43991fa6123cd98c9a2680e81a3595a5"
+    },
+    {
+      "file": "evidence/v510/P06-B0151.log",
+      "change": "created",
+      "sha256": "930f89e1d533ca4165fe08bf2cbf326c48e4c0751854e078cf24e02911f42420"
+    },
+    {
+      "file": "evidence/v510/P06-B0150.log",
+      "change": "created",
+      "sha256": "1381eba7e8d8ea5f3f317efe08357dfb63fcfef067f47044256120d60243416d"
+    },
+    {
+      "file": "evidence/v510/javac_full_source_and_tests.log",
+      "change": "created",
+      "sha256": "c3182df50b0f10ecd2d9b0bf5f27b96d8821f0adf5c14f8ed849c09d95ba7971"
+    },
+    {
+      "file": "evidence/v510/P06-B0094.log",
+      "change": "created",
+      "sha256": "bf40994b746d7694f6c24bf02ca98ae28a3922743584c1f0c0884c8635ae5863"
+    },
+    {
+      "file": "evidence/v510/P06-B0144.log",
+      "change": "created",
+      "sha256": "10fc113e6f45b3b1390dd7e7773d0dd401b5f9e1827389e3bb89fcf2c960000c"
+    },
+    {
+      "file": "evidence/v510/P06-B0135.log",
+      "change": "created",
+      "sha256": "427a6fe151e2ca1affcd588187671422aa53fa3040cb6ba220cbfea70ac1c61f"
+    },
+    {
+      "file": "evidence/v510/P06-B0128.log",
+      "change": "created",
+      "sha256": "3e661ae5aa1d3038b75d54288cc346167525baf086f693dd146402ea1b109880"
+    },
+    {
+      "file": "docs/engineering/M03_TRIAGE_v0.51.0_INTERNAL.md",
+      "change": "created",
+      "sha256": "343cc226de81e8762dccb83b2ccc6e41eac87900e9f128544e7221eb960e7fc0"
+    }
+  ]
+}

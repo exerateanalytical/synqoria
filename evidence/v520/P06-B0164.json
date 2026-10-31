@@ -1,0 +1,17 @@
+{
+  "batch_id": "P06-B0164",
+  "module": "M03",
+  "phase": "P06",
+  "scope": "Transactional append of immutable hash-linked audit event",
+  "implementation": [
+    "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcStore.java"
+  ],
+  "focused_tests": [
+    "evidence/v520/scenario-jdbc-event.log",
+    "evidence/v520/scenario-jdbc-event-failure.log"
+  ],
+  "verified": true,
+  "verification_scope": "synthetic_java_and_static_source_only",
+  "live_postgresql_tested": false,
+  "clinical_accepted": false
+}

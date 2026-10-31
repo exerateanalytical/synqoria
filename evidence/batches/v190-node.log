@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: P02-B0053 critical field text never truncates and touch targets remain safe
+ok 1 - P02-B0053 critical field text never truncates and touch targets remain safe
+  ---
+  duration_ms: 1.204602
+  type: 'test'
+  ...
+# Subtest: P02-B0054 facility switch revokes access before clear and requires matching new generation
+ok 2 - P02-B0054 facility switch revokes access before clear and requires matching new generation
+  ---
+  duration_ms: 0.236308
+  type: 'test'
+  ...
+# Subtest: P02-B0055 proxy grant must match exact patient, facility, proxy, expiry and scope
+ok 3 - P02-B0055 proxy grant must match exact patient, facility, proxy, expiry and scope
+  ---
+  duration_ms: 0.308137
+  type: 'test'
+  ...
+# Subtest: P02-B0056 only authorized static roots can appear as sidebar destinations
+ok 4 - P02-B0056 only authorized static roots can appear as sidebar destinations
+  ---
+  duration_ms: 0.307084
+  type: 'test'
+  ...
+# Subtest: P02-B0057 every registration state remains non-actionable in EN and FR
+ok 5 - P02-B0057 every registration state remains non-actionable in EN and FR
+  ---
+  duration_ms: 0.224229
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 84.88144

@@ -1,0 +1,222 @@
+[
+  {
+    "name": "compile",
+    "passed": true,
+    "exit_code": 0,
+    "seconds": 5.33,
+    "command": [
+      "javac",
+      "-encoding",
+      "UTF-8",
+      "-d",
+      "/mnt/data/synqoria_v55_build/classes",
+      "@/mnt/data/synqoria_v55_build/all-sources.txt"
+    ],
+    "log": "evidence/v550/compile.log"
+  },
+  {
+    "name": "genesis_audit",
+    "passed": true,
+    "exit_code": 0,
+    "seconds": 0.24,
+    "command": [
+      "java",
+      "-cp",
+      "/mnt/data/synqoria_v55_build/classes",
+      "org.synqoria.triage.TriageAuditContinuityTest"
+    ],
+    "log": "evidence/v550/genesis_audit.log"
+  },
+  {
+    "name": "triage_domain_60",
+    "passed": true,
+    "exit_code": 0,
+    "seconds": 0.28,
+    "command": [
+      "java",
+      "-cp",
+      "/mnt/data/synqoria_v55_build/classes",
+      "org.synqoria.triage.TriageWorkflowBatchesTest"
+    ],
+    "log": "evidence/v550/triage_domain_60.log"
+  },
+  {
+    "name": "triage_txn",
+    "passed": true,
+    "exit_code": 0,
+    "seconds": 0.23,
+    "command": [
+      "java",
+      "-cp",
+      "/mnt/data/synqoria_v55_build/classes",
+      "org.synqoria.triage.TriagePersistenceIntegrationTest"
+    ],
+    "log": "evidence/v550/triage_txn.log"
+  },
+  {
+    "name": "triage_journey",
+    "passed": true,
+    "exit_code": 0,
+    "seconds": 0.22,
+    "command": [
+      "java",
+      "-cp",
+      "/mnt/data/synqoria_v55_build/classes",
+      "org.synqoria.triage.TriageJourneyIntegrationTest"
+    ],
+    "log": "evidence/v550/triage_journey.log"
+  },
+  {
+    "name": "genesis_12",
+    "passed": true,
+    "exit_code": 0,
+    "seconds": 0.18,
+    "command": [
+      "java",
+      "-cp",
+      "/mnt/data/synqoria_v55_build/classes",
+      "org.synqoria.triage.TriageGenesisBatchesTest",
+      "P06-B0229"
+    ],
+    "log": "evidence/v550/genesis_12.log"
+  },
+  {
+    "name": "authenticated_gateway",
+    "passed": true,
+    "exit_code": 0,
+    "seconds": 0.18,
+    "command": [
+      "java",
+      "-cp",
+      "/mnt/data/synqoria_v55_build/classes",
+      "org.synqoria.triage.TriageAuthenticatedFeatureBatchesTest",
+      "P06-B0169"
+    ],
+    "log": "evidence/v550/authenticated_gateway.log"
+  },
+  {
+    "name": "authenticated_read",
+    "passed": true,
+    "exit_code": 0,
+    "seconds": 0.13,
+    "command": [
+      "java",
+      "-cp",
+      "/mnt/data/synqoria_v55_build/classes",
+      "org.synqoria.triage.TriageAuthenticatedReadBatchesTest",
+      "P06-B0218"
+    ],
+    "log": "evidence/v550/authenticated_read.log"
+  },
+  {
+    "name": "http_regression",
+    "passed": true,
+    "exit_code": 0,
+    "seconds": 0.6,
+    "command": [
+      "java",
+      "-cp",
+      "/mnt/data/synqoria_v55_build/classes",
+      "org.synqoria.triage.TriageHttpBoundaryBatchesTest",
+      "P06-B0241"
+    ],
+    "log": "evidence/v550/http_regression.log"
+  },
+  {
+    "name": "migration_gate_new",
+    "passed": true,
+    "exit_code": 0,
+    "seconds": 1.03,
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "tests.test_triage_correlated_migration_gate",
+      "-v"
+    ],
+    "log": "evidence/v550/migration_gate_new.log"
+  },
+  {
+    "name": "migration_gate_v18",
+    "passed": true,
+    "exit_code": 0,
+    "seconds": 1.0,
+    "command": [
+      "python",
+      "tools/triage_genesis_migration_gate.py"
+    ],
+    "log": "evidence/v550/migration_gate_v18.log"
+  },
+  {
+    "name": "migration_inventory",
+    "passed": true,
+    "exit_code": 0,
+    "seconds": 0.83,
+    "command": [
+      "python",
+      "tools/migration_inventory_gate.py",
+      "services/clinical-core/db/migration"
+    ],
+    "log": "evidence/v550/migration_inventory.log"
+  },
+  {
+    "name": "migration_checksum",
+    "passed": true,
+    "exit_code": 0,
+    "seconds": 0.83,
+    "command": [
+      "python",
+      "tools/migration_checksum_gate.py",
+      "services/clinical-core/db/migration",
+      "registers/migration-sha256-lock.json"
+    ],
+    "log": "evidence/v550/migration_checksum.log"
+  },
+  {
+    "name": "ux_core",
+    "passed": true,
+    "exit_code": 0,
+    "seconds": 3.33,
+    "command": [
+      "npm",
+      "run",
+      "check:ux"
+    ],
+    "log": "evidence/v550/ux_core.log"
+  },
+  {
+    "name": "source_contracts",
+    "passed": true,
+    "exit_code": 0,
+    "seconds": 7.46,
+    "command": [
+      "npm",
+      "run",
+      "check:source"
+    ],
+    "log": "evidence/v550/source_contracts.log"
+  },
+  {
+    "name": "canonical_registers",
+    "passed": true,
+    "exit_code": 0,
+    "seconds": 3.5,
+    "command": [
+      "npm",
+      "run",
+      "check:registers"
+    ],
+    "log": "evidence/v550/canonical_registers.log"
+  },
+  {
+    "name": "release_denied",
+    "passed": true,
+    "exit_code": 0,
+    "seconds": 0.86,
+    "command": [
+      "python",
+      "tools/verify_release_gate.py"
+    ],
+    "log": "evidence/v550/release_denied.log"
+  }
+]

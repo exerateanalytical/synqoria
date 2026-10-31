@@ -1,0 +1,23 @@
+[
+  {
+    "batch": "P06-B0032",
+    "component": "AppointmentResourceCapacity",
+    "exit_code": 0,
+    "stdout": "PASS AppointmentResourceCapacity 6\n",
+    "stderr": ""
+  },
+  {
+    "batch": "P06-B0033",
+    "component": "AppointmentIdempotencyKey",
+    "exit_code": 0,
+    "stdout": "PASS AppointmentIdempotencyKey 7\n",
+    "stderr": ""
+  },
+  {
+    "batch": "P06-B0034",
+    "component": "AppointmentAuditSequence",
+    "exit_code": 0,
+    "stdout": "PASS AppointmentAuditSequence 6\n",
+    "stderr": ""
+  }
+]

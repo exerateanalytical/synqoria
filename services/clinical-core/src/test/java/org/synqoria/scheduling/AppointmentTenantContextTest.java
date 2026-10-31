@@ -1,0 +1,3 @@
+package org.synqoria.scheduling;
+import java.util.UUID;
+public class AppointmentTenantContextTest { public static void main(String[] args){ UUID a=UUID.randomUUID(),b=UUID.randomUUID();var c=new AppointmentTenantContext(a,a,a,a);c.requireSameTenant(a);c.requireSamePatient(a);boolean denied=false;try{c.requireSameTenant(b);}catch(SecurityException e){denied=true;}if(!denied)throw new AssertionError("cross-tenant allowed");denied=false;try{new AppointmentTenantContext(a,null,a,a);}catch(IllegalArgumentException e){denied=true;}if(!denied)throw new AssertionError("missing facility allowed");System.out.println("PASS tenant context: 4 assertions");} }

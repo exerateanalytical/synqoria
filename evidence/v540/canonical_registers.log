@@ -1,0 +1,7 @@
+
+> synqoria@0.54.0 check:registers
+> python tests/test_baseline.py && python tests/test_navigation_contract.py && python tests/test_v240_checkpoint.py
+
+PASS: planning integrity, 40 unique modules, 261 unique canonical screens, 20 phases, non-fabricated code statuses
+PASS: 261 honest screen route records, 3 shell roots, 40 module IDs; no false canonical screen implementation claims
+PASS historical v0.24.0 evidence in current 0.54.0 checkpoint; 40 modules; 261 screens; release denied

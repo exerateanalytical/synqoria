@@ -1,0 +1,7 @@
+COMMAND ['python', 'tools/verify_release_gate.py', '--request-release']
+EXIT 3
+EXPECTED 3
+STDOUT
+
+STDERR
+DENIED: clinical signoff, native builds, PostgreSQL RLS and 261 screen acceptance incomplete

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:synqoria:clinical-outbox-envelope:v1",
+  "title": "SYNQORIA Clinical Outbox Metadata Envelope (Draft)",
+  "description": "Transport metadata only. Clinical payload schema, encryption and consent review are separately gated.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["eventId", "tenantId", "facilityId", "aggregateType", "aggregateId", "aggregateRevision", "eventType", "schemaVersion", "correlationId", "occurredAt"],
+  "properties": {
+    "eventId": {"type": "string", "format": "uuid"},
+    "tenantId": {"type": "string", "format": "uuid"},
+    "facilityId": {"type": "string", "format": "uuid"},
+    "aggregateType": {"type": "string", "pattern": "^[a-z][a-z0-9._-]{1,79}$"},
+    "aggregateId": {"type": "string", "format": "uuid"},
+    "aggregateRevision": {"type": "integer", "minimum": 1},
+    "eventType": {"type": "string", "pattern": "^[a-z][a-z0-9._-]{1,119}$"},
+    "schemaVersion": {"type": "integer", "minimum": 1},
+    "correlationId": {"type": "string", "format": "uuid"},
+    "occurredAt": {"type": "string", "format": "date-time"}
+  }
+}

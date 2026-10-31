@@ -1,0 +1,100 @@
+{
+  "checkpoint": "v0.19.0",
+  "base": "v0.18.0",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "results": [
+    {
+      "batch": "P05-B0028",
+      "scope": "Scoped reviewer/registrar separation and exact tenant/facility/command/revision fence",
+      "source": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewScopeFence.java",
+      "verification_level": "java_unit",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v190-P05-B0028.log"
+    },
+    {
+      "batch": "P05-B0029",
+      "scope": "Idempotency fingerprint and wrong-scope conflict classification; durable atomicity not yet present",
+      "source": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewIdempotencyFence.java",
+      "verification_level": "java_unit",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v190-P05-B0029.log"
+    },
+    {
+      "batch": "P05-B0030",
+      "scope": "PHI-free review decision outbox descriptor and stable partition routing",
+      "source": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewOutboxDescriptor.java",
+      "verification_level": "java_unit",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v190-P05-B0030.log"
+    },
+    {
+      "batch": "P05-B0031",
+      "scope": "Digest chain verification with strictly legal approval/revocation state sequence",
+      "source": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewChainVerifier.java",
+      "verification_level": "java_unit",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v190-P05-B0031.log"
+    },
+    {
+      "batch": "P05-B0032",
+      "scope": "Reviewer evidence freshness and expiry fence with bounded clock skew",
+      "source": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewFreshnessWindow.java",
+      "verification_level": "java_unit",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v190-P05-B0032.log"
+    },
+    {
+      "batch": "P02-B0053",
+      "scope": "Critical-field text wrapping and accessibility sizing contract",
+      "source": "packages/ux-core/src/native-text-safety.ts",
+      "verification_level": "typescript_node_unit",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v190-P02-B0053.log"
+    },
+    {
+      "batch": "P02-B0054",
+      "scope": "Fail-closed facility switch barrier with sensitive-state disposal and generation check",
+      "source": "packages/ux-core/src/facility-switch-barrier.ts",
+      "verification_level": "typescript_node_unit",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v190-P02-B0054.log"
+    },
+    {
+      "batch": "P02-B0055",
+      "scope": "Patient/proxy read-only disclosure guard requiring matching grant scope, expiry and facility",
+      "source": "packages/ux-core/src/proxy-relationship-fence.ts",
+      "verification_level": "typescript_node_unit",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v190-P02-B0055.log"
+    },
+    {
+      "batch": "P02-B0056",
+      "scope": "Exact authorized stable root-only navigation fence; excludes private details and redirects",
+      "source": "packages/ux-core/src/safe-clinical-route-root.ts",
+      "verification_level": "typescript_node_unit",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v190-P02-B0056.log"
+    },
+    {
+      "batch": "P02-B0057",
+      "scope": "Bilingual registration release-denial presentation wired into staff native preview",
+      "source": "packages/ux-core/src/registration-release-presentation.ts",
+      "verification_level": "typescript_node_unit_plus_native_source",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v190-P02-B0057.log"
+    }
+  ],
+  "created_utc": "2026-10-30T05:05:06.856380+00:00",
+  "note": "Five Java and five TypeScript components; individually executed tests. No production PostgreSQL, OIDC, Next or Expo builds; no clinical certification."
+}

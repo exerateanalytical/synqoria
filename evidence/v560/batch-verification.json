@@ -1,0 +1,422 @@
+[
+  {
+    "batch_id": "P06-B0303",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0303.log"
+  },
+  {
+    "batch_id": "P06-B0304",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0304.log"
+  },
+  {
+    "batch_id": "P06-B0305",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0305.log"
+  },
+  {
+    "batch_id": "P06-B0306",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0306.log"
+  },
+  {
+    "batch_id": "P06-B0307",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0307.log"
+  },
+  {
+    "batch_id": "P06-B0308",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0308.log"
+  },
+  {
+    "batch_id": "P06-B0309",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0309.log"
+  },
+  {
+    "batch_id": "P06-B0310",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0310.log"
+  },
+  {
+    "batch_id": "P06-B0311",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0311.log"
+  },
+  {
+    "batch_id": "P06-B0312",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0312.log"
+  },
+  {
+    "batch_id": "P06-B0313",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0313.log"
+  },
+  {
+    "batch_id": "P06-B0314",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0314.log"
+  },
+  {
+    "batch_id": "P06-B0315",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0315.log"
+  },
+  {
+    "batch_id": "P06-B0316",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0316.log"
+  },
+  {
+    "batch_id": "P06-B0317",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0317.log"
+  },
+  {
+    "batch_id": "P06-B0318",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0318.log"
+  },
+  {
+    "batch_id": "P06-B0319",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0319.log"
+  },
+  {
+    "batch_id": "P06-B0320",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0320.log"
+  },
+  {
+    "batch_id": "P06-B0321",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0321.log"
+  },
+  {
+    "batch_id": "P06-B0322",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0322.log"
+  },
+  {
+    "batch_id": "P06-B0323",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0323.log"
+  },
+  {
+    "batch_id": "P06-B0324",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0324.log"
+  },
+  {
+    "batch_id": "P06-B0325",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0325.log"
+  },
+  {
+    "batch_id": "P06-B0326",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0326.log"
+  },
+  {
+    "batch_id": "P06-B0327",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0327.log"
+  },
+  {
+    "batch_id": "P06-B0328",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0328.log"
+  },
+  {
+    "batch_id": "P06-B0329",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0329.log"
+  },
+  {
+    "batch_id": "P06-B0330",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0330.log"
+  },
+  {
+    "batch_id": "P06-B0331",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0331.log"
+  },
+  {
+    "batch_id": "P06-B0332",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0332.log"
+  },
+  {
+    "batch_id": "P06-B0333",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0333.log"
+  },
+  {
+    "batch_id": "P06-B0334",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0334.log"
+  },
+  {
+    "batch_id": "P06-B0335",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0335.log"
+  },
+  {
+    "batch_id": "P06-B0336",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0336.log"
+  },
+  {
+    "batch_id": "P06-B0337",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0337.log"
+  },
+  {
+    "batch_id": "P06-B0338",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0338.log"
+  },
+  {
+    "batch_id": "P06-B0339",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0339.log"
+  },
+  {
+    "batch_id": "P06-B0340",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0340.log"
+  },
+  {
+    "batch_id": "P06-B0341",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0341.log"
+  },
+  {
+    "batch_id": "P06-B0342",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0342.log"
+  },
+  {
+    "batch_id": "P06-B0343",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0343.log"
+  },
+  {
+    "batch_id": "P06-B0344",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0344.log"
+  },
+  {
+    "batch_id": "P06-B0345",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0345.log"
+  },
+  {
+    "batch_id": "P06-B0346",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0346.log"
+  },
+  {
+    "batch_id": "P06-B0347",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0347.log"
+  },
+  {
+    "batch_id": "P06-B0348",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0348.log"
+  },
+  {
+    "batch_id": "P06-B0349",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0349.log"
+  },
+  {
+    "batch_id": "P06-B0350",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0350.log"
+  },
+  {
+    "batch_id": "P06-B0351",
+    "feature_type": "cross-platform command mapping + HTTP integration",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0351.log"
+  },
+  {
+    "batch_id": "P06-B0352",
+    "feature_type": "new HTTP worklist view",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0352.log"
+  },
+  {
+    "batch_id": "P06-B0353",
+    "feature_type": "new HTTP worklist view",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0353.log"
+  },
+  {
+    "batch_id": "P06-B0354",
+    "feature_type": "new HTTP worklist view",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0354.log"
+  },
+  {
+    "batch_id": "P06-B0355",
+    "feature_type": "new HTTP worklist view",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0355.log"
+  },
+  {
+    "batch_id": "P06-B0356",
+    "feature_type": "new HTTP worklist view",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0356.log"
+  },
+  {
+    "batch_id": "P06-B0357",
+    "feature_type": "new HTTP worklist view",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0357.log"
+  },
+  {
+    "batch_id": "P06-B0358",
+    "feature_type": "new HTTP worklist view",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0358.log"
+  },
+  {
+    "batch_id": "P06-B0359",
+    "feature_type": "new HTTP worklist view",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0359.log"
+  },
+  {
+    "batch_id": "P06-B0360",
+    "feature_type": "new HTTP intake",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0360.log"
+  },
+  {
+    "batch_id": "P06-B0361",
+    "feature_type": "new typed clinical observation evidence",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0361.log"
+  },
+  {
+    "batch_id": "P06-B0362",
+    "feature_type": "new typed clinical observation evidence",
+    "verified": true,
+    "exit_code": 0,
+    "evidence": "evidence/v560/P06-B0362.log"
+  }
+]

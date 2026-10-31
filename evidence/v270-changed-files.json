@@ -1,0 +1,333 @@
+{
+  "source": "v0.26.0 verified 970-entry manifest",
+  "version": "0.27.0",
+  "changed": [
+    {
+      "path": "package.json",
+      "change": "modified",
+      "sha256": "2376aa6214d7634da669d9953a1e31ba8fe60185d6e83e415303f40f373e90c1"
+    },
+    {
+      "path": "tools/run_v270_batches.py",
+      "change": "added",
+      "sha256": "f0a2b6a0dfba96c150bb57fc487e1fb2d665f5386bc7225ea972b66f717fb482"
+    },
+    {
+      "path": "tools/run_v270_regression.py",
+      "change": "added",
+      "sha256": "932a2b8cd1965fe0b3f083f59960302b1dc638133ab44d68c5e4a78f8f7e8d68"
+    },
+    {
+      "path": "tools/run_app_builds.py",
+      "change": "added",
+      "sha256": "4bed388beea0c6b2ed49c0f579add0d57adf39fccd7f51ce9c98f1909f09715c"
+    },
+    {
+      "path": "tools/finalize_v270.py",
+      "change": "added",
+      "sha256": "56e5e0511899b1654012a33cad708290195fe18c1c6e8120b6e25effce3a3f5b"
+    },
+    {
+      "path": "tools/dependency_compatibility.py",
+      "change": "added",
+      "sha256": "7986d1c11e6ad70427dc2a79d047a28ba3071dc954692ffd7ffb5675f4653240"
+    },
+    {
+      "path": "tools/verify_cumulative_archive.py",
+      "change": "added",
+      "sha256": "6761b845c41b859fb389b84508873f4ce181c6b79d1230185b710f52c0e57ee4"
+    },
+    {
+      "path": "tools/verify_lock_integrity.py",
+      "change": "added",
+      "sha256": "c08ff666eeafb6c2cc3c59711dd011122aa7dfaf96eb4cf69c2efeeb586450a6"
+    },
+    {
+      "path": "preview/operational-shell.html",
+      "change": "modified",
+      "sha256": "e254bc0b951ddf55a24d679b6ef67d6dfdf656202f195285101b5d4eb20d682c"
+    },
+    {
+      "path": "registers/screen-status-matrix.json",
+      "change": "modified",
+      "sha256": "3f1734eac7b23efa4820641a5a6d896f3ac9af7f52eefdade9b6c4dfe977ecd3"
+    },
+    {
+      "path": "registers/batch-ledger.json",
+      "change": "modified",
+      "sha256": "224dc5b0534b4ccfca4b4607bfdf7afcc748adb74be639e53fed4d67e7ef844b"
+    },
+    {
+      "path": "registers/module-status-matrix.json",
+      "change": "modified",
+      "sha256": "c276b44a05cb2decdde82876c14686b99101e5a62d15308d50ab8039e78129b8"
+    },
+    {
+      "path": "registers/blockers.json",
+      "change": "modified",
+      "sha256": "01d41f28922c0cd6329ae91c412acf6b4b29d44ebbcf3b2b77ea28e01938e119"
+    },
+    {
+      "path": "registers/phases.json",
+      "change": "modified",
+      "sha256": "03039c15f3b96190226b853a37e4ba48b0f12a58feb18180c55277cc91a2ec63"
+    },
+    {
+      "path": "tests/test_v270_engineering.py",
+      "change": "added",
+      "sha256": "e30829164875a91a0a488f8d9a98fd8634147a63df11dbd1a2d856f1f14cb253"
+    },
+    {
+      "path": "tests/test_v260_foundations.py",
+      "change": "modified",
+      "sha256": "741900be62e5909abdab26cc57a02f5057289c966ea2172b9478297ca4c2e613"
+    },
+    {
+      "path": "tests/test_v270_browser.py",
+      "change": "added",
+      "sha256": "114a1de8e05bb0b3a5bc5ffcd82946c221cd640bfa2133ecadff6c2a576fbd9f"
+    },
+    {
+      "path": "tests/test_v270_shell_sources.py",
+      "change": "added",
+      "sha256": "4e328b1771b94c3e4c43378b1575571130492c144feea5b7846a0872c0b11dbd"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/registration/V270EvidenceReconciliationTest.java",
+      "change": "added",
+      "sha256": "dc5cdd208d7bb1fa72c7be13b9af5de63d69c9ad56aa00ff92b137750524cba8"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewEvidenceCrossCheck.java",
+      "change": "added",
+      "sha256": "a9436e965c5dc69ad98ee975e5d1596834ef7100cef5af2645d2ccd556653ac1"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewCommandReplayProbe.java",
+      "change": "added",
+      "sha256": "06e7f4cc51d36abfdd4918304cb9886dccbad86fc3cf0d017025062c0cf2e835"
+    },
+    {
+      "path": "packages/ux-core/package.json",
+      "change": "modified",
+      "sha256": "b851939768e84b4d5651d2ba60720d9609f5ac8ae5c1a34e99a56aa9b89dfc7d"
+    },
+    {
+      "path": "apps/web/package.json",
+      "change": "modified",
+      "sha256": "80c7ece6d8c92fd669870491baf2dfabb61c1f689eb42e263d3a3467a76e3ede"
+    },
+    {
+      "path": "apps/staff-mobile/package.json",
+      "change": "modified",
+      "sha256": "ff66dcc54d2d860f251d578d5163c18311d05c5b35ffd2c24cdfeba9b3a8eacd"
+    },
+    {
+      "path": "apps/patient-mobile/package.json",
+      "change": "modified",
+      "sha256": "c7b59d9b2d99339f1edbb042487318f0e79b7d446b26009c034bac25db15a057"
+    },
+    {
+      "path": "apps/web/app/globals.css",
+      "change": "modified",
+      "sha256": "c1bbeea8f81b0d7bd71aa98e1ed651abb56c3ebaba892c0248e24c55b0403566"
+    },
+    {
+      "path": "apps/web/components/ShellFrame.tsx",
+      "change": "modified",
+      "sha256": "6f1ac0d6947850c5f863824c84142c425679975bd890e91ca8de74276292f4c3"
+    },
+    {
+      "path": "evidence/batches/v270-regression-java-full-regression.log",
+      "change": "added",
+      "sha256": "6da8e09a5e8a4c51699efdc713422e3e485f7a63537c5f7120ad74acca18c68f"
+    },
+    {
+      "path": "evidence/batches/v270-regression-ux-typescript.log",
+      "change": "added",
+      "sha256": "e883fc5c0ae4079bcba8760d4d6fba7facb9b0b2d43bf682a4ebbca1f010fb50"
+    },
+    {
+      "path": "evidence/batches/v270-regression-historical-checkpoint.log",
+      "change": "added",
+      "sha256": "a053cd55104f8eee224f19be000522a51b35fddb2a750d544378ddf74a667a20"
+    },
+    {
+      "path": "evidence/batches/v270-regression-v270-engineering.log",
+      "change": "added",
+      "sha256": "fdbe8c0f09d47cd803d794e1f8fe933a08f2dc89e5d1cc3f809cdbc8ac2b5789"
+    },
+    {
+      "path": "evidence/batches/v270-regression-dependency-gate.log",
+      "change": "added",
+      "sha256": "ec984481255bcf4e04cf3dadb64250aee0ab9661a7e3b0d7d98aec7dbc2e8fa8"
+    },
+    {
+      "path": "evidence/batches/v270-regression-batch-ledger.log",
+      "change": "added",
+      "sha256": "3292cf78ac8216ecf3279f1ad6a86a6c0a58e9710117504b3c1e9a63dbdebc6a"
+    },
+    {
+      "path": "evidence/batches/v270-regression-v270-browser-viewport.log",
+      "change": "added",
+      "sha256": "47624dc87e5ef908ed0e1188c492cd7c28df91c1b4567b46bdddcdb6853317ec"
+    },
+    {
+      "path": "evidence/batches/v270-regression-v270-browser-more.log",
+      "change": "added",
+      "sha256": "9fe935554deface79bd564ca8b3299d4d37d57154ddf5b3b7f37b106c24bc3b3"
+    },
+    {
+      "path": "evidence/batches/v270-regression-sql-ddl-audit.log",
+      "change": "added",
+      "sha256": "52d45e388b81d94e1237e33cc85d8f0818fa951b6c8bae38a3cf2e0fa325e575"
+    },
+    {
+      "path": "evidence/batches/v270-regression-postgres-preflight.log",
+      "change": "added",
+      "sha256": "453089a0423c37fd11485d32263c3c7ef45b99352d679ff94e7573630ce10a34"
+    },
+    {
+      "path": "evidence/batches/P01-B0042-v270.log",
+      "change": "added",
+      "sha256": "de7cb96d787c2f530e4ab60affca41cf3b2f19621cb53d279328169c52e37f72"
+    },
+    {
+      "path": "evidence/batches/P01-P02-P05-v270-ten-batches.json",
+      "change": "added",
+      "sha256": "dc0237f41d71638fdc821b4af9db991697bdac4fc401a44480298cf6ca36492a"
+    },
+    {
+      "path": "evidence/batches/v270-regression-native-and-tsx-source.log",
+      "change": "added",
+      "sha256": "3981bc97a977b13a4f39c6138f6582de63d52b34b6dc848ec6ef3fb0cdf7e9ec"
+    },
+    {
+      "path": "evidence/batches/v270-regression-summary.json",
+      "change": "added",
+      "sha256": "3e7bc38791f7cfd9c9f3e21ec786d7770863e9f610fb744da2eec587fd2a3029"
+    },
+    {
+      "path": "evidence/batches/v270-regression-v250-db-contract.log",
+      "change": "added",
+      "sha256": "8c0fdc43dd02d15cd7a9b1af6121ee1f33990b7c7671055cbf4c89f43b4fa57c"
+    },
+    {
+      "path": "evidence/batches/v270-regression-v260-foundation.log",
+      "change": "added",
+      "sha256": "ad0152e3e1933ebcf17f93436b0cc4dcf1b32314cef6dc91ba21133cd8938a88"
+    },
+    {
+      "path": "evidence/batches/P05-B0062-v270.log",
+      "change": "added",
+      "sha256": "24b58dbcc5c0d61843c3ffbe9332a7b1c8a1b9662cd7cba5ca6583bd45bac53c"
+    },
+    {
+      "path": "evidence/batches/P05-B0063-v270.log",
+      "change": "added",
+      "sha256": "79d12703a0878b05bef398ffc673d3819254d4bf67a0b6aff71e7aab9f8b0a44"
+    },
+    {
+      "path": "evidence/batches/P01-B0039-v270.log",
+      "change": "added",
+      "sha256": "e25c05fd9b6938b2c001cb07a90bb6bc5596e68d4376184ad37932d305354a99"
+    },
+    {
+      "path": "evidence/batches/P01-B0040-v270.log",
+      "change": "added",
+      "sha256": "3e96b3c4360a964da73674d9e6982634e1e6c11a9f31f7fd9dfe1876c126c517"
+    },
+    {
+      "path": "evidence/batches/P02-B0092-v270.log",
+      "change": "added",
+      "sha256": "a7f5ddf3baf840aa7458788ac06d4b02b6e24daa74e28086861172c78678d652"
+    },
+    {
+      "path": "evidence/batches/v270-regression-contract-schema.log",
+      "change": "added",
+      "sha256": "67d901434ccfac9b70a490339cd53540355761bd5ee2fe7ad5eba2c88d47416a"
+    },
+    {
+      "path": "evidence/batches/v270-static-shell-320-200pct.png",
+      "change": "added",
+      "sha256": "456b476ab52263b984ec8a506d2bbf6b544b893fe249c69e600c8a1540e71300"
+    },
+    {
+      "path": "evidence/batches/v270-regression-ux-node.log",
+      "change": "added",
+      "sha256": "68d436586bbfb941c28f528d3ecbcf169c61411900c19a24777e4b5ba85464bc"
+    },
+    {
+      "path": "evidence/batches/v270-regression-canonical-registers.log",
+      "change": "added",
+      "sha256": "2b5d19d3de241c91b76074e32bc42af813c3452f953d3506492e8b29d94e8df3"
+    },
+    {
+      "path": "evidence/batches/P01-B0041-v270.log",
+      "change": "added",
+      "sha256": "cb3bd8af9ee2ad5995d9193f5f8d1bd358d351042d27a64e536419d2435304c3"
+    },
+    {
+      "path": "evidence/batches/v270-regression-v270-shell.log",
+      "change": "added",
+      "sha256": "6579fc69ef0553bc85088c16e0404cd305485e1287578a8779376c498a8c826b"
+    },
+    {
+      "path": "evidence/batches/P02-B0091-v270.log",
+      "change": "added",
+      "sha256": "d2022f333a7cabbe27f2a8ae7bdf3729718fb86d0ad640b2085d61f8b6a9c8f4"
+    },
+    {
+      "path": "evidence/batches/P02-B0090-v270.log",
+      "change": "added",
+      "sha256": "70b4f3da8562486c5ee10c2636fd2582e262213d1171ca3721e553fa9f54accd"
+    },
+    {
+      "path": "evidence/batches/v270-actual-build-attempt.json",
+      "change": "added",
+      "sha256": "eb1876c11aaf3f0b0aee12291a8e113f86cecf3da7fb220bd097fae7abda4551"
+    },
+    {
+      "path": "evidence/batches/P02-B0089-v270.log",
+      "change": "added",
+      "sha256": "aced8833d6fb5e3ca29de3db00e98a9667540416ae6f492acec88202fd03332f"
+    },
+    {
+      "path": "evidence/batches/v270-regression-navigation-registers.log",
+      "change": "added",
+      "sha256": "f30d2b1f9361a92c440cc02cd7a0c543e1873dad98ee6f20658dc1123bb77377"
+    },
+    {
+      "path": "evidence/batches/v270-regression-status-matrix.log",
+      "change": "added",
+      "sha256": "b7c5be1487b3973f50d2b4cd21645b7094a44f5fa5f72923befe2ee0af175ddf"
+    },
+    {
+      "path": "evidence/batches/v270-regression-app-build-attempt.log",
+      "change": "added",
+      "sha256": "56886784698f015abad02446a0f2811127287e40c52be3b39699baaebd124285"
+    },
+    {
+      "path": "evidence/batches/v270-regression-clinical-release-denial.log",
+      "change": "added",
+      "sha256": "23bf9b621a7d44149335c56598ff68dce37e642c07a17c780a501f6f63fb85d8"
+    },
+    {
+      "path": ".github/workflows/engineering-checks.yml",
+      "change": "modified",
+      "sha256": "dcf18993659926872eaeebc402eb3ade52b7c64263167a1c415be6014279c72c"
+    },
+    {
+      "path": "docs/program/V027_BUILD_AND_REVIEW_INTEGRITY.md",
+      "change": "added",
+      "sha256": "b759f1c26dd400925631767714c17abb9c9f0f50fe8ab1cad708504c89d7fe1c"
+    },
+    {
+      "path": "docs/program/STATUS.md",
+      "change": "modified",
+      "sha256": "eaef515818ede0ab8052e8c75ecfb299fc8298ce678946737d392fb9ae858a33"
+    }
+  ],
+  "changed_count": 65,
+  "removed": []
+}

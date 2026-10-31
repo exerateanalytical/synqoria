@@ -1,0 +1,16 @@
+{
+  "batch_id": "P06-B0160",
+  "module": "M03",
+  "phase": "P06",
+  "scope": "Transactional SQL statement/lock/idle timeout budget",
+  "implementation": [
+    "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcFence.java"
+  ],
+  "focused_tests": [
+    "evidence/v520/scenario-jdbc-budget.log"
+  ],
+  "verified": true,
+  "verification_scope": "synthetic_java_and_static_source_only",
+  "live_postgresql_tested": false,
+  "clinical_accepted": false
+}

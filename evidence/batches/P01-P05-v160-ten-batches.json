@@ -1,0 +1,101 @@
+{
+  "checkpoint": "v0.16.0",
+  "base": "v0.15.0",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "results": [
+    {
+      "batch": "P05-B0022",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Constrain provisional JDBC registration writer to package-local seam and expose only locked production admission",
+      "verification_level": "java_unit",
+      "source": "services/clinical-core/src/main/java/org/synqoria/registration/RegistrationProductionBoundary.java",
+      "evidence_log": "evidence/batches/v160-P05-B0022.log"
+    },
+    {
+      "batch": "P05-B0023",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Append-only review event state transitions reject reapproval, resurrection and version gaps",
+      "verification_level": "java_unit",
+      "source": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewEventTransition.java",
+      "evidence_log": "evidence/batches/v160-P05-B0023.log"
+    },
+    {
+      "batch": "P05-B0024",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Domain-separated audit hash chain binds event kind, version and prior digest",
+      "verification_level": "java_unit",
+      "source": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewAuditChain.java",
+      "evidence_log": "evidence/batches/v160-P05-B0024.log"
+    },
+    {
+      "batch": "P05-B0025",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Authoritative reviewer grant epoch/session freshness comparison with revocation denial",
+      "verification_level": "java_unit",
+      "source": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewerGrantEpoch.java",
+      "evidence_log": "evidence/batches/v160-P05-B0025.log"
+    },
+    {
+      "batch": "P05-B0026",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Review-only readiness composition of independent IAM, revocation and database evidence",
+      "verification_level": "java_unit",
+      "source": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewReadinessReport.java",
+      "evidence_log": "evidence/batches/v160-P05-B0026.log"
+    },
+    {
+      "batch": "P02-B0040",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Canonical workforce intake deep-link allowlist with strict shell/role/route checks",
+      "verification_level": "ts_node_unit",
+      "source": "packages/ux-core/src/registration-route-guard.ts",
+      "evidence_log": "evidence/batches/v160-P02-B0040.log"
+    },
+    {
+      "batch": "P02-B0041",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Non-identifying EN/FR accessibility error summary with deterministic order and no save",
+      "verification_level": "ts_node_unit",
+      "source": "packages/ux-core/src/registration-a11y-summary.ts",
+      "evidence_log": "evidence/batches/v160-P02-B0041.log"
+    },
+    {
+      "batch": "P02-B0042",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Native intake lifecycle invalidates volatile synthetic drafts on suspend/offline",
+      "verification_level": "ts_node_unit",
+      "source": "packages/ux-core/src/registration-mobile-lifecycle.ts",
+      "evidence_log": "evidence/batches/v160-P02-B0042.log"
+    },
+    {
+      "batch": "P02-B0043",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Native staff registration preview binds accessible review summary and visible lock",
+      "verification_level": "tsx_syntax_and_source_static",
+      "source": "apps/staff-mobile/RegistrationPreview.tsx",
+      "evidence_log": "evidence/batches/v160-P02-B0043.log"
+    },
+    {
+      "batch": "P01-B0032",
+      "verified": true,
+      "exit_code": 0,
+      "scope": "Executable release gate refuses promotion while clinical screen acceptance and infrastructure evidence absent",
+      "verification_level": "python_execution",
+      "source": "tools/verify_release_gate.py",
+      "evidence_log": "evidence/batches/v160-P01-B0032.log"
+    }
+  ],
+  "clinical_screen_implementation": 0,
+  "clinical_release": "NOT_CERTIFIED",
+  "created_utc": "2026-10-30T02:02:19.097843+00:00"
+}

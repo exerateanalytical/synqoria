@@ -1,0 +1,32 @@
+{
+  "version": "0.43.0",
+  "source": "0.42.0-reconciled",
+  "created_utc": "2026-10-30T16:16:40.506141+00:00",
+  "added": {
+    "docs/archive/v042_parallel/AppointmentTransactionalTransition.java.txt": "893ba1b90dd9952ab940daa5a43371fd052ad8e5b7dd1706ab75db8a9bdffda2",
+    "docs/archive/v042_parallel/AppointmentTransactionalTransitionTest.java.txt": "63d6744ad616eb4e55cca4f6b544588d03e9374c142d1e4fd6a6895822c31805",
+    "docs/archive/v042_parallel/README.md": "a279a17d589c6d0a3738dfc0924d8428c68fecaf6871d4d87ccd76ccce96a88b",
+    "docs/program/STATUS_v0.42.0_concurrent.md": "18ea74560d6fea7f85f10f4b366db81a379932a40d9a7e3b1097761bce7b0193",
+    "docs/program/STATUS_v0.43.0.md": "5d83d56ed44e9b122420e41dcf08122b955b96cbbd2d67fbdade7dd1667a2235",
+    "evidence/batches/v420-concurrent-historical.json": "e3b023ef9410fa9de18e60ed20a80e1333c7dc4b1e4f7887a8f39006f3b65e03",
+    "evidence/v420-concurrent-manifest.json": "9d530ef5fa1a496bc6b3250645794b8f27925d202bdf09698deb43e29cb8a851",
+    "tools/write_v430_change_manifest.py": "cce818c5a35e436bfbf62a524d885b145efa65bc3936d7fe933901c951d3f783"
+  },
+  "modified": {
+    "README.md": "6602978e7353476cbde9315226aedff5508a616b42ff48a1cc5aa2582c806e66",
+    "docs/program/M02_SCHEDULING_TRANSACTION_CONTRACT.md": "2a2b0aaf4425ec3af2aef31dcab512a50c47ca238f583bd6c227c144da57e450",
+    "docs/program/STATUS.md": "5d83d56ed44e9b122420e41dcf08122b955b96cbbd2d67fbdade7dd1667a2235",
+    "registers/batch-ledger.json": "053e69b83762e6328c2eb3cdd6a91b6e8c846bcc89bcf970e2bb0d927fea9b64",
+    "registers/blockers.json": "854242b0331e1f95cd36e8d176f7b835974053f694e4fae430a407078831311f",
+    "registers/module-status-matrix.json": "6524a9b73f65136cd648f05769e01a4f0d81ac7d436377241ae220775aa880af",
+    "registers/phases.json": "24948d21154baf647f3eddbd36ab3390c59fe905937a1c0f454cf0c627c46440",
+    "registers/screen-status-matrix.json": "bbe2291022b094e0d78c698d64398335c72c1a164a357b098f3e5ded89413e21"
+  },
+  "deleted": {},
+  "counts": {
+    "added": 8,
+    "modified": 8,
+    "deleted": 0
+  },
+  "note": "Manifest itself excluded to avoid recursive hash; all remaining cumulative file hashes verified separately."
+}

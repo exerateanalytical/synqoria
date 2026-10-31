@@ -1,0 +1,5 @@
+COMMAND ["java", "-ea", "-cp", "/tmp/synqoria-v280-classes", "org.synqoria.scheduling.ResourceReservationIndexTest"]
+EXIT_CODE 0
+PASS P06-B0003 13 overlap/isolation/release/concurrency assertions (in-memory only)
+
+STDERR

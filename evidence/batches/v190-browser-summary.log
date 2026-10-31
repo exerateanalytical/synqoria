@@ -1,0 +1,3 @@
+test_i18n_preview_browser.py exit=0 PASS: 19 static Chromium bilingual/viewport checks; NOT an application build
+test_preview_browser.py exit=0 PASS: 10 Chromium preview checks (9 widths plus 200% text simulation)
+test_v120_registration_browser.py exit=0 PASS registration static specimen: 19 viewport/locale checks; no compiled application

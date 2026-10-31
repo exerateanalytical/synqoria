@@ -1,0 +1,324 @@
+................................................EEEEEEEEEEEEEEE...E......E.........
+======================================================================
+ERROR: test_v110_mobile_source (unittest.loader._FailedTest.test_v110_mobile_source)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v110_mobile_source
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/synqoria_v56_work/tests/test_v110_mobile_source.py", line 8, in <module>
+    assert 'disabled={true}' in app and 'accessibilityState={{selected:false,disabled:true}}' in app
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+
+======================================================================
+ERROR: test_v140_source_contract (unittest.loader._FailedTest.test_v140_source_contract)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v140_source_contract
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/synqoria_v56_work/tests/test_v140_source_contract.py", line 24, in <module>
+    assert 'disabled={true}' in mobile
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+
+======================================================================
+ERROR: test_v160_checkpoint (unittest.loader._FailedTest.test_v160_checkpoint)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v160_checkpoint
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/synqoria_v56_work/tests/test_v160_checkpoint.py", line 26, in <module>
+    assert 'P05-B0027' in l['next_batch']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+
+======================================================================
+ERROR: test_v170_checkpoint (unittest.loader._FailedTest.test_v170_checkpoint)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v170_checkpoint
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/synqoria_v56_work/tests/test_v170_checkpoint.py", line 28, in <module>
+    assert 'P05-B0027' in l['next_batch']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+
+======================================================================
+ERROR: test_v170_native_integration (unittest.loader._FailedTest.test_v170_native_integration)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v170_native_integration
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/synqoria_v56_work/tests/test_v170_native_integration.py", line 8, in <module>
+    assert 'disabled={true}' in s and 'No verified server session adapter installed' in s
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+
+======================================================================
+ERROR: test_v180_checkpoint (unittest.loader._FailedTest.test_v180_checkpoint)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v180_checkpoint
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/synqoria_v56_work/tests/test_v180_checkpoint.py", line 25, in <module>
+    assert l['release_status']=='NOT_CERTIFIED' and 'P05-B0027' in l['next_batch']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+
+======================================================================
+ERROR: test_v190_checkpoint (unittest.loader._FailedTest.test_v190_checkpoint)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v190_checkpoint
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/synqoria_v56_work/tests/test_v190_checkpoint.py", line 7, in <module>
+    assert l['version']==p['version'] in ('0.19.0','0.20.0','0.21.0','0.22.0','0.23.0')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+
+======================================================================
+ERROR: test_v200_checkpoint (unittest.loader._FailedTest.test_v200_checkpoint)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v200_checkpoint
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/synqoria_v56_work/tests/test_v200_checkpoint.py", line 7, in <module>
+    assert ledger['version']==phase['version'] in ('0.20.0','0.21.0','0.22.0','0.23.0')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+
+======================================================================
+ERROR: test_v200_native_sources (unittest.loader._FailedTest.test_v200_native_sources)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v200_native_sources
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/synqoria_v56_work/tests/test_v200_native_sources.py", line 5, in <module>
+    assert batch in ("all","P02-B0058","P02-B0061")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+
+======================================================================
+ERROR: test_v210_checkpoint (unittest.loader._FailedTest.test_v210_checkpoint)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v210_checkpoint
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/synqoria_v56_work/tests/test_v210_checkpoint.py", line 23, in <module>
+    assert 'P05-B0027' in ledger['next_batch']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+
+======================================================================
+ERROR: test_v220_checkpoint (unittest.loader._FailedTest.test_v220_checkpoint)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v220_checkpoint
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/synqoria_v56_work/tests/test_v220_checkpoint.py", line 29, in <module>
+    assert 'P05-B0027' in ledger['next_batch']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+
+======================================================================
+ERROR: test_v220_native_source (unittest.loader._FailedTest.test_v220_native_source)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v220_native_source
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/synqoria_v56_work/tests/test_v220_native_source.py", line 6, in <module>
+    assert token in s,(app,token)
+           ^^^^^^^^^^
+AssertionError: ('staff-mobile', 'disabled={true}')
+
+
+======================================================================
+ERROR: test_v230_checkpoint (unittest.loader._FailedTest.test_v230_checkpoint)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v230_checkpoint
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/synqoria_v56_work/tests/test_v230_checkpoint.py", line 6, in <module>
+    assert ledger['version']==ph['version']=='0.23.0'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+
+======================================================================
+ERROR: test_v240_browser (unittest.loader._FailedTest.test_v240_browser)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v240_browser
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/synqoria_v56_work/tests/test_v240_browser.py", line 45, in <module>
+    else:raise ValueError('Unknown batch')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Unknown batch
+
+
+======================================================================
+ERROR: test_v250_checkpoint (unittest.loader._FailedTest.test_v250_checkpoint)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v250_checkpoint
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/synqoria_v56_work/tests/test_v250_checkpoint.py", line 6, in <module>
+    assert ledger['version']==phases['version']=='0.25.0'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+
+======================================================================
+ERROR: test_v250_web_shell (unittest.loader._FailedTest.test_v250_web_shell)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v250_web_shell
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/synqoria_v56_work/tests/test_v250_web_shell.py", line 49, in <module>
+    else:raise ValueError('Unknown batch')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Unknown batch
+
+
+======================================================================
+ERROR: test_v270_browser (unittest.loader._FailedTest.test_v270_browser)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_v270_browser
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/synqoria_v56_work/tests/test_v270_browser.py", line 46, in <module>
+    else:raise ValueError(batch)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: discover
+
+
+----------------------------------------------------------------------
+Ran 83 tests in 3.449s
+
+FAILED (errors=17)
+PASS: planning integrity, 40 unique modules, 261 unique canonical screens, 20 phases, non-fabricated code statuses
+PASS: ten independent batch evidence records, monotonic phase counts, no false certification
+PASS: draft OpenAPI YAML parsed; secured patient path, 404 nondisclosure and placeholder identity endpoints
+PASS: 8 event metadata schema validation cases; no broker integration
+PASS: 19 static Chromium bilingual/viewport checks; NOT an application build
+PASS: 2 unauthenticated Expo shells have disabled tab navigation source guards
+PASS: loopback adapter contract routes and fail-closed status definition; no OIDC claim
+PASS: 19 reconciled historical increments retained, 30 historical batches incl P00, no clinical screens or certifications
+PASS: 261 honest screen route records, 3 shell roots, 40 module IDs; no false canonical screen implementation claims
+PASS: 10 Chromium preview checks (9 widths plus 200% text simulation)
+PASS: bilingual, denied-by-default web shell and restrained responsive style source assertions
+PASS: static design prohibitions, native shell source and 3 web shell sources
+PASS: 13 patient/consent SQL static assertions; PostgreSQL NOT executed
+PASS: 28 static SQL assertions across V002/V003; no DB execution
+PASS: 12 outbox/inbox static assertions; PostgreSQL NOT executed
+PASS: 5 domain scope DDL definitions, composite FKs, default-deny RLS source (SQL NOT EXECUTED)
+PASS: 10 evidence-verified new batch IDs, no fictitious screen/certification completion
+PASS: JDBC SQL selectors aligned with exact source DDL tables and column names (static only)
+PASS v100 clinical audit schema/statement alignment; STATIC only, PostgreSQL not executed
+PASS v0.10.0: 10 batch files and fail-closed phase/certification counters
+PASS v0.11.0: 10 distinct implemented+tested source records; no clinical or release certification
+PASS v0.12.0: 10 distinct source/unit batches, 261 clinical screens still unimplemented and release gates closed
+PASS registration static specimen: 19 viewport/locale checks; no compiled application
+PASS v0.12.0 registration SQL + locked responsive screen source (static only, no compiled Next/PG)
+PASS v0.13.0: 10 tested increments, canonical inventory and fail-closed clinical gates
+PASS P01-B0029: draft schema forbids client trusted fields and exposes zero paths
+PASS v0.13.0: quarantined identity lookup SQL and locked bilingual web/native intake source
+PASS v0.15.0 10 unique verified non-clinical increments, 261 unimplemented screens, no release claims
+PASS P01-B0031 draft SQL constraints and fail-closed RLS: STATIC ONLY, PostgreSQL not run
+PASS P02-B0043 native source integration; source-only, not Expo build
+PASS P01-B0032 release gate denies promotion and validates canonical scope
+PASS: native read-only models wired in staff/patient source; Expo/device NOT built
+PASS P02 native source integration: 2 separate apps, locked and accessible; not compiled/device-tested
+PASS v0.22.0: restricted SQL/JDBC source contract; NOT PostgreSQL execution
+PASS native source privacy, stale-response and locked navigation wiring; no native binary tested
+PASS historical v0.24.0 evidence in current 0.55.0 checkpoint; 40 modules; 261 screens; release denied
+PASS P05-B0053 9 DDL static checks; migration UNAPPLIED
+PASS P01-B0043: build artifact integrity, absent output, symlink, failure gates (synthetic fixtures)
+PASS P01-B0044: manual candidate, no unreviewed lock adoption, CI fail-closed
+PASS P02-B0093: actual compiled TS controller Chromium focus loop, Escape, outside, resize, cleanup
+PASS: P06 quarantine DDL static constraint/RLS/no-grant audit; NOT PostgreSQL tested
+PASS P02-B0094: 32 Chromium CSS checks; 9 widths, FR, 200% font, 460px keyboard-like viewport (static specimen)
+PASS 10 static contract assertions; no endpoint deployed
+PASS 8 static quarantine migration assertions; no live database executed
+PASS cumulative archive verifier regression checks=4; no unverified archives accepted
+PASS idempotency quarantine migration static checks=18; PostgreSQL not executed
+PASS M02 schema/JDBC static alignment checks=116; live DB and restricted-role RLS unverified

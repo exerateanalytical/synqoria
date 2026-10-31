@@ -1,0 +1,1 @@
+PASS jdbc-outbox-failure checks=2

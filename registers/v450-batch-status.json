@@ -1,0 +1,30 @@
+{
+  "version": "0.45.0",
+  "requested_target": 60,
+  "batch_ids": [
+    "P06-B0070",
+    "P06-B0071",
+    "P06-B0072",
+    "P06-B0073",
+    "P06-B0074",
+    "P06-B0075",
+    "P06-B0076",
+    "P06-B0077",
+    "P06-B0078",
+    "P06-B0079",
+    "P06-B0080",
+    "P06-B0081",
+    "P06-B0082",
+    "P06-B0083",
+    "P06-B0084"
+  ],
+  "completed_count": 15,
+  "remaining_target": 45,
+  "next_batch": "P06-B0085",
+  "implementation_scope": "Java scheduling transaction safety, mock JDBC tests, register repair",
+  "live_postgresql_verified": false,
+  "production_oidc_verified": false,
+  "clinical_accepted_screens": 0,
+  "clinically_certified_modules": 0,
+  "release": "DENIED"
+}

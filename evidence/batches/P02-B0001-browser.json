@@ -1,0 +1,84 @@
+{
+  "target": "static preview only",
+  "browser": "system Chromium",
+  "checks": [
+    {
+      "width": 320,
+      "overflow": false,
+      "bottom_nav": true,
+      "sidebar": false,
+      "clinical_action_disabled": true,
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "overflow": false,
+      "bottom_nav": true,
+      "sidebar": false,
+      "clinical_action_disabled": true,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "bottom_nav": true,
+      "sidebar": false,
+      "clinical_action_disabled": true,
+      "status": "PASS"
+    },
+    {
+      "width": 412,
+      "overflow": false,
+      "bottom_nav": true,
+      "sidebar": false,
+      "clinical_action_disabled": true,
+      "status": "PASS"
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "bottom_nav": false,
+      "sidebar": true,
+      "clinical_action_disabled": true,
+      "status": "PASS"
+    },
+    {
+      "width": 1024,
+      "overflow": false,
+      "bottom_nav": false,
+      "sidebar": true,
+      "clinical_action_disabled": true,
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "overflow": false,
+      "bottom_nav": false,
+      "sidebar": true,
+      "clinical_action_disabled": true,
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "overflow": false,
+      "bottom_nav": false,
+      "sidebar": true,
+      "clinical_action_disabled": true,
+      "status": "PASS"
+    },
+    {
+      "width": 1920,
+      "overflow": false,
+      "bottom_nav": false,
+      "sidebar": true,
+      "clinical_action_disabled": true,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "text_scale": "200% simulation",
+      "overflow": false,
+      "status": "PASS"
+    }
+  ]
+}

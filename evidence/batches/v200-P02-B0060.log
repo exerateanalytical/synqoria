@@ -1,0 +1,22 @@
+command=["node", "--test", "--test-name-pattern=P02-B0060", "packages/ux-core/tests/v200-native-safety.test.cjs"]
+exit=0 P02-B0060
+STDOUT:
+TAP version 13
+# Subtest: P02-B0060 app background revokes private presentation and requires new grant
+ok 1 - P02-B0060 app background revokes private presentation and requires new grant
+  ---
+  duration_ms: 0.913305
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 125.486091
+
+STDERR:
+

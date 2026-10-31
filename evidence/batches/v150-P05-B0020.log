@@ -1,0 +1,4 @@
+$ java -ea -cp /tmp/synqoria-security-classes org.synqoria.registration.V150ReviewGuardTest P05-B0020
+PASS P05-B0020 17 assertions (local Java; no clinical release)
+
+exit=0

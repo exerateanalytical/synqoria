@@ -1,0 +1,100 @@
+{
+  "checkpoint": "v0.18.0",
+  "base": "v0.17.0",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "results": [
+    {
+      "batch": "P03-B0024",
+      "scope": "Trusted operator-pinned RSA JWK and RFC7638 thumbprint checks",
+      "source": "services/clinical-core/src/main/java/org/synqoria/security/OidcTrustedRsaJwk.java",
+      "verification_level": "java_crypto_unit",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v180-P03-B0024.log"
+    },
+    {
+      "batch": "P03-B0025",
+      "scope": "JOSE protected-header allowlist rejects algorithm confusion, embedded keys and remote references",
+      "source": "services/clinical-core/src/main/java/org/synqoria/security/OidcProtectedHeaderFence.java",
+      "verification_level": "java_unit",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v180-P03-B0025.log"
+    },
+    {
+      "batch": "P03-B0026",
+      "scope": "Signed payload verification binds exact JWS header bytes to signature and trusted rotating key",
+      "source": "services/clinical-core/src/main/java/org/synqoria/security/OidcSignedPayload.java",
+      "verification_level": "java_crypto_unit",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v180-P03-B0026.log"
+    },
+    {
+      "batch": "P03-B0027",
+      "scope": "Trusted claim structural validation for exact issuer, audience, client, time and opaque IDs",
+      "source": "services/clinical-core/src/main/java/org/synqoria/security/OidcTrustedClaimPolicy.java",
+      "verification_level": "java_unit",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v180-P03-B0027.log"
+    },
+    {
+      "batch": "P03-B0028",
+      "scope": "PHI-free HMAC-pseudonymous security denial audit event format",
+      "source": "services/clinical-core/src/main/java/org/synqoria/security/OidcSecurityAuditRecord.java",
+      "verification_level": "java_crypto_unit",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v180-P03-B0028.log"
+    },
+    {
+      "batch": "P02-B0048",
+      "scope": "Static staff navigation allowlist prevents private IDs, unsafe paths and open redirects",
+      "source": "packages/ux-core/src/safe-staff-route-intent.ts",
+      "verification_level": "typescript_node_unit",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v180-P02-B0048.log"
+    },
+    {
+      "batch": "P02-B0049",
+      "scope": "Foreground generation reauthorization blocks stale, offline, revoked protected views",
+      "source": "packages/ux-core/src/foreground-reauthorization.ts",
+      "verification_level": "typescript_node_unit",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v180-P02-B0049.log"
+    },
+    {
+      "batch": "P02-B0050",
+      "scope": "EN/FR privacy-preserving push notification payloads omit patient/proxy data",
+      "source": "packages/ux-core/src/privacy-notification.ts",
+      "verification_level": "typescript_node_unit",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v180-P02-B0050.log"
+    },
+    {
+      "batch": "P02-B0051",
+      "scope": "Readonly bilingual four-stage registration journey integrated into native staff preview",
+      "source": "packages/ux-core/src/locked-registration-journey.ts",
+      "verification_level": "typescript_node_unit_plus_native_source",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v180-P02-B0051.log"
+    },
+    {
+      "batch": "P02-B0052",
+      "scope": "Four accessible disabled EN/FR bottom destinations integrated in both native shells",
+      "source": "packages/ux-core/src/locked-navigation-accessibility.ts",
+      "verification_level": "typescript_node_unit_plus_native_source",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v180-P02-B0052.log"
+    }
+  ],
+  "created_utc": "2026-10-30T04:06:01.142717+00:00",
+  "note": "Tests run independently; no production OIDC, PostgreSQL, Expo or clinical release implied."
+}

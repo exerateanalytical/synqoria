@@ -1,0 +1,105 @@
+COMMAND ["bash", "tools/check_java_security.sh"]
+EXIT_CODE 0
+STDOUT
+PASS: 11 Java tenant/facility/patient scope assertions
+PASS: 19 Java clinical proof assertions; NO OIDC/database clinical authorization integration
+PASS: 20 patient read non-disclosure assertions
+PASS: 13 Java facility directory assertions
+PASS: 13 idempotency guard assertions (in-memory only)
+PASS: 11 outbox fencing assertions (in-memory only)
+PASS: 14 session admission assertions (verifier stub, NO OIDC signature test)
+PASS: 11 explicit consent predicate assertions (no legal policy approval)
+PASS: 11 facility lifecycle assertions (in-memory only)
+PASS: 15 cell routing assertions (no network/TLS)
+PASS: 15 scoped idempotency contract assertions (in-memory only)
+PASS: 9 deterministic outbox intent assertions (no transaction yet)
+PASS: 11 inbox sequence assertions (in-memory only)
+PASS: 20 allowlisted API problem assertions
+PASS: 11 externally verified session evidence policy assertions; OIDC still not integrated
+PASS: 9 location hierarchy fail-closed assertions; no repository integration
+PASS: 14 precondition assertions
+PASS: 15 retry assertions
+PASS: 8 purpose assertions
+PASS: 7 emergency request assertions
+PASS: 6 facility grant assertions
+PASS: 7 directory move assertions
+PASS P01-B0014: canonical URI assertions
+PASS P03-B0009: verifier admission assertions
+PASS P04-B0007: facility-cell assertions
+PASS P03-B0010: audited patient read assertions
+PASS P01-B0017/B0018: request framing and trace assertions
+PASS P01-B0015: protected JSON and response headers
+PASS P01-B0016: real localhost HTTP routes
+PASS: 41 loopback integration assertions (test verifier only; no OIDC or PostgreSQL)
+PASS P03-B0011: 10 local audit journal assertions; not production immutability
+PASS P03-B0012: 5 session freshness fence assertions (test claims only)
+PASS P04-B0008/B0009: 22 JDBC scoped-query assertions (mock JDBC, not PostgreSQL)
+PASS v1.0.0: 19 transaction/audit/scope/session assertions (JDBC mocks only)
+PASS P01-B0024: 5 assertions (JDBC mocks / injected TEST verifier only)
+PASS P01-B0025: 3 assertions (JDBC mocks / injected TEST verifier only)
+PASS P01-B0026: 5 assertions (JDBC mocks / injected TEST verifier only)
+PASS P01-B0027: 3 assertions (JDBC mocks / injected TEST verifier only)
+PASS P03-B0015: 4 assertions (JDBC mocks / injected TEST verifier only)
+PASS P03-B0016: 4 assertions (JDBC mocks / injected TEST verifier only)
+PASS P04-B0011: 8 assertions (JDBC mocks / injected TEST verifier only)
+PASS v0.12.0 registration: 37 policy/atomicity assertions (mock JDBC only)
+PASS P05-B0006: 8 assertions (unit/proxy only)
+PASS P05-B0007: 7 assertions (unit/proxy only)
+PASS P05-B0008: 8 assertions (unit/proxy only)
+PASS P05-B0009: 6 assertions (unit/proxy only)
+PASS P05-B0010: 6 assertions (unit/proxy only)
+PASS P04-B0012: 4 assertions (unit/proxy only)
+PASS P05-B0011 6 assertions; pure Java/JDBC proxy only
+PASS P05-B0012 8 assertions; pure Java/JDBC proxy only
+PASS P05-B0013 7 assertions; pure Java/JDBC proxy only
+PASS P05-B0014 10 assertions; pure Java/JDBC proxy only
+PASS P05-B0015 6 assertions; pure Java/JDBC proxy only
+PASS P05-B0016 6 assertions (local Java; no clinical release)
+PASS P05-B0017 4 assertions (local Java; no clinical release)
+PASS P05-B0018 6 assertions (local Java; no clinical release)
+PASS P05-B0019 5 assertions (local Java; no clinical release)
+PASS P05-B0020 17 assertions (local Java; no clinical release)
+PASS P05-B0021 4 assertions (local Java; no clinical release)
+PASS P05-B0022 10 assertions (Java unit; production write LOCKED)
+PASS P05-B0023 6 assertions (Java unit; production write LOCKED)
+PASS P05-B0024 7 assertions (Java unit; production write LOCKED)
+PASS P05-B0025 6 assertions (Java unit; production write LOCKED)
+PASS P05-B0026 6 assertions (Java unit; production write LOCKED)
+PASS P03-B0018 8 assertions; production OIDC NOT CONNECTED
+PASS P03-B0019 10 assertions; production OIDC NOT CONNECTED
+PASS P03-B0020 7 assertions; production OIDC NOT CONNECTED
+PASS P03-B0021 7 assertions; production OIDC NOT CONNECTED
+PASS P03-B0022 6 assertions; production OIDC NOT CONNECTED
+PASS P03-B0023 8 assertions; production OIDC NOT CONNECTED
+PASS P03-B0024 7 assertions; clinical/OIDC admission remains LOCKED
+PASS P03-B0025 8 assertions; clinical/OIDC admission remains LOCKED
+PASS P03-B0026 8 assertions; clinical/OIDC admission remains LOCKED
+PASS P03-B0027 7 assertions; clinical/OIDC admission remains LOCKED
+PASS P03-B0028 8 assertions; clinical/OIDC admission remains LOCKED
+PASS P03-B0029 11 assertions; no production identity admission
+PASS P03-B0030 7 assertions; no production identity admission
+PASS P03-B0031 8 assertions; no production identity admission
+PASS P03-B0032 6 assertions; no production identity admission
+PASS P03-B0033 8 assertions; no production identity admission
+PASS P05-B0043 assertions=5
+PASS P05-B0044 assertions=6
+PASS P05-B0045 assertions=5
+PASS P05-B0046 assertions=5
+PASS P05-B0047 assertions=6
+PASS P05-B0053 2 mock-JDBC assertions; no live PostgreSQL/clinical authorization
+PASS P05-B0054 7 mock-JDBC assertions; no live PostgreSQL/clinical authorization
+PASS P05-B0055 7 mock-JDBC assertions; no live PostgreSQL/clinical authorization
+PASS P05-B0056 13 mock-JDBC assertions; no live PostgreSQL/clinical authorization
+PASS P05-B0057 14 mock-JDBC assertions; no live PostgreSQL/clinical authorization
+PASS P05-B0058 6 mock-JDBC assertions; live PostgreSQL not tested
+PASS P05-B0060 7 mock-JDBC assertions; live PostgreSQL not tested
+PASS P05-B0061 12 mock-JDBC assertions; live PostgreSQL not tested
+PASS P06-B0001 8 DST, zone, interval and overlap assertions (unit)
+PASS P06-B0002 8 state/revision/terminal safety assertions (unit)
+PASS P06-B0003 13 overlap/isolation/release/concurrency assertions (in-memory only)
+PASS P06-B0004 8 verified tenant/facility/patient/capability denial assertions (unit)
+PASS P06-B0005 7 stable scoped command fingerprint assertions (unit)
+PASS P06-B0006 11 preflight authorization/transition/conflict/outbox assertions (no DB write)
+
+STDERR
+

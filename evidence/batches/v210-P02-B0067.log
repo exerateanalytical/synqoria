@@ -1,0 +1,18 @@
+TAP version 13
+# Subtest: P02-B0067: offline and online clinical writes are release-locked
+ok 1 - P02-B0067: offline and online clinical writes are release-locked
+  ---
+  duration_ms: 1.068474
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 71.362593
+
+exit=0 P02-B0067

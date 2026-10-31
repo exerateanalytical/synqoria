@@ -1,0 +1,11 @@
+COMMAND ['python', 'tests/test_v260_foundations.py', 'Foundation.test_runner', '-v']
+EXIT 0
+STDOUT
+
+STDERR
+test_runner (__main__.Foundation.test_runner) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 5.125s
+
+OK

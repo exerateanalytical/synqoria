@@ -1,0 +1,4 @@
+$ java -ea -cp /mnt/data/synqoria_v19/classes org.synqoria.registration.V190OutboxDescriptorTest
+PASS P05-B0030 7 metadata checks
+
+exit=0 P05-B0030

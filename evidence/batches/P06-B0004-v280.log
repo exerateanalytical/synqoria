@@ -1,0 +1,5 @@
+COMMAND ["java", "-ea", "-cp", "/tmp/synqoria-v280-classes", "org.synqoria.scheduling.AppointmentAccessPolicyTest"]
+EXIT_CODE 0
+PASS P06-B0004 8 verified tenant/facility/patient/capability denial assertions (unit)
+
+STDERR

@@ -1,0 +1,82 @@
+[
+  {
+    "batch": "P06-B0016",
+    "component": "AppointmentTimeFence",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "verified": true
+  },
+  {
+    "batch": "P06-B0017",
+    "component": "AppointmentActorFence",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "verified": true
+  },
+  {
+    "batch": "P06-B0018",
+    "component": "AppointmentResourceFence",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "verified": true
+  },
+  {
+    "batch": "P06-B0019",
+    "component": "AppointmentLimitFence",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "verified": true
+  },
+  {
+    "batch": "P06-B0020",
+    "component": "AppointmentWriteFence",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "verified": true
+  },
+  {
+    "batch": "P06-B0021",
+    "component": "AppointmentPatientFence",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "verified": true
+  },
+  {
+    "batch": "P06-B0022",
+    "component": "AppointmentReplayFence",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "verified": true
+  },
+  {
+    "batch": "P06-B0023",
+    "component": "AppointmentVersionFence",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "verified": true
+  },
+  {
+    "batch": "P06-B0024",
+    "component": "AppointmentOutboxFence",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "verified": true
+  },
+  {
+    "batch": "P06-B0025",
+    "component": "AppointmentReleaseFence",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "verified": true
+  }
+]

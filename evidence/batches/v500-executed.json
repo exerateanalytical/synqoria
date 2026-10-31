@@ -1,0 +1,36 @@
+{
+  "version": "v0.50.0",
+  "requested": 60,
+  "verified": 4,
+  "results": [
+    {
+      "batch": "P06-B0090",
+      "test": "AppointmentLocalTimeResolverTest",
+      "stdout": "PASS B0090 6",
+      "exit_code": 0
+    },
+    {
+      "batch": "P06-B0091",
+      "test": "AppointmentWindowConflictPolicyTest",
+      "stdout": "PASS B0091 5",
+      "exit_code": 0
+    },
+    {
+      "batch": "P06-B0092",
+      "test": "AppointmentBookingHorizonPolicyTest",
+      "stdout": "PASS B0092 5",
+      "exit_code": 0
+    },
+    {
+      "batch": "P06-B0093",
+      "test": "AppointmentPatientConflictPolicyTest",
+      "stdout": "PASS B0093 5",
+      "exit_code": 0
+    }
+  ],
+  "limits": [
+    "No PostgreSQL server available",
+    "No clinical approvals",
+    "Not wired into HTTP write path"
+  ]
+}

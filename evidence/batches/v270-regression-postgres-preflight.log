@@ -1,0 +1,7 @@
+COMMAND ['python', 'tools/probe_postgres_readiness.py']
+EXIT 4
+EXPECTED 4
+STDOUT
+{"ready": false, "reason": "missing_connection_or_pinned_role"}
+
+STDERR

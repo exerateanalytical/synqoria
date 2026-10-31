@@ -1,0 +1,180 @@
+{
+  "base": "v0.2.0",
+  "new_version": "v0.3.0",
+  "scope": "changed source and evidence excluding this report and the generated self-referencing manifest",
+  "changed_file_count": 34,
+  "changed_files": [
+    {
+      "path": ".github/workflows/engineering-checks.yml",
+      "change": "modified",
+      "sha256": "4b44668484a3291d6723946975a7f03de372c568a6b8fa65e2983b14f6e2f03d"
+    },
+    {
+      "path": "README.md",
+      "change": "modified",
+      "sha256": "07de485968d1a0d59ecfd1d34affc4a33f6be21a866013439b5e0103bb4ad381"
+    },
+    {
+      "path": "apps/patient-mobile/App.tsx",
+      "change": "modified",
+      "sha256": "bb4e046d78a19fb087aa6feb1e175266dea8503acdd295601bdd24ce4a043391"
+    },
+    {
+      "path": "apps/patient-mobile/package.json",
+      "change": "modified",
+      "sha256": "306d29ef676c26eab69318d65c7de1184f08343a3ce8491bb3414b331c346db2"
+    },
+    {
+      "path": "apps/staff-mobile/App.tsx",
+      "change": "modified",
+      "sha256": "0a40e95bc9ac479d0cfcd3958a5c118a8b71255baba89a4c8d8c6e0e7befdb3b"
+    },
+    {
+      "path": "apps/staff-mobile/package.json",
+      "change": "modified",
+      "sha256": "725b11c5397801639d8fe0c71bc4265d8b8b2e92704a9ef38fe54c23df5e425e"
+    },
+    {
+      "path": "apps/web/app/globals.css",
+      "change": "modified",
+      "sha256": "8284ebcf74c54872d62f99d7f3a0e9ec109a35a2caee6d520f1f6eb960c5569b"
+    },
+    {
+      "path": "apps/web/components/ShellFrame.tsx",
+      "change": "modified",
+      "sha256": "7f9a3cfe5ce8c41c1af6dfc1177fad325453ccd0555df3628352e6be81f30298"
+    },
+    {
+      "path": "apps/web/package.json",
+      "change": "modified",
+      "sha256": "a904c180651f0ecc931917a74d930d0fb93d5039284bf50af5816a317cf63371"
+    },
+    {
+      "path": "docs/program/STATUS.md",
+      "change": "modified",
+      "sha256": "ca2eaa7aa80b0bda1fb9e8701ac93ecfdca4287fd1d86f5de12028535d15e8f9"
+    },
+    {
+      "path": "evidence/batches/P01-B0002-npm-ping.log",
+      "change": "new",
+      "sha256": "d9fd1d4b56c3200d5d6d508161da1bb3a103eeab602f770ad63e1c0997a64a1d"
+    },
+    {
+      "path": "evidence/batches/P01-P03-B0002-checks.json",
+      "change": "new",
+      "sha256": "9ae4a84d47c1908bd0226943c3199b93075af737a19fbd94157287136e4a119c"
+    },
+    {
+      "path": "evidence/batches/P02-B0002-browser.json",
+      "change": "new",
+      "sha256": "569fecc062a715c52957f7b894c37bf1d3bb2042b1340119c89dd4886f3333fb"
+    },
+    {
+      "path": "evidence/batches/P02-B0002-fr-1440.png",
+      "change": "new",
+      "sha256": "40e08924ddb234195a114094d370681839b59350c4dc5a4d01208f4e32bfd779"
+    },
+    {
+      "path": "evidence/batches/P02-B0002-fr-390.png",
+      "change": "new",
+      "sha256": "8a285655194bcf0245488547396a433f1bc8842cbb335943a174d9e62a8b0e0c"
+    },
+    {
+      "path": "package.json",
+      "change": "modified",
+      "sha256": "bd3544af09006bf7dfd9a3334962baf8133f72841fd3b690a84e8daf0dc98155"
+    },
+    {
+      "path": "packages/ux-core/package.json",
+      "change": "modified",
+      "sha256": "208f132452c3429825bff5d597a647afcf30a566be908a76299e11058f9cdc09"
+    },
+    {
+      "path": "packages/ux-core/src/index.ts",
+      "change": "modified",
+      "sha256": "1b8aa242a16148f4a56f6696cae55bb5c3a32ad5d784856c0808bea495bf06a5"
+    },
+    {
+      "path": "packages/ux-core/src/locale.ts",
+      "change": "new",
+      "sha256": "cb87b33a2f9e08028e5bf8989ed8fe965831ec32653741ee273cd5b54f8be4a0"
+    },
+    {
+      "path": "packages/ux-core/src/navigation-gates.ts",
+      "change": "new",
+      "sha256": "ffba37c9f9dfdb62b5f98426dcb6a38dfa60fa8ea0c2b027f8d9f399eed02293"
+    },
+    {
+      "path": "packages/ux-core/tests/access-navigation.test.cjs",
+      "change": "new",
+      "sha256": "a1199b69f21d51986eaf469fcb15deee6456a25e67a9090944f14a5df7bbd4d8"
+    },
+    {
+      "path": "preview/i18n-shell.html",
+      "change": "new",
+      "sha256": "18614a61916c350b1eb775aa29a75678ec5ccb9d27b9376d43267b95e2c6fc00"
+    },
+    {
+      "path": "registers/batch-ledger.json",
+      "change": "modified",
+      "sha256": "354401b5a0be016c2508ee293296dfc3278c6738b1fde91f977b89af000d7730"
+    },
+    {
+      "path": "registers/blockers.json",
+      "change": "modified",
+      "sha256": "28d1550f6b09e8daa669dde1ae6546a4a13b947df4d551ca046e9a8b1ac86031"
+    },
+    {
+      "path": "registers/phases.json",
+      "change": "modified",
+      "sha256": "a8d6c6d322b0f7d298573186fb26ace0cdeb019b3af770baf2e20302f73c7fb8"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/security/ClinicalAccessPolicy.java",
+      "change": "new",
+      "sha256": "d8630bb8321c6ccd474a52f4896775261b2cdb11c0b832a09f80dc5eb9e13fc8"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/security/TrustedClinicalAccessEvidence.java",
+      "change": "new",
+      "sha256": "687166a1e97cf73dd6d4e0effaa5894ff4c527743e3dceecd3a14b101d9a9c6b"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/security/ClinicalAccessPolicyTest.java",
+      "change": "new",
+      "sha256": "dec442887fc94d47a4269e70ef51b19e6f8bfe2df544c4a19ceb7335cc042a9c"
+    },
+    {
+      "path": "tests/test_i18n_preview_browser.py",
+      "change": "new",
+      "sha256": "bd5fc1f8a289b06a0513f7045fab4f729b781ff93b2d229810171df7943fdc73"
+    },
+    {
+      "path": "tests/test_shell_sources.py",
+      "change": "new",
+      "sha256": "9d74c436289c7cb0fb75a519328f8e0f2758b857bcabee2cf11f0d4c166e2f72"
+    },
+    {
+      "path": "tests/test_tsx_syntax.cjs",
+      "change": "new",
+      "sha256": "269230aaf0ec24663fb36beed047b8d2057b8bf5dc083b1b475c62baaa752d59"
+    },
+    {
+      "path": "tools/check_java_security.sh",
+      "change": "modified",
+      "sha256": "6703d76b31330baf7d61bed2beebb1c5501cbc037e51b27cbc10c4ce071cc432"
+    },
+    {
+      "path": "tools/package_checkpoint.py",
+      "change": "modified",
+      "sha256": "1b486d717def418706395093e97b32a81aecd20d2af47e001e3599bbf359bd5e"
+    },
+    {
+      "path": "tools/run_checks.py",
+      "change": "modified",
+      "sha256": "864544c2cdd3a0132ba6f84ec0f4b4ccc0045012a56fc5da57174276acb32968"
+    }
+  ],
+  "removed_files": [],
+  "all_canonical_screen_routes_unimplemented": true
+}

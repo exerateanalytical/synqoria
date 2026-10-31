@@ -1,0 +1,199 @@
+{
+  "recorded_utc": "2026-10-30T01:03:00.705132+00:00",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "results": [
+    {
+      "batch": "P05-B0006",
+      "verified": true,
+      "exit_code": 0,
+      "commands": [
+        {
+          "command": "java -ea -cp /mnt/data/synqoria_v013_test_classes org.synqoria.registration.V130RegistrationSafetyTest P05-B0006",
+          "exit_code": 0,
+          "stdout": "PASS P05-B0006: 8 assertions (unit/proxy only)\n",
+          "stderr": ""
+        }
+      ],
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/registration/RegistrationFingerprint.java"
+      ],
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P05-B0007",
+      "verified": true,
+      "exit_code": 0,
+      "commands": [
+        {
+          "command": "java -ea -cp /mnt/data/synqoria_v013_test_classes org.synqoria.registration.V130RegistrationSafetyTest P05-B0007",
+          "exit_code": 0,
+          "stdout": "PASS P05-B0007: 7 assertions (unit/proxy only)\n",
+          "stderr": ""
+        }
+      ],
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/registration/RegistrationCommandIssuer.java"
+      ],
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P05-B0008",
+      "verified": true,
+      "exit_code": 0,
+      "commands": [
+        {
+          "command": "java -ea -cp /mnt/data/synqoria_v013_test_classes org.synqoria.registration.V130RegistrationSafetyTest P05-B0008",
+          "exit_code": 0,
+          "stdout": "PASS P05-B0008: 8 assertions (unit/proxy only)\n",
+          "stderr": ""
+        }
+      ],
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/registration/RegistrationReviewPermit.java"
+      ],
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P05-B0009",
+      "verified": true,
+      "exit_code": 0,
+      "commands": [
+        {
+          "command": "java -ea -cp /mnt/data/synqoria_v013_test_classes org.synqoria.registration.V130RegistrationSafetyTest P05-B0009",
+          "exit_code": 0,
+          "stdout": "PASS P05-B0009: 6 assertions (unit/proxy only)\n",
+          "stderr": ""
+        }
+      ],
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/registration/RegistrationReplayDecision.java"
+      ],
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P05-B0010",
+      "verified": true,
+      "exit_code": 0,
+      "commands": [
+        {
+          "command": "java -ea -cp /mnt/data/synqoria_v013_test_classes org.synqoria.registration.V130RegistrationSafetyTest P05-B0010",
+          "exit_code": 0,
+          "stdout": "PASS P05-B0010: 6 assertions (unit/proxy only)\n",
+          "stderr": ""
+        },
+        {
+          "command": "python tests/test_v130_registration_source.py",
+          "exit_code": 0,
+          "stdout": "PASS v0.13.0: quarantined identity lookup SQL and locked bilingual web/native intake source\n",
+          "stderr": ""
+        }
+      ],
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/registration/DuplicateCandidateQuery.java",
+        "services/clinical-core/db/migration/V006__identity_lookup_quarantine.sql"
+      ],
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P04-B0012",
+      "verified": true,
+      "exit_code": 0,
+      "commands": [
+        {
+          "command": "java -ea -cp /mnt/data/synqoria_v013_test_classes org.synqoria.registration.V130RegistrationSafetyTest P04-B0012",
+          "exit_code": 0,
+          "stdout": "PASS P04-B0012: 4 assertions (unit/proxy only)\n",
+          "stderr": ""
+        }
+      ],
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/facility/ScopedDbTransaction.java"
+      ],
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P02-B0030",
+      "verified": true,
+      "exit_code": 0,
+      "commands": [
+        {
+          "command": "node --test --test-name-pattern=P02-B0030 packages/ux-core/tests/v130-intake.test.cjs",
+          "exit_code": 0,
+          "stdout": "TAP version 13\n# Subtest: P02-B0030 volatile draft clears on facility, actor and epoch switches; cannot accept review flag\nok 1 - P02-B0030 volatile draft clears on facility, actor and epoch switches; cannot accept review flag\n  ---\n  duration_ms: 1.319433\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 77.406308\n",
+          "stderr": ""
+        }
+      ],
+      "source_files": [
+        "packages/ux-core/src/registration-draft-session.ts"
+      ],
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P02-B0031",
+      "verified": true,
+      "exit_code": 0,
+      "commands": [
+        {
+          "command": "node --test --test-name-pattern=P02-B0031 packages/ux-core/tests/v130-intake.test.cjs",
+          "exit_code": 0,
+          "stdout": "TAP version 13\n# Subtest: P02-B0031 bilingual issue summary deduplicates and never includes submitted PHI\nok 1 - P02-B0031 bilingual issue summary deduplicates and never includes submitted PHI\n  ---\n  duration_ms: 0.807465\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 57.214999\n",
+          "stderr": ""
+        },
+        {
+          "command": "python tests/test_v130_registration_source.py",
+          "exit_code": 0,
+          "stdout": "PASS v0.13.0: quarantined identity lookup SQL and locked bilingual web/native intake source\n",
+          "stderr": ""
+        }
+      ],
+      "source_files": [
+        "packages/ux-core/src/registration-error-copy.ts",
+        "apps/web/app/workforce/patients/new/page.tsx"
+      ],
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P02-B0032",
+      "verified": true,
+      "exit_code": 0,
+      "commands": [
+        {
+          "command": "node --test --test-name-pattern=P02-B0032 packages/ux-core/tests/v130-intake.test.cjs",
+          "exit_code": 0,
+          "stdout": "TAP version 13\n# Subtest: P02-B0032 native staff model has four tabs and never enables local registration submission\nok 1 - P02-B0032 native staff model has four tabs and never enables local registration submission\n  ---\n  duration_ms: 1.418139\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 60.762169\n",
+          "stderr": ""
+        },
+        {
+          "command": "python tests/test_v130_registration_source.py",
+          "exit_code": 0,
+          "stdout": "PASS v0.13.0: quarantined identity lookup SQL and locked bilingual web/native intake source\n",
+          "stderr": ""
+        }
+      ],
+      "source_files": [
+        "packages/ux-core/src/registration-native-model.ts",
+        "apps/staff-mobile/RegistrationPreview.tsx"
+      ],
+      "not_clinically_certified": true
+    },
+    {
+      "batch": "P01-B0029",
+      "verified": true,
+      "exit_code": 0,
+      "commands": [
+        {
+          "command": "python tests/test_v130_registration_contract.py",
+          "exit_code": 0,
+          "stdout": "PASS P01-B0029: draft schema forbids client trusted fields and exposes zero paths\n",
+          "stderr": ""
+        }
+      ],
+      "source_files": [
+        "contracts/openapi/synqoria-registration-draft.yaml"
+      ],
+      "not_clinically_certified": true
+    }
+  ],
+  "limitations": "Java unit/mock JDBC, TypeScript/Node unit, static YAML/SQL/TSX only; no live PostgreSQL/OIDC/Expo/Next build or clinical certification."
+}

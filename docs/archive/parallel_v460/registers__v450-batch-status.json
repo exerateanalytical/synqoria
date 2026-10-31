@@ -1,0 +1,11 @@
+{
+  "version": "0.45.0",
+  "requested_batches": 50,
+  "completed_batches": [
+    "P06-B0070"
+  ],
+  "remaining_requested": 49,
+  "status": "implemented_and_static_tested_only",
+  "next_batch": "P06-B0071",
+  "clinical_release": "DENIED"
+}

@@ -1,0 +1,23 @@
+{
+  "batch_id": "P06-B0168",
+  "module": "M03",
+  "phase": "P06",
+  "scope": "Quarantined encrypted snapshot schema, append-only audit triggers and static adversarial gate",
+  "implementation": [
+    "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcStore.java",
+    "services/clinical-core/db/migration/V016__triage_encrypted_snapshot_quarantine.sql",
+    "tools/triage_encrypted_migration_gate.py",
+    "tests/test_triage_encrypted_migration_gate.py",
+    "registers/migration-sha256-lock.json"
+  ],
+  "focused_tests": [
+    "evidence/v520/scenario-jdbc-happy-path.log",
+    "evidence/v520/v016-triage-sql.log",
+    "evidence/v520/migration-lock.log",
+    "evidence/v520/migration-checksum-tests.log"
+  ],
+  "verified": true,
+  "verification_scope": "synthetic_java_and_static_source_only",
+  "live_postgresql_tested": false,
+  "clinical_accepted": false
+}

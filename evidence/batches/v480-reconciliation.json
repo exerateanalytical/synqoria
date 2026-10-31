@@ -1,0 +1,52 @@
+{
+  "version": "0.48.0",
+  "source_authority": "verified v0.44.0 Library ZIP",
+  "new_batches": [
+    "P06-B0070",
+    "P06-B0071",
+    "P06-B0072",
+    "P06-B0073",
+    "P06-B0074",
+    "P06-B0075",
+    "P06-B0076",
+    "P06-B0077",
+    "P06-B0078",
+    "P06-B0079",
+    "P06-B0080",
+    "P06-B0081",
+    "P06-B0082",
+    "P06-B0083",
+    "P06-B0084"
+  ],
+  "reconciled_not_double_counted": [
+    "P06-B0085",
+    "P06-B0086",
+    "P06-B0087",
+    "P06-B0088"
+  ],
+  "parallel_source_zip_versions": [
+    "0.46.0",
+    "0.47.0"
+  ],
+  "parallel_sha_crc_verified": true,
+  "parallel_embedded_manifests_valid": false,
+  "parallel_manifest_mismatches_each": 9,
+  "parallel_id_collisions": [
+    "P06-B0070",
+    "P06-B0071",
+    "P06-B0072",
+    "P06-B0073"
+  ],
+  "parallel_remapped_ids": [
+    "P06-B0085",
+    "P06-B0086",
+    "P06-B0087",
+    "P06-B0088"
+  ],
+  "independent_tests": {
+    "migration_inventory": 4,
+    "migration_checksum": 6,
+    "appointment_release_preflight": 5
+  },
+  "runtime_postgresql_verified": false
+}

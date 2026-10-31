@@ -1,0 +1,3 @@
+javac AppointmentWindow.java AppointmentWindowBoundaryTest.java: exit 0
+java AppointmentWindowBoundaryTest: exit 0
+PASS 9 appointment window boundary assertions

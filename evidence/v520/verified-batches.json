@@ -1,0 +1,290 @@
+{
+  "requested": 60,
+  "verified": 15,
+  "remaining": 45,
+  "percent_completed": 25,
+  "percent_remaining": 75,
+  "batches": [
+    {
+      "batch_id": "P06-B0154",
+      "module": "M03",
+      "phase": "P06",
+      "scope": "Deterministic bounded aggregate snapshot codec",
+      "implementation": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageSnapshotCodec.java"
+      ],
+      "focused_tests": [
+        "evidence/v520/scenario-codec-roundtrip.log",
+        "evidence/v520/scenario-codec-audit.log",
+        "evidence/v520/scenario-codec-tamper.log"
+      ],
+      "verified": true,
+      "verification_scope": "synthetic_java_and_static_source_only",
+      "live_postgresql_tested": false,
+      "clinical_accepted": false
+    },
+    {
+      "batch_id": "P06-B0155",
+      "module": "M03",
+      "phase": "P06",
+      "scope": "Snapshot version, truncation, size and canonical ordering guards",
+      "implementation": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageSnapshotCodec.java"
+      ],
+      "focused_tests": [
+        "evidence/v520/scenario-codec-determinism.log",
+        "evidence/v520/scenario-codec-bad-magic.log",
+        "evidence/v520/scenario-codec-truncation.log",
+        "evidence/v520/scenario-codec-trailing.log",
+        "evidence/v520/scenario-codec-oversize.log"
+      ],
+      "verified": true,
+      "verification_scope": "synthetic_java_and_static_source_only",
+      "live_postgresql_tested": false,
+      "clinical_accepted": false
+    },
+    {
+      "batch_id": "P06-B0156",
+      "module": "M03",
+      "phase": "P06",
+      "scope": "AES-256-GCM snapshot envelope and authenticated ciphertext",
+      "implementation": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageEnvelopeCrypto.java"
+      ],
+      "focused_tests": [
+        "evidence/v520/scenario-crypto-roundtrip.log",
+        "evidence/v520/scenario-crypto-random-nonce.log",
+        "evidence/v520/scenario-crypto-tamper.log",
+        "evidence/v520/scenario-crypto-invalid-key.log"
+      ],
+      "verified": true,
+      "verification_scope": "synthetic_java_and_static_source_only",
+      "live_postgresql_tested": false,
+      "clinical_accepted": false
+    },
+    {
+      "batch_id": "P06-B0157",
+      "module": "M03",
+      "phase": "P06",
+      "scope": "Cryptographic patient/revision/key binding and immutable envelope",
+      "implementation": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageEnvelopeCrypto.java"
+      ],
+      "focused_tests": [
+        "evidence/v520/scenario-crypto-scope-binding.log",
+        "evidence/v520/scenario-crypto-revision-binding.log",
+        "evidence/v520/scenario-crypto-key-binding.log",
+        "evidence/v520/scenario-crypto-defensive-copy.log"
+      ],
+      "verified": true,
+      "verification_scope": "synthetic_java_and_static_source_only",
+      "live_postgresql_tested": false,
+      "clinical_accepted": false
+    },
+    {
+      "batch_id": "P06-B0158",
+      "module": "M03",
+      "phase": "P06",
+      "scope": "Transaction-local server-derived tenant/facility/patient/actor scope echo",
+      "implementation": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcScope.java"
+      ],
+      "focused_tests": [
+        "evidence/v520/scenario-jdbc-scoped-lock.log",
+        "evidence/v520/scenario-jdbc-scope-echo.log"
+      ],
+      "verified": true,
+      "verification_scope": "synthetic_java_and_static_source_only",
+      "live_postgresql_tested": false,
+      "clinical_accepted": false
+    },
+    {
+      "batch_id": "P06-B0159",
+      "module": "M03",
+      "phase": "P06",
+      "scope": "Restricted PostgreSQL role, RLS and SERIALIZABLE connection fence",
+      "implementation": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcFence.java"
+      ],
+      "focused_tests": [
+        "evidence/v520/scenario-jdbc-no-autocommit.log",
+        "evidence/v520/scenario-jdbc-serializable.log",
+        "evidence/v520/scenario-jdbc-readonly.log",
+        "evidence/v520/scenario-jdbc-role.log",
+        "evidence/v520/scenario-jdbc-superuser.log",
+        "evidence/v520/scenario-jdbc-bypassrls.log",
+        "evidence/v520/scenario-jdbc-rls.log"
+      ],
+      "verified": true,
+      "verification_scope": "synthetic_java_and_static_source_only",
+      "live_postgresql_tested": false,
+      "clinical_accepted": false
+    },
+    {
+      "batch_id": "P06-B0160",
+      "module": "M03",
+      "phase": "P06",
+      "scope": "Transactional SQL statement/lock/idle timeout budget",
+      "implementation": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcFence.java"
+      ],
+      "focused_tests": [
+        "evidence/v520/scenario-jdbc-budget.log"
+      ],
+      "verified": true,
+      "verification_scope": "synthetic_java_and_static_source_only",
+      "live_postgresql_tested": false,
+      "clinical_accepted": false
+    },
+    {
+      "batch_id": "P06-B0161",
+      "module": "M03",
+      "phase": "P06",
+      "scope": "Patient-scoped FOR UPDATE encrypted hydration and row/snapshot consistency",
+      "implementation": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcStore.java"
+      ],
+      "focused_tests": [
+        "evidence/v520/scenario-jdbc-happy-path.log",
+        "evidence/v520/scenario-jdbc-missing-row.log",
+        "evidence/v520/scenario-jdbc-snapshot-tamper.log",
+        "evidence/v520/scenario-jdbc-row-stage-mismatch.log"
+      ],
+      "verified": true,
+      "verification_scope": "synthetic_java_and_static_source_only",
+      "live_postgresql_tested": false,
+      "clinical_accepted": false
+    },
+    {
+      "batch_id": "P06-B0162",
+      "module": "M03",
+      "phase": "P06",
+      "scope": "Persisted audit tip and outbox link integrity precondition",
+      "implementation": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcStore.java"
+      ],
+      "focused_tests": [
+        "evidence/v520/scenario-jdbc-missing-tip.log",
+        "evidence/v520/scenario-jdbc-outbox-tip-mismatch.log",
+        "evidence/v520/scenario-jdbc-duplicate-command.log"
+      ],
+      "verified": true,
+      "verification_scope": "synthetic_java_and_static_source_only",
+      "live_postgresql_tested": false,
+      "clinical_accepted": false
+    },
+    {
+      "batch_id": "P06-B0163",
+      "module": "M03",
+      "phase": "P06",
+      "scope": "Optimistic revision compare-and-swap guarded state update",
+      "implementation": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcStore.java"
+      ],
+      "focused_tests": [
+        "evidence/v520/scenario-jdbc-cas.log",
+        "evidence/v520/scenario-jdbc-stale-revision.log",
+        "evidence/v520/scenario-jdbc-cas-race.log"
+      ],
+      "verified": true,
+      "verification_scope": "synthetic_java_and_static_source_only",
+      "live_postgresql_tested": false,
+      "clinical_accepted": false
+    },
+    {
+      "batch_id": "P06-B0164",
+      "module": "M03",
+      "phase": "P06",
+      "scope": "Transactional append of immutable hash-linked audit event",
+      "implementation": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcStore.java"
+      ],
+      "focused_tests": [
+        "evidence/v520/scenario-jdbc-event.log",
+        "evidence/v520/scenario-jdbc-event-failure.log"
+      ],
+      "verified": true,
+      "verification_scope": "synthetic_java_and_static_source_only",
+      "live_postgresql_tested": false,
+      "clinical_accepted": false
+    },
+    {
+      "batch_id": "P06-B0165",
+      "module": "M03",
+      "phase": "P06",
+      "scope": "Transactional outbox insertion linked to command/event digest",
+      "implementation": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcStore.java"
+      ],
+      "focused_tests": [
+        "evidence/v520/scenario-jdbc-outbox.log",
+        "evidence/v520/scenario-jdbc-outbox-failure.log"
+      ],
+      "verified": true,
+      "verification_scope": "synthetic_java_and_static_source_only",
+      "live_postgresql_tested": false,
+      "clinical_accepted": false
+    },
+    {
+      "batch_id": "P06-B0166",
+      "module": "M03",
+      "phase": "P06",
+      "scope": "Atomic commit/rollback failure handling with encrypted state writes",
+      "implementation": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcStore.java"
+      ],
+      "focused_tests": [
+        "evidence/v520/scenario-jdbc-happy-path.log",
+        "evidence/v520/scenario-jdbc-ciphertext.log",
+        "evidence/v520/scenario-jdbc-invalid-mutation.log"
+      ],
+      "verified": true,
+      "verification_scope": "synthetic_java_and_static_source_only",
+      "live_postgresql_tested": false,
+      "clinical_accepted": false
+    },
+    {
+      "batch_id": "P06-B0167",
+      "module": "M03",
+      "phase": "P06",
+      "scope": "Trusted identity, patient isolation, and explicit write authorization fence",
+      "implementation": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcStore.java"
+      ],
+      "focused_tests": [
+        "evidence/v520/scenario-jdbc-cross-tenant.log",
+        "evidence/v520/scenario-jdbc-revoked-evidence.log",
+        "evidence/v520/scenario-jdbc-no-manage-capability.log"
+      ],
+      "verified": true,
+      "verification_scope": "synthetic_java_and_static_source_only",
+      "live_postgresql_tested": false,
+      "clinical_accepted": false
+    },
+    {
+      "batch_id": "P06-B0168",
+      "module": "M03",
+      "phase": "P06",
+      "scope": "Quarantined encrypted snapshot schema, append-only audit triggers and static adversarial gate",
+      "implementation": [
+        "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcStore.java",
+        "services/clinical-core/db/migration/V016__triage_encrypted_snapshot_quarantine.sql",
+        "tools/triage_encrypted_migration_gate.py",
+        "tests/test_triage_encrypted_migration_gate.py",
+        "registers/migration-sha256-lock.json"
+      ],
+      "focused_tests": [
+        "evidence/v520/scenario-jdbc-happy-path.log",
+        "evidence/v520/v016-triage-sql.log",
+        "evidence/v520/migration-lock.log",
+        "evidence/v520/migration-checksum-tests.log"
+      ],
+      "verified": true,
+      "verification_scope": "synthetic_java_and_static_source_only",
+      "live_postgresql_tested": false,
+      "clinical_accepted": false
+    }
+  ],
+  "live_postgresql_tested": false,
+  "clinical_release": "DENIED"
+}

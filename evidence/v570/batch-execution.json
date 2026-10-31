@@ -1,0 +1,100 @@
+{
+  "checkpoint": "v0.57.0",
+  "parent": "v0.56.0",
+  "target_batches": 60,
+  "completed_verified_batches": 6,
+  "remaining_target": 54,
+  "certification": "deferred_not_waived",
+  "source_only_ui_not_counted": true,
+  "runs": [
+    {
+      "id": "P06-B0363",
+      "passed": true,
+      "tests_passed": 3,
+      "exit_code": 0,
+      "duration_seconds": 0.116,
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=scoped GET summary|summary decoder|GET fails closed",
+        "packages/ux-core/tests/triage-v57-read-session.test.cjs"
+      ],
+      "log": "evidence/v570/P06-B0363.log"
+    },
+    {
+      "id": "P06-B0364",
+      "passed": true,
+      "tests_passed": 2,
+      "exit_code": 0,
+      "duration_seconds": 0.105,
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=audit paging|GET history",
+        "packages/ux-core/tests/triage-v57-read-session.test.cjs"
+      ],
+      "log": "evidence/v570/P06-B0364.log"
+    },
+    {
+      "id": "P06-B0365",
+      "passed": true,
+      "tests_passed": 5,
+      "exit_code": 0,
+      "duration_seconds": 0.104,
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=case session|denied command|patient switch|history reads",
+        "packages/ux-core/tests/triage-v57-read-session.test.cjs"
+      ],
+      "log": "evidence/v570/P06-B0365.log"
+    },
+    {
+      "id": "P06-B0366",
+      "passed": true,
+      "tests_passed": 3,
+      "exit_code": 0,
+      "duration_seconds": 0.105,
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=worklist",
+        "packages/ux-core/tests/triage-v57-workspace.test.cjs"
+      ],
+      "log": "evidence/v570/P06-B0366.log"
+    },
+    {
+      "id": "P06-B0367",
+      "passed": true,
+      "tests_passed": 3,
+      "exit_code": 0,
+      "duration_seconds": 0.112,
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=audit pager",
+        "packages/ux-core/tests/triage-v57-workspace.test.cjs"
+      ],
+      "log": "evidence/v570/P06-B0367.log"
+    },
+    {
+      "id": "P06-B0368",
+      "passed": true,
+      "tests_passed": 5,
+      "exit_code": 0,
+      "duration_seconds": 0.825,
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_triage_v570_read_contract.py",
+        "-v"
+      ],
+      "log": "evidence/v570/P06-B0368.log"
+    }
+  ]
+}

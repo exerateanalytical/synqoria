@@ -1,0 +1,8 @@
+{
+  "changes": [
+    "tools/appointment_release_preflight.py",
+    "tests/appointment_release_preflight_test.py",
+    "evidence/batches/v470-b0072-b0073-tests.log",
+    "evidence/v470-batch-register.json"
+  ]
+}

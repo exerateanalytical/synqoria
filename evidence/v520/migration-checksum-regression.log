@@ -1,0 +1,11 @@
+test_bad_digest_fails (migration_checksum_gate_test.ChecksumGateTests.test_bad_digest_fails) ... ok
+test_deleted_migration_fails (migration_checksum_gate_test.ChecksumGateTests.test_deleted_migration_fails) ... ok
+test_missing_lock_fails (migration_checksum_gate_test.ChecksumGateTests.test_missing_lock_fails) ... ok
+test_modified_migration_fails (migration_checksum_gate_test.ChecksumGateTests.test_modified_migration_fails) ... ok
+test_real_lock (migration_checksum_gate_test.ChecksumGateTests.test_real_lock) ... ok
+test_unlocked_migration_fails (migration_checksum_gate_test.ChecksumGateTests.test_unlocked_migration_fails) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.020s
+
+OK

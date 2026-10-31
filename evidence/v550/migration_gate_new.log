@@ -1,0 +1,19 @@
+
+---STDERR---
+test_bypass_rls_denied (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_bypass_rls_denied) ... ok
+test_clean_migration (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_clean_migration) ... ok
+test_forged_outbox_fk_denied (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_forged_outbox_fk_denied) ... ok
+test_forged_receipt_fk_denied (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_forged_receipt_fk_denied) ... ok
+test_genesis_anchor_rule (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_genesis_anchor_rule) ... ok
+test_genesis_only_operation_rule (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_genesis_only_operation_rule) ... ok
+test_missing_force_rls_denied (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_missing_force_rls_denied) ... ok
+test_missing_receipt_append_only_denied (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_missing_receipt_append_only_denied) ... ok
+test_missing_revoked_public_denied (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_missing_revoked_public_denied) ... ok
+test_no_drop_table (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_no_drop_table) ... ok
+test_unsafe_grant_denied (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_unsafe_grant_denied) ... ok
+test_unsafe_policy_denied (tests.test_triage_correlated_migration_gate.CorrelationGateTests.test_unsafe_policy_denied) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.133s
+
+OK

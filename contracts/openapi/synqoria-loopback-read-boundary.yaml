@@ -1,0 +1,52 @@
+openapi: 3.1.0
+info:
+  title: SYNQORIA Read-Only Loopback Adapter — Test Harness Contract
+  version: 0.8.0-preintegration
+  description: >-
+    Implemented in dependency-free Java HttpServer with test-only injected identity verifier.
+    Does NOT ship a cryptographic OIDC verifier, durable audit sink or PostgreSQL repository.
+    Not suitable for production deployment or clinical operation. The normative future API
+    draft remains synqoria-foundation.yaml.
+servers:
+  - url: http://localhost:{testPort}
+    variables:
+      testPort: {default: '0'}
+paths:
+  /health/live:
+    get:
+      summary: Process liveness only, not readiness
+      responses:
+        '200': {description: Process alive}
+  /health/ready:
+    get:
+      summary: Integration readiness is intentionally unavailable
+      responses:
+        '503': {description: Not integrated}
+  /api/v1/facility/context:
+    get:
+      summary: Facility binding derived from verified backend actor, not caller headers
+      security: [{testBearer: []}]
+      responses:
+        '200': {description: Active facility for the authenticated actor}
+        '401': {description: No verified identity}
+        '404': {description: No authorized active facility}
+  /api/v1/patients/{patientId}:
+    get:
+      summary: Authorization and audit-gated metadata-only patient read
+      security: [{testBearer: []}]
+      parameters:
+        - in: path
+          name: patientId
+          required: true
+          schema: {type: string, format: uuid}
+      responses:
+        '200': {description: Identity status and revision after patient scoped policy and audit}
+        '401': {description: No verified identity}
+        '404': {description: Patient absent or not disclosed}
+        '503': {description: Repository, evidence or audit unavailable}
+components:
+  securitySchemes:
+    testBearer:
+      type: http
+      scheme: bearer
+      description: Injected test verifier ONLY; production OIDC verification is not implemented

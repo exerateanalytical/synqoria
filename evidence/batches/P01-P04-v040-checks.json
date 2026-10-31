@@ -1,0 +1,91 @@
+{
+  "recorded_utc": "2026-10-29T22:51:05.214964+00:00",
+  "scope": "unit/domain/draft SQL-static/schema/source/syntax and standalone static Chromium specimens ONLY; no Next/Expo/OIDC/DB/HTTP integration",
+  "results": [
+    {
+      "id": "seed-manifest",
+      "command": "python tools/verify_initial_manifest.py",
+      "exit_code": 0,
+      "stdout": "PASS: 19 original seed ZIP entries match embedded SHA-256 manifest\n",
+      "stderr": ""
+    },
+    {
+      "id": "canonical-register",
+      "command": "python tests/test_baseline.py",
+      "exit_code": 0,
+      "stdout": "PASS: planning integrity, 40 unique modules, 261 unique canonical screens, 20 phases, non-fabricated code statuses\n",
+      "stderr": ""
+    },
+    {
+      "id": "route-integrity",
+      "command": "python tests/test_navigation_contract.py",
+      "exit_code": 0,
+      "stdout": "PASS: 261 honest screen route records, 3 shell roots, 40 module IDs; no false canonical screen implementation claims\n",
+      "stderr": ""
+    },
+    {
+      "id": "ux-typescript-node",
+      "command": "npm run check:ux",
+      "exit_code": 0,
+      "stdout": "\n> synqoria@0.4.0 check:ux\n> tsc -p packages/ux-core/tsconfig.json && node --test packages/ux-core/tests/*.test.cjs\n\nTAP version 13\n# Subtest: EN/FR dictionary is complete and does not return missing interface copy\nok 1 - EN/FR dictionary is complete and does not return missing interface copy\n  ---\n  duration_ms: 1.393562\n  type: 'test'\n  ...\n# Subtest: every navigation workspace has usable translations\nok 2 - every navigation workspace has usable translations\n  ---\n  duration_ms: 0.187858\n  type: 'test'\n  ...\n# Subtest: exact routing denies ungranted, unlicensed, wrong-shell and arbitrary descendants\nok 3 - exact routing denies ungranted, unlicensed, wrong-shell and arbitrary descendants\n  ---\n  duration_ms: 1.260776\n  type: 'test'\n  ...\n# Subtest: shell identification does not confuse similar routes\nok 4 - shell identification does not confuse similar routes\n  ---\n  duration_ms: 0.134379\n  type: 'test'\n  ...\n# Subtest: both mobile shells keep four translated, distinct destinations\nok 5 - both mobile shells keep four translated, distinct destinations\n  ---\n  duration_ms: 0.387534\n  type: 'test'\n  ...\n# Subtest: a new target clears old context and enters reauthorization\nok 6 - a new target clears old context and enters reauthorization\n  ---\n  duration_ms: 1.434272\n  type: 'test'\n  ...\n# Subtest: unsaved work requires confirmation; cancel preserves draft\nok 7 - unsaved work requires confirmation; cancel preserves draft\n  ---\n  duration_ms: 0.184633\n  type: 'test'\n  ...\n# Subtest: save requests do not imply server persistence; failed saves remain guarded\nok 8 - save requests do not imply server persistence; failed saves remain guarded\n  ---\n  duration_ms: 0.214608\n  type: 'test'\n  ...\n# Subtest: discard requires explicit confirmation and cannot bypass backend authorization\nok 9 - discard requires explicit confirmation and cannot bypass backend authorization\n  ---\n  duration_ms: 0.108781\n  type: 'test'\n  ...\n# Subtest: invalid IDs cannot enter patient navigation state\nok 10 - invalid IDs cannot enter patient navigation state\n  ---\n  duration_ms: 0.17548\n  type: 'test'\n  ...\n# Subtest: same patient and invalid action order do not change state\nok 11 - same patient and invalid action order do not change state\n  ---\n  duration_ms: 0.133878\n  type: 'test'\n  ...\n# Subtest: approved colour pairs meet 4.5:1 text contrast\nok 12 - approved colour pairs meet 4.5:1 text contrast\n  ---\n  duration_ms: 1.685785\n  type: 'test'\n  ...\n# Subtest: design tokens preserve approved palette\nok 13 - design tokens preserve approved palette\n  ---\n  duration_ms: 0.12889\n  type: 'test'\n  ...\n# Subtest: navigation only includes licensed and granted stable workspace roots\nok 14 - navigation only includes licensed and granted stable workspace roots\n  ---\n  duration_ms: 0.714647\n  type: 'test'\n  ...\n# Subtest: sidebar roots contain no details/edit/create routes or duplicate paths\nok 15 - sidebar roots contain no details/edit/create routes or duplicate paths\n  ---\n  duration_ms: 0.204052\n  type: 'test'\n  ...\n# Subtest: native mobile navigation has four labelled destinations and More\nok 16 - native mobile navigation has four labelled destinations and More\n  ---\n  duration_ms: 0.137543\n  type: 'test'\n  ...\n# Subtest: unsaved patient switch requires decision; clean switch reauthorizes and clears cache\nok 17 - unsaved patient switch requires decision; clean switch reauthorizes and clears cache\n  ---\n  duration_ms: 0.1216\n  type: 'test'\n  ...\n# Subtest: synchronization labels distinguish outcome unknown from confirmed success\nok 18 - synchronization labels distinguish outcome unknown from confirmed success\n  ---\n  duration_ms: 0.111425\n  type: 'test'\n  ...\n1..18\n# tests 18\n# suites 0\n# pass 18\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 66.427383\n",
+      "stderr": ""
+    },
+    {
+      "id": "tsx-syntax-only",
+      "command": "node tests/test_tsx_syntax.cjs",
+      "exit_code": 0,
+      "stdout": "PASS: 3 TSX syntax-only parses; NO dependency/type/native build assertions\n",
+      "stderr": ""
+    },
+    {
+      "id": "web-shell-source",
+      "command": "python tests/test_shell_sources.py",
+      "exit_code": 0,
+      "stdout": "PASS: bilingual, denied-by-default web shell and restrained responsive style source assertions\n",
+      "stderr": ""
+    },
+    {
+      "id": "source-style",
+      "command": "python tests/test_source_safety.py",
+      "exit_code": 0,
+      "stdout": "PASS: static design prohibitions, native shell source and 3 web shell sources\n",
+      "stderr": ""
+    },
+    {
+      "id": "openapi-parse",
+      "command": "python tests/test_contract.py",
+      "exit_code": 0,
+      "stdout": "PASS: draft OpenAPI YAML parsed; secured patient path, 404 nondisclosure and placeholder identity endpoints\n",
+      "stderr": ""
+    },
+    {
+      "id": "postgresql-sql-static",
+      "command": "python tests/test_sql_scope_foundation.py",
+      "exit_code": 0,
+      "stdout": "PASS: 5 domain scope DDL definitions, composite FKs, default-deny RLS source (SQL NOT EXECUTED)\n",
+      "stderr": ""
+    },
+    {
+      "id": "java-domain-policy",
+      "command": "bash tools/check_java_security.sh",
+      "exit_code": 0,
+      "stdout": "PASS: 11 Java tenant/facility/patient scope assertions\nPASS: 19 Java clinical proof assertions; NO OIDC/database clinical authorization integration\nPASS: 20 patient read non-disclosure assertions\nPASS: 13 Java facility directory assertions\n",
+      "stderr": ""
+    },
+    {
+      "id": "chromium-legacy-static-preview",
+      "command": "python tests/test_preview_browser.py",
+      "exit_code": 0,
+      "stdout": "PASS: 10 Chromium preview checks (9 widths plus 200% text simulation)\n",
+      "stderr": ""
+    },
+    {
+      "id": "chromium-bilingual-static-specimen",
+      "command": "python tests/test_i18n_preview_browser.py",
+      "exit_code": 0,
+      "stdout": "PASS: 19 static Chromium bilingual/viewport checks; NOT an application build\n",
+      "stderr": ""
+    }
+  ],
+  "all_passed": true
+}

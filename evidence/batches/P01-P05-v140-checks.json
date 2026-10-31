@@ -1,0 +1,188 @@
+{
+  "version": "0.14.0",
+  "recorded_utc": "2026-10-30T01:16:27.850966+00:00",
+  "reproducibility": "First combined verification process exceeded orchestration timeout near last recheck; 30 non-browser exit codes recorded, 3 Chromium checks and the TypeScript suite subsequently passed as independent commands. Separate logs preserve full stdout where captured. No all-in-one clean exit is claimed.",
+  "passed": 34,
+  "total": 34,
+  "checks": [
+    {
+      "id": "seed-manifest",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "canonical-register",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "route-integrity",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "ux-typescript-node",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "tsx-syntax-only",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "web-shell-source",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "source-style",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "locked-native-tabs-source",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "openapi-parse",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "postgresql-sql-static",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "postgresql-outbox-sql-static",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "postgresql-identity-sql-static",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "v100-audit-schema-static",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "jdbc-schema-alignment-static",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "event-envelope-schema",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "clinical-status-matrix",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "batch-evidence-ledger",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "v090-ten-batch-evidence",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "v010-ten-batch-evidence",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "parallel-checkpoint-merge",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "java-domain-policy",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "loopback-http-contract",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "v110-mobile-source",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "v110-ten-batch-register",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "v120-registration-static-sql-web",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "v120-ten-batch-evidence",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "v130-ten-batch-evidence",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "v130-registration-contract",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "v130-registration-source",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "v140-static-contract",
+      "exit_code": 0,
+      "verification": "observed subprocess exit code (stdout from original full-run process was not persisted separately)"
+    },
+    {
+      "id": "v140-chromium-registration",
+      "exit_code": 0,
+      "evidence": "evidence/batches/v140-chromium-registration.log",
+      "scope": "standalone HTML specimen, not Next"
+    },
+    {
+      "id": "v140-chromium-bilingual",
+      "exit_code": 0,
+      "evidence": "evidence/batches/v140-chromium-bilingual.log",
+      "scope": "standalone HTML specimen, not Next"
+    },
+    {
+      "id": "v140-chromium-legacy",
+      "exit_code": 0,
+      "evidence": "evidence/batches/v140-chromium-legacy.log",
+      "scope": "standalone HTML specimen, not Next"
+    },
+    {
+      "id": "v140-typescript-recheck",
+      "exit_code": 0,
+      "evidence": "evidence/batches/v140-typescript-regression.log",
+      "scope": "TypeScript library tests, not Expo/Next"
+    }
+  ],
+  "real_postgres": false,
+  "production_oidc": false,
+  "compiled_next": false,
+  "compiled_expo": false,
+  "clinically_certified": false
+}

@@ -1,0 +1,119 @@
+{
+  "checkpoint": "v0.25.0",
+  "source_checkpoint": "v0.24.0",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "recorded_utc": "2026-10-30T11:06:10.376951+00:00",
+  "results": [
+    {
+      "batch": "P01-B0033",
+      "command": "python tests/test_v250_engineering_probes.py Checks.test_migrations -v",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "",
+      "stderr": "test_migrations (__main__.Checks.test_migrations) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.016s\n\nOK\n",
+      "scope": "migration static safety and negative mutation tests",
+      "verification_scope": "unit/mock-JDBC/static SQL or Chromium static specimen ONLY; no live PostgreSQL, Next/Expo compilation or clinical acceptance",
+      "evidence_log": "evidence/batches/v250-P01-B0033.log"
+    },
+    {
+      "batch": "P01-B0034",
+      "command": "python tests/test_v250_engineering_probes.py Checks.test_pg_probe -v",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "",
+      "stderr": "test_pg_probe (__main__.Checks.test_pg_probe) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+      "scope": "restricted-role PostgreSQL diagnostic probe with mocked psql; live probe blocked",
+      "verification_scope": "unit/mock-JDBC/static SQL or Chromium static specimen ONLY; no live PostgreSQL, Next/Expo compilation or clinical acceptance",
+      "evidence_log": "evidence/batches/v250-P01-B0034.log"
+    },
+    {
+      "batch": "P01-B0035",
+      "command": "python tests/test_v250_engineering_probes.py Checks.test_build_probe -v",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "",
+      "stderr": "test_build_probe (__main__.Checks.test_build_probe) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.002s\n\nOK\n",
+      "scope": "Next/Expo build readiness diagnosis and synthetic installed dependency fixture",
+      "verification_scope": "unit/mock-JDBC/static SQL or Chromium static specimen ONLY; no live PostgreSQL, Next/Expo compilation or clinical acceptance",
+      "evidence_log": "evidence/batches/v250-P01-B0035.log"
+    },
+    {
+      "batch": "P02-B0084",
+      "command": "python tests/test_v250_web_shell.py P02-B0084",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "PASS P02-B0084 12 Chromium assertions; static specimen and source contract, NOT Next build\n",
+      "stderr": "",
+      "scope": "accessible nonclinical More menu, locale and Escape focus restoration",
+      "verification_scope": "unit/mock-JDBC/static SQL or Chromium static specimen ONLY; no live PostgreSQL, Next/Expo compilation or clinical acceptance",
+      "evidence_log": "evidence/batches/v250-P02-B0084.log"
+    },
+    {
+      "batch": "P02-B0085",
+      "command": "python tests/test_v250_web_shell.py P02-B0085",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "PASS P02-B0085 22 Chromium assertions; static specimen and source contract, NOT Next build\n",
+      "stderr": "",
+      "scope": "nine widths and French 200% reflow including More panel",
+      "verification_scope": "unit/mock-JDBC/static SQL or Chromium static specimen ONLY; no live PostgreSQL, Next/Expo compilation or clinical acceptance",
+      "evidence_log": "evidence/batches/v250-P02-B0085.log"
+    },
+    {
+      "batch": "P05-B0053",
+      "command": "bash -lc 'python tests/test_v250_review_audit_ddl.py && java -ea -cp /tmp/synqoria-v25-classes org.synqoria.registration.V250ReviewTransactionTest P05-B0053'",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "PASS P05-B0053 9 DDL static checks; migration UNAPPLIED\nPASS P05-B0053 2 mock-JDBC assertions; no live PostgreSQL/clinical authorization\n",
+      "stderr": "",
+      "scope": "unapplied audit/outbox relational schema, FORCE RLS and public revoke",
+      "verification_scope": "unit/mock-JDBC/static SQL or Chromium static specimen ONLY; no live PostgreSQL, Next/Expo compilation or clinical acceptance",
+      "evidence_log": "evidence/batches/v250-P05-B0053.log"
+    },
+    {
+      "batch": "P05-B0054",
+      "command": "java -ea -cp /tmp/synqoria-v25-classes org.synqoria.registration.V250ReviewTransactionTest P05-B0054",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "PASS P05-B0054 7 mock-JDBC assertions; no live PostgreSQL/clinical authorization\n",
+      "stderr": "",
+      "scope": "restricted PostgreSQL role and FORCE-RLS JDBC metadata guard",
+      "verification_scope": "unit/mock-JDBC/static SQL or Chromium static specimen ONLY; no live PostgreSQL, Next/Expo compilation or clinical acceptance",
+      "evidence_log": "evidence/batches/v250-P05-B0054.log"
+    },
+    {
+      "batch": "P05-B0055",
+      "command": "java -ea -cp /tmp/synqoria-v25-classes org.synqoria.registration.V250ReviewTransactionTest P05-B0055",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "PASS P05-B0055 7 mock-JDBC assertions; no live PostgreSQL/clinical authorization\n",
+      "stderr": "",
+      "scope": "scoped serializable reviewer decision row lock and history read",
+      "verification_scope": "unit/mock-JDBC/static SQL or Chromium static specimen ONLY; no live PostgreSQL, Next/Expo compilation or clinical acceptance",
+      "evidence_log": "evidence/batches/v250-P05-B0055.log"
+    },
+    {
+      "batch": "P05-B0056",
+      "command": "java -ea -cp /tmp/synqoria-v25-classes org.synqoria.registration.V250ReviewTransactionTest P05-B0056",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "PASS P05-B0056 13 mock-JDBC assertions; no live PostgreSQL/clinical authorization\n",
+      "stderr": "",
+      "scope": "atomic three-statement event/outbox/audit append and rollback tests",
+      "verification_scope": "unit/mock-JDBC/static SQL or Chromium static specimen ONLY; no live PostgreSQL, Next/Expo compilation or clinical acceptance",
+      "evidence_log": "evidence/batches/v250-P05-B0056.log"
+    },
+    {
+      "batch": "P05-B0057",
+      "command": "java -ea -cp /tmp/synqoria-v25-classes org.synqoria.registration.V250ReviewTransactionTest P05-B0057",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "PASS P05-B0057 14 mock-JDBC assertions; no live PostgreSQL/clinical authorization\n",
+      "stderr": "",
+      "scope": "restricted reviewer transaction integration and failure rollback",
+      "verification_scope": "unit/mock-JDBC/static SQL or Chromium static specimen ONLY; no live PostgreSQL, Next/Expo compilation or clinical acceptance",
+      "evidence_log": "evidence/batches/v250-P05-B0057.log"
+    }
+  ]
+}

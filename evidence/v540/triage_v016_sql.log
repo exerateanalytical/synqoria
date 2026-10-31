@@ -1,0 +1,14 @@
+test_missing_atomic_null_constraint_rejected (test_triage_encrypted_migration_gate.QuarantineEncryptedMigrationTests.test_missing_atomic_null_constraint_rejected) ... ok
+test_missing_digest_format_rejected (test_triage_encrypted_migration_gate.QuarantineEncryptedMigrationTests.test_missing_digest_format_rejected) ... ok
+test_missing_encryption_column_rejected (test_triage_encrypted_migration_gate.QuarantineEncryptedMigrationTests.test_missing_encryption_column_rejected) ... ok
+test_missing_event_trigger_rejected (test_triage_encrypted_migration_gate.QuarantineEncryptedMigrationTests.test_missing_event_trigger_rejected) ... ok
+test_missing_force_rls_rejected (test_triage_encrypted_migration_gate.QuarantineEncryptedMigrationTests.test_missing_force_rls_rejected) ... ok
+test_missing_outbox_trigger_rejected (test_triage_encrypted_migration_gate.QuarantineEncryptedMigrationTests.test_missing_outbox_trigger_rejected) ... ok
+test_policy_rejected (test_triage_encrypted_migration_gate.QuarantineEncryptedMigrationTests.test_policy_rejected) ... ok
+test_public_grant_rejected (test_triage_encrypted_migration_gate.QuarantineEncryptedMigrationTests.test_public_grant_rejected) ... ok
+test_source_is_quarantined (test_triage_encrypted_migration_gate.QuarantineEncryptedMigrationTests.test_source_is_quarantined) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.010s
+
+OK

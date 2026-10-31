@@ -1,0 +1,18 @@
+{
+  "batch": "P06-B0070",
+  "description": "Flyway migration inventory gate rejects duplicate versions, gaps, malformed names and empty migrations",
+  "tests": {
+    "command": "python -m unittest discover -s tests -p *migration*gate_test.py -v",
+    "exit_code": 0,
+    "output": "test_b0065_quarantine_and_grants (appointment_migration_gate_test.GateTests.test_b0065_quarantine_and_grants) ... ok\ntest_b0066_rls_force_and_public_revoke (appointment_migration_gate_test.GateTests.test_b0066_rls_force_and_public_revoke) ... ok\ntest_b0067_scoped_table_columns (appointment_migration_gate_test.GateTests.test_b0067_scoped_table_columns) ... ok\ntest_b0068_concurrent_reservation_exclusion (appointment_migration_gate_test.GateTests.test_b0068_concurrent_reservation_exclusion) ... ok\ntest_b0069_idempotency_replay_integrity (appointment_migration_gate_test.GateTests.test_b0069_idempotency_replay_integrity) ... ok\ntest_duplicate_version (migration_inventory_gate_test.InventoryTests.test_duplicate_version) ... ok\ntest_empty_and_malformed (migration_inventory_gate_test.InventoryTests.test_empty_and_malformed) ... ok\ntest_gap (migration_inventory_gate_test.InventoryTests.test_gap) ... ok\ntest_real_inventory (migration_inventory_gate_test.InventoryTests.test_real_inventory) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.016s\n\nOK\n",
+    "total_tests": 9
+  },
+  "inventory": {
+    "exit_code": 0,
+    "output": "{\n  \"count\": 14,\n  \"latest\": 14,\n  \"versions\": {\n    \"1\": \"V001__hospital_scope_foundation.sql\",\n    \"2\": \"V002__outbox_inbox_foundation.sql\",\n    \"3\": \"V003__patient_identity_consent_foundation.sql\",\n    \"4\": \"V004__clinical_read_audit_foundation.sql\",\n    \"5\": \"V005__patient_registration_foundation.sql\",\n    \"6\": \"V006__identity_lookup_quarantine.sql\",\n    \"7\": \"V007__registration_review_quarantine.sql\",\n    \"8\": \"V008__registration_review_event_quarantine.sql\",\n    \"9\": \"V009__review_event_digest_contract_quarantine.sql\",\n    \"10\": \"V010__review_audit_outbox_quarantine.sql\",\n    \"11\": \"V011__review_command_replay_quarantine.sql\",\n    \"12\": \"V012__appointment_reservation_quarantine.sql\",\n    \"13\": \"V013__appointment_restricted_audit_quarantine.sql\",\n    \"14\": \"V014__appointment_idempotency_quarantine.sql\"\n  }\n}\n"
+  },
+  "limitations": [
+    "Source-only; no live PostgreSQL validation",
+    "No clinical or security certification"
+  ]
+}

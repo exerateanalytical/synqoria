@@ -1,0 +1,8 @@
+[
+  "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentTransactionBoundary.java",
+  "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentDigestValidation.java",
+  "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentRevisionValidation.java",
+  "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentTransactionBoundaryTest.java",
+  "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentDigestValidationTest.java",
+  "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentRevisionValidationTest.java"
+]

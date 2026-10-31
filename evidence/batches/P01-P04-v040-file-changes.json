@@ -1,0 +1,41 @@
+{
+  "from_version": "0.3.0",
+  "to_version": "0.4.0",
+  "added_files": [
+    "evidence/batches/P01-B0002-retry-20261029.log",
+    "evidence/batches/P01-P04-v040-checks.json",
+    "packages/ux-core/src/patient-transition.ts",
+    "packages/ux-core/tests/patient-transition.test.cjs",
+    "services/clinical-core/db/migration/V001__hospital_scope_foundation.sql",
+    "services/clinical-core/src/main/java/org/synqoria/facility/FacilityBinding.java",
+    "services/clinical-core/src/main/java/org/synqoria/facility/FacilityDirectory.java",
+    "services/clinical-core/src/main/java/org/synqoria/security/PatientReadService.java",
+    "services/clinical-core/src/main/java/org/synqoria/security/PatientRecordEnvelope.java",
+    "services/clinical-core/src/test/java/org/synqoria/facility/FacilityDirectoryTest.java",
+    "services/clinical-core/src/test/java/org/synqoria/security/PatientReadServiceTest.java",
+    "tests/test_sql_scope_foundation.py"
+  ],
+  "changed_files": [
+    "README.md",
+    "apps/patient-mobile/package.json",
+    "apps/staff-mobile/package.json",
+    "apps/web/package.json",
+    "docs/program/STATUS.md",
+    "package.json",
+    "packages/ux-core/package.json",
+    "packages/ux-core/src/index.ts",
+    "registers/batch-ledger.json",
+    "registers/blockers.json",
+    "registers/phases.json",
+    "services/clinical-core/README.md",
+    "tools/check_java_security.sh",
+    "tools/package_checkpoint.py",
+    "tools/run_checks.py"
+  ],
+  "removed_files": [],
+  "counts": {
+    "added": 12,
+    "changed": 15,
+    "removed": 0
+  }
+}

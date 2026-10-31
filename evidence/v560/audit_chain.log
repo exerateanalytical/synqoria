@@ -1,0 +1,7 @@
+COMMAND: java -cp /mnt/data/synqoria_v56_classes org.synqoria.triage.TriageAuditContinuityTest
+EXIT: 0
+
+STDOUT:
+TRIAGE_AUDIT_CONTINUITY PASS assertions=45
+
+STDERR:

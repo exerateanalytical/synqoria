@@ -1,0 +1,24 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "V001__hospital_scope_foundation.sql": "04c23c8adf908973a68e674ab5856e67b2688de5eb74b42c0c2237ff36052cd8",
+    "V002__outbox_inbox_foundation.sql": "9ddfada80d129cad34645daab53d023fc46098089ed2858279e8ed55376a626e",
+    "V003__patient_identity_consent_foundation.sql": "885e87ef3450f6ed8218c9554ec05b6597ac818beb729687994ebb30ce98b9bc",
+    "V004__clinical_read_audit_foundation.sql": "f109c858e9ed5814e2e684cf626305f70a6edf6ff93248bc4591c00346c8a500",
+    "V005__patient_registration_foundation.sql": "48a6016e4bdd7c32e55c1c181f9191b369160df4e299d93f84256351c32c2306",
+    "V006__identity_lookup_quarantine.sql": "42f42fd10ed00d7e1c8073bcb68902f3d8ee44eff107a588fe37a060e1a88236",
+    "V007__registration_review_quarantine.sql": "a54f42c61b7eb08716f08a3fda9b3950989f3ce2590a2bd16c83a748328b6088",
+    "V008__registration_review_event_quarantine.sql": "4c6702664255fd2ffdfe8d762b9344a75378df9982b28efdbebafe71dfe6ea0c",
+    "V009__review_event_digest_contract_quarantine.sql": "5bbecc0065be22757f6fdb03ea387a64988c3e9e7e5daa8b63cd1831977f3d2e",
+    "V010__review_audit_outbox_quarantine.sql": "dd09549d3a69d311423c983e42f159b5a9438d6f4560fb7d025db9ac0a98f11e",
+    "V011__review_command_replay_quarantine.sql": "ad24a1da656691c374d2957027172deb4377aafe7b433c9c7f9f0290e9680a98",
+    "V012__appointment_reservation_quarantine.sql": "7b8a9f64e5feb34fc7ec2c3da79c801a52c1e32a405c23fac95f6cc1c38c8a60",
+    "V013__appointment_restricted_audit_quarantine.sql": "f183f13177c6a30c8b550f1c723562e2e11bbfbe014565cd68af8cf127f4595e",
+    "V014__appointment_idempotency_quarantine.sql": "ac1652866ec07bc44e3c939b1c18191b6d6ad3367f0f71e6f68b404b689822b6",
+    "V015__triage_workflow_quarantine.sql": "3f5c204b9033900af56a5d877c53b47aa06d4ec26d6097a56ab01295b93a4c98",
+    "V016__triage_encrypted_snapshot_quarantine.sql": "b1d0251210bca3a9c5ac21fbc41e10babdbdb03925aa33849143a6faa8a89a26",
+    "V017__triage_secure_receipts_quarantine.sql": "8bbec379aa45f9968b2fc977075abd61fe962412cb89091bf5a92001e920e4fb",
+    "V018__triage_secure_genesis_quarantine.sql": "59df3f1a961ae55b54559f5256cfa821b8d928cba4926cc02fb98fb7534715b5",
+    "V019__triage_secure_correlated_evidence_quarantine.sql": "556eb554cab6702b1b574561199f087fbdaef00384c07a348906037d275f44a2"
+  }
+}

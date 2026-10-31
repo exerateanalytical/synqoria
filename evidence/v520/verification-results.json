@@ -1,0 +1,693 @@
+{
+  "checkpoint": "v0.52.0",
+  "checks": [
+    {
+      "name": "java-all-compile",
+      "exit_code": 0,
+      "log": "evidence/v520/java-all-compile.log",
+      "observed_in": "local command output"
+    },
+    {
+      "name": "v510-triage-journey",
+      "exit_code": 0,
+      "log": "evidence/v520/v510-triage-journey.log",
+      "observed_in": "local command output"
+    },
+    {
+      "name": "ux-core",
+      "exit_code": 0,
+      "log": "evidence/v520/ux-core.log",
+      "observed_in": "local command output"
+    },
+    {
+      "name": "canonical-registers",
+      "exit_code": 0,
+      "log": "evidence/v520/canonical-registers.log",
+      "observed_in": "local command output"
+    },
+    {
+      "name": "native-source",
+      "exit_code": 0,
+      "log": "evidence/v520/native-source.log",
+      "observed_in": "local command output"
+    },
+    {
+      "name": "v015-triage-sql",
+      "exit_code": 0,
+      "log": "evidence/v520/v015-triage-sql.log",
+      "observed_in": "local command output"
+    },
+    {
+      "name": "v016-triage-sql",
+      "exit_code": 0,
+      "log": "evidence/v520/v016-triage-sql.log",
+      "observed_in": "local command output"
+    },
+    {
+      "name": "migration-lock",
+      "exit_code": 0,
+      "log": "evidence/v520/migration-lock.log",
+      "observed_in": "local command output"
+    },
+    {
+      "name": "migration-checksum-tests",
+      "exit_code": 0,
+      "log": "evidence/v520/migration-checksum-tests.log",
+      "observed_in": "local command output"
+    },
+    {
+      "name": "regression-P06-B0094",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0094.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0095",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0095.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0096",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0096.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0097",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0097.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0098",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0098.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0099",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0099.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0100",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0100.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0101",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0101.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0102",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0102.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0103",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0103.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0104",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0104.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0105",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0105.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0106",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0106.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0107",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0107.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0108",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0108.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0109",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0109.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0110",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0110.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0111",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0111.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0112",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0112.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0113",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0113.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0114",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0114.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0115",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0115.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0116",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0116.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0117",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0117.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0118",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0118.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0119",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0119.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0120",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0120.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0121",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0121.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0122",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0122.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0123",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0123.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0124",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0124.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0125",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0125.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0126",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0126.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0127",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0127.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0128",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0128.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0129",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0129.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0130",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0130.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0131",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0131.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0132",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0132.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0133",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0133.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0134",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0134.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0135",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0135.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0136",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0136.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0137",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0137.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0138",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0138.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0139",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0139.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0140",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0140.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0141",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0141.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0142",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0142.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0143",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0143.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0144",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0144.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0145",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0145.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0146",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0146.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0147",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0147.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0148",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0148.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0149",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0149.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0150",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0150.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0151",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0151.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0152",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0152.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "regression-P06-B0153",
+      "exit_code": 0,
+      "log": "evidence/v520/regression-P06-B0153.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-codec-audit",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-codec-audit.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-codec-bad-magic",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-codec-bad-magic.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-codec-determinism",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-codec-determinism.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-codec-oversize",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-codec-oversize.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-codec-roundtrip",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-codec-roundtrip.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-codec-tamper",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-codec-tamper.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-codec-trailing",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-codec-trailing.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-codec-truncation",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-codec-truncation.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-crypto-defensive-copy",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-crypto-defensive-copy.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-crypto-invalid-key",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-crypto-invalid-key.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-crypto-key-binding",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-crypto-key-binding.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-crypto-random-nonce",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-crypto-random-nonce.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-crypto-revision-binding",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-crypto-revision-binding.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-crypto-roundtrip",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-crypto-roundtrip.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-crypto-scope-binding",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-crypto-scope-binding.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-crypto-tamper",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-crypto-tamper.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-budget",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-budget.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-bypassrls",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-bypassrls.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-cas-race",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-cas-race.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-cas",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-cas.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-ciphertext",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-ciphertext.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-cross-tenant",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-cross-tenant.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-duplicate-command",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-duplicate-command.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-event-failure",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-event-failure.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-event",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-event.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-happy-path",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-happy-path.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-invalid-mutation",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-invalid-mutation.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-missing-row",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-missing-row.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-missing-tip",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-missing-tip.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-no-autocommit",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-no-autocommit.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-no-manage-capability",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-no-manage-capability.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-outbox-failure",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-outbox-failure.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-outbox-tip-mismatch",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-outbox-tip-mismatch.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-outbox",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-outbox.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-readonly",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-readonly.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-revoked-evidence",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-revoked-evidence.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-rls",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-rls.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-role",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-role.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-row-stage-mismatch",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-row-stage-mismatch.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-scope-echo",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-scope-echo.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-scoped-lock",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-scoped-lock.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-serializable",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-serializable.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-snapshot-tamper",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-snapshot-tamper.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-stale-revision",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-stale-revision.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    },
+    {
+      "name": "scenario-jdbc-superuser",
+      "exit_code": 0,
+      "log": "evidence/v520/scenario-jdbc-superuser.log",
+      "observed_in": "individual PASS marker in executed JVM log"
+    }
+  ],
+  "passed": 114,
+  "total": 114,
+  "scope": "Java compilation, synthetic domain/JDBC protocol, static source/migration and UX-core; NOT live PostgreSQL, KMS, OIDC, native builds or clinical acceptance",
+  "orchestration_warning": "A later attempt to rerun the entire verifier in one invocation timed out; its incomplete aggregate run is not counted. The individual scenario and baseline commands listed here passed in separate executions."
+}

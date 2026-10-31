@@ -1,0 +1,42 @@
+{
+  "checkpoint": "v0.52.0",
+  "next_batch": "P06-B0169",
+  "release_gate": "DENIED",
+  "blockers": [
+    {
+      "id": "M03-GENESIS",
+      "status": "OPEN",
+      "detail": "No authorized encrypted triage intake genesis INSERT/event/outbox adapter; current JDBC mutation requires a pre-existing encrypted row. Do not deploy."
+    },
+    {
+      "id": "M03-DB-RLS",
+      "status": "OPEN",
+      "detail": "No live PostgreSQL restricted-role RLS/serializable transaction test. V016 remains deny-all quarantine; no application grants/policies."
+    },
+    {
+      "id": "M03-KMS",
+      "status": "OPEN",
+      "detail": "No production KMS, key rotation, key retention/erasure, backup encryption or keyId lookup attestation."
+    },
+    {
+      "id": "M03-OIDC",
+      "status": "OPEN",
+      "detail": "No production OIDC session verification, clinical privilege/consent engine integration, or authenticated HTTP endpoints."
+    },
+    {
+      "id": "M03-UX",
+      "status": "OPEN",
+      "detail": "No deployed web/native mobile triage screens, native Expo builds, EN/FR 200% visual acceptance, or device testing."
+    },
+    {
+      "id": "M03-CLINICAL",
+      "status": "OPEN",
+      "detail": "0/261 screens clinically accepted; 0/40 modules certified. No clinical hazard review or security approval."
+    },
+    {
+      "id": "M03-ORCHESTRATOR",
+      "status": "OPEN_NON_RELEASE_BLOCKER",
+      "detail": "Combined full-verifier orchestration timed out during repeated execution; all 45 synthetic new scenarios and 60 previous regression cases were executed individually with PASS logs. Aggregate timeout not treated as passing."
+    }
+  ]
+}

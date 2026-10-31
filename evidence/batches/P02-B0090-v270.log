@@ -1,0 +1,6 @@
+COMMAND ['python', 'tests/test_v270_browser.py', 'P02-B0090']
+EXIT 0
+STDOUT
+PASS P02-B0090 9 Chromium static CSS/specimen assertions; NO Next.js build
+
+STDERR

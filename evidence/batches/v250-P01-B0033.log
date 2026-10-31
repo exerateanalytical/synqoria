@@ -1,0 +1,13 @@
+BATCH: P01-B0033
+COMMAND: python tests/test_v250_engineering_probes.py Checks.test_migrations -v
+EXIT: 0
+STDOUT:
+
+STDERR:
+test_migrations (__main__.Checks.test_migrations) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.016s
+
+OK
+

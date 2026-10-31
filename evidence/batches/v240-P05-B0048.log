@@ -1,0 +1,6 @@
+$ java -ea -cp /tmp/synqoria-v24-classes org.synqoria.registration.V240ReviewIntegrationTest P05-B0048
+exit_code=0
+stdout:
+PASS P05-B0048 9 assertions; no live DB/OIDC/clinical release
+
+stderr:

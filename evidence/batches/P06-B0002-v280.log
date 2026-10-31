@@ -1,0 +1,5 @@
+COMMAND ["java", "-ea", "-cp", "/tmp/synqoria-v280-classes", "org.synqoria.scheduling.AppointmentAggregateTest"]
+EXIT_CODE 0
+PASS P06-B0002 8 state/revision/terminal safety assertions (unit)
+
+STDERR

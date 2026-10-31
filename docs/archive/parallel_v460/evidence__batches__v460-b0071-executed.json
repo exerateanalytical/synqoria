@@ -1,0 +1,8 @@
+{
+  "batch": "P06-B0071",
+  "status": "implemented_tested",
+  "test_exit": 0,
+  "migration_gate_exit": 0,
+  "scope": "immutable SQL migration checksum lock; source-only, not PostgreSQL runtime verification",
+  "timestamp_utc": "2026-10-30T17:15:13.328369+00:00"
+}

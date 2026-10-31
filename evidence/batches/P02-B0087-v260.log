@@ -1,0 +1,11 @@
+COMMAND ['python', 'tests/test_v260_native_sources.py', 'Native.test_staff', '-v']
+EXIT 0
+STDOUT
+
+STDERR
+test_staff (__main__.Native.test_staff) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.006s
+
+OK

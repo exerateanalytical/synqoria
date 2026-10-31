@@ -1,0 +1,26 @@
+{
+  "V012__appointment_reservation_quarantine.sql": {
+    "quarantine": [
+      "synqoria_appointment_reservations_quarantine"
+    ],
+    "rls": true,
+    "scope": true
+  },
+  "V013__appointment_restricted_audit_quarantine.sql": {
+    "quarantine": [
+      "synqoria_appointment_command_audit_quarantine",
+      "synqoria_appointment_outbox_quarantine"
+    ],
+    "rls": true,
+    "scope": true
+  },
+  "V014__appointment_idempotency_quarantine.sql": {
+    "quarantine": [
+      "synqoria_appointment_idempotency_quarantine"
+    ],
+    "rls": true,
+    "scope": true
+  },
+  "exclusion": true,
+  "idempotency": true
+}

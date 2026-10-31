@@ -1,0 +1,636 @@
+{
+  "results": [
+    {
+      "class": "org.synqoria.security.SafeApiProblemTest",
+      "exit_code": 0,
+      "stdout": "PASS: 20 allowlisted API problem assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.security.PatientScopePolicyTest",
+      "exit_code": 0,
+      "stdout": "PASS: 11 Java tenant/facility/patient scope assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.security.SessionEpochFenceTest",
+      "exit_code": 0,
+      "stdout": "PASS P03-B0012: 5 session freshness fence assertions (test claims only)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.security.ClinicalAccessPolicyTest",
+      "exit_code": 0,
+      "stdout": "PASS: 19 Java clinical proof assertions; NO OIDC/database clinical authorization integration\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.security.PatientReadServiceTest",
+      "exit_code": 0,
+      "stdout": "PASS: 20 patient read non-disclosure assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.security.V200OidcFoundationsTest",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.IllegalArgumentException: Batch required\n\tat org.synqoria.security.V200OidcFoundationsTest.main(V200OidcFoundationsTest.java:54)\n"
+    },
+    {
+      "class": "org.synqoria.security.V180OidcBoundaryTest",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.IllegalArgumentException: Batch ID required\n\tat org.synqoria.security.V180OidcBoundaryTest.main(V180OidcBoundaryTest.java:81)\n"
+    },
+    {
+      "class": "org.synqoria.security.EmergencyAccessPolicyTest",
+      "exit_code": 0,
+      "stdout": "PASS: 7 emergency request assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.security.SessionFreshnessPolicyTest",
+      "exit_code": 0,
+      "stdout": "PASS: 11 externally verified session evidence policy assertions; OIDC still not integrated\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.security.PurposeOfUseDecisionTest",
+      "exit_code": 0,
+      "stdout": "PASS: 8 purpose assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.security.V170IdentityFoundationTest",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.IllegalArgumentException: batch id required\n\tat org.synqoria.security.V170IdentityFoundationTest.main(V170IdentityFoundationTest.java:71)\n"
+    },
+    {
+      "class": "org.synqoria.security.TrustedSessionAdmissionTest",
+      "exit_code": 0,
+      "stdout": "PASS: 14 session admission assertions (verifier stub, NO OIDC signature test)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.registration.V190ChainVerifierTest",
+      "exit_code": 0,
+      "stdout": "PASS P05-B0031 9 audit-chain checks\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.registration.V190ReviewScopeTest",
+      "exit_code": 0,
+      "stdout": "PASS P05-B0028 8 scope checks\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.registration.V240ReviewIntegrationTest",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0\n\tat org.synqoria.registration.V240ReviewIntegrationTest.main(V240ReviewIntegrationTest.java:61)\n"
+    },
+    {
+      "class": "org.synqoria.registration.V260ReviewerGateTest",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0\n\tat org.synqoria.registration.V260ReviewerGateTest.main(V260ReviewerGateTest.java:42)\n"
+    },
+    {
+      "class": "org.synqoria.registration.V160ReviewSafetyTest",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.IllegalArgumentException: Batch required\n\tat org.synqoria.registration.V160ReviewSafetyTest.main(V160ReviewSafetyTest.java:56)\n"
+    },
+    {
+      "class": "org.synqoria.registration.V250ReviewTransactionTest",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0\n\tat org.synqoria.registration.V250ReviewTransactionTest.main(V250ReviewTransactionTest.java:79)\n"
+    },
+    {
+      "class": "org.synqoria.registration.V140ReviewBoundaryTest",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.IllegalArgumentException: one batch required\n\tat org.synqoria.registration.V140ReviewBoundaryTest.main(V140ReviewBoundaryTest.java:76)\n"
+    },
+    {
+      "class": "org.synqoria.registration.V130RegistrationSafetyTest",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.IllegalArgumentException: Pass one batch ID\n\tat org.synqoria.registration.V130RegistrationSafetyTest.main(V130RegistrationSafetyTest.java:82)\n"
+    },
+    {
+      "class": "org.synqoria.registration.V210ReviewIntegrityTest",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0\n\tat org.synqoria.registration.V210ReviewIntegrityTest.main(V210ReviewIntegrityTest.java:15)\n"
+    },
+    {
+      "class": "org.synqoria.registration.V230ScopedReviewTest",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0\n\tat org.synqoria.registration.V230ScopedReviewTest.main(V230ScopedReviewTest.java:12)\n"
+    },
+    {
+      "class": "org.synqoria.registration.V190FreshnessTest",
+      "exit_code": 0,
+      "stdout": "PASS P05-B0032 8 freshness checks\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.registration.V190OutboxDescriptorTest",
+      "exit_code": 0,
+      "stdout": "PASS P05-B0030 7 metadata checks\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.registration.V190IdempotencyTest",
+      "exit_code": 0,
+      "stdout": "PASS P05-B0029 8 idempotency checks\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.registration.V270EvidenceReconciliationTest",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.IllegalArgumentException: unknown batch\n\tat org.synqoria.registration.V270EvidenceReconciliationTest.main(V270EvidenceReconciliationTest.java:43)\n"
+    },
+    {
+      "class": "org.synqoria.registration.V120RegistrationTest",
+      "exit_code": 0,
+      "stdout": "PASS v0.12.0 registration: 37 policy/atomicity assertions (mock JDBC only)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.registration.V150ReviewGuardTest",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.IllegalArgumentException: Specify batch\n\tat org.synqoria.registration.V150ReviewGuardTest.main(V150ReviewGuardTest.java:47)\n"
+    },
+    {
+      "class": "org.synqoria.registration.V220ReviewIntegrationTest",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0\n\tat org.synqoria.registration.V220ReviewIntegrationTest.main(V220ReviewIntegrationTest.java:96)\n"
+    },
+    {
+      "class": "org.synqoria.http.ClinicalGatewayIntegrationTest",
+      "exit_code": 0,
+      "stdout": "PASS P01-B0014: canonical URI assertions\nPASS P03-B0009: verifier admission assertions\nPASS P04-B0007: facility-cell assertions\nPASS P03-B0010: audited patient read assertions\nPASS P01-B0017/B0018: request framing and trace assertions\nPASS P01-B0015: protected JSON and response headers\nPASS P01-B0016: real localhost HTTP routes\nPASS: 41 loopback integration assertions (test verifier only; no OIDC or PostgreSQL)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.consent.ConsentScopePolicyTest",
+      "exit_code": 0,
+      "stdout": "PASS: 11 explicit consent predicate assertions (no legal policy approval)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.integration.V110IntegrationTest",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.IllegalArgumentException: select one batch\n\tat org.synqoria.integration.V110IntegrationTest.main(V110IntegrationTest.java:67)\n"
+    },
+    {
+      "class": "org.synqoria.audit.BoundedAuditJournalTest",
+      "exit_code": 0,
+      "stdout": "PASS P03-B0011: 10 local audit journal assertions; not production immutability\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentOutboxStoreTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentOutboxStoreTest assertions=13\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentVersionFenceTest",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentScopedCursorTest",
+      "exit_code": 0,
+      "stdout": "PASS P06-B0040 assertions=9\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentSchemaAlignmentTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentSchemaAlignmentTest assertions=18\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentAccessPolicyTest",
+      "exit_code": 0,
+      "stdout": "PASS P06-B0004 8 verified tenant/facility/patient/capability denial assertions (unit)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentLockedSnapshotTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentLockedSnapshotTest assertions=13\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentOutboxHeadersTest",
+      "exit_code": 0,
+      "stdout": "PASS P06-B0036 assertions=6\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentActorFenceTest",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentTransitionServiceTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentTransitionServiceTest assertions=12\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentIdempotencyStoreTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentIdempotencyStoreTest assertions=16\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentJdbcSafetyGateTest",
+      "exit_code": 0,
+      "stdout": "PASS 12 mocked JDBC gate assertions; NO PostgreSQL integration\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentRetryPolicyTest",
+      "exit_code": 0,
+      "stdout": "PASS P06-B0037 assertions=11\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentTransitionCommandTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentTransitionCommandTest assertions=11\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentWindowTest",
+      "exit_code": 0,
+      "stdout": "PASS P06-B0001 8 DST, zone, interval and overlap assertions (unit)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentScopedMutationTest",
+      "exit_code": 0,
+      "stdout": "PASS P06-B0041 assertions=14\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentDigestValidationTest",
+      "exit_code": 0,
+      "stdout": "PASS six digest validation cases\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentLimitFenceTest",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentRevisionValidationTest",
+      "exit_code": 0,
+      "stdout": "PASS five revision cases\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentResourceFenceTest",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentScopedSearchTest",
+      "exit_code": 0,
+      "stdout": "PASS 9 scoped query assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentCommandFingerprintTest",
+      "exit_code": 0,
+      "stdout": "PASS P06-B0005 7 stable scoped command fingerprint assertions (unit)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentPatientFenceTest",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentTransactionBoundaryTest",
+      "exit_code": 0,
+      "stdout": "PASS fail closed without PostgreSQL\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentTimeBoundsTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentTimeBounds 6\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentAttendancePreflightTest",
+      "exit_code": 0,
+      "stdout": "PASS 9 attendance assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentAuditStoreTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentAuditStoreTest assertions=13\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentCommandAdmissionTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentCommandAdmissionTest assertions=11\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentScopeKeysTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentScopeKeys 6\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentOutboxEventValidatorTest",
+      "exit_code": 0,
+      "stdout": "PASS P06-B0039 assertions=11\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentIdempotencyLedgerTest",
+      "exit_code": 0,
+      "stdout": "PASS 8 idempotency assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentStateCodecTest",
+      "exit_code": 0,
+      "stdout": "AppointmentStateCodecTest PASS 12 checks\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentResourceCapacityTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentResourceCapacity 6\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentReplayFenceTest",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentOutboxFenceTest",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentTransitionPolicyTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentTransitionPolicyTest assertions=31\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentJdbcScopeTest",
+      "exit_code": 0,
+      "stdout": "PASS JDBC scoped session: 6 assertions (mock only)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentCancellationPreflightTest",
+      "exit_code": 0,
+      "stdout": "PASS 9 cancellation assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentWorkflowPreflightTest",
+      "exit_code": 0,
+      "stdout": "PASS P06-B0006 11 preflight authorization/transition/conflict/outbox assertions (no DB write)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentAuditSequenceTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentAuditSequence 6\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentRevisionFenceTest",
+      "exit_code": 0,
+      "stdout": "AppointmentRevisionFenceTest PASS 5 checks\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentRetryExecutorTest",
+      "exit_code": 0,
+      "stdout": "PASS P06-B0038 assertions=4\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentReleaseFenceTest",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.ResourceReservationIndexTest",
+      "exit_code": 0,
+      "stdout": "PASS P06-B0003 13 overlap/isolation/release/concurrency assertions (in-memory only)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentReschedulePreflightTest",
+      "exit_code": 0,
+      "stdout": "PASS 8 reschedule assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentIdempotencyKeyTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentIdempotencyKey 7\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentRestrictedTransactionTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentRestrictedTransactionTest assertions=10\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentAggregateTest",
+      "exit_code": 0,
+      "stdout": "PASS P06-B0002 8 state/revision/terminal safety assertions (unit)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentWriteFenceTest",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentRevisionUpdateTest",
+      "exit_code": 0,
+      "stdout": "PASS scoped revision update: 5 assertions (mock only)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentTransactionExecutorTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentTransactionExecutor 5\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentSqlIdentifierTest",
+      "exit_code": 0,
+      "stdout": "PASS P06-B0035 assertions=10\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentAuditChainTest",
+      "exit_code": 0,
+      "stdout": "PASS 9 audit chain assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentTenantContextTest",
+      "exit_code": 0,
+      "stdout": "PASS tenant context: 4 assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentRequestIntakeTest",
+      "exit_code": 0,
+      "stdout": "PASS 7 request intake assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentScopeFenceTest",
+      "exit_code": 0,
+      "stdout": "AppointmentScopeFenceTest PASS 5 checks\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentTimeFenceTest",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.events.OutboxClaimLedgerTest",
+      "exit_code": 0,
+      "stdout": "PASS: 11 outbox fencing assertions (in-memory only)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.events.IdempotencyGuardTest",
+      "exit_code": 0,
+      "stdout": "PASS: 13 idempotency guard assertions (in-memory only)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.facility.LocationMovePolicyTest",
+      "exit_code": 0,
+      "stdout": "PASS: 7 directory move assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.facility.FacilityGrantRevisionTest",
+      "exit_code": 0,
+      "stdout": "PASS: 6 facility grant assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.facility.FacilityDirectoryTest",
+      "exit_code": 0,
+      "stdout": "PASS: 13 Java facility directory assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.facility.LocationScopePolicyTest",
+      "exit_code": 0,
+      "stdout": "PASS: 9 location hierarchy fail-closed assertions; no repository integration\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.facility.FacilityLifecycleTest",
+      "exit_code": 0,
+      "stdout": "PASS: 11 facility lifecycle assertions (in-memory only)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.facility.CellRouteDirectoryTest",
+      "exit_code": 0,
+      "stdout": "PASS: 15 cell routing assertions (no network/TLS)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.reliability.OutboxIntentTest",
+      "exit_code": 0,
+      "stdout": "PASS: 9 deterministic outbox intent assertions (no transaction yet)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.reliability.InboxSequenceGuardTest",
+      "exit_code": 0,
+      "stdout": "PASS: 11 inbox sequence assertions (in-memory only)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.reliability.DeliveryRetryPolicyTest",
+      "exit_code": 0,
+      "stdout": "PASS: 15 retry assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.reliability.CommandPreconditionTest",
+      "exit_code": 0,
+      "stdout": "PASS: 14 precondition assertions\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.reliability.IdempotencyLedgerTest",
+      "exit_code": 0,
+      "stdout": "PASS: 15 scoped idempotency contract assertions (in-memory only)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.persistence.JdbcScopeIntegrationTest",
+      "exit_code": 0,
+      "stdout": "PASS P04-B0008/B0009: 22 JDBC scoped-query assertions (mock JDBC, not PostgreSQL)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.persistence.V100TransactionIntegrationTest",
+      "exit_code": 0,
+      "stdout": "PASS v1.0.0: 19 transaction/audit/scope/session assertions (JDBC mocks only)\n",
+      "stderr": ""
+    },
+    {
+      "class": "org.synqoria.scheduling.AppointmentTransitionMutationTest",
+      "exit_code": 0,
+      "stdout": "PASS AppointmentTransitionMutationTest assertions=17\n",
+      "stderr": ""
+    }
+  ],
+  "passed": 90,
+  "failed": 15
+}

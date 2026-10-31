@@ -1,0 +1,29 @@
+[
+  {
+    "batch": "P06-B0026",
+    "component": "AppointmentTenantContext",
+    "compile_exit": 0,
+    "compile_stderr": "",
+    "test_exit": 0,
+    "test_stdout": "PASS tenant context: 4 assertions\n",
+    "test_stderr": ""
+  },
+  {
+    "batch": "P06-B0027",
+    "component": "AppointmentJdbcScope",
+    "compile_exit": 0,
+    "compile_stderr": "",
+    "test_exit": 0,
+    "test_stdout": "PASS JDBC scoped session: 6 assertions (mock only)\n",
+    "test_stderr": ""
+  },
+  {
+    "batch": "P06-B0028",
+    "component": "AppointmentRevisionUpdate",
+    "compile_exit": 0,
+    "compile_stderr": "",
+    "test_exit": 0,
+    "test_stdout": "PASS scoped revision update: 5 assertions (mock only)\n",
+    "test_stderr": ""
+  }
+]

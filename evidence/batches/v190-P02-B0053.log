@@ -1,0 +1,19 @@
+$ node --test --test-name-pattern=P02-B0053 packages/ux-core/tests/v190-foundations.test.cjs
+TAP version 13
+# Subtest: P02-B0053 critical field text never truncates and touch targets remain safe
+ok 1 - P02-B0053 critical field text never truncates and touch targets remain safe
+  ---
+  duration_ms: 0.824207
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 60.457714
+
+exit=0 P02-B0053

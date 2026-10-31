@@ -1,0 +1,22 @@
+COMMAND: /opt/pyvenv/bin/python -m unittest discover -s /mnt/data/synqoria_run/v460_work/tests -p *migration*gate_test.py -v
+EXIT: 0
+test_b0065_quarantine_and_grants (appointment_migration_gate_test.GateTests.test_b0065_quarantine_and_grants) ... ok
+test_b0066_rls_force_and_public_revoke (appointment_migration_gate_test.GateTests.test_b0066_rls_force_and_public_revoke) ... ok
+test_b0067_scoped_table_columns (appointment_migration_gate_test.GateTests.test_b0067_scoped_table_columns) ... ok
+test_b0068_concurrent_reservation_exclusion (appointment_migration_gate_test.GateTests.test_b0068_concurrent_reservation_exclusion) ... ok
+test_b0069_idempotency_replay_integrity (appointment_migration_gate_test.GateTests.test_b0069_idempotency_replay_integrity) ... ok
+test_bad_digest_fails (migration_checksum_gate_test.ChecksumGateTests.test_bad_digest_fails) ... ok
+test_deleted_migration_fails (migration_checksum_gate_test.ChecksumGateTests.test_deleted_migration_fails) ... ok
+test_missing_lock_fails (migration_checksum_gate_test.ChecksumGateTests.test_missing_lock_fails) ... ok
+test_modified_migration_fails (migration_checksum_gate_test.ChecksumGateTests.test_modified_migration_fails) ... ok
+test_real_lock (migration_checksum_gate_test.ChecksumGateTests.test_real_lock) ... ok
+test_unlocked_migration_fails (migration_checksum_gate_test.ChecksumGateTests.test_unlocked_migration_fails) ... ok
+test_duplicate_version (migration_inventory_gate_test.InventoryTests.test_duplicate_version) ... ok
+test_empty_and_malformed (migration_inventory_gate_test.InventoryTests.test_empty_and_malformed) ... ok
+test_gap (migration_inventory_gate_test.InventoryTests.test_gap) ... ok
+test_real_inventory (migration_inventory_gate_test.InventoryTests.test_real_inventory) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.022s
+
+OK

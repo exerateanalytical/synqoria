@@ -1,0 +1,22 @@
+{
+  "checks": [
+    {
+      "file": "tests/test_preview_browser.py",
+      "exit_code": 0,
+      "stdout": "PASS: 10 Chromium preview checks (9 widths plus 200% text simulation)\n",
+      "stderr": ""
+    },
+    {
+      "file": "tests/test_i18n_preview_browser.py",
+      "exit_code": 0,
+      "stdout": "PASS: 19 static Chromium bilingual/viewport checks; NOT an application build\n",
+      "stderr": ""
+    },
+    {
+      "file": "tests/test_v120_registration_browser.py",
+      "exit_code": 0,
+      "stdout": "PASS registration static specimen: 19 viewport/locale checks; no compiled application\n",
+      "stderr": ""
+    }
+  ]
+}

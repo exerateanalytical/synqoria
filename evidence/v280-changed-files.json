@@ -1,0 +1,329 @@
+{
+  "version": "0.28.0",
+  "baseline": "0.27.0",
+  "generated_utc": "2026-10-30T14:06:22.912555+00:00",
+  "inherited_files": 1020,
+  "new_files": 55,
+  "modified_files": 19,
+  "removed_files": [],
+  "new": [
+    {
+      "path": ".github/workflows/dependency-lock-candidate.yml",
+      "sha256": "bf9759909546edce8d7610f1c6dc64ae370c81f8ad28df82d157bd29fdb98384"
+    },
+    {
+      "path": "apps/web/lib/mobile-more-controller.ts",
+      "sha256": "1ee0e3e9e67c9142c1421ca7188c66eb65d9e5b203239083cd037a199a301526"
+    },
+    {
+      "path": "docs/program/M02_SCHEDULING_TRANSACTION_CONTRACT.md",
+      "sha256": "85f3044b714e93ce534aa3ceaced43574c4834cc9c58d7f9a0c34275a549f09d"
+    },
+    {
+      "path": "docs/program/V028_SCHEDULING_AND_BUILD_GATES.md",
+      "sha256": "facb72cd861afbbf1ce2a0da0b2fdb1cca3218c2edc8cfaf7180ca3d9ee9e7fd"
+    },
+    {
+      "path": "evidence/batches/P01-B0043-v280.log",
+      "sha256": "4ba05a30e7810547acb7cda9ad8777b0ffae7ebc34df810a6fe2c0ca34017398"
+    },
+    {
+      "path": "evidence/batches/P01-B0044-v280.log",
+      "sha256": "55e2e0ed9cf58d9cf3e5881ab1dfff1cd35e3d31c5e41bdb030dd7ac55498c60"
+    },
+    {
+      "path": "evidence/batches/P01-P02-P06-v280-ten-batches.json",
+      "sha256": "21681149b05cee1fbaf2f631469de5f92337180d33c23be19aae34739ab6348f"
+    },
+    {
+      "path": "evidence/batches/P02-B0093-v280.log",
+      "sha256": "560063cc2eb2389164cc799d0fcd888137ae7da7c10816e2ed99ea4138eb5162"
+    },
+    {
+      "path": "evidence/batches/P02-B0094-v280.log",
+      "sha256": "986f30bc2a1b04365bb888bd11dfbd8e41cb889b63d05e97a5679d8447efc445"
+    },
+    {
+      "path": "evidence/batches/P06-B0001-v280.log",
+      "sha256": "4d1de4ad172c87933b3a13745868e6bd8e49e2a33fb3a8c12f72a5ee4182a893"
+    },
+    {
+      "path": "evidence/batches/P06-B0002-v280.log",
+      "sha256": "e0b26a6e5a66bb83b3ef20c6a0ec10666ab2bef856f2c96b2750bb4a7f73bc95"
+    },
+    {
+      "path": "evidence/batches/P06-B0003-v280.log",
+      "sha256": "c03f0d8dea6d06b6a49c58f7e2ac8c0f62d68b5ef4e0c1fe78635e1dfbcb4282"
+    },
+    {
+      "path": "evidence/batches/P06-B0004-v280.log",
+      "sha256": "2e1b3e37d7cb4d43d17723a73a5a88bcb50cec2a2fe9a090140307b1a83251a3"
+    },
+    {
+      "path": "evidence/batches/P06-B0005-v280.log",
+      "sha256": "712e08b0ce8ab30dddce3bbd94f99f83fbd401137855d169fd90c7719dd33413"
+    },
+    {
+      "path": "evidence/batches/P06-B0006-v280.log",
+      "sha256": "2032a66dbfbf93c748756f145f1eebc896d0d395ca5c72f2f5d11572d8d0d2e7"
+    },
+    {
+      "path": "evidence/batches/v280-actual-build-attempt.json",
+      "sha256": "5512baf88c5ce261cb6a62bda6e0097c4226231d21c56353fa032032e474b151"
+    },
+    {
+      "path": "evidence/batches/v280-java-compile.log",
+      "sha256": "dfa783930715f08874f560f9a5f698197f1144f9ca0db17aa81e5be4feb5ee4b"
+    },
+    {
+      "path": "evidence/batches/v280-regression-application-build.log",
+      "sha256": "38f78e42f4811f435d0b79e643934db143e50c59dd70f15e0f8daab614cea9df"
+    },
+    {
+      "path": "evidence/batches/v280-regression-baseline.log",
+      "sha256": "96384397c203783a4cfa1b6d575a7c168cf548539f40822879cb1148df7761c0"
+    },
+    {
+      "path": "evidence/batches/v280-regression-canonical-registers.log",
+      "sha256": "baea04ece424f5fb9e805e5e88385058d0c9358360fba80c27019797165d7716"
+    },
+    {
+      "path": "evidence/batches/v280-regression-contract-schema.log",
+      "sha256": "4ab51626203eeca6079aecc2ecd82eed5e7bbb4beb2ba08baf2e9616a5c58271"
+    },
+    {
+      "path": "evidence/batches/v280-regression-dependency-pins.log",
+      "sha256": "2cc07fa3c904cbf82b67c823c0b9f81544a85800c53fc85875f5cdd40a81c5cf"
+    },
+    {
+      "path": "evidence/batches/v280-regression-java-security-regression.log",
+      "sha256": "42e482d3e421a964763c8178ac8d52b9324814b9c0198259d6a28cbb0bb98d26"
+    },
+    {
+      "path": "evidence/batches/v280-regression-lock-gate.log",
+      "sha256": "d4d4c00f5daba5c277fcaffe088cabd5953e1707a57bb11d43ebcd5feef86c93"
+    },
+    {
+      "path": "evidence/batches/v280-regression-navigation-contract.log",
+      "sha256": "c6aa4256498261257e594ea8354e32b8870ecfe81cb56aaa299754c2c8046b82"
+    },
+    {
+      "path": "evidence/batches/v280-regression-source-check.log",
+      "sha256": "ddb787d451aa537e5a31a8bd51e63d2dcd18d0c0ba3411e5fd4d36f74322c53e"
+    },
+    {
+      "path": "evidence/batches/v280-regression-sql-static-audit.log",
+      "sha256": "8b59426b636c504d2210b0afdc6773d06e47c3828e4ecb7f0bb23072768e4edf"
+    },
+    {
+      "path": "evidence/batches/v280-regression-summary.json",
+      "sha256": "c31c17ac1088936422fe0c54bb1d2302394c723703b1ec999d88a7ff4935d288"
+    },
+    {
+      "path": "evidence/batches/v280-regression-ux-core.log",
+      "sha256": "5d51f5cc34bac2ede882a1f3648b3351114684d34a060af553e35fc07505923f"
+    },
+    {
+      "path": "evidence/batches/v280-regression-v270-engineering.log",
+      "sha256": "4c1aa3792aa5a4b874526cf69d818ff655abdd27e708baaf3b28bde4bea58ca9"
+    },
+    {
+      "path": "evidence/batches/v280-regression-v270-shell.log",
+      "sha256": "4e096690becccbaaf6afaa184bf27b18f4e7b274089080963a093177c21b713d"
+    },
+    {
+      "path": "evidence/batches/v280-static-320-short-200pct.png",
+      "sha256": "70aead3d8a60a66fb121202c56e5eb64845cfd0b5811a98ef5e790f457e93e02"
+    },
+    {
+      "path": "services/clinical-core/db/migration/V012__appointment_reservation_quarantine.sql",
+      "sha256": "7b8a9f64e5feb34fc7ec2c3da79c801a52c1e32a405c23fac95f6cc1c38c8a60"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentAccessPolicy.java",
+      "sha256": "2ab182f3673681bbb30b93bb39fc9818d39e8a27f8c99172ac42565794652447"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentAggregate.java",
+      "sha256": "bf2fbffa9d09b62f7e79ef858958f0bff7e964fddf78e141c23a31eade128e18"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentCommandFingerprint.java",
+      "sha256": "f1dcb0601258317f9cdfaf2500ed1166d8201e72afc95ec454b965d005eee9ca"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentWindow.java",
+      "sha256": "3bd967eb1c371688fdc0d111190c356a1e48350f5bb6d48579f1c03a960b0068"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentWorkflowPreflight.java",
+      "sha256": "151e891a20163e3931f53fb5409e48c3d198044eb22dbbba17c42bf2433225b7"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/ResourceReservationIndex.java",
+      "sha256": "7a707e0e0647cfbd97b5a0816b081e2dbfc2c945dcdb200fdade88433e6dc94e"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentAccessPolicyTest.java",
+      "sha256": "b9f494da976b45bd4b4c44e0cb81f18a30ff8ba3e9afc7312ad8e4bdf9072566"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentAggregateTest.java",
+      "sha256": "a7bacde601181e77ef19bd044f8de040ec2f08bd98dda524b27988b7e54a93e8"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentCommandFingerprintTest.java",
+      "sha256": "5e59c261908f6028e8fd48fa6bd5770d5b7b000eb37c14a527c5e6983a1e3542"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentWindowTest.java",
+      "sha256": "bf2e284d6b3d6008ea165a7392538bbf04942418346b90babffd6f3daac35577"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentWorkflowPreflightTest.java",
+      "sha256": "48f15687ee5c14b2b69cf35e3e3ed8b9db499daa508341641fc53a76c8d381af"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/ResourceReservationIndexTest.java",
+      "sha256": "97a049d9972a327d8acd98c5ae183468d292f2a1342c3b9fad0bda8309015748"
+    },
+    {
+      "path": "tests/test_v280_build_attestation.py",
+      "sha256": "7fc8eedc386a625875f4725e0f8f1153e728bf913a05ef760e94e2aaadd04da2"
+    },
+    {
+      "path": "tests/test_v280_ci_candidate.py",
+      "sha256": "748ea3c37895ea9ce9db3c5efc404440c8fd7349a2dff1a966fd218753790b46"
+    },
+    {
+      "path": "tests/test_v280_more_focus.py",
+      "sha256": "19979ee2d2564e4840823d223adb6051c3d8c826d8628edbb79af6ebfa0a6915"
+    },
+    {
+      "path": "tests/test_v280_scheduling_ddl.py",
+      "sha256": "d215d460159104642a980f0a0dfa10909460c030bedbb2f26b3b04fc3afc6364"
+    },
+    {
+      "path": "tests/test_v280_short_viewport.py",
+      "sha256": "bfa7fb8244cb56e4e1990ed486d97b5d3f0eca287052a3d563c8afeb722f24e0"
+    },
+    {
+      "path": "tools/attest_app_builds.py",
+      "sha256": "6e193b24f10a26e7708c14dd7b615491f19e79104af2fb2dd7c4607339efff4d"
+    },
+    {
+      "path": "tools/finalize_v280.py",
+      "sha256": "fbfbf9ced7e87c90dca84a9e8d80aac001371b22a1fc1a8e8d2f01ffb2991b44"
+    },
+    {
+      "path": "tools/run_v280_batches.py",
+      "sha256": "7c5e0d2a2851b986d6b77cd9cc847017062f4b619ac6df2fc3e808b5d7c2247f"
+    },
+    {
+      "path": "tools/run_v280_regression.py",
+      "sha256": "3246cca8079fcd65a19f68d4c074513c4beb29fc92122a66db677bc6d923016a"
+    },
+    {
+      "path": "tools/write_v280_change_manifest.py",
+      "sha256": "261a1f263487b0f7530432ac914b1a501471f1e9b650dd8cb25c5d837b41c70d"
+    }
+  ],
+  "modified": [
+    {
+      "path": ".github/workflows/engineering-checks.yml",
+      "old_sha256": "dcf18993659926872eaeebc402eb3ade52b7c64263167a1c415be6014279c72c",
+      "new_sha256": "017d57d20c3a5c0ac618841c82fbf145225c9ba33fcb831a0cd84b2bfb4b5375"
+    },
+    {
+      "path": "README.md",
+      "old_sha256": "dc3916867ced8d25618d6ecb6a1f79d8bae79cf0c223c131ba40e5f5d5ed216c",
+      "new_sha256": "e56013b8a3f2b19634982d706d40d73f23a1eafaee20edf9c689a8cfe50d4dab"
+    },
+    {
+      "path": "apps/patient-mobile/package.json",
+      "old_sha256": "c7b59d9b2d99339f1edbb042487318f0e79b7d446b26009c034bac25db15a057",
+      "new_sha256": "f80b12bea74885e5dc7b6723395fb6d3b97cd85f0fae98ebb70a3cca8f47e5c1"
+    },
+    {
+      "path": "apps/staff-mobile/package.json",
+      "old_sha256": "ff66dcc54d2d860f251d578d5163c18311d05c5b35ffd2c24cdfeba9b3a8eacd",
+      "new_sha256": "f23ca9dbbe1ddbc2cb5b7ec3c5315c2c96328e08ff26d411fa312588b99a7be3"
+    },
+    {
+      "path": "apps/web/app/globals.css",
+      "old_sha256": "c1bbeea8f81b0d7bd71aa98e1ed651abb56c3ebaba892c0248e24c55b0403566",
+      "new_sha256": "78b382b8fd7a2e6ee69203c38f7511f815c44a11981d371a7b38cc3d8d208593"
+    },
+    {
+      "path": "apps/web/components/ShellFrame.tsx",
+      "old_sha256": "6f1ac0d6947850c5f863824c84142c425679975bd890e91ca8de74276292f4c3",
+      "new_sha256": "37cf4026206d2e843f0a69d95010ff6df6eb9577f1e2f2930baa9982b343682a"
+    },
+    {
+      "path": "apps/web/package.json",
+      "old_sha256": "80c7ece6d8c92fd669870491baf2dfabb61c1f689eb42e263d3a3467a76e3ede",
+      "new_sha256": "6b5e0b491b231a5a5f5d0473acf5c761203d4a1262789ef2e23b198acb1a482c"
+    },
+    {
+      "path": "docs/program/STATUS.md",
+      "old_sha256": "eaef515818ede0ab8052e8c75ecfb299fc8298ce678946737d392fb9ae858a33",
+      "new_sha256": "c3cd2057837faae6a8c52307edb888e7b18aca8fac4b623579a6b8033c2ee026"
+    },
+    {
+      "path": "package.json",
+      "old_sha256": "2376aa6214d7634da669d9953a1e31ba8fe60185d6e83e415303f40f373e90c1",
+      "new_sha256": "1fb443c78693bf42d6d66324705372029a17574de3b1f1baeec0e5c12c6efb78"
+    },
+    {
+      "path": "packages/ux-core/package.json",
+      "old_sha256": "b851939768e84b4d5651d2ba60720d9609f5ac8ae5c1a34e99a56aa9b89dfc7d",
+      "new_sha256": "88430c002d5ca9e9633f7ad30ae88bafab4e326071c0d4b4530ad5e25e3d18a4"
+    },
+    {
+      "path": "registers/batch-ledger.json",
+      "old_sha256": "224dc5b0534b4ccfca4b4607bfdf7afcc748adb74be639e53fed4d67e7ef844b",
+      "new_sha256": "f28845176daaff9ec10e149646d18c21e6a511423db5b9edb67e9c852d35b083"
+    },
+    {
+      "path": "registers/blockers.json",
+      "old_sha256": "01d41f28922c0cd6329ae91c412acf6b4b29d44ebbcf3b2b77ea28e01938e119",
+      "new_sha256": "97aaecccb18bfc138392c3a57c587e8a027cb63c5f73361094064538cbcc8b73"
+    },
+    {
+      "path": "registers/module-status-matrix.json",
+      "old_sha256": "c276b44a05cb2decdde82876c14686b99101e5a62d15308d50ab8039e78129b8",
+      "new_sha256": "7931bc3fb16716ad2a15add63f6945570a49344de63954e13db5250fc552bfe1"
+    },
+    {
+      "path": "registers/phases.json",
+      "old_sha256": "03039c15f3b96190226b853a37e4ba48b0f12a58feb18180c55277cc91a2ec63",
+      "new_sha256": "e666b2e3b1e807fe69dabcfb78e72ec9c11a82f768c66ebd5f1f5398984849ee"
+    },
+    {
+      "path": "registers/screen-status-matrix.json",
+      "old_sha256": "3f1734eac7b23efa4820641a5a6d896f3ac9af7f52eefdade9b6c4dfe977ecd3",
+      "new_sha256": "7e141bee4e8438455ca7f25a0b85452c3704d0700ade3355588847d60965a82e"
+    },
+    {
+      "path": "tests/test_v270_engineering.py",
+      "old_sha256": "e30829164875a91a0a488f8d9a98fd8634147a63df11dbd1a2d856f1f14cb253",
+      "new_sha256": "26bc8627729a16c80c4f6039eac39d18b2319275280df3b115a1ab386bb8ff09"
+    },
+    {
+      "path": "tests/test_v270_shell_sources.py",
+      "old_sha256": "4e328b1771b94c3e4c43378b1575571130492c144feea5b7846a0872c0b11dbd",
+      "new_sha256": "64c02556ed5e2d12969ea3ea156a684e63f86496345f58bbad01117093b358d5"
+    },
+    {
+      "path": "tools/check_java_security.sh",
+      "old_sha256": "045b15c8846e961a63cc389c8c0f9555346fe3409b64da12c5546b8f2bd20cd6",
+      "new_sha256": "d2336a956c525011c7914be914ec7816e86d409402c37dde0a9100e89510aef3"
+    },
+    {
+      "path": "tools/run_app_builds.py",
+      "old_sha256": "4bed388beea0c6b2ed49c0f579add0d57adf39fccd7f51ce9c98f1909f09715c",
+      "new_sha256": "669211a4de605d8d2f60b06ad54737bfe4fcd2d122ce29e6f3d99822cbca0a15"
+    }
+  ],
+  "clinical_release": false
+}

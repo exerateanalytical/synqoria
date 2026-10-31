@@ -1,0 +1,8 @@
+Command: python tests/test_baseline.py
+Exit code: 0
+Stdout:
+PASS: planning integrity, 40 unique modules, 261 unique canonical screens, 20 phases, non-fabricated code statuses
+
+Stderr:
+
+Scope: planning integrity only, NOT application, clinical, security, or mobile tests.

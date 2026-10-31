@@ -1,0 +1,42 @@
+{
+  "version": "0.7.0",
+  "parent_version": "0.6.0",
+  "added": [
+    "evidence/batches/P01-P04-v070-checks.json",
+    "evidence/batches/P01-P04-v070-ten-batches.json",
+    "packages/ux-core/src/action-layout.ts",
+    "packages/ux-core/src/clinical-field-policy.ts",
+    "packages/ux-core/src/sidebar-hierarchy.ts",
+    "packages/ux-core/tests/action-layout.test.cjs",
+    "packages/ux-core/tests/clinical-field-policy.test.cjs",
+    "packages/ux-core/tests/sidebar-hierarchy.test.cjs",
+    "services/clinical-core/src/main/java/org/synqoria/facility/FacilityGrantRevision.java",
+    "services/clinical-core/src/main/java/org/synqoria/facility/LocationMovePolicy.java",
+    "services/clinical-core/src/main/java/org/synqoria/reliability/CommandPrecondition.java",
+    "services/clinical-core/src/main/java/org/synqoria/reliability/DeliveryRetryPolicy.java",
+    "services/clinical-core/src/main/java/org/synqoria/security/EmergencyAccessPolicy.java",
+    "services/clinical-core/src/main/java/org/synqoria/security/PurposeOfUseDecision.java",
+    "services/clinical-core/src/test/java/org/synqoria/facility/FacilityGrantRevisionTest.java",
+    "services/clinical-core/src/test/java/org/synqoria/facility/LocationMovePolicyTest.java",
+    "services/clinical-core/src/test/java/org/synqoria/reliability/CommandPreconditionTest.java",
+    "services/clinical-core/src/test/java/org/synqoria/reliability/DeliveryRetryPolicyTest.java",
+    "services/clinical-core/src/test/java/org/synqoria/security/EmergencyAccessPolicyTest.java",
+    "services/clinical-core/src/test/java/org/synqoria/security/PurposeOfUseDecisionTest.java",
+    "tests/test_locked_mobile_shells.py"
+  ],
+  "modified": [
+    "README.md",
+    "apps/patient-mobile/App.tsx",
+    "apps/staff-mobile/App.tsx",
+    "docs/program/STATUS.md",
+    "package.json",
+    "packages/ux-core/src/index.ts",
+    "registers/batch-ledger.json",
+    "registers/blockers.json",
+    "registers/phases.json",
+    "tests/test_merge_ledger.py",
+    "tools/check_java_security.sh",
+    "tools/run_checks.py"
+  ],
+  "removed": []
+}

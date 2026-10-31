@@ -1,0 +1,22 @@
+{
+  "batch_id": "P06-B0159",
+  "module": "M03",
+  "phase": "P06",
+  "scope": "Restricted PostgreSQL role, RLS and SERIALIZABLE connection fence",
+  "implementation": [
+    "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcFence.java"
+  ],
+  "focused_tests": [
+    "evidence/v520/scenario-jdbc-no-autocommit.log",
+    "evidence/v520/scenario-jdbc-serializable.log",
+    "evidence/v520/scenario-jdbc-readonly.log",
+    "evidence/v520/scenario-jdbc-role.log",
+    "evidence/v520/scenario-jdbc-superuser.log",
+    "evidence/v520/scenario-jdbc-bypassrls.log",
+    "evidence/v520/scenario-jdbc-rls.log"
+  ],
+  "verified": true,
+  "verification_scope": "synthetic_java_and_static_source_only",
+  "live_postgresql_tested": false,
+  "clinical_accepted": false
+}

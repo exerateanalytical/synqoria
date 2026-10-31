@@ -1,0 +1,27 @@
+openapi: 3.1.0
+info:
+  title: SYNQORIA provisional registration data contracts (UNEXPOSED)
+  version: 0.13.0-draft
+  description: Component schemas only. No routes, no live handler, no clinical approval.
+paths: {}
+components:
+  schemas:
+    RegistrationIntakeDraft:
+      type: object
+      additionalProperties: false
+      required: [birthInformation, language]
+      properties:
+        legalName: {type: [string, 'null'], maxLength: 200}
+        birthInformation: {type: string, enum: [KNOWN, ESTIMATED_AGE, UNKNOWN]}
+        dateOfBirth: {type: [string, 'null'], format: date}
+        estimatedAgeYears: {type: [integer, 'null'], minimum: 0, maximum: 130}
+        language: {type: string, enum: [en, fr]}
+      description: No tenant, facility, patient ID, reviewer clearance or authorization fields accepted from client.
+    RegistrationUnavailable:
+      type: object
+      additionalProperties: false
+      required: [code, correlationId]
+      properties:
+        code: {type: string, enum: [ACCESS_DENIED, REVIEW_REQUIRED, UNAVAILABLE]}
+        correlationId: {type: string, format: uuid}
+      description: Never return candidate identities or patient existence to an unauthorized client.

@@ -1,0 +1,19 @@
+{
+  "batch_id": "P06-B0157",
+  "module": "M03",
+  "phase": "P06",
+  "scope": "Cryptographic patient/revision/key binding and immutable envelope",
+  "implementation": [
+    "services/clinical-core/src/main/java/org/synqoria/triage/TriageEnvelopeCrypto.java"
+  ],
+  "focused_tests": [
+    "evidence/v520/scenario-crypto-scope-binding.log",
+    "evidence/v520/scenario-crypto-revision-binding.log",
+    "evidence/v520/scenario-crypto-key-binding.log",
+    "evidence/v520/scenario-crypto-defensive-copy.log"
+  ],
+  "verified": true,
+  "verification_scope": "synthetic_java_and_static_source_only",
+  "live_postgresql_tested": false,
+  "clinical_accepted": false
+}

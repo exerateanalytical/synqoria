@@ -1,0 +1,40 @@
+{
+  "checkpoint": "v0.55.0",
+  "open": [
+    {
+      "id": "BLK-V550-POSTGRES-EVIDENCE",
+      "severity": "release-blocking",
+      "affects": [
+        "P03",
+        "P06",
+        "M03"
+      ],
+      "issue": "V019 correlation constraints, scoped JDBC ledger verifier and end-to-end atomicity were not run on real PostgreSQL, with restricted roles, RLS or concurrent writers.",
+      "mitigation": "Deploy reviewed, deny-all quarantined schema in a dedicated PostgreSQL test cell; test policies, exact event FKs, retries, rollback and concurrent writers before application grants.",
+      "status": "OPEN"
+    },
+    {
+      "id": "BLK-V550-LEGACY-SNAPSHOT",
+      "severity": "release-blocking",
+      "affects": [
+        "P06",
+        "M03"
+      ],
+      "issue": "Snapshot v1 lacks a revision-one anchor. v2 decoder can parse it but full JDBC verification rejects unanchored legacy data; an authorized, independently reviewed migration/recovery path is absent.",
+      "mitigation": "Design audit-preserving migration with event-source reconciliation; do not forge missing genesis or allow writes to unanchored clinical cases.",
+      "status": "OPEN"
+    },
+    {
+      "id": "BLK-V550-HTTP-INTEGRATION",
+      "severity": "release-blocking",
+      "affects": [
+        "P06",
+        "M03",
+        "P19"
+      ],
+      "issue": "GET summary/history endpoints passed synthetic loopback tests but are not deployed behind production OIDC/MFA, clinical-proof services, rate limits or native client builds.",
+      "mitigation": "Wire to approved authenticated runtime, enforce RLS in live cell, verify end-to-end clinical access denials, usability and security review.",
+      "status": "OPEN"
+    }
+  ]
+}

@@ -1,0 +1,337 @@
+{
+  "source_version": "0.44.0",
+  "target_version": "0.45.0",
+  "changes": [
+    {
+      "path": "README.md",
+      "before": "6602978e7353476cbde9315226aedff5508a616b42ff48a1cc5aa2582c806e66",
+      "after": "c46629fd1cceaf8d65461eff2868e158596b3a51f354d98c73c881dcfcb7bb54",
+      "change": "modified"
+    },
+    {
+      "path": "apps/patient-mobile/package.json",
+      "before": "f80b12bea74885e5dc7b6723395fb6d3b97cd85f0fae98ebb70a3cca8f47e5c1",
+      "after": "e4bb67ede52a01dd9ff872bb28f532b0b539dee68309f5ee1f90ccf1d9981d5a",
+      "change": "modified"
+    },
+    {
+      "path": "apps/staff-mobile/package.json",
+      "before": "f23ca9dbbe1ddbc2cb5b7ec3c5315c2c96328e08ff26d411fa312588b99a7be3",
+      "after": "b453af3b7f8ec618bd71c38267e46404b84e732ae932fde9bb0cecbcae6b74dc",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/package.json",
+      "before": "6b5e0b491b231a5a5f5d0473acf5c761203d4a1262789ef2e23b198acb1a482c",
+      "after": "4369e7dec45c2876203630fbeb3791ab9cd4a651247559266e362db0555f12da",
+      "change": "modified"
+    },
+    {
+      "path": "docs/program/V045_ENGINEERING.md",
+      "before": null,
+      "after": "9ab2cbb99b295c3eb64fd87bef46a9fb5dacc01665bf541c255336e2046a9fec",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v450-executed.json",
+      "before": null,
+      "after": "ea3c6fec853617551a5cf21cb345815e2456bac732929f472076d7342300a474",
+      "change": "added"
+    },
+    {
+      "path": "evidence/verification/appointment_migration_source_audit.json",
+      "before": null,
+      "after": "67fe7395a6d4f23b5dfbdaf1bd5c3e170bd5bf1ee5b31ddad16ca7f741b4bafc",
+      "change": "added"
+    },
+    {
+      "path": "evidence/verification/java_compile.log",
+      "before": null,
+      "after": "92288dc02bf066ddaff21de7abcec8bec27c3370f677bcc2e71bdd56cfe786da",
+      "change": "added"
+    },
+    {
+      "path": "evidence/verification/java_security_full.log",
+      "before": null,
+      "after": "03ee2dc654e1a522f7d42f1c163e81be96feb09eb717d5bc31499544c565a7a2",
+      "change": "added"
+    },
+    {
+      "path": "evidence/verification/migration_test.log",
+      "before": null,
+      "after": "3e0dd9b48682683a05ae1f27bc5080eb59f597b6a79b5356f10161d9ff3ba191",
+      "change": "added"
+    },
+    {
+      "path": "evidence/verification/register_check.log",
+      "before": null,
+      "after": "40ab5599b8264fcab9f157d60b8f2a9e1d11ef7ea5f97fcee23b1a1a3c193da3",
+      "change": "added"
+    },
+    {
+      "path": "evidence/verification/scheduling_tests.log",
+      "before": null,
+      "after": "6c1c08b218329f661f33dd9637dc9a3ca4557950910cab8732686bbf7e00e8be",
+      "change": "added"
+    },
+    {
+      "path": "evidence/verification/seed_verification.log",
+      "before": null,
+      "after": "be9969f0c9170514ad0b769718b57598c81f9b7db86a7bba978dc2007afec272",
+      "change": "added"
+    },
+    {
+      "path": "evidence/verification/source_check.log",
+      "before": null,
+      "after": "d91039f0811e22ca7df16385dfbd00d90da7cdfaab8c901e0afbd8c218d9b7c9",
+      "change": "added"
+    },
+    {
+      "path": "evidence/verification/ux_check.log",
+      "before": null,
+      "after": "e740b68cf48cd8ce5afb7284a8da48eed052f6cfc576987ee0f1c62cba3d8cdb",
+      "change": "added"
+    },
+    {
+      "path": "evidence/verification/v450-focused-tests.log",
+      "before": null,
+      "after": "cc1805f846e8d19ff58b0067de4953ac7a585b0033ae947c0897282e79cb15b6",
+      "change": "added"
+    },
+    {
+      "path": "package.json",
+      "before": "1fb443c78693bf42d6d66324705372029a17574de3b1f1baeec0e5c12c6efb78",
+      "after": "7c62419755b9efb83adfce189e95ed523c1064785baa0d5ce94eab56be2b2561",
+      "change": "modified"
+    },
+    {
+      "path": "packages/ux-core/package.json",
+      "before": "88430c002d5ca9e9633f7ad30ae88bafab4e326071c0d4b4530ad5e25e3d18a4",
+      "after": "ea560f4933e494d87a69fe9859336035a68bc1f7bf22afb9eaa0ea32a6b302cc",
+      "change": "modified"
+    },
+    {
+      "path": "registers/batch-ledger.json",
+      "before": "053e69b83762e6328c2eb3cdd6a91b6e8c846bcc89bcf970e2bb0d927fea9b64",
+      "after": "98beef0fdced570991346cf3f05c373d6bede37cc2871cc679fc485ce3f00c88",
+      "change": "modified"
+    },
+    {
+      "path": "registers/blockers.json",
+      "before": "854242b0331e1f95cd36e8d176f7b835974053f694e4fae430a407078831311f",
+      "after": "697b422bdcb654facac8ad1fd40b62d2ccd612255123e188b069d17409120038",
+      "change": "modified"
+    },
+    {
+      "path": "registers/module-status-matrix.json",
+      "before": "6524a9b73f65136cd648f05769e01a4f0d81ac7d436377241ae220775aa880af",
+      "after": "9306eaeca0b3185cb402b92b48722ed1c105ccad992c3ae9dab970fe0397bc33",
+      "change": "modified"
+    },
+    {
+      "path": "registers/phases.json",
+      "before": "24948d21154baf647f3eddbd36ab3390c59fe905937a1c0f454cf0c627c46440",
+      "after": "41bddc4632889d3126853c02459704aafd964e95c246cd8d7644850a81035e4f",
+      "change": "modified"
+    },
+    {
+      "path": "registers/screen-status-matrix.json",
+      "before": "bbe2291022b094e0d78c698d64398335c72c1a164a357b098f3e5ded89413e21",
+      "after": "30cd289a220b603d6981da9ef5c742427611b1b1b0e2b66e9e1c8bca225c3d02",
+      "change": "modified"
+    },
+    {
+      "path": "registers/v450-batch-status.json",
+      "before": null,
+      "after": "c72dbcc4c89df115e456adbff2ea67a27b3f7b502a39dec2645026cff3fcf188",
+      "change": "added"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentAuditIntegrityReader.java",
+      "before": "5a0247093855f3591a65993b857241ab007009253fe2e5edfc2b98dcca37380a",
+      "after": "451063179c20cd4073d2f704db1d3ba3fba643353f9bb5adbecf92fea73aec58",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentAuditStore.java",
+      "before": "5cee9d7b32c10b2a82f07fcd9b9d9ca7daf4cc69d88e366c04360162f0ff493e",
+      "after": "3b1f2c37c663e90db58895cb5641523528491c33f3dbe26548dac59a94420bbb",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentCommitProof.java",
+      "before": "593f9ca895705081525473526d9725f948e3df67864ffddb3d788cc3b62ac47b",
+      "after": "ff852edde1706bc9e1c29deabeee91017bbfe28e2bb5daebc77f26b78f5084e4",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentEventIntegrityProof.java",
+      "before": null,
+      "after": "f7aba4d713433c0cbad194444d57d0bfa0d65d6b67be2e5d80cd21b26826a49c",
+      "change": "added"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentIdempotencyStore.java",
+      "before": "4d7d18d720b90de92029dccf3b9e262a30a7d7d16ccf13bc1dd53d958e53ba80",
+      "after": "d06311005719fc8da51bd7b74a14d1c149785af33fca3d5ed7206bd0da8896c9",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentJdbcScope.java",
+      "before": "2d3a96cd754978675ea49ee56909905249e96f1c72ce94ac0b15d80b667a31a6",
+      "after": "78dfb72049bb3eaed3d620d69fe16613960ee09dea67f738ef1b25a8c19d0632",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentReplayProof.java",
+      "before": "9a5eca7d2145cf70fda813f845a8d5bb5e810acf88c0ca5034fbac74fdea8401",
+      "after": "29e90988c8183e3f321bfb46907ffd917c35a3dafc0d1959b14955dc7a0aaf34",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentSqlBudget.java",
+      "before": "27fb095a81366fa8ec7860de4f192aa6f6e0dc443eb1700739d640a2a225045b",
+      "after": "fa540b6534ad4d3d722d9c06369d250de82794e6277f4fcedfeac3e1bbf1114a",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentTransitionService.java",
+      "before": "f795aa1ca061c0dd23460d9a313b7dec642e8a208d9db248e61173d6823e8873",
+      "after": "900f55be23b17c6ab8fa586269341d1f36a6441d454c39656ebfeb802d21c6d2",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentAuditIntegrityReaderTest.java",
+      "before": "ab7247a651684596e48b646d655b8730bff3411c5d110245651ea964258b5c79",
+      "after": "4df2882698bccdbed5fb71761ef4ea9556a9a40d08ff74db0d346b9abcdef813",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentAuditStoreTest.java",
+      "before": "cc9a94997ae18905c9d2ffa4137ff494cf0e32bd612d488ee560f3cafc2dc6ab",
+      "after": "a22ce7ca824af23ae90c8cec077b4ec46bf0a9758cce45879d7fe8b73b8ef308",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentCommitProofTest.java",
+      "before": "f95c9939bc5db5df71b23669940b35e58f0681b784b7a9c0c374fab2842cc22a",
+      "after": "aa994f56457b50a830324d12d37d4aa0a2d03541e8910e5ee806b2d6a82e2bfc",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentEventIntegrityProofTest.java",
+      "before": null,
+      "after": "4ce1a3be00c680122a350e707a990a2ec068fb84c78276431725288ddbdcbe0a",
+      "change": "added"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentIdempotencyStoreTest.java",
+      "before": "5dc3588c04b427bdcf8aa333037072f46a247e123533e3ab3c81078099c2eeb0",
+      "after": "e188ba1c0a344fcb40b24e56135b3d539bcd7a77d977c88253e09d5472760368",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentJdbcScopeTest.java",
+      "before": "72d18d8a4896fccaf133b523550a83a385a83cb8b4cc6a782f2eff3083830c5b",
+      "after": "72e45bacf316d120da922aacbcef936e5948921cbedbe88c54b829af0f1beb51",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentReplayProofTest.java",
+      "before": "c54aacc29cdc7d343841b3c430074644665c16b86a87006fb5c7de848795eab2",
+      "after": "821a8b6a29ba7b322c4ac711063d5b742335a80f03777285fbb56459992d5297",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentRestrictedTransactionTest.java",
+      "before": "6281297da3902f6344a2c35883b762ea0f33d900bf658faea216cd099b717021",
+      "after": "f3292567b41248847e6de211f8879c822a6c00069bd86e1874cca39e4d373663",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentSqlBudgetTest.java",
+      "before": "0f17c88948840768ece9b7b334621b71f5b843259cbc38441d9019e40b525153",
+      "after": "3bfcb1a1460c4bd6bc27c63296d436eee0a72efbcbceee5aed2cbb3c41d14a55",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentStatusReadServiceTest.java",
+      "before": "8152b2a610f645d3b27c621510ed7d99f0238684eac11a59140f394512c7b83e",
+      "after": "cb8a07e85aa12b41fa9d672b782feaf4d49fefb1bb8d47d83682cbf555500c28",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentTransactionExecutorTest.java",
+      "before": "5a4e7592b7053afb039829184cb35f8eb203e95ce5bc763f9bef513cc0122aab",
+      "after": "465d0f6dba5bb2f34cf26b76ed99807258bbd73771e02bd54f2110832fbd7975",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentTransitionPolicyTest.java",
+      "before": "aad3b73dc54f4d90c0eae7a1673af4dd75916785de83d583c93544656c6f5846",
+      "after": "1598ebb5e59e24330ec93fa934c9f5d4ad06f591263dd34341a0d5fce6cdec3f",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/scheduling/AppointmentTransitionServiceTest.java",
+      "before": "f83b71bef95a12431692e0379f8763388a12c28a2640f7b84681d8403d576717",
+      "after": "554480db5412249867a16e6bd32981a81b272b650edd5a9315fc06260d06dc31",
+      "change": "modified"
+    },
+    {
+      "path": "tests/__pycache__/appointment_migration_gate_test.cpython-313.pyc",
+      "before": "f6c4485be2a428298346d8ee19de50bb2cdca383fa98a951436f4558a2900208",
+      "after": null,
+      "change": "removed"
+    },
+    {
+      "path": "tests/test_v240_checkpoint.py",
+      "before": "354e096e6be282cb2f90bc816c6b2fc9ade6f85192c3f225083f4d52487cb123",
+      "after": "94489cdecb414e8aff9ce5153c749631e99b2f81df9af5f2ea3db3b65d415ac7",
+      "change": "modified"
+    },
+    {
+      "path": "tools/__pycache__/appointment_migration_gate.cpython-313.pyc",
+      "before": "b1c232cfde3ceeac00a8921f485719642e9511cca6d73b2d18a9a8297d2a6f2a",
+      "after": null,
+      "change": "removed"
+    },
+    {
+      "path": "tools/__pycache__/attest_app_builds.cpython-313.pyc",
+      "before": "0298d029d5532681ce75aafa084728514a421ae9f8569d13cf44b0061c3a85c8",
+      "after": null,
+      "change": "removed"
+    },
+    {
+      "path": "tools/__pycache__/dependency_compatibility.cpython-313.pyc",
+      "before": "6245abc01719890bf9cc5dfd4a9239693164b659b6f17cd7ace0dba7e2344eb2",
+      "after": null,
+      "change": "removed"
+    },
+    {
+      "path": "tools/__pycache__/probe_application_builds.cpython-313.pyc",
+      "before": "e995736887df09e2db45605da7c1d4f1e60b739d61f90b12c74e2dedd8570665",
+      "after": null,
+      "change": "removed"
+    },
+    {
+      "path": "tools/__pycache__/run_app_builds.cpython-313.pyc",
+      "before": "20f0a191025455a08a822e6d063d24942154b79d585ec00b3e518caf33f8e213",
+      "after": null,
+      "change": "removed"
+    },
+    {
+      "path": "tools/__pycache__/verify_cumulative_archive.cpython-313.pyc",
+      "before": "534453c6e05f52b4544e820270055346ae3bde3dfa33dccdbe6f170abd9acc9b",
+      "after": null,
+      "change": "removed"
+    },
+    {
+      "path": "tools/__pycache__/verify_lock_integrity.cpython-313.pyc",
+      "before": "4146932caed650314cdf5dd806f8669eaa858f9104d2fe97419e0a35d581f552",
+      "after": null,
+      "change": "removed"
+    }
+  ],
+  "changed_file_count": 55
+}

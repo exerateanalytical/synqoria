@@ -1,0 +1,6 @@
+PASS: 11 Java tenant/facility/patient scope assertions
+PASS: 19 Java clinical proof assertions; NO OIDC/database clinical authorization integration
+PASS: 20 patient read non-disclosure assertions
+PASS: 13 Java facility directory assertions
+PASS: 13 idempotency guard assertions (in-memory only)
+PASS: 11 outbox fencing assertions (in-memory only)

@@ -1,0 +1,7 @@
+command=["python", "tests/test_v200_native_sources.py", "P02-B0061"]
+exit=0 P02-B0061
+STDOUT:
+PASS P02-B0061 native disabled action has disabled button semantics; no clinical write
+
+STDERR:
+

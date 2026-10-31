@@ -1,0 +1,27 @@
+package org.synqoria.scheduling;
+import java.sql.*;
+import java.util.UUID;
+/** One-connection, scoped, row-locked appointment transition; caller owns commit and rollback. */
+public final class AppointmentTransactionalTransition {
+ private AppointmentTransactionalTransition() {}
+ public static void execute(Connection c, AppointmentTenantContext scope, UUID appointmentId,
+     String expectedCurrent, String target, long revision) throws SQLException {
+  if(c==null||scope==null||appointmentId==null||revision<1) throw new IllegalArgumentException("complete transition context required");
+  if(c.getAutoCommit()) throw new SQLException("explicit transaction required", "25000");
+  AppointmentTransitionPolicy.requireAllowed(expectedCurrent,target);
+  String current;
+  try(PreparedStatement ps=c.prepareStatement("SELECT status FROM appointment_reservations WHERE appointment_id = ? AND tenant_id = ? AND facility_id = ? AND patient_id = ? AND revision = ? FOR UPDATE")) {
+   ps.setObject(1,appointmentId);ps.setObject(2,scope.tenantId());ps.setObject(3,scope.facilityId());ps.setObject(4,scope.patientId());ps.setLong(5,revision);
+   try(ResultSet rs=ps.executeQuery()) {
+    if(!rs.next()) throw new SQLException("appointment missing, out of scope or revision conflict", "40001");
+    current=rs.getString(1);
+    if(rs.next()) throw new SQLException("duplicate appointment identity", "21000");
+   }
+  }
+  if(!expectedCurrent.equals(current)) throw new SQLException("stale appointment state", "40001");
+  try(PreparedStatement ps=c.prepareStatement(AppointmentScopedMutation.SQL)) {
+   AppointmentTransitionMutation.bind(ps,current,target,appointmentId,scope.tenantId(),scope.facilityId(),scope.patientId(),revision);
+   if(ps.executeUpdate()!=1) throw new SQLException("appointment revision conflict", "40001");
+  }
+ }
+}

@@ -1,0 +1,351 @@
+{
+  "version": "0.57.0",
+  "checkpoint": "v0.57.0",
+  "phase_count": 20,
+  "phases": [
+    {
+      "id": "P00",
+      "title": "Recovery and authoritative inventory",
+      "modules": [],
+      "deliverables": "Capture spec provenance; generate exact module/screen registers; audit repository availability; establish evidence ledger; clarify unresolved inputs without stopping safe work.",
+      "status": "completed_internal",
+      "batches_completed": 1,
+      "certification": "source_integrity_verified_only",
+      "evidence": [
+        "evidence/batches/P00-P03-B0001-checks.json"
+      ]
+    },
+    {
+      "id": "P01",
+      "title": "Engineering workspace and contract foundation",
+      "modules": [],
+      "deliverables": "Monorepo boundaries; pinned toolchain; ADRs; OpenAPI/event schema conventions; database migrations; dev containers; CI lint/tests; per-hospital cell model.",
+      "status": "in_progress",
+      "batches_completed": 43,
+      "certification": "not_certified",
+      "evidence": [
+        "evidence/batches/P00-P03-B0001-checks.json",
+        "evidence/batches/P01-P04-v040-checks.json",
+        "evidence/batches/P01-P04-v050-ten-batches.json",
+        "evidence/batches/P01-P04-v060-merged-checks.json",
+        "evidence/batches/P01-P04-v070-ten-batches.json",
+        "evidence/batches/P01-P04-v010-checks.json",
+        "evidence/batches/P01-P04-v110-ten-batches.json",
+        "evidence/batches/P01-P05-v120-ten-batches.json",
+        "evidence/batches/P01-P05-v130-ten-batches.json",
+        "evidence/batches/P01-P05-v150-ten-batches.json",
+        "evidence/batches/P01-P05-v160-ten-batches.json",
+        "evidence/batches/P01-P02-P05-v250-ten-batches.json",
+        "evidence/batches/P01-P02-P06-v280-ten-batches.json"
+      ]
+    },
+    {
+      "id": "P02",
+      "title": "Cross-platform design system and navigation",
+      "modules": [],
+      "deliverables": "Tokens; components; three web shells; staff/patient mobile shells; route ownership; menu eligibility; status states; EN/FR; visual snapshots at 320–1920px.",
+      "status": "in_progress",
+      "batches_completed": 93,
+      "certification": "not_certified",
+      "evidence": [
+        "evidence/batches/P00-P03-B0001-checks.json",
+        "evidence/batches/P01-P03-B0002-checks.json",
+        "evidence/batches/P02-B0002-browser.json",
+        "evidence/batches/P01-P04-v040-checks.json",
+        "evidence/batches/P01-P04-v050-ten-batches.json",
+        "evidence/batches/P01-P04-v060-merged-checks.json",
+        "evidence/batches/P01-P04-v070-ten-batches.json",
+        "evidence/batches/P01-P04-v010-checks.json",
+        "evidence/batches/P01-P04-v110-ten-batches.json",
+        "evidence/batches/P01-P05-v120-ten-batches.json",
+        "evidence/batches/P01-P05-v130-ten-batches.json",
+        "evidence/batches/P01-P05-v150-ten-batches.json",
+        "evidence/batches/P01-P05-v160-ten-batches.json",
+        "evidence/batches/P02-P03-v180-ten-batches.json",
+        "evidence/batches/P02-P05-v190-ten-batches.json",
+        "evidence/batches/P02-P03-v200-ten-batches.json",
+        "evidence/batches/P02-P05-v210-ten-batches.json",
+        "evidence/batches/P02-P05-v220-ten-batches.json",
+        "evidence/batches/P02-P05-v230-ten-batches.json",
+        "evidence/batches/P02-P05-v240-ten-batches.json",
+        "evidence/batches/P01-P02-P05-v250-ten-batches.json",
+        "evidence/batches/P01-P02-P06-v280-ten-batches.json"
+      ]
+    },
+    {
+      "id": "P03",
+      "title": "Security, tenancy and authorization foundation",
+      "modules": [],
+      "deliverables": "OIDC/MFA; facility/role/shift context; RBAC/ABAC; patient-scope authorization; consent policy engine foundation; tenant isolation tests; audit capture and command deduplication.",
+      "status": "in_progress",
+      "batches_completed": 33,
+      "certification": "not_certified",
+      "evidence": [
+        "evidence/batches/P00-P03-B0001-checks.json",
+        "evidence/batches/P01-P03-B0002-checks.json",
+        "evidence/batches/P01-P04-v040-checks.json",
+        "evidence/batches/P01-P04-v050-ten-batches.json",
+        "evidence/batches/P01-P04-v060-merged-checks.json",
+        "evidence/batches/P01-P04-v070-ten-batches.json",
+        "evidence/batches/P01-P04-v010-checks.json",
+        "evidence/batches/P01-P04-v110-ten-batches.json",
+        "evidence/batches/P01-P05-v120-ten-batches.json",
+        "evidence/batches/P02-P03-v180-ten-batches.json",
+        "evidence/batches/P02-P03-v200-ten-batches.json"
+      ]
+    },
+    {
+      "id": "P04",
+      "title": "Facility and workforce operations foundation",
+      "modules": [
+        "M29",
+        "M33",
+        "M39"
+      ],
+      "deliverables": "Facility/configuration lifecycle; staff roles and privileges; hospital-cell provisioning and routing; capability-based sidebar and mobile More sections.",
+      "status": "in_progress",
+      "batches_completed": 12,
+      "certification": "not_certified",
+      "evidence": [
+        "evidence/batches/P01-P04-v040-checks.json",
+        "evidence/batches/P01-P04-v050-ten-batches.json",
+        "evidence/batches/P01-P04-v060-merged-checks.json",
+        "evidence/batches/P01-P04-v070-ten-batches.json",
+        "evidence/batches/P01-P04-v010-checks.json",
+        "evidence/batches/P01-P04-v110-ten-batches.json",
+        "evidence/batches/P01-P05-v130-ten-batches.json"
+      ]
+    },
+    {
+      "id": "P05",
+      "title": "Registration, identity and consent",
+      "modules": [
+        "M01",
+        "M32"
+      ],
+      "deliverables": "Patient search/registration/provisional identity; identity merge review; consent/disclosure lifecycle; patient-context guard.",
+      "status": "in_progress",
+      "batches_completed": 62,
+      "certification": "not_certified",
+      "evidence": [
+        "evidence/batches/P01-P05-v120-ten-batches.json",
+        "evidence/batches/P01-P05-v130-ten-batches.json",
+        "evidence/batches/P01-P05-v150-ten-batches.json",
+        "evidence/batches/P01-P05-v160-ten-batches.json",
+        "evidence/batches/P02-P05-v190-ten-batches.json",
+        "evidence/batches/P02-P05-v210-ten-batches.json",
+        "evidence/batches/P02-P05-v220-ten-batches.json",
+        "evidence/batches/P02-P05-v230-ten-batches.json",
+        "evidence/batches/P02-P05-v240-ten-batches.json",
+        "evidence/batches/P01-P02-P05-v250-ten-batches.json"
+      ]
+    },
+    {
+      "id": "P06",
+      "title": "Scheduling and emergency intake",
+      "modules": [
+        "M02",
+        "M03"
+      ],
+      "deliverables": "Appointments, resource scheduling, triage prioritization and queues, staff mobile triage/vitals entry as permitted by authoritative APIs.",
+      "status": "in_progress__M03_scoped_read_workflow_implemented__live_integrations_not_tested",
+      "batches_completed": 368,
+      "certification": "deferred_pending_separate_future_stage__not_waived",
+      "evidence": [
+        "evidence/batches/P01-P02-P06-v280-ten-batches.json",
+        "evidence/batches/P06-v290-verified-batches.json",
+        "evidence/batches/P06-v300-ten-batches.json",
+        "evidence/batches/v410-executed.json",
+        "evidence/batches/v420-executed.json",
+        "evidence/batches/v450-executed.json",
+        "evidence/batches/v470-reconciliation.json",
+        "evidence/batches/v480-reconciliation.json",
+        "evidence/v510/individual-batch-results.json",
+        "evidence/v520/verified-batches.json",
+        "evidence/v530/individual-60-execution.json",
+        "evidence/v530/regression-commands.json",
+        "evidence/v540/execution.json",
+        "evidence/v550/verification-summary.json",
+        "registers/v550-implementation-batches.json",
+        "registers/v560-implementation-batches.json",
+        "evidence/v560/verification-summary.json",
+        "evidence/v570/batch-execution.json"
+      ]
+    },
+    {
+      "id": "P07",
+      "title": "Clinical chart and ADT",
+      "modules": [
+        "M04",
+        "M05",
+        "M06"
+      ],
+      "deliverables": "Encounters, admission/transfer/discharge, beds, notes, diagnoses, observations, vitals, signing/amendment and mobile bedside views.",
+      "status": "not_started",
+      "batches_completed": 0,
+      "certification": "not_certified",
+      "evidence": []
+    },
+    {
+      "id": "P08",
+      "title": "Medication safety and nursing",
+      "modules": [
+        "M07",
+        "M08",
+        "M09",
+        "M10"
+      ],
+      "deliverables": "Allergy state; prescribing; medication safety revision; medication administration; nursing plans and handovers, barcode workflows with real service acknowledgement.",
+      "status": "not_started",
+      "batches_completed": 0,
+      "certification": "not_certified",
+      "evidence": []
+    },
+    {
+      "id": "P09",
+      "title": "Laboratory and imaging",
+      "modules": [
+        "M11",
+        "M12"
+      ],
+      "deliverables": "Laboratory specimen lifecycle, results and critical acknowledgement; imaging orders/reports/PACS references; offline boundaries.",
+      "status": "not_started",
+      "batches_completed": 0,
+      "certification": "not_certified",
+      "evidence": []
+    },
+    {
+      "id": "P10",
+      "title": "Pharmacy and transfusion",
+      "modules": [
+        "M13",
+        "M15"
+      ],
+      "deliverables": "Pharmacy stock, reservations, release and dispensing; blood bank chain of custody and bedside cross-checks.",
+      "status": "not_started",
+      "batches_completed": 0,
+      "certification": "not_certified",
+      "evidence": []
+    },
+    {
+      "id": "P11",
+      "title": "Surgery and care transitions",
+      "modules": [
+        "M14",
+        "M16"
+      ],
+      "deliverables": "Theatre/anesthesia/recovery, checklists, referrals/transfers and receiving owner acknowledgement.",
+      "status": "not_started",
+      "batches_completed": 0,
+      "certification": "not_certified",
+      "evidence": []
+    },
+    {
+      "id": "P12",
+      "title": "Specialty clinical packages",
+      "modules": [
+        "M17"
+      ],
+      "deliverables": "Eight specialty packages; scoped protocol, forms, authorizations, validation and clinical review for each.",
+      "status": "not_started",
+      "batches_completed": 0,
+      "certification": "not_certified",
+      "evidence": []
+    },
+    {
+      "id": "P13",
+      "title": "Patient mobile and proxy portal",
+      "modules": [
+        "M18"
+      ],
+      "deliverables": "Patient/proxy enrollment, appointments, record access, notifications, documents, consent and Android/iOS secure session controls.",
+      "status": "not_started",
+      "batches_completed": 0,
+      "certification": "not_certified",
+      "evidence": []
+    },
+    {
+      "id": "P14",
+      "title": "Billing, cashier and claims",
+      "modules": [
+        "M19",
+        "M20"
+      ],
+      "deliverables": "XAF currency accuracy, charge master, immutable invoices/ledger, cash/payments, insurer approvals/claims and reconciliation.",
+      "status": "not_started",
+      "batches_completed": 0,
+      "certification": "not_certified",
+      "evidence": []
+    },
+    {
+      "id": "P15",
+      "title": "Procurement, stores, assets and HR",
+      "modules": [
+        "M21",
+        "M22",
+        "M23",
+        "M24"
+      ],
+      "deliverables": "Purchase-to-pay, stock, biomedical maintenance, rosters/HR/payroll, permission segregation and HIS integration.",
+      "status": "not_started",
+      "batches_completed": 0,
+      "certification": "not_certified",
+      "evidence": []
+    },
+    {
+      "id": "P16",
+      "title": "Facility services and hospital intelligence",
+      "modules": [
+        "M25",
+        "M26",
+        "M27",
+        "M28"
+      ],
+      "deliverables": "Ambulance/transport, dietary orders, mortuary chain-of-custody, operational BI and fresh provenance-backed dashboards.",
+      "status": "not_started",
+      "batches_completed": 0,
+      "certification": "not_certified",
+      "evidence": []
+    },
+    {
+      "id": "P17",
+      "title": "Terminology, documents and evidence",
+      "modules": [
+        "M30",
+        "M31",
+        "M34"
+      ],
+      "deliverables": "Clinically governed terminology/formulary/rules, forms/signatures, immutable audit/provenance and retention.",
+      "status": "not_started",
+      "batches_completed": 0,
+      "certification": "not_certified",
+      "evidence": []
+    },
+    {
+      "id": "P18",
+      "title": "Interoperability, devices, offline and SRE",
+      "modules": [
+        "M35",
+        "M36",
+        "M37",
+        "M38",
+        "M40"
+      ],
+      "deliverables": "Versioned FHIR/HL7 integrations; device gateways; notifications; locally authoritative sync and conflicts; backup/restore, telemetry, downtime playbooks.",
+      "status": "not_started",
+      "batches_completed": 0,
+      "certification": "not_certified",
+      "evidence": []
+    },
+    {
+      "id": "P19",
+      "title": "Whole-platform testing and scoped release",
+      "modules": [],
+      "deliverables": "End-to-end web/mobile/API integration; representative load; hazard review; security tests; failure drills; disaster recovery; EN/FR/accessibility/visual and supervised hospital pilot certification.",
+      "status": "not_started",
+      "batches_completed": 0,
+      "certification": "not_certified",
+      "evidence": []
+    }
+  ]
+}

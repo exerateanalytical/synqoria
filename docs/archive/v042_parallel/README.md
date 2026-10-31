@@ -1,0 +1,3 @@
+# Concurrent v0.42.0 source preservation
+
+These two Java files were recovered from a separately published v0.42.0 checkpoint (P06-B0045–B0047). The original `AppointmentTransactionalTransition` references `appointment_reservations`/`status`, which do not match the V012 quarantined schema (`synqoria_appointment_reservations_quarantine`/`lifecycle`), and lacks audit/outbox/idempotency atomicity. **Do not compile or deploy this archived adapter.** Its intended behavior is superseded by the tested `AppointmentTransitionService`, `AppointmentLockedSnapshot` and `AppointmentTransitionMutation` components in the active clinical-core source. The concurrent evidence and status are preserved verbatim for provenance, not counted as additional accepted batches.

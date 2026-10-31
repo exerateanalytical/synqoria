@@ -1,0 +1,5 @@
+COMMAND ["java", "-ea", "-cp", "/tmp/synqoria-v280-classes", "org.synqoria.scheduling.AppointmentCommandFingerprintTest"]
+EXIT_CODE 0
+PASS P06-B0005 7 stable scoped command fingerprint assertions (unit)
+
+STDERR

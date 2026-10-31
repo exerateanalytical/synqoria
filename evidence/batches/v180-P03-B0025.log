@@ -1,0 +1,3 @@
+command: java -ea -cp /mnt/data/synqoria_v18/classes org.synqoria.security.V180OidcBoundaryTest P03-B0025
+exit=0
+PASS P03-B0025 8 assertions; clinical/OIDC admission remains LOCKED

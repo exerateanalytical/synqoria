@@ -1,0 +1,18 @@
+COMMAND python tools/run_v280_regression.py
+EXIT_CODE 0
+STDOUT
+ux-core 0 expected 0 MATCH 1.91
+source-check 0 expected 0 MATCH 5.407
+canonical-registers 0 expected 0 MATCH 0.7
+baseline 0 expected 0 MATCH 0.69
+navigation-contract 0 expected 0 MATCH 0.722
+java-security-regression 0 expected 0 MATCH 14.639
+contract-schema 0 expected 0 MATCH 0.932
+sql-static-audit 0 expected 0 MATCH 0.909
+v270-engineering 0 expected 0 MATCH 0.76
+v270-shell 0 expected 0 MATCH 0.727
+dependency-pins 0 expected 0 MATCH 0.705
+lock-gate 4 expected 4 MATCH 0.682
+application-build 4 expected 4 MATCH 0.72
+
+STDERR

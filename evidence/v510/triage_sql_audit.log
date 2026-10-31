@@ -1,0 +1,10 @@
+{
+  "status": "source_quarantine_verified_only",
+  "tables": [
+    "synqoria_triage_cases_quarantine",
+    "synqoria_triage_events_quarantine",
+    "synqoria_triage_outbox_quarantine"
+  ]
+}
+
+---- STDERR ----

@@ -1,0 +1,281 @@
+{
+  "source": "v0.22.0",
+  "target": "v0.23.0",
+  "added": [
+    {
+      "path": "docs/program/V023_SCOPED_REVIEW_AND_NATIVE_SECURITY.md",
+      "sha256": "38347f5b521e63b0120ecbb13a3df7e471ed2a0c6bb74d6f5811fbf3b8b6ee70"
+    },
+    {
+      "path": "evidence/batches/P02-P05-v230-ten-batches.json",
+      "sha256": "5431412013c239e2b4df7d42cb47463fe06a63bd5111755878412da98b8ac7f4"
+    },
+    {
+      "path": "evidence/batches/v230-P02-B0073.log",
+      "sha256": "68a5bd07e23a94fb76b6c4d9492d414dde4e75951c93c6e13985ec364ec3aa98"
+    },
+    {
+      "path": "evidence/batches/v230-P02-B0074.log",
+      "sha256": "9684227296725d8d63a5d8046d37c14a0c57fd7593fd2222c62f50b3e612914b"
+    },
+    {
+      "path": "evidence/batches/v230-P02-B0075.log",
+      "sha256": "c14e6011fa49e65ccd087c39d8d59a007a604b463fa772be8f9f31c22475a3c7"
+    },
+    {
+      "path": "evidence/batches/v230-P02-B0076.log",
+      "sha256": "a522928be26e5ce0e1da7947698af86888119250e8d77201dbf5295e21483998"
+    },
+    {
+      "path": "evidence/batches/v230-P02-B0077.log",
+      "sha256": "cd6c21ee5e6b45b778ad057b534cc6b28fed8b85fc126cf28a8937e7c468d6e0"
+    },
+    {
+      "path": "evidence/batches/v230-P05-B0043.log",
+      "sha256": "e6fc8ba65c695b76d5e4bd365ff529e55af9cddb45aa1c55b02da8fd607133bf"
+    },
+    {
+      "path": "evidence/batches/v230-P05-B0044.log",
+      "sha256": "2dc6c2fadcf78a7390657e6a0e0c78454842a409930c7ab57ac0e82aa6ca5447"
+    },
+    {
+      "path": "evidence/batches/v230-P05-B0045.log",
+      "sha256": "7aa8a2066b7c2ec96f102624148a5de0a859739f840dfd2ac7c4e9c9cad95a39"
+    },
+    {
+      "path": "evidence/batches/v230-P05-B0046.log",
+      "sha256": "c2e66a041e28f5178571198966d1584a5fc48f23c401e59d25a6a220b45e3a5e"
+    },
+    {
+      "path": "evidence/batches/v230-P05-B0047.log",
+      "sha256": "5f1b4b945bbdc74d72ce4f6a4c6a1fb128ee998c5cbc815ba19dd33d767d5ed0"
+    },
+    {
+      "path": "evidence/batches/v230-final-verification.json",
+      "sha256": "db1eb8f10b08fa20ceafd9907124cee55cccb52e7dfe653a654537a989cdeeca"
+    },
+    {
+      "path": "evidence/batches/v230-java-full.log",
+      "sha256": "bbd213aac4b4273e7e1cc5c81f8599b0499d7cd5ce3b8804646c27f7cb2d7479"
+    },
+    {
+      "path": "evidence/batches/v230-library-persistence.json",
+      "sha256": "c0afe81fa9625e259a1ea653a5eed0e277916339bf05b7ed361e3f5196f47f5e"
+    },
+    {
+      "path": "evidence/batches/v230-native-source.log",
+      "sha256": "6c70328b57ed3d569b6459070b004dcbaabcf5bb0e1a64a85bff95acab873068"
+    },
+    {
+      "path": "evidence/batches/v230-node-full.log",
+      "sha256": "f2b3af6be383deb94ea388e2807f0414cf0a1c78feabb9d60498eac65f5e4b67"
+    },
+    {
+      "path": "evidence/batches/v230-python-regression.json",
+      "sha256": "b98734b39fa8222ebe6ab4486067bcc94407b314367468a6524fef8ca01367bc"
+    },
+    {
+      "path": "evidence/batches/v230-registers.log",
+      "sha256": "0b335a68ce8d09cac45f1b0535ade74d93112a591f00dc942204af3a387b13c4"
+    },
+    {
+      "path": "evidence/batches/v230-release-gate.log",
+      "sha256": "2c20a6d264e92b9db7008a6af34624af811dd50c7fd13b8f49a4bc6813d1b625"
+    },
+    {
+      "path": "evidence/batches/v230-source.log",
+      "sha256": "5ef045d97804cf0728fdd484b355e746d4ae9985a994933df1cda915bb913d37"
+    },
+    {
+      "path": "evidence/batches/v230-status-matrix.log",
+      "sha256": "85518633805f7f476b2aeff345b15145496897503032be106639ce79ba949ec8"
+    },
+    {
+      "path": "evidence/batches/v230-test_i18n_preview_browser.log",
+      "sha256": "b6d8426781b079e2fa3d285e70635dd489b3fab8570ccf11cfe7a2e04f55ccbb"
+    },
+    {
+      "path": "evidence/batches/v230-test_preview_browser.log",
+      "sha256": "281235ecb76aa066a72c9550c66c231d5b0de2679249a4972a9aead3784a6a2e"
+    },
+    {
+      "path": "evidence/batches/v230-test_v120_registration_browser.log",
+      "sha256": "085ee551e5674073d279815d937e208e12aa0af3fb11147c78437aca2343fc22"
+    },
+    {
+      "path": "evidence/batches/v230-tsc.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/batches/v230-tsx-syntax.log",
+      "sha256": "4e01f32eb2103e079ce553ea2cd3b13cdaa56bbcc5c4a0c592083abdf347ae20"
+    },
+    {
+      "path": "packages/ux-core/src/native-critical-field.ts",
+      "sha256": "3f1486cee49f7fd0537664d0c925cf664ae1368303c39bf2a36ab1f20d6676ef"
+    },
+    {
+      "path": "packages/ux-core/src/native-deep-link-gate.ts",
+      "sha256": "3d1ad1d5026446f19637eee130cc8f66fc4fcd28dc6686b68816a6859680050a"
+    },
+    {
+      "path": "packages/ux-core/src/native-offline-write-queue.ts",
+      "sha256": "a50dd431e0d7423569c3f7ad2aa6804d2ae086bb368de95cf7d97356817b7cde"
+    },
+    {
+      "path": "packages/ux-core/src/native-response-epoch.ts",
+      "sha256": "9ce1271674cf0a9181a92d5225a55c91b75294773de213e71422ae9bd435f0c8"
+    },
+    {
+      "path": "packages/ux-core/src/native-scope-transition.ts",
+      "sha256": "e29521edc825ec6cc725c6650d311aca3ee3f75ce6d9f01ed69a405ed19bbec5"
+    },
+    {
+      "path": "packages/ux-core/tests/v230-native-gates.test.cjs",
+      "sha256": "6ce8103126b6c6bab39c69b2638f8dc196ddd39510bf2a62abab296c9358cbfe"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewCurrentStateFenceV2.java",
+      "sha256": "9c8b4a3da200d679e2d72564268b53566e5439d4706236539f5b6b9cc23292dc"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewEvidenceExportV2.java",
+      "sha256": "c0513946b1e2d013693d821067c1d5e9209b39ce43d83ae42007aad9ae77c327"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewReceiptV2.java",
+      "sha256": "e57f23b5664c07a5420d070130d3064d6c7094ffd6787273e85758e900f0049d"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewScopedDigestV2.java",
+      "sha256": "b1ebbf46e724bde83faa8956bb11ca68ab841058d8405b97b1b40b2083a154fa"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewScopedHistoryV2.java",
+      "sha256": "da8f16a3617df1b3d392ad6bc869b5ce065c1e1b439dbe8c4691f0ffd570ccc8"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/registration/V230ScopedReviewTest.java",
+      "sha256": "a29883341c2d7a3e4d307204a5432df3a3fd9d4639eed86903dd5e2981bb402e"
+    },
+    {
+      "path": "tests/test_v230_checkpoint.py",
+      "sha256": "b6ed87c2f6cc07ebbfc76958b6cd14cab7c00cb9f88f71fc09150fdfca6affd0"
+    },
+    {
+      "path": "tests/test_v230_native_source.py",
+      "sha256": "17cd6633b22a593b57be2c9eaea167f56076f32d8f2140930ef1b02ebced3ead"
+    },
+    {
+      "path": "tools/finalize_v230.py",
+      "sha256": "c663d864672b07643905308b871b2ab4cdd7042ae32e5e41b464d87b92a3c6e1"
+    },
+    {
+      "path": "tools/write_v230_change_manifest.py",
+      "sha256": "9bd060976f71a3abb6e82b50dbb1a603bf1f125945590732a52e8e46c1fd4f0b"
+    }
+  ],
+  "modified": [
+    {
+      "path": "apps/patient-mobile/App.tsx",
+      "before": "186c2bb034b18a8be03a1e9d122da6cb072a1fb440ee348a853e71503695cc60",
+      "after": "01292f05ce21ec9ed74e13d3ea23d4022cf6b969163993139cf8e662dbf8de99"
+    },
+    {
+      "path": "apps/patient-mobile/package.json",
+      "before": "24dedac81de3be8740378097940b52b8241a88cd843c399517de79455738f012",
+      "after": "bd77d3802c9a8a9ca45bf6585005f8af47612b5a2b820f80c8eaa0bfa9ef4396"
+    },
+    {
+      "path": "apps/staff-mobile/App.tsx",
+      "before": "310f85edc8b07afe9a3a66c08821f19e5aa138b3a7022acc56bbe5796db28598",
+      "after": "bf6f338248a9dfaf0038ffbd0571b97f42343073b03fdac882d0e9366294ce47"
+    },
+    {
+      "path": "apps/staff-mobile/package.json",
+      "before": "6c889a2266c590fa09576067a6fc7180fdbfb566c062838ff87ecf33744d674b",
+      "after": "c88fc5c18112d1bf2db89d8905f1cea67823b4a07b94e881124ff3e3528a293a"
+    },
+    {
+      "path": "apps/web/package.json",
+      "before": "b1d5541127d8d28f907a09d330458bbbeb95140991ee81a5bc6124339a6f390b",
+      "after": "faef5f7ce863a82e6bd311bc909530538f6c61f4e02218011d52999a16d22342"
+    },
+    {
+      "path": "docs/program/STATUS.md",
+      "before": "038fc42ff43408314050591e64d093888026e19975879f0e29ab299c00fbcd74",
+      "after": "046f4e3cdac2ade5111bc8e4b55b956dbcc2501ae3fa13c680f3a9ea9dd74041"
+    },
+    {
+      "path": "package.json",
+      "before": "be58b0cfdb6149d238c4cd9e158f758508a8e27f77694fd6340209b4771503c2",
+      "after": "58526031712df49f1db11e588223ffd2b361df7ba622d8f9673627dd76b6e4ad"
+    },
+    {
+      "path": "packages/ux-core/package.json",
+      "before": "1d9f689009bd7f65703558a8cd8929c5f7abb2baf7c276c92bb9230185cf26de",
+      "after": "873b21cbc138de04072e387aaf9dc91c050190379c6f5e9e68bd3e9790e34f82"
+    },
+    {
+      "path": "packages/ux-core/src/index.ts",
+      "before": "06fdfd883d263832fe1b0d9c1c0a5a44afb3a05d5d4fc6a78b64796f2ac61660",
+      "after": "e8dea70e01e7aa3d1699fb17334987565ffb5730cc6e9b6babc6a4f400a445ff"
+    },
+    {
+      "path": "registers/batch-ledger.json",
+      "before": "4e54431bda3aaedef8c6b35ad5a3e311a6a3f8d9d8d37066388d9f1249ed7807",
+      "after": "ba27ac82a6c9402b843975f07d75234925d40345d0bb70c8582f74d60bcc4876"
+    },
+    {
+      "path": "registers/blockers.json",
+      "before": "a160a9f71d393473af2eab54fec9fa53e3fe978f7f60d2641a2532f82acb44da",
+      "after": "a6c5c43c2a3dbfb3c3f7ca6e48b10f4fb8f02cfd93685a4eba3854c525b19ea4"
+    },
+    {
+      "path": "registers/module-status-matrix.json",
+      "before": "7b8319b740183f2bf2e1fba8127c3d700bc766ce143cf9d0316ce1a8f93cceee",
+      "after": "b3a7941fa15ddf7aa75cd73eced7dbd394baddea90555a0a4f6e75a2c6db4208"
+    },
+    {
+      "path": "registers/phases.json",
+      "before": "ddc22c61a57e3e7e35c41c614e2304513604d8a8960122436e79f8297f152fb1",
+      "after": "b0dba14cb7ec96c495e4d0a06296a2b271aef363a70ed5047b9e7258d01a4dc1"
+    },
+    {
+      "path": "registers/screen-status-matrix.json",
+      "before": "4629d26929aa9001d5ad8050aad66188031c73df6603554ba5a594562ed49f6c",
+      "after": "96e560964498c452a5d2249d549f03483794037431b697bfb98ef8d12239f051"
+    },
+    {
+      "path": "tests/test_v190_checkpoint.py",
+      "before": "9d4267d42f827b93276f88364e96080a8a09896ca4cc07013eb9b0d6c861608a",
+      "after": "3a73f6b370bfd9e646d0df04e62cac9e3e13159218ace91371a2e5960a0f7927"
+    },
+    {
+      "path": "tests/test_v200_checkpoint.py",
+      "before": "9aaac2a13db76425102ee3672f80b34d41625d1793495ba987b34e0702c68d8c",
+      "after": "6d7b5d7e0b0385dd9495d80502e4109500cbc1b9afe38d596fae13e03465f45e"
+    },
+    {
+      "path": "tests/test_v220_checkpoint.py",
+      "before": "da1e1106ed05948d4fad08000b1400d464cc87fac00943c4ebac2063337d593b",
+      "after": "075d515095bdf00809f4b9aa1aebe17ebbd6dd2d798cdf7b03f5f8a3d91b7004"
+    },
+    {
+      "path": "tests/test_v220_native_source.py",
+      "before": "59d426ee00c1c61742e980f23471a763b3590b25f46b2c5d38893bfd63016187",
+      "after": "0ed943e2f5c8362ec659bc67511b41939b35aae82ca479b9068da9fc9bd7b8fe"
+    },
+    {
+      "path": "tools/check_java_security.sh",
+      "before": "444b9eb894704cfd8ad78fbd0f08c9fcc49033f846906a15716e3a6e3c861a77",
+      "after": "0c334aea6ddda9eeb3759abe2edf76bd376dcf9904176feba5772e1e28d93aae"
+    }
+  ],
+  "deleted": [],
+  "counts": {
+    "added": 43,
+    "modified": 19,
+    "deleted": 0
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "checkpoint": "v0.25.0",
+  "recorded_utc": "2026-10-30T11:07:01.943286+00:00",
+  "scope": "Unit/mock JDBC/source/static Chromium only; PostgreSQL/Next/Expo/device/clinical release not verified",
+  "results": [
+    {
+      "id": "browser-v240-compat",
+      "command": "bash -lc 'for b in P02-B0078 P02-B0079 P02-B0080 P02-B0081 P02-B0082; do python tests/test_v240_browser.py \"$b\" || exit 1; done'",
+      "exit_code": 0,
+      "stdout": "PASS P02-B0078 7 Chromium assertions (static interactive specimen; NOT compiled Next.js)\nPASS P02-B0079 5 Chromium assertions (static interactive specimen; NOT compiled Next.js)\nPASS P02-B0080 6 Chromium assertions (static interactive specimen; NOT compiled Next.js)\nPASS P02-B0081 6 Chromium assertions (static interactive specimen; NOT compiled Next.js)\nPASS P02-B0082 20 Chromium assertions (static interactive specimen; NOT compiled Next.js)\n",
+      "stderr": "",
+      "expected_outcome": "PASS",
+      "gate_met": true
+    },
+    {
+      "id": "clinical-release-gate-expected-denial",
+      "command": "python tools/verify_release_gate.py --request-release",
+      "exit_code": 3,
+      "stdout": "",
+      "stderr": "DENIED: clinical signoff, native builds, PostgreSQL RLS and 261 screen acceptance incomplete\n",
+      "expected_outcome": "DENIED",
+      "gate_met": true
+    },
+    {
+      "id": "live-postgres-probe-expected-block",
+      "command": "python tools/probe_postgres_readiness.py",
+      "exit_code": 4,
+      "stdout": "{\"ready\": false, \"reason\": \"missing_connection_or_pinned_role\"}\n",
+      "stderr": "",
+      "expected_outcome": "BLOCKED",
+      "gate_met": true
+    },
+    {
+      "id": "app-build-prerequisite-expected-block",
+      "command": "python tools/probe_application_builds.py",
+      "exit_code": 4,
+      "stdout": "{\n  \"build_ready\": false,\n  \"issues\": [\n    \"missing_root_lockfile\",\n    \"missing_installed_dependency:web:next\",\n    \"missing_installed_dependency:web:react\",\n    \"missing_installed_dependency:web:react-dom\",\n    \"missing_installed_dependency:staff-mobile:expo\",\n    \"missing_installed_dependency:staff-mobile:react-native\",\n    \"missing_installed_dependency:patient-mobile:expo\",\n    \"missing_installed_dependency:patient-mobile:react-native\"\n  ],\n  \"scope\": \"dependency readiness only; no Next.js or native build executed\"\n}\n",
+      "stderr": "",
+      "expected_outcome": "BLOCKED",
+      "gate_met": true
+    }
+  ],
+  "expected_gates_met": true
+}

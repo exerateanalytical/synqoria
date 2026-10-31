@@ -1,0 +1,11 @@
+{
+  "version": "0.48.0",
+  "target": 60,
+  "new_batched_verified": 15,
+  "reconciled_parallel_not_double_counted": 4,
+  "remaining_target": 45,
+  "next_batch": "P06-B0089",
+  "release": "DENIED",
+  "accepted_screens": 0,
+  "certified_modules": 0
+}

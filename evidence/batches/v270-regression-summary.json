@@ -1,0 +1,156 @@
+{
+  "version": "0.27.0",
+  "utc": "2026-10-30T13:02:15.774011+00:00",
+  "checks": [
+    {
+      "name": "app-build-attempt",
+      "exit_code": 4,
+      "expected_code": 4,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-app-build-attempt.log"
+    },
+    {
+      "name": "batch-ledger",
+      "exit_code": 0,
+      "expected_code": 0,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-batch-ledger.log"
+    },
+    {
+      "name": "canonical-registers",
+      "exit_code": 0,
+      "expected_code": 0,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-canonical-registers.log"
+    },
+    {
+      "name": "clinical-release-denial",
+      "exit_code": 3,
+      "expected_code": 3,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-clinical-release-denial.log"
+    },
+    {
+      "name": "contract-schema",
+      "exit_code": 0,
+      "expected_code": 0,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-contract-schema.log"
+    },
+    {
+      "name": "dependency-gate",
+      "exit_code": 4,
+      "expected_code": 4,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-dependency-gate.log"
+    },
+    {
+      "name": "historical-checkpoint",
+      "exit_code": 0,
+      "expected_code": 0,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-historical-checkpoint.log"
+    },
+    {
+      "name": "java-full-regression",
+      "exit_code": 0,
+      "expected_code": 0,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-java-full-regression.log"
+    },
+    {
+      "name": "native-and-tsx-source",
+      "exit_code": 0,
+      "expected_code": 0,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-native-and-tsx-source.log"
+    },
+    {
+      "name": "navigation-registers",
+      "exit_code": 0,
+      "expected_code": 0,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-navigation-registers.log"
+    },
+    {
+      "name": "postgres-preflight",
+      "exit_code": 4,
+      "expected_code": 4,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-postgres-preflight.log"
+    },
+    {
+      "name": "sql-ddl-audit",
+      "exit_code": 0,
+      "expected_code": 0,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-sql-ddl-audit.log"
+    },
+    {
+      "name": "status-matrix",
+      "exit_code": 0,
+      "expected_code": 0,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-status-matrix.log"
+    },
+    {
+      "name": "ux-node",
+      "exit_code": 0,
+      "expected_code": 0,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-ux-node.log"
+    },
+    {
+      "name": "ux-typescript",
+      "exit_code": 0,
+      "expected_code": 0,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-ux-typescript.log"
+    },
+    {
+      "name": "v250-db-contract",
+      "exit_code": 0,
+      "expected_code": 0,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-v250-db-contract.log"
+    },
+    {
+      "name": "v260-foundation",
+      "exit_code": 0,
+      "expected_code": 0,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-v260-foundation.log"
+    },
+    {
+      "name": "v270-browser-more",
+      "exit_code": 0,
+      "expected_code": 0,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-v270-browser-more.log"
+    },
+    {
+      "name": "v270-browser-viewport",
+      "exit_code": 0,
+      "expected_code": 0,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-v270-browser-viewport.log"
+    },
+    {
+      "name": "v270-engineering",
+      "exit_code": 0,
+      "expected_code": 0,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-v270-engineering.log"
+    },
+    {
+      "name": "v270-shell",
+      "exit_code": 0,
+      "expected_code": 0,
+      "matched": true,
+      "evidence_log": "evidence/batches/v270-regression-v270-shell.log"
+    }
+  ],
+  "matched_expected": 21,
+  "total": 21,
+  "note": "exit 3 release DENIED, exit 4 database/dependency/build BLOCKED; these are not passing release gates"
+}

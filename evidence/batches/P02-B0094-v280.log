@@ -1,0 +1,5 @@
+COMMAND ["python", "tests/test_v280_short_viewport.py"]
+EXIT_CODE 0
+PASS P02-B0094: 32 Chromium CSS checks; 9 widths, FR, 200% font, 460px keyboard-like viewport (static specimen)
+
+STDERR

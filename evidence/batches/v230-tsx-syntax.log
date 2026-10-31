@@ -1,0 +1,1 @@
+PASS: 4 TSX syntax-only parses; NO dependency/type/native build assertions

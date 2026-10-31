@@ -1,0 +1,264 @@
+{
+  "checkpoint": "v0.55.0",
+  "parent": "v0.54.0",
+  "changed_files": [
+    {
+      "path": "README.md",
+      "type": "modified",
+      "sha256": "9ac3f83b06533abd89720bc6fc6c0930f1c8adc164d1c5a5412fd8a6bee97487"
+    },
+    {
+      "path": "SYNQORIA_STATUS_v0.55.0.md",
+      "type": "new",
+      "sha256": "a0ea38d7bc2e9094f2f1396c59bcefb00cd45df456972b34533edd131742f638"
+    },
+    {
+      "path": "apps/patient-mobile/package.json",
+      "type": "modified",
+      "sha256": "d08e63372ccac6ef09f3a523c65f5933707882721a4f6950077acb3f5019a0ab"
+    },
+    {
+      "path": "apps/staff-mobile/package.json",
+      "type": "modified",
+      "sha256": "e8cd62b00dcb11e34d506a2aacd264222dc8d728c2a06469cee59f18f434e866"
+    },
+    {
+      "path": "apps/web/package.json",
+      "type": "modified",
+      "sha256": "c6b7d11312a5eb90292e35b4845946741df82e31c81a78308ce286ab04e59564"
+    },
+    {
+      "path": "docs/engineering/M03_TRIAGE_AUDIT_CONTINUITY_v0.55.0.md",
+      "type": "new",
+      "sha256": "b71464aa3d7282345a28450d89a89c839957b6131485bfaf25e9de27f94744dd"
+    },
+    {
+      "path": "evidence/v550/authenticated_gateway.log",
+      "type": "new",
+      "sha256": "5314487107e30393ceb4dec721b93f82ad1eda1e7a920521bdff62e2bb9aa180"
+    },
+    {
+      "path": "evidence/v550/authenticated_read.log",
+      "type": "new",
+      "sha256": "8c7671b4fb83f9dd14686e9f80f9d42375a9e1c8d91e36ebd646bba587dc6129"
+    },
+    {
+      "path": "evidence/v550/canonical_registers.log",
+      "type": "new",
+      "sha256": "8cf3e2aca70ff33638e0dc8ca8f381a59270bc83eff3398fb8e59dd3789d859a"
+    },
+    {
+      "path": "evidence/v550/compile.log",
+      "type": "new",
+      "sha256": "9f3f0a9698fa98ea3b18499eb24bd36f34b447a47b846922e828930d0b0a8707"
+    },
+    {
+      "path": "evidence/v550/genesis_12.log",
+      "type": "new",
+      "sha256": "50b6692224f78ea3bd9c4ef679b91a114b3954cbb84833022a2e8988976d3c7c"
+    },
+    {
+      "path": "evidence/v550/genesis_audit.log",
+      "type": "new",
+      "sha256": "ec7f84e96e92f6c04e04fbaa5e57a7fb807ae6a8f0e5f3f7fe16a6c1eda4e744"
+    },
+    {
+      "path": "evidence/v550/http_regression.log",
+      "type": "new",
+      "sha256": "900db63e560b9a81848fd251a78c49a9634e822af84076058567692fd487050b"
+    },
+    {
+      "path": "evidence/v550/jdbc_evidence_static.log",
+      "type": "new",
+      "sha256": "8ef53192e59fcbba9fccfe12b343fc27f873e07425ec10120f96a8ceae247bc2"
+    },
+    {
+      "path": "evidence/v550/migration_checksum.log",
+      "type": "new",
+      "sha256": "51e069163bb0590b3eea0103bbfd6810df79e64ed86520782e286c28f854c97f"
+    },
+    {
+      "path": "evidence/v550/migration_gate_new.log",
+      "type": "new",
+      "sha256": "43e553a6ba379ac6cb4bee93ddca7c5d979f31190cc6e24c9c33ccd1be14ec65"
+    },
+    {
+      "path": "evidence/v550/migration_gate_v18.log",
+      "type": "new",
+      "sha256": "f29cf890f0966a18b12cc5513460b48cba2e1c0a9e4eb6db0ebfeb16f07acadb"
+    },
+    {
+      "path": "evidence/v550/migration_inventory.log",
+      "type": "new",
+      "sha256": "749a67a4ea0637c54456daddceb54f2d678421b1c46292564e0b70ade0930ee5"
+    },
+    {
+      "path": "evidence/v550/read_http.log",
+      "type": "new",
+      "sha256": "551f0de8e546700f2bcf977d195ef9abad03a068ccc9064a04147a6a3a95fbf7"
+    },
+    {
+      "path": "evidence/v550/regression-results.json",
+      "type": "new",
+      "sha256": "9275db77eb8883f358fb2783680c22d69f2b2e1d0079542f71bc77d28691d7e7"
+    },
+    {
+      "path": "evidence/v550/release_denied.log",
+      "type": "new",
+      "sha256": "2a7efd4d4d2039c4c13847636e84f90f89f9a989862d6a21fbf0126df81bb575"
+    },
+    {
+      "path": "evidence/v550/source_contracts.log",
+      "type": "new",
+      "sha256": "282caa5d933dd13bc0d47314df65d88e5a24c3bff6eb14d9882934bca871a89f"
+    },
+    {
+      "path": "evidence/v550/triage_domain_60.log",
+      "type": "new",
+      "sha256": "b3f20bfffd4f04ff44bdfd818c4815363c1f07468462d6f9d5b544566e2b9da8"
+    },
+    {
+      "path": "evidence/v550/triage_journey.log",
+      "type": "new",
+      "sha256": "3d539b1cc7f043b064d3bd53283942ef53941e0c15b1268a7442d7cfca195121"
+    },
+    {
+      "path": "evidence/v550/triage_txn.log",
+      "type": "new",
+      "sha256": "205a2255b74fd9a2f50d01e359b6261f22a38bf00b337238a0d2ddc6a21c7169"
+    },
+    {
+      "path": "evidence/v550/ux_core.log",
+      "type": "new",
+      "sha256": "6dfd8a7dbdaa875cd251434526030a8181554ee2a96cbd8c7f5aabcec8d77e00"
+    },
+    {
+      "path": "evidence/v550/verification-summary.json",
+      "type": "new",
+      "sha256": "64d2d905060f9e5f2e7c46fcc3742ec816c42c2b95177b2116fdefb5cbc07247"
+    },
+    {
+      "path": "package.json",
+      "type": "modified",
+      "sha256": "11a6086d3c5f9dc56f02c0125821310a1ce8f40896e8382ced8e81f75857bef7"
+    },
+    {
+      "path": "packages/ux-core/package.json",
+      "type": "modified",
+      "sha256": "238c4cc74aba79bd42e2f2ef895e63687568bf79b927a8293c6db6ce1e46041e"
+    },
+    {
+      "path": "registers/batch-ledger.json",
+      "type": "modified",
+      "sha256": "39ae02c08ba1e2c4e4011309da55116c87c1afb07a9d2db7971be2015d1862a3"
+    },
+    {
+      "path": "registers/blockers.json",
+      "type": "modified",
+      "sha256": "f83ee9fb5a256e7cf7539be3a3dd45195ac8aca6da515f31262fc68c1645f9b9"
+    },
+    {
+      "path": "registers/migration-sha256-lock.json",
+      "type": "modified",
+      "sha256": "be1af6790211e4f5c3a487e67546362a1b227e2b8eac2fa28f81c08b72957513"
+    },
+    {
+      "path": "registers/module-status-matrix.json",
+      "type": "modified",
+      "sha256": "0f8212e7f55a3b3a2cbeeb40227a6250e19e17b0164f253e412a59568f1c5d20"
+    },
+    {
+      "path": "registers/phases.json",
+      "type": "modified",
+      "sha256": "775e5050e0823a98a41719e43a765765e145b02907d90c2b0486f9d651cef9c5"
+    },
+    {
+      "path": "registers/screen-status-matrix.json",
+      "type": "modified",
+      "sha256": "c698488198b020a1008fc84d3db6cc7062b2ddb402355a91bd60e1fa0e48312a"
+    },
+    {
+      "path": "registers/v550-blockers.json",
+      "type": "new",
+      "sha256": "0cbe93992cb7df2683466cd8ad6d40fd397978bb79201d7f1a7a7b27a876667c"
+    },
+    {
+      "path": "registers/v550-implementation-batches.json",
+      "type": "new",
+      "sha256": "d5321badcb596bea5d3269389c86ac8e5a8991253a802f330f84c0b61cb0185a"
+    },
+    {
+      "path": "services/clinical-core/db/migration/V019__triage_secure_correlated_evidence_quarantine.sql",
+      "type": "new",
+      "sha256": "556eb554cab6702b1b574561199f087fbdaef00384c07a348906037d275f44a2"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/triage/TriageAudit.java",
+      "type": "modified",
+      "sha256": "d8c811299b732c998bac8e3b248740f7cf00cb14bae598cc1e452768005b9ede"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/triage/TriageAuditEvidence.java",
+      "type": "new",
+      "sha256": "58888b7162d1e92d170067ec5727543dbb256e0b5adb83c0a195f818047f444f"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/triage/TriageCase.java",
+      "type": "modified",
+      "sha256": "8952bcb5cda138ba48270d0f4774a5a4adb0f9df16d6d43b2b0b9686d2b6bfd5"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/triage/TriageCommandCoordinator.java",
+      "type": "modified",
+      "sha256": "e078ef0f20ab487b28cc062a216d04ce6c1f184103ea9378da77fab66f4d1de0"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcPersistence.java",
+      "type": "modified",
+      "sha256": "11cb6e2a291e15ca5d3a8e9ab52e8a4bece0dce8dec8f231e39a22463df26d5f"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/triage/TriageReadHttpHandler.java",
+      "type": "new",
+      "sha256": "82cd50cd6e2cd42eb66d8b1df06a4d77e46ee2eba39757c5da1189e552ee59a0"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/triage/TriageReadService.java",
+      "type": "modified",
+      "sha256": "f39d3d5b33fcdb48b81b13365545204a8f4ef96530ee30aba5c747b089dbcc7b"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/triage/TriageSnapshotCodec.java",
+      "type": "modified",
+      "sha256": "6fe7963c11ed10a8e135a0d9e96293d4dc58ea4d4fcdb67ba86fecb59954929b"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/triage/TriageAuditContinuityTest.java",
+      "type": "new",
+      "sha256": "1f4bea9e2cccd87189392a70be9cedfc8e5b9e03f667019933e7dbc962d9796b"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/triage/TriageReadHttpIntegrationTest.java",
+      "type": "new",
+      "sha256": "72b5966c245cb24cfb464b57fd64de6605894a0aaeb86e72b3bbfbea144b8c53"
+    },
+    {
+      "path": "tests/test_triage_correlated_migration_gate.py",
+      "type": "new",
+      "sha256": "40c3118e5abcae23208be1eee731724e69b646f29c8b9df3cb92efb9491020fa"
+    },
+    {
+      "path": "tests/test_triage_jdbc_evidence_contract.py",
+      "type": "new",
+      "sha256": "bc3b48fe3bce76e2f9de945e4eb1818bd26414b9fc089da8ee928893832845e1"
+    },
+    {
+      "path": "tools/triage_correlated_migration_gate.py",
+      "type": "new",
+      "sha256": "34688e2e108e2dac447f1ae85071951a890a10d8870ca3ba4be96956de4f5a8e"
+    }
+  ],
+  "removed_files": [],
+  "changed_count": 51,
+  "removed_count": 0
+}

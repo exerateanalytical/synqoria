@@ -1,0 +1,343 @@
+{
+  "base": "v0.15.0",
+  "checkpoint": "v0.16.0",
+  "generated_utc": "2026-10-30T02:04:20.669256+00:00",
+  "changed": [
+    {
+      "path": ".github/workflows/engineering-checks.yml",
+      "before_sha256": "82e29b81e6e60f804b43f76eae153d306f3b493963b93b695626e030e08ded0c",
+      "after_sha256": "98e03de30bbe774731438c9d8193cdc8a7dbaf87cdc50f757d099a252c8a7cd4",
+      "change": "modified"
+    },
+    {
+      "path": "README.md",
+      "before_sha256": "476478bd86c09fbefd060742394e7c6ccbd12bf4ac53506132e7d5443d7434a7",
+      "after_sha256": "0ccf8c3f90b3e9ade287054aa3e3e4675d499c4b7707f2396f919fe450f7c64e",
+      "change": "modified"
+    },
+    {
+      "path": "apps/staff-mobile/RegistrationPreview.tsx",
+      "before_sha256": "81b170314485cb8665933d9a299db949574dd0d3f377ddf88bc3803147a6f182",
+      "after_sha256": "08365e50a3e90d1fe2bb7d4db04f320e89cf74e3fac9d5edb772699550dc8114",
+      "change": "modified"
+    },
+    {
+      "path": "docs/program/STATUS.md",
+      "before_sha256": "26cf2510a1f385d6e79645787764db97477431c076a714427c4f05fe807a0c0e",
+      "after_sha256": "8c4fbc373acd8ed5971cf0d45804937aacff38cdafde6ed18d231e66eced0eb0",
+      "change": "modified"
+    },
+    {
+      "path": "docs/program/V016_REVIEW_EVENT_AND_LOCKED_INTAKE.md",
+      "before_sha256": null,
+      "after_sha256": "e3e11ac0e90e598194b03c6005a4a54cd38423048603d2ff56453dcbdba95950",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/P01-P05-v160-ten-batches.json",
+      "before_sha256": null,
+      "after_sha256": "b5e076e04d057aa70aab47dae4e6e00254bebe2cff13bfe2ee9358608e4856f0",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-P01-B0032.log",
+      "before_sha256": null,
+      "after_sha256": "f5bf8d74fa057c4fac220d2a01140a9bf0aee991cf29237e3d935337bd7332a7",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-P02-B0040.log",
+      "before_sha256": null,
+      "after_sha256": "e25bb1256ded72c33b1bb09bb72430203570f53e8bb3ad01f2d0dcef054c7dc7",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-P02-B0041.log",
+      "before_sha256": null,
+      "after_sha256": "ca182ffd4a48f02caa2f2ccbbfd59f643173fa412ca1656511945cfca37f5f9d",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-P02-B0042.log",
+      "before_sha256": null,
+      "after_sha256": "2d68523517b2614d98686840b074430e2ba0a20bd5edec96ee27c9373ee8f2a5",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-P02-B0043.log",
+      "before_sha256": null,
+      "after_sha256": "b5045aaec345ab4b0dc3d30756d7a6fe7a9cbbfdb09f180f52fceab2cdeb8718",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-P05-B0022.log",
+      "before_sha256": null,
+      "after_sha256": "a0203285f3ef27e4d280655f42c404a49dba00ba90975d329f2fafec2ab075b7",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-P05-B0023.log",
+      "before_sha256": null,
+      "after_sha256": "11c7351fd702db0a823301891f9c24f9d8e66a45105057a1e60f9a4ecac239c3",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-P05-B0024.log",
+      "before_sha256": null,
+      "after_sha256": "679fa655b9bbeedaf9dd9483c1f4573d64d3288c2cd45f2ab0316c975fb94bc3",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-P05-B0025.log",
+      "before_sha256": null,
+      "after_sha256": "3b42e1183220aafddc5e2c6e2f72fec230cc15c48f090bd286384ff940398d78",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-P05-B0026.log",
+      "before_sha256": null,
+      "after_sha256": "ca88b19dd86edfd59f9bbc11566a1dcaa62f11964f4e3f2aa95db723072a6601",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-full-regression.log",
+      "before_sha256": null,
+      "after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-i18n-browser.log",
+      "before_sha256": null,
+      "after_sha256": "b6d8426781b079e2fa3d285e70635dd489b3fab8570ccf11cfe7a2e04f55ccbb",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-java-regression.log",
+      "before_sha256": null,
+      "after_sha256": "736de92ab0319e6f6e8b7fb855ed36ed3762ad0df6e0d3e87d6c1cbc6bcaf8e6",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-preview-browser.log",
+      "before_sha256": null,
+      "after_sha256": "281235ecb76aa066a72c9550c66c231d5b0de2679249a4972a9aead3784a6a2e",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-registration-browser.log",
+      "before_sha256": null,
+      "after_sha256": "085ee551e5674073d279815d937e208e12aa0af3fb11147c78437aca2343fc22",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-regression-timeout.json",
+      "before_sha256": null,
+      "after_sha256": "935afdfdbfbb01f1d5eb397ff0490805e6f0007dfe6e6a5ae0cbd2b45a634dc5",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-source-regression.log",
+      "before_sha256": null,
+      "after_sha256": "4392150aaa9c68738f660cc1530dde31cdfa55fcd9587b4ab6c3020b31d0c6cc",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-static-regression.json",
+      "before_sha256": null,
+      "after_sha256": "3e9ba3e15483ebbf4532b6fd3dbcdfcb8981b1edb806d9c02d14216be88c16ea",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-ux-regression-final.log",
+      "before_sha256": null,
+      "after_sha256": "785ebc3f3bafa41469f51085a15b41015171c11ee6ac015adb7c43a7ff6f0297",
+      "change": "added"
+    },
+    {
+      "path": "evidence/batches/v160-ux-regression.log",
+      "before_sha256": null,
+      "after_sha256": "b87804ce1fda475f2f3b1cc395a572e4bbc106061f2433f61ab42580eb6c2627",
+      "change": "added"
+    },
+    {
+      "path": "package.json",
+      "before_sha256": "bd6481f18bdf4d45ffc4dfeb61514ec152fb1dc400cf191f418eb552280267a5",
+      "after_sha256": "1450402f88d08e4120aca2ccbcc01267864006dd4d9c8092f3a42f25b37a3447",
+      "change": "modified"
+    },
+    {
+      "path": "packages/ux-core/package.json",
+      "before_sha256": "ba2121696a419db7954a227cfcdfb65a4e7af8830d1ed8d97690e9af629cf963",
+      "after_sha256": "cada1c95522ca3e584e3172ef5d66d45fc85a89e163f20bf50a26a35edb3c744",
+      "change": "modified"
+    },
+    {
+      "path": "packages/ux-core/src/index.ts",
+      "before_sha256": "ecdb534d482c7db8be1158433ea13a615e0d0d67f8e7f9b68625c132f9ef9c5e",
+      "after_sha256": "0d018497e884e5eb3012d2d0e5652e506ce22307a92b8bffc8a3ce710982537d",
+      "change": "modified"
+    },
+    {
+      "path": "packages/ux-core/src/registration-a11y-summary.ts",
+      "before_sha256": null,
+      "after_sha256": "f286308218dc7c6230031a8982a47dc55e0f37cca9139e2f7a263efdaed56bdd",
+      "change": "added"
+    },
+    {
+      "path": "packages/ux-core/src/registration-mobile-lifecycle.ts",
+      "before_sha256": null,
+      "after_sha256": "fbcde657aab17dc461f72ecbfb812bd9c2df34ac2dd3ee536c2f94ad07cbf505",
+      "change": "added"
+    },
+    {
+      "path": "packages/ux-core/src/registration-route-guard.ts",
+      "before_sha256": null,
+      "after_sha256": "8582b5200cfe1f2da9039272540de36feb13de28075524e931379403a53880f9",
+      "change": "added"
+    },
+    {
+      "path": "packages/ux-core/tests/v160-intake-safety.test.cjs",
+      "before_sha256": null,
+      "after_sha256": "328eccc02601c2606ae87b39bc86a07a0cf8cb159b10dbece6314cec3863a829",
+      "change": "added"
+    },
+    {
+      "path": "registers/batch-ledger.json",
+      "before_sha256": "7b20ddac34a418185688684c7599c2d1ef13bb772761951c19b70b51e5c96039",
+      "after_sha256": "67ecd4c616ed929d27e83cdc02e75ab4e9ee13272e167a1522e8fd5798efbf3c",
+      "change": "modified"
+    },
+    {
+      "path": "registers/blockers.json",
+      "before_sha256": "8fa7f15daf38398b4e4d2c8a71b78957429c4e56a9bb90c572a2ff0a5ed0a6e6",
+      "after_sha256": "3a2d154c0e120a30f601d926e7fd96d020b0d20efcb3a72c0a42d8c2297381eb",
+      "change": "modified"
+    },
+    {
+      "path": "registers/module-status-matrix.json",
+      "before_sha256": "ce625067387c314a7737dfc31509a5d8f24f8d7f8fd3d5eb9952b13f7abc0460",
+      "after_sha256": "2c629079503ebdd11c6c9ef092d7a908cfd81572e4d14bb8358f568ac50859dd",
+      "change": "modified"
+    },
+    {
+      "path": "registers/phases.json",
+      "before_sha256": "8522588f062ed81e381ac31df15ff72677b23cc336c50681ea8ea079c21dc257",
+      "after_sha256": "898b5b5e8e959bd88568b095eb0144f2b2564fda0200110842026e5a759e07dd",
+      "change": "modified"
+    },
+    {
+      "path": "registers/screen-routes.json",
+      "before_sha256": "25ba3d2c7f87018dc7fe50593807e104e3ec7890ae5af8338918b6acc28710a2",
+      "after_sha256": "005cc2f77a2d157ede67993878fe11a65964e33e6d11e15323f7a25b54b0fece",
+      "change": "modified"
+    },
+    {
+      "path": "registers/screen-status-matrix.json",
+      "before_sha256": "532adcfd7d507776b6e5ca73fe278b07c89cc5f2ee73c250cb1f82bf98542e3b",
+      "after_sha256": "f1b6dea5d0dbe23419785fa4bd11006090d76b49ca707daeeeeb910b19b4de47",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/RegistrationJdbc.java",
+      "before_sha256": "37c68bee8c526103a7c47c72e606bd445100d39c7f41e191051db3795aae5f38",
+      "after_sha256": "09f3cf9c700f5b35c1c33d0364f8cd9443b609c1dd64050b61d0dd7548871f00",
+      "change": "modified"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/RegistrationProductionBoundary.java",
+      "before_sha256": null,
+      "after_sha256": "e40c9df6d907057656ad4d0a3168fb11f2a8511993b2fa70f77eb0d4c4f1a310",
+      "change": "added"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewAuditChain.java",
+      "before_sha256": null,
+      "after_sha256": "84d9eb84adbe083eb7c74e43a83fe4f505ccfee483569387fcca2483973d9ea3",
+      "change": "added"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewEventTransition.java",
+      "before_sha256": null,
+      "after_sha256": "6ea024ba3b8657a0f7cffb3b45c188566eaa8fd789a139a69f67d7f28653c272",
+      "change": "added"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewReadinessReport.java",
+      "before_sha256": null,
+      "after_sha256": "50b7e87478086bb9ca4ea668ce160422b76ff03125948fd053976466d751ed99",
+      "change": "added"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewerGrantEpoch.java",
+      "before_sha256": null,
+      "after_sha256": "8d99bcc44a04dbb3d9ae752d13c8426e0a3cfff265debcf4742a53a160b9203a",
+      "change": "added"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/registration/V160ReviewSafetyTest.java",
+      "before_sha256": null,
+      "after_sha256": "54e245cee60e2a84c0839ded2ce18fa6b805b971704cc19486b82af768448456",
+      "change": "added"
+    },
+    {
+      "path": "tests/test_tsx_syntax.cjs",
+      "before_sha256": "269230aaf0ec24663fb36beed047b8d2057b8bf5dc083b1b475c62baaa752d59",
+      "after_sha256": "17c3832f5d1369a403664a74793d9bff585528153ea330b34aaaf4c40f1e9f6f",
+      "change": "modified"
+    },
+    {
+      "path": "tests/test_v150_checkpoint.py",
+      "before_sha256": "dbb49e49013255394fa7ef5c2ef0b00757b9a2d269911c3937368a85fb1774a5",
+      "after_sha256": "b3ea6afc33c07c57c24247dce3ef4719b48058649416aeeec16c9f3aa86930c6",
+      "change": "modified"
+    },
+    {
+      "path": "tests/test_v160_checkpoint.py",
+      "before_sha256": null,
+      "after_sha256": "de1d50966495826a593fda10073d3dbb3fa7249f7dbca615019902c24e1d7d74",
+      "change": "added"
+    },
+    {
+      "path": "tests/test_v160_native_integration.py",
+      "before_sha256": null,
+      "after_sha256": "4e06a4d28a7efe301ec4476412e91195876a481816d8bb2548501eb5251344a5",
+      "change": "added"
+    },
+    {
+      "path": "tests/test_v160_release_gate.py",
+      "before_sha256": null,
+      "after_sha256": "134d560b5f2046db06dd9bbf60e6f9527ffe7802c602172021ca1e38938e335f",
+      "change": "added"
+    },
+    {
+      "path": "tools/check_java_security.sh",
+      "before_sha256": "9b0e8bb5802a1ca3cc508815131087399346937ca589e1432ae5ea7ffc3bf4ca",
+      "after_sha256": "ac8c31b5858bc10da02a173788b3f1ed61715421b98aa90d20bbcf6fe8a28557",
+      "change": "modified"
+    },
+    {
+      "path": "tools/finalize_v160.py",
+      "before_sha256": null,
+      "after_sha256": "0f971de886ec7f83a86ef6c35f9dc83b9e4e4b8484cd99f749f17af6aad46b4c",
+      "change": "added"
+    },
+    {
+      "path": "tools/implement_v160.py",
+      "before_sha256": null,
+      "after_sha256": "22f226eae8f4e85b4b8321f3d0dfcc148a3ce9f18dd265682df36e0237295984",
+      "change": "added"
+    },
+    {
+      "path": "tools/record_v160_progress.py",
+      "before_sha256": null,
+      "after_sha256": "1007159047aa333ee46fec53731a127a9db55f733c7d58c423b4d910b7f503be",
+      "change": "added"
+    },
+    {
+      "path": "tools/verify_release_gate.py",
+      "before_sha256": null,
+      "after_sha256": "61d1485e691ee3b57e7a6c714cb4825f1409046205a866e131e7a126f9c0c800",
+      "change": "added"
+    }
+  ]
+}

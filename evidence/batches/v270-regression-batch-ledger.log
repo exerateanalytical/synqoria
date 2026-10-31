@@ -1,0 +1,7 @@
+COMMAND ['python', 'tests/test_batch_ledger.py']
+EXIT 0
+EXPECTED 0
+STDOUT
+PASS: ten independent batch evidence records, monotonic phase counts, no false certification
+
+STDERR

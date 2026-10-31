@@ -1,0 +1,26 @@
+[
+  {
+    "batch": "P06-B0007",
+    "deliverable": "AppointmentStateCodec",
+    "compile_exit": 0,
+    "compile_stderr": "",
+    "test_exit": 0,
+    "test_stdout": "AppointmentStateCodecTest PASS 12 checks\n"
+  },
+  {
+    "batch": "P06-B0008",
+    "deliverable": "AppointmentRevisionFence",
+    "compile_exit": 0,
+    "compile_stderr": "",
+    "test_exit": 0,
+    "test_stdout": "AppointmentRevisionFenceTest PASS 5 checks\n"
+  },
+  {
+    "batch": "P06-B0009",
+    "deliverable": "AppointmentScopeFence",
+    "compile_exit": 0,
+    "compile_stderr": "",
+    "test_exit": 0,
+    "test_stdout": "AppointmentScopeFenceTest PASS 5 checks\n"
+  }
+]

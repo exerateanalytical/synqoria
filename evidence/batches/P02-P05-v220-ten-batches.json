@@ -1,0 +1,94 @@
+{
+  "checkpoint": "v0.22.0",
+  "source_checkpoint": "v0.21.0",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "results": [
+    {
+      "batch": "P05-B0038",
+      "scope": "Bounded synchronized in-memory append-only reviewer journal: tenant/facility/review scope, optimistic version, duplicate command rejection and irrevocable revocation",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v220-P05-B0038.log",
+      "verification_level": "java_unit_jdbc_proxy"
+    },
+    {
+      "batch": "P05-B0039",
+      "scope": "Independent review history reconstruction with chain, scope, command uniqueness and ordered transition verification",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v220-P05-B0039.log",
+      "verification_level": "java_unit_jdbc_proxy"
+    },
+    {
+      "batch": "P05-B0040",
+      "scope": "Privacy-safe portable audit receipt from a verified review history, without identifiers",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v220-P05-B0040.log",
+      "verification_level": "java_unit_jdbc_proxy"
+    },
+    {
+      "batch": "P05-B0041",
+      "scope": "Reviewer session + scope + revision + IAM epoch preflight; returns NOT_AUTHORIZED even for valid prerequisites",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v220-P05-B0041.log",
+      "verification_level": "java_unit_jdbc_proxy"
+    },
+    {
+      "batch": "P05-B0042",
+      "scope": "Bounded parameterized JDBC review-event history read with serializable transaction requirement and integrity verification (JDBC proxy only)",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v220-P05-B0042.log",
+      "verification_level": "java_unit_jdbc_proxy"
+    },
+    {
+      "batch": "P02-B0068",
+      "scope": "Native lifecycle privacy curtain generation and foreground re-entry lock, integrated in both apps",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v220-P02-B0068.log",
+      "verification_level": "typescript_node_unit"
+    },
+    {
+      "batch": "P02-B0069",
+      "scope": "Five bilingual, non-disclosing native access-status messages with accessibility metadata, integrated in both apps",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v220-P02-B0069.log",
+      "verification_level": "typescript_node_unit"
+    },
+    {
+      "batch": "P02-B0070",
+      "scope": "Staff facility/role/shift scope summary requires verified time-bounded lease and safe labels, integrated into staff app",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v220-P02-B0070.log",
+      "verification_level": "typescript_node_unit"
+    },
+    {
+      "batch": "P02-B0071",
+      "scope": "Proxy relationship read eligibility denies revoked/expired/cross-subject grants, integrated into patient app as locked state",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v220-P02-B0071.log",
+      "verification_level": "typescript_node_unit"
+    },
+    {
+      "batch": "P02-B0072",
+      "scope": "EN/FR screen-reader privacy lock announcement with font scaling, integrated into both apps",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v220-P02-B0072.log",
+      "verification_level": "typescript_node_unit"
+    }
+  ],
+  "scope_limits": [
+    "No PostgreSQL execution",
+    "No compiled Next.js or Expo builds",
+    "No mobile device testing",
+    "No clinical review or production release"
+  ]
+}

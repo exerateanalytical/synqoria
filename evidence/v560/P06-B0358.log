@@ -1,0 +1,4 @@
+COMMAND: java -cp <classes> org.synqoria.triage.TriageV56WorklistHttpTest CLINICIAN_WORKLIST
+EXIT: 0
+STDOUT:
+TRIAGE_V56_WORKLIST_HTTP PASS view=CLINICIAN_WORKLIST assertions=17

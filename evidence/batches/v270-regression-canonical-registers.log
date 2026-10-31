@@ -1,0 +1,7 @@
+COMMAND ['python', 'tests/test_baseline.py']
+EXIT 0
+EXPECTED 0
+STDOUT
+PASS: planning integrity, 40 unique modules, 261 unique canonical screens, 20 phases, non-fabricated code statuses
+
+STDERR

@@ -1,0 +1,94 @@
+{
+  "checkpoint": "v0.23.0",
+  "source_checkpoint": "v0.22.0",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "results": [
+    {
+      "batch": "P05-B0043",
+      "scope": "V2 scope-bound review digest includes tenant, facility, review and command IDs to prevent event transplant",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v230-P05-B0043.log",
+      "verification_level": "java_unit_only"
+    },
+    {
+      "batch": "P05-B0044",
+      "scope": "Independent V2 event-history verifier enforces scope, digest chain, unique commands, bounded length and legal transitions",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v230-P05-B0044.log",
+      "verification_level": "java_unit_only"
+    },
+    {
+      "batch": "P05-B0045",
+      "scope": "Minimal non-PHI receipt derived only from verified V2 event history",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v230-P05-B0045.log",
+      "verification_level": "java_unit_only"
+    },
+    {
+      "batch": "P05-B0046",
+      "scope": "Current approval state preflight rejects revocation, stale reviewer grant epoch and stale versions; never authorizes registration",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v230-P05-B0046.log",
+      "verification_level": "java_unit_only"
+    },
+    {
+      "batch": "P05-B0047",
+      "scope": "Allowlisted immutable evidence export excludes clinical payload and identifiers",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v230-P05-B0047.log",
+      "verification_level": "java_unit_only"
+    },
+    {
+      "batch": "P02-B0073",
+      "scope": "Canonical native deep-link gate denies encoded traversal, unauthorized roots and locked sessions",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v230-P02-B0073.log",
+      "verification_level": "typescript_node_unit_native_source"
+    },
+    {
+      "batch": "P02-B0074",
+      "scope": "Native staff scope switch clears volatile drafts and invalidates previous epoch",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v230-P02-B0074.log",
+      "verification_level": "typescript_node_unit_native_source"
+    },
+    {
+      "batch": "P02-B0075",
+      "scope": "Abort and discard late native async responses after background/scope transition",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v230-P02-B0075.log",
+      "verification_level": "typescript_node_unit_native_source"
+    },
+    {
+      "batch": "P02-B0076",
+      "scope": "Declarative non-clipping, scalable EN/FR critical clinical field typography contract",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v230-P02-B0076.log",
+      "verification_level": "typescript_node_unit_not_device_verified"
+    },
+    {
+      "batch": "P02-B0077",
+      "scope": "Native offline clinical write queue rejects all writes and replay, including when online",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v230-P02-B0077.log",
+      "verification_level": "typescript_node_unit_native_source"
+    }
+  ],
+  "scope_limits": [
+    "No PostgreSQL execution or production IAM",
+    "No compiled Next.js/Expo builds or device tests",
+    "No independent security/clinical signoff",
+    "No clinical screen accepted"
+  ]
+}

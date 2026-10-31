@@ -1,0 +1,85 @@
+{
+  "executed_utc": "2026-10-30T12:13:28.061886+00:00",
+  "checks": [
+    {
+      "name": "canonical",
+      "command": [
+        "python",
+        "tests/test_baseline.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS: planning integrity, 40 unique modules, 261 unique canonical screens, 20 phases, non-fabricated code statuses\n",
+      "stderr": ""
+    },
+    {
+      "name": "navigation",
+      "command": [
+        "python",
+        "tests/test_navigation_contract.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS: 261 honest screen route records, 3 shell roots, 40 module IDs; no false canonical screen implementation claims\n",
+      "stderr": ""
+    },
+    {
+      "name": "historical_checkpoint",
+      "command": [
+        "python",
+        "tests/test_v240_checkpoint.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS historical v0.24.0 evidence in current 0.26.0 checkpoint; 40 modules; 261 screens; release denied\n",
+      "stderr": ""
+    },
+    {
+      "name": "status_matrix",
+      "command": [
+        "python",
+        "tools/verify_status_matrix.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS: 261 screen + 40 module separate status rows; all clinical acceptance gates remain false\n",
+      "stderr": ""
+    },
+    {
+      "name": "release_denial",
+      "command": [
+        "python",
+        "tools/verify_release_gate.py"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS: fail-closed release lock verified against 40 modules / 261 screens; NO certification\n",
+      "stderr": ""
+    },
+    {
+      "name": "dependency_gate",
+      "command": [
+        "python",
+        "tools/dependency_release_gate.py"
+      ],
+      "exit_code": 4,
+      "stdout": "{\n  \"reproducible\": false,\n  \"issues\": [\n    \"missing_package_lock\",\n    \"unfixed_external_dependency:apps/web:@types/node\",\n    \"unfixed_external_dependency:apps/web:@types/react\",\n    \"unfixed_external_dependency:apps/web:@types/react-dom\",\n    \"unfixed_external_dependency:apps/staff-mobile:expo\",\n    \"unfixed_external_dependency:apps/staff-mobile:react-native-safe-area-context\",\n    \"unfixed_external_dependency:apps/staff-mobile:typescript\",\n    \"unfixed_external_dependency:apps/staff-mobile:@types/react\",\n    \"unfixed_external_dependency:apps/patient-mobile:expo\",\n    \"unfixed_external_dependency:apps/patient-mobile:react-native-safe-area-context\",\n    \"unfixed_external_dependency:apps/patient-mobile:typescript\",\n    \"unfixed_external_dependency:apps/patient-mobile:@types/react\"\n  ],\n  \"clinical_release\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "postgres_gate",
+      "command": [
+        "python",
+        "tools/probe_postgres_readiness.py"
+      ],
+      "exit_code": 4,
+      "stdout": "{\"ready\": false, \"reason\": \"missing_connection_or_pinned_role\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "app_build_gate",
+      "command": [
+        "python",
+        "tools/probe_application_builds.py"
+      ],
+      "exit_code": 4,
+      "stdout": "{\n  \"build_ready\": false,\n  \"issues\": [\n    \"missing_root_lockfile\",\n    \"missing_installed_dependency:web:next\",\n    \"missing_installed_dependency:web:react\",\n    \"missing_installed_dependency:web:react-dom\",\n    \"missing_installed_dependency:staff-mobile:expo\",\n    \"missing_installed_dependency:staff-mobile:react-native\",\n    \"missing_installed_dependency:patient-mobile:expo\",\n    \"missing_installed_dependency:patient-mobile:react-native\"\n  ],\n  \"scope\": \"dependency readiness only; no Next.js or native build executed\"\n}\n",
+      "stderr": ""
+    }
+  ]
+}

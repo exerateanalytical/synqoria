@@ -1,0 +1,104 @@
+{
+  "checkpoint": "0.8.0",
+  "timestamp_utc": "2026-10-29T23:37:25.769239+00:00",
+  "target": 10,
+  "implemented_tested": 10,
+  "assertion_evidence": {
+    "typescript_node_tests": 48,
+    "java_loopback_http_assertions": 36,
+    "other_java_assertions": "retained in full check logs"
+  },
+  "source": "test-only Java HttpServer and TypeScript units; app integrations not completed",
+  "batches": [
+    {
+      "batch": "P01-B0014",
+      "feature": "Canonical URL admission and rejection of ambiguous patient paths",
+      "artifact": "services/clinical-core/src/main/java/org/synqoria/http/CanonicalRequestPath.java",
+      "test_group": "java-domain-policy",
+      "verification_level": "loopback_http",
+      "test_result": "PASS",
+      "certification": "NOT_CERTIFIED"
+    },
+    {
+      "batch": "P01-B0015",
+      "feature": "No-store, anti-sniff, no-referrer and limited JSON responses",
+      "artifact": "services/clinical-core/src/main/java/org/synqoria/http/ClinicalResponse.java",
+      "test_group": "java-domain-policy",
+      "verification_level": "loopback_http",
+      "test_result": "PASS",
+      "certification": "NOT_CERTIFIED"
+    },
+    {
+      "batch": "P01-B0016",
+      "feature": "Real loopback read-only HTTP routes and readiness fail-close",
+      "artifact": "services/clinical-core/src/main/java/org/synqoria/http/ClinicalHttpGateway.java",
+      "test_group": "java-domain-policy",
+      "verification_level": "loopback_http",
+      "test_result": "PASS",
+      "certification": "NOT_CERTIFIED"
+    },
+    {
+      "batch": "P03-B0009",
+      "feature": "Verified-bearer admission seam rejecting forged scopes and duplicate headers",
+      "artifact": "services/clinical-core/src/main/java/org/synqoria/http/BearerAdmission.java",
+      "test_group": "java-domain-policy",
+      "verification_level": "loopback_http",
+      "test_result": "PASS",
+      "certification": "NOT_CERTIFIED"
+    },
+    {
+      "batch": "P03-B0010",
+      "feature": "Audited backend patient-read boundary, no release if audit fails",
+      "artifact": "services/clinical-core/src/main/java/org/synqoria/http/AuditedPatientAccess.java",
+      "test_group": "java-domain-policy",
+      "verification_level": "loopback_http",
+      "test_result": "PASS",
+      "certification": "NOT_CERTIFIED"
+    },
+    {
+      "batch": "P04-B0007",
+      "feature": "Validated hospital-cell active facility directory integration",
+      "artifact": "services/clinical-core/src/main/java/org/synqoria/http/CellFacilityGate.java",
+      "test_group": "java-domain-policy",
+      "verification_level": "loopback_http",
+      "test_result": "PASS",
+      "certification": "NOT_CERTIFIED"
+    },
+    {
+      "batch": "P02-B0014",
+      "feature": "HTTPS-only non-caching patient API read client with response validation",
+      "artifact": "packages/ux-core/src/clinical-api-client.ts",
+      "test_group": "ux-typescript-node",
+      "verification_level": "typescript_node",
+      "test_result": "PASS",
+      "certification": "NOT_CERTIFIED"
+    },
+    {
+      "batch": "P02-B0015",
+      "feature": "Patient-switch backend authorization port clears patient cache before verify",
+      "artifact": "packages/ux-core/src/patient-http-ports.ts",
+      "test_group": "ux-typescript-node",
+      "verification_level": "typescript_node",
+      "test_result": "PASS",
+      "certification": "NOT_CERTIFIED"
+    },
+    {
+      "batch": "P02-B0016",
+      "feature": "Server session lease bounds and stale logout invalidation for mobile/web",
+      "artifact": "packages/ux-core/src/server-session-lease.ts",
+      "test_group": "ux-typescript-node",
+      "verification_level": "typescript_node",
+      "test_result": "PASS",
+      "certification": "NOT_CERTIFIED"
+    },
+    {
+      "batch": "P02-B0017",
+      "feature": "Bilingual non-color-only clinical network and access result presentation",
+      "artifact": "packages/ux-core/src/clinical-ui-status.ts",
+      "test_group": "ux-typescript-node",
+      "verification_level": "typescript_node",
+      "test_result": "PASS",
+      "certification": "NOT_CERTIFIED"
+    }
+  ]
+}

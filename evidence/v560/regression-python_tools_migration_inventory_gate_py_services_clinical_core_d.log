@@ -1,0 +1,25 @@
+{
+  "count": 19,
+  "latest": 19,
+  "versions": {
+    "1": "V001__hospital_scope_foundation.sql",
+    "2": "V002__outbox_inbox_foundation.sql",
+    "3": "V003__patient_identity_consent_foundation.sql",
+    "4": "V004__clinical_read_audit_foundation.sql",
+    "5": "V005__patient_registration_foundation.sql",
+    "6": "V006__identity_lookup_quarantine.sql",
+    "7": "V007__registration_review_quarantine.sql",
+    "8": "V008__registration_review_event_quarantine.sql",
+    "9": "V009__review_event_digest_contract_quarantine.sql",
+    "10": "V010__review_audit_outbox_quarantine.sql",
+    "11": "V011__review_command_replay_quarantine.sql",
+    "12": "V012__appointment_reservation_quarantine.sql",
+    "13": "V013__appointment_restricted_audit_quarantine.sql",
+    "14": "V014__appointment_idempotency_quarantine.sql",
+    "15": "V015__triage_workflow_quarantine.sql",
+    "16": "V016__triage_encrypted_snapshot_quarantine.sql",
+    "17": "V017__triage_secure_receipts_quarantine.sql",
+    "18": "V018__triage_secure_genesis_quarantine.sql",
+    "19": "V019__triage_secure_correlated_evidence_quarantine.sql"
+  }
+}

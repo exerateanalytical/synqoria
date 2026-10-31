@@ -1,0 +1,6 @@
+COMMAND ['java', '-ea', '-cp', '/tmp/synqoria-v26-classes', 'org.synqoria.registration.V260ReviewerGateTest', 'P05-B0060']
+EXIT 0
+STDOUT
+PASS P05-B0060 7 mock-JDBC assertions; live PostgreSQL not tested
+
+STDERR

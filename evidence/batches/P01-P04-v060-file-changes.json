@@ -1,0 +1,46 @@
+{
+  "source": "schedule_v0.5.0",
+  "target": "merged_v0.6.0",
+  "added": [
+    "docs/program/MERGE_v0.6.0.md",
+    "evidence/batches/P01-P04-v060-merge-record.json",
+    "evidence/batches/P01-P04-v060-merged-checks.json",
+    "packages/ux-core/src/canonical-route.ts",
+    "packages/ux-core/src/mobile-navigation.ts",
+    "packages/ux-core/src/sync-receipt.ts",
+    "packages/ux-core/tests/canonical-route.test.cjs",
+    "packages/ux-core/tests/mobile-navigation.test.cjs",
+    "packages/ux-core/tests/sync-receipt.test.cjs",
+    "services/clinical-core/src/main/java/org/synqoria/facility/LocationScopePolicy.java",
+    "services/clinical-core/src/main/java/org/synqoria/reliability/IdempotencyLedger.java",
+    "services/clinical-core/src/main/java/org/synqoria/reliability/InboxSequenceGuard.java",
+    "services/clinical-core/src/main/java/org/synqoria/reliability/OutboxIntent.java",
+    "services/clinical-core/src/main/java/org/synqoria/security/SafeApiProblem.java",
+    "services/clinical-core/src/main/java/org/synqoria/security/SessionFreshnessPolicy.java",
+    "services/clinical-core/src/test/java/org/synqoria/facility/LocationScopePolicyTest.java",
+    "services/clinical-core/src/test/java/org/synqoria/reliability/IdempotencyLedgerTest.java",
+    "services/clinical-core/src/test/java/org/synqoria/reliability/InboxSequenceGuardTest.java",
+    "services/clinical-core/src/test/java/org/synqoria/reliability/OutboxIntentTest.java",
+    "services/clinical-core/src/test/java/org/synqoria/security/SafeApiProblemTest.java",
+    "services/clinical-core/src/test/java/org/synqoria/security/SessionFreshnessPolicyTest.java"
+  ],
+  "updated": [
+    "README.md",
+    "docs/program/STATUS.md",
+    "package.json",
+    "packages/ux-core/package.json",
+    "packages/ux-core/src/index.ts",
+    "registers/batch-ledger.json",
+    "registers/blockers.json",
+    "registers/phases.json",
+    "tools/check_java_security.sh",
+    "tools/package_checkpoint.py",
+    "tools/run_checks.py"
+  ],
+  "removed": [],
+  "counts": {
+    "added": 21,
+    "updated": 11,
+    "removed": 0
+  }
+}

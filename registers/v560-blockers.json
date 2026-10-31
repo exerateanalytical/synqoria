@@ -1,0 +1,70 @@
+{
+  "checkpoint": "v0.56.0",
+  "open": [
+    {
+      "id": "BLK-V560-REAL-DB",
+      "severity": "release-blocking",
+      "affects": [
+        "P03",
+        "P06",
+        "M03"
+      ],
+      "issue": "New M03 command/intake/worklist HTTP paths tested only against synthetic atomic store, not actual PostgreSQL V019 with restricted roles, forced RLS, rollback and concurrent writers.",
+      "mitigation": "Run isolated PostgreSQL test cell with application role, apply reviewed migrations and verify scope/replay/rollback under concurrency before any clinical deployment.",
+      "status": "OPEN"
+    },
+    {
+      "id": "BLK-V560-IDENTITY-CLINICAL-PROOF",
+      "severity": "release-blocking",
+      "affects": [
+        "P03",
+        "P06",
+        "M03",
+        "P19"
+      ],
+      "issue": "Trusted session and clinical evidence sources remain synthetic; no production OIDC/MFA, authorization service, consent/legal policy or identity revocation integration verified.",
+      "mitigation": "Integrate approved server-side identity, access and clinical proof services, add independent threat model and external penetration test.",
+      "status": "OPEN"
+    },
+    {
+      "id": "BLK-V560-WEB-MOBILE",
+      "severity": "release-blocking",
+      "affects": [
+        "P02",
+        "P06",
+        "P19"
+      ],
+      "issue": "Shared TypeScript M03 transport compiled and unit tested but not wired into compiled Next.js/Expo applications, device accessibility, real navigation or production transport.",
+      "mitigation": "Resolve dependency/build environment, integrate with guarded staff UI and test mobile/desktop responsive, EN/FR and privacy lifecycle flows.",
+      "status": "OPEN"
+    },
+    {
+      "id": "BLK-V560-CLINICAL-SAFETY",
+      "severity": "release-blocking",
+      "affects": [
+        "M03",
+        "P06",
+        "P19"
+      ],
+      "issue": "49 existing action handlers newly covered by typed client+HTTP feature integration, eight worklist reads, intake and observation wire: engineering-only; not clinician-approved protocols. 0/261 screens and 0/40 modules accepted.",
+      "mitigation": "Complete signed clinical safety case, terminology review, usability and independent security validation; preserve release denial until approvals.",
+      "status": "OPEN"
+    },
+    {
+      "id": "BLK-V560-LEGACY-DISCOVERY",
+      "severity": "engineering-deferred",
+      "affects": [
+        "P01",
+        "P02"
+      ],
+      "issue": "Generic Python unittest discovery exited nonzero: 17 legacy script-style tests assert at import time or require a batch CLI argument; test discovery is not the supported entry point. Script-targeted canonical and source checks passed.",
+      "mitigation": "Refactor legacy script-style checks into discoverable unittest modules; preserve original failure logs; do not call aggregate discovery green.",
+      "status": "OPEN"
+    }
+  ],
+  "inherited_open": [
+    "BLK-V550-POSTGRES-EVIDENCE",
+    "BLK-V550-LEGACY-SNAPSHOT",
+    "BLK-V550-HTTP-INTEGRATION"
+  ]
+}

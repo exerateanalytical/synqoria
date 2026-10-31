@@ -1,0 +1,4 @@
+COMMAND: java -cp <classes> org.synqoria.triage.TriageV56HttpIntegrationTest observation-correction
+EXIT: 0
+STDOUT:
+TRIAGE_V56_HTTP PASS mode=observation-correction assertions=10

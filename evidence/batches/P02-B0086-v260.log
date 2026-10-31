@@ -1,0 +1,21 @@
+COMMAND ['node', '--test', 'packages/ux-core/tests/v260-native-more.test.cjs']
+EXIT 0
+STDOUT
+TAP version 13
+# Subtest: P02-B0086: native More is local-only, role/locale constrained
+ok 1 - P02-B0086: native More is local-only, role/locale constrained
+  ---
+  duration_ms: 2.137376
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 142.457599
+
+STDERR

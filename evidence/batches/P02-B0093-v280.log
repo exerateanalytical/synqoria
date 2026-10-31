@@ -1,0 +1,5 @@
+COMMAND ["python", "tests/test_v280_more_focus.py"]
+EXIT_CODE 0
+PASS P02-B0093: actual compiled TS controller Chromium focus loop, Escape, outside, resize, cleanup
+
+STDERR

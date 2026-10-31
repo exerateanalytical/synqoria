@@ -1,0 +1,17 @@
+{
+  "batch_id": "P06-B0158",
+  "module": "M03",
+  "phase": "P06",
+  "scope": "Transaction-local server-derived tenant/facility/patient/actor scope echo",
+  "implementation": [
+    "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcScope.java"
+  ],
+  "focused_tests": [
+    "evidence/v520/scenario-jdbc-scoped-lock.log",
+    "evidence/v520/scenario-jdbc-scope-echo.log"
+  ],
+  "verified": true,
+  "verification_scope": "synthetic_java_and_static_source_only",
+  "live_postgresql_tested": false,
+  "clinical_accepted": false
+}

@@ -1,0 +1,7 @@
+COMMAND ["python", "tools/verify_status_matrix.py"]
+EXIT_CODE 0
+STDOUT
+PASS: 261 screen + 40 module separate status rows; all clinical acceptance gates remain false
+
+STDERR
+

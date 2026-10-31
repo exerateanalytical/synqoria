@@ -1,0 +1,3 @@
+{"check": "negative SQL mutation rejected", "expected_violation": "scoped event", "id": "P06-B0272", "pass": true}
+
+--- STDERR ---

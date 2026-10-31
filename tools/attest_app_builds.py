@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+"""Attest real compiled app outputs only after successful build exit codes.
+
+This is an integrity inventory, not a signature, independent review or clinical release.
+"""
+import hashlib
+import json
+import pathlib
+import sys
+
+REQUIRED = {
+    'next-build': ('apps/web/.next', 'BUILD_ID'),
+    'staff-expo-export': ('apps/staff-mobile/dist', None),
+    'patient-expo-export': ('apps/patient-mobile/dist', None),
+}
+MAX_FILES = 100000
+MAX_FILE_BYTES = 512 * 1024 * 1024
+
+
+def attest(root, checks):
+    root = pathlib.Path(root).resolve()
+    by_name = {c.get('name'): c for c in checks if isinstance(c, dict)}
+    issues = []
+    entries = []
+    for name, (folder, marker) in REQUIRED.items():
+        if name not in by_name or by_name[name].get('exit_code') != 0:
+            issues.append('build_not_successful:' + name)
+            continue
+        output = root / folder
+        if output.is_symlink() or not output.is_dir():
+            issues.append('missing_or_symlinked_output:' + name)
+            continue
+        if marker and (not (output / marker).is_file() or (output / marker).is_symlink()):
+            issues.append('missing_build_marker:' + name)
+            continue
+        count = 0
+        for item in sorted(output.rglob('*')):
+            if item.is_symlink():
+                issues.append('symlink_in_build_output:' + name)
+                continue
+            if not item.is_file():
+                continue
+            count += 1
+            if count > MAX_FILES:
+                issues.append('excessive_build_files:' + name)
+                break
+            if item.stat().st_size > MAX_FILE_BYTES:
+                issues.append('oversized_build_file:' + name)
+                continue
+            rel = item.relative_to(root).as_posix()
+            entries.append({'path': rel, 'size': item.stat().st_size,
+                            'sha256': hashlib.sha256(item.read_bytes()).hexdigest()})
+        if count == 0:
+            issues.append('empty_build_output:' + name)
+    return {'status': 'ATTESTED' if not issues else 'BLOCKED', 'issues': issues,
+            'files': entries if not issues else [], 'clinical_release': False,
+            'attestation_is_cryptographic_signature': False}
+
+
+if __name__ == '__main__':
+    root = pathlib.Path(__file__).resolve().parents[1]
+    evidence = root / 'evidence/batches/v280-actual-build-attempt.json'
+    try:
+        attempt = json.loads(evidence.read_text())
+    except (OSError, ValueError):
+        print(json.dumps({'status': 'BLOCKED', 'issues': ['no_actual_build_evidence']}))
+        sys.exit(4)
+    result = attest(root, attempt.get('checks', []))
+    print(json.dumps(result, indent=2))
+    sys.exit(0 if result['status'] == 'ATTESTED' else 4)

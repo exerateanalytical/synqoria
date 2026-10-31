@@ -1,0 +1,17 @@
+TAP version 13
+# Subtest: P02-B0071: proxy access refuses wrong subject, wrong proxy, revoked and stale epoch
+ok 1 - P02-B0071: proxy access refuses wrong subject, wrong proxy, revoked and stale epoch
+  ---
+  duration_ms: 1.685764
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 86.387066
+exit=0 P02-B0071

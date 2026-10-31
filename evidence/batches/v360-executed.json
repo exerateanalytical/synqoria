@@ -1,0 +1,29 @@
+[
+  {
+    "batch": "P06-B0035",
+    "implementation": "AppointmentSqlIdentifier",
+    "compile_exit": 0,
+    "compile_stderr": "",
+    "test_exit": 0,
+    "test_stdout": "PASS P06-B0035 assertions=10\n",
+    "test_stderr": ""
+  },
+  {
+    "batch": "P06-B0036",
+    "implementation": "AppointmentOutboxHeaders",
+    "compile_exit": 0,
+    "compile_stderr": "",
+    "test_exit": 0,
+    "test_stdout": "PASS P06-B0036 assertions=6\n",
+    "test_stderr": ""
+  },
+  {
+    "batch": "P06-B0037",
+    "implementation": "AppointmentRetryPolicy",
+    "compile_exit": 0,
+    "compile_stderr": "",
+    "test_exit": 0,
+    "test_stdout": "PASS P06-B0037 assertions=11\n",
+    "test_stderr": ""
+  }
+]

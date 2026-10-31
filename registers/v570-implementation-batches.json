@@ -1,0 +1,60 @@
+{
+  "checkpoint": "v0.57.0",
+  "parent": "v0.56.0",
+  "requested_target": 60,
+  "verified_implementation_batches": 6,
+  "not_completed": 54,
+  "batch_range": [
+    "P06-B0363",
+    "P06-B0368"
+  ],
+  "certification_work": "deferred_not_waived",
+  "batches": [
+    {
+      "id": "P06-B0363",
+      "scope": "Authenticated patient/case summary GET transport and exact privacy-minimal decoder; reject malformed responses/denied scope",
+      "source": "packages/ux-core/src/triage-client.ts",
+      "test": "packages/ux-core/tests/triage-v57-read-session.test.cjs",
+      "status": "tested_not_certified"
+    },
+    {
+      "id": "P06-B0364",
+      "scope": "Bounded audit-history GET transport and strict revision cursor/event decoding",
+      "source": "packages/ux-core/src/triage-client.ts",
+      "test": "packages/ux-core/tests/triage-v57-read-session.test.cjs",
+      "status": "tested_not_certified"
+    },
+    {
+      "id": "P06-B0365",
+      "scope": "Volatile, abortable patient-scoped triage case session with optimistic revisions, replay guard and authoritative refresh",
+      "source": "packages/ux-core/src/triage-case-session.ts",
+      "test": "packages/ux-core/tests/triage-v57-read-session.test.cjs",
+      "status": "tested_not_certified"
+    },
+    {
+      "id": "P06-B0366",
+      "scope": "Explicit-case scoped staff worklist selection with switching and stale request invalidation",
+      "source": "packages/ux-core/src/triage-worklist-session.ts",
+      "test": "packages/ux-core/tests/triage-v57-workspace.test.cjs",
+      "status": "tested_not_certified"
+    },
+    {
+      "id": "P06-B0367",
+      "scope": "Bounded read-only audit pager with patient-switch invalidation and no offline storage",
+      "source": "packages/ux-core/src/triage-audit-pager.ts",
+      "test": "packages/ux-core/tests/triage-v57-workspace.test.cjs",
+      "status": "tested_not_certified"
+    },
+    {
+      "id": "P06-B0368",
+      "scope": "Versioned OpenAPI parity for M03 authorized case and bounded history reads",
+      "source": "contracts/openapi/synqoria-m03-triage-restricted-v1.yaml",
+      "test": "tests/test_triage_v570_read_contract.py",
+      "status": "tested_not_certified"
+    }
+  ],
+  "partial_unverified_ui": [
+    "apps/web/components/TriageCaseWorkspace.tsx",
+    "apps/web/app/globals.css"
+  ]
+}

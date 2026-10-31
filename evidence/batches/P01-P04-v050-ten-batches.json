@@ -1,0 +1,150 @@
+{
+  "timestamp_utc": "2026-10-29T23:04:44.533039+00:00",
+  "preconditions": "Full regression ran before this: Java compiled with javac 21; TypeScript compiled with tsc; SQL source checked only",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "batches_failed": 0,
+  "scope": "independent source/static/unit checks; NO PostgreSQL, OIDC signature, Next/Expo, HTTP or clinical approval",
+  "results": [
+    {
+      "batch": "P01-B0004",
+      "command": [
+        "python",
+        "tests/test_sql_outbox.py"
+      ],
+      "scope": "static_sql_only",
+      "exit_code": 0,
+      "stdout": "PASS: 12 outbox/inbox static assertions; PostgreSQL NOT executed\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P01-B0005",
+      "command": [
+        "python",
+        "tests/test_sql_identity.py"
+      ],
+      "scope": "static_sql_only",
+      "exit_code": 0,
+      "stdout": "PASS: 13 patient/consent SQL static assertions; PostgreSQL NOT executed\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P01-B0006",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-security-classes",
+        "org.synqoria.events.IdempotencyGuardTest"
+      ],
+      "scope": "java_unit_in_memory",
+      "exit_code": 0,
+      "stdout": "PASS: 13 idempotency guard assertions (in-memory only)\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P01-B0007",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-security-classes",
+        "org.synqoria.events.OutboxClaimLedgerTest"
+      ],
+      "scope": "java_unit_in_memory",
+      "exit_code": 0,
+      "stdout": "PASS: 11 outbox fencing assertions (in-memory only)\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P02-B0005",
+      "command": [
+        "node",
+        "--test",
+        "packages/ux-core/tests/route-boundary.test.cjs"
+      ],
+      "scope": "typescript_unit",
+      "exit_code": 0,
+      "stdout": "TAP version 13\n# Subtest: authorized root appears, child is never promoted to sidebar\nok 1 - authorized root appears, child is never promoted to sidebar\n  ---\n  duration_ms: 2.730851\n  type: 'test'\n  ...\n# Subtest: cross-shell, missing grants and unlicensed modules deny\nok 2 - cross-shell, missing grants and unlicensed modules deny\n  ---\n  duration_ms: 1.532138\n  type: 'test'\n  ...\n# Subtest: sensitive URLs, traversal, unsupported children and invalid IDs deny\nok 3 - sensitive URLs, traversal, unsupported children and invalid IDs deny\n  ---\n  duration_ms: 0.231212\n  type: 'test'\n  ...\n1..3\n# tests 3\n# suites 0\n# pass 3\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 69.449679\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P02-B0006",
+      "command": [
+        "node",
+        "--test",
+        "packages/ux-core/tests/patient-switch-coordinator.test.cjs"
+      ],
+      "scope": "typescript_async_unit",
+      "exit_code": 0,
+      "stdout": "TAP version 13\n# Subtest: cache clear precedes backend verification, no authorization from UI alone\nok 1 - cache clear precedes backend verification, no authorization from UI alone\n  ---\n  duration_ms: 2.200657\n  type: 'test'\n  ...\n# Subtest: clear failure and authorization denial fail closed\nok 2 - clear failure and authorization denial fail closed\n  ---\n  duration_ms: 0.410037\n  type: 'test'\n  ...\n# Subtest: dispose invalidates late asynchronous authorization response\nok 3 - dispose invalidates late asynchronous authorization response\n  ---\n  duration_ms: 2.978228\n  type: 'test'\n  ...\n1..3\n# tests 3\n# suites 0\n# pass 3\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 64.786437\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P03-B0004",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-security-classes",
+        "org.synqoria.security.TrustedSessionAdmissionTest"
+      ],
+      "scope": "java_unit_mock_verifier",
+      "exit_code": 0,
+      "stdout": "PASS: 14 session admission assertions (verifier stub, NO OIDC signature test)\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P03-B0005",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-security-classes",
+        "org.synqoria.consent.ConsentScopePolicyTest"
+      ],
+      "scope": "java_unit_no_legal_approval",
+      "exit_code": 0,
+      "stdout": "PASS: 11 explicit consent predicate assertions (no legal policy approval)\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P04-B0002",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-security-classes",
+        "org.synqoria.facility.FacilityLifecycleTest"
+      ],
+      "scope": "java_unit_in_memory",
+      "exit_code": 0,
+      "stdout": "PASS: 12 optimistic version facility lifecycle assertions; not persisted\n",
+      "stderr": "",
+      "verified": true
+    },
+    {
+      "batch": "P04-B0003",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-security-classes",
+        "org.synqoria.facility.CellRouteDirectoryTest"
+      ],
+      "scope": "java_unit_no_network",
+      "exit_code": 0,
+      "stdout": "PASS: 15 cell routing assertions (no network/TLS)\n",
+      "stderr": "",
+      "verified": true
+    }
+  ]
+}

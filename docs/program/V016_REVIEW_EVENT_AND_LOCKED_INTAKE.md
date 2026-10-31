@@ -1,0 +1,9 @@
+# v0.16.0 — Review authority and native intake engineering review
+
+This checkpoint narrows an exposed API surface: `RegistrationJdbc` is now package-private, and `RegistrationProductionBoundary` exposes only locked results. The existing mock-JDBC test is not a production registration endpoint. A real backend handler MUST NOT call it until durable independent reviewer authorization, tenant RLS, audit and clinical approval exist.
+
+`ReviewEventTransition` accepts NONE→APPROVED→REVOKED only with consecutive versions; it cannot resurrect a revoked decision. `ReviewAuditChain` binds the prior hash, event kind, event version and a SHA-256 binding. It does not persist records, authenticate an event author or substitute for protected audit custody. `ReviewerGrantEpoch` compares a previously trusted session against a current authoritative grant epoch; neither model is an OIDC verifier. `ReviewReadinessReport` always returns an evidence/lock status, never a patient-write permission.
+
+The TypeScript route guard accepts only the exact workforce registration path and capability and rejects query, fragment, encoding and deep-link variations. It is defense in depth: the backend must deny unauthorized existence. Accessible EN/FR status summaries expose no patient identity; the native staff preview remains read-only and never mounts editable demographics. Native lifecycle logic clears volatile drafts on suspension/offline transitions. Screen M01-S02 remains **not implemented** in the canonical register because there is no authenticated, authorized clinical workflow.
+
+`verify_release_gate.py` has a deterministic nonzero release-denial exit code and is wired into the source CI workflow; CI itself was not run. External approval, signed release manifests, OIDC, PostgreSQL, clinical content and device tests are not available. See batch logs, changed manifest, blockers and status. No hospital pilot certification.

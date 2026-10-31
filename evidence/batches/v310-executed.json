@@ -1,0 +1,26 @@
+[
+  {
+    "batch": "P06-B0013",
+    "component": "AppointmentTransactionBoundary",
+    "compile_exit": 0,
+    "compile_stderr": "",
+    "test_exit": 0,
+    "stdout": "PASS fail closed without PostgreSQL\n"
+  },
+  {
+    "batch": "P06-B0014",
+    "component": "AppointmentDigestValidation",
+    "compile_exit": 0,
+    "compile_stderr": "",
+    "test_exit": 0,
+    "stdout": "PASS six digest validation cases\n"
+  },
+  {
+    "batch": "P06-B0015",
+    "component": "AppointmentRevisionValidation",
+    "compile_exit": 0,
+    "compile_stderr": "",
+    "test_exit": 0,
+    "stdout": "PASS five revision cases\n"
+  }
+]

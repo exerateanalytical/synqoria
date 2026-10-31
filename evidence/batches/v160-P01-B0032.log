@@ -1,0 +1,4 @@
+$ python tests/test_v160_release_gate.py
+PASS P01-B0032 release gate denies promotion and validates canonical scope
+
+exit=0

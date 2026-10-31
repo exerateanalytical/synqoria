@@ -1,0 +1,91 @@
+{
+  "checkpoint": "v0.15.0",
+  "base": "v0.14.0",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "results": [
+    {
+      "batch": "P05-B0016",
+      "verified": true,
+      "exit_code": 0,
+      "verification_level": "java_unit",
+      "source": "services/clinical-core/src/main/java/org/synqoria/registration/VerifiedReviewerSession.java",
+      "evidence_log": "evidence/batches/v150-P05-B0016.log"
+    },
+    {
+      "batch": "P05-B0017",
+      "verified": true,
+      "exit_code": 0,
+      "verification_level": "java_unit",
+      "source": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewerSeparationFence.java",
+      "evidence_log": "evidence/batches/v150-P05-B0017.log"
+    },
+    {
+      "batch": "P05-B0018",
+      "verified": true,
+      "exit_code": 0,
+      "verification_level": "java_unit",
+      "source": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewRevocationFence.java",
+      "evidence_log": "evidence/batches/v150-P05-B0018.log"
+    },
+    {
+      "batch": "P05-B0019",
+      "verified": true,
+      "exit_code": 0,
+      "verification_level": "java_unit",
+      "source": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewAuditBinding.java",
+      "evidence_log": "evidence/batches/v150-P05-B0019.log"
+    },
+    {
+      "batch": "P05-B0020",
+      "verified": true,
+      "exit_code": 0,
+      "verification_level": "java_unit",
+      "source": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewApprovalReleaseFence.java",
+      "evidence_log": "evidence/batches/v150-P05-B0020.log"
+    },
+    {
+      "batch": "P05-B0021",
+      "verified": true,
+      "exit_code": 0,
+      "verification_level": "java_unit",
+      "source": "services/clinical-core/src/main/java/org/synqoria/registration/RegistrationReviewPreflight.java",
+      "evidence_log": "evidence/batches/v150-P05-B0021.log"
+    },
+    {
+      "batch": "P02-B0037",
+      "verified": true,
+      "exit_code": 0,
+      "verification_level": "ts_node_unit",
+      "source": "packages/ux-core/src/registration-duplicate-status.ts",
+      "evidence_log": "evidence/batches/v150-P02-B0037.log"
+    },
+    {
+      "batch": "P02-B0038",
+      "verified": true,
+      "exit_code": 0,
+      "verification_level": "ts_node_unit",
+      "source": "packages/ux-core/src/registration-context-fence.ts",
+      "evidence_log": "evidence/batches/v150-P02-B0038.log"
+    },
+    {
+      "batch": "P02-B0039",
+      "verified": true,
+      "exit_code": 0,
+      "verification_level": "ts_node_and_source_static",
+      "source": "packages/ux-core/src/registration-accessible-actions.ts",
+      "evidence_log": "evidence/batches/v150-P02-B0039.log"
+    },
+    {
+      "batch": "P01-B0031",
+      "verified": true,
+      "exit_code": 0,
+      "verification_level": "sql_static_only",
+      "source": "services/clinical-core/db/migration/V008__registration_review_event_quarantine.sql",
+      "evidence_log": "evidence/batches/v150-P01-B0031.log"
+    }
+  ],
+  "clinical_screen_implementation": 0,
+  "clinical_release": "NOT_CERTIFIED",
+  "created_utc": "2026-10-30T01:26:20.494172+00:00"
+}

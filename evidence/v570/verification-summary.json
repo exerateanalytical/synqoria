@@ -1,0 +1,70 @@
+{
+  "checkpoint": "v0.57.0",
+  "parent_sha256": "4ef2562ab35a484122e3ed0089869fc67e790c136c5855e3c500e25a419f9c8d",
+  "certification": "deferred",
+  "actual_verified_batches": 6,
+  "target": 60,
+  "remaining": 54,
+  "test_groups": [
+    {
+      "name": "node_ux",
+      "exit_code": 0,
+      "passed": true,
+      "command": [
+        "npm",
+        "run",
+        "check:ux"
+      ],
+      "evidence": "evidence/v570/final-node_ux.log"
+    },
+    {
+      "name": "canonical",
+      "exit_code": 0,
+      "passed": true,
+      "command": [
+        "npm",
+        "run",
+        "check:registers"
+      ],
+      "evidence": "evidence/v570/final-canonical.log"
+    },
+    {
+      "name": "source",
+      "exit_code": 0,
+      "passed": true,
+      "command": [
+        "npm",
+        "run",
+        "check:source"
+      ],
+      "evidence": "evidence/v570/final-source.log"
+    },
+    {
+      "name": "status_matrix",
+      "exit_code": 0,
+      "passed": true,
+      "command": [
+        "python",
+        "tools/verify_status_matrix.py"
+      ],
+      "evidence": "evidence/v570/final-status_matrix.log"
+    },
+    {
+      "name": "openapi",
+      "exit_code": 0,
+      "passed": true,
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_triage_v570_read_contract.py",
+        "-v"
+      ],
+      "evidence": "evidence/v570/final-openapi.log"
+    }
+  ]
+}

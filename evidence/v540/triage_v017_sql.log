@@ -1,0 +1,17 @@
+test_authoritative_quarantine (test_triage_secure_migration_v520.Tests.test_authoritative_quarantine) ... ok
+test_bypass_not_allowed (test_triage_secure_migration_v520.Tests.test_bypass_not_allowed) ... ok
+test_force_rls_removed (test_triage_secure_migration_v520.Tests.test_force_rls_removed) ... ok
+test_grants_not_allowed (test_triage_secure_migration_v520.Tests.test_grants_not_allowed) ... ok
+test_new_policy_not_allowed (test_triage_secure_migration_v520.Tests.test_new_policy_not_allowed) ... ok
+test_no_plaintext_clinical_text (test_triage_secure_migration_v520.Tests.test_no_plaintext_clinical_text) ... ok
+test_outbox_integrity_link (test_triage_secure_migration_v520.Tests.test_outbox_integrity_link) ... ok
+test_public_revoke_removed (test_triage_secure_migration_v520.Tests.test_public_revoke_removed) ... ok
+test_row_level_security_removed (test_triage_secure_migration_v520.Tests.test_row_level_security_removed) ... ok
+test_scope_pk_required (test_triage_secure_migration_v520.Tests.test_scope_pk_required) ... ok
+test_snapshot_must_be_encrypted (test_triage_secure_migration_v520.Tests.test_snapshot_must_be_encrypted) ... ok
+test_unpublished_index_required (test_triage_secure_migration_v520.Tests.test_unpublished_index_required) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.017s
+
+OK

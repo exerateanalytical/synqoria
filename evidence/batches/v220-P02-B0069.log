@@ -1,0 +1,17 @@
+TAP version 13
+# Subtest: P02-B0069: bilingual safe access statuses never expose clinical identifiers
+ok 1 - P02-B0069: bilingual safe access statuses never expose clinical identifiers
+  ---
+  duration_ms: 0.977906
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 66.760834
+exit=0 P02-B0069

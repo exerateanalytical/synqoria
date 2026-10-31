@@ -1,0 +1,19 @@
+{
+  "batch_id": "P06-B0156",
+  "module": "M03",
+  "phase": "P06",
+  "scope": "AES-256-GCM snapshot envelope and authenticated ciphertext",
+  "implementation": [
+    "services/clinical-core/src/main/java/org/synqoria/triage/TriageEnvelopeCrypto.java"
+  ],
+  "focused_tests": [
+    "evidence/v520/scenario-crypto-roundtrip.log",
+    "evidence/v520/scenario-crypto-random-nonce.log",
+    "evidence/v520/scenario-crypto-tamper.log",
+    "evidence/v520/scenario-crypto-invalid-key.log"
+  ],
+  "verified": true,
+  "verification_scope": "synthetic_java_and_static_source_only",
+  "live_postgresql_tested": false,
+  "clinical_accepted": false
+}

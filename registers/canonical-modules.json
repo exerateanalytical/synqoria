@@ -1,0 +1,328 @@
+{
+  "version": "2.1",
+  "source": "docs/authority/SYNQORIA_Platform_Architecture_v2.1.md",
+  "status": "specified_only",
+  "total_modules": 40,
+  "module_register": [
+    {
+      "id": "M01",
+      "name_and_owned_records": "Patient registration and master identity; identifiers, merge lineage",
+      "owner_and_deployment": "Registration / core",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "provisional → identified → merged; reversible reviewed merge; IDs never reassigned",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M02",
+      "name_and_owned_records": "Appointments and resource scheduling",
+      "owner_and_deployment": "Scheduling / service",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "requested → confirmed → arrived → fulfilled; cancellation/no-show branches; no conflicting reservation",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M03",
+      "name_and_owned_records": "Triage, emergency intake and queues",
+      "owner_and_deployment": "Emergency care / core",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "waiting → assessed → prioritized → assigned → handed-over; reassessment/escalation; priority rules clinically approved",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M04",
+      "name_and_owned_records": "Encounters, admission, transfers, discharge and beds",
+      "owner_and_deployment": "ADT / core",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "planned → active → discharge-planned → discharged; transfer subworkflow; at most one active occupant per bed",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M05",
+      "name_and_owned_records": "Clinical notes, diagnoses and encounter documentation",
+      "owner_and_deployment": "Clinical records / core",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "draft → signed → amended; entered-in-error branch; signed content preserved",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M06",
+      "name_and_owned_records": "Observations, vitals and longitudinal clinical measurements",
+      "owner_and_deployment": "Clinical observations / core",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "captured → verified → corrected; invalidated branch; units/time/source retained",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M07",
+      "name_and_owned_records": "Allergies, intolerances and reconciliation",
+      "owner_and_deployment": "Allergy management / core",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "unassessed → assessed; item statuses independently tracked; no unknown-to-negative inference",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M08",
+      "name_and_owned_records": "Medication prescribing and reconciliation",
+      "owner_and_deployment": "Prescribing / core",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "draft → authorized → held/completed/discontinued; cancellation separate from fulfilment",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M09",
+      "name_and_owned_records": "Medication administration and dose records",
+      "owner_and_deployment": "Nursing medication / core",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "due → checked → administered; omitted/refused/held branches; one effect per dose ID",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M10",
+      "name_and_owned_records": "Nursing care plans, inpatient tasks and handovers",
+      "owner_and_deployment": "Nursing / core",
+      "wave": "B",
+      "minimum_lifecycle_invariant": "planned → assigned → performed → reviewed; handover acknowledged; overdue work visible",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M11",
+      "name_and_owned_records": "Laboratory, specimens and result verification",
+      "owner_and_deployment": "Laboratory / service",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "requested → accepted → collected → received → processed → verified; reject/recollect/amend branches",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M12",
+      "name_and_owned_records": "Imaging, radiology workflow and PACS references",
+      "owner_and_deployment": "Imaging / service",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "requested → scheduled → acquired → reported → verified; amendment and cancellation history",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M13",
+      "name_and_owned_records": "Pharmacy dispensing and medication inventory",
+      "owner_and_deployment": "Pharmacy / service",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "reserve → authorize release → prepare → hand over → reconcile; batch/expiry and quantity traceable",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M14",
+      "name_and_owned_records": "Surgery, theatre, anesthesia and recovery",
+      "owner_and_deployment": "Perioperative care / core extension",
+      "wave": "B",
+      "minimum_lifecycle_invariant": "proposed → booked → pre-op verified → in-procedure → recovery → completed; checklists and consent gates",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M15",
+      "name_and_owned_records": "Blood bank and transfusion",
+      "owner_and_deployment": "Transfusion / service plus bedside core interface",
+      "wave": "B",
+      "minimum_lifecycle_invariant": "collected/received → screened → available → reserved → issued → administered/returned/discarded; patient/unit traceability",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M16",
+      "name_and_owned_records": "Referrals and care transitions",
+      "owner_and_deployment": "Care coordination / core",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "initiated → accepted/rejected → transferred → attended → closed; explicit receiving owner",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M17",
+      "name_and_owned_records": "Specialty clinical packages",
+      "owner_and_deployment": "Specialty leads / core extensions",
+      "wave": "B",
+      "minimum_lifecycle_invariant": "registered → assessed → treatment/follow-up → closed; specialty-specific protocols and records",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M18",
+      "name_and_owned_records": "Patient portal, mobile access and proxy accounts",
+      "owner_and_deployment": "Patient engagement / service",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "invited → verified → active → suspended/closed; independent proxy authorization",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M19",
+      "name_and_owned_records": "Charges, invoices, cashier and payment reconciliation",
+      "owner_and_deployment": "Revenue / service",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "calculated → posted → invoiced → settled; refund/reversal/dispute branches; balanced ledger",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M20",
+      "name_and_owned_records": "Insurance, payer authorization and claims",
+      "owner_and_deployment": "Claims / revenue service",
+      "wave": "B",
+      "minimum_lifecycle_invariant": "eligibility checked → authorized/denied → submitted → adjudicated → settled/appealed; claim version retained",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M21",
+      "name_and_owned_records": "Procurement and supplier management",
+      "owner_and_deployment": "Procurement / service",
+      "wave": "C",
+      "minimum_lifecycle_invariant": "requisition → approved → ordered → received → matched → closed; separation of duties",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M22",
+      "name_and_owned_records": "General stores and non-medication inventory",
+      "owner_and_deployment": "Stores / service",
+      "wave": "B",
+      "minimum_lifecycle_invariant": "receive → quarantine/available → reserve → issue → return/adjust; stock never silently overwritten",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M23",
+      "name_and_owned_records": "Assets, biomedical maintenance and facilities",
+      "owner_and_deployment": "Engineering / service",
+      "wave": "B",
+      "minimum_lifecycle_invariant": "registered → commissioned → active → maintenance → returned/retired; unsafe devices unavailable",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M24",
+      "name_and_owned_records": "Human resources, staffing and payroll",
+      "owner_and_deployment": "HR / service",
+      "wave": "C",
+      "minimum_lifecycle_invariant": "employed → rostered → attendance-approved → payroll-approved → paid; clinical privileges separate",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M25",
+      "name_and_owned_records": "Transport and ambulance coordination",
+      "owner_and_deployment": "Transport / service",
+      "wave": "B",
+      "minimum_lifecycle_invariant": "requested → assigned → dispatched → arrived → completed; cancellation/escalation; handover record",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M26",
+      "name_and_owned_records": "Catering and dietary orders",
+      "owner_and_deployment": "Nutrition operations / service",
+      "wave": "C",
+      "minimum_lifecycle_invariant": "prescribed → checked → prepared → delivered → acknowledged; dietary restrictions reconciled",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M27",
+      "name_and_owned_records": "Mortuary and decedent release",
+      "owner_and_deployment": "Mortuary / service",
+      "wave": "C",
+      "minimum_lifecycle_invariant": "received → identified → stored → release-authorized → released; chain of custody and dual checks",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M28",
+      "name_and_owned_records": "Hospital operations and business intelligence",
+      "owner_and_deployment": "Analytics / read services",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "ingested → validated → published → revised; source freshness and access scope visible",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M29",
+      "name_and_owned_records": "Facility, department, location and service configuration",
+      "owner_and_deployment": "Administration / management plane + local copies",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "draft → reviewed → published → superseded; versioned impact analysis",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M30",
+      "name_and_owned_records": "Terminology, formularies and clinical rule content",
+      "owner_and_deployment": "Clinical informatics / local content service",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "imported → validated → clinically approved → activated → retired/rolled back; version pinned per decision",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M31",
+      "name_and_owned_records": "Forms, templates, documents and signatures",
+      "owner_and_deployment": "Document governance / core + object storage",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "template draft → approved → published; document draft → signed → amended; schema version preserved",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M32",
+      "name_and_owned_records": "Consent, privacy and disclosure governance",
+      "owner_and_deployment": "Privacy / core policy module",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "proposed → verified → active → expired/revoked/superseded; purpose, subject and recipient scope",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M33",
+      "name_and_owned_records": "Identity, access and workforce privileges",
+      "owner_and_deployment": "Security / local-capable IAM",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "invited → verified → credentialed → active → revoked; role/privilege approval and expiry",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M34",
+      "name_and_owned_records": "Audit, provenance and evidence retention",
+      "owner_and_deployment": "Security audit / independent archival",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "captured → sealed → archived → verified; retention/disposal authorized and evidenced",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M35",
+      "name_and_owned_records": "Interoperability and API developer product",
+      "owner_and_deployment": "Integration / service",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "partner onboarded → tested → enabled → suspended → retired; versioned contract and replay controls",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M36",
+      "name_and_owned_records": "Device, analyzer and bedside gateway integration",
+      "owner_and_deployment": "Device integration / local gateways",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "enrolled → mapped → active → quarantined/retired; patient-device association and clock quality",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M37",
+      "name_and_owned_records": "Notifications, communication and escalation",
+      "owner_and_deployment": "Communications / workers",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "queued → delivered → acknowledged; retry/escalate/failed; delivery is not clinical acknowledgement",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M38",
+      "name_and_owned_records": "Offline synchronization and ownership reconciliation",
+      "owner_and_deployment": "Sync operations / cell-local service",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "queued → validated → applied/conflicted → reviewed → reconciled; ownership epoch enforced",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M39",
+      "name_and_owned_records": "Tenant and cell lifecycle, routing and fleet releases",
+      "owner_and_deployment": "Platform operations / management plane",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "provisioning → qualified → active → draining → fenced → migrated/retired; one authoritative placement",
+      "status": "specified_baseline"
+    },
+    {
+      "id": "M40",
+      "name_and_owned_records": "Reliability, backup, recovery and operational telemetry",
+      "owner_and_deployment": "SRE / per-cell agents and operations tools",
+      "wave": "A",
+      "minimum_lifecycle_invariant": "protected → monitored → incident → recovered → verified; independent restore evidence",
+      "status": "specified_baseline"
+    }
+  ]
+}

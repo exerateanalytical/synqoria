@@ -1,0 +1,4 @@
+COMMAND: java -cp <classes> org.synqoria.triage.TriageV56CommandHttpBatchesTest P06-B0348
+EXIT: 0
+STDOUT:
+P06-B0348 PASS assertions=9

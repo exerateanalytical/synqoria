@@ -1,0 +1,18 @@
+{
+  "status": "BLOCKED",
+  "blockers": [
+    "missing_installed_dependency:patient-mobile:expo",
+    "missing_installed_dependency:patient-mobile:react-native",
+    "missing_installed_dependency:staff-mobile:expo",
+    "missing_installed_dependency:staff-mobile:react-native",
+    "missing_installed_dependency:web:next",
+    "missing_installed_dependency:web:react",
+    "missing_installed_dependency:web:react-dom",
+    "missing_or_invalid_lockfile",
+    "missing_root_lockfile"
+  ],
+  "checks": [],
+  "builds_passed": 0,
+  "clinical_release": false,
+  "executed_utc": "2026-10-30T15:04:16.074522+00:00"
+}

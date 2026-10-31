@@ -1,0 +1,48 @@
+{
+  "checkpoint": "0.21.0",
+  "verified_at_utc": "2026-10-30T07:01:08.571309+00:00",
+  "source_sha256": "3a31608bb9a5ba584c20a8187cfc770ce13dd8b5aceaeba7801d1f0799084222",
+  "batches": {
+    "target": 10,
+    "passed": 10,
+    "ids": [
+      "P05-B0033",
+      "P05-B0034",
+      "P05-B0035",
+      "P05-B0036",
+      "P05-B0037",
+      "P02-B0063",
+      "P02-B0064",
+      "P02-B0065",
+      "P02-B0066",
+      "P02-B0067"
+    ]
+  },
+  "new_java_assertions": 26,
+  "new_node_individual_tests": 5,
+  "typescript_node_total_tests": 98,
+  "python_nonbrowser": {
+    "passed": 40,
+    "total": 40
+  },
+  "static_chromium_checks": 48,
+  "java_full_regression_exit": 0,
+  "npm_check_exit": 0,
+  "npm_source_exit": 0,
+  "native_source_integration_exit": 0,
+  "release_lock_exit": 0,
+  "release_request_exit": 3,
+  "release_request_expected_denial": true,
+  "clinical_screens_implemented": 0,
+  "clinical_screens_total": 261,
+  "module_count": 40,
+  "unverified": [
+    "PostgreSQL actual RLS",
+    "IdP/OIDC integration",
+    "Next.js compiled build",
+    "Expo native builds",
+    "physical devices",
+    "clinical approvals",
+    "GitHub push"
+  ]
+}

@@ -1,0 +1,12 @@
+COMMAND ["python", "tools/dependency_compatibility.py"]
+EXIT_CODE 0
+STDOUT
+{
+  "source_pins_consistent": true,
+  "issues": [],
+  "external_compatibility_verified": false,
+  "lockfile_verified": false
+}
+
+STDERR
+

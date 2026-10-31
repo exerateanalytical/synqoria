@@ -1,0 +1,8 @@
+BATCH: P02-B0084
+COMMAND: python tests/test_v250_web_shell.py P02-B0084
+EXIT: 0
+STDOUT:
+PASS P02-B0084 12 Chromium assertions; static specimen and source contract, NOT Next build
+
+STDERR:
+

@@ -1,0 +1,56 @@
+{
+  "checkpoint": "v0.54.0",
+  "release": "DENIED",
+  "next_batch": "P06-B0289",
+  "blockers": [
+    {
+      "id": "M03-DB-LIVE",
+      "severity": "critical",
+      "state": "open",
+      "detail": "No live restricted-role PostgreSQL execution, RLS, concurrency, rollback, backup or failover proof."
+    },
+    {
+      "id": "M03-V016-V017",
+      "severity": "critical",
+      "state": "open",
+      "detail": "V016 legacy and V017 secure schema overlap; no reviewed migration consolidation or production grants/policies. V018 remains quarantined."
+    },
+    {
+      "id": "M03-GENESIS-CHAIN",
+      "severity": "high",
+      "state": "open",
+      "detail": "Genesis event now persisted atomically, but first revision-2 domain chain starts at zero digest rather than genesis event digest; cryptographic continuity review required."
+    },
+    {
+      "id": "M03-HTTP-OBSERVATION",
+      "severity": "high",
+      "state": "open",
+      "detail": "Loopback HTTP transport supports flat typed text/reference/simple commands only; observation payload, intake creation endpoint, and read endpoints are not wired."
+    },
+    {
+      "id": "M03-PRODUCTION-AUTH",
+      "severity": "critical",
+      "state": "open",
+      "detail": "HTTP tests use synthetic OIDC identity source and synthetic clinical evidence; no production issuer, session revocation, MFA or consent authority integrated."
+    },
+    {
+      "id": "M03-KMS",
+      "severity": "critical",
+      "state": "open",
+      "detail": "No production KMS, key rotation, secrets policy, encryption backup restore or crypto destruction verified."
+    },
+    {
+      "id": "M03-CLINICAL-ACCEPTANCE",
+      "severity": "critical",
+      "state": "open",
+      "detail": "0 of 261 screens clinically accepted; 0 of 40 modules certified; no hospital pilot/clinical sign-off."
+    },
+    {
+      "id": "M03-UX-NATIVE",
+      "severity": "high",
+      "state": "open",
+      "detail": "No deployed browser/device builds, full responsive clinical workflow evidence or accessibility acceptance."
+    }
+  ],
+  "note": "Do not infer production readiness from 60 synthetic/static/loopback test passes."
+}

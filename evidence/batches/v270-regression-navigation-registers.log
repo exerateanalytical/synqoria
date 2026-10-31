@@ -1,0 +1,7 @@
+COMMAND ['python', 'tests/test_navigation_contract.py']
+EXIT 0
+EXPECTED 0
+STDOUT
+PASS: 261 honest screen route records, 3 shell roots, 40 module IDs; no false canonical screen implementation claims
+
+STDERR

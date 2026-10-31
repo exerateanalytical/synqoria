@@ -1,0 +1,84 @@
+{
+  "recorded_utc": "2026-10-29T22:38:39.603886+00:00",
+  "scope": "unit/domain/schema/source/syntax and standalone static Chromium specimens ONLY; no Next/Expo/OIDC/DB/HTTP integration",
+  "results": [
+    {
+      "id": "seed-manifest",
+      "command": "python tools/verify_initial_manifest.py",
+      "exit_code": 0,
+      "stdout": "PASS: 19 original seed ZIP entries match embedded SHA-256 manifest\n",
+      "stderr": ""
+    },
+    {
+      "id": "canonical-register",
+      "command": "python tests/test_baseline.py",
+      "exit_code": 0,
+      "stdout": "PASS: planning integrity, 40 unique modules, 261 unique canonical screens, 20 phases, non-fabricated code statuses\n",
+      "stderr": ""
+    },
+    {
+      "id": "route-integrity",
+      "command": "python tests/test_navigation_contract.py",
+      "exit_code": 0,
+      "stdout": "PASS: 261 honest screen route records, 3 shell roots, 40 module IDs; no false canonical screen implementation claims\n",
+      "stderr": ""
+    },
+    {
+      "id": "ux-typescript-node",
+      "command": "npm run check:ux",
+      "exit_code": 0,
+      "stdout": "\n> synqoria@0.3.0 check:ux\n> tsc -p packages/ux-core/tsconfig.json && node --test packages/ux-core/tests/*.test.cjs\n\nTAP version 13\n# Subtest: EN/FR dictionary is complete and does not return missing interface copy\nok 1 - EN/FR dictionary is complete and does not return missing interface copy\n  ---\n  duration_ms: 1.334305\n  type: 'test'\n  ...\n# Subtest: every navigation workspace has usable translations\nok 2 - every navigation workspace has usable translations\n  ---\n  duration_ms: 0.308777\n  type: 'test'\n  ...\n# Subtest: exact routing denies ungranted, unlicensed, wrong-shell and arbitrary descendants\nok 3 - exact routing denies ungranted, unlicensed, wrong-shell and arbitrary descendants\n  ---\n  duration_ms: 0.979049\n  type: 'test'\n  ...\n# Subtest: shell identification does not confuse similar routes\nok 4 - shell identification does not confuse similar routes\n  ---\n  duration_ms: 0.155891\n  type: 'test'\n  ...\n# Subtest: both mobile shells keep four translated, distinct destinations\nok 5 - both mobile shells keep four translated, distinct destinations\n  ---\n  duration_ms: 0.276239\n  type: 'test'\n  ...\n# Subtest: approved colour pairs meet 4.5:1 text contrast\nok 6 - approved colour pairs meet 4.5:1 text contrast\n  ---\n  duration_ms: 1.00009\n  type: 'test'\n  ...\n# Subtest: design tokens preserve approved palette\nok 7 - design tokens preserve approved palette\n  ---\n  duration_ms: 0.172406\n  type: 'test'\n  ...\n# Subtest: navigation only includes licensed and granted stable workspace roots\nok 8 - navigation only includes licensed and granted stable workspace roots\n  ---\n  duration_ms: 0.650914\n  type: 'test'\n  ...\n# Subtest: sidebar roots contain no details/edit/create routes or duplicate paths\nok 9 - sidebar roots contain no details/edit/create routes or duplicate paths\n  ---\n  duration_ms: 0.208238\n  type: 'test'\n  ...\n# Subtest: native mobile navigation has four labelled destinations and More\nok 10 - native mobile navigation has four labelled destinations and More\n  ---\n  duration_ms: 0.14231\n  type: 'test'\n  ...\n# Subtest: unsaved patient switch requires decision; clean switch reauthorizes and clears cache\nok 11 - unsaved patient switch requires decision; clean switch reauthorizes and clears cache\n  ---\n  duration_ms: 0.122431\n  type: 'test'\n  ...\n# Subtest: synchronization labels distinguish outcome unknown from confirmed success\nok 12 - synchronization labels distinguish outcome unknown from confirmed success\n  ---\n  duration_ms: 0.110153\n  type: 'test'\n  ...\n1..12\n# tests 12\n# suites 0\n# pass 12\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 56.499917\n",
+      "stderr": ""
+    },
+    {
+      "id": "tsx-syntax-only",
+      "command": "node tests/test_tsx_syntax.cjs",
+      "exit_code": 0,
+      "stdout": "PASS: 3 TSX syntax-only parses; NO dependency/type/native build assertions\n",
+      "stderr": ""
+    },
+    {
+      "id": "web-shell-source",
+      "command": "python tests/test_shell_sources.py",
+      "exit_code": 0,
+      "stdout": "PASS: bilingual, denied-by-default web shell and restrained responsive style source assertions\n",
+      "stderr": ""
+    },
+    {
+      "id": "source-style",
+      "command": "python tests/test_source_safety.py",
+      "exit_code": 0,
+      "stdout": "PASS: static design prohibitions, native shell source and 3 web shell sources\n",
+      "stderr": ""
+    },
+    {
+      "id": "openapi-parse",
+      "command": "python tests/test_contract.py",
+      "exit_code": 0,
+      "stdout": "PASS: draft OpenAPI YAML parsed; secured patient path, 404 nondisclosure and placeholder identity endpoints\n",
+      "stderr": ""
+    },
+    {
+      "id": "java-domain-policy",
+      "command": "bash tools/check_java_security.sh",
+      "exit_code": 0,
+      "stdout": "PASS: 11 Java tenant/facility/patient scope assertions\nPASS: 19 Java clinical proof assertions; NO OIDC/database clinical authorization integration\n",
+      "stderr": ""
+    },
+    {
+      "id": "chromium-legacy-static-preview",
+      "command": "python tests/test_preview_browser.py",
+      "exit_code": 0,
+      "stdout": "PASS: 10 Chromium preview checks (9 widths plus 200% text simulation)\n",
+      "stderr": ""
+    },
+    {
+      "id": "chromium-bilingual-static-specimen",
+      "command": "python tests/test_i18n_preview_browser.py",
+      "exit_code": 0,
+      "stdout": "PASS: 19 static Chromium bilingual/viewport checks; NOT an application build\n",
+      "stderr": ""
+    }
+  ],
+  "all_passed": true
+}

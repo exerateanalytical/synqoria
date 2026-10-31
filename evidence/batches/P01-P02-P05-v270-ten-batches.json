@@ -1,0 +1,222 @@
+{
+  "version": "0.27.0",
+  "source_checkpoint": "v0.26.0",
+  "executed_utc": "2026-10-30T13:00:09.481375+00:00",
+  "target": 10,
+  "completed": 10,
+  "scope": "source/unit/mock JDBC and static Chromium; NO Next/Expo app builds, PostgreSQL or clinical acceptance",
+  "batches": [
+    {
+      "id": "P01-B0039",
+      "scope": "exact external dependency pins, staff/patient Expo manifest coherence; compatibility still unverified",
+      "argv": [
+        "python",
+        "tests/test_v270_engineering.py",
+        "Engineering.test_pins",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_pins (__main__.Engineering.test_pins) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.002s\n\nOK\n",
+      "specified": true,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P01-B0040",
+      "scope": "strict lockfile workspace, SHA512 and trusted resolution validation; missing real lock blocks builds",
+      "argv": [
+        "python",
+        "tests/test_v270_engineering.py",
+        "Engineering.test_lock_integrity",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_lock_integrity (__main__.Engineering.test_lock_integrity) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.005s\n\nOK\n",
+      "specified": true,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P01-B0041",
+      "scope": "real Next/Expo build command orchestrator with blocked prerequisite evidence",
+      "argv": [
+        "python",
+        "tests/test_v270_engineering.py",
+        "Engineering.test_build_attempt_fail_closed",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_build_attempt_fail_closed (__main__.Engineering.test_build_attempt_fail_closed) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nOK\n",
+      "specified": true,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P01-B0042",
+      "scope": "cumulative ZIP path, membership and digest verification against tampering",
+      "argv": [
+        "python",
+        "tests/test_v270_engineering.py",
+        "Engineering.test_archive_integrity",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_archive_integrity (__main__.Engineering.test_archive_integrity) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.002s\n\nOK\n",
+      "specified": true,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P02-B0089",
+      "scope": "web More keyboard focus, Escape/outside dismissal and capability-locked navigation",
+      "argv": [
+        "python",
+        "tests/test_v270_shell_sources.py",
+        "Shell.test_more_focus",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_more_focus (__main__.Shell.test_more_focus) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+      "specified": true,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P02-B0090",
+      "scope": "responsive fixed mobile More disclosure, safe scrolling and focus; Chromium static specimen",
+      "argv": [
+        "python",
+        "tests/test_v270_browser.py",
+        "P02-B0090"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS P02-B0090 9 Chromium static CSS/specimen assertions; NO Next.js build\n",
+      "stderr": "",
+      "specified": true,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P02-B0091",
+      "scope": "EN/FR URL propagation between three web shells without persisting clinical state",
+      "argv": [
+        "python",
+        "tests/test_v270_shell_sources.py",
+        "Shell.test_locale_propagation",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_locale_propagation (__main__.Shell.test_locale_propagation) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+      "specified": true,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P02-B0092",
+      "scope": "Chromium nine-width French, 200% typography, locked action and four mobile destinations; static specimen",
+      "argv": [
+        "python",
+        "tests/test_v270_browser.py",
+        "P02-B0092"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS P02-B0092 29 Chromium static CSS/specimen assertions; NO Next.js build\n",
+      "stderr": "",
+      "specified": true,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P05-B0062",
+      "scope": "tenant/facility scoped event-audit-outbox integrity reconciliation; mock JDBC",
+      "argv": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-v27-classes",
+        "org.synqoria.registration.V270EvidenceReconciliationTest",
+        "P05-B0062"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS P05-B0062 mock JDBC assertions; NO live PostgreSQL or clinical authority\n",
+      "stderr": "",
+      "specified": true,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false
+    },
+    {
+      "id": "P05-B0063",
+      "scope": "serializable tenant/facility reviewer command replay preflight; mock JDBC only",
+      "argv": [
+        "java",
+        "-ea",
+        "-cp",
+        "/tmp/synqoria-v27-classes",
+        "org.synqoria.registration.V270EvidenceReconciliationTest",
+        "P05-B0063"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS P05-B0063 mock JDBC assertions; NO live PostgreSQL or clinical authority\n",
+      "stderr": "",
+      "specified": true,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false
+    }
+  ]
+}

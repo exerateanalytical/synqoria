@@ -1,0 +1,20 @@
+$ node --test --test-name-pattern P02-B0046 packages/ux-core/tests/v170-navigation-privacy.test.cjs
+TAP version 13
+# Subtest: P02-B0046 mobile foreground cannot reuse a stale protected-view generation
+ok 1 - P02-B0046 mobile foreground cannot reuse a stale protected-view generation
+  ---
+  duration_ms: 0.756404
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 64.03254
+
+
+exit=0

@@ -1,0 +1,6 @@
+COMMAND ['tsc', '-p', 'packages/ux-core/tsconfig.json']
+EXIT 0
+EXPECTED 0
+STDOUT
+
+STDERR

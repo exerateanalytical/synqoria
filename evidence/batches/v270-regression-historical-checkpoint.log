@@ -1,0 +1,7 @@
+COMMAND ['python', 'tests/test_v240_checkpoint.py']
+EXIT 0
+EXPECTED 0
+STDOUT
+PASS historical v0.24.0 evidence in current 0.27.0 checkpoint; 40 modules; 261 screens; release denied
+
+STDERR

@@ -1,0 +1,6 @@
+$ python tests/test_v240_browser.py P02-B0078
+exit_code=0
+stdout:
+PASS P02-B0078 7 Chromium assertions (static interactive specimen; NOT compiled Next.js)
+
+stderr:

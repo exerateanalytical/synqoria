@@ -1,0 +1,93 @@
+{
+  "checkpoint": "0.21.0",
+  "source_checkpoint": "0.20.0",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "results": [
+    {
+      "batch": "P05-B0033",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v210-P05-B0033.log",
+      "scope": "Immutable, separated-reviewer, tenant/facility/candidate/command/revision bound command envelope",
+      "verification_level": "java_unit"
+    },
+    {
+      "batch": "P05-B0034",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v210-P05-B0034.log",
+      "scope": "Fail-closed idempotency replay classification distinguishing same request, conflict and cross-scope",
+      "verification_level": "java_unit"
+    },
+    {
+      "batch": "P05-B0035",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v210-P05-B0035.log",
+      "scope": "Sequential review-event snapshot validation; no gap or revocation resurrection",
+      "verification_level": "java_unit"
+    },
+    {
+      "batch": "P05-B0036",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v210-P05-B0036.log",
+      "scope": "JDBC transaction preflight rejects closed/autocommit/read-only/non-serializable connections; no live DB",
+      "verification_level": "java_unit"
+    },
+    {
+      "batch": "P05-B0037",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v210-P05-B0037.log",
+      "scope": "Audit/outbox metadata linkage preflight; no durable outbox execution",
+      "verification_level": "java_unit"
+    },
+    {
+      "batch": "P02-B0063",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v210-P02-B0063.log",
+      "scope": "Locked native root/deep-link navigation classifier, fail closed even for known roots",
+      "verification_level": "typescript_node_unit"
+    },
+    {
+      "batch": "P02-B0064",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v210-P02-B0064.log",
+      "scope": "Short-lived context-epoch bound native return ticket validation",
+      "verification_level": "typescript_node_unit"
+    },
+    {
+      "batch": "P02-B0065",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v210-P02-B0065.log",
+      "scope": "Bilingual screen-reader locked-state announcement with font scaling, wired into two native shells",
+      "verification_level": "typescript_node_unit"
+    },
+    {
+      "batch": "P02-B0066",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v210-P02-B0066.log",
+      "scope": "Native background/foreground epoch invalidation for stale authorization",
+      "verification_level": "typescript_node_unit"
+    },
+    {
+      "batch": "P02-B0067",
+      "verified": true,
+      "exit_code": 0,
+      "evidence_log": "evidence/batches/v210-P02-B0067.log",
+      "scope": "Explicit native offline clinical-mutation deny policy, wired into two native shells",
+      "verification_level": "typescript_node_unit"
+    }
+  ],
+  "limitations": [
+    "No live PostgreSQL or RLS execution",
+    "No compiled Next.js or Expo app",
+    "No clinical approval or production release"
+  ]
+}

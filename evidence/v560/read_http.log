@@ -1,0 +1,7 @@
+COMMAND: java -cp /mnt/data/synqoria_v56_classes org.synqoria.triage.TriageReadHttpIntegrationTest
+EXIT: 0
+
+STDOUT:
+TRIAGE_READ_HTTP PASS assertions=45
+
+STDERR:

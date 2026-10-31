@@ -1,0 +1,8 @@
+BATCH: P05-B0057
+COMMAND: java -ea -cp /tmp/synqoria-v25-classes org.synqoria.registration.V250ReviewTransactionTest P05-B0057
+EXIT: 0
+STDOUT:
+PASS P05-B0057 14 mock-JDBC assertions; no live PostgreSQL/clinical authorization
+
+STDERR:
+

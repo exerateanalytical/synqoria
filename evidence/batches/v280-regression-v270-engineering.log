@@ -1,0 +1,11 @@
+COMMAND ["python", "tests/test_v270_engineering.py"]
+EXIT_CODE 0
+STDOUT
+
+STDERR
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.008s
+
+OK
+

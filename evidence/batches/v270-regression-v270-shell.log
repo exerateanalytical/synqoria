@@ -1,0 +1,13 @@
+COMMAND ['python', 'tests/test_v270_shell_sources.py', '-v']
+EXIT 0
+EXPECTED 0
+STDOUT
+
+STDERR
+test_locale_propagation (__main__.Shell.test_locale_propagation) ... ok
+test_more_focus (__main__.Shell.test_more_focus) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK

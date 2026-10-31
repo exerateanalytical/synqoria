@@ -1,0 +1,4 @@
+$ java -ea -cp /mnt/data/synqoria_v19/classes org.synqoria.registration.V190ReviewScopeTest
+PASS P05-B0028 8 scope checks
+
+exit=0 P05-B0028

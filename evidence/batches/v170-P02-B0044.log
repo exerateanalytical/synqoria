@@ -1,0 +1,20 @@
+$ node --test --test-name-pattern P02-B0044 packages/ux-core/tests/v170-navigation-privacy.test.cjs
+TAP version 13
+# Subtest: P02-B0044 strict private navigation rejects patient ids, open redirects, mixed shell and encoded paths
+ok 1 - P02-B0044 strict private navigation rejects patient ids, open redirects, mixed shell and encoded paths
+  ---
+  duration_ms: 1.015992
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 61.71204
+
+
+exit=0

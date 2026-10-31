@@ -1,0 +1,7 @@
+COMMAND: java -cp /mnt/data/synqoria_v56_classes org.synqoria.triage.TriagePersistenceIntegrationTest
+EXIT: 0
+
+STDOUT:
+TRIAGE_V520_TRANSACTION_TEST_PASS checks=49 audit=3 outbox=3
+
+STDERR:

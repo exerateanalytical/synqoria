@@ -1,0 +1,13 @@
+{
+  "version": "0.47.0",
+  "run_target": 60,
+  "new_batched_verified": 15,
+  "parallel_batched_reconciled_not_double_counted": 2,
+  "run_target_remaining": 45,
+  "next_batch": "P06-B0087",
+  "release": "DENIED",
+  "canonical_modules": 40,
+  "canonical_screens": 261,
+  "clinically_accepted_screens": 0,
+  "certified_modules": 0
+}

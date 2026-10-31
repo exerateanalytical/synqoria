@@ -1,0 +1,48 @@
+{
+  "checkpoint": "v0.23.0",
+  "source": "v0.22.0 conversation artifact",
+  "source_sha256": "2aa64f0760686f0bc0ea8ae1c7e777f9f6f7d4d08a8af72634b20b9c06d8578f",
+  "source_manifest_entries_verified": 671,
+  "batches": {
+    "target": 10,
+    "individually_verified": 10,
+    "failed": 0
+  },
+  "regressions": {
+    "node": {
+      "passed": 108,
+      "total": 108,
+      "exit": 0
+    },
+    "java_security_suite": {
+      "pass_lines": 85,
+      "exit": 0
+    },
+    "new_java_assertions": 27,
+    "python": {
+      "passed": 45,
+      "total": 45
+    },
+    "static_chromium": {
+      "passed": 48,
+      "total": 48
+    },
+    "typescript_ux_core": "pass",
+    "tsx_syntax": "pass",
+    "release_denial": "pass_release_refused"
+  },
+  "clinical_screens": {
+    "canonical": 261,
+    "implemented": 0,
+    "accepted": 0
+  },
+  "modules": 40,
+  "phase_certifications": 0,
+  "compiled_next_expo": false,
+  "real_postgresql": false,
+  "production_oidc": false,
+  "mobile_device_tests": false,
+  "clinical_signoffs": false,
+  "github_push": false,
+  "library_persisted": false
+}

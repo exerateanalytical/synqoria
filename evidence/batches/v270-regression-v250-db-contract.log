@@ -1,0 +1,7 @@
+COMMAND ['python', 'tests/test_v250_review_audit_ddl.py']
+EXIT 0
+EXPECTED 0
+STDOUT
+PASS P05-B0053 9 DDL static checks; migration UNAPPLIED
+
+STDERR

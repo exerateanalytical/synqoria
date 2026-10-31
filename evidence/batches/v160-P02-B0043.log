@@ -1,0 +1,4 @@
+$ python tests/test_v160_native_integration.py
+PASS P02-B0043 native source integration; source-only, not Expo build
+
+exit=0

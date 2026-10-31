@@ -1,0 +1,125 @@
+{
+  "checkpoint": "v0.11.0",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "results": [
+    {
+      "batch": "P01-B0024",
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/http/PatientReadPort.java",
+        "services/clinical-core/src/main/java/org/synqoria/http/JdbcPatientReadPort.java"
+      ],
+      "test_entry": "org.synqoria.integration.V110IntegrationTest P01-B0024",
+      "verification_scope": "java_mock_jdbc_or_loopback"
+    },
+    {
+      "batch": "P01-B0025",
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/http/ClinicalHttpGateway.java",
+        "services/clinical-core/src/main/java/org/synqoria/http/ClinicalResponse.java"
+      ],
+      "test_entry": "org.synqoria.integration.V110IntegrationTest P01-B0025",
+      "verification_scope": "java_mock_jdbc_or_loopback"
+    },
+    {
+      "batch": "P01-B0026",
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/http/IntegrationReadiness.java"
+      ],
+      "test_entry": "org.synqoria.integration.V110IntegrationTest P01-B0026",
+      "verification_scope": "java_mock_jdbc_or_loopback"
+    },
+    {
+      "batch": "P01-B0027",
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/http/ClinicalPayload.java"
+      ],
+      "test_entry": "org.synqoria.integration.V110IntegrationTest P01-B0027",
+      "verification_scope": "java_mock_jdbc_or_loopback"
+    },
+    {
+      "batch": "P02-B0024",
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "source_files": [
+        "packages/ux-core/src/scoped-clinical-store.ts"
+      ],
+      "test_entry": "packages/ux-core/tests/v110-batches.test.cjs",
+      "verification_scope": "typescript_unit_and_native_source"
+    },
+    {
+      "batch": "P02-B0025",
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "source_files": [
+        "packages/ux-core/src/patient-read-pipeline.ts"
+      ],
+      "test_entry": "packages/ux-core/tests/v110-batches.test.cjs",
+      "verification_scope": "typescript_unit_and_native_source"
+    },
+    {
+      "batch": "P02-B0026",
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "source_files": [
+        "packages/ux-core/src/mobile-shell-tabs.ts",
+        "apps/staff-mobile/App.tsx",
+        "apps/patient-mobile/App.tsx"
+      ],
+      "test_entry": "packages/ux-core/tests/v110-batches.test.cjs",
+      "verification_scope": "typescript_unit_and_native_source"
+    },
+    {
+      "batch": "P03-B0015",
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/security/ProductionAdmissionBoundary.java",
+        "services/clinical-core/src/main/java/org/synqoria/http/BearerAdmission.java"
+      ],
+      "test_entry": "org.synqoria.integration.V110IntegrationTest P03-B0015",
+      "verification_scope": "java_mock_jdbc_or_loopback"
+    },
+    {
+      "batch": "P03-B0016",
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/security/PatientDisclosureFence.java"
+      ],
+      "test_entry": "org.synqoria.integration.V110IntegrationTest P03-B0016",
+      "verification_scope": "java_mock_jdbc_or_loopback"
+    },
+    {
+      "batch": "P04-B0011",
+      "verified": true,
+      "exit_code": 0,
+      "not_clinically_certified": true,
+      "source_files": [
+        "services/clinical-core/src/main/java/org/synqoria/facility/JdbcFacilityGate.java",
+        "services/clinical-core/src/main/java/org/synqoria/http/FacilityAccessPort.java",
+        "services/clinical-core/src/main/java/org/synqoria/http/JdbcFacilityAccessPort.java"
+      ],
+      "test_entry": "org.synqoria.integration.V110IntegrationTest P04-B0011",
+      "verification_scope": "java_mock_jdbc_or_loopback"
+    }
+  ],
+  "caveat": "Real PostgreSQL, cryptographic OIDC provider, native app build, real Next.js route are NOT tested. Auth fixture is test-only."
+}

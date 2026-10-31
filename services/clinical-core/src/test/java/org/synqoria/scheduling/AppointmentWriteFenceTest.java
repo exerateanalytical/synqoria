@@ -1,0 +1,2 @@
+package org.synqoria.scheduling;
+import java.sql.*;import java.lang.reflect.*;public final class AppointmentWriteFenceTest {public static void main(String[]x)throws Exception{Connection c=(Connection)Proxy.newProxyInstance(Connection.class.getClassLoader(),new Class[]{Connection.class},(p,m,a)->m.getName().equals("getAutoCommit")?false:m.getName().equals("getTransactionIsolation")?Connection.TRANSACTION_SERIALIZABLE:null);AppointmentWriteFence.require(c);try{AppointmentWriteFence.require(null);throw new AssertionError();}catch(SQLException ok){}}}

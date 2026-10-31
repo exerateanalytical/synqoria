@@ -1,0 +1,14 @@
+{
+  "version": "0.44.0",
+  "batch_ids": [
+    "P06-B0065",
+    "P06-B0066",
+    "P06-B0067",
+    "P06-B0068",
+    "P06-B0069"
+  ],
+  "status": "implemented_and_static_tested_only",
+  "integration_tested": false,
+  "clinically_accepted": false,
+  "next_batch": "P06-B0070"
+}

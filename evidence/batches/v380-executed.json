@@ -1,0 +1,9 @@
+[
+  {
+    "batch": "P06-B0041",
+    "compile_exit": 0,
+    "test_exit": 0,
+    "stdout": "PASS P06-B0041 assertions=14\n",
+    "assertions": 14
+  }
+]

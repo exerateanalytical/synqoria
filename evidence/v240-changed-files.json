@@ -1,0 +1,225 @@
+{
+  "source": "v0.23.0",
+  "checkpoint": "v0.24.0",
+  "changed": [
+    {
+      "path": "package.json",
+      "before": "58526031712df49f1db11e588223ffd2b361df7ba622d8f9673627dd76b6e4ad",
+      "after": "53d3123a3f3505c07f567ac6d20a09ac5df2c5e408abcabe355a4de364089162"
+    },
+    {
+      "path": "README.md",
+      "before": "54962618cd5d997eeea51b7bb32f8148a1d61168598852eea10ec6b7960497e2",
+      "after": "df958a08284b3213e0ad50d075207b8318d67fd00863ebdd2cbd984e2966a8d6"
+    },
+    {
+      "path": "registers/module-status-matrix.json",
+      "before": "b3a7941fa15ddf7aa75cd73eced7dbd394baddea90555a0a4f6e75a2c6db4208",
+      "after": "a5d34d905f1111399b2a27b3221959448f9e263409f5c6f45b2773b07fa638a8"
+    },
+    {
+      "path": "registers/screen-status-matrix.json",
+      "before": "96e560964498c452a5d2249d549f03483794037431b697bfb98ef8d12239f051",
+      "after": "d987c41a8356b6aee2a9be2b2704f8ac7aba9bff34e1c292e49a51376b9a501f"
+    },
+    {
+      "path": "registers/batch-ledger.json",
+      "before": "ba27ac82a6c9402b843975f07d75234925d40345d0bb70c8582f74d60bcc4876",
+      "after": "ceffff388411d4e60a6be8b6dd34716ae7eb7dfe50fc36bca3c2ee6f039c80a3"
+    },
+    {
+      "path": "registers/phases.json",
+      "before": "b0dba14cb7ec96c495e4d0a06296a2b271aef363a70ed5047b9e7258d01a4dc1",
+      "after": "d0a483f0c5533add35c483116ec8df9d8bedffae4805a887bef61fafb7e14626"
+    },
+    {
+      "path": "registers/blockers.json",
+      "before": "a6c5c43c2a3dbfb3c3f7ca6e48b10f4fb8f02cfd93685a4eba3854c525b19ea4",
+      "after": "be3a273287cf9714f2bd19e471f24fddcc37d7cec5914b47a100772db90a4228"
+    },
+    {
+      "path": "docs/program/STATUS.md",
+      "before": "046f4e3cdac2ade5111bc8e4b55b956dbcc2501ae3fa13c680f3a9ea9dd74041",
+      "after": "330ff1cda0f2444c5cb8431600fcf2d886545eb9f9cab55742fcf79614a2bb6f"
+    },
+    {
+      "path": "packages/ux-core/package.json",
+      "before": "873b21cbc138de04072e387aaf9dc91c050190379c6f5e9e68bd3e9790e34f82",
+      "after": "b49e5cceb82b126679aaf655527027deeeeae30e19a45da6434cb8dff7205508"
+    },
+    {
+      "path": "evidence/batches/P02-B0002-fr-390.png",
+      "before": "8a285655194bcf0245488547396a433f1bc8842cbb335943a174d9e62a8b0e0c",
+      "after": "9d49e1b05344e9c8d229318e3c7c75a145bdd888a53c61871671293067312883"
+    },
+    {
+      "path": "evidence/batches/P02-B0001-preview-390.png",
+      "before": "c3ed15a433e5ea033f695662217f4844f9d7a7c75422e252218121ac75054d9a",
+      "after": "abd656f77c33dd8cd12728354bca6c752beb9dc50647f306882828708ca645c2"
+    },
+    {
+      "path": "apps/staff-mobile/package.json",
+      "before": "c88fc5c18112d1bf2db89d8905f1cea67823b4a07b94e881124ff3e3528a293a",
+      "after": "711d4f3ce43a1456a2f4d4700b57a7f256b26e22137a6223f54de0a3f26f1c72"
+    },
+    {
+      "path": "apps/patient-mobile/package.json",
+      "before": "bd77d3802c9a8a9ca45bf6585005f8af47612b5a2b820f80c8eaa0bfa9ef4396",
+      "after": "2d932af50841815840a2284276e54f47c5ab545aa9036543337133c806ed4506"
+    },
+    {
+      "path": "apps/web/package.json",
+      "before": "faef5f7ce863a82e6bd311bc909530538f6c61f4e02218011d52999a16d22342",
+      "after": "027588ffba351dc01fe7ed629ddf7823df71cff9ae707c1c6bb1da60ad99ed53"
+    },
+    {
+      "path": "apps/web/app/globals.css",
+      "before": "eb1819845998eebf54dbcde8110c32c68a48ae5a3aa91ae77eb29a6f20d3958e",
+      "after": "3885382280934e7df34275cfa088d7bb2fb8e0191b3af26da1a1dcc2e7cf9fea"
+    },
+    {
+      "path": "apps/web/components/ShellFrame.tsx",
+      "before": "7f9a3cfe5ce8c41c1af6dfc1177fad325453ccd0555df3628352e6be81f30298",
+      "after": "f04bdff7f34172406248f77ad13beca9f8809a9ba82facef5e75fc2666a5f79d"
+    }
+  ],
+  "added": [
+    {
+      "path": "tests/test_v240_browser.py",
+      "sha256": "9ba784dfad141c026c2e340e6bd871da45e367feaee6f0f8a28640d8f9eed489"
+    },
+    {
+      "path": "tests/test_v240_checkpoint.py",
+      "sha256": "81efeb85eaa0dd6dc5127cea934154fed89bcd1a73d25c2942f29e154e64e06a"
+    },
+    {
+      "path": "preview/operational-shell.html",
+      "sha256": "4a53b37e1594913e4fc3110d7878d3358be3839d2b5a9ac457b8258bed7000ac"
+    },
+    {
+      "path": "docs/program/V024_REVIEW_JDBC_AND_WEB_SHELL.md",
+      "sha256": "a345b30fe48935fdf6494b7b9ddf6e6727654f833b0e4f477c4a70ac0d53eee2"
+    },
+    {
+      "path": "evidence/batches/v240-P05-B0052.log",
+      "sha256": "2c2ba64544e4c78627875202e3959e2aee61b57b0efdb640467d3c51395d5499"
+    },
+    {
+      "path": "evidence/batches/v240-locked-shell-1440.png",
+      "sha256": "bcc28829ed62799bb8ba06a5bba1dd0d107a3a0c61608d949b5a64eaa58a4f1a"
+    },
+    {
+      "path": "evidence/batches/v240-P05-B0048.log",
+      "sha256": "c59bafefab9e72e8fb0284a095436aa27e68634324dc71b4b2ce191ee1987c58"
+    },
+    {
+      "path": "evidence/batches/v240-regressions.json",
+      "sha256": "d92a5d2921b6e284a110bbb976798be61551ad6d2255ff78c38243be9a070918"
+    },
+    {
+      "path": "evidence/batches/v240-java-regression.log",
+      "sha256": "bbd213aac4b4273e7e1cc5c81f8599b0499d7cd5ce3b8804646c27f7cb2d7479"
+    },
+    {
+      "path": "evidence/batches/v240-P02-B0082.log",
+      "sha256": "09a87d6dabbbbb908cab1853fc69e7133b5c21ada695cec0fb690f4b9a824186"
+    },
+    {
+      "path": "evidence/batches/v240-P05-B0049.log",
+      "sha256": "cf99c973f1346fc5d52b7e3291167cd40e3bfddaef0136712924c75066de7d87"
+    },
+    {
+      "path": "evidence/batches/v240-github.json",
+      "sha256": "0624ea904a4fe146611c52cb4336ff2c0c16eee606e6f3ed7a6b5ee0a377b250"
+    },
+    {
+      "path": "evidence/batches/v240-P02-B0081.log",
+      "sha256": "d91b7f315df04c048eae8615df3b5ad5ef446062b0ec13171a6712dda5e7dd67"
+    },
+    {
+      "path": "evidence/batches/v240-P02-B0079.log",
+      "sha256": "27648c119fdbee46a170d608b77b620fa8c9505ed1c53cab026e1f1c7864530e"
+    },
+    {
+      "path": "evidence/batches/v240-persistence.json",
+      "sha256": "0bb96db6e649efcbb71b6f34b8ef52f4bf3258593c7d9db7d559ce013e3df202"
+    },
+    {
+      "path": "evidence/batches/v240-npm-check.log",
+      "sha256": "f1638424c2655176821b6042a22ee0a9c9027b865e131191c42b63bf28824bc3"
+    },
+    {
+      "path": "evidence/batches/v240-browser-inherited.log",
+      "sha256": "281235ecb76aa066a72c9550c66c231d5b0de2679249a4972a9aead3784a6a2e"
+    },
+    {
+      "path": "evidence/batches/v240-P05-B0051.log",
+      "sha256": "047473ad60d1cf42bf652588e63dc3c36a871d4af59f99295aada962f0846882"
+    },
+    {
+      "path": "evidence/batches/v240-source-check.log",
+      "sha256": "d7ab7c78331b761077f14ffe9e1e7228fd17a60a1ae2bd2e8fc260fe0094f7c6"
+    },
+    {
+      "path": "evidence/batches/v240-locked-shell-390.png",
+      "sha256": "c3718beca4151dee8467356a7ed068d9cfbc891f458c386df855714bb76e16da"
+    },
+    {
+      "path": "evidence/batches/v240-P02-B0078.log",
+      "sha256": "549a3193b7ee69c0f16704dbffef918c1bf0bb177984628e4be2084682f57d50"
+    },
+    {
+      "path": "evidence/batches/P02-P05-v240-ten-batches.json",
+      "sha256": "c1e2933fe8add1e9354c7f5917a4d2bcf939a8b7496e8bf9ff468c6feb1e62f2"
+    },
+    {
+      "path": "evidence/batches/v240-P02-B0080.log",
+      "sha256": "786305feba9ae74b6c74456c4dfdb71b9627803df28480d22ec2ef555d951c5d"
+    },
+    {
+      "path": "evidence/batches/v240-P05-B0050.log",
+      "sha256": "dc7e5cb49a3e390fae3911b82c687cab952addfd0a105b198a1ed4b9409b7f37"
+    },
+    {
+      "path": "evidence/batches/v240-release-denied.log",
+      "sha256": "0dc5754545fa683cfd4875d8970166a94757db2a98748312173e6f47623940b9"
+    },
+    {
+      "path": "evidence/batches/v240-i18n-inherited.log",
+      "sha256": "b6d8426781b079e2fa3d285e70635dd489b3fab8570ccf11cfe7a2e04f55ccbb"
+    },
+    {
+      "path": "evidence/batches/v240-npm-connectivity.log",
+      "sha256": "fbb03619d032715080d9bb38f798864c661642075327206c4e3d5429f3c28c5a"
+    },
+    {
+      "path": "evidence/batches/v240-locked-shell-320.png",
+      "sha256": "1c672dda513ff6adefcadbf6485244331d4c6b661709935c6109286e5146d550"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewOutboxEvidenceV2.java",
+      "sha256": "7b7e79866bebaa08f54f3f9826c5b952be4c6eb1f5e2619c78d1fc1d4897b580"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewEventJdbcReadV2.java",
+      "sha256": "32378755fa1eca4e44e80b3e4163b59b9fc61c62baa5db80dd8e52b09ea59acf"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewDisclosureReceiptV2.java",
+      "sha256": "db80e3794719a7cb6e1d26c40117ec6eddafc253468c018b09f34c4077db1a1f"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewReplayGuardV2.java",
+      "sha256": "c9bf29f6a13e16cbca4850a043f6bde52930912b339d7be715f7e1510b61c28b"
+    },
+    {
+      "path": "services/clinical-core/src/main/java/org/synqoria/registration/ReviewEventSqlPlanV2.java",
+      "sha256": "207f3fea472819d5b61870862ed5ac836a66dd482978fc4b5449b77bd85ee325"
+    },
+    {
+      "path": "services/clinical-core/src/test/java/org/synqoria/registration/V240ReviewIntegrationTest.java",
+      "sha256": "1df954aaf1f353ec301079b8d13f01502e669ab6efb9aa6b8137e275436bb362"
+    }
+  ],
+  "deleted": []
+}

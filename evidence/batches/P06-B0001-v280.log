@@ -1,0 +1,5 @@
+COMMAND ["java", "-ea", "-cp", "/tmp/synqoria-v280-classes", "org.synqoria.scheduling.AppointmentWindowTest"]
+EXIT_CODE 0
+PASS P06-B0001 8 DST, zone, interval and overlap assertions (unit)
+
+STDERR

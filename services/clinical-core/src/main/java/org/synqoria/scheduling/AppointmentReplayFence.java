@@ -1,0 +1,2 @@
+package org.synqoria.scheduling;
+import java.util.*;public final class AppointmentReplayFence {private AppointmentReplayFence(){}public static void require(String supplied,String stored){if(supplied==null||stored==null||!java.security.MessageDigest.isEqual(supplied.getBytes(java.nio.charset.StandardCharsets.UTF_8),stored.getBytes(java.nio.charset.StandardCharsets.UTF_8)))throw new SecurityException("idempotency digest mismatch");}}

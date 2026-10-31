@@ -1,0 +1,52 @@
+openapi: 3.1.0
+info:
+  title: SYNQORIA M02 Appointments — restricted internal contract
+  version: 0.30.0-quarantine
+  description: Contract-only; no live endpoint or production write enabled.
+paths:
+  /internal/v1/appointments/preflight:
+    post:
+      operationId: appointmentPreflightQuarantined
+      summary: Internal, non-persisting preflight only
+      security:
+        - oidc: [appointment:manage]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PreflightRequest'
+      responses:
+        '200':
+          description: Non-persisting eligibility outcome only
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PreflightResult'
+        '403':
+          description: Denied without patient existence disclosure
+        '409':
+          description: Stale revision or resource conflict
+        '503':
+          description: Production integration disabled until independent release gates
+components:
+  securitySchemes:
+    oidc:
+      type: openIdConnect
+      openIdConnectUrl: https://identity.invalid/.well-known/openid-configuration
+      description: Placeholder intentionally non-resolving; must be configured and verified before deployment.
+  schemas:
+    PreflightRequest:
+      type: object
+      additionalProperties: false
+      required: [appointmentId, expectedRevision, action]
+      properties:
+        appointmentId: { type: string, format: uuid }
+        expectedRevision: { type: integer, minimum: 1 }
+        action: { type: string, enum: [CONFIRM, RESCHEDULE, CANCEL, ARRIVED, NO_SHOW, FULFILLED] }
+    PreflightResult:
+      type: object
+      additionalProperties: false
+      required: [status]
+      properties:
+        status: { type: string, enum: [READY_FOR_RESTRICTED_TRANSACTION, DENIED_NOT_DISCLOSED, STALE, INVALID_TRANSITION, RESOURCE_CONFLICT, UNAVAILABLE] }

@@ -1,0 +1,101 @@
+{
+  "checkpoint": "v0.24.0",
+  "source_checkpoint": "v0.23.0",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "results": [
+    {
+      "batch": "P05-B0048",
+      "command": "java -ea -cp /tmp/synqoria-v24-classes org.synqoria.registration.V240ReviewIntegrationTest P05-B0048",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "PASS P05-B0048 9 assertions; no live DB/OIDC/clinical release",
+      "evidence_log": "evidence/batches/v240-P05-B0048.log",
+      "verification_scope": "JDK assertions with mock JDBC, no live PostgreSQL"
+    },
+    {
+      "batch": "P05-B0049",
+      "command": "java -ea -cp /tmp/synqoria-v24-classes org.synqoria.registration.V240ReviewIntegrationTest P05-B0049",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "PASS P05-B0049 7 assertions; no live DB/OIDC/clinical release",
+      "evidence_log": "evidence/batches/v240-P05-B0049.log",
+      "verification_scope": "JDK assertions with mock JDBC, no live PostgreSQL"
+    },
+    {
+      "batch": "P05-B0050",
+      "command": "java -ea -cp /tmp/synqoria-v24-classes org.synqoria.registration.V240ReviewIntegrationTest P05-B0050",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "PASS P05-B0050 6 assertions; no live DB/OIDC/clinical release",
+      "evidence_log": "evidence/batches/v240-P05-B0050.log",
+      "verification_scope": "JDK assertions with mock JDBC, no live PostgreSQL"
+    },
+    {
+      "batch": "P05-B0051",
+      "command": "java -ea -cp /tmp/synqoria-v24-classes org.synqoria.registration.V240ReviewIntegrationTest P05-B0051",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "PASS P05-B0051 6 assertions; no live DB/OIDC/clinical release",
+      "evidence_log": "evidence/batches/v240-P05-B0051.log",
+      "verification_scope": "JDK assertions with mock JDBC, no live PostgreSQL"
+    },
+    {
+      "batch": "P05-B0052",
+      "command": "java -ea -cp /tmp/synqoria-v24-classes org.synqoria.registration.V240ReviewIntegrationTest P05-B0052",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "PASS P05-B0052 7 assertions; no live DB/OIDC/clinical release",
+      "evidence_log": "evidence/batches/v240-P05-B0052.log",
+      "verification_scope": "JDK assertions with mock JDBC, no live PostgreSQL"
+    },
+    {
+      "batch": "P02-B0078",
+      "command": "python tests/test_v240_browser.py P02-B0078",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "PASS P02-B0078 7 Chromium assertions (static interactive specimen; NOT compiled Next.js)",
+      "evidence_log": "evidence/batches/v240-P02-B0078.log",
+      "verification_scope": "real Chromium against interactive static specimen, no Next.js build"
+    },
+    {
+      "batch": "P02-B0079",
+      "command": "python tests/test_v240_browser.py P02-B0079",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "PASS P02-B0079 5 Chromium assertions (static interactive specimen; NOT compiled Next.js)",
+      "evidence_log": "evidence/batches/v240-P02-B0079.log",
+      "verification_scope": "real Chromium against interactive static specimen, no Next.js build"
+    },
+    {
+      "batch": "P02-B0080",
+      "command": "python tests/test_v240_browser.py P02-B0080",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "PASS P02-B0080 6 Chromium assertions (static interactive specimen; NOT compiled Next.js)",
+      "evidence_log": "evidence/batches/v240-P02-B0080.log",
+      "verification_scope": "real Chromium against interactive static specimen, no Next.js build"
+    },
+    {
+      "batch": "P02-B0081",
+      "command": "python tests/test_v240_browser.py P02-B0081",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "PASS P02-B0081 6 Chromium assertions (static interactive specimen; NOT compiled Next.js)",
+      "evidence_log": "evidence/batches/v240-P02-B0081.log",
+      "verification_scope": "real Chromium against interactive static specimen, no Next.js build"
+    },
+    {
+      "batch": "P02-B0082",
+      "command": "python tests/test_v240_browser.py P02-B0082",
+      "exit_code": 0,
+      "verified": true,
+      "stdout": "PASS P02-B0082 20 Chromium assertions (static interactive specimen; NOT compiled Next.js)",
+      "evidence_log": "evidence/batches/v240-P02-B0082.log",
+      "verification_scope": "real Chromium against interactive static specimen, no Next.js build"
+    }
+  ],
+  "clinical_release": "DENIED",
+  "database_integration": "NOT_EXECUTED",
+  "next_build": "P05-B0027 blocked pending live PostgreSQL, next independent P05-B0053 / P02-B0083"
+}

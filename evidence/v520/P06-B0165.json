@@ -1,0 +1,17 @@
+{
+  "batch_id": "P06-B0165",
+  "module": "M03",
+  "phase": "P06",
+  "scope": "Transactional outbox insertion linked to command/event digest",
+  "implementation": [
+    "services/clinical-core/src/main/java/org/synqoria/triage/TriageJdbcStore.java"
+  ],
+  "focused_tests": [
+    "evidence/v520/scenario-jdbc-outbox.log",
+    "evidence/v520/scenario-jdbc-outbox-failure.log"
+  ],
+  "verified": true,
+  "verification_scope": "synthetic_java_and_static_source_only",
+  "live_postgresql_tested": false,
+  "clinical_accepted": false
+}

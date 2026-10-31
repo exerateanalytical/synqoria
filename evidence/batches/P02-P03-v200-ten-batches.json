@@ -1,0 +1,178 @@
+{
+  "checkpoint": "v0.20.0",
+  "base": "v0.19.0",
+  "batch_target": 10,
+  "batches_passed": 10,
+  "results": [
+    {
+      "batch": "P02-B0058",
+      "kind": "native_safe_area_keyboard_source",
+      "command": [
+        "python",
+        "tests/test_v200_native_sources.py",
+        "P02-B0058"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/batches/v200-P02-B0058.log",
+      "verification_level": "native_source_static",
+      "clinical_screen_implementation": false,
+      "accepted": false
+    },
+    {
+      "batch": "P02-B0059",
+      "kind": "native_dynamic_type_unit",
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=P02-B0059",
+        "packages/ux-core/tests/v200-native-safety.test.cjs"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/batches/v200-P02-B0059.log",
+      "verification_level": "typescript_node_unit",
+      "clinical_screen_implementation": false,
+      "accepted": false
+    },
+    {
+      "batch": "P02-B0060",
+      "kind": "native_privacy_latch_unit",
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=P02-B0060",
+        "packages/ux-core/tests/v200-native-safety.test.cjs"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/batches/v200-P02-B0060.log",
+      "verification_level": "typescript_node_unit",
+      "clinical_screen_implementation": false,
+      "accepted": false
+    },
+    {
+      "batch": "P02-B0061",
+      "kind": "native_accessible_disabled_button_source",
+      "command": [
+        "python",
+        "tests/test_v200_native_sources.py",
+        "P02-B0061"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/batches/v200-P02-B0061.log",
+      "verification_level": "native_source_static",
+      "clinical_screen_implementation": false,
+      "accepted": false
+    },
+    {
+      "batch": "P02-B0062",
+      "kind": "mobile_scope_disclosure_unit",
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=P02-B0062",
+        "packages/ux-core/tests/v200-native-safety.test.cjs"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/batches/v200-P02-B0062.log",
+      "verification_level": "typescript_node_unit",
+      "clinical_screen_implementation": false,
+      "accepted": false
+    },
+    {
+      "batch": "P03-B0029",
+      "kind": "issuer_discovery_fence",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v20_build/classes",
+        "org.synqoria.security.V200OidcFoundationsTest",
+        "P03-B0029"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/batches/v200-P03-B0029.log",
+      "verification_level": "java_unit",
+      "clinical_screen_implementation": false,
+      "accepted": false
+    },
+    {
+      "batch": "P03-B0030",
+      "kind": "pinned_keyset_snapshot",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v20_build/classes",
+        "org.synqoria.security.V200OidcFoundationsTest",
+        "P03-B0030"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/batches/v200-P03-B0030.log",
+      "verification_level": "java_unit",
+      "clinical_screen_implementation": false,
+      "accepted": false
+    },
+    {
+      "batch": "P03-B0031",
+      "kind": "bounded_token_replay_fence",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v20_build/classes",
+        "org.synqoria.security.V200OidcFoundationsTest",
+        "P03-B0031"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/batches/v200-P03-B0031.log",
+      "verification_level": "java_unit",
+      "clinical_screen_implementation": false,
+      "accepted": false
+    },
+    {
+      "batch": "P03-B0032",
+      "kind": "facility_shift_session_fence",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v20_build/classes",
+        "org.synqoria.security.V200OidcFoundationsTest",
+        "P03-B0032"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/batches/v200-P03-B0032.log",
+      "verification_level": "java_unit",
+      "clinical_screen_implementation": false,
+      "accepted": false
+    },
+    {
+      "batch": "P03-B0033",
+      "kind": "security_burst_fence",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v20_build/classes",
+        "org.synqoria.security.V200OidcFoundationsTest",
+        "P03-B0033"
+      ],
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/batches/v200-P03-B0033.log",
+      "verification_level": "java_unit",
+      "clinical_screen_implementation": false,
+      "accepted": false
+    }
+  ],
+  "generated_utc": "2026-10-30T06:09:07.958260+00:00",
+  "release": "NOT_CERTIFIED"
+}

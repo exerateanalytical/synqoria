@@ -1,0 +1,6 @@
+COMMAND ['java', '-ea', '-cp', '/tmp/synqoria-v27-classes', 'org.synqoria.registration.V270EvidenceReconciliationTest', 'P05-B0062']
+EXIT 0
+STDOUT
+PASS P05-B0062 mock JDBC assertions; NO live PostgreSQL or clinical authority
+
+STDERR

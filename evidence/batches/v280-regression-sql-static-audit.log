@@ -1,0 +1,26 @@
+COMMAND ["python", "tools/audit_postgres_migrations.py"]
+EXIT_CODE 0
+STDOUT
+{
+  "files": [
+    "V001__hospital_scope_foundation.sql",
+    "V002__outbox_inbox_foundation.sql",
+    "V003__patient_identity_consent_foundation.sql",
+    "V004__clinical_read_audit_foundation.sql",
+    "V005__patient_registration_foundation.sql",
+    "V006__identity_lookup_quarantine.sql",
+    "V007__registration_review_quarantine.sql",
+    "V008__registration_review_event_quarantine.sql",
+    "V009__review_event_digest_contract_quarantine.sql",
+    "V010__review_audit_outbox_quarantine.sql",
+    "V011__review_command_replay_quarantine.sql",
+    "V012__appointment_reservation_quarantine.sql"
+  ],
+  "critical_tables": 7,
+  "issues": [],
+  "passed": true,
+  "scope": "static SQL audit only; PostgreSQL parsing, permissions and RLS execution NOT tested"
+}
+
+STDERR
+

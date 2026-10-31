@@ -1,0 +1,5 @@
+$ java -ea -cp /mnt/data/synqoria_v17_tmp org.synqoria.security.V170IdentityFoundationTest P03-B0022
+PASS P03-B0022 6 assertions; production OIDC NOT CONNECTED
+
+
+exit=0
