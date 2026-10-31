@@ -1,0 +1,16 @@
+command=["python", "-m", "unittest", "tests.test_v630_outbox", "-v"]
+exit_code=0
+
+test_database_serial_order (tests.test_v630_outbox.OutboxQuarantineTests.test_database_serial_order) ... ok
+test_fencing_and_lease (tests.test_v630_outbox.OutboxQuarantineTests.test_fencing_and_lease) ... ok
+test_forced_rls_without_runtime_grants (tests.test_v630_outbox.OutboxQuarantineTests.test_forced_rls_without_runtime_grants) ... ok
+test_no_auto_publication_or_sql_elevation (tests.test_v630_outbox.OutboxQuarantineTests.test_no_auto_publication_or_sql_elevation) ... ok
+test_no_migration_reuse (tests.test_v630_outbox.OutboxQuarantineTests.test_no_migration_reuse) ... ok
+test_private_metadata_only (tests.test_v630_outbox.OutboxQuarantineTests.test_private_metadata_only) ... ok
+test_scope_installed_for_every_transaction (tests.test_v630_outbox.OutboxQuarantineTests.test_scope_installed_for_every_transaction) ... ok
+test_table_scoped_and_keyed (tests.test_v630_outbox.OutboxQuarantineTests.test_table_scoped_and_keyed) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+OK

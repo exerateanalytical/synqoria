@@ -1,6 +1,6 @@
 {
-  "version": "0.62.0",
-  "checkpoint": "v0.62.0_unmerged_P07_PR5_candidate",
+  "version": "0.63.0",
+  "checkpoint": "v0.63.0_P07_outbox_draft_unmerged",
   "phase_count": 20,
   "phases": [
     {
@@ -43,7 +43,7 @@
       "id": "P02",
       "title": "Cross-platform design system and navigation",
       "modules": [],
-      "deliverables": "Tokens; components; three web shells; staff/patient mobile shells; route ownership; menu eligibility; status states; EN/FR; visual snapshots at 320–1920px.",
+      "deliverables": "Tokens; components; three web shells; staff/patient mobile shells; route ownership; menu eligibility; status states; EN/FR; visual snapshots at 320\u20131920px.",
       "status": "in_progress",
       "batches_completed": 93,
       "certification": "not_certified",
@@ -183,8 +183,8 @@
         "M06"
       ],
       "deliverables": "Encounters, admission/transfer/discharge, beds, notes, diagnoses, observations, vitals, signing/amendment and mobile bedside views.",
-      "status": "domain_HTTP_codec_encrypted_quarantine_JDBC_synthetic_protocol_tested_NOT_live_DB_or_OIDC",
-      "batches_completed": 93,
+      "status": "clinical_domain_HTTP_and_outbox_synthetic_integration_NOT_production_qualified",
+      "batches_completed": 104,
       "certification": "deferred__not_certified__do_not_advance_phase_gate",
       "evidence": [
         "evidence/v600/individual-batches.json",
@@ -192,7 +192,10 @@
         "docs/engineering/P07_LONGITUDINAL_CORE_v0.60.0.md",
         "evidence/v610/verified-batches.json",
         "evidence/v620/individual-batch-results.json",
-        "tests/test_v620_quarantine.py"
+        "tests/test_v620_quarantine.py",
+        "evidence/v630/individual-batches.json",
+        "evidence/v630/regression-matrix.json",
+        "tests/test_v630_outbox.py"
       ]
     },
     {

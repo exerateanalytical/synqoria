@@ -1,0 +1,4 @@
+command=["java", "-ea", "-cp", "/mnt/data/synqoria_v63_work/.v630-classes", "org.synqoria.longitudinal.LongitudinalOutboxDeliveryTest", "permit-scope"]
+exit_code=0
+PASS outbox permit-scope 5 assertions (synthetic store)
+

@@ -1,0 +1,4 @@
+command=["java", "-ea", "-cp", "/mnt/data/synqoria_v63_work/.v630-classes", "org.synqoria.longitudinal.LongitudinalOutboxDeliveryTest", "ack-fence"]
+exit_code=0
+PASS outbox ack-fence 4 assertions (synthetic store)
+

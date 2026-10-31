@@ -1,5 +1,5 @@
 {
-  "version": "0.62.0",
+  "version": "0.63.0",
   "batches": [
     {
       "id": "P00-B0001",
@@ -2537,7 +2537,7 @@
     {
       "id": "P02-B0059",
       "status": "implemented_unit_or_static_tested_NOT_production_integrated",
-      "scope": "Dynamic type safety for clinical text, 200–300% scaling, wrapping, four unique bottom destinations; unit tested and native source wired",
+      "scope": "Dynamic type safety for clinical text, 200\u2013300% scaling, wrapping, four unique bottom destinations; unit tested and native source wired",
       "evidence": [
         "evidence/batches/v200-P02-B0059.log"
       ],
@@ -12252,6 +12252,171 @@
       "independent_clinical_review": false,
       "external_certification": false,
       "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0094",
+      "module": "M04/M05/M06",
+      "scope": "Privacy-minimal validated outbox event reference",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0094.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0095",
+      "module": "M04/M05/M06",
+      "scope": "Worker permit scope, expiry and fail-closed authorization gate",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0095.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0096",
+      "module": "M04/M05/M06",
+      "scope": "Per-encounter revision-ordered publication across multiple events",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0096.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0097",
+      "module": "M04/M05/M06",
+      "scope": "Concurrent worker single-lease ownership without later-event overtaking",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0097.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0098",
+      "module": "M04/M05/M06",
+      "scope": "Token-fenced acknowledgement rejecting expired or mismatched evidence",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0098.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0099",
+      "module": "M04/M05/M06",
+      "scope": "Broker failure release with bounded retry and delayed redelivery",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0099.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0100",
+      "module": "M04/M05/M06",
+      "scope": "Uncertain acknowledgement at-least-once redelivery and consumer dedupe contract",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0100.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0101",
+      "module": "M04/M05/M06",
+      "scope": "Terminal parking after bounded attempts, poisoning fence preserving event order",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0101.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0102",
+      "module": "M04/M05/M06",
+      "scope": "Scoped PostgreSQL JDBC lease and bounded progressive delivery projection",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0102.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0103",
+      "module": "M04/M05/M06",
+      "scope": "JDBC CAS acknowledgement, failed-delivery deferral, scope/RLS echo contract",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0103.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0104",
+      "module": "M04/M05/M06",
+      "scope": "V021 forced-RLS no-grant delivery schema with immutable migration checksum",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0104.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
     }
   ],
   "next_batch": "P06-B0392",
@@ -12266,5 +12431,5 @@
   },
   "release_detail": "DENIED: 0/40 certified modules; 0/261 clinical screens accepted",
   "next_parallel_batch": "P07-B0094",
-  "concurrency_note": "P07-B0061–B0070 on stacked draft PR4 only. P06-B0392 remains reserved for independent triage work. Do not overwrite main."
+  "concurrency_note": "P07-B0061\u2013B0070 on stacked draft PR4 only. P06-B0392 remains reserved for independent triage work. Do not overwrite main."
 }

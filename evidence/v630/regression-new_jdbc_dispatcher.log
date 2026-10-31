@@ -1,0 +1,4 @@
+command=["java", "-ea", "-cp", ".v630-classes", "org.synqoria.longitudinal.LongitudinalOutboxJdbcContractTest", "all"]
+exit_code=0
+PASS JDBC outbox all (175 synthetic assertions)
+

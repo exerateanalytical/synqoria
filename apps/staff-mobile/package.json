@@ -1,6 +1,6 @@
 {
   "name": "@synqoria/staff-mobile",
-  "version": "0.62.0",
+  "version": "0.63.0",
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "react": "19.1.0",
     "react-native": "0.81.4",
     "react-native-safe-area-context": "5.6.0",
-    "@synqoria/ux-core": "0.62.0"
+    "@synqoria/ux-core": "0.63.0"
   },
   "devDependencies": {
     "typescript": "5.9.0",

@@ -1,0 +1,4 @@
+command=["java", "-ea", "-cp", "/mnt/data/synqoria_v63_work/.v630-classes", "org.synqoria.longitudinal.LongitudinalOutboxJdbcContractTest", "defer"]
+exit_code=0
+PASS JDBC outbox defer (33 synthetic assertions)
+

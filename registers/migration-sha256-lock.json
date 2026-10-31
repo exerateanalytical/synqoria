@@ -20,6 +20,7 @@
     "V017__triage_secure_receipts_quarantine.sql": "8bbec379aa45f9968b2fc977075abd61fe962412cb89091bf5a92001e920e4fb",
     "V018__triage_secure_genesis_quarantine.sql": "59df3f1a961ae55b54559f5256cfa821b8d928cba4926cc02fb98fb7534715b5",
     "V019__triage_secure_correlated_evidence_quarantine.sql": "556eb554cab6702b1b574561199f087fbdaef00384c07a348906037d275f44a2",
-    "V020__longitudinal_secure_quarantine.sql": "f1f9e5ea4265027dfd5dab8418a410c2aa179417a909c1e4788d7d853eb1a57b"
+    "V020__longitudinal_secure_quarantine.sql": "f1f9e5ea4265027dfd5dab8418a410c2aa179417a909c1e4788d7d853eb1a57b",
+    "V021__longitudinal_outbox_delivery_quarantine.sql": "726172b4b2e4c59b500f2ab88aa43948eeb2771167a569aa0ef66ca72f929c2b"
   }
 }
