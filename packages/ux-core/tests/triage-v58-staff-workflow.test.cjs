@@ -33,7 +33,7 @@ test('B0369: patient-scoped worklist is the only path to selecting a case',async
  assert.equal(w.snapshot().mode,'case');
  w.dispose();assert.equal(w.snapshot().worklist.length,0);
 });
-test('B0370: changed patient or shift clears all cached clinical context',async()=>{
+test('B0369: changed patient or shift clears all cached clinical context',async()=>{
  const {w}=fixture(url=>url.includes('/views/')?{cases:[row()]}:{case:row()});
  w.bind(scope);await w.load(P,'FACILITY_QUEUE',[C]);await w.select(C);
  assert.equal(w.snapshot().patientId,P);
@@ -42,7 +42,7 @@ test('B0370: changed patient or shift clears all cached clinical context',async(
  assert.equal(w.snapshot().worklist.length,0);
  await assert.rejects(w.select(C));w.dispose();
 });
-test('B0370: stale worklist response after patient switch cannot disclose old patient',async()=>{
+test('B0369: stale worklist response after patient switch cannot disclose old patient',async()=>{
  let complete;const {w}=fixture((url)=>url.includes('/views/')?new Promise(resolve=>{complete=()=>resolve({cases:[row()]})}):{case:row()});
  w.bind(scope);const pending=w.load(P,'FACILITY_QUEUE',[C]);
  await new Promise(resolve=>setImmediate(resolve));
@@ -50,7 +50,7 @@ test('B0370: stale worklist response after patient switch cannot disclose old pa
  complete();await assert.rejects(pending,e=>e.category==='unavailable');
  assert.equal(w.snapshot().patientId,null);assert.equal(w.snapshot().mode,'worklist');w.dispose();
 });
-test('B0371: successful mutation invalidates queue and reloads authoritative case revision',async()=>{
+test('B0369: successful mutation invalidates queue and reloads authoritative case revision',async()=>{
  let revision=1;const {w,calls}=fixture((url,options)=>{
   if(url.includes('/views/'))return {cases:[row()]};
   if(url.endsWith('/commands')){assert.equal(JSON.parse(options.body).expectedRevision,1);revision=2;return {revision:2,eventDigest:'a'.repeat(64),replay:false};}
@@ -62,7 +62,7 @@ test('B0371: successful mutation invalidates queue and reloads authoritative cas
  assert.equal(w.snapshot().worklist.length,0);assert.equal(w.snapshot().mode,'case');
  assert.equal(calls.filter(x=>x.url.endsWith('/commands')).length,1);w.dispose();
 });
-test('B0371: write accepted but authoritative reread fails => no optimistic case display',async()=>{
+test('B0369: write accepted but authoritative reread fails => no optimistic case display',async()=>{
  let touched=false;const {w}=fixture((url)=>{
   if(url.includes('/views/'))return {cases:[row()]};
   if(url.endsWith('/commands')){touched=true;return {revision:2,eventDigest:'a'.repeat(64),replay:false};}
@@ -74,14 +74,14 @@ test('B0371: write accepted but authoritative reread fails => no optimistic case
  assert.equal(w.snapshot().selectedCase,null);assert.equal(w.snapshot().mode,'refresh-required');
  assert.equal(w.snapshot().worklist.length,0);w.dispose();
 });
-test('B0372: authentication loss during write revokes entire workstation context',async()=>{
+test('B0369: authentication loss during write revokes entire workstation context',async()=>{
  const {w}=fixture(url=>url.includes('/views/')?{cases:[row()]}:url.endsWith('/commands')?{status:401}:{case:row()});
  w.bind(scope);await w.load(P,'FACILITY_QUEUE',[C]);await w.select(C);
  await assert.rejects(w.command(COMMAND,'QUEUE_CALL'),e=>e.category==='reauthenticate');
  assert.equal(w.snapshot().mode,'locked');assert.equal(w.snapshot().patientId,null);
  assert.equal(w.snapshot().worklist.length,0);w.dispose();
 });
-test('B0372: a patient switch while a write is pending never reopens old case',async()=>{
+test('B0369: a patient switch while a write is pending never reopens old case',async()=>{
  let finish;const {w}=fixture((url)=>{
   if(url.includes('/views/'))return {cases:[row()]};
   if(url.endsWith('/commands'))return new Promise(resolve=>{finish=()=>resolve({revision:2,eventDigest:'a'.repeat(64),replay:false})});
