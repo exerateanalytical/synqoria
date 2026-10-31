@@ -22,7 +22,7 @@ const scenarios={
  'P06-B0362':async()=>{
   let status=201;
   const t={token:async()=> 'syntheticVerifiedToken_12345',isOnline:()=>true,
-   fetch:async()=>({status,headers:{get:()=> 'no-store, private'},json:async()=>valid()})};
+   fetch:async()=>({status,headers:{get:name=>name==='Cache-Control'?'no-store, private':null},json:async()=>valid()})};
   const client=triageClient('https://hospital.example/',t);
   await assert.rejects(client.command({patientId:P,caseId:C,expectedRevision:1},CMD,'QUEUE_PAUSE'),e=>e instanceof TriageTransportError&&e.status===201);
   await assert.rejects(client.worklist(P,'FACILITY_QUEUE',[C]),e=>e instanceof TriageTransportError&&e.status===201);
