@@ -1,6 +1,6 @@
 # SYNQORIA — Project Memory, Vision & Engineering Constitution
 
-**Document:** SYNQORIA-PM-001 · **Version:** 1.0 · **Recorded:** 31 October 2026 (Africa/Douala)  
+**Document:** SYNQORIA-PM-001 · **Version:** 1.1 · **Recorded:** 31 October 2026 (Africa/Douala)  
 **Programme:** OPES Health Systems / Opesware Technologies · **Product:** SYNQORIA  
 **Official identity:** **SYNQORIA — Africa medical intelligence synchronized.**  
 **Purpose:** Durable, cross-conversation project memory for product, architecture, clinical governance, UI/UX, implementation, testing and rollout. This is a **memory and requirements synthesis**, not proof that the product is implemented, validated, certified or approved for healthcare deployment.
@@ -220,3 +220,44 @@ SYNQORIA reaches its intended first regulated hospital deployment only when real
 A larger national/pan-African platform becomes legitimate only as authorized facilities deploy, measurable clinical/operational results improve, interoperable identities and partner interfaces are governed, dashboards are statistically valid and privacy-protected, and each high-volume cell can independently survive and recover from realistic failures.
 
 **Permanent project rule:** **Build for real clinical operations. Preserve SYNQORIA's existing architecture and design authority. Verify every claim. Never trade patient safety, data sovereignty or correctness for batch counts, appearance or faster reports.**
+
+## 13. Source-conversation reconciliation — 31 October 2026 (v1.1)
+
+**Coverage rule:** This section records which historical specification conversations were recoverable through conversation-history summaries, which exact repository specifications were directly read, and what cannot yet be independently certified. It is not a representation that every Work mode conversation transcript has been opened line by line.
+
+### 13.1 Original architecture/specification conversation
+
+**“Assess EMR HMS Architecture” (23–27 October 2026):** recovered decisions and source-level cross-check with the actual repository files:
+
+- Product identity: **SYNQORIA — Africa medical intelligence synchronized**.
+- Primary architecture: API-first, DDD, independently operated **hospital cells**; a modular Java/Spring Boot transactional clinical core supplemented by selected domain services, PostgreSQL as the clinical source of truth, outbox/inbox and Kafka/Debezium event distribution, selective CQRS projections, Redis for acceleration only, Kong/equivalent at the edge, OIDC, TypeScript/Next.js web and Expo/React Native mobile.
+- Scale: explicit, **separately benchmarked** NETWORK-1M and HOSPITAL-1M encounter-per-month planning profiles; targets are not achieved benchmarks.
+- Scope: exactly **40 canonical modules**, not 15 deployment groups or a separate service for each module.
+- UI/UX deliverable: **261 canonical screens** (12 shared and 249 module screens), module flows and governed screen IDs; workforce, patient/proxy and platform-operations applications; responsive, bilingual, capability-based navigation.
+- Visual requirements: the approved **Warm Clinical** palette and component rules in `docs/authority/SYNQORIA_UIUX_Master_v1.1.md`, not earlier OPES HMS palettes. Primary canvas #F7F5F0; white work surfaces; navigation #073656; primary action #1664D4; Inter; Lucide. No glow, colour collisions, glass effects, destructive compression, distorted assets or hidden critical clinical details. Explicit error, pending synchronization, committed and unknown outcomes.
+- All screens require exact owner, role/action permissions, inputs, field semantics, UI states, cross-screen transitions, API contracts, clinical risk, tests, EN/FR and mobile/accessibility behavior before being counted as implemented. Missing medical thresholds, terminology mappings and legal wording must not be fabricated.
+
+**Reconciliation:** The above is incorporated in §§1–7 and the GitHub authority files. The original chat is a requirement provenance source; architecture v2.1 and UI/UX v1.1 remain the actionable normalized specifications. A request such as “what have we not planned?” should trigger a gap matrix, not a unilateral stack change.
+
+### 13.2 Separate planning/build and Work mode context
+
+**“Plan Autonomous Build Phases” and “SYNQORIA Hourly Engineering” (29–31 October 2026):** recoverable history confirms user priorities of (a) all 40 modules / 261 screens, (b) the staff and patient mobile apps alongside the web platform, (c) clean navigation and realistic clinical UI, (d) cumulative batches up to 60 *genuinely implemented and individually verified* items when requested, and (e) coordinated, non-conflicting commits from parallel coding chats. Earlier provisional planning discussed 462 batches; **this figure is not a fixed canonical implementation count**, whereas P00–P19 and the actual batch ledger are authoritative.
+
+The exact standalone **Work mode specifications conversation transcript was not directly retrievable in this reconciliation**. Its unique requirements should be imported only after obtaining the original transcript or a verified specification/commit, with a source-to-requirement crosswalk and architecture/UI conflict review. Do not say it has been exhaustively imported until that happens.
+
+The actual engineering status is not inferred from conversational claims of “next 60 batches”: GitHub current head, shared handoff, implementation ledger, source files and independently run tests determine progress. Formal clinical certification may be scheduled later, but clinical operations remain release-denied without clinical/security authorization.
+
+### 13.3 Wider OPES electronic-health specifications checked against SYNQORIA
+
+- The broader **OPES Health Systems product portfolio** groups identity/MPI/interoperability, EMR/triage/CDSS, specialty and departmental laboratory/pharmacy/radiology, billing/HMS, training and analytics. These provide product context but do **not** add extra SYNQORIA canonical modules without a documented scope decision.
+- The older **OPESCARE full PRD** described identity, consent, longitudinal record, cross-hospital exchange and bridge integration. It remains a distinct product architecture/codebase, not authorization to replace the SYNQORIA stack with the older Laravel or offline .NET prototypes.
+- The older **OPES Triage redesign** described many workflow-specific screens. Its queue, nurse-vitals, emergency triage, department handover and tablet/mobile patterns can inform M03, but its 81-screen inventory must not be added wholesale to SYNQORIA's 261-screen baseline.
+- The proposed **National Health Watch** connects permitted aggregated indicators from SYNQORIA/EMR, OPES Triage, laboratory and pharmacy, with hospital participation agreements, DHIS2/IDSR mapping where approved, minimum-necessary reporting and no live feed without required authorization.
+- Prior OPES offline-EMR prototypes and their different .NET/SQLite technology choices are historical requirements sources for local continuity and synchronization, **not** approval to change SYNQORIA's current Java/PostgreSQL architecture.
+- Earlier design directions for OPES products (different backgrounds and primary colours) must not override the exact SYNQORIA Warm Clinical tokens.
+
+### 13.4 Ongoing source audit and inclusion acceptance
+
+Before declaring that the *entire account's SYNQORIA specifications* are incorporated, require: **(1)** an inventory of original architecture chat, standalone Work mode chat(s), planning/build chats and uploaded specs; **(2)** document/commit or transcript reference for each material requirement; **(3)** a mapping to architecture v2.1, UI/UX v1.1, canonical module/screen register or a new proposed ADR; **(4)** an explicit conflict/gap log; **(5)** a reviewed versioned memory commit. No requirement may silently modify the canonical framework, technology stack, count of modules/screens, clinical safety or data governance.
+
+**Snapshot of this reconciliation:** original architecture and UI/UX specifications verified from canonical repository files; known planning/build-chat requirements cross-checked against the shared handoff; full standalone Work mode chat **not independently inspected**.
