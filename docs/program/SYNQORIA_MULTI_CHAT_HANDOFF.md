@@ -100,3 +100,13 @@ Other workstream notification: link to this handoff + commit, NOT a claim of dir
 - **GitHub branch** `work/longitudinal-outbox-v063` was created from draft PR #5 head `3fe8289829946a531f6e398a3a8e229d3c8882a7`. **No v0.63.0 implementation commit or PR exists yet; source publication was blocked by exhausted temporary Library transfer storage. The remote branch is still at its PR #5 base.** Do not claim otherwise. GitHub source authority remains v0.62.0 draft PR #5 for this workstream.
 - Parallel P06 next candidate P06-B0392 remains separate. Preserve PR #1→#5 stack and other workstream's newer main commits. Do not overwrite `SYNQORIA_CURRENT.zip` until reconciled.
 - This note is a shared handoff record, not a direct notification delivered into the other ChatGPT chat.
+
+
+## 2026-10-31 — SYNQORIA v0.63.0 pushed; P07 outbox development PR #6 (NOT merged)
+
+- Published **all 57 incremental v0.63.0 source/test/evidence/ledger files** in commit `3caa48e16239907f45374db01f7ade5f4aa98908`, verified Git tree `579395bc40b4a48e8ac941b24501bb75ec87317a` and expected parent `3fe8289829946a531f6e398a3a8e229d3c8882a7`.
+- **Draft [PR #6](https://github.com/exerateanalytical/synqoria/pull/6)**, branch `work/longitudinal-outbox-v063`, stacked on draft PR #5 `work/longitudinal-secure-persistence-v062`. This is cumulative Git history: PR #1 → #2 → #3 → #4 → #5 → #6. **Not yet merged into main**; do not claim otherwise, and reconcile newer main changes before merging.
+- **P07-B0094–B0104 (11 verified slices)**: bounded ordered clinical event outbox claims; scoped leases and fencing tokens; retry/backoff; idempotent ack, terminal parking and stale-claim recovery; synthetic JDBC protocol, forced-RLS quarantined V021 schema. 11 focused batch checks, 17 regression groups, delivery 65 synthetic assertions, JDBC 175 synthetic assertions passed. No live PostgreSQL, production broker, clinical approvals or formal certification.
+- **Next available P07 candidate:** P07-B0105 (verify ledger at execution start). Parallel P06 next candidate P06-B0392 remains untouched. 40 modules and 261 screens unchanged; 0 clinically accepted, 0 certified; release denied.
+- **Latest cumulative offline artifact:** `SYNQORIA_v0.63.0_P07_11BATCH_cumulative.zip` downloaded in conversation, SHA-256 available there. Library full ZIP upload was blocked by storage limit; do **not** overwrite shared `SYNQORIA_CURRENT.zip` with a divergent archive.
+- This file is the **cross-chat handoff**, not a direct message to a separate ChatGPT conversation. Other workstreams must read the latest GitHub branch and this section.
