@@ -1,0 +1,20 @@
+{
+  "files": {
+    "docs/program/V0271_RECOVERY_SCHEDULING.md": "3e7a51b0236900d3a0f53745104cbcac96dfa05228c6bad2cb98803c6a8efc11",
+    "services/clinical-core/db/migration/V012__appointment_read_quarantine.sql": "2a30de1e5217b4bbd2ff27fa4f8a2c4b65ea501138ebc7232065849a0c62f72f",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentLifecycleFence.java": "6515110da3f51a1add439429b10e436ed4fd049dbd0ea95a4155cda5a39d15e3",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/BookingAuditOutboxFence.java": "a09e0fe385ab2f18bcb77523021455565ad42810081fb80eb63200db647d548e",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/BookingHoldFence.java": "00ed75fc342eaac9158ff930068c399451898be3054a09506f46b835379d7816",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/BookingReplayFence.java": "2808656512eef5bd1e260f9756c091d1f91e742805a37a1e547987ddad621fb9",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/ClinicianEligibilityFence.java": "9759e05394aa629a0a8023e6e995bfc0016c37ba2a66fc926e9400b28cfc671e",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/ResourceCapacityFence.java": "cfb306cdebb09cb9becbd82f36f7283a1d391b978089c654adea50bab2aa4543",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/ResourceConflictFence.java": "2f01acdc92dc55a9e031c34d8a72c5ee56d1b9d85bdbc16639257a37749c80dc",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/SchedulingScope.java": "c502887f21a6eeea1fa5d2df0fdea0f3cca1024b2d22b349618cc78c6a865980",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/ScopedAppointmentJdbcRead.java": "7fcdc1b4f4e4a480b0371159e24780d7f3ee5c479196ff9bd4c8aa6227908d6f",
+    "services/clinical-core/src/test/java/org/synqoria/scheduling/V030SchedulingRecoveryTest.java": "6ed035831f48c59e41e69758837c236fd6dd83a647d7ce08db91bfab2428ee2c",
+    "tests/test_v0271_scheduling_ddl.py": "144154cbf93d10afb6d8f40246c58864f489aa879c4cc8a6ad7936507850f824",
+    "tools/run_v0271_recovery_batches.py": "c7d6b87611be865578805b8ba46c6923da9da65491a7ce372723df9690165799",
+    "tools/run_v0271_regression.py": "029ace3fc48f47db24c39923fa2ed469ee5ec4d18fdb1de5c290e59f828304a8"
+  },
+  "notes": "Recovery archive not auto-merged into v0.57 production tree; V012 migration conflicts with existing upstream V012; contains source and unit tests"
+}

@@ -1,0 +1,24 @@
+{
+  "checkpoint": "v0.57.0+v0.27.1-reconciliation",
+  "files": {
+    "docs/program/GITHUB_RECOVERY_MERGE_2026-10-31.md": "f663b94f6734ef2202e873d8f219f8f92ca4f6b9aaa8d4809a726be6ab04f063",
+    "docs/recovery/v0271/MERGE_POLICY.md": "71299bfcbb61d2fd7c94cd903c199837a629a21789165198692714ecbff50618",
+    "docs/recovery/v0271/RECOVERY_SHA256.json": "1f5058ac49782a17663514e2b4906f4d86d0c7c23e35c7e29759c742b0d74a6c",
+    "docs/recovery/v0271/V012__appointment_read_quarantine.sql": "2a30de1e5217b4bbd2ff27fa4f8a2c4b65ea501138ebc7232065849a0c62f72f",
+    "docs/recovery/v0271/V0271_RECOVERY_SCHEDULING.md": "3e7a51b0236900d3a0f53745104cbcac96dfa05228c6bad2cb98803c6a8efc11",
+    "docs/recovery/v0271/run_v0271_recovery_batches.py": "c7d6b87611be865578805b8ba46c6923da9da65491a7ce372723df9690165799",
+    "docs/recovery/v0271/run_v0271_regression.py": "029ace3fc48f47db24c39923fa2ed469ee5ec4d18fdb1de5c290e59f828304a8",
+    "docs/recovery/v0271/test_v0271_scheduling_ddl.py": "144154cbf93d10afb6d8f40246c58864f489aa879c4cc8a6ad7936507850f824",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/AppointmentLifecycleFence.java": "6515110da3f51a1add439429b10e436ed4fd049dbd0ea95a4155cda5a39d15e3",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/BookingAuditOutboxFence.java": "a09e0fe385ab2f18bcb77523021455565ad42810081fb80eb63200db647d548e",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/BookingHoldFence.java": "00ed75fc342eaac9158ff930068c399451898be3054a09506f46b835379d7816",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/BookingReplayFence.java": "2808656512eef5bd1e260f9756c091d1f91e742805a37a1e547987ddad621fb9",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/ClinicianEligibilityFence.java": "9759e05394aa629a0a8023e6e995bfc0016c37ba2a66fc926e9400b28cfc671e",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/ResourceCapacityFence.java": "cfb306cdebb09cb9becbd82f36f7283a1d391b978089c654adea50bab2aa4543",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/ResourceConflictFence.java": "2f01acdc92dc55a9e031c34d8a72c5ee56d1b9d85bdbc16639257a37749c80dc",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/SchedulingScope.java": "c502887f21a6eeea1fa5d2df0fdea0f3cca1024b2d22b349618cc78c6a865980",
+    "services/clinical-core/src/main/java/org/synqoria/scheduling/ScopedAppointmentJdbcRead.java": "1d51c58859cda3eb98aa621581fb9dd708c51d59fb4e6a8fb2e2dd2fe35c30af",
+    "services/clinical-core/src/test/java/org/synqoria/scheduling/V030SchedulingRecoveryTest.java": "8eed9d901e271449fce491b6953837a538d0829890f07f48393996ee6225a13f",
+    "tools/check_java_security.sh": "98f15ff68ddfd63d0206a13f5d3d5bb16350098be30631175cf0d59356a90e27"
+  }
+}

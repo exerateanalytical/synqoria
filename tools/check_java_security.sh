@@ -105,3 +105,9 @@ done
 for test in AppointmentWindowTest AppointmentAggregateTest ResourceReservationIndexTest AppointmentAccessPolicyTest AppointmentCommandFingerprintTest AppointmentWorkflowPreflightTest; do
  java -ea -cp /tmp/synqoria-security-classes "org.synqoria.scheduling.$test"
 done
+
+# Reconciled v0.27.1 recovery fences (legacy scheduling safeguards, NO production writes).
+# The legacy JDBC table/migration remains quarantined until aligned and DB-tested.
+for batch in P06-B0010 P06-B0011 P06-B0012 P06-B0013 P06-B0014 P06-B0015 P06-B0016 P06-B0017 P06-B0018 P06-B0019; do
+ java -ea -cp /tmp/synqoria-security-classes org.synqoria.scheduling.V030SchedulingRecoveryTest "$batch"
+done
