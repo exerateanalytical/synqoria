@@ -62,7 +62,7 @@ test('network transport uses volatile bearer, no credentials, no-store, redirect
 test('client rejects wrong network status and malformed receipts',async()=>{
  let status=401,json={revision:2,eventDigest:'a'.repeat(64),replay:false};
  const t={token:async()=> 'syntheticVerifiedToken_12345',isOnline:()=>true,
-  fetch:async()=>({status,headers:{get:()=> 'no-store, private'},json:async()=>json})};
+  fetch:async()=>({status,headers:{get:name=>name==='Cache-Control'?'no-store, private':null},json:async()=>json})};
  const client=triageClient('https://hospital.example/',t);
  for(const [s,category] of [[401,'reauthenticate'],[404,'denied'],[409,'conflict'],[412,'conflict'],[422,'invalid'],[503,'unavailable']]){
   status=s;await assert.rejects(client.command(scope,CMD,'QUEUE_PAUSE'),e=>e.category===category);
@@ -73,7 +73,7 @@ test('client rejects wrong network status and malformed receipts',async()=>{
 test('worklist path never includes case IDs or free text in URL',async()=>{
  let requested;
  const t={token:async()=> 'syntheticVerifiedToken_12345',isOnline:()=>true,
-  fetch:async(u,options)=>{requested={u,options};return {status:200,headers:{get:()=> 'no-store, private'},json:async()=>({cases:[{caseId:C,stage:'WAITING',revision:1,station:ST,assignee:null,arrivedAt:'2026-10-30T14:30:00Z',paused:false,safetyHold:false,manualEscalation:false}]})}}};
+  fetch:async(u,options)=>{requested={u,options};return {status:200,headers:{get:name=>name==='Cache-Control'?'no-store, private':null},json:async()=>({cases:[{caseId:C,stage:'WAITING',revision:1,station:ST,assignee:null,arrivedAt:'2026-10-30T14:30:00Z',paused:false,safetyHold:false,manualEscalation:false}]})}}};
  await triageClient('https://hospital.example/',t).worklist(P,'FACILITY_QUEUE',[C]);
  assert.ok(requested.u.includes(P)&&!requested.u.includes(C));assert.ok(requested.options.body.includes(C));
 });
