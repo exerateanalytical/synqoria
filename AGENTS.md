@@ -2,6 +2,8 @@
 
 This repository is developed in multiple ChatGPT and engineering conversations. **Before any code changes, read [docs/program/SYNQORIA_MULTI_CHAT_HANDOFF.md](docs/program/SYNQORIA_MULTI_CHAT_HANDOFF.md)**, [docs/program/PHASES.md](docs/program/PHASES.md), and the canonical source/batch/screen registers.
 
+**Specifications publication register:** For the complete index of authoritative specs, memory, related OPES source boundaries, and current parallel pull requests, read [docs/program/SYNQORIA_SPECIFICATIONS_PUSH_REGISTER.md](docs/program/SYNQORIA_SPECIFICATIONS_PUSH_REGISTER.md). A published PR is not a merge; the separate Work mode transcript remains unverified until its source is supplied.
+
 **Product memory:** Before planning or changing product scope, clinical workflows, stack, brand, or UX, also read [docs/program/SYNQORIA_PROJECT_MEMORY_AND_VISION.md](docs/program/SYNQORIA_PROJECT_MEMORY_AND_VISION.md). It preserves the wider OPES digital-health vision and established decisions; authoritative architecture v2.1, UI/UX v1.1, live code and actual evidence take precedence over memory.
 
 1. Fetch and verify the newest `main` commit, check the Library `/SYNQORIA/SYNQORIA_CURRENT.zip` against its SHA-256, and compare the other workstream's checkpoint before selecting the next work. The handoff file can be stale.
