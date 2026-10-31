@@ -11,7 +11,7 @@ export interface TriageStaffScope {
  readonly tenantId:string;readonly facilityId:string;readonly actorId:string;readonly shiftId:string;
  readonly epoch:string;
 }
-const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 function assertScope(s:TriageStaffScope){
  if(!s||[s.tenantId,s.facilityId,s.actorId,s.shiftId].some(v=>typeof v!=='string'||!uuid.test(v))||
    typeof s.epoch!=='string'||!s.epoch.trim()||s.epoch.length>128)
