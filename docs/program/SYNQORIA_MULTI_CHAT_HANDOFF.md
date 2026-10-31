@@ -46,8 +46,7 @@ Next unreserved batch candidate:
 Other workstream notification: link to this handoff + commit, NOT a claim of direct chat delivery
 ```
 
-## Parallel workstream update — v0.58.0 engineering branch
-- Base GitHub main head when work began: `9fdbf95f0ad85cc3867185acfbd19b00be8d80d1` (contains the recovered scheduling source and memory documents).
-- New branch: `work/triage-scoped-workflows-v058`; B0369–B0371 implemented/tested, 24 new tests (224 total passing). No main merge or certification asserted.
-- Next candidate: P06-B0372 **only after rechecking current main, the shared ledger and this PR**.
-- See `docs/program/STATUS_v0.58.0.md` and `evidence/v580/batch-results.json`; clinical/security release remains denied.
+## Active parallel implementation branch (2026-10-31)
+- **PR #1**: `work/triage-scoped-workflows-v058`, P06-B0369–B0371 implemented and independently tested; 24 focused tests, UX 224/224.
+- Handoff: [`docs/program/handoffs/P06_B0369_B0371_v058_PR1.md`](handoffs/P06_B0369_B0371_v058_PR1.md).
+- These IDs are **reserved**. Check PR and the latest shared ledger before assigning P06-B0372 or merging parallel changes. The PR is a draft engineering integration, **not** clinical certification.
