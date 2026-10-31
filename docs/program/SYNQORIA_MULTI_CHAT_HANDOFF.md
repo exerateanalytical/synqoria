@@ -60,3 +60,14 @@ Other workstream notification: link to this handoff + commit, NOT a claim of dir
 - **Handoff**: [P06_B0372_B0391_v059_PR2.md](handoffs/P06_B0372_B0391_v059_PR2.md).
 - **Persistent Library**: `/SYNQORIA/SYNQORIA_v0.59.0_P06_B0372_B0391_LOCAL_CUMULATIVE.zip` (SHA-256 `467fb39f0e770eb358faad18a19a6900ed648a750a7a856987dd25e8f806021b`). This local ZIP is the full v0.58.0 **local lineage**; it is **not** a substitute for latest GitHub `main` recovered scheduling files or the full stacked PR tree. Do not overwrite `SYNQORIA_CURRENT.zip` without reconciling GitHub-only changes.
 - **Scope**: formal certification deferred, runtime safety gates unchanged, 0/261 accepted screens, 0/40 certified modules; no live PostgreSQL/RLS or production identity approval claimed.
+
+
+## 2026-10-31 — parallel P07 workstream, **draft PR #3, not merged**
+
+- P06 triage checkpoint PR #2: `work/triage-safe-command-recovery-v059`, head `abd2c64646087a36477f6a55bc1f988ef5552f99`, P06-B0372–B0391. **Next candidate P06-B0392; not reserved by P07.**
+- New independent workstream: [draft PR #3](https://github.com/exerateanalytical/synqoria/pull/3), branch `work/clinical-encounter-documentation-v060`, commit `492000765aebfe602fbcfc49fa885f71601be524`, based on PR #2.
+- **P07-B0001–B0060 reserved and implemented as 60 distinct internally tested domain operations** across M04 encounter (20), M05 note (20), M06 observation (20). Domain logic is not yet deployed/API-integrated or clinically accepted. Full batch operation mapping in `registers/v600-implementation-batches.json` on PR #3; 60 per-batch Java test logs and 35 adversarial assertions. Canonical 40 modules and 261 screens unchanged.
+- Next candidate P07-B0061 for scoped JDBC/HTTP integration. M03 can continue independently from P06-B0392.
+- Versioned local-lineage source archive in Library: `/SYNQORIA/SYNQORIA_v0.60.0_P07_60DOMAIN_cumulative.zip`, SHA-256 `c6b4e73cc4f0234ee175d9c87dc17850f0a65dba675c47040a4ec6146b71470a`. Its source base is v0.59.0 local PR #2; it **does not contain all newer main-only recovery/project-memory files**. Do **not** overwrite `/SYNQORIA/SYNQORIA_CURRENT.zip` with it before reconciliation.
+- **Merge order:** resolve PR #1 → PR #2 → PR #3, or rebase/reconcile correctly, preserving newer main recovery changes. No force-push, clinical certification or deployed production readiness claimed.
+- This shared file is the cross-chat notification mechanism; it does not prove the other conversation has read the update. Any chat must check fresh PR status and ledgers before taking batches.
