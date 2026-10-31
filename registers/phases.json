@@ -1,6 +1,6 @@
 {
-  "version": "0.57.0",
-  "checkpoint": "v0.57.0",
+  "version": "0.58.0",
+  "checkpoint": "v0.58.0",
   "phase_count": 20,
   "phases": [
     {
@@ -149,7 +149,7 @@
       ],
       "deliverables": "Appointments, resource scheduling, triage prioritization and queues, staff mobile triage/vitals entry as permitted by authoritative APIs.",
       "status": "in_progress__M03_scoped_read_workflow_implemented__live_integrations_not_tested",
-      "batches_completed": 368,
+      "batches_completed": 371,
       "certification": "deferred_pending_separate_future_stage__not_waived",
       "evidence": [
         "evidence/batches/P01-P02-P06-v280-ten-batches.json",
@@ -169,7 +169,8 @@
         "registers/v550-implementation-batches.json",
         "registers/v560-implementation-batches.json",
         "evidence/v560/verification-summary.json",
-        "evidence/v570/batch-execution.json"
+        "evidence/v570/batch-execution.json",
+        "evidence/v580/batch-results.json"
       ]
     },
     {

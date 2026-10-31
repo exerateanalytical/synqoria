@@ -45,3 +45,9 @@ Remaining blockers (not certified):
 Next unreserved batch candidate:
 Other workstream notification: link to this handoff + commit, NOT a claim of direct chat delivery
 ```
+
+## Parallel workstream update — v0.58.0 engineering branch
+- Base GitHub main head when work began: `9fdbf95f0ad85cc3867185acfbd19b00be8d80d1` (contains the recovered scheduling source and memory documents).
+- New branch: `work/triage-scoped-workflows-v058`; B0369–B0371 implemented/tested, 24 new tests (224 total passing). No main merge or certification asserted.
+- Next candidate: P06-B0372 **only after rechecking current main, the shared ledger and this PR**.
+- See `docs/program/STATUS_v0.58.0.md` and `evidence/v580/batch-results.json`; clinical/security release remains denied.

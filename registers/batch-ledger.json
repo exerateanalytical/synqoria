@@ -1,5 +1,5 @@
 {
-  "version": "0.57.0",
+  "version": "0.58.0",
   "batches": [
     {
       "id": "P00-B0001",
@@ -7410,8 +7410,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 5.0,
-      "batch_remaining_percent": 95.0,
+      "batch_completion_percent": 5,
+      "batch_remaining_percent": 95,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -7503,8 +7503,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 10.0,
-      "batch_remaining_percent": 90.0,
+      "batch_completion_percent": 10,
+      "batch_remaining_percent": 90,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -7596,8 +7596,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 15.0,
-      "batch_remaining_percent": 85.0,
+      "batch_completion_percent": 15,
+      "batch_remaining_percent": 85,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -7689,8 +7689,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 20.0,
-      "batch_remaining_percent": 80.0,
+      "batch_completion_percent": 20,
+      "batch_remaining_percent": 80,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -7782,8 +7782,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 25.0,
-      "batch_remaining_percent": 75.0,
+      "batch_completion_percent": 25,
+      "batch_remaining_percent": 75,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -7875,8 +7875,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 30.0,
-      "batch_remaining_percent": 70.0,
+      "batch_completion_percent": 30,
+      "batch_remaining_percent": 70,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -7968,8 +7968,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 35.0,
-      "batch_remaining_percent": 65.0,
+      "batch_completion_percent": 35,
+      "batch_remaining_percent": 65,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8061,8 +8061,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 40.0,
-      "batch_remaining_percent": 60.0,
+      "batch_completion_percent": 40,
+      "batch_remaining_percent": 60,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8154,8 +8154,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 45.0,
-      "batch_remaining_percent": 55.0,
+      "batch_completion_percent": 45,
+      "batch_remaining_percent": 55,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8247,8 +8247,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 50.0,
-      "batch_remaining_percent": 50.0,
+      "batch_completion_percent": 50,
+      "batch_remaining_percent": 50,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8340,8 +8340,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 55.0,
-      "batch_remaining_percent": 45.0,
+      "batch_completion_percent": 55,
+      "batch_remaining_percent": 45,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8433,8 +8433,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 60.0,
-      "batch_remaining_percent": 40.0,
+      "batch_completion_percent": 60,
+      "batch_remaining_percent": 40,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8526,8 +8526,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 65.0,
-      "batch_remaining_percent": 35.0,
+      "batch_completion_percent": 65,
+      "batch_remaining_percent": 35,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8619,8 +8619,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 70.0,
-      "batch_remaining_percent": 30.0,
+      "batch_completion_percent": 70,
+      "batch_remaining_percent": 30,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8712,8 +8712,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 75.0,
-      "batch_remaining_percent": 25.0,
+      "batch_completion_percent": 75,
+      "batch_remaining_percent": 25,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8805,8 +8805,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 80.0,
-      "batch_remaining_percent": 20.0,
+      "batch_completion_percent": 80,
+      "batch_remaining_percent": 20,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8898,8 +8898,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 85.0,
-      "batch_remaining_percent": 15.0,
+      "batch_completion_percent": 85,
+      "batch_remaining_percent": 15,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8991,8 +8991,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 90.0,
-      "batch_remaining_percent": 10.0,
+      "batch_completion_percent": 90,
+      "batch_remaining_percent": 10,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -9084,8 +9084,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 95.0,
-      "batch_remaining_percent": 5.0,
+      "batch_completion_percent": 95,
+      "batch_remaining_percent": 5,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -9178,8 +9178,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 100.0,
-      "batch_remaining_percent": 0.0,
+      "batch_completion_percent": 100,
+      "batch_remaining_percent": 0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -10635,9 +10635,51 @@
       ],
       "external_certification": false,
       "clinical_acceptance": false
+    },
+    {
+      "id": "P06-B0369",
+      "status": "implemented_and_tested_internal",
+      "scope": "Verified staff worklist/case context, patient/facility/shift switching and server-authoritative revision refresh",
+      "code": [
+        "packages/ux-core/src/triage-staff-workflow.ts"
+      ],
+      "evidence": [
+        "packages/ux-core/tests/triage-v58-staff-workflow.test.cjs",
+        "evidence/v580/batch-results.json"
+      ],
+      "external_certification": false,
+      "clinical_acceptance": false
+    },
+    {
+      "id": "P06-B0370",
+      "status": "implemented_and_tested_internal",
+      "scope": "Fail-closed clinical transport no-store/content-type/UTF-8 response bounds and cancellation-safe requests",
+      "code": [
+        "packages/ux-core/src/triage-client.ts"
+      ],
+      "evidence": [
+        "packages/ux-core/tests/triage-v58-transport-security.test.cjs",
+        "evidence/v580/batch-results.json"
+      ],
+      "external_certification": false,
+      "clinical_acceptance": false
+    },
+    {
+      "id": "P06-B0371",
+      "status": "implemented_and_tested_internal",
+      "scope": "Idempotent triage intake workflow with uncertain-result handling, same-command replay and authoritative reread",
+      "code": [
+        "packages/ux-core/src/triage-arrival-session.ts"
+      ],
+      "evidence": [
+        "packages/ux-core/tests/triage-v58-arrival-session.test.cjs",
+        "evidence/v580/batch-results.json"
+      ],
+      "external_certification": false,
+      "clinical_acceptance": false
     }
   ],
-  "next_batch": "P06-B0303",
+  "next_batch": "P06-B0372",
   "release_status": "NOT_CERTIFIED",
   "merge_provenance": {
     "source": "SYNQORIA_v0.29.0_cumulative.zip",
