@@ -71,3 +71,13 @@ Other workstream notification: link to this handoff + commit, NOT a claim of dir
 - Versioned local-lineage source archive in Library: `/SYNQORIA/SYNQORIA_v0.60.0_P07_60DOMAIN_cumulative.zip`, SHA-256 `c6b4e73cc4f0234ee175d9c87dc17850f0a65dba675c47040a4ec6146b71470a`. Its source base is v0.59.0 local PR #2; it **does not contain all newer main-only recovery/project-memory files**. Do **not** overwrite `/SYNQORIA/SYNQORIA_CURRENT.zip` with it before reconciliation.
 - **Merge order:** resolve PR #1 → PR #2 → PR #3, or rebase/reconcile correctly, preserving newer main recovery changes. No force-push, clinical certification or deployed production readiness claimed.
 - This shared file is the cross-chat notification mechanism; it does not prove the other conversation has read the update. Any chat must check fresh PR status and ledgers before taking batches.
+
+
+## 2026-10-31 — P07 v0.61.0 HTTP workstream; draft PR #4 (NOT merged)
+
+- **Draft PR:** https://github.com/exerateanalytical/synqoria/pull/4, branch `work/clinical-http-integration-v061`, commit `ddc924a3911ead1de2a786f88b22e3398752ecbf`; stacked on PR #3 (`492000765aebfe602fbcfc49fa885f71601be524`). **Do not overwrite newer main-only recovery/project memory.**
+- **P07-B0061–B0070**: 10 implemented and individually verified M04/M05/M06 engineering integration areas. Authenticated scope/evidence gateway, bounded strict JSON, HTTP encounter/note/observation commands, confidential notes, patient summary and audit/observation read projections, OpenAPI parity and safe TypeScript client. 8 loopback Java scenario checks, 5 OpenAPI checks and 6 TypeScript focused checks; full Java compilation, 60 historical domain tests, 35 adversarial assertions and UX 292/292 passed. Production OIDC, PostgreSQL/RLS, deployed web/mobile and clinical approval NOT verified.
+- **Next unreserved P07 candidate:** `P07-B0071` (check branch/ledger again before assigning). Parallel P06 triage work may continue from **P06-B0392**; no overlap.
+- **Library checkpoint:** `/SYNQORIA/SYNQORIA_v0.61.0_P07_10BATCH_cumulative.zip`, SHA-256 `0fd5e41a7dec081d9df547d83f36b144a8817a79ae81504950ee2fcbebba259f`; 2,313 archive entries, 2,312 manifest entries checked. The ZIP derives from PR #3 local lineage and is **not a replacement for SYNQORIA_CURRENT.zip** until a full GitHub main reconciliation.
+- **Merge order:** reconcile PR #1 → PR #2 → PR #3 → PR #4, or rebase/merge with recorded evidence. Current 40 modules/261 screens unchanged, 0 clinical screens accepted and 0 modules certified; formal certification deferred.
+- This GitHub note is the **communication handoff** to other chats, not proof they have read it.
