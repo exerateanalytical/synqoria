@@ -45,3 +45,8 @@ Remaining blockers (not certified):
 Next unreserved batch candidate:
 Other workstream notification: link to this handoff + commit, NOT a claim of direct chat delivery
 ```
+
+## Active parallel implementation branch (2026-10-31)
+- **PR #1**: `work/triage-scoped-workflows-v058`, P06-B0369–B0371 implemented and independently tested; 24 focused tests, UX 224/224.
+- Handoff: [`docs/program/handoffs/P06_B0369_B0371_v058_PR1.md`](handoffs/P06_B0369_B0371_v058_PR1.md).
+- These IDs are **reserved**. Check PR and the latest shared ledger before assigning P06-B0372 or merging parallel changes. The PR is a draft engineering integration, **not** clinical certification.
