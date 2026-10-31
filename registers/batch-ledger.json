@@ -1,5 +1,5 @@
 {
-  "version": "0.61.0",
+  "version": "0.62.0",
   "batches": [
     {
       "id": "P00-B0001",
@@ -11907,6 +11907,351 @@
       "independent_clinical_review": false,
       "external_certification": false,
       "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0071",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "bounded deterministic aggregate snapshot codec",
+      "evidence": [
+        "evidence/v620/P07-B0071.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0072",
+      "module": "M05",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "preservation of signed and immutable note state",
+      "evidence": [
+        "evidence/v620/P07-B0072.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0073",
+      "module": "M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "round-trip observation correction chain and status",
+      "evidence": [
+        "evidence/v620/P07-B0073.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0074",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "audit, outbox and idempotency receipt round-trip integrity",
+      "evidence": [
+        "evidence/v620/P07-B0074.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0075",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "encrypted AES-256-GCM clinical aggregate envelopes",
+      "evidence": [
+        "evidence/v620/P07-B0075.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0076",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "patient/facility/encounter/revision authentication via AAD",
+      "evidence": [
+        "evidence/v620/P07-B0076.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0077",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "snapshot tamper, bounds and malformed Unicode rejection",
+      "evidence": [
+        "evidence/v620/P07-B0077.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0078",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "transaction-local PostgreSQL scope echo fail-closed",
+      "evidence": [
+        "evidence/v620/P07-B0078.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0079",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "encrypted row-locked JDBC case read with local scope",
+      "evidence": [
+        "evidence/v620/P07-B0079.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0080",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "JDBC persisted audit/receipt/outbox correlation validation",
+      "evidence": [
+        "evidence/v620/P07-B0080.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0081",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "optimistic revision compare-and-swap write denial",
+      "evidence": [
+        "evidence/v620/P07-B0081.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0082",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "atomic aggregate audit receipt outbox JDBC insert contract",
+      "evidence": [
+        "evidence/v620/P07-B0082.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0083",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "replay-safe database-rehydrated idempotency",
+      "evidence": [
+        "evidence/v620/P07-B0083.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0084",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "transaction rollback on outbox write failure",
+      "evidence": [
+        "evidence/v620/P07-B0084.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0085",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "quarantined V020 restricted-row RLS/append-only DDL",
+      "evidence": [
+        "evidence/v620/P07-B0085.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0086",
+      "module": "M04",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "backend authorized planned encounter initialization",
+      "evidence": [
+        "evidence/v620/P07-B0086.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0087",
+      "module": "M04",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "fail-closed duplicate and revoked provisioning rejection",
+      "evidence": [
+        "evidence/v620/P07-B0087.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0088",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "restricted trust-to-JDBC-to-HTTP loopback wiring",
+      "evidence": [
+        "evidence/v620/P07-B0088.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0089",
+      "module": "M05",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "patient-scoped note index with confidential visibility and bounded pagination",
+      "evidence": [
+        "evidence/v620/P07-B0089.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0090",
+      "module": "M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "bidirectional observation correction lineage and bounded HTTP read",
+      "evidence": [
+        "evidence/v620/P07-B0090.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0091",
+      "module": "M05",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "TypeScript scoped note index response decoder and GET client",
+      "evidence": [
+        "evidence/v620/P07-B0091.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0092",
+      "module": "M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "TypeScript observation lineage privacy and stale-response guard",
+      "evidence": [
+        "evidence/v620/P07-B0092.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0093",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "versioned private read OpenAPI contract and backend parity",
+      "evidence": [
+        "evidence/v620/P07-B0093.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
     }
   ],
   "next_batch": "P06-B0392",
@@ -11920,6 +12265,6 @@
     "clinical_release": "DENIED"
   },
   "release_detail": "DENIED: 0/40 certified modules; 0/261 clinical screens accepted",
-  "next_parallel_batch": "P07-B0071",
+  "next_parallel_batch": "P07-B0094",
   "concurrency_note": "P07-B0061–B0070 on stacked draft PR4 only. P06-B0392 remains reserved for independent triage work. Do not overwrite main."
 }

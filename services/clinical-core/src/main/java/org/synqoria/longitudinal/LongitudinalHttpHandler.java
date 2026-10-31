@@ -26,7 +26,7 @@ public final class LongitudinalHttpHandler implements HttpHandler {
   }
   public record Route(UUID patient,UUID encounter,String resource,UUID member,Map<String,String> query) {}
   private static final Pattern ROOT=Pattern.compile(
-    "/api/v1/clinical/patients/([0-9a-f-]{36})/encounters/([0-9a-f-]{36})/(commands|summary|audit|observations|notes(?:/[0-9a-f-]{36})?)");
+    "/api/v1/clinical/patients/([0-9a-f-]{36})/encounters/([0-9a-f-]{36})/(commands|summary|audit|note-index|observations(?:/[0-9a-f-]{36}/lineage)?|notes(?:/[0-9a-f-]{36})?)");
   private final BearerAdmission bearer;
   private final ClinicalEvidenceSource evidence;
   private final LongitudinalAuthenticatedGateway gateway;
@@ -47,14 +47,19 @@ public final class LongitudinalHttpHandler implements HttpHandler {
       String resource=match.group(3);UUID member=null;
       if(resource.equals("notes"))return null; // individual note reads require an explicit note ID
       if(resource.startsWith("notes/")){member=canonicalUuid(resource.substring(6));resource="notes";}
+      if(resource.startsWith("observations/")){
+        member=canonicalUuid(resource.substring("observations/".length(),resource.length()-"/lineage".length()));
+        resource="observation-lineage";
+      }
       String query=uri.getRawQuery();Map<String,String> options=new LinkedHashMap<>();
       if(query!=null){
-        if(resource.equals("commands")||resource.equals("summary")||resource.equals("notes"))return null;
+        if(resource.equals("commands")||resource.equals("summary")||resource.equals("notes")||resource.equals("observation-lineage"))return null;
         for(String item:query.split("&",-1)){
           int i=item.indexOf('=');if(i<1||i!=item.lastIndexOf('='))return null;
           String key=item.substring(0,i),value=item.substring(i+1);
           if(!(resource.equals("audit")&&Set.of("afterRevision","limit").contains(key))&&
-             !(resource.equals("observations")&&Set.of("code","limit").contains(key)))return null;
+             !(resource.equals("observations")&&Set.of("code","limit").contains(key))&&
+             !(resource.equals("note-index")&&Set.of("afterId","limit").contains(key)))return null;
           if(options.containsKey(key)||value.length()>180||value.isEmpty())return null;
           if(resource.equals("observations")&&key.equals("code")){
             value=URLDecoder.decode(value,StandardCharsets.UTF_8);
@@ -64,6 +69,7 @@ public final class LongitudinalHttpHandler implements HttpHandler {
         }
       }
       if(resource.equals("observations")&&!options.containsKey("code"))return null;
+      if(resource.equals("note-index")&&options.containsKey("afterId"))canonicalUuid(options.get("afterId"));
       return new Route(patient,encounter,resource,member,Map.copyOf(options));
     }catch(RuntimeException e){return null;}
   }
@@ -118,7 +124,7 @@ public final class LongitudinalHttpHandler implements HttpHandler {
       String capability=switch(route.resource){
         case "commands" -> "encounter.write"; // operation-specific proof is resolved after strict parsing
         case "summary" -> "encounter.read";case "audit" -> "encounter.audit.read";
-        case "notes" -> "note.read";case "observations" -> "observation.read";
+        case "notes","note-index" -> "note.read";case "observations","observation-lineage" -> "observation.read";
         default -> throw new IllegalArgumentException("unknown route");
       };
       LongitudinalStrictJson.Body body=null;
@@ -153,6 +159,21 @@ public final class LongitudinalHttpHandler implements HttpHandler {
            ",\"operation\":"+json(row.operation())+",\"at\":"+json(row.at().toString())+
            ",\"digest\":"+json(row.digest())+"}").toList());
         response="{\"history\":["+rows+"],\"nextRevision\":"+page.nextRevision()+"}";
+      }else if(route.resource.equals("note-index")){
+        UUID after=route.query().containsKey("afterId")?canonicalUuid(route.query().get("afterId")):null;
+        int limit=(int)boundedLong(route.query(),"limit",50,100);
+        var page=gateway.noteIndex(identity.get(),proof.get(),scope,after,limit,now);
+        response="{\"notes\":["+String.join(",",page.rows().stream().map(n->"{\"id\":"+json(n.id().toString())+
+           ",\"status\":"+json(n.status().name())+",\"title\":"+json(n.title())+
+           ",\"confidential\":"+n.confidential()+"}").toList())+
+           "],\"nextId\":"+(page.nextId()==null?"null":json(page.nextId().toString()))+"}";
+      }else if(route.resource.equals("observation-lineage")){
+        var rows=gateway.observationLineage(identity.get(),proof.get(),scope,route.member(),now);
+        response="{\"lineage\":["+String.join(",",rows.stream().map(o->"{\"id\":"+json(o.id().toString())+
+         ",\"code\":"+json(o.code())+",\"value\":"+json(o.value())+
+         ",\"unit\":"+json(o.unit())+",\"measuredAt\":"+json(o.measuredAt().toString())+
+         ",\"status\":"+json(o.status().name())+
+         ",\"replaces\":"+(o.replaces()==null?"null":json(o.replaces().toString()))+"}").toList())+"]}";
       }else if(route.resource.equals("notes")){
         var n=gateway.note(identity.get(),proof.get(),scope,route.member(),now);
         response="{\"id\":"+json(n.id().toString())+",\"status\":"+json(n.status().name())+

@@ -1,5 +1,5 @@
 {
-  "version": "0.61.0",
+  "version": "0.62.0",
   "status": "partial implementation evidence exists; no complete clinical module accepted",
   "items": [
     {
@@ -410,5 +410,5 @@
       "accepted": false
     }
   ],
-  "checkpoint": "v0.61.0_unmerged_PR4"
+  "checkpoint": "v0.62.0_unmerged_P07_PR5_candidate"
 }

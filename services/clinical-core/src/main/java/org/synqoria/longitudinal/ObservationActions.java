@@ -116,10 +116,16 @@ public final class ObservationActions {
  }
  public static List<Observation> correctionLineage(State source,Scope scope,Actor actor,UUID selected){
   actor.require("observation.read");if(!scope.equals(source.scope))throw new SecurityException("clinical resource unavailable");
-  var root=observation(source,selected);Set<UUID> ids=new LinkedHashSet<>();ids.add(root.id);
+  var root=observation(source,selected);Set<UUID> ids=new LinkedHashSet<>();
+  // A correction selected directly must reveal its verified predecessor, not only descendants.
+  for(Observation cur=root;cur!=null;cur=cur.replaces==null?null:observation(source,cur.replaces)){
+   if(!ids.add(cur.id)||ids.size()>100)throw new SecurityException("invalid observation correction lineage");
+  }
   boolean changed;do {changed=false;for(var o:source.observations.values()){
-      if((o.replaces!=null&&ids.contains(o.replaces))&&ids.add(o.id))changed=true;
+      if(o.replaces!=null&&ids.contains(o.replaces)&&ids.add(o.id)){changed=true;
+       if(ids.size()>100)throw new SecurityException("observation correction lineage exceeds bound");}
    }}while(changed);
-  return ids.stream().map(id->new Observation(observation(source,id))).toList();
+  return ids.stream().map(id->new Observation(observation(source,id)))
+   .sorted(Comparator.comparing((Observation o)->o.measuredAt).thenComparing(o->o.id)).toList();
  }
 }

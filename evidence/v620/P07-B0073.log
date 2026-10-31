@@ -1,0 +1,6 @@
+command=["java", "-ea", "-cp", "/mnt/data/synqoria_v62_work/.v620-classes", "org.synqoria.longitudinal.LongitudinalDurabilityTest", "observation-corrections"]
+exit_code=0
+stdout:
+PASS observation-corrections 2 assertions
+
+stderr:

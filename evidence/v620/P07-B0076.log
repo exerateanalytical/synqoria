@@ -1,0 +1,6 @@
+command=["java", "-ea", "-cp", "/mnt/data/synqoria_v62_work/.v620-classes", "org.synqoria.longitudinal.LongitudinalDurabilityTest", "scope-integrity"]
+exit_code=0
+stdout:
+PASS scope-integrity 2 assertions
+
+stderr:

@@ -5,6 +5,9 @@ export interface ClinicalCaseView {readonly encounterId:string;readonly revision
 export interface ClinicalAuditView {readonly history:readonly {readonly revision:number;readonly operation:string;readonly at:string;readonly digest:string;}[];readonly nextRevision:number|null;}
 export interface ClinicalNoteView {readonly id:string;readonly author:string;readonly title:string;readonly body:string;readonly status:string;readonly confidential:boolean;}
 export interface ClinicalObservationView {readonly observations:readonly {readonly id:string;readonly code:string;readonly value:string;readonly unit:string;readonly measuredAt:string;readonly status:string;}[];}
+export interface ClinicalNoteIndex {readonly notes:readonly {readonly id:string;readonly status:string;readonly title:string;readonly confidential:boolean;}[];readonly nextId:string|null;}
+export interface ClinicalObservationLineage {readonly lineage:readonly {readonly id:string;readonly code:string;readonly value:string;readonly unit:string;readonly measuredAt:string;readonly status:string;readonly replaces:string|null;}[];}
+
 export interface ClinicalTransport {
   token():Promise<string>;
   online():boolean;
@@ -60,6 +63,34 @@ export function clinicalObservationView(raw:unknown):ClinicalObservationView {
  }
  return x as unknown as ClinicalObservationView;
 }
+export function clinicalNoteIndex(raw:unknown,afterId?:string):ClinicalNoteIndex {
+ if(afterId!==undefined)safeId(afterId);
+ const x=keys(raw,['notes','nextId']);if(!Array.isArray(x.notes)||x.notes.length>100)return fail();
+ let previous=afterId??'';
+ for(const row of x.notes){const n=keys(row,['id','status','title','confidential']);
+  if(typeof n.id!=='string'||!UUID.test(n.id)||n.id<=previous||
+     !['DRAFT','REVIEW','READY','SIGNED','AMENDED','ENTERED_IN_ERROR'].includes(String(n.status))||
+     typeof n.title!=='string'||n.title.length>160||typeof n.confidential!=='boolean')return fail();
+  previous=n.id;
+ }
+ if(x.nextId!==null&&(typeof x.nextId!=='string'||x.nextId!==previous||x.notes.length===0))return fail();
+ return x as unknown as ClinicalNoteIndex;
+}
+export function clinicalObservationLineage(raw:unknown,selected:string):ClinicalObservationLineage {
+ safeId(selected);const x=keys(raw,['lineage']);if(!Array.isArray(x.lineage)||x.lineage.length<1||x.lineage.length>100)return fail();
+ const seen=new Set<string>();let contains=false;let priorTime=-Infinity;
+ for(const row of x.lineage){const o=keys(row,['id','code','value','unit','measuredAt','status','replaces']);
+  if(typeof o.id!=='string'||!UUID.test(o.id)||seen.has(o.id)||
+      typeof o.code!=='string'||o.code.length<1||o.code.length>128||typeof o.value!=='string'||o.value.length>256||
+      typeof o.unit!=='string'||o.unit.length>64||!iso(o.measuredAt)||
+      !['CAPTURED','PENDING','VERIFIED','CORRECTED','INVALIDATED','REJECTED'].includes(String(o.status))||
+      o.replaces!==null&&(typeof o.replaces!=='string'||!UUID.test(o.replaces)))return fail();
+  let timestamp=Date.parse(o.measuredAt);if(timestamp<priorTime)return fail();priorTime=timestamp;
+  seen.add(o.id);if(o.id===selected)contains=true;
+ }
+ if(!contains||x.lineage.some((o:unknown)=>{const row=obj(o);return row.replaces!==null&&!seen.has(String(row.replaces));}))return fail();
+ return x as unknown as ClinicalObservationLineage;
+}
 export function longitudinalClient(origin:string,transport:ClinicalTransport){
  const u=new URL(origin);
  if((u.protocol!=='https:'&&!(u.protocol==='http:'&&u.hostname==='127.0.0.1'))||u.username||u.password||
@@ -107,6 +138,14 @@ export function longitudinalClient(origin:string,transport:ClinicalTransport){
   },
   note:async(scope:ClinicalScope,noteId:string,signal?:AbortSignal,isCurrent?:()=>boolean)=>
     clinicalNoteView(await send(base(scope)+'/notes/'+safeId(noteId),'GET',signal,isCurrent),noteId),
+  noteIndex:async(scope:ClinicalScope,afterId?:string,limit=50,signal?:AbortSignal,isCurrent?:()=>boolean)=>{
+    if(afterId!==undefined)safeId(afterId);
+    if(!Number.isSafeInteger(limit)||limit<1||limit>100)throw new ClinicalClientError('invalid',0);
+    const query=new URLSearchParams({limit:String(limit),...(afterId?{afterId}:{})});
+    return clinicalNoteIndex(await send(base(scope)+`/note-index?${query}`,'GET',signal,isCurrent),afterId);
+  },
+  observationLineage:async(scope:ClinicalScope,id:string,signal?:AbortSignal,isCurrent?:()=>boolean)=>
+    clinicalObservationLineage(await send(base(scope)+`/observations/${safeId(id)}/lineage`,'GET',signal,isCurrent),id),
   observations:async(scope:ClinicalScope,code:string,limit=50,signal?:AbortSignal,isCurrent?:()=>boolean)=>{
     if(typeof code!=='string'||!code.trim()||code.length>128||/[\x00-\x1f]/.test(code)||
        !Number.isSafeInteger(limit)||limit<1||limit>100)throw new ClinicalClientError('invalid',0);

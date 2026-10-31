@@ -1,0 +1,18 @@
+command=["npm", "run", "check:source"]
+exit_code=0
+STDOUT:
+
+> synqoria@0.62.0 check:source
+> node tests/test_tsx_syntax.cjs && python tests/test_shell_sources.py && python tests/test_source_safety.py && python tests/test_locked_mobile_shells.py && python tests/test_v180_native_source.py && python tests/test_v200_native_sources.py && python tests/test_v210_native_integration.py && python tests/test_v230_native_source.py
+
+PASS: 5 TSX syntax-only parses; NO dependency/type/native build assertions
+PASS: bilingual, denied-by-default web shell and restrained responsive style source assertions
+PASS: static design prohibitions, native shell source and 3 web shell sources
+PASS: 2 unauthenticated Expo shells have disabled tab navigation source guards
+PASS: native read-only models wired in staff/patient source; Expo/device NOT built
+PASS P02-B0058 both RN sources keyboard/safe area integration; package/config source only
+PASS P02-B0061 native disabled action has disabled button semantics; no clinical write
+PASS P02 native source integration: 2 separate apps, locked and accessible; not compiled/device-tested
+PASS native source privacy, stale-response and locked navigation wiring; no native binary tested
+
+STDERR:

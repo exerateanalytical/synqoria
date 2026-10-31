@@ -1,0 +1,27 @@
+command=["node", "--test", "--test-name-pattern=B0091", "packages/ux-core/tests/longitudinal-client-v62.test.cjs"]
+exit_code=0
+stdout:
+TAP version 13
+# Subtest: B0091: note index hides free text and requires exact bounded fields
+ok 1 - B0091: note index hides free text and requires exact bounded fields
+  ---
+  duration_ms: 1.042808
+  type: 'test'
+  ...
+# Subtest: B0091: authorized scoped note index GET requires no-store and no client scope headers
+ok 2 - B0091: authorized scoped note index GET requires no-store and no client scope headers
+  ---
+  duration_ms: 1.626044
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 77.579993
+
+stderr:

@@ -18,6 +18,8 @@ public final class LongitudinalAuthenticatedGateway {
   public record AuditRow(long revision,String operation,Instant at,String digest) {}
   public record NoteView(UUID id,Note.Status status,UUID author,String title,String body,boolean confidential,UUID parent) {}
   public record ObservationView(UUID id,String code,String value,String unit,Instant measuredAt,Observation.Status status,UUID replaces) {}
+  public record NoteIndexRow(UUID id,Note.Status status,String title,boolean confidential) {}
+  public record NoteIndexPage(List<NoteIndexRow> rows,UUID nextId) {}
   private final Persistence persistence;
   private final ClinicalCaseCore core;
   public LongitudinalAuthenticatedGateway(Persistence persistence){
@@ -79,6 +81,28 @@ public final class LongitudinalAuthenticatedGateway {
     Note n=ClinicalCaseCore.note(s,noteId);
     if(n.confidential)authorize(caller,proof,scope,"note.read.confidential",now);
     return new NoteView(n.id,n.status,n.author,n.title,n.body,n.confidential,n.parent);
+  }
+  /** Bounded note metadata listing; confidential notes must be omitted without explicit privilege. */
+  public NoteIndexPage noteIndex(TrustedAccessContext caller,TrustedClinicalAccessEvidence proof,Scope scope,
+                                 UUID afterId,int limit,Instant now){
+    if(limit<1||limit>100)throw new IllegalArgumentException("invalid page");
+    State s=read(caller,proof,scope,"note.read",now);
+    boolean confidentialAllowed=ClinicalAccessPolicy.authorize(caller,proof,scope.tenant(),scope.facility(),
+       scope.patient(),"note.read.confidential",now)==ClinicalAccessPolicy.Decision.ALLOWED;
+    List<Note> candidates=s.notes.values().stream().filter(n->!n.confidential||confidentialAllowed)
+      .filter(n->afterId==null||n.id.compareTo(afterId)>0).sorted(Comparator.comparing(n->n.id))
+      .limit(limit+1L).toList();boolean more=candidates.size()>limit;
+    List<Note> shown=more?candidates.subList(0,limit):candidates;
+    return new NoteIndexPage(shown.stream().map(n->new NoteIndexRow(n.id,n.status,n.title,n.confidential)).toList(),
+      more?shown.get(shown.size()-1).id:null);
+  }
+  /** Patient-scoped correction history, including ancestors and descendants. No automatic interpretations. */
+  public List<ObservationView> observationLineage(TrustedAccessContext caller,TrustedClinicalAccessEvidence proof,
+                                                   Scope scope,UUID selected,Instant now){
+    Objects.requireNonNull(selected);State s=read(caller,proof,scope,"observation.read",now);
+    Actor a=authorize(caller,proof,scope,"observation.read",now);
+    return ObservationActions.correctionLineage(s,scope,a,selected).stream().map(o->
+      new ObservationView(o.id,o.code,o.value,o.unit,o.measuredAt,o.status,o.replaces)).toList();
   }
   public List<ObservationView> observationTimeline(TrustedAccessContext caller,TrustedClinicalAccessEvidence proof,Scope scope,
                                                    String code,int limit,Instant now){

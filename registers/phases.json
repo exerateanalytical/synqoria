@@ -1,6 +1,6 @@
 {
-  "version": "0.61.0",
-  "checkpoint": "v0.61.0_unmerged_PR4",
+  "version": "0.62.0",
+  "checkpoint": "v0.62.0_unmerged_P07_PR5_candidate",
   "phase_count": 20,
   "phases": [
     {
@@ -183,14 +183,16 @@
         "M06"
       ],
       "deliverables": "Encounters, admission/transfer/discharge, beds, notes, diagnoses, observations, vitals, signing/amendment and mobile bedside views.",
-      "status": "domain_and_authenticated_loopback_HTTP_contract_client_implemented_tested_NOT_live_DB_or_OIDC",
-      "batches_completed": 70,
+      "status": "domain_HTTP_codec_encrypted_quarantine_JDBC_synthetic_protocol_tested_NOT_live_DB_or_OIDC",
+      "batches_completed": 93,
       "certification": "deferred__not_certified__do_not_advance_phase_gate",
       "evidence": [
         "evidence/v600/individual-batches.json",
         "evidence/v600/adversarial.log",
         "docs/engineering/P07_LONGITUDINAL_CORE_v0.60.0.md",
-        "evidence/v610/verified-batches.json"
+        "evidence/v610/verified-batches.json",
+        "evidence/v620/individual-batch-results.json",
+        "tests/test_v620_quarantine.py"
       ]
     },
     {
