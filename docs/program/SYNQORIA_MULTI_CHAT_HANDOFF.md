@@ -89,3 +89,14 @@ Other workstream notification: link to this handoff + commit, NOT a claim of dir
 - **Next unreserved P07 candidate: P07-B0094**, check fresh branch and ledger before use. Parallel P06 candidate P06-B0392 remains separate. Canonical 40 modules and 261 screens preserved, 0 clinically accepted.
 - Cumulative local archive v0.62.0: 2,381 entries, 2,380 verified file hashes; archive SHA-256 `5b38f45007fc8a24fe22d557aecf06fa5982702df59232a93e318c05c4013523`. The versioned Library ZIP upload hit storage limit; user has downloadable archive in this chat. Shared `SYNQORIA_CURRENT.zip` deliberately NOT overwritten.
 - Merge source stacked PR1 → PR2 → PR3 → PR4 → PR5, or reconcile/rebase against newer main, preserving recovery and vision. No direct message into other ChatGPT conversations was sent: this GitHub handoff is the shared notification.
+
+
+## 2026-10-31 — v0.63.0 P07 outbox checkpoint (CODE NOT YET PUSHED)
+
+- **Verified local-only implementation:** P07-B0094–B0104, 11 individual engineering feature checks passed; earlier 100-batch request now totals 34/100 implemented/tested, 66 uncompleted. Modules M04/M05/M06; next unreserved candidate **P07-B0105** (recheck commits and registers before use).
+- **Functionality:** privacy-minimal clinical event envelope; scope/expiry dispatcher permits; ordered, fenced single lease per encounter, scoped JDBC claim/CAS ACK/defer, bounded retry, expired-last-lease parking, uncertain ACK at-least-once replay and V021 forced-RLS no-grant schema. No operational broker, live PostgreSQL/RLS, consumer inbox or production identity integration.
+- **Evidence:** Java 21 compilation; 11/11 independent batch checks; 17/17 regression groups; UX 296/296; 65 synthetic outbox and 175 synthetic JDBC assertions; migration lock 21 entries. Clinical acceptance remains 0/261 and module certification 0/40; formal certification deferred and release DENIED.
+- **Local cumulative ZIP (downloadable in the coding chat, NOT saved to Library due to storage limit):** `SYNQORIA_v0.63.0_P07_11BATCH_cumulative.zip`, SHA-256 `bfdb63e947c4bbabb7b9c2f8d24a03a4d90fcf57bdb50bc8890b3bc41bb32763`; 2,427 entries / 2,426 verified file hashes; preserves all 2,381 previous entries. Does not include newer `main`-only recovery/vision changes.
+- **GitHub branch** `work/longitudinal-outbox-v063` was created from draft PR #5 head `3fe8289829946a531f6e398a3a8e229d3c8882a7`. **No v0.63.0 implementation commit or PR exists yet; source publication was blocked by exhausted temporary Library transfer storage. The remote branch is still at its PR #5 base.** Do not claim otherwise. GitHub source authority remains v0.62.0 draft PR #5 for this workstream.
+- Parallel P06 next candidate P06-B0392 remains separate. Preserve PR #1→#5 stack and other workstream's newer main commits. Do not overwrite `SYNQORIA_CURRENT.zip` until reconciled.
+- This note is a shared handoff record, not a direct notification delivered into the other ChatGPT chat.
