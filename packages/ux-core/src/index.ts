@@ -88,3 +88,5 @@ export * from './triage-client';
 export * from './triage-case-session';
 export * from './triage-worklist-session';
 export * from './triage-audit-pager';
+export * from './triage-staff-workflow';
+export * from './triage-arrival-session';
