@@ -1,5 +1,5 @@
 {
-  "version": "0.60.0",
+  "version": "0.61.0",
   "batches": [
     {
       "id": "P00-B0001",
@@ -2537,7 +2537,7 @@
     {
       "id": "P02-B0059",
       "status": "implemented_unit_or_static_tested_NOT_production_integrated",
-      "scope": "Dynamic type safety for clinical text, 200\u2013300% scaling, wrapping, four unique bottom destinations; unit tested and native source wired",
+      "scope": "Dynamic type safety for clinical text, 200–300% scaling, wrapping, four unique bottom destinations; unit tested and native source wired",
       "evidence": [
         "evidence/batches/v200-P02-B0059.log"
       ],
@@ -11757,6 +11757,156 @@
       "external_certification": false,
       "api_integrated": false,
       "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0061",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "strict scoped clinical command JSON decoding",
+      "evidence": [
+        "evidence/v610/P07-B0061.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0062",
+      "module": "M04",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "authenticated encounter POST and case summary",
+      "evidence": [
+        "evidence/v610/P07-B0062.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0063",
+      "module": "M05",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "clinical note creation and confidential note GET",
+      "evidence": [
+        "evidence/v610/P07-B0063.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0064",
+      "module": "M06",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "observation recording/verification and filtered GET",
+      "evidence": [
+        "evidence/v610/P07-B0064.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0065",
+      "module": "M04",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "scope denial and verified admission",
+      "evidence": [
+        "evidence/v610/P07-B0065.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0066",
+      "module": "M04",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "audit evidence bounded cursor page",
+      "evidence": [
+        "evidence/v610/P07-B0066.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0067",
+      "module": "M04",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "idempotent replay and revision conflicts",
+      "evidence": [
+        "evidence/v610/P07-B0067.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0068",
+      "module": "M04",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "HTTP request-smuggling/header/IDOR rejection",
+      "evidence": [
+        "evidence/v610/P07-B0068.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0069",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "versioned OpenAPI parity and safety contract",
+      "evidence": [
+        "evidence/v610/P07-B0069.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0070",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "TypeScript staff client with context abort and privacy-minimal decoders",
+      "evidence": [
+        "evidence/v610/P07-B0070.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
     }
   ],
   "next_batch": "P06-B0392",
@@ -11770,6 +11920,6 @@
     "clinical_release": "DENIED"
   },
   "release_detail": "DENIED: 0/40 certified modules; 0/261 clinical screens accepted",
-  "next_parallel_batch": "P07-B0061",
-  "concurrency_note": "P06-B0392 remains pending on parallel triage line; P07 is an independent, provisional, unmerged vertical slice."
+  "next_parallel_batch": "P07-B0071",
+  "concurrency_note": "P07-B0061–B0070 on stacked draft PR4 only. P06-B0392 remains reserved for independent triage work. Do not overwrite main."
 }

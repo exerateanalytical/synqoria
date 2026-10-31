@@ -1,6 +1,6 @@
 {
-  "version": "0.60.0",
-  "checkpoint": "v0.60.0_unmerged",
+  "version": "0.61.0",
+  "checkpoint": "v0.61.0_unmerged_PR4",
   "phase_count": 20,
   "phases": [
     {
@@ -43,7 +43,7 @@
       "id": "P02",
       "title": "Cross-platform design system and navigation",
       "modules": [],
-      "deliverables": "Tokens; components; three web shells; staff/patient mobile shells; route ownership; menu eligibility; status states; EN/FR; visual snapshots at 320\u20131920px.",
+      "deliverables": "Tokens; components; three web shells; staff/patient mobile shells; route ownership; menu eligibility; status states; EN/FR; visual snapshots at 320–1920px.",
       "status": "in_progress",
       "batches_completed": 93,
       "certification": "not_certified",
@@ -183,13 +183,14 @@
         "M06"
       ],
       "deliverables": "Encounters, admission/transfer/discharge, beds, notes, diagnoses, observations, vitals, signing/amendment and mobile bedside views.",
-      "status": "independent_foundational_domain_work_internal_tested_not_api_or_database_integrated",
-      "batches_completed": 60,
+      "status": "domain_and_authenticated_loopback_HTTP_contract_client_implemented_tested_NOT_live_DB_or_OIDC",
+      "batches_completed": 70,
       "certification": "deferred__not_certified__do_not_advance_phase_gate",
       "evidence": [
         "evidence/v600/individual-batches.json",
         "evidence/v600/adversarial.log",
-        "docs/engineering/P07_LONGITUDINAL_CORE_v0.60.0.md"
+        "docs/engineering/P07_LONGITUDINAL_CORE_v0.60.0.md",
+        "evidence/v610/verified-batches.json"
       ]
     },
     {

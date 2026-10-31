@@ -1,0 +1,28 @@
+{
+  "checkpoint": "v0.61.0_unmerged_PR4",
+  "updated_at_utc": "2026-10-31T15:40:12.666501+00:00",
+  "certification": "DEFERRED_DO_NOT_MARK_AS_PASSED",
+  "clinical_release": "DENIED",
+  "blockers": [
+    {
+      "id": "P07-LIVE-DB",
+      "affected": "M04-M06 clinical writes",
+      "detail": "No PostgreSQL row locks/RLS/transactional audit+outbox adapter tested; synthetic store lives only in test tree"
+    },
+    {
+      "id": "P07-IDENTITY",
+      "affected": "M04-M06 HTTP",
+      "detail": "Synthetic trusted session in tests; real OIDC, MFA, revocation and signed evidence unverified"
+    },
+    {
+      "id": "P07-APPLICATION",
+      "affected": "Java HTTP and TypeScript API client",
+      "detail": "Opt-in Java HTTP handler exists without reviewed Spring production wiring; no actual Next.js or Expo device build"
+    },
+    {
+      "id": "P07-CLINICAL",
+      "affected": "human release gates",
+      "detail": "0/261 screens accepted, 0/40 modules certified; clinical review is deferred but not waived"
+    }
+  ]
+}

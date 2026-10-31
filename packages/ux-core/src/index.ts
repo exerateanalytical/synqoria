@@ -110,3 +110,5 @@ export * from './triage-staff-read-filters';
 export * from './triage-secured-command-journey';
 export * from './triage-action-presentation';
 export * from './triage-clinical-staff-session';
+
+export * from "./longitudinal-client";

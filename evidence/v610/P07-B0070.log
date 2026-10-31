@@ -1,0 +1,51 @@
+command=["node", "--test", "packages/ux-core/tests/longitudinal-client-v61.test.cjs"]
+exit_code=0
+STDOUT:
+TAP version 13
+# Subtest: B0070: authenticated command carries scoped IDs only in URL and explicit command fields in JSON
+ok 1 - B0070: authenticated command carries scoped IDs only in URL and explicit command fields in JSON
+  ---
+  duration_ms: 4.049252
+  type: 'test'
+  ...
+# Subtest: B0070: client rejects unexpected server payload and insecure response metadata
+ok 2 - B0070: client rejects unexpected server payload and insecure response metadata
+  ---
+  duration_ms: 1.040014
+  type: 'test'
+  ...
+# Subtest: B0070: stale or changed patient context cancels result even after HTTP success
+ok 3 - B0070: stale or changed patient context cancels result even after HTTP success
+  ---
+  duration_ms: 4.304255
+  type: 'test'
+  ...
+# Subtest: B0070: audit decoder rejects out-of-order revisions and clinical free text
+ok 4 - B0070: audit decoder rejects out-of-order revisions and clinical free text
+  ---
+  duration_ms: 0.63837
+  type: 'test'
+  ...
+# Subtest: B0070: high-risk reads do not disclose extra PHI fields to UI
+ok 5 - B0070: high-risk reads do not disclose extra PHI fields to UI
+  ---
+  duration_ms: 0.513121
+  type: 'test'
+  ...
+# Subtest: B0070: never queue offline writes or follow redirect and validate origin
+ok 6 - B0070: never queue offline writes or follow redirect and validate origin
+  ---
+  duration_ms: 0.424338
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 96.880549
+
+STDERR:

@@ -1,0 +1,3 @@
+command=javac 375 Java files
+exit_code=0
+
