@@ -50,3 +50,13 @@ Other workstream notification: link to this handoff + commit, NOT a claim of dir
 - **PR #1**: `work/triage-scoped-workflows-v058`, P06-B0369–B0371 implemented and independently tested; 24 focused tests, UX 224/224.
 - Handoff: [`docs/program/handoffs/P06_B0369_B0371_v058_PR1.md`](handoffs/P06_B0369_B0371_v058_PR1.md).
 - These IDs are **reserved**. Check PR and the latest shared ledger before assigning P06-B0372 or merging parallel changes. The PR is a draft engineering integration, **not** clinical certification.
+
+
+## Active parallel implementation branch — v0.59.0 (2026-10-31)
+
+- **Draft PR #2**: https://github.com/exerateanalytical/synqoria/pull/2, branch `work/triage-safe-command-recovery-v059`, stacked on PR #1. GitHub source commit `abd2c64646087a36477f6a55bc1f988ef5552f99` verified.
+- **Batch IDs reserved and internally tested**: `P06-B0372` through `P06-B0391` (20 substantial M03 staff workflow areas, 62 separately executed matching tests, UX 286/286 and Java/source/register/status checks passed).
+- **Next candidate**: `P06-B0392` after a fresh check of both workstreams. Do not reuse B0372–B0391 or restart at B0369.
+- **Handoff**: [P06_B0372_B0391_v059_PR2.md](handoffs/P06_B0372_B0391_v059_PR2.md).
+- **Persistent Library**: `/SYNQORIA/SYNQORIA_v0.59.0_P06_B0372_B0391_LOCAL_CUMULATIVE.zip` (SHA-256 `467fb39f0e770eb358faad18a19a6900ed648a750a7a856987dd25e8f806021b`). This local ZIP is the full v0.58.0 **local lineage**; it is **not** a substitute for latest GitHub `main` recovered scheduling files or the full stacked PR tree. Do not overwrite `SYNQORIA_CURRENT.zip` without reconciling GitHub-only changes.
+- **Scope**: formal certification deferred, runtime safety gates unchanged, 0/261 accepted screens, 0/40 certified modules; no live PostgreSQL/RLS or production identity approval claimed.
