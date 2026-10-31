@@ -1,0 +1,54 @@
+COMMAND: node --test --test-name-pattern=B0372: /mnt/data/synqoria_v59_work/packages/ux-core/tests/triage-v59-recovery.test.cjs
+EXIT_CODE: 0
+TAP version 13
+# Subtest: B0372: acknowledged write requires persisted digest plus authorized reread
+ok 1 - B0372: acknowledged write requires persisted digest plus authorized reread
+  ---
+  duration_ms: 2.384047
+  type: 'test'
+  ...
+# Subtest: B0372: audit digest mismatch leaves uncertain, never claims success
+ok 2 - B0372: audit digest mismatch leaves uncertain, never claims success
+  ---
+  duration_ms: 0.503464
+  type: 'test'
+  ...
+# Subtest: B0372: request failure after commit is uncertain, no blind retry
+ok 3 - B0372: request failure after commit is uncertain, no blind retry
+  ---
+  duration_ms: 0.457514
+  type: 'test'
+  ...
+# Subtest: B0372: explicit retry reuses command ID only if revision unchanged
+ok 4 - B0372: explicit retry reuses command ID only if revision unchanged
+  ---
+  duration_ms: 0.622336
+  type: 'test'
+  ...
+# Subtest: B0372: cross-patient context change aborts in-flight mutation
+ok 5 - B0372: cross-patient context change aborts in-flight mutation
+  ---
+  duration_ms: 9.18071
+  type: 'test'
+  ...
+# Subtest: B0372: multiple in-flight commands and invalid action are rejected
+ok 6 - B0372: multiple in-flight commands and invalid action are rejected
+  ---
+  duration_ms: 0.99009
+  type: 'test'
+  ...
+# Subtest: B0372: denied authorization revokes pending state
+ok 7 - B0372: denied authorization revokes pending state
+  ---
+  duration_ms: 0.680137
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 515.89366

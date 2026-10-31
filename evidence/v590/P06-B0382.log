@@ -1,0 +1,24 @@
+COMMAND: node --test --test-name-pattern=B0382: /mnt/data/synqoria_v59_work/packages/ux-core/tests/triage-v59-patient-scope-review.test.cjs
+EXIT_CODE: 0
+TAP version 13
+# Subtest: B0382: intake evidence types remain explicit human-entered, not auto-filled consent
+ok 1 - B0382: intake evidence types remain explicit human-entered, not auto-filled consent
+  ---
+  duration_ms: 1.84345
+  type: 'test'
+  ...
+# Subtest: B0382: refuses blank consent and identity evidence instead of inventing it
+ok 2 - B0382: refuses blank consent and identity evidence instead of inventing it
+  ---
+  duration_ms: 0.404339
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 141.996316

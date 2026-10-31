@@ -1,5 +1,5 @@
 {
-  "version": "0.58.0",
+  "version": "0.59.0",
   "batches": [
     {
       "id": "P00-B0001",
@@ -7410,8 +7410,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 5,
-      "batch_remaining_percent": 95,
+      "batch_completion_percent": 5.0,
+      "batch_remaining_percent": 95.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -7503,8 +7503,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 10,
-      "batch_remaining_percent": 90,
+      "batch_completion_percent": 10.0,
+      "batch_remaining_percent": 90.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -7596,8 +7596,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 15,
-      "batch_remaining_percent": 85,
+      "batch_completion_percent": 15.0,
+      "batch_remaining_percent": 85.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -7689,8 +7689,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 20,
-      "batch_remaining_percent": 80,
+      "batch_completion_percent": 20.0,
+      "batch_remaining_percent": 80.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -7782,8 +7782,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 25,
-      "batch_remaining_percent": 75,
+      "batch_completion_percent": 25.0,
+      "batch_remaining_percent": 75.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -7875,8 +7875,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 30,
-      "batch_remaining_percent": 70,
+      "batch_completion_percent": 30.0,
+      "batch_remaining_percent": 70.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -7968,8 +7968,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 35,
-      "batch_remaining_percent": 65,
+      "batch_completion_percent": 35.0,
+      "batch_remaining_percent": 65.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8061,8 +8061,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 40,
-      "batch_remaining_percent": 60,
+      "batch_completion_percent": 40.0,
+      "batch_remaining_percent": 60.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8154,8 +8154,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 45,
-      "batch_remaining_percent": 55,
+      "batch_completion_percent": 45.0,
+      "batch_remaining_percent": 55.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8247,8 +8247,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 50,
-      "batch_remaining_percent": 50,
+      "batch_completion_percent": 50.0,
+      "batch_remaining_percent": 50.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8340,8 +8340,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 55,
-      "batch_remaining_percent": 45,
+      "batch_completion_percent": 55.0,
+      "batch_remaining_percent": 45.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8433,8 +8433,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 60,
-      "batch_remaining_percent": 40,
+      "batch_completion_percent": 60.0,
+      "batch_remaining_percent": 40.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8526,8 +8526,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 65,
-      "batch_remaining_percent": 35,
+      "batch_completion_percent": 65.0,
+      "batch_remaining_percent": 35.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8619,8 +8619,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 70,
-      "batch_remaining_percent": 30,
+      "batch_completion_percent": 70.0,
+      "batch_remaining_percent": 30.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8712,8 +8712,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 75,
-      "batch_remaining_percent": 25,
+      "batch_completion_percent": 75.0,
+      "batch_remaining_percent": 25.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8805,8 +8805,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 80,
-      "batch_remaining_percent": 20,
+      "batch_completion_percent": 80.0,
+      "batch_remaining_percent": 20.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8898,8 +8898,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 85,
-      "batch_remaining_percent": 15,
+      "batch_completion_percent": 85.0,
+      "batch_remaining_percent": 15.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -8991,8 +8991,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 90,
-      "batch_remaining_percent": 10,
+      "batch_completion_percent": 90.0,
+      "batch_remaining_percent": 10.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -9084,8 +9084,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 95,
-      "batch_remaining_percent": 5,
+      "batch_completion_percent": 95.0,
+      "batch_remaining_percent": 5.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -9178,8 +9178,8 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false,
-      "batch_completion_percent": 100,
-      "batch_remaining_percent": 0,
+      "batch_completion_percent": 100.0,
+      "batch_remaining_percent": 0.0,
       "status": "implemented_synthetic_transactional_gateway_tested_NOT_live_postgres_http_integrated",
       "integration_tested": false,
       "clinical_screen_implementation": false
@@ -10639,13 +10639,13 @@
     {
       "id": "P06-B0369",
       "status": "implemented_and_tested_internal",
-      "scope": "Verified staff worklist/case context, patient/facility/shift switching and server-authoritative revision refresh",
+      "scope": "M03 staff patient/case workflow coordinator: verified shift/facility context, scoped authorized worklist selection, cancellation/scrubbing on context changes, authoritative case revision refresh",
       "code": [
         "packages/ux-core/src/triage-staff-workflow.ts"
       ],
       "evidence": [
         "packages/ux-core/tests/triage-v58-staff-workflow.test.cjs",
-        "evidence/v580/batch-results.json"
+        "evidence/v580/P06-B0369.log"
       ],
       "external_certification": false,
       "clinical_acceptance": false
@@ -10653,13 +10653,13 @@
     {
       "id": "P06-B0370",
       "status": "implemented_and_tested_internal",
-      "scope": "Fail-closed clinical transport no-store/content-type/UTF-8 response bounds and cancellation-safe requests",
+      "scope": "M03 clinical transport hardening: bounded response JSON, UTF-8 byte limit, no-store/content-type enforcement and identity-switch abort protection",
       "code": [
         "packages/ux-core/src/triage-client.ts"
       ],
       "evidence": [
         "packages/ux-core/tests/triage-v58-transport-security.test.cjs",
-        "evidence/v580/batch-results.json"
+        "evidence/v580/P06-B0370.log"
       ],
       "external_certification": false,
       "clinical_acceptance": false
@@ -10667,19 +10667,319 @@
     {
       "id": "P06-B0371",
       "status": "implemented_and_tested_internal",
-      "scope": "Idempotent triage intake workflow with uncertain-result handling, same-command replay and authoritative reread",
+      "scope": "M03 idempotent first-arrival workflow with uncertain acknowledgement handling, explicit same-command retry, and server-authoritative case reread",
       "code": [
         "packages/ux-core/src/triage-arrival-session.ts"
       ],
       "evidence": [
         "packages/ux-core/tests/triage-v58-arrival-session.test.cjs",
-        "evidence/v580/batch-results.json"
+        "evidence/v580/P06-B0371.log"
       ],
       "external_certification": false,
       "clinical_acceptance": false
+    },
+    {
+      "id": "P06-B0372",
+      "status": "implemented_and_tested_internal",
+      "scope": "Volatile uncertain clinical mutation recovery: original idempotency key, audit-digest check, explicit retry and patient-switch cancellation",
+      "evidence": [
+        "evidence/v590/P06-B0372.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0373",
+      "status": "implemented_and_tested_internal",
+      "scope": "Verified staff permission lease with scoped action-gate, expiry, offline lock, write reentrancy and reauthentication clearing",
+      "evidence": [
+        "evidence/v590/P06-B0373.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0374",
+      "status": "implemented_and_tested_internal",
+      "scope": "Typed M03 observation recording, correction provenance, measurement refusal and device-source evidence workflow",
+      "evidence": [
+        "evidence/v590/P06-B0374.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0375",
+      "status": "implemented_and_tested_internal",
+      "scope": "Staff queue operation workflow for explicit station moves, calls, pause/resume, unavailable patient with rationale",
+      "evidence": [
+        "evidence/v590/P06-B0375.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0376",
+      "status": "implemented_and_tested_internal",
+      "scope": "Clinician assignment and handover requests, receiving acceptance/rejection, notes and finalization workflow",
+      "evidence": [
+        "evidence/v590/P06-B0376.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0377",
+      "status": "implemented_and_tested_internal",
+      "scope": "Clinician-authored escalation and reassessment lifecycle without automatic clinical priority decisions",
+      "evidence": [
+        "evidence/v590/P06-B0377.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0378",
+      "status": "implemented_and_tested_internal",
+      "scope": "Safety hold placement/release, assessment narration, authorized signatures and addenda",
+      "evidence": [
+        "evidence/v590/P06-B0378.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0379",
+      "status": "implemented_and_tested_internal",
+      "scope": "Patient-scoped worklist paginator across max four bounded requests with duplicate and stale response rejection",
+      "evidence": [
+        "evidence/v590/P06-B0379.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0380",
+      "status": "implemented_and_tested_internal",
+      "scope": "Bounded immutable, contiguous audit revision navigator with patient switch abort and untrusted history purging",
+      "evidence": [
+        "evidence/v590/P06-B0380.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0381",
+      "status": "implemented_and_tested_internal",
+      "scope": "Clinician-entered priority setup/revision and evidence reference with explicit rationale and no decision support defaults",
+      "evidence": [
+        "evidence/v590/P06-B0381.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0382",
+      "status": "implemented_and_tested_internal",
+      "scope": "Human-entered triage arrival context, identity/consent provenance, accessibility/language and referral evidence",
+      "evidence": [
+        "evidence/v590/P06-B0382.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0383",
+      "status": "implemented_and_tested_internal",
+      "scope": "Role-sensitive bilingual staff triage workspace projection, hold/pause/closed safety presentation",
+      "evidence": [
+        "evidence/v590/P06-B0383.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0384",
+      "status": "implemented_and_tested_internal",
+      "scope": "Native staff foreground privacy session, mandatory re-verification and immediate PHI purge on background/facility switch",
+      "evidence": [
+        "evidence/v590/P06-B0384.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0385",
+      "status": "implemented_and_tested_internal",
+      "scope": "Cryptographic digest, operation and revision cross-check for mutation receipt against scoped audit evidence",
+      "evidence": [
+        "evidence/v590/P06-B0385.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0386",
+      "status": "implemented_and_tested_internal",
+      "scope": "One-time high-impact action confirmation fence tied to case, revision, lease, explicit act and short expiry",
+      "evidence": [
+        "evidence/v590/P06-B0386.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0387",
+      "status": "implemented_and_tested_internal",
+      "scope": "Bounded privacy-minimal audit metadata filtering without exposing recorded free-text clinical content",
+      "evidence": [
+        "evidence/v590/P06-B0387.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0388",
+      "status": "implemented_and_tested_internal",
+      "scope": "Explicit patient-case selection filters for eight M03 read views with trusted station and UTC constraints",
+      "evidence": [
+        "evidence/v590/P06-B0388.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0389",
+      "status": "implemented_and_tested_internal",
+      "scope": "Restricted HTTP command journey integrating bearer session, idempotency recovery and audit-backed status",
+      "evidence": [
+        "evidence/v590/P06-B0389.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0390",
+      "status": "implemented_and_tested_internal",
+      "scope": "Permission-filtered bilingual, accessible M03 action presentation with confirmation and input descriptors",
+      "evidence": [
+        "evidence/v590/P06-B0390.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0391",
+      "status": "implemented_and_tested_internal",
+      "scope": "Integrated staff session joining scoped worklists, selected case, authorized commands, authoritative reads and logout/shift purge",
+      "evidence": [
+        "evidence/v590/P06-B0391.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
     }
   ],
-  "next_batch": "P06-B0372",
+  "next_batch": "P06-B0392",
   "release_status": "NOT_CERTIFIED",
   "merge_provenance": {
     "source": "SYNQORIA_v0.29.0_cumulative.zip",
