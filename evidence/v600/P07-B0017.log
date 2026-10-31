@@ -1,0 +1,7 @@
+command: java -ea -cp /mnt/data/synqoria_v60_work/.v600-classes org.synqoria.longitudinal.ClinicalVerticalBatchTest P07-B0017
+exit_code: 0
+STDOUT:
+PASS P07-B0017 encounter.record_leave
+
+STDERR:
+

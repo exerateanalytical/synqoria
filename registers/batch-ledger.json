@@ -1,5 +1,5 @@
 {
-  "version": "0.59.0",
+  "version": "0.60.0",
   "batches": [
     {
       "id": "P00-B0001",
@@ -2537,7 +2537,7 @@
     {
       "id": "P02-B0059",
       "status": "implemented_unit_or_static_tested_NOT_production_integrated",
-      "scope": "Dynamic type safety for clinical text, 200–300% scaling, wrapping, four unique bottom destinations; unit tested and native source wired",
+      "scope": "Dynamic type safety for clinical text, 200\u2013300% scaling, wrapping, four unique bottom destinations; unit tested and native source wired",
       "evidence": [
         "evidence/batches/v200-P02-B0059.log"
       ],
@@ -10977,6 +10977,786 @@
       "clinically_reviewed": false,
       "accepted": false,
       "external_certification": false
+    },
+    {
+      "id": "P07-B0001",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.checkin: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0001.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0002",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.activate: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0002.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0003",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.assign_clinician: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0003.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0004",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.join_team: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0004.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0005",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.leave_team: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0005.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0006",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.change_responsible: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0006.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0007",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.request_admission: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0007.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0008",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.approve_admission: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0008.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0009",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.propose_bed: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0009.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0010",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.release_bed_proposal: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0010.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0011",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.record_room: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0011.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0012",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.record_location: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0012.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0013",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.request_transfer: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0013.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0014",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.accept_transfer: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0014.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0015",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.cancel_transfer: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0015.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0016",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.record_accepted_transfer: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0016.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0017",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.record_leave: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0017.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0018",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.record_return: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0018.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0019",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.submit_discharge_plan: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0019.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0020",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.authorize_discharge: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0020.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0021",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.create_draft: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0021.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0022",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.title_draft: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0022.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0023",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.write_draft: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0023.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0024",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.set_section: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0024.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0025",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.remove_section: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0025.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0026",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.add_diagnosis: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0026.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0027",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.remove_diagnosis: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0027.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0028",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.add_problem: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0028.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0029",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.rename_problem: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0029.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0030",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.attach_reference: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0030.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0031",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.detach_reference: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0031.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0032",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.mark_confidential: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0032.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0033",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.request_review: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0033.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0034",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.reviewer_comment: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0034.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0035",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.request_revision: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0035.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0036",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.ready_to_sign: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0036.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0037",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.sign: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0037.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0038",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.start_amendment: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0038.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0039",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.sign_amendment: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0039.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0040",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.entered_in_error: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0040.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0041",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.capture_numeric: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0041.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0042",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.capture_text: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0042.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0043",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.capture_categorical: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0043.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0044",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.attach_device: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0044.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0045",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.record_context: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0045.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0046",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.attach_source: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0046.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0047",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.add_metadata: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0047.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0048",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.remove_metadata: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0048.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0049",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.request_verification: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0049.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0050",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.verify: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0050.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0051",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.reject: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0051.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0052",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.request_recheck: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0052.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0053",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.capture_correction: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0053.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0054",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.verify_correction: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0054.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0055",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.invalidate: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0055.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0056",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.create_set: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0056.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0057",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.join_set: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0057.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0058",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.complete_set: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0058.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0059",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.timeline: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0059.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0060",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.correction_lineage: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0060.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
     }
   ],
   "next_batch": "P06-B0392",
@@ -10989,5 +11769,7 @@
     "new_v30_batches": 10,
     "clinical_release": "DENIED"
   },
-  "release_detail": "DENIED: 0/40 certified modules; 0/261 clinical screens accepted"
+  "release_detail": "DENIED: 0/40 certified modules; 0/261 clinical screens accepted",
+  "next_parallel_batch": "P07-B0061",
+  "concurrency_note": "P06-B0392 remains pending on parallel triage line; P07 is an independent, provisional, unmerged vertical slice."
 }
