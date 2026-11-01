@@ -16,10 +16,15 @@
     {
       "id": "P07-B0117",
       "kind": "scoped_jdbc_transaction_boundary",
+      "exit_code": 0
+    },
+    {
+      "id": "P07-B0118",
+      "kind": "postcommit_broker_ack_gate",
       "exit_code": 0,
-      "verification": "mock-JDBC not real PostgreSQL"
+      "verification": "synthetic broker and committed receipt"
     }
   ],
-  "next_candidate": "P07-B0118",
+  "next_candidate": "P07-B0119",
   "clinical_release": "DENIED"
 }
