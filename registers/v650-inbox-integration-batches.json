@@ -1,0 +1,16 @@
+{
+  "version": "0.65.0",
+  "phase": "P07",
+  "lineage_base": "6f2711e4f230c97ff9637211e063c0c4c33c95af",
+  "completed": [
+    {
+      "id": "P07-B0115",
+      "kind": "quarantined_schema",
+      "tests": "python tests/test_v065_inbox_schema.py",
+      "exit_code": 0,
+      "scope": "static SQL contract only"
+    }
+  ],
+  "next_candidate": "P07-B0116",
+  "clinical_release": "DENIED"
+}
