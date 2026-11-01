@@ -1,0 +1,9 @@
+{
+  "batch": "P07-B0120",
+  "files": 2,
+  "tests": "5 assertions",
+  "verified": "javac21 + java -ea",
+  "status": "engineering_unit_only",
+  "live_broker": false,
+  "clinical_release": "DENIED"
+}
