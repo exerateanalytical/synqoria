@@ -6,16 +6,20 @@
     {
       "id": "P07-B0115",
       "kind": "quarantined_schema",
-      "tests": "python tests/test_v065_inbox_schema.py",
       "exit_code": 0
     },
     {
       "id": "P07-B0116",
       "kind": "strict_broker_wire_codec",
-      "tests": "LongitudinalInboxWireTest",
       "exit_code": 0
+    },
+    {
+      "id": "P07-B0117",
+      "kind": "scoped_jdbc_transaction_boundary",
+      "exit_code": 0,
+      "verification": "mock-JDBC not real PostgreSQL"
     }
   ],
-  "next_candidate": "P07-B0117",
+  "next_candidate": "P07-B0118",
   "clinical_release": "DENIED"
 }
