@@ -1,0 +1,24 @@
+{
+  "version": "0.66.0",
+  "phase": "P07",
+  "base": "b61c71403428509665b32a5d8db5f0b2e0a172f3",
+  "branch": "work/longitudinal-inbox-operations-v066",
+  "batches": [
+    "P07-B0120",
+    "P07-B0121",
+    "P07-B0122",
+    "P07-B0123",
+    "P07-B0124",
+    "P07-B0125",
+    "P07-B0126",
+    "P07-B0127",
+    "P07-B0128",
+    "P07-B0129"
+  ],
+  "independently_verified": 10,
+  "verified_java_checks": 57,
+  "inherited_ux_pass": 292,
+  "clinical_release": "DENIED",
+  "certification": "deferred",
+  "next_candidate": "P07-B0130"
+}
