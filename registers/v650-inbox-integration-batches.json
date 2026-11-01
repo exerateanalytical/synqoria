@@ -7,10 +7,15 @@
       "id": "P07-B0115",
       "kind": "quarantined_schema",
       "tests": "python tests/test_v065_inbox_schema.py",
-      "exit_code": 0,
-      "scope": "static SQL contract only"
+      "exit_code": 0
+    },
+    {
+      "id": "P07-B0116",
+      "kind": "strict_broker_wire_codec",
+      "tests": "LongitudinalInboxWireTest",
+      "exit_code": 0
     }
   ],
-  "next_candidate": "P07-B0116",
+  "next_candidate": "P07-B0117",
   "clinical_release": "DENIED"
 }
