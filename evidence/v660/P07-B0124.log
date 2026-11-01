@@ -1,0 +1,4 @@
+javac --release 21: exit=0
+java -ea org.synqoria.longitudinal.LongitudinalInboxFailureClassTest: exit=0
+PASS B0124 failure taxonomy 5 checks
+No live Kafka or PostgreSQL runtime.
