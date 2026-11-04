@@ -1,5 +1,7 @@
 # SYNQORIA cross-workstream instructions
 
+**NEW OWNER-APPROVED EXECUTION POLICY (2026-11-04):** [Mandatory 30-batch runs and sequential engineering → 261 screens → 40 modules → comprehensive audit/certification](docs/program/SYNQORIA_EXECUTION_POLICY_30_BATCHES_2026-11-04.md). This policy supersedes the older batch cadence in this file or previous handoffs. Read it before starting any batch. Cross-chat preflight, per-batch remote GitHub pushes and verified test evidence remain mandatory.
+
 This repository is developed in multiple ChatGPT and engineering conversations. **Before any code changes, read [docs/program/SYNQORIA_MULTI_CHAT_HANDOFF.md](docs/program/SYNQORIA_MULTI_CHAT_HANDOFF.md)**, [docs/program/PHASES.md](docs/program/PHASES.md), and the canonical source/batch/screen registers.
 
 **Specifications publication register:** For the complete index of authoritative specs, memory, related OPES source boundaries, and current parallel pull requests, read [docs/program/SYNQORIA_SPECIFICATIONS_PUSH_REGISTER.md](docs/program/SYNQORIA_SPECIFICATIONS_PUSH_REGISTER.md). A published PR is not a merge; the separate Work mode transcript remains unverified until its source is supplied.
@@ -10,7 +12,7 @@ This repository is developed in multiple ChatGPT and engineering conversations. 
 2. Never overwrite work from another chat, duplicate a batch ID, or overwrite the canonical cumulative archive without reconciling independent changes.
 3. Keep development branches separate; record base commit, implemented batches, changed paths, real test evidence and next unreserved batch in the shared handoff on every execution.
 4. Exactly **40 canonical modules and 261 screens**; preserve authorized clinical navigation, safety and patient/tenant scoping. Formal certification is deferred but safety controls must not be bypassed.
-5. Target up to **60 meaningful, individually verified engineering batches** when requested; report the true count. An unrun or failing test is not a pass.
+5. Execute **30 substantive, individually verified engineering batches within one requested run**, and publish each passing batch immediately. Do not substitute a normal 1/5/10-batch run. If execution is blocked, explicitly report the 30-batch run as incomplete with exact passed/pushed counts. An unrun or failing test is not a pass.
 6. Publish GitHub commit/PR links, Library checkpoint SHA, and a readable handoff after each run so other workstreams can synchronize. No automated direct messaging to other ChatGPT chats is assumed.
 
 Do not claim GitHub pushes, release qualification, clinical acceptance, or cross-chat notifications without a confirmed action.
