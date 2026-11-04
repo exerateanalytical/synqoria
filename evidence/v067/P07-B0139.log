@@ -1,0 +1,7 @@
+P07-B0139 | ConsentVersionFence
+INDIVIDUAL_TEST_CMD: java -cp .classes/139 org.synqoria.longitudinal.inboxops.InboxConsentVersionFenceTest
+EXIT_CODE: 0
+PASS P07-B0139 ConsentVersionFence assertions=6
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: d76939340a845978cb18201b1922d25102e872a73bd4cfdccf8cc70e31aafe5e
+TEST_SHA256: 9f87db0d3965b5a7eb787ab93db2d865e399c9b0f58003fa925d0071da48c8f7
