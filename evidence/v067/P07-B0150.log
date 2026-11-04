@@ -1,0 +1,7 @@
+P07-B0150 | IncidentApprovalQuorum
+INDIVIDUAL_TEST_CMD: java -cp .classes/150 org.synqoria.longitudinal.inboxops.InboxIncidentApprovalQuorumTest
+EXIT_CODE: 0
+PASS P07-B0150 IncidentApprovalQuorum assertions=5
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: e59a644955a0eedaf8d2903966d77f3901164bd700e661b80a1e6d722abdc5ac
+TEST_SHA256: b59dff49c0374a318e4802ff201237e526544e02e2cd3db157b13239476c147f
