@@ -1,0 +1,7 @@
+P07-B0134 | CapabilityGrant
+INDIVIDUAL_TEST_CMD: java -cp .classes/134 org.synqoria.longitudinal.inboxops.InboxCapabilityGrantTest
+EXIT_CODE: 0
+PASS P07-B0134 CapabilityGrant assertions=5
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 5463e524f165b3c353817abfa9e110a21e0c87443a7dfa257ef081429647756c
+TEST_SHA256: 7011ec8211e4274ac83e25447bc4b566adec6786f680147438733fbc78efc550

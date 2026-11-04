@@ -1,0 +1,11 @@
+{
+  "id": "P07-B0134",
+  "title": "Event-type-to-capability authorization with immutable actor-scoped grant set",
+  "source": "services/clinical-core/src/main/java/org/synqoria/longitudinal/inboxops/InboxCapabilityGrant.java",
+  "test": "services/clinical-core/src/test/java/org/synqoria/longitudinal/inboxops/InboxCapabilityGrantTest.java",
+  "evidence": "evidence/v067/P07-B0134.log",
+  "exit_code": 0,
+  "focused_assertions": 5,
+  "verification": "Java21 pure policy tests only",
+  "clinical_release": "DENIED"
+}
