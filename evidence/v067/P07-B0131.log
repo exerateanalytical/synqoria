@@ -1,0 +1,7 @@
+P07-B0131 | AuthenticatedMessage
+INDIVIDUAL_TEST_CMD: java -cp .classes/131 org.synqoria.longitudinal.inboxops.InboxAuthenticatedMessageTest
+EXIT_CODE: 0
+PASS P07-B0131 AuthenticatedMessage assertions=6
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 6e4aa77bb3008ceb576bf8656a9136c72902057ce211ba12e5b94b0395b5b79a
+TEST_SHA256: 3090aecd7cd0e25959c4599996c38f60036daf5688ee4486d2510f5ad14ff937
