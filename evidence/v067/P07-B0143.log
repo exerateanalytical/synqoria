@@ -1,0 +1,7 @@
+P07-B0143 | ReplayReceiptIntegrity
+INDIVIDUAL_TEST_CMD: java -cp .classes/143 org.synqoria.longitudinal.inboxops.InboxReplayReceiptIntegrityTest
+EXIT_CODE: 0
+PASS P07-B0143 ReplayReceiptIntegrity assertions=5
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 9ca118ddb07f3960d053b04356e7317a7527dfd55eaf7f6059767e03506a4cdb
+TEST_SHA256: 121072d2bd10e74aad46d4c2f144209054f1ffe6d94ff18090116941fe35bc3f
