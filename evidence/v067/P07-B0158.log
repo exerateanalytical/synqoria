@@ -1,0 +1,7 @@
+P07-B0158 | ClinicalDependencyProof
+INDIVIDUAL_TEST_CMD: java -cp .classes/158 org.synqoria.longitudinal.inboxops.InboxClinicalDependencyProofTest
+EXIT_CODE: 0
+PASS P07-B0158 ClinicalDependencyProof assertions=7
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 4c605d5de6351a9f41ad7fbe6eaa7bebeeb8658c0c3389f0fb6ecc5fcc332ae2
+TEST_SHA256: 9887bf54883ee6b18765c92696b794a50899a5db5374f7db7c2650e24b801d0e

@@ -1,0 +1,11 @@
+{
+  "id": "P07-B0158",
+  "title": "Trusted prerequisite evidence gate for inbox runtime (RLS, OIDC, KMS, Kafka, clock)",
+  "source": "services/clinical-core/src/main/java/org/synqoria/longitudinal/inboxops/InboxClinicalDependencyProof.java",
+  "test": "services/clinical-core/src/test/java/org/synqoria/longitudinal/inboxops/InboxClinicalDependencyProofTest.java",
+  "evidence": "evidence/v067/P07-B0158.log",
+  "exit_code": 0,
+  "focused_assertions": 7,
+  "verification": "Java21 pure policy tests only",
+  "clinical_release": "DENIED"
+}
