@@ -1,0 +1,7 @@
+P07-B0156 | DependencyCircuitBreaker
+INDIVIDUAL_TEST_CMD: java -cp .classes/156 org.synqoria.longitudinal.inboxops.InboxDependencyCircuitBreakerTest
+EXIT_CODE: 0
+PASS P07-B0156 DependencyCircuitBreaker assertions=6
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: b380201883c4f9ab074dd67302d4c04cfcab9582054c930344dc8984c15101e8
+TEST_SHA256: a3d1e3793bc87fc21afece6b3689740b93c9fae82bf9d4752a749a82e0e4d149
