@@ -1,0 +1,7 @@
+P07-B0137 | CausalDependencyFence
+INDIVIDUAL_TEST_CMD: java -cp .classes/137 org.synqoria.longitudinal.inboxops.InboxCausalDependencyFenceTest
+EXIT_CODE: 0
+PASS P07-B0137 CausalDependencyFence assertions=5
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: a8f46a38f069e7275c4a524acd9438ce7c88ecfd962a865d0942e4fdb109a727
+TEST_SHA256: d7682979ac7181cd0eeb2bf767a6f9570a2bc53b51b574ae4589e7ab5b1a8d44
