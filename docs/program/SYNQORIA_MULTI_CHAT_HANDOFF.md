@@ -138,3 +138,15 @@ Other workstream notification: link to this handoff + commit, NOT a claim of dir
 - Components: broker record header/digest, timestamp clock window, lease epoch, contiguous offsets, typed failure, backpressure, partition ownership, HMAC quarantine metadata, DB/broker checkpoint reconciliation, runtime readiness.
 - Next **P07 candidate B0130** subject to new branch/PR/ledger check; parallel P06 candidate B0392. This run completed 10 of the 195 remaining requested work batches; 185 remain. Historical P07-B0115–B0119 in PR #8 and P07-B0105–B0114 in PR #7 must not be duplicated.
 - [Detailed branch handoff](https://github.com/exerateanalytical/synqoria/blob/work/longitudinal-inbox-operations-v066/docs/program/handoffs/P07_B0120_B0129_v066.md). Source delta SHA-256 `585e53d4b710799d9c2101d8a0d22c28be08051371f2bdfc89b195affcf65013`, not cumulative. Do not overwrite `SYNQORIA_CURRENT.zip`. Clinical release DENIED; 0/261 screens accepted, 0/40 modules certified.
+
+
+## 2026-11-04 — Cross-chat audit and PR notification (authoritative latest audit link)
+
+**Read [the dated reconciliation](handoffs/SYNQORIA_CROSS_CHAT_RECONCILIATION_2026-11-04.md) before allocating another batch.** The project owner identified an invalid assumption that stale `main` register status described all workstreams; this is explicitly corrected in the dated report.
+
+- P06 M03: latest published `P06-B0391`, PR #2 head `abd2c64646087a36477f6a55bc1f988ef5552f99`, next **candidate P06-B0392** (not a reservation).
+- P07 M04–M06: latest published `P07-B0129`, PR #9 head `002e1fa99b4efa5d867d9c090dfcd3f3b72f0b25`, next **candidate P07-B0130** (not a reservation). PR #3 → #9 remain **unmerged**.
+- Current `main` `registers/phases.json` is v0.57 and incorrectly labels P07 `not_started` in view of branch source. No complete cross-workstream remaining-batch count or reliable phase completion percentage has been established. The previously quoted 185 remaining is limited to the separate 200-batch request.
+- GitHub coordination notices have been **posted** to [P06 PR #2](https://github.com/exerateanalytical/synqoria/pull/2#issuecomment-6619722811) and [P07 PR #9](https://github.com/exerateanalytical/synqoria/pull/9#issuecomment-6619723367). These are actual GitHub messages and **not** direct delivery into other ChatGPT conversations.
+- Preflight every batch against available project chats, ALL PR/branch heads, current GitHub main, actual files, ledgers and handoff. Reserve a unique phase-specific ID only after reconciliation; individually code, test, push and remotely verify each batch with evidence and SHA. Stop duplicate IDs/overwrites. Update shared handoff after publishing. No clinical-release/certification claims without real evidence.
+- This 2026-11-04 update is **coordination only, 0 newly implemented batches**.
