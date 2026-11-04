@@ -1,0 +1,7 @@
+P07-B0140 | CipherEnvelopeProof
+INDIVIDUAL_TEST_CMD: java -cp .classes/140 org.synqoria.longitudinal.inboxops.InboxCipherEnvelopeProofTest
+EXIT_CODE: 0
+PASS P07-B0140 CipherEnvelopeProof assertions=6
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 9ef45aa4faaf730d4004e816e8686cb83ad904594820a7444c3c30c523f0e7d0
+TEST_SHA256: 9e908b3694fc193e48c1bd01ddac55fedc67def4d6d1cb1909851b4aea5b365c
