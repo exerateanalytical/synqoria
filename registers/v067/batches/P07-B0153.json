@@ -1,0 +1,11 @@
+{
+  "id": "P07-B0153",
+  "title": "Cross-check source and destination privacy-minimal event fingerprint without content",
+  "source": "services/clinical-core/src/main/java/org/synqoria/longitudinal/inboxops/InboxSourceSinkReconciliation.java",
+  "test": "services/clinical-core/src/test/java/org/synqoria/longitudinal/inboxops/InboxSourceSinkReconciliationTest.java",
+  "evidence": "evidence/v067/P07-B0153.log",
+  "exit_code": 0,
+  "focused_assertions": 5,
+  "verification": "Java21 pure policy tests only",
+  "clinical_release": "DENIED"
+}

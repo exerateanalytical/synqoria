@@ -1,0 +1,7 @@
+P07-B0153 | SourceSinkReconciliation
+INDIVIDUAL_TEST_CMD: java -cp .classes/153 org.synqoria.longitudinal.inboxops.InboxSourceSinkReconciliationTest
+EXIT_CODE: 0
+PASS P07-B0153 SourceSinkReconciliation assertions=5
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: e196d3a3252edc47c09e7f91408cc33e55396262aeb00ed5d1d40d0a6019074a
+TEST_SHA256: a065c8271957b3da72d6eb93ed1b721734528d69d50ec9a3e5acd9bc7bfdaa96
