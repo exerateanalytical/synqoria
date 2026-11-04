@@ -150,3 +150,14 @@ Other workstream notification: link to this handoff + commit, NOT a claim of dir
 - GitHub coordination notices have been **posted** to [P06 PR #2](https://github.com/exerateanalytical/synqoria/pull/2#issuecomment-6619722811) and [P07 PR #9](https://github.com/exerateanalytical/synqoria/pull/9#issuecomment-6619723367). These are actual GitHub messages and **not** direct delivery into other ChatGPT conversations.
 - Preflight every batch against available project chats, ALL PR/branch heads, current GitHub main, actual files, ledgers and handoff. Reserve a unique phase-specific ID only after reconciliation; individually code, test, push and remotely verify each batch with evidence and SHA. Stop duplicate IDs/overwrites. Update shared handoff after publishing. No clinical-release/certification claims without real evidence.
 - This 2026-11-04 update is **coordination only, 0 newly implemented batches**.
+
+
+## 2026-11-04 — Owner mandates 30 batches at once and stage-ordered delivery
+
+**Supersedes all older 1-, 5-, 10-, 50-, 60- and 100-batch per-run cadence statements** in historical handoffs. Mandatory source of truth: [SYNQORIA_EXECUTION_POLICY_30_BATCHES_2026-11-04.md](SYNQORIA_EXECUTION_POLICY_30_BATCHES_2026-11-04.md).
+
+- For every future engineering run, **assign and attempt 30 substantive, independently implemented/tested batches in one execution**; publish **each** passing batch immediately as a distinct GitHub commit with source, test, evidence and ledger. Do not give 1/5/10 as the normal batch-size response. If all 30 cannot be completed, mark the 30-batch execution *INCOMPLETE* with actual independently tested/pushed counts and blockers. Never fabricate completion.
+- After the full planned engineering-batch backlog is demonstrably finished, deliver all **261 canonical screens**; once screens are finished, complete the integration of all **40 canonical modules**; only then begin the **separate comprehensive audit and formal certification programme**. Continuous unit/integration/security/privacy/clinical-safety protection remains mandatory; release stays denied until qualified.
+- This is a **four-stage delivery workflow**, not four replacements for the 20 canonical phases P00–P19. The all-platform batch total and remaining phase implementation work are **not yet reconciled**; do not invent estimates.
+- Recheck other SYNQORIA chats, current `main`, **all PR and branch heads**, handoffs, actual batch registers and source before assigning any IDs. The latest previous published P06 candidate is `P06-B0392` after B0391, and P07 candidate `P07-B0130` after B0129, **subject to a new concurrency check**. Nine PRs were open on 2026-11-04, not merged.
+- Owner asked for a workflow policy update, **not an implementation run**. No new engineering batches counted by these documentation/automation edits.
