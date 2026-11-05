@@ -63,3 +63,23 @@ test("invalid trusted configuration, token type and misleading scopes denied",()
  rejects(options(idClaims,{...accessClaims,scope:"admin:*"}));
  const truncated=options();truncated.accessToken="garbage";rejects(truncated);
 });
+test("pinned ES256 P-256 signing works and mismatched curve is denied",()=>{
+ const ec=generateKeyPairSync("ec",{namedCurve:"prime256v1"});
+ const ecJwk=ec.publicKey.export({format:"jwk"});
+ const ecKeys={keys:[{...ecJwk,kid:"p256-key",alg:"ES256",use:"sig"}]};
+ function ecJwt(claims){
+  const b64=x=>Buffer.from(JSON.stringify(x)).toString("base64url");
+  const data=b64({alg:"ES256",kid:"p256-key",typ:"JWT"})+"."+b64(claims);
+  return data+"."+sign("sha256",Buffer.from(data),{key:ec.privateKey,dsaEncoding:"ieee-p1363"}).toString("base64url");
+ }
+ const valid={...options(),idToken:ecJwt(idClaims),accessToken:ecJwt(accessClaims),jwks:ecKeys};
+ assert.equal(verifyStaffOidcTokens(valid).subject,idClaims.sub);
+ rejects({...valid,jwks:{keys:[{...ecKeys.keys[0],crv:"P-384"}]}});
+});
+test("1024-bit RSA verification key rejected even with a valid signature",()=>{
+ const weak=generateKeyPairSync("rsa",{modulusLength:1024});
+ const publicWeak={...weak.publicKey.export({format:"jwk"}),kid:"test-key",alg:"RS256",use:"sig"};
+ const one=options();
+ const weakSigned={...one,idToken:jwt(idClaims,{privateKey:weak.privateKey}),accessToken:jwt(accessClaims,{privateKey:weak.privateKey}),jwks:{keys:[publicWeak]}};
+ rejects(weakSigned);
+});
