@@ -3,6 +3,7 @@ import {useId, useRef, useState} from "react";
 import type {KeyboardEvent, ReactNode} from "react";
 import Link from "next/link";
 import "./interaction.css";
+import {IdentityRegistrationPreview,isIdentityPreview} from "./IdentityRegistrationPreview";
 
 export type ScreenContract = {
  screenId:string; module:string; title:string; layout:"F"|"L"|"D"|"X"|"B"|"T"|"H";
@@ -114,6 +115,7 @@ export function ScreenPreviewClient({contract,related}:{contract:ScreenContract;
   if(contract.layout==="H")return <DashboardArea contract={contract} related={related} tab={contract.tabs[active]}/>;
   return <EmptyRecords/>;
  }
+ if(isIdentityPreview(contract.screenId))return <IdentityRegistrationPreview screenId={contract.screenId} primaryAction={contract.primaryAction}/>;
  return <div className="syn-ui-preview" data-screen-id={contract.screenId}>
  <div className="syn-preview-toolbar"><span className="syn-chip">UI specimen · {contract.layout}</span><button type="button" className="syn-preview-secondary" onClick={()=>setDetailsOpen(v=>!v)} aria-expanded={detailsOpen}>Control inventory ({contract.controls.length})</button><button type="button" className="syn-preview-secondary" onClick={()=>setHelpOpen(v=>!v)} aria-expanded={helpOpen}>Help & safety</button></div>
  {detailsOpen&&<section className="syn-inventory"><h3>Registered layout controls</h3><ul>{contract.controls.map(x=><li key={x}>{x}</li>)}</ul><p>Proposed shared layout controls are not a substitute for the per-screen field/role review.</p></section>}
