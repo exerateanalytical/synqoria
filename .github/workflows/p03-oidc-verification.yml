@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: '22'
       - name: Verify signed staff OIDC tokens and adversarial claims
-        run: node --test tests/oidc_staff_verification.test.mjs
+        run: node --test tests/oidc_staff_verification.test.mjs tests/oidc_login_flow.test.mjs
       - name: Preserve exact 240-screen assignment and fail-closed progress
         run: |
           node --test tests/operational_240_one_cycle_plan.test.mjs
