@@ -4,6 +4,7 @@
  */
 import {readSessionCookie} from "./clinical-session.mjs";
 import {authorizePatientDisclosure} from "./patient-disclosure-authorization.mjs";
+import {authorizeAuditedPatientDisclosure} from "./audited-patient-disclosure.mjs";
 
 const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[89ab0-9a-f]{12}$/i;
 const triageStages=new Set(["ARRIVED","WAITING","CALLED","ASSESSING","ASSESSED","PRIORITIZED","ASSIGNED","HANDED_OVER","CLOSED"]);
@@ -99,11 +100,19 @@ export async function readPatient(request,patientId,options={}){
  if(!validUuid(patientId))return reject(400,"invalid_request");
  const scope=await admission(request,{...options,capability:"patient:view"});
  if(scope.error)return scope.error;
- if((options.env??process.env).SYNQORIA_REQUIRE_PATIENT_DISCLOSURE==="1"){
+ const disclosureEnv=options.env??process.env;
+ if(disclosureEnv.SYNQORIA_AUDIT_DENIED_PATIENT_DISCLOSURE==="1"&&
+    disclosureEnv.SYNQORIA_REQUIRE_PATIENT_DISCLOSURE!=="1")
+  return reject(503,"patient_policy_not_integrated");
+ if(disclosureEnv.SYNQORIA_REQUIRE_PATIENT_DISCLOSURE==="1"){
   try{
-   await authorizePatientDisclosure(scope.staff,patientId,"patient.demographics",{
-    origin:scope.origin,fetcher:scope.fetcher,nowMs:options.nowMs??Date.now()
-   });
+   const args={origin:scope.origin,fetcher:scope.fetcher,
+    nowMs:options.nowMs??Date.now()};
+   if(disclosureEnv.SYNQORIA_AUDIT_DENIED_PATIENT_DISCLOSURE==="1")
+    await authorizeAuditedPatientDisclosure(scope.staff,patientId,"patient.demographics",{
+     ...args,auditWriter:options.auditWriter
+    });
+   else await authorizePatientDisclosure(scope.staff,patientId,"patient.demographics",args);
   }catch{return reject(404,"not_found");}
  }
  const result=await safeFetch(scope.origin,"/api/v1/patients/"+encodeURIComponent(patientId),scope.staff.bearer,scope.fetcher);
