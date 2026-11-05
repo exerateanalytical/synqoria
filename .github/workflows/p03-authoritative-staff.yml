@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: '22'
       - name: Authoritative identity, shift, tenant, scope denial cases
-        run: node --test tests/oidc_workforce_grants.test.mjs tests/oidc_session_orchestrator.test.mjs tests/oidc_session_reauthorization.test.mjs tests/oidc_staff_service.test.mjs tests/clinical_opaque_session_admission.test.mjs tests/patient_disclosure_authorization.test.mjs tests/real_clinical_screen_runtime.test.mjs tests/longitudinal_read_integration.test.mjs tests/opaque_staff_session.test.mjs
+        run: node --test tests/oidc_workforce_grants.test.mjs tests/oidc_session_orchestrator.test.mjs tests/oidc_session_reauthorization.test.mjs tests/oidc_staff_service.test.mjs tests/clinical_opaque_session_admission.test.mjs tests/patient_disclosure_authorization.test.mjs tests/encounter_disclosure_authorization.test.mjs tests/real_clinical_screen_runtime.test.mjs tests/longitudinal_read_integration.test.mjs tests/opaque_staff_session.test.mjs
       - name: Preserve prior OIDC cryptographic/one-use tests
         run: node --test tests/oidc_staff_verification.test.mjs tests/oidc_login_flow.test.mjs tests/oidc_one_use.test.mjs tests/oidc_code_exchange.test.mjs tests/oidc_token_introspection.test.mjs
       - name: Verify 261-screen integrity and no unapproved writes
