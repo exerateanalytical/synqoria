@@ -6,6 +6,7 @@
  */
 import {admission,safeFetch,verifyPatient,validUuid,reject,ok} from "./clinical-cell.mjs";
 import {authorizeEncounterDisclosure} from "./encounter-disclosure-authorization.mjs";
+import {authorizeAuditedEncounterDisclosure} from "./audited-encounter-disclosure.mjs";
 const numeric=/^(?:0|[1-9][0-9]{0,9})$/;
 const codePattern=/^[A-Za-z0-9][A-Za-z0-9._:/-]{0,127}$/;
 const utc=/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?Z$/;
@@ -110,11 +111,19 @@ export async function readLongitudinal(request,patientId,encounterId,resource,me
  const capability=fixedResources.get(resource);
  const scope=await admission(request,{...options,capability,additionalCapabilities:["patient:view"]});
  if(scope.error)return scope.error;
- if((options.env??process.env).SYNQORIA_REQUIRE_ENCOUNTER_DISCLOSURE==="1"){
+ const disclosureEnv=options.env??process.env;
+ if(disclosureEnv.SYNQORIA_AUDIT_DENIED_ENCOUNTER_DISCLOSURE==="1"&&
+    disclosureEnv.SYNQORIA_REQUIRE_ENCOUNTER_DISCLOSURE!=="1")
+  return reject(503,"encounter_policy_not_integrated");
+ if(disclosureEnv.SYNQORIA_REQUIRE_ENCOUNTER_DISCLOSURE==="1"){
   try{
-   await authorizeEncounterDisclosure(scope.staff,patientId,encounterId,resource,{
-    origin:scope.origin,fetcher:scope.fetcher,nowMs:options.nowMs??Date.now()
-   });
+   const args={origin:scope.origin,fetcher:scope.fetcher,
+    nowMs:options.nowMs??Date.now()};
+   if(disclosureEnv.SYNQORIA_AUDIT_DENIED_ENCOUNTER_DISCLOSURE==="1")
+    await authorizeAuditedEncounterDisclosure(scope.staff,patientId,encounterId,resource,{
+     ...args,auditWriter:options.auditWriter
+    });
+   else await authorizeEncounterDisclosure(scope.staff,patientId,encounterId,resource,args);
   }catch{return reject(404,"not_found");}
  }
  const patientRecord=await safeFetch(scope.origin,"/api/v1/patients/"+patientId,scope.staff.bearer,scope.fetcher);
