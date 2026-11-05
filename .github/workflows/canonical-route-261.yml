@@ -4,6 +4,7 @@ on:
     branches:
       - work/canonical-261-route-coverage-2026-11-05
       - work/clinical-identity-triage-read-integrations-2026-11-05
+      - work/m04-m06-read-operations-consolidation-2026-11-05
 permissions:
   contents: read
 concurrency:
@@ -24,6 +25,8 @@ jobs:
         run: node --test tests/real_clinical_screen_runtime.test.mjs
       - name: Validate bounded identity and triage read integration, source evidence and privacy
         run: node --test tests/triage_audit_integration.test.mjs
+      - name: Test P07 contract-aligned M04–M06 encounter, note, observation, lineage and scoped access reads
+        run: node --test tests/longitudinal_read_integration.test.mjs
       - name: Install JavaScript workspaces
         run: npm install --ignore-scripts --no-audit --no-fund
       - name: Compile shared UX-core contracts
@@ -61,4 +64,4 @@ jobs:
           retention-days: 7
       - name: Enforce clinical release remains denied despite 261 navigable URLs
         run: |
-          echo "261/261 URLs; 13 partial/functional slices; 248 backend-locked domain routes; 0/261 clinically accepted"
+          echo "261/261 URLs; 21 limited read/nonclinical slices; 240 backend-locked domain routes; 0/261 clinically accepted"
