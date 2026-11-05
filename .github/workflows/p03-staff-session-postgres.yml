@@ -40,6 +40,6 @@ jobs:
         env:
           SYNQORIA_POSTGRES_INTEGRATION: '1'
       - name: Validate inherited PKCE and active workforce guards
-        run: node --test tests/oidc_workforce_grants.test.mjs tests/oidc_session_orchestrator.test.mjs
+        run: node --test tests/oidc_workforce_grants.test.mjs tests/oidc_session_orchestrator.test.mjs tests/oidc_session_reauthorization.test.mjs
       - name: Release boundary
         run: echo "PostgreSQL ephemeral integration only; no deployed hospital identity service, staff UI or clinical certification."
