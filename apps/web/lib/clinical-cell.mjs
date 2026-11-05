@@ -24,7 +24,7 @@ export function configuredCellOrigin(env=process.env){
   return u.origin;
  }catch{return null;}
 }
-export async function safeFetch(origin,path,bearer,fetcher,{method="GET",body=null,maxBytes=8192}={}){
+export async function safeFetch(origin,path,bearer,fetcher,{method="GET",body=null,maxBytes=8192,requireNoStore=process.env.SYNQORIA_REQUIRE_UPSTREAM_NO_STORE==="1"}={}){
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),7000);
  try{
@@ -32,6 +32,8 @@ export async function safeFetch(origin,path,bearer,fetcher,{method="GET",body=nu
   if(bearer)headers.Authorization="Bearer "+bearer;
   if(method==="POST")headers["Content-Type"]="application/json";
   const r=await fetcher(origin+path,{method,headers,...(body===null?{}:{body:JSON.stringify(body)}),cache:"no-store",credentials:"omit",redirect:"error",signal:controller.signal});
+  if(r.redirected===true||(r.url&&new URL(r.url).origin!==origin))return {status:503};
+  if(requireNoStore&&!r.headers.get("cache-control")?.toLowerCase().includes("no-store"))return {status:503};
   if(r.status===401)return {status:401};
   if(r.status===403||r.status===404)return {status:404};
   if(r.status===503)return {status:503};
