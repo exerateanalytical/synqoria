@@ -1,4 +1,5 @@
 import {requireCanonicalStaffAuthRequest} from "./staff-auth-request-origin.mjs";
+import {OIDC_FLOW_COOKIE,clearOidcFlowCookieOptions} from "./oidc-login-flow.mjs";
 /**
  * SYNQORIA P03-B0049: server-only Next/Fetch-compatible login HTTP boundary.
  *
@@ -81,7 +82,10 @@ export function createStaffAuthHttpHandlers(service,{
     h.append("Set-Cookie",clearCookie(done.clearFlowCookie.name,done.clearFlowCookie.options));
     return new Response(null,{status:303,headers:h});
    }catch{
-    return response(401);
+    // A denied one-use callback must also expire the old PKCE flow cookie.
+    // Never leak the code, state, failure reason or access token in response.
+    return response(401,{"Set-Cookie":
+     clearCookie(OIDC_FLOW_COOKIE,clearOidcFlowCookieOptions())});
    }
   },
   async logout(request){
