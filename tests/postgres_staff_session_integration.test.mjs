@@ -67,8 +67,8 @@ test("P03-B0037 real PostgreSQL insertion, lookup, revocation and replay denial"
  const inserted=run(insert(s));
  assert.match(inserted,/INSERT 0 1/);
  const looked=run(read(s));assert.ok(looked.includes(s.ciphertext));
- assert.match(run(revoke(s)),/UPDATE 1/);
- assert.match(run(revoke(s)),/UPDATE 0/);
+ assert.match(run(revoke(s)),/DELETE 1/);
+ assert.match(run(revoke(s)),/DELETE 0/);
  assert.equal(run(read(s)).trim(),"");
 });
 test("P03-B0037 unauthorized roles cannot browse sessions or overwrite ciphertext",()=>{
@@ -93,5 +93,5 @@ test("P03-B0037 eight separate PostgreSQL connections cannot duplicate one ticke
  const result=await Promise.all(Array.from({length:8},()=>parallel(insert(s))));
  assert.equal(result.filter(x=>x.includes("INSERT 0 1")).length,1);
  assert.equal(result.filter(x=>x.includes("INSERT 0 0")).length,7);
- assert.match(run(revoke(s)),/UPDATE 1/);
+ assert.match(run(revoke(s)),/DELETE 1/);
 });
