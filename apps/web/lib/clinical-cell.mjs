@@ -6,6 +6,7 @@ import {readSessionCookie} from "./clinical-session.mjs";
 import {authorizePatientDisclosure} from "./patient-disclosure-authorization.mjs";
 import {authorizeAuditedPatientDisclosure} from "./audited-patient-disclosure.mjs";
 import {requireClinicalRequestProvenance} from "./clinical-request-provenance.mjs";
+import {requireClinicalCellAffinity} from "./clinical-cell-affinity.mjs";
 
 const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[89ab0-9a-f]{12}$/i;
 const triageStages=new Set(["ARRIVED","WAITING","CALLED","ASSESSING","ASSESSED","PRIORITIZED","ASSIGNED","HANDED_OVER","CLOSED"]);
@@ -90,6 +91,11 @@ export async function admission(request,{env=process.env,fetcher=fetch,capabilit
   if(!validSession)return {error:reject(401,"authentication_required")};
  }else staff=readSessionCookie(request.headers.get("cookie"),{env});
  if(!staff)return {error:reject(401,"authentication_required")};
+ if(["production","staging"].includes(env?.SYNQORIA_RUNTIME_MODE)){
+  try{requireClinicalCellAffinity(staff,env);}
+  catch{return {error:reject(404,"not_found")};}
+ }
+
  if(!staff.capabilities.includes(capability)||!additionalCapabilities.every(c=>staff.capabilities.includes(c)))return {error:reject(404,"not_found")};
  const origin=configuredCellOrigin(env);
  if(!origin)return {error:reject(503,"cell_not_integrated")};
