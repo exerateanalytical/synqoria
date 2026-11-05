@@ -60,7 +60,7 @@ test("untrusted or local backend origin is rejected independent of browser reque
 test("real authorized facility response verifies server-owned facility and strips credential",async()=>{
  requests.length=0;
  const r=await readFacility(authorized(),{env,fetcher});
- assert.equal(r.status,200);
+ assert.equal(r.status,200,"safe response "+JSON.stringify(await r.clone().json())+" upstreamCalls "+requests.length);
  assert.deepEqual(await r.json(),facilityDto);
  assert.equal(r.headers.get("cache-control"),"no-store, private");
  assert.equal(requests.length,1);
