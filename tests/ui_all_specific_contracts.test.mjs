@@ -79,3 +79,26 @@ test("visual source uses wrap-safe, contrast-conscious no-glow primitives",()=>{
  assert.ok(css.includes("overflow-wrap:anywhere"));
 });
 console.log("Coverage assertions are contract and source tests, not 252 clinical screen acceptance results.");
+
+
+test("all fourteen authoritative cross-module workflows have explicit route steps and exception descriptions",()=>{
+ const flowMap=JSON.parse(read("registers/ui-cross-module-workflow-14.json"));
+ assert.equal(flowMap.flows.length,14);
+ const known=new Set(all.map(s=>s.id));
+ const names=new Set();
+ for(const f of flowMap.flows){
+  assert.match(f.id,/^W\d\d$/);
+  assert.ok(!names.has(f.id));names.add(f.id);
+  assert.ok(f.title&&f.normalPath&&f.exceptionPath);
+  assert.ok(f.path.length>=2);
+  assert.ok(f.path.every(id=>known.has(id)),f.id);
+  assert.ok(f.alternates.every(id=>known.has(id)),f.id);
+  assert.equal(f.release,"denied");
+ }
+ const page=read("apps/web/app/ui/catalog/workflows/page.tsx");
+ const detail=read("apps/web/app/ui/catalog/[screenId]/page.tsx");
+ assert.ok(page.includes('flows.flows.map('));
+ assert.ok(page.includes('flow.exceptionPath'));
+ assert.ok(detail.includes("connectedFlows"));
+ assert.ok(detail.includes("flow.path.map("));
+});
