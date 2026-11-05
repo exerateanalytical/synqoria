@@ -77,3 +77,17 @@
 .syn-action-note p{margin:6px 0 0}
 .syn-preview-disclaimer{margin-top:20px;font-size:14px;color:#475569;border-top:1px solid #d7dce1;padding-top:14px}
 @media(max-width:1040px){.syn-spec-form{grid-template-columns:minmax(0,1fr)}}@media(max-width:700px){.syn-review-grid,.syn-detail-list{grid-template-columns:minmax(0,1fr)}.syn-inventory ul{columns:1}.syn-filter-toolbar>*{flex:1 1 100%!important;max-width:none!important}.syn-record-options label{flex:1 1 100%;max-width:none}.syn-paging>*{flex:1 1 auto}.syn-ui-preview button{min-height:48px}}@media(max-width:360px){.syn-ui-preview{font-size:16px}.syn-preview-toolbar button{flex:1 1 100%}.syn-real-tabs button{flex:1 1 100%}.syn-buttons button{flex:1 1 100%}}@media(prefers-reduced-motion:reduce){.syn-ui-preview *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}@media(forced-colors:active){.syn-action-note,.syn-filters,.syn-locked{border:2px solid CanvasText!important}}
+
+
+.syn-component-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px;margin:20px 0}
+.syn-component-entry{border:1px solid #d7dce1;border-radius:10px;padding:16px;display:grid;align-content:start;gap:10px}
+.syn-component-entry span{color:#475569;font-size:14px}
+.syn-ui-preview button.syn-gallery-button{display:block;text-align:left;padding:16px;min-height:56px}
+.syn-preview-paper{border:1px solid #70829a;aspect-ratio:210/297;padding:12px 10px;display:flex;flex-direction:column;justify-content:space-between;text-align:center;background:#fff;color:#475569;font-size:12px;overflow-wrap:anywhere}
+.syn-preview-dialog{border:1px solid #70829a;border-radius:12px;padding:24px;max-width:min(560px,calc(100vw - 32px));width:100%;color:#172b4d;background:white;max-height:calc(100dvh - 32px);overflow:auto}
+.syn-preview-dialog::backdrop{background:rgba(7,54,86,.55)}
+.syn-preview-dialog h2{font-size:21px;line-height:1.4;margin:0 0 16px}
+.syn-dialog-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:12px;margin-top:24px}
+.syn-dialog-actions button{min-height:44px}
+@media(max-width:560px){.syn-preview-dialog{margin:auto;max-height:100dvh;border-radius:0;padding:16px}.syn-dialog-actions button{flex:1 1 100%;min-height:48px}}
+@media print{.syn-catalog,.syn-gallery{background:white!important}.syn-preview-toolbar,.syn-real-tabs,.syn-gallery button{display:none!important}.syn-preview-paper{border:1px solid black;break-inside:avoid} }
