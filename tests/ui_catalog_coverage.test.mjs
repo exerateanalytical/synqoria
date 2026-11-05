@@ -70,7 +70,7 @@ test("261 route generation, screen navigation, tabs and controls are present",()
   if(token==="type="reset"")continue; // deliberate clear-draft action is type=button
   assert.ok(components.includes(token),token);
  }
- assert.ok(listing.includes("screens.map("));
+ assert.ok(listing.includes("screens.filter("));
 });
 test("visual restrictions: responsive controls, no glow or gradient effects",()=>{
  for(const s of [css,sheet]){
