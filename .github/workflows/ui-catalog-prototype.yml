@@ -1,0 +1,29 @@
+name: SYNQORIA UI prototype contract checks
+on:
+  push:
+    branches:
+      - work/ui-controls-coverage-2026-11-05
+  pull_request:
+    paths:
+      - 'apps/web/app/ui/catalog/**'
+      - 'registers/canonical-screens.json'
+      - 'tests/ui_catalog_*.test.*'
+permissions:
+  contents: read
+jobs:
+  ui-catalog-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify all 261 UI screen contracts and visual-token invariants
+        run: node --test tests/ui_catalog_coverage.test.mjs
+      - name: Install TypeScript compiler for syntax-only checks
+        run: npm install --global typescript@5.8.3 --no-fund --no-audit
+      - name: Check syntax of five new Next app routes/components
+        run: node --test tests/ui_catalog_syntax.test.cjs
+      - name: Explain excluded release gates
+        run: echo "No Next browser build, external role/clinical signoff, live API or visual audit is certified by this workflow"
