@@ -7,10 +7,10 @@
   "intent": {
     "requestedRunSize": 30,
     "candidateIds": "P03-B0034..P03-B0063",
-    "executedVerified": 20,
-    "unimplementedInThisRun": 10,
-    "runStatus": "INCOMPLETE",
-    "lastVerifiedId": "P03-B0053"
+    "executedVerified": 30,
+    "unimplementedInThisRun": 0,
+    "runStatus": "FOCUSED_VERIFIED_ONLY",
+    "lastVerifiedId": "P03-B0063"
   },
   "boundary": {
     "stage": "engineering-foundations",
@@ -303,7 +303,153 @@
       },
       "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
       "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0054",
+      "scope": "Strict clinical production auth/disclosure/audit deployment guard",
+      "source": "apps/web/lib/clinical-identity-safety.mjs",
+      "test": "tests/clinical_identity_safety.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42131303301,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42131303301",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0055",
+      "scope": "Force-RLS identity database policy manifest and public privilege validation",
+      "source": "apps/web/lib/identity-db-schema-policies.mjs",
+      "test": "tests/identity_db_schema_policies_postgres.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42131797405,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42131797405",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0056",
+      "scope": "Atomic staff ticket revocation on denied live IdP or workforce reauthorization",
+      "source": "apps/web/lib/oidc-reauthorize-or-revoke.mjs",
+      "test": "tests/oidc_reauthorize_or_revoke.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42131878103,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42131878103",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0057",
+      "scope": "Failed OIDC callback expires sealed one-use PKCE cookie",
+      "source": "apps/web/lib/staff-auth-http-handlers.mjs",
+      "test": "tests/staff_auth_callback_cleanup.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42131934203,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42131934203",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0058",
+      "scope": "Canonical same-origin request provenance on clinical admission",
+      "source": "apps/web/lib/clinical-request-provenance.mjs",
+      "test": "tests/clinical_request_provenance.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42132169057,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42132169057",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0059",
+      "scope": "Clinical source redirect/cross-origin/non-no-store response denial",
+      "source": "apps/web/lib/clinical-cell.mjs",
+      "test": "tests/clinical_upstream_no_store.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42132265830,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42132265830",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0060",
+      "scope": "Hospital-specific tenant and facility affinity for every clinical read",
+      "source": "apps/web/lib/clinical-cell-affinity.mjs",
+      "test": "tests/clinical_cell_affinity.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42132430031,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42132430031",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0061",
+      "scope": "Compiled PostgreSQL RLS predicate verification against permissive policy alteration",
+      "source": "apps/web/lib/identity-db-schema-policies.mjs",
+      "test": "tests/identity_db_schema_policies_postgres.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42132604564,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42132604564",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0062",
+      "scope": "Tenant-pinned workforce role and capability ceiling",
+      "source": "apps/web/lib/staff-role-capability-policy.mjs",
+      "test": "tests/staff_role_workforce_binding.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42132685203,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42132685203",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0063",
+      "scope": "Verified runtime instance attestation and clinical API read composition boundary",
+      "source": "apps/web/lib/verified-clinical-runtime-binding.mjs",
+      "test": "tests/verified_clinical_runtime_binding.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42133328010,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42133328010",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
     }
   ],
-  "reconciliation": "B0052 recovery PR #28; do not confuse P03 infrastructure with SYNQ-OPS screen packages"
+  "reconciliation": "B0052 recovery PR #28; do not confuse P03 infrastructure with SYNQ-OPS screen packages",
+  "recoveryFrom": "work/p03-b0052-runtime-recovery-2026-11-06",
+  "lastFocusedSuite": {
+    "runId": 42133328010,
+    "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42133328010",
+    "conclusion": "success"
+  }
 }
