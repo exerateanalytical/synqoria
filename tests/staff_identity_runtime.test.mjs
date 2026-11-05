@@ -113,7 +113,7 @@ function harness({active=true,workforceFacility=facility,missingAudit=false}={})
 test("P03-B0052 trusted runtime composes replay, signed IdP, roster, encrypted session, audit and logout",async()=>{
  const h=harness(),{flow,callback}=await h.begin();
  const done=await h.runtime.http.callback(new Request(callback,{headers:{Cookie:flow}}));
- assert.equal(done.status,303);assert.equal(done.headers.get("location"),"/workforce");
+ assert.equal(done.status,303, JSON.stringify({network:h.network,sessions:h.sessions.size,audits:h.auditRows.length,replay:h.replay.size,headers:Object.fromEntries(done.headers)}));assert.equal(done.headers.get("location"),"/workforce");
  assert.equal(h.sessions.size,1);
  assert.equal(h.auditRows.length,1);
  assert.equal(h.auditRows[0][3],"LOGIN_GRANTED");
