@@ -32,7 +32,7 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Start production site (no auth key or cell configured)
         run: |
-          (cd apps/web && ../../node_modules/.bin/next start --port 3000) > /tmp/synqoria-real-ui-next.log 2>&1 &
+          (cd apps/web && SYNQORIA_WEB_PUBLIC_ORIGIN=http://127.0.0.1:3000 ../../node_modules/.bin/next start --port 3000) > /tmp/synqoria-real-ui-next.log 2>&1 &
           for i in $(seq 1 60); do
             if curl -fsS http://127.0.0.1:3000/workforce/clinical >/dev/null; then exit 0; fi
             sleep 2
