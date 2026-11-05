@@ -5,7 +5,7 @@ import {chromium} from "playwright";
 const base=process.env.SYNQORIA_UI_BASE_URL||"http://127.0.0.1:3000";
 const folder=process.env.SYNQORIA_REAL_UI_EVIDENCE||"/tmp/synqoria-real-screen-evidence";
 mkdirSync(folder,{recursive:true});
-const screens=["G-S03","G-S06","G-S10","M01-S03","M03-S03"];
+const screens=["G-S03","G-S06","G-S10","G-S11","G-S12","M01-S03","M03-S03"];
 const errors=[],samples=[],views=[];
 const browser=await chromium.launch({headless:true,args:["--no-sandbox"]});
 const patient="44444444-4444-4444-8444-444444444444",caseId="55555555-5555-4555-8555-555555555555";
@@ -72,6 +72,14 @@ try{
      await page.getByRole("button",{name:"Read from hospital server"}).click();
      await page.locator('[data-clinical-read-status="unauthenticated"]').waitFor();
     }
+    if(screen==="G-S11"){
+     await page.getByLabel("Search support topics").fill("triage");
+     if(await page.locator(".syn-live-index-item").count()!==1)errors.push({screen,width,issue:"help search mismatch"});
+     await page.getByLabel("Search support topics").fill("");
+    }
+    if(screen==="G-S12"){
+     if(await page.getByRole("heading",{name:"Feature unavailable or retired"}).count()!==1)errors.push({screen,width,issue:"safe not-found title missing"});
+    }
     if(screen==="G-S06"){
      await page.getByLabel("Language").selectOption("fr");
      await page.getByLabel("Contraste").selectOption("high");
@@ -89,7 +97,7 @@ try{
  }
  const page=await browser.newPage();
  await page.goto(base+"/workforce/clinical");
- if(await page.locator(".syn-live-index-item").count()!==7)errors.push({issue:"missing operational menu links"});
+ if(await page.locator(".syn-live-index-item").count()!==9)errors.push({issue:"missing operational menu links"});
  await page.goto(base+"/workforce/clinical/M31-S01");
  if(!page.url().endsWith("/hospital-documents"))errors.push({issue:"template catalogue route did not reach working index"});
  await page.goto(base+"/workforce/clinical/M31-S03");
