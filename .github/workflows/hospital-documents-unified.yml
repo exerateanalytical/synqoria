@@ -1,0 +1,61 @@
+name: SYNQORIA unified hospital documents
+on:
+  push:
+    branches: [work/hospital-documents-unified-2026-11-05]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify merged registers
+        run: node --test tests/hospital_document_unification.test.mjs
+      - name: Verify 376 structured documents
+        run: node --test tests/print_catalog_contracts.test.mjs
+      - name: Verify 304 PDF document definitions
+        run: node --test tests/hospital_documents_contract.test.mjs
+      - name: Install workspaces
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Compile UX core
+        run: npm run build --workspace packages/ux-core
+      - name: Strict TypeScript
+        run: npm exec --workspace apps/web -- tsc --noEmit
+      - name: Production Next.js build
+        run: npm run build --workspace apps/web
+      - name: Install Chromium
+        run: |
+          npm install --no-save playwright@1.56.1 --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Start production app
+        run: |
+          (cd apps/web && ../../node_modules/.bin/next start --port 3000) > /tmp/synqoria-unified-doc-next.log 2>&1 &
+          for i in $(seq 1 75); do
+            if curl -fsS http://127.0.0.1:3000/hospital-documents >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/synqoria-unified-doc-next.log
+          exit 1
+      - name: Verify unified catalogue across three viewports
+        run: node tests/hospital_document_unified_browser.mjs
+      - name: Audit 376 structured forms and all canonical print proofs
+        run: node tests/print_browser_audit.mjs
+      - name: Audit 304 PDF documents and retain samples
+        run: node tests/hospital_documents_browser.mjs
+      - name: Upload both engines and all print evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synqoria-unified-hospital-document-evidence
+          path: |
+            /tmp/synqoria-unified-document-evidence/
+            /tmp/synqoria-print-browser/
+            /tmp/synqoria-document-evidence/
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Release gate
+        run: echo "Blank sample only; clinical and financial issuance denied"
