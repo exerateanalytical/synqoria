@@ -2,6 +2,11 @@
 name: Propose npm lockfile (manual review required)
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - work/reproducible-npm-lock-candidate-2026-11-05
+    paths:
+      - .github/workflows/dependency-lock-candidate.yml
 permissions:
   contents: read
 jobs:
