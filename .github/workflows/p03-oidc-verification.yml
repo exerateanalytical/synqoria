@@ -1,0 +1,30 @@
+name: SYNQORIA P03 pinned OIDC staff verification
+on:
+  push:
+    branches:
+      - work/p03-oidc-assertion-verifier-2026-11-05
+  pull_request:
+    paths:
+      - apps/web/lib/oidc-staff-verification.mjs
+      - tests/oidc_staff_verification.test.mjs
+      - .github/workflows/p03-oidc-verification.yml
+permissions:
+  contents: read
+jobs:
+  verify-oidc-assertions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify signed staff OIDC tokens and adversarial claims
+        run: node --test tests/oidc_staff_verification.test.mjs
+      - name: Preserve exact 240-screen assignment and fail-closed progress
+        run: |
+          node --test tests/operational_240_one_cycle_plan.test.mjs
+          node --test tests/operational_gap_registry.test.mjs
+      - name: Qualification boundary
+        run: |
+          echo "P03 JWT validation source tests only. Production OIDC, MFA callback, session revocation, tenant/clinical grants and clinical screens remain UNVERIFIED."
