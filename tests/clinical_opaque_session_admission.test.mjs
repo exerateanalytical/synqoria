@@ -24,12 +24,13 @@ function fetcher(out={},calls=[]){
 test("P03-B0040 verified opaque resolver authorizes existing clinical read BFF and preserves backend scope",async()=>{
  const calls=[],r=await readPatient(req,patient,{env,fetcher:fetcher({},calls),sessionResolver:async()=>staff});
  assert.equal(r.status,200);
- assert.deepEqual(await r.json(),{patientId:patient,identityStatus:"verified",revision:9,facilityId:facility});
+ const data=await r.json();
+ assert.deepEqual(data,{patientId:patient,identityStatus:"verified",revision:9,facilityId:facility});
  assert.equal(calls.length,2);
  assert.ok(calls.every(x=>x.init.headers.Authorization==="Bearer "+bearer));
  assert.ok(calls.every(x=>x.init.redirect==="error"&&x.init.credentials==="omit"&&x.init.cache==="no-store"));
  assert.equal(r.headers.get("cache-control"),"no-store, private");
- assert.equal((await r.clone().text()).includes(bearer),false);
+ assert.equal(JSON.stringify(data).includes(bearer),false);
 });
 test("P03-B0040 production opaque-only policy denies old sealed-cookie path and missing resolver before network",async()=>{
  let calls=0,fx=async()=>{calls++;return json({facilityId:facility,revision:1});};
