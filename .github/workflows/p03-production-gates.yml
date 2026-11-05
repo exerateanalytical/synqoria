@@ -31,6 +31,7 @@ jobs:
       - run: node --test tests/staff_auth_callback_cleanup.test.mjs tests/staff_auth_http_handlers.test.mjs
       - run: node --test tests/clinical_request_provenance.test.mjs tests/clinical_opaque_session_admission.test.mjs
       - run: node --test tests/clinical_upstream_no_store.test.mjs tests/patient_disclosure_authorization.test.mjs
+      - run: node --test tests/clinical_cell_affinity.test.mjs tests/real_clinical_screen_runtime.test.mjs
       - run: node --test tests/identity_db_schema_policies_postgres.test.mjs
         env:
           SYNQORIA_POSTGRES_INTEGRATION: '1'
