@@ -66,8 +66,8 @@ test("261 route generation, screen navigation, tabs and controls are present",()
  for(const token of ["generateStaticParams","ScreenPreviewClient","peer"]){
   if(token==="peer")assert.ok(details.includes("peers"));else assert.ok(details.includes(token),token);
  }
- for(const token of ["role="tablist"","role="tabpanel"","aria-selected","aria-expanded","aria-pressed","onKeyDown","type="search"","type="date"","type="submit"","type="reset"","Show filters","Clear all","Apply filters","Sort by","Results per page","Previous page","Next page","Board view","List view"]){
-  if(token==="type="reset"")continue; // deliberate clear-draft action is type=button
+ for(const token of ['role="tablist"','role="tabpanel"','aria-selected','aria-expanded','aria-pressed','onKeyDown','type="search"','type="date"','type="submit"','Show filters','Clear all','Apply filters','Sort by','Results per page','Previous page','Next page','Board view','List view']){
+  // A dedicated clear-draft button replaces native form reset; all other controls are asserted.
   assert.ok(components.includes(token),token);
  }
  assert.ok(listing.includes("screens.filter("));
