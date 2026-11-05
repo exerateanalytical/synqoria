@@ -14,7 +14,7 @@ export const STAFF_SESSION_SWEEP_SQL=
  "WITH doomed AS ("+
  "SELECT session_digest FROM synqoria_identity.staff_sessions "+
  "WHERE expires_at <= clock_timestamp() "+
- "ORDER BY expires_at,session_digest LIMIT $1 FOR UPDATE SKIP LOCKED"+
+ "ORDER BY expires_at,session_digest LIMIT $1"+
  ") DELETE FROM synqoria_identity.staff_sessions AS s USING doomed "+
  "WHERE s.session_digest=doomed.session_digest "+
  "RETURNING s.session_digest";
