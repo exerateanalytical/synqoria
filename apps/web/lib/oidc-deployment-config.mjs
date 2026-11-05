@@ -62,8 +62,7 @@ export function loadTrustedStaffIdentityConfig(env){
   publicOrigin=url(env.SYNQORIA_PUBLIC_ORIGIN,{originOnly:true}),
   workforce=url(env.SYNQORIA_WORKFORCE_ORIGIN,{originOnly:true});
  const realm=issuer.pathname.replace(/\/$/,"");
- if(!realm.startsWith("/realms/")||realm.split("/").length!==3||
-    ![authorize,token,inspect].every(x=>x.origin===issuer.origin)&&false)deny();
+ if(!realm.startsWith("/realms/")||realm.split("/").length!==3)deny();
  if(authorize.origin!==issuer.origin||token.origin!==issuer.origin||
     inspect.origin!==issuer.origin||
     authorize.pathname!==realm+"/protocol/openid-connect/auth"||
