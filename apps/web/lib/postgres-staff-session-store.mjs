@@ -22,10 +22,10 @@ export const SESSION_INSERT_SQL=
  "ON CONFLICT(session_digest) DO NOTHING";
 export const SESSION_READ_SQL=
  "SELECT sealed_record,expires_at FROM synqoria_identity.staff_sessions "+
- "WHERE session_digest=$1 AND revoked_at IS NULL AND expires_at>clock_timestamp()";
+ "WHERE session_digest=$1 AND expires_at>clock_timestamp()";
 export const SESSION_REVOKE_SQL=
- "UPDATE synqoria_identity.staff_sessions SET revoked_at=clock_timestamp() "+
- "WHERE session_digest=$1 AND revoked_at IS NULL AND expires_at>clock_timestamp()";
+ "DELETE FROM synqoria_identity.staff_sessions "+
+ "WHERE session_digest=$1 AND expires_at>clock_timestamp()";
 function assertResult(result,max=1){
  if(!result||!Number.isSafeInteger(result.rowCount)||result.rowCount<0||
     result.rowCount>max||!Array.isArray(result.rows)||
