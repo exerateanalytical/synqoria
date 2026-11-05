@@ -142,7 +142,19 @@ async function readBoundedJsonRequest(request,maxBytes=4096){
 export async function readTriageWorklist(request,patientId,options={}){
  if(!validUuid(patientId))return reject(400,"invalid_request");
  const originHeader=request.headers.get("origin");
- if(!originHeader||originHeader!==new URL(request.url).origin)return reject(403,"origin_denied");
+ // Behind reverse proxies Next's internal request URL may use a different host
+ // from the browser-visible origin. Compare against the deployment-owned URL,
+ // never the caller-controlled Host/X-Forwarded-Host headers.
+ const expectedOrigin=options.env?.SYNQORIA_WEB_PUBLIC_ORIGIN??process.env.SYNQORIA_WEB_PUBLIC_ORIGIN??new URL(request.url).origin;
+ let configuredWebOrigin;
+ try {
+  const u=new URL(expectedOrigin);
+  if(u.username||u.password||u.search||u.hash||u.pathname!=="/"||
+     (u.protocol!=="https:"&&!(u.protocol==="http:"&&["localhost","127.0.0.1"].includes(u.hostname))))
+    return reject(503,"web_origin_not_configured");
+  configuredWebOrigin=u.origin;
+ }catch{return reject(503,"web_origin_not_configured");}
+ if(!originHeader||originHeader!==configuredWebOrigin)return reject(403,"origin_denied");
  if(!/^application\/json(?:;\s*charset=utf-8)?$/i.test(request.headers.get("content-type")||""))return reject(415,"unsupported_media_type");
  const input=validateTriageViewRequest(await readBoundedJsonRequest(request));
  if(!input)return reject(400,"invalid_request");
