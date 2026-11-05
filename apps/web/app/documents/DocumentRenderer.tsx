@@ -19,6 +19,13 @@ const requiredLabels:Record<string,string>={a4:"A4 form",a5:"A5 intended (A4 sam
 function DocumentCell({field}:{field:DocumentField}):ReactNode{
  if(field.type==="table"){
   const columns=field.columns??[];
+  if(columns.length>6)return <div className="syn-doc-complex-lineitems" role="group" aria-label={field.label+" blank item fields"}>
+    <p>{field.label} — unissued blank line item</p>
+    {[0].map(row=><section key={row} className="syn-doc-lineitem-card" aria-label={"Blank line item "+(row+1)}>
+      {columns.map((column,i)=><div key={i}><strong>{column}</strong><span>—</span></div>)}
+    </section>)}
+    <small>The full medication/dose line must remain together; validated source values and units are required.</small>
+   </div>;
   return <div className="syn-doc-table-wrap"><table className="syn-doc-table"><caption>{field.label} — blank structured table</caption><thead><tr>{columns.map((col,i)=><th scope="col" key={i}>{col}</th>)}</tr></thead><tbody>{[0,1].map(i=><tr key={i}>{columns.map((_,j)=><td key={j}><span className="syn-doc-empty-cell" aria-label="Blank field">—</span></td>)}</tr>)}</tbody></table></div>;
  }
  if(field.type==="textarea")return <div className="syn-doc-blank-multiline" aria-label={"Blank field: "+field.label}><span>Not entered — approved content required</span><span/><span/></div>;
