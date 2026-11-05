@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {createExpiredStaffSessionJanitor,StaffJanitorError,STAFF_SESSION_SWEEP_SQL} from "../apps/web/lib/expired-staff-session-janitor.mjs";
 const good=Array.from({length:3},(_,i)=>({session_digest:String(i+1).repeat(64)}));
 const error=fn=>assert.rejects(fn,StaffJanitorError);
-test("P03-B0046 issues bounded, parameterized SKIP LOCKED expiry-only cleanup",async()=>{
+test("P03-B0046 issues bounded, parameterized expiry-only cleanup without UPDATE rights",async()=>{
  const calls=[];
  const janitor=createExpiredStaffSessionJanitor({query:async(sql,params)=>{
   calls.push({sql,params});return {rowCount:3,rows:good};
@@ -13,7 +13,8 @@ test("P03-B0046 issues bounded, parameterized SKIP LOCKED expiry-only cleanup",a
  assert.equal(Object.isFrozen(r),true);
  assert.deepEqual(calls,[{sql:STAFF_SESSION_SWEEP_SQL,params:[4]}]);
  assert.match(calls[0].sql,/expires_at <= clock_timestamp\(\)/);
- assert.match(calls[0].sql,/FOR UPDATE SKIP LOCKED/);
+ assert.match(calls[0].sql,/ORDER BY expires_at,session_digest LIMIT \$1/);
+ assert.doesNotMatch(calls[0].sql,/FOR UPDATE|SKIP LOCKED/);
  assert.ok(!JSON.stringify(r).includes(good[0].session_digest));
 });
 test("P03-B0046 empty sweep, exact cap, and malformed limit",async()=>{
