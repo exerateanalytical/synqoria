@@ -21,9 +21,22 @@ const policies={
  ["identity_security_audit_append_only","a","synqoria_identity_audit_writer"]
  ]
 };
+const predicate={
+ oidc_replay_runtime_read_live:"expires_at > clock_timestamp()",
+ oidc_replay_runtime_create_live:"expires_at > clock_timestamp() AND expires_at <= clock_timestamp() + '00:05:00'::interval",
+ oidc_replay_runtime_consume_live:"expires_at > clock_timestamp()",
+ oidc_replay_janitor_read_expired:"expires_at <= clock_timestamp()",
+ oidc_replay_janitor_delete_expired:"expires_at <= clock_timestamp()",
+ staff_session_active_read:"expires_at > clock_timestamp()",
+ staff_session_new_secure:"expires_at > clock_timestamp() AND expires_at <= clock_timestamp() + '00:10:00'::interval",
+ staff_session_revoke_once:"expires_at > clock_timestamp()",
+ staff_session_janitor_read_expired:"expires_at <= clock_timestamp()",
+ staff_session_janitor_delete_expired:"expires_at <= clock_timestamp()",
+ identity_security_audit_append_only:"occurred_at <= clock_timestamp() + '00:01:00'::interval AND occurred_at >= clock_timestamp() - '00:02:00'::interval"
+};
 const all=()=>Object.entries(policies).map(([table_name,rows])=>({
  table_name,row_security:true,force_row_security:true,public_grant:false,
- policies:rows.map(([name,command,role])=>({name,command,permissive:true,roles:[role]}))
+ policies:rows.map(([name,command,role])=>({name,command,permissive:true,roles:[role],using:command==="a"?null:predicate[name],with_check:command==="a"?predicate[name]:null}))
 }));
 const db=rows=>({query:async (sql,args)=>{
  assert.equal(sql,IDENTITY_SCHEMA_POLICY_SQL);assert.deepEqual(args,[]);
