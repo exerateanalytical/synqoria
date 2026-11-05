@@ -9,6 +9,7 @@
  * staff roster, privilege revision, shift and facility membership before
  * returning the single active actor/facility grant.
  */
+import {verifyRoleBoundWorkforceGrant} from "./staff-role-capability-policy.mjs";
 const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[89ab0-9a-f]{12}$/i;
 const SCOPE=/^[a-z][a-z0-9:._-]{2,63}$/;
 const SUBJECT=/^[A-Za-z0-9@._:|~-]{2,255}$/;
@@ -105,7 +106,9 @@ export async function resolveStaffWorkforceGrant(proof,accessToken,config,{
    body,redirect:"error",credentials:"omit",cache:"no-store",signal:controller.signal
   });
   const dto=await safeResponse(response);
-  return strictGrant(dto,proof,{...config,nowMs});
+  const grant=strictGrant(dto,proof,{...config,nowMs});
+  if(config.rolePolicy!==undefined)verifyRoleBoundWorkforceGrant(grant,config.rolePolicy);
+  return grant;
  }catch{deny();}
  finally{clearTimeout(timeout);}
 }
