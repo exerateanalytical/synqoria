@@ -1,0 +1,60 @@
+/* SYNQORIA Warm Clinical — protected identity/registration specimens; no glow/gradients. */
+.syn-identity-preview{--syn-fg:#172b4d;--syn-muted:#475569;--syn-primary:#1664d4;--syn-border:#d7dce1;--syn-paper:#fff;color:var(--syn-fg);min-width:0}
+.syn-identity-preview *{min-width:0;box-sizing:border-box;overflow-wrap:anywhere}
+.syn-identity-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.syn-lang-choice{border:0;padding:0;margin:0;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.syn-lang-choice legend{font-size:13px;font-weight:700;color:#475569;margin-bottom:7px}
+.syn-lang-choice button[aria-pressed="true"]{border-color:#174ea6;background:#eaf2ff;color:#174ea6;font-weight:700}
+.syn-identity-alert{background:#fff5e9;border:1px solid #a85d12;border-radius:10px;padding:16px 18px;color:#5a350e;margin:0 0 20px}
+.syn-identity-alert p{margin:6px 0 0;color:#5a350e}
+.syn-identity-journey{display:flex;align-items:stretch;flex-wrap:wrap;gap:8px;margin:0 0 20px;border-bottom:1px solid #d7dce1;padding-bottom:14px}
+.syn-identity-journey a{font-size:13px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;text-align:center;min-height:44px;border:1px solid #b9c0c9;border-radius:8px;padding:10px 12px;color:#073656;text-decoration:none}
+.syn-identity-journey a[aria-current="page"]{background:#eaf2ff;border-color:#174ea6;color:#174ea6}
+.syn-identity-main{padding:4px 0 20px}
+.syn-identity-main h3{font-size:19px;color:#073656;margin:0 0 6px}
+.syn-identity-intro{color:#475569;font-size:14px;margin:0 0 16px}
+.syn-identity-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.syn-identity-fields>.syn-identity-field{min-width:0}
+.syn-identity-field{display:flex;flex-direction:column;gap:8px}
+.syn-identity-field>span{font-weight:700;font-size:14px;line-height:1.45}
+.syn-identity-field input,.syn-identity-field select,.syn-identity-field textarea{width:100%;border:1px solid #70829a;border-radius:8px;background:#fff;color:#172b4d;font-size:16px;line-height:1.5;padding:10px 12px;min-height:46px}
+.syn-identity-field input:disabled,.syn-identity-field select:disabled,.syn-identity-field textarea:disabled{background:#f1f3f5;color:#475569;border-color:#b9c0c9}
+.syn-identity-field small{font-size:12px;color:#475569;line-height:1.4;font-weight:400}
+.syn-required{font-size:12px;color:#74440a}
+.syn-identity-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:16px 0;border-top:1px solid #d7dce1;margin-top:16px}
+.syn-identity-actions button{min-height:44px;flex:0 1 auto;max-width:100%}
+.syn-identity-actions .syn-locked{margin-left:auto}
+.syn-identity-filter-panel{padding:16px;margin:16px 0;background:#f7f5f0;border:1px solid #d7dce1;border-radius:10px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.syn-identity-filter-panel h4{grid-column:1/-1;margin:0}
+.syn-identity-status{padding:12px 14px;background:#edf3f8;color:#173b58;border:1px solid #b8c9d8;border-radius:8px;margin:16px 0}
+.syn-identity-review{display:grid;gap:18px}
+.syn-identity-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.syn-identity-summary>div{display:grid;gap:4px;border:1px solid #d7dce1;border-radius:8px;padding:12px}
+.syn-identity-summary span{font-size:13px;color:#475569}
+.syn-identity-summary strong{font-size:14px;color:#172b4d}
+.syn-identity-warning{background:#fff5e9;color:#5a350e;border:1px solid #a85d12;border-radius:10px;padding:16px}
+.syn-identity-warning h4,.syn-identity-warning p{color:#5a350e;margin:0 0 8px}
+.syn-identity-feedback{border:1px solid #174ea6;background:#eaf2ff;color:#174ea6;padding:16px;border-radius:10px}
+.syn-identity-feedback ul{padding-left:24px}
+.syn-identity-feedback li{margin-bottom:8px}
+.syn-identity-empty{background:#f7f5f0;border:1px dashed #70829a;border-radius:10px;padding:22px}
+.syn-identity-empty p{font-size:14px;margin:7px 0}
+.syn-identity-table{max-width:100%;overflow-x:auto;margin:12px 0}
+.syn-identity-table table{width:100%;border-collapse:collapse;min-width:460px;text-align:left}
+.syn-identity-table caption{text-align:left;color:#475569;padding:8px}
+.syn-identity-table th,.syn-identity-table td{padding:12px;border:1px solid #d7dce1;line-height:1.4;font-size:14px}
+.syn-identity-table th{background:#f7f5f0;color:#173b58}
+.syn-identity-table button{margin-top:12px}
+.syn-identity-workflow{list-style:none;padding:0;margin:16px 0;display:grid;gap:12px}
+.syn-identity-workflow li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;align-items:start;padding:12px;border:1px solid #d7dce1;border-radius:8px}
+.syn-identity-workflow li p{margin:0;font-size:14px}
+.syn-identity-step{background:#eaf2ff;color:#174ea6;width:34px;min-height:34px;display:grid;place-items:center;font-size:14px;font-weight:800;border-radius:6px}
+.syn-identity-footer{border-top:1px solid #d7dce1;padding:16px 0}
+.syn-identity-footer p{color:#475569;font-size:13px;margin:12px 0}
+.syn-identity-footer section{margin:12px 0;padding:12px;border:1px solid #d7dce1;border-radius:8px}
+.syn-identity-preview a:focus-visible,.syn-identity-preview button:focus-visible,.syn-identity-preview input:focus-visible,.syn-identity-preview textarea:focus-visible,.syn-identity-preview select:focus-visible{outline:3px solid #1664d4;outline-offset:2px}
+@media(max-width:990px){.syn-identity-fields,.syn-identity-filter-panel,.syn-identity-summary{grid-template-columns:minmax(0,1fr)}.syn-identity-actions .syn-locked{margin-left:0}}
+@media(max-width:600px){.syn-identity-toolbar{align-items:stretch}.syn-identity-journey{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.syn-identity-actions button{flex:1 1 160px}.syn-lang-choice button{min-height:48px}.syn-identity-fields{gap:18px}.syn-identity-main{padding-bottom:12px}}
+@media(max-width:350px){.syn-identity-journey{grid-template-columns:1fr}.syn-identity-actions button{flex:1 1 100%}}
+@media(prefers-reduced-motion:reduce){.syn-identity-preview *{transition:none!important;animation:none!important}}
+@media(forced-colors:active){.syn-identity-alert,.syn-identity-warning,.syn-identity-empty{border:2px solid CanvasText}}
