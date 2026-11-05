@@ -75,7 +75,7 @@ try{
  if(original!==261)errors.push({issue:"directory_not_complete",got:original});
  await index.getByLabel("Filter by implementation").selectOption("locked");
  const lockedRows=await index.locator("tbody tr").count();
- if(lockedRows!==251)errors.push({issue:"directory_locked_count",got:lockedRows});
+ if(lockedRows!==248)errors.push({issue:"directory_locked_count",got:lockedRows});
  await index.getByLabel("Filter by implementation").selectOption("all");
  await index.getByLabel("Filter by module").selectOption("M03");
  const triageCount=registry.filter(x=>x.module==="M03").length;
@@ -86,7 +86,7 @@ try{
  const unknown=await fetch(base+"/workforce/clinical/M99-S99");
  if(unknown.status!==404)errors.push({issue:"unknown_route_leaked",status:unknown.status});
 }finally{await browser.close();}
-const report={canonicalRoutes:registry.length,visited:checked.size,lockedRouteCount:251,integratedScreenSlices:10,clinicalAccepted:0,layouts:Object.keys(representative).length,viewportCases:results.length,expectedViewportCases:21,errors,samples:samples.length,limitations:["No production identity issuer","No verified PostgreSQL clinical write pipelines for 251 locked domains","Module-specific high-risk clinical workflows remain unavailable"]};
+const report={canonicalRoutes:registry.length,visited:checked.size,lockedRouteCount:248,integratedScreenSlices:13,clinicalAccepted:0,layouts:Object.keys(representative).length,viewportCases:results.length,expectedViewportCases:21,errors,samples:samples.length,limitations:["No production identity issuer","No verified PostgreSQL clinical write pipelines for 248 locked domains","Module-specific high-risk clinical workflows remain unavailable"]};
 writeFileSync(resolve(folder,"canonical-261-routes-browser.json"),JSON.stringify(report,null,2)+"\n");
 console.log(JSON.stringify({canonicalRoutes:report.canonicalRoutes,visited:report.visited,lockedRouteCount:report.lockedRouteCount,integratedScreenSlices:report.integratedScreenSlices,viewports:report.viewportCases,samples:report.samples,errors:report.errors.length},null,2));
 if(errors.length)console.error("BROWSER_FINDINGS",JSON.stringify(errors.slice(0,25),null,2));
