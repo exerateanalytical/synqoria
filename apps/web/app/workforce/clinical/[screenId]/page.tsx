@@ -4,6 +4,8 @@ import type {LiveScreenId} from "../ClinicalReadWorkspace";
 import StaffPreferences from "../StaffPreferences";
 import TriageQueueWorkspace from "../TriageQueueWorkspace";
 import TriageReassessmentReview from "../TriageReassessmentReview";
+import LongitudinalReadWorkspace from "../LongitudinalReadWorkspace";
+import type {LongitudinalScreenId} from "../LongitudinalReadWorkspace";
 import HelpAndSafeNavigation from "../HelpAndSafeNavigation";
 import UnintegratedScreen from "../UnintegratedScreen";
 import type {CanonicalRouteSpec,ExtendedSpec,FlowPath,DocumentLink} from "../UnintegratedScreen";
@@ -20,6 +22,7 @@ import {DOCUMENT_CATALOG} from "../../../ui/printables/registry";
 export const dynamic="force-dynamic";
 const allScreens=canonical.screen_register as CanonicalRouteSpec[];
 const operational=new Set(implementation.rows.map(x=>x.id));
+const longitudinal=new Set(["M04-S02","M05-S01","M05-S04","M05-S05","M06-S02","M06-S03","M06-S04","M06-S05"]);
 const moduleNames:Record<string,string>={
  SHARED:"Shared identity and workspace",
  M01:"Patient registration and identity",M02:"Appointments and scheduling",
@@ -51,6 +54,7 @@ export default async function OperationalScreen({params}:{params:Promise<{screen
  if(!screen)notFound();
  // Preserve the real, independently tested subset rather than replacing it with a generic renderer.
  if(operational.has(screenId)){
+  if(longitudinal.has(screenId))return <LongitudinalReadWorkspace screenId={screenId as LongitudinalScreenId}/>;
   if(screenId==="G-S06")return <StaffPreferences/>;
   if(screenId==="M03-S01")return <TriageQueueWorkspace/>;
   if(screenId==="M03-S04")return <TriageReassessmentReview/>;
