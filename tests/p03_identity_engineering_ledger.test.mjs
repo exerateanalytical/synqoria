@@ -12,7 +12,7 @@ test("P03 run accounts for individually verified source increments, no fabricate
  assert.equal(register.batches.length,register.intent.executedVerified);
  const expected=Array.from({length:register.intent.executedVerified},(_,i)=>"P03-B"+String(i+34).padStart(4,"0"));
  assert.deepEqual(register.batches.map(x=>x.id),expected);
- assert.equal(new Set(register.batches.map(x=>x.id)).size,10);
+ assert.equal(new Set(register.batches.map(x=>x.id)).size,register.batches.length);
  assert.equal(new Set(register.batches.map(x=>x.verifiedBy.runId)).size,register.batches.length);
  for(const item of register.batches){
   assert.equal(item.verifiedBy.conclusion,"success");
