@@ -1,0 +1,719 @@
+[
+  {
+    "id": "P01",
+    "en": "Patient identity card",
+    "fr": "Carte d’identification du patient",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "card",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Identity",
+        "fields": [
+          "Local identifier",
+          "Second approved identifier",
+          "Full reported name",
+          "Date of birth or estimated age"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Verification",
+        "fields": [
+          "Issuer and identity status",
+          "Provisional identity flag",
+          "Facility",
+          "Effective time"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "P02",
+    "en": "Appointment and preparation slip",
+    "fr": "Convocation et consignes de rendez-vous",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "notice",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Appointment",
+        "fields": [
+          "Visit reference",
+          "Department",
+          "Clinician",
+          "Date and local time",
+          "Location"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Preparation",
+        "fields": [
+          "Instructions issued by clinician",
+          "Special preparation status",
+          "Contact for rescheduling"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "P08",
+    "en": "Discharge summary",
+    "fr": "Résumé de sortie",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "discharge",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Encounter",
+        "fields": [
+          "Admission date",
+          "Discharge date",
+          "Attending service",
+          "Disposition"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Clinical course",
+        "fields": [
+          "Main diagnoses and code source",
+          "Procedures performed",
+          "Hospital course and complications"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Follow-up",
+        "fields": [
+          "Medications and safety review",
+          "Pending results and owner",
+          "Follow-up arrangements",
+          "Return precautions"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PAT-004",
+    "en": "Patient registration intake form",
+    "fr": "Formulaire d’admission administrative",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "form",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Identity",
+        "fields": [
+          "Reported names",
+          "Identifiers and issuing authority",
+          "Birth information status",
+          "Preferred language"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Contact",
+        "fields": [
+          "Phone",
+          "Address",
+          "Emergency contact"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Provenance",
+        "fields": [
+          "Information provider",
+          "Verification outcome",
+          "Duplicate review status"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PAT-005",
+    "en": "Demographic change request",
+    "fr": "Demande de rectification d’identité",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "form",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Change",
+        "fields": [
+          "Prior recorded value",
+          "Proposed value",
+          "Affected field",
+          "Effective date"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Evidence",
+        "fields": [
+          "Supporting source",
+          "Reason",
+          "Reviewer reference"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Safety",
+        "fields": [
+          "Conflicting identity review",
+          "Audit revision"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PAT-006",
+    "en": "Duplicate identity review worksheet",
+    "fr": "Fiche de vérification des doublons",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "review",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Candidates",
+        "fields": [
+          "Candidate references",
+          "Distinguishing identifiers",
+          "Demographic discrepancies"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Decision",
+        "fields": [
+          "Independent reviewer",
+          "Reason for decision",
+          "Linked encounter consequences"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PAT-007",
+    "en": "Identity merge authorization record",
+    "fr": "Fiche d'autorisation de fusion d'identités",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "review",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Merge",
+        "fields": [
+          "Surviving identity",
+          "Absorbed identity",
+          "Linked references",
+          "Prior source versions"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Approval",
+        "fields": [
+          "Proposer",
+          "Independent checker",
+          "Reason",
+          "Reversal/lineage plan"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PAT-008",
+    "en": "Legal representative verification",
+    "fr": "Vérification du représentant légal",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "form",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Representative",
+        "fields": [
+          "Relationship",
+          "Identity evidence reference",
+          "Authority basis"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Scope",
+        "fields": [
+          "Patient",
+          "Permitted decisions",
+          "Expiry or revocation",
+          "Verification official"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PAT-009",
+    "en": "Emergency contact amendment",
+    "fr": "Mise à jour du contact d’urgence",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "form",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Contact",
+        "fields": [
+          "Contact name",
+          "Relationship",
+          "Phone",
+          "Alternate contact"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Verification",
+        "fields": [
+          "Source of change",
+          "Effective date",
+          "Staff member"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PAT-010",
+    "en": "Patient admission request",
+    "fr": "Demande d'hospitalisation",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "form",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Admission",
+        "fields": [
+          "Source department",
+          "Reason",
+          "Expected ward",
+          "Requested level of care"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Safety",
+        "fields": [
+          "Allergies assessment status",
+          "Infection precautions",
+          "Receiving clinician",
+          "Payer reference"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PAT-011",
+    "en": "Bed assignment and occupancy form",
+    "fr": "Affectation de lit et occupation",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "form",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Allocation",
+        "fields": [
+          "Ward and room",
+          "Bed identifier",
+          "Reservation status",
+          "Availability check"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Safety",
+        "fields": [
+          "Isolation requirements",
+          "Cleaning status",
+          "Transfer acceptance"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PAT-012",
+    "en": "Internal ward transfer form",
+    "fr": "Formulaire de transfert entre services",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "handover",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Transfer",
+        "fields": [
+          "Sending ward",
+          "Receiving ward",
+          "Handover date and time",
+          "Responsible staff"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Continuity",
+        "fields": [
+          "Outstanding orders",
+          "Pending results",
+          "Patient identification verification",
+          "Handover acknowledgement"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PAT-013",
+    "en": "Discharge authorization checklist",
+    "fr": "Liste de vérification de sortie",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "checklist",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Clinical readiness",
+        "fields": [
+          "Final review",
+          "Pending result ownership",
+          "Discharge medication reconciliation"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Administration",
+        "fields": [
+          "Documentation available",
+          "Transport arrangement",
+          "Patient instructions"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Authorized clinician",
+          "Discharge status",
+          "Completion timestamp"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PAT-014",
+    "en": "Patient identification verification log",
+    "fr": "Registre de vérification des identifiants",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "log",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Verification",
+        "fields": [
+          "Two approved identifiers",
+          "Source checked",
+          "Patient context",
+          "Similar-name alert"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Exceptions",
+        "fields": [
+          "Provisional identity",
+          "Mismatch incident",
+          "Reviewer"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PAT-015",
+    "en": "Admission cancellation and correction form",
+    "fr": "Annulation ou correction d’admission",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "form",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Encounter",
+        "fields": [
+          "Admission reference",
+          "Original and proposed status",
+          "Effective time"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Justification",
+        "fields": [
+          "Correction reason",
+          "Source version",
+          "Independent authorization"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PAT-016",
+    "en": "Patient information request form",
+    "fr": "Demande de renseignements du patient",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "form",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Requester",
+        "fields": [
+          "Identity and relationship",
+          "Requested information",
+          "Purpose"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Authorization",
+        "fields": [
+          "Legal basis",
+          "Disclosure decision",
+          "Scope and expiry"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PAT-017",
+    "en": "Outpatient arrival and queue slip",
+    "fr": "Bon de présence et file d'attente",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "ticket",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Arrival",
+        "fields": [
+          "Facility service",
+          "Appointment or encounter reference",
+          "Arrival timestamp"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Queue",
+        "fields": [
+          "Token reference",
+          "Queue status",
+          "Instructions to patient"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PAT-018",
+    "en": "Patient service experience form",
+    "fr": "Formulaire d’appréciation des soins",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "survey",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Experience",
+        "fields": [
+          "Department visited",
+          "Accessibility",
+          "Clarity of instructions"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Feedback",
+        "fields": [
+          "Narrative feedback",
+          "Consent to contact",
+          "Reporting channel"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PAT-019",
+    "en": "Patient discharge handover acknowledgment",
+    "fr": "Accusé de remise des documents de sortie",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "handover",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Delivered",
+        "fields": [
+          "Discharge summary",
+          "Prescriptions",
+          "Referrals",
+          "Follow-up appointments"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Receipt",
+        "fields": [
+          "Recipient or proxy",
+          "Interpreter if needed",
+          "Date",
+          "Staff witness"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PAT-020",
+    "en": "Patient movement and census register",
+    "fr": "Registre de mouvements des patients",
+    "domain": "PAT",
+    "domainEn": "Patient administration and registration",
+    "domainFr": "Administration et accueil des patients",
+    "module": "M01",
+    "kind": "log",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Period",
+        "fields": [
+          "Date and shift",
+          "Unit",
+          "Prepared by"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Movement",
+        "fields": [
+          "Admission references",
+          "Transfers",
+          "Discharges",
+          "Bed movements",
+          "Reconciled census"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]
