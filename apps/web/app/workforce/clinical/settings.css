@@ -1,0 +1,25 @@
+.syn-settings{font:400 16px/1.5 Inter,system-ui,sans-serif;min-height:100dvh;padding:clamp(16px,3vw,36px);background:#f7f5f0;color:#172b4d}
+.syn-settings *{box-sizing:border-box;min-width:0;overflow-wrap:anywhere}
+.syn-settings-breadcrumb{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 0 18px;font-size:14px}
+.syn-settings-breadcrumb a{color:#174ea6;font-weight:700}
+.syn-settings header,.syn-settings-form,.syn-settings-note{background:#fff;border:1px solid #d7dce1;padding:clamp(16px,2.5vw,28px);border-radius:12px;margin-bottom:18px;max-width:1050px}
+.syn-settings header>p:first-child{color:#174ea6;font-size:13px;font-weight:750}
+.syn-settings header>p:last-child{color:#475569}
+.syn-settings h1{font-size:clamp(24px,2.6vw,32px);color:#073656;line-height:1.3;margin:0 0 12px}
+.syn-settings h2{font-size:20px;color:#073656}
+.syn-settings-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.syn-settings-form>label{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:650}
+.syn-settings-form select{font:inherit;background:#fff;border:1px solid #70829a;border-radius:8px;min-height:48px;padding:12px;color:#172b4d;width:100%}
+.syn-settings-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px}
+.syn-settings-actions button{font:inherit;min-height:48px;border:1px solid #70829a;color:#073656;background:#fff;border-radius:8px;padding:10px 16px;cursor:pointer}
+.syn-settings-actions button:first-child{background:#1664d4;color:#fff;border-color:#1664d4;font-weight:750}
+.syn-settings-note p{color:#475569}
+.syn-settings-note>p:first-of-type{font-size:24px;font-weight:750;color:#073656}
+.syn-settings-status{background:#eaf2ff;color:#174ea6;border:1px solid #b8c9d8;padding:14px;border-radius:8px;max-width:1050px}
+.syn-settings :is(a,button,select):focus-visible{outline:3px solid #1664d4;outline-offset:2px}
+html[data-synqoria-density=compact] .syn-settings-form{gap:12px}
+html[data-synqoria-contrast=high] .syn-settings :is(header,.syn-settings-form,.syn-settings-note){border-color:#073656;border-width:2px}
+html[data-synqoria-motion=reduced] .syn-settings *{animation:none!important;transition:none!important}
+@media(max-width:700px){.syn-settings-form{grid-template-columns:1fr}.syn-settings-actions button{flex:1 1 150px}}
+@media(max-width:360px){.syn-settings{padding:12px}.syn-settings-actions button{flex:1 1 100%}}
+@media(prefers-reduced-motion:reduce){.syn-settings *{animation:none!important;transition:none!important}}
