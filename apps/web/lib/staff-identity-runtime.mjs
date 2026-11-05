@@ -25,6 +25,13 @@ export class StaffIdentityRuntimeError extends Error{
  constructor(){super("staff_identity_runtime_unavailable");this.name="StaffIdentityRuntimeError";}
 }
 const deny=()=>{throw new StaffIdentityRuntimeError();};
+/** Instance identity is not transferable to a copied or spoofed runtime. */
+const verifiedRuntimeInstances=new WeakSet();
+export function assertVerifiedStaffIdentityRuntime(runtime){
+ if(!runtime||typeof runtime!=="object"||!verifiedRuntimeInstances.has(runtime))deny();
+ return true;
+}
+
 
 export function createStaffIdentityRuntime({
  env=process.env,replaySql,sessionSql,auditSql,fetcher=fetch,now=Date.now
@@ -79,5 +86,7 @@ export async function createVerifiedStaffIdentityRuntime(options={}){
  requireClinicalIdentitySafety(options.env);
  await verifyIdentitySqlClients(options);
  await verifyIdentitySchemaPolicies(options.replaySql);
- return createStaffIdentityRuntime(options);
+ const runtime=createStaffIdentityRuntime(options);
+ verifiedRuntimeInstances.add(runtime);
+ return runtime;
 }
