@@ -5,6 +5,7 @@
 import {readSessionCookie} from "./clinical-session.mjs";
 import {authorizePatientDisclosure} from "./patient-disclosure-authorization.mjs";
 import {authorizeAuditedPatientDisclosure} from "./audited-patient-disclosure.mjs";
+import {requireClinicalRequestProvenance} from "./clinical-request-provenance.mjs";
 
 const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[89ab0-9a-f]{12}$/i;
 const triageStages=new Set(["ARRIVED","WAITING","CALLED","ASSESSING","ASSESSED","PRIORITIZED","ASSIGNED","HANDED_OVER","CLOSED"]);
@@ -65,6 +66,10 @@ export function verifyTriageCase(dto,caseId){
   ["paused","safetyHold","manualEscalation"].every(k=>typeof x[k]==="boolean");
 }
 export async function admission(request,{env=process.env,fetcher=fetch,capability="patient:view",additionalCapabilities=[],sessionResolver=null}={}){
+ if(env?.SYNQORIA_REQUIRE_CLINICAL_SAME_ORIGIN==="1"){
+  try{requireClinicalRequestProvenance(request,env.SYNQORIA_PUBLIC_ORIGIN);}
+  catch{return {error:reject(403,"request_provenance_denied")};}
+ }
  const opaqueRequired=env?.SYNQORIA_REQUIRE_OPAQUE_STAFF_SESSION==="1";
  if(opaqueRequired&&typeof sessionResolver!=="function")
   return {error:reject(503,"opaque_session_not_integrated")};
