@@ -11,6 +11,10 @@
     "android": {
       "edgeToEdgeEnabled": true,
       "softwareKeyboardLayoutMode": "resize"
-    }
+    },
+    "platforms": [
+      "ios",
+      "android"
+    ]
   }
 }
