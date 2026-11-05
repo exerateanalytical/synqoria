@@ -1,0 +1,828 @@
+[
+  {
+    "id": "P12",
+    "en": "Signed consent copy",
+    "fr": "Copie du consentement signé",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Scope",
+        "fields": [
+          "Procedure or data processing purpose",
+          "Patient and proxy identification"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Information",
+        "fields": [
+          "Risks and benefits",
+          "Alternatives and refusal consequence",
+          "Questions and language"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Decision",
+        "fields": [
+          "Granted or declined choice",
+          "Date/time and policy version",
+          "Witness/qualified clinician"
+        ]
+      },
+      {
+        "id": "s04",
+        "heading": "Evidence",
+        "fields": [
+          "Consent record ID",
+          "Signature provenance and audit status"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-002",
+    "en": "General consent to examination and treatment",
+    "fr": "Consentement général aux soins",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Care",
+        "fields": [
+          "Scope of examination/treatment",
+          "Excluded procedures"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Choice",
+        "fields": [
+          "Explanation",
+          "Questions",
+          "Consent/refusal and withdrawal"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Signatures",
+        "fields": [
+          "Patient/guardian",
+          "Clinician",
+          "Witness"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-003",
+    "en": "Surgical procedure consent",
+    "fr": "Consentement à l'intervention chirurgicale",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Proposal",
+        "fields": [
+          "Named procedure/site",
+          "Reason",
+          "Material risks",
+          "Benefits and alternatives"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Understanding",
+        "fields": [
+          "Interpreter",
+          "Questions and voluntary decision"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Patient/proxy and surgeon",
+          "Date/time"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-004",
+    "en": "Anesthesia consent",
+    "fr": "Consentement à l'anesthésie",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Plan",
+        "fields": [
+          "Proposed anesthesia",
+          "Material risks and alternatives"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Discussion",
+        "fields": [
+          "Assessment and questions",
+          "Capacity"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Authorization",
+        "fields": [
+          "Patient or proxy",
+          "Anesthesia clinician and witness"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-005",
+    "en": "Blood transfusion consent",
+    "fr": "Consentement à la transfusion sanguine",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Proposed transfusion",
+        "fields": [
+          "Component and rationale",
+          "Risks and alternatives"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Choice",
+        "fields": [
+          "Patient understanding",
+          "Refusal or acceptance",
+          "Authorized signer"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-006",
+    "en": "Contrast medium consent",
+    "fr": "Consentement à l'injection de contraste",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Study",
+        "fields": [
+          "Imaging indication and contrast proposal"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Screening",
+        "fields": [
+          "Allergies and relevant medical factors",
+          "Alternatives"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Choice",
+        "fields": [
+          "Questions",
+          "Patient and clinician verification"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-007",
+    "en": "Infectious disease test consent where required",
+    "fr": "Consentement au dépistage infectieux selon politique",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Test",
+        "fields": [
+          "Nature and purpose",
+          "Confidentiality and disclosure"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Counseling",
+        "fields": [
+          "Pre/post information",
+          "Voluntary decision"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Evidence",
+        "fields": [
+          "Policy basis and authorized sign-off"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-008",
+    "en": "Clinical research participation consent",
+    "fr": "Consentement à participer à une recherche",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Study",
+        "fields": [
+          "Protocol and ethics approval",
+          "Purpose and procedures"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Participant rights",
+        "fields": [
+          "Risks",
+          "Compensation policy",
+          "Confidentiality",
+          "Withdrawal"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Signatures",
+        "fields": [
+          "Researcher and participant",
+          "Version and copy receipt"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-009",
+    "en": "Telemedicine consultation consent",
+    "fr": "Consentement à la téléconsultation",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Service",
+        "fields": [
+          "Remote modality",
+          "Privacy and recording policy"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Limitations",
+        "fields": [
+          "Risks of remote assessment",
+          "Alternatives"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Choice",
+        "fields": [
+          "Patient or representative and clinician"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-010",
+    "en": "Health data sharing consent",
+    "fr": "Consentement au partage de données de santé",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Disclosure",
+        "fields": [
+          "Recipient",
+          "Purpose",
+          "Categories",
+          "Time range"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Choice",
+        "fields": [
+          "Permit/refuse",
+          "Revocation and expiry"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Evidence",
+        "fields": [
+          "Actor",
+          "Grant basis and version"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-011",
+    "en": "Procedure refusal record",
+    "fr": "Fiche de refus de soin ou de procédure",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Proposed care",
+        "fields": [
+          "Description",
+          "Risks of refusal",
+          "Alternatives"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Capacity",
+        "fields": [
+          "Understanding and interpreter",
+          "Choice and date"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Signatures",
+        "fields": [
+          "Patient/proxy",
+          "Clinician and witness"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-012",
+    "en": "Consent withdrawal and revocation form",
+    "fr": "Retrait ou révocation du consentement",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Original",
+        "fields": [
+          "Consent reference and scope",
+          "Grantor"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Withdrawal",
+        "fields": [
+          "Requested restrictions",
+          "Effective time",
+          "Affected recipients"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Processing",
+        "fields": [
+          "Acknowledgment and audit"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-013",
+    "en": "Guardian and minor assent form",
+    "fr": "Consentement du tuteur et assentiment du mineur",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Authority",
+        "fields": [
+          "Guardian verification and basis",
+          "Minor's developmentally appropriate involvement"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Discussion",
+        "fields": [
+          "Procedure and options",
+          "Assent/refusal"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Signatures",
+        "fields": [
+          "Guardian",
+          "Minor if appropriate",
+          "Clinician"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-014",
+    "en": "Proxy/representative access grant",
+    "fr": "Autorisation d'accès pour mandataire",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Grant",
+        "fields": [
+          "Representative and relationship",
+          "Patient or legal authority"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Scope",
+        "fields": [
+          "Permitted services and records",
+          "Expiry and revocation"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Verification",
+        "fields": [
+          "Identity steward and audit"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-015",
+    "en": "Medical records access request",
+    "fr": "Demande d’accès au dossier médical",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "privacy",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Requester",
+        "fields": [
+          "Identity",
+          "Relationship and legal basis",
+          "Purpose"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Request",
+        "fields": [
+          "Record range",
+          "Preferred delivery and language"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Decision authority",
+          "Restricted material",
+          "Audit reference"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-016",
+    "en": "Confidential information disclosure authorization",
+    "fr": "Autorisation de divulgation d'informations sensibles",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "privacy",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Disclosure",
+        "fields": [
+          "Information classes",
+          "Named recipient",
+          "Purpose and timeframe"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Safeguards",
+        "fields": [
+          "Minimum necessary",
+          "Sensitive categories",
+          "Expiry"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Privacy officer and patient/proxy"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-017",
+    "en": "Medical photography and recording consent",
+    "fr": "Consentement aux images et enregistrements",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Media",
+        "fields": [
+          "Photo/video purpose",
+          "Recording context",
+          "Retention"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Disclosure",
+        "fields": [
+          "Teaching/research vs care",
+          "Audience",
+          "Withdrawal limitations"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Choice",
+        "fields": [
+          "Patient or proxy",
+          "Witness"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-018",
+    "en": "Release of information receipt",
+    "fr": "Accusé de remise de données médicales",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "handover",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Release",
+        "fields": [
+          "Authorized disclosure reference",
+          "Date/time",
+          "Record types and versions"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Custody",
+        "fields": [
+          "Recipient verification",
+          "Delivery medium",
+          "Confirmation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-019",
+    "en": "Patient privacy notice acknowledgment",
+    "fr": "Accusé de réception de la notice de confidentialité",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "acknowledgment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Notice",
+        "fields": [
+          "Language and version",
+          "Provided date"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Rights",
+        "fields": [
+          "Contact for privacy requests and complaints",
+          "Consent distinction"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Receipt",
+        "fields": [
+          "Patient/guardian acknowledgement"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-020",
+    "en": "Emergency exceptional access justification",
+    "fr": "Justification d'accès exceptionnel en urgence",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "privacy",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Exception",
+        "fields": [
+          "Clinical emergency and patient scope",
+          "Actor identity and role"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Authorization",
+        "fields": [
+          "Policy criterion",
+          "Duration",
+          "Reason"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Independent retrospective reviewer and audit"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-CON-021",
+    "en": "Capacity and interpretation assessment",
+    "fr": "Évaluation de capacité et traduction",
+    "domain": "CON",
+    "domainEn": "Consent privacy and patient authorization",
+    "domainFr": "Consentement confidentialité et autorisations",
+    "module": "M32",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Capacity",
+        "fields": [
+          "Decision context",
+          "Applicable clinical/legal criteria",
+          "Assessment source"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Interpretation",
+        "fields": [
+          "Language",
+          "Interpreter ID and method"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Outcome",
+        "fields": [
+          "Consent route and documented limitations"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]
