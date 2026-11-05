@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: '22'
       - name: Validate one-use OIDC reservations, expiry and replay resistance
-        run: node --test tests/oidc_one_use.test.mjs
+        run: node --test tests/oidc_one_use.test.mjs tests/oidc_replay_postgres.test.mjs
       - name: Recheck inherited signed-token and callback guards
         run: node --test tests/oidc_staff_verification.test.mjs tests/oidc_login_flow.test.mjs
       - name: Recheck 240 locked screen integrity
