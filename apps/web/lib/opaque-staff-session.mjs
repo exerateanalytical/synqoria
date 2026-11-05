@@ -33,7 +33,7 @@ function key(env){
  if(typeof raw!=="string"||!/^[0-9a-f]{64}$/i.test(raw))deny();
  const v=Buffer.from(raw,"hex");if(v.length!==32)deny();return v;
 }
-function validate(record,now){
+function validate(record,now,isIssuance=false){
  if(!record||typeof record!=="object"||Array.isArray(record)||
   Object.keys(record).sort().join(",")!==EXPECTED_KEYS||
   ![record.actorId,record.tenantId,record.facilityId,record.shiftId].every(x=>typeof x==="string"&&UUID.test(x))||
@@ -42,7 +42,7 @@ function validate(record,now){
   typeof record.role!=="string"||!ROLE.test(record.role)||
   !Number.isSafeInteger(record.revision)||record.revision<1||
   !Number.isSafeInteger(record.issuedAt)||!Number.isSafeInteger(record.expiresAt)||
-  record.issuedAt>now+5000||record.issuedAt<now-60000||
+  record.issuedAt>now+5000||record.issuedAt<now-(isIssuance?60000:MAX_LIFETIME)||
   record.expiresAt<=now||record.expiresAt>record.issuedAt+MAX_LIFETIME||
   !Array.isArray(record.capabilities)||record.capabilities.length<1||record.capabilities.length>64||
   new Set(record.capabilities).size!==record.capabilities.length||
@@ -59,7 +59,7 @@ export function staffTicketReferenceDigest(reference){
 export function sealOpaqueStaffTicket(record,{env=process.env,now=Date.now()}={}){
  if(!Number.isSafeInteger(now))deny();
  const wrappingKey=key(env);
- validate(record,now);
+ validate(record,now,true);
  const serialized=Buffer.from(JSON.stringify(record),"utf8");
  if(serialized.length>MAX_PAYLOAD)deny();
  const reference=b64(randomBytes(32)),digest=staffTicketReferenceDigest(reference);
