@@ -1,0 +1,696 @@
+[
+  {
+    "id": "P07",
+    "en": "Medication administration record export",
+    "fr": "Feuille d’administration des médicaments",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "mar",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Patient and order",
+        "fields": [
+          "Order identifier",
+          "Patient and encounter verification",
+          "Allergy assessment status"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Administration",
+        "fields": [
+          "Medication code",
+          "Dose and unit",
+          "Route",
+          "Scheduled and actual time",
+          "Given or withheld status"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Accountability",
+        "fields": [
+          "Nurse and checker",
+          "Refusal or variance",
+          "Follow-up response"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-002",
+    "en": "Nursing shift handover",
+    "fr": "Transmission infirmière de service",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "handover",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Handover",
+        "fields": [
+          "Sending and receiving shift",
+          "Nurse",
+          "Bed and location"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Clinical",
+        "fields": [
+          "Active issues",
+          "Allergy assessment",
+          "Pending medications and results"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Tasks",
+        "fields": [
+          "Outstanding care",
+          "Risks",
+          "Acknowledgment"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-003",
+    "en": "Vital signs monitoring chart",
+    "fr": "Feuille de surveillance des constantes",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "observation",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Measurements",
+        "fields": [
+          "Date and time",
+          "Blood pressure",
+          "Pulse",
+          "Respiratory rate",
+          "Temperature",
+          "SpO2"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Notes",
+        "fields": [
+          "Measurement source",
+          "Unit",
+          "Critical change or notification"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-004",
+    "en": "Fluid intake and output chart",
+    "fr": "Bilan hydrique entrées-sorties",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "fluid",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Intake",
+        "fields": [
+          "Route",
+          "Fluid type",
+          "Volume and units",
+          "Time"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Output",
+        "fields": [
+          "Source",
+          "Volume",
+          "Observation time"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Balance",
+        "fields": [
+          "Calculation source",
+          "Review clinician and period"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-005",
+    "en": "Nursing care plan",
+    "fr": "Plan de soins infirmiers",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "care-plan",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Assessment",
+        "fields": [
+          "Nursing needs and diagnosis",
+          "Priority"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Care",
+        "fields": [
+          "Goal",
+          "Intervention",
+          "Frequency and responsible staff"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Evaluation",
+        "fields": [
+          "Response",
+          "Reassessment and updates"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-006",
+    "en": "Fall risk assessment",
+    "fr": "Évaluation du risque de chute",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "screening",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Assessment",
+        "fields": [
+          "Approved screening tool and version",
+          "Observed risks",
+          "Score if validated"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Prevention",
+        "fields": [
+          "Interventions",
+          "Patient/family discussion",
+          "Review date"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-007",
+    "en": "Pressure injury risk assessment",
+    "fr": "Évaluation du risque d’escarre",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "screening",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Risk",
+        "fields": [
+          "Approved risk tool and version",
+          "Mobility",
+          "Skin status",
+          "Nutrition risk"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Care",
+        "fields": [
+          "Prevention plan",
+          "Repositioning",
+          "Reassessment"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-008",
+    "en": "Wound assessment and dressing record",
+    "fr": "Suivi des plaies et pansements",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "wound",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Wound",
+        "fields": [
+          "Site and laterality",
+          "Measurements and units",
+          "Tissue and drainage"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Dressing",
+        "fields": [
+          "Materials used",
+          "Procedure",
+          "Response and next review"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-009",
+    "en": "Pain assessment record",
+    "fr": "Évaluation de la douleur",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "observation",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Assessment",
+        "fields": [
+          "Approved scale and version",
+          "Site",
+          "Severity",
+          "Time"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Response",
+        "fields": [
+          "Intervention",
+          "Reassessment time",
+          "Clinician notified"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-010",
+    "en": "Nursing nutrition and feeding chart",
+    "fr": "Fiche de suivi alimentaire",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "fluid",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Nutrition",
+        "fields": [
+          "Diet order reference",
+          "Meal intake",
+          "Feeding assistance"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Safety",
+        "fields": [
+          "Swallowing assessment",
+          "Restrictions and allergies"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Nutrition response",
+          "Dietitian follow-up"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-011",
+    "en": "Elimination and continence chart",
+    "fr": "Feuille de suivi des éliminations",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "observation",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Monitoring",
+        "fields": [
+          "Bladder and bowel observations",
+          "Time and amount"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Concerns",
+        "fields": [
+          "Retention",
+          "Incontinence",
+          "Action taken"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-012",
+    "en": "Catheter care and device checklist",
+    "fr": "Feuille d'entretien des cathéters",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "checklist",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Device",
+        "fields": [
+          "Catheter type",
+          "Insertion site",
+          "Device identifier",
+          "Insertion date"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Care",
+        "fields": [
+          "Indication review",
+          "Site assessment",
+          "Aseptic care",
+          "Removal plan"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-013",
+    "en": "Restraint or seclusion review",
+    "fr": "Réévaluation de contention",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "review",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Assessment",
+        "fields": [
+          "Clinical indication and capacity",
+          "Approved alternatives considered"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Authorization",
+        "fields": [
+          "Duration",
+          "Ordering clinician",
+          "Continuous observation"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Release criteria and reassessment"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-014",
+    "en": "Nursing escalation call record",
+    "fr": "Fiche d’appel d’escalade infirmière",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "handover",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Concern",
+        "fields": [
+          "Trigger and clinical observations",
+          "Time and urgency"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Contact",
+        "fields": [
+          "Called clinician",
+          "Readback",
+          "Orders received"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Follow-up",
+        "fields": [
+          "Response and escalation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-015",
+    "en": "Nursing discharge instructions",
+    "fr": "Instructions infirmières de sortie",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "instructions",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Education",
+        "fields": [
+          "Wound care and medicines",
+          "Mobility and diet",
+          "Approved restrictions"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Follow-up",
+        "fields": [
+          "Contacts",
+          "Warning signs",
+          "Patient understanding"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-016",
+    "en": "Bedside shift safety checklist",
+    "fr": "Liste de sécurité au chevet",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "checklist",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Identity",
+        "fields": [
+          "Wristband and two identifiers",
+          "Allergy assessment"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Safety",
+        "fields": [
+          "Equipment",
+          "Fall prevention",
+          "Call bell",
+          "Lines/drains"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Handover",
+        "fields": [
+          "Outstanding tasks and acknowledgment"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-017",
+    "en": "Intravenous infusion monitoring record",
+    "fr": "Surveillance des perfusions intraveineuses",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "mar",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Infusion",
+        "fields": [
+          "Medication or solution identifier",
+          "Prescribed rate and unit",
+          "Line and device"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Administration",
+        "fields": [
+          "Start and end time",
+          "Actual rate",
+          "Monitoring and complications"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-018",
+    "en": "Blood glucose bedside log",
+    "fr": "Registre glycémique au chevet",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "observation",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Measurement",
+        "fields": [
+          "Date/time",
+          "Glucose value and unit",
+          "Device/method",
+          "Sample source"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Review",
+        "fields": [
+          "Action and clinician notification"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-NUR-019",
+    "en": "Patient education and teach-back log",
+    "fr": "Registre d'éducation du patient",
+    "domain": "NUR",
+    "domainEn": "Nursing and bedside care",
+    "domainFr": "Soins infirmiers",
+    "module": "M10",
+    "kind": "acknowledgment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Teaching",
+        "fields": [
+          "Topic and approved material",
+          "Language",
+          "Interpreter"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Outcome",
+        "fields": [
+          "Teach-back assessment",
+          "Questions",
+          "Reinforcement plan"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]
