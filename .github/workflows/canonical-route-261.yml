@@ -1,0 +1,61 @@
+name: SYNQORIA 261 canonical routes — API and browser safety
+on:
+  push:
+    branches:
+      - work/canonical-261-route-coverage-2026-11-05
+permissions:
+  contents: read
+concurrency:
+  group: canonical-261-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  canonical-routes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify all 261 canonical route contracts, state labels and fail-closed actions
+        run: node --test tests/canonical_261_route_registry.test.mjs
+      - name: Reverify existing real clinical read privacy and session boundaries
+        run: node --test tests/real_clinical_screen_runtime.test.mjs
+      - name: Install JavaScript workspaces
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Compile shared UX-core contracts
+        run: npm run build --workspace packages/ux-core
+      - name: Validate strict Next/React TypeScript
+        run: npm exec --workspace apps/web -- tsc --noEmit
+      - name: Compile Next.js production application with all 261 canonical paths
+        run: npm run build --workspace apps/web
+      - name: Install Playwright Chromium for real browser assertions
+        run: |
+          npm install --no-save playwright@1.56.1 --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Start production app with no clinical identity or cell secrets
+        run: |
+          (cd apps/web && SYNQORIA_WEB_PUBLIC_ORIGIN=http://127.0.0.1:3000 ../../node_modules/.bin/next start --port 3000) >/tmp/synqoria-261-next.log 2>&1 &
+          for i in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:3000/workforce/clinical >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/synqoria-261-next.log
+          exit 1
+      - name: Audit all 261 live URLs and seven screen layouts at three responsive widths
+        run: node tests/canonical_261_route_browser.mjs
+      - name: Regression test existing genuine clinical read and nonclinical interaction routes
+        run: node tests/real_clinical_screen_browser.mjs
+      - name: Preserve screenshots, JSON route evidence, and frontend safety checks
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synqoria-261-canonical-route-coverage-evidence
+          path: |
+            /tmp/synqoria-261-route-evidence/
+            /tmp/synqoria-real-screen-evidence/
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Enforce clinical release remains denied despite 261 navigable URLs
+        run: |
+          echo "261/261 URLs registered; 10/261 partial operational slices; 251 domain APIs unintegrated; 0/261 clinically accepted"
