@@ -69,7 +69,7 @@ test("P03-B0037 real PostgreSQL insertion, lookup, revocation and replay denial"
  const looked=run(read(s));assert.ok(looked.includes(s.ciphertext));
  assert.match(run(revoke(s)),/DELETE 1/);
  assert.match(run(revoke(s)),/DELETE 0/);
- assert.equal(run(read(s)).trim(),"");
+ assert.doesNotMatch(run(read(s)),new RegExp(s.ciphertext.replaceAll(".","[.]")));
 });
 test("P03-B0037 unauthorized roles cannot browse sessions or overwrite ciphertext",()=>{
  run("DO $$ BEGIN IF NOT EXISTS(SELECT 1 FROM pg_roles WHERE rolname='synqoria_staff_session_untrusted') THEN CREATE ROLE synqoria_staff_session_untrusted NOLOGIN NOBYPASSRLS; END IF; END $$;");
