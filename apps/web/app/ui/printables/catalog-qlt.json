@@ -1,0 +1,575 @@
+[
+  {
+    "id": "HT-QLT-001",
+    "en": "Patient safety incident report",
+    "fr": "Déclaration d'incident de sécurité du patient",
+    "domain": "QLT",
+    "domainEn": "Infection prevention quality and patient safety",
+    "domainFr": "Prévention des infections qualité et sécurité du patient",
+    "module": "M28",
+    "kind": "quality",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Event",
+        "fields": [
+          "Location and time",
+          "Type and factual description"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Harm",
+        "fields": [
+          "Observed impact",
+          "Immediate measures"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Confidential reporter",
+          "Investigation and follow-up"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-QLT-002",
+    "en": "Near-miss reporting form",
+    "fr": "Fiche de presque-accident",
+    "domain": "QLT",
+    "domainEn": "Infection prevention quality and patient safety",
+    "domainFr": "Prévention des infections qualité et sécurité du patient",
+    "module": "M28",
+    "kind": "quality",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Near miss",
+        "fields": [
+          "Circumstances and system factors",
+          "Detection"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Prevention",
+        "fields": [
+          "Barrier that prevented harm",
+          "Improvement recommendation"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Reviewer",
+        "fields": [
+          "Quality officer and closure"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-QLT-003",
+    "en": "Healthcare-associated infection surveillance",
+    "fr": "Fiche de surveillance des infections associées aux soins",
+    "domain": "QLT",
+    "domainEn": "Infection prevention quality and patient safety",
+    "domainFr": "Prévention des infections qualité et sécurité du patient",
+    "module": "M28",
+    "kind": "public-health",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Case",
+        "fields": [
+          "Infection classification and onset",
+          "Surveillance definition"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Evidence",
+        "fields": [
+          "Clinical/laboratory sources",
+          "Procedure/device exposure"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Reporting",
+        "fields": [
+          "Infection control reviewer and notification"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-QLT-004",
+    "en": "Isolation precautions sign and record",
+    "fr": "Affiche et dossier de précautions d'isolement",
+    "domain": "QLT",
+    "domainEn": "Infection prevention quality and patient safety",
+    "domainFr": "Prévention des infections qualité et sécurité du patient",
+    "module": "M28",
+    "kind": "notice",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Isolation",
+        "fields": [
+          "Precaution type approved by IPC",
+          "Starting date and source"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Controls",
+        "fields": [
+          "PPE and room requirements",
+          "Review frequency"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Clearance",
+        "fields": [
+          "Authorized clinician and exit criteria"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-QLT-005",
+    "en": "Hospital contact tracing list",
+    "fr": "Liste de suivi des contacts hospitaliers",
+    "domain": "QLT",
+    "domainEn": "Infection prevention quality and patient safety",
+    "domainFr": "Prévention des infections qualité et sécurité du patient",
+    "module": "M28",
+    "kind": "log",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Case",
+        "fields": [
+          "Exposure event reference and jurisdiction"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Contacts",
+        "fields": [
+          "Minimum necessary staff/patient tokens",
+          "Exposure time"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Follow-up",
+        "fields": [
+          "Risk classification and outcome"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-QLT-006",
+    "en": "Hand hygiene observation audit",
+    "fr": "Audit de l'hygiène des mains",
+    "domain": "QLT",
+    "domainEn": "Infection prevention quality and patient safety",
+    "domainFr": "Prévention des infections qualité et sécurité du patient",
+    "module": "M28",
+    "kind": "checklist",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Observation",
+        "fields": [
+          "Department and observer",
+          "Approved observation criteria"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Compliance",
+        "fields": [
+          "Opportunities and observed actions",
+          "Nonconformity"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Improvement",
+        "fields": [
+          "Feedback and corrective action"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-QLT-007",
+    "en": "Disinfection process validation",
+    "fr": "Validation de désinfection",
+    "domain": "QLT",
+    "domainEn": "Infection prevention quality and patient safety",
+    "domainFr": "Prévention des infections qualité et sécurité du patient",
+    "module": "M28",
+    "kind": "checklist",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Process",
+        "fields": [
+          "Equipment and area",
+          "Product and method"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Control",
+        "fields": [
+          "Exposure/contact time and conditions",
+          "Indicator"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Decision",
+        "fields": [
+          "Pass/fail and reviewer"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-QLT-008",
+    "en": "Outbreak notification to infection prevention",
+    "fr": "Signalement de foyer infectieux",
+    "domain": "QLT",
+    "domainEn": "Infection prevention quality and patient safety",
+    "domainFr": "Prévention des infections qualité et sécurité du patient",
+    "module": "M28",
+    "kind": "critical",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Event",
+        "fields": [
+          "Suspected outbreak and location",
+          "Time"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Evidence",
+        "fields": [
+          "Aggregated cases and surveillance definition"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Action",
+        "fields": [
+          "Isolation and escalation",
+          "Responsible officer and authority status"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-QLT-009",
+    "en": "Sentinel event investigation worksheet",
+    "fr": "Analyse d'événement sentinelle",
+    "domain": "QLT",
+    "domainEn": "Infection prevention quality and patient safety",
+    "domainFr": "Prévention des infections qualité et sécurité du patient",
+    "module": "M28",
+    "kind": "quality",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Case",
+        "fields": [
+          "Event and immediate risks",
+          "Incident timeline"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Analysis",
+        "fields": [
+          "Contributory factors",
+          "Safeguard gaps"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Action",
+        "fields": [
+          "Assigned corrective actions and independent review"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-QLT-010",
+    "en": "Quality assurance audit checklist",
+    "fr": "Liste de vérification d'audit qualité",
+    "domain": "QLT",
+    "domainEn": "Infection prevention quality and patient safety",
+    "domainFr": "Prévention des infections qualité et sécurité du patient",
+    "module": "M28",
+    "kind": "checklist",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Audit",
+        "fields": [
+          "Scope and standard",
+          "Evidence owner"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Assessment",
+        "fields": [
+          "Control tested and outcome",
+          "Findings"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Closure",
+        "fields": [
+          "Correction",
+          "Due date and verification"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-QLT-011",
+    "en": "Corrective and preventive action form",
+    "fr": "Plan d'action corrective et préventive",
+    "domain": "QLT",
+    "domainEn": "Infection prevention quality and patient safety",
+    "domainFr": "Prévention des infections qualité et sécurité du patient",
+    "module": "M28",
+    "kind": "quality",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Problem",
+        "fields": [
+          "Nonconformity and root cause",
+          "Detection source"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Plan",
+        "fields": [
+          "Correction and prevention",
+          "Owner and deadline"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Effectiveness evidence and closure"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-QLT-012",
+    "en": "Sharps and needle-stick incident",
+    "fr": "Fiche d'accident d'exposition aux objets piquants",
+    "domain": "QLT",
+    "domainEn": "Infection prevention quality and patient safety",
+    "domainFr": "Prévention des infections qualité et sécurité du patient",
+    "module": "M28",
+    "kind": "critical",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Exposure",
+        "fields": [
+          "Time and device",
+          "Material involved",
+          "Circumstances"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Care",
+        "fields": [
+          "Immediate first aid",
+          "Occupational health referral"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Reporting",
+        "fields": [
+          "Confidential officer and follow-up"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-QLT-013",
+    "en": "Occupational exposure assessment",
+    "fr": "Évaluation après exposition professionnelle",
+    "domain": "QLT",
+    "domainEn": "Infection prevention quality and patient safety",
+    "domainFr": "Prévention des infections qualité et sécurité du patient",
+    "module": "M28",
+    "kind": "assessment",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Exposure",
+        "fields": [
+          "Pathogen/risk source and circumstances",
+          "Protective equipment"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Assessment",
+        "fields": [
+          "Clinical risk and approved testing",
+          "Follow-up plan"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Privacy",
+        "fields": [
+          "Restricted recipient and retention"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-QLT-014",
+    "en": "Mortality and morbidity review",
+    "fr": "Revue de morbi-mortalité",
+    "domain": "QLT",
+    "domainEn": "Infection prevention quality and patient safety",
+    "domainFr": "Prévention des infections qualité et sécurité du patient",
+    "module": "M28",
+    "kind": "quality",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Case",
+        "fields": [
+          "Protected case reference and meeting date",
+          "Team"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Clinical course",
+        "fields": [
+          "Sequence and contributing factors",
+          "Care delays"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Learning",
+        "fields": [
+          "Improvements and accountable follow-up"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-QLT-015",
+    "en": "Medical waste segregation and disposal record",
+    "fr": "Registre de gestion des déchets biomédicaux",
+    "domain": "QLT",
+    "domainEn": "Infection prevention quality and patient safety",
+    "domainFr": "Prévention des infections qualité et sécurité du patient",
+    "module": "M28",
+    "kind": "log",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Waste",
+        "fields": [
+          "Category and quantity",
+          "Source department"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Transfer",
+        "fields": [
+          "Packaging",
+          "Licensed recipient",
+          "Time and manifests"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Environmental and infection controls"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]
