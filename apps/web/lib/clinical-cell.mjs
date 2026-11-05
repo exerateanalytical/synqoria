@@ -21,7 +21,7 @@ export function configuredCellOrigin(env=process.env){
   return u.origin;
  }catch{return null;}
 }
-async function safeFetch(origin,path,bearer,fetcher,{method="GET",body=null,maxBytes=8192}={}){
+export async function safeFetch(origin,path,bearer,fetcher,{method="GET",body=null,maxBytes=8192}={}){
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),7000);
  try{
@@ -62,7 +62,7 @@ export function verifyTriageCase(dto,caseId){
   typeof x.arrivedAt==="string"&&/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?Z$/.test(x.arrivedAt)&&Number.isFinite(Date.parse(x.arrivedAt))&&
   ["paused","safetyHold","manualEscalation"].every(k=>typeof x[k]==="boolean");
 }
-async function admission(request,{env=process.env,fetcher=fetch,capability="patient:view",additionalCapabilities=[]}={}){
+export async function admission(request,{env=process.env,fetcher=fetch,capability="patient:view",additionalCapabilities=[]}={}){
  const staff=readSessionCookie(request.headers.get("cookie"),{env});
  if(!staff)return {error:reject(401,"authentication_required")};
  if(!staff.capabilities.includes(capability)||!additionalCapabilities.every(c=>staff.capabilities.includes(c)))return {error:reject(404,"not_found")};
