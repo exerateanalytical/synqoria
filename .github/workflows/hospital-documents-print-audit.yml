@@ -1,0 +1,46 @@
+name: SYNQORIA all 304 printable hospital document samples
+on:
+  push:
+    branches: [work/hospital-document-templates-2026-11-05]
+permissions:
+  contents: read
+jobs:
+  render-printable-documents:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install JS workspace packages
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Compile UX core
+        run: npm run build --workspace packages/ux-core
+      - name: Build production Next website
+        run: npm run build --workspace apps/web
+      - name: Install pinned Playwright browser
+        run: |
+          npm install --no-save playwright@1.56.1 --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Start local production server
+        run: |
+          (cd apps/web && ../../node_modules/.bin/next start --port 3000) > /tmp/synqoria-documents-server.log 2>&1 &
+          for i in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:3000/documents >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/synqoria-documents-server.log
+          exit 1
+      - name: Audit 304 routes and 608 viewports, generate 304 sample PDFs
+        run: node tests/hospital_documents_browser.mjs
+      - name: Publish empty document PDF samples and verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synqoria-304-hospital-document-sample-pdfs-and-audit
+          path: /tmp/synqoria-document-evidence/
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Clinical and legal status
+        run: echo "All PDF files are UNISSUED blank SAMPLE forms only. Real data, medical signatures, taxes and issued records remain unauthorized."
