@@ -41,7 +41,7 @@
     "domain": "PAT",
     "domainEn": "Patient administration and registration",
     "domainFr": "Administration et accueil des patients",
-    "module": "M01",
+    "module": "M02",
     "kind": "notice",
     "context": "patient",
     "sections": [
@@ -76,7 +76,7 @@
     "domain": "PAT",
     "domainEn": "Patient administration and registration",
     "domainFr": "Administration et accueil des patients",
-    "module": "M01",
+    "module": "M04",
     "kind": "discharge",
     "context": "patient",
     "sections": [
