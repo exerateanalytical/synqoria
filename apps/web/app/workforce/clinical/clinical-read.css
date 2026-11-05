@@ -45,3 +45,15 @@
 
 .syn-live-help-search{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;max-width:640px;margin-bottom:16px}
 .syn-live-help-search input{font:inherit;font-size:16px;background:#fff;border:1px solid #70829a;color:#172b4d;border-radius:8px;min-height:48px;padding:11px;width:100%}
+
+.syn-live-form .syn-live-wide{grid-column:1/-1}
+.syn-live-form textarea,.syn-live-form select,.syn-live-toolbar select{font:inherit;font-size:16px;min-height:48px;padding:10px 12px;border:1px solid #70829a;background:#fff;color:#172b4d;border-radius:8px;width:100%}
+.syn-live-form textarea{min-height:100px;resize:vertical}
+.syn-live-toolbar{display:flex;gap:14px;flex-wrap:wrap;margin:18px 0}
+.syn-live-toolbar label{display:grid;gap:6px;flex:1 1 200px;max-width:380px;font-weight:650;font-size:14px}
+.syn-live-table-scroll{max-width:100%;overflow-x:auto;border:1px solid #d7dce1;border-radius:8px;margin:18px 0}
+.syn-live-table-scroll table{width:100%;min-width:900px;border-collapse:collapse;table-layout:auto}
+.syn-live-table-scroll caption{caption-side:top;text-align:left;padding:12px;font-weight:750;color:#073656}
+.syn-live-table-scroll td,.syn-live-table-scroll th{padding:10px 12px;vertical-align:top;border-bottom:1px solid #d7dce1;font-size:13px;max-width:250px;overflow-wrap:anywhere}
+.syn-live-table-scroll th{color:#073656;background:#eaf2ff}
+.syn-live-workspace :is(textarea,select):focus-visible{outline:3px solid #1664d4;outline-offset:2px}
