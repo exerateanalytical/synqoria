@@ -84,8 +84,7 @@ export function IdentityRegistrationPreview({screenId,primaryAction}:{screenId:I
  const section=sectionByTab[screenId][tab]??"";
  const registration=screenId==="M01-S02";
  const search=screenId==="M01-S01";
- const readonlyServer=spec.readonlyServer;
- const showHelp=section==="help";
+  const showHelp=section==="help";
  const summary=section==="review"||section==="results"||section==="proposal"||section==="reversal"||section==="history";
  const locked=registrationSubmissionLocked({authenticated:false,online:false,facilityScoped:false,reviewCurrent:false,serverReleaseVerified:false,clinicalSignoff:false});
  const duplicate=duplicateStatus("NOT_CHECKED",locale);
@@ -156,7 +155,11 @@ export function IdentityRegistrationPreview({screenId,primaryAction}:{screenId:I
  function fieldPreview(){
   const fields=activeFields();
   if(!fields.length) return null;
-  return <div className="syn-identity-fields">{fields.map(renderField)}</div>;
+  const formFields=<div className="syn-identity-fields">{fields.map(renderField)}</div>;
+  if(registration||screenId==="M01-S04"){
+   return <form className="syn-identity-form" onSubmit={e=>{e.preventDefault();reviewDraft();}} noValidate aria-label={spec.description}>{formFields}<button type="submit" className="syn-preview-secondary">{t.review}</button></form>;
+  }
+  return formFields;
  }
  function safeSummary(){
   if(screenId==="M01-S02"){
@@ -178,7 +181,7 @@ export function IdentityRegistrationPreview({screenId,primaryAction}:{screenId:I
   return <ol className="syn-identity-workflow">{spec.workflow.map((item,i)=><li key={item}><span className="syn-identity-step">{i+1}</span><p>{item}</p></li>)}</ol>;
  }
  function area():ReactNode{
-  if(showHelp)return <div><h3>{t.help}</h3><p>{screenIntro(screenId,locale)}</p><p>{t.description}</p><Link href="/ui/catalog"> {locale==="fr"?"Retour aux écrans":"Return to all screens"}</Link>{workflow()}</div>;
+  if(showHelp)return <div><h3>{t.help}</h3><p>{screenIntro(screenId,locale)}</p><p>{t.source}</p><Link href="/ui/catalog"> {locale==="fr"?"Retour aux écrans":"Return to all screens"}</Link>{workflow()}</div>;
   if(screenId==="M01-S01"){
    if(section==="results")return <>{searchResults()}<Link href="/ui/catalog/M01-S02">{locale==="fr"?"Aperçu nouvelle inscription":"New registration preview"}</Link></>;
    return <>{fieldPreview()}{section==="query"&&<div className="syn-identity-actions"><button type="button" className="syn-preview-secondary" onClick={()=>setFiltersVisible(!filtersVisible)} aria-expanded={filtersVisible}>{filtersVisible?(locale==="fr"?"Masquer les filtres":"Hide advanced filters"):(locale==="fr"?"Afficher les filtres":"Show advanced filters")}</button><button type="button" className="syn-preview-secondary" onClick={clearDraft}>{t.clearFilters}</button><button type="button" disabled>{primaryAction}</button></div>}{filtersVisible&&section==="query"&&<div className="syn-identity-filter-panel"><h4>{t.filters}</h4>{spec.fields.filter(f=>f.section==="filters").map(renderField)}</div>}<p className="syn-identity-status" role="status">{t.searchStatus}</p></>;
