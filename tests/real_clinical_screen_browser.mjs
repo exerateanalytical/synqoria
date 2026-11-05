@@ -93,7 +93,7 @@ try{
      await page.locator("textarea").fill(caseId);
      await page.getByRole("button",{name:"Read permitted triage cases"}).click();
      await page.locator('[data-triage-queue-status="login"]').waitFor();
-     assert.equal(await page.getByText("PENDING HANDOVERS").count(),1);
+     assert.equal(await page.locator(".syn-live-fixed-view strong").innerText(),"PENDING HANDOVERS");
     }
     if(screen==="M03-S03"){
      await page.getByLabel("Patient UUID").fill(patient);
