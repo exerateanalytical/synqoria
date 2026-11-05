@@ -1,5 +1,5 @@
 import Link from "next/link";
-import registry from "../../../../registers/canonical-screens.json";
+import registry from "../../../../../registers/canonical-screens.json";
 import "./catalog.css";
 type Screen={id:string;module:string;name:string;layout:string;data_input_groups:string;primary_action:string};
 const screens=registry.screen_register as Screen[];
