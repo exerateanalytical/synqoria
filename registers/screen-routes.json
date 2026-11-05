@@ -1,6 +1,6 @@
 {
-  "version": "2026-11-05-identity-triage-partial-read",
-  "notes": "All 261 canonical application URLs resolve. 13 are nonclinical functional or guarded read subsets (8 read APIs, 5 nonclinical), and 248 other canonical routes are backend-locked. NO clinical screen workflow is certified or write-enabled. Do not equate routability with real hospital operations.",
+  "version": "2026-11-05-m04-m06-partial",
+  "notes": "261/261 real route URLs; 16 protected limited API reads, 5 functional nonclinical screens, 240 domain API-locked routes. No operational certification, live source DB integration, or high-risk clinical write approvals.",
   "shell_roots": [
     {
       "shell": "workforce",
@@ -255,7 +255,7 @@
       "screen_id": "M04-S02",
       "module": "M04",
       "route": "/workforce/clinical/M04-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "api_read_subset_not_clinically_complete",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -303,7 +303,7 @@
       "screen_id": "M05-S01",
       "module": "M05",
       "route": "/workforce/clinical/M05-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "api_read_subset_not_clinically_complete",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -327,7 +327,7 @@
       "screen_id": "M05-S04",
       "module": "M05",
       "route": "/workforce/clinical/M05-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "api_read_subset_not_clinically_complete",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -335,7 +335,7 @@
       "screen_id": "M05-S05",
       "module": "M05",
       "route": "/workforce/clinical/M05-S05",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "api_read_subset_not_clinically_complete",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -351,7 +351,7 @@
       "screen_id": "M06-S02",
       "module": "M06",
       "route": "/workforce/clinical/M06-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "api_read_subset_not_clinically_complete",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -359,7 +359,7 @@
       "screen_id": "M06-S03",
       "module": "M06",
       "route": "/workforce/clinical/M06-S03",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "api_read_subset_not_clinically_complete",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -367,7 +367,7 @@
       "screen_id": "M06-S04",
       "module": "M06",
       "route": "/workforce/clinical/M06-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "api_read_subset_not_clinically_complete",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -375,7 +375,7 @@
       "screen_id": "M06-S05",
       "module": "M06",
       "route": "/workforce/clinical/M06-S05",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "api_read_subset_not_clinically_complete",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -2110,9 +2110,9 @@
   ],
   "route_summary": {
     "registered": 261,
-    "apiReadSubsets": 8,
+    "apiReadSubsets": 16,
     "nonclinicalFunctional": 5,
-    "domainLocked": 248,
+    "domainLocked": 240,
     "clinicallyAccepted": 0,
     "clinicallyCertifiedModules": 0
   }
