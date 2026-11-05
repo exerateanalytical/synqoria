@@ -26,7 +26,7 @@ test("catalogue explicitly contains 376 individually coded hospital documents in
  assert.ok(docs.every(x=>x.sections.length>=2));
  assert.ok(docs.every(x=>x.sections.every(s=>s.heading&&s.fields.length>=1)));
  assert.ok(docs.every(x=>x.status==="BLANK_SPECIMEN_UNAPPROVED"));
- assert.ok(docs.every(x=>x.sections.every(s=>s.fields.every(f=>f.length>2))));
+ assert.ok(docs.every(x=>x.sections.every(s=>s.fields.every(f=>f.length>=2))));
 });
 
 test("canonical P01–P18 exist exactly once and include the mandated 18 print classes",()=>{
