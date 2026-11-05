@@ -13,7 +13,7 @@ const b64=x=>Buffer.from(x).toString("base64url");
 const from64=(text,max)=>typeof text==="string"&&text.length>0&&text.length<=max&&/^[A-Za-z0-9_-]+$/.test(text)?Buffer.from(text,"base64url"):null;
 const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[89ab0-9a-f]{12}$/i;
 const bearer=/^[A-Za-z0-9_.~-]{16,8192}$/;
-const capability=/^[a-z][a-z0-9:_-]{2,63}$/;
+const capability=/^[a-z][a-z0-9:._-]{2,63}$/;
 function keyFromEnvironment(env=process.env){
  const raw=env.SYNQORIA_STAFF_COOKIE_KEY;
  if(typeof raw!=="string"||!/^[0-9a-f]{64}$/i.test(raw))return null;
