@@ -27,6 +27,8 @@ jobs:
         run: node --test tests/triage_audit_integration.test.mjs
       - name: Test P07 contract-aligned M04–M06 encounter, note, observation, lineage and scoped access reads
         run: node --test tests/longitudinal_read_integration.test.mjs
+      - name: Verify 261-screen operational capability gap ledger without false acceptance
+        run: node --test tests/operational_gap_registry.test.mjs
       - name: Install JavaScript workspaces
         run: npm install --ignore-scripts --no-audit --no-fund
       - name: Compile shared UX-core contracts
