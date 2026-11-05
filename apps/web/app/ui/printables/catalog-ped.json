@@ -1,0 +1,379 @@
+[
+  {
+    "id": "HT-PED-001",
+    "en": "Pediatric admission history",
+    "fr": "Fiche d'admission pédiatrique",
+    "domain": "PED",
+    "domainEn": "Pediatrics and child health",
+    "domainFr": "Pédiatrie et santé de l'enfant",
+    "module": "M17",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Background",
+        "fields": [
+          "Age or birth source",
+          "Birth history",
+          "Caregiver and guardianship"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Illness",
+        "fields": [
+          "Symptoms",
+          "Medication and allergy history"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Pediatric assessment and monitoring"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PED-002",
+    "en": "Growth and anthropometry chart",
+    "fr": "Courbe de croissance et anthropométrie",
+    "domain": "PED",
+    "domainEn": "Pediatrics and child health",
+    "domainFr": "Pédiatrie et santé de l'enfant",
+    "module": "M17",
+    "kind": "observation",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Measurements",
+        "fields": [
+          "Date and age source",
+          "Weight",
+          "Length or height",
+          "Head circumference and units"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Reference",
+        "fields": [
+          "Growth standard and version",
+          "Clinician interpretation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PED-003",
+    "en": "Developmental screening sheet",
+    "fr": "Fiche de dépistage du développement",
+    "domain": "PED",
+    "domainEn": "Pediatrics and child health",
+    "domainFr": "Pédiatrie et santé de l'enfant",
+    "module": "M17",
+    "kind": "screening",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Review",
+        "fields": [
+          "Age and approved screening instrument",
+          "Milestones"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Concerns",
+        "fields": [
+          "Findings",
+          "Caregiver input"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Referral",
+        "fields": [
+          "Next assessment and owner"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PED-004",
+    "en": "Pediatric fever assessment",
+    "fr": "Fiche d'évaluation de la fièvre",
+    "domain": "PED",
+    "domainEn": "Pediatrics and child health",
+    "domainFr": "Pédiatrie et santé de l'enfant",
+    "module": "M17",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Triage",
+        "fields": [
+          "Temperature with method/time",
+          "Age group",
+          "Clinical red flags"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Examination",
+        "fields": [
+          "Relevant findings",
+          "Hydration status"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Clinician review and follow-up"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PED-005",
+    "en": "Pediatric medication dose verification",
+    "fr": "Vérification posologique pédiatrique",
+    "domain": "PED",
+    "domainEn": "Pediatrics and child health",
+    "domainFr": "Pédiatrie et santé de l'enfant",
+    "module": "M17",
+    "kind": "review",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Source",
+        "fields": [
+          "Drug order and concentration",
+          "Weight and measurement timestamp"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Review",
+        "fields": [
+          "Ordered dose/unit/route",
+          "Dose calculation source",
+          "Independent check"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Safety",
+        "fields": [
+          "Allergies",
+          "Approval and discrepancy"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PED-006",
+    "en": "Child vaccination record",
+    "fr": "Carnet de vaccination de l'enfant",
+    "domain": "PED",
+    "domainEn": "Pediatrics and child health",
+    "domainFr": "Pédiatrie et santé de l'enfant",
+    "module": "M17",
+    "kind": "vaccination",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "History",
+        "fields": [
+          "Vaccine product and batch",
+          "Date and location",
+          "Prior doses"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Administration",
+        "fields": [
+          "Authorized schedule",
+          "Route and site",
+          "Administrator"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Follow-up",
+        "fields": [
+          "Next dose and adverse-event tracking"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PED-007",
+    "en": "School health assessment",
+    "fr": "Bilan de santé scolaire",
+    "domain": "PED",
+    "domainEn": "Pediatrics and child health",
+    "domainFr": "Pédiatrie et santé de l'enfant",
+    "module": "M17",
+    "kind": "certificate",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Examination",
+        "fields": [
+          "Date and purpose",
+          "General findings",
+          "Hearing/vision screen as approved"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Recommendation",
+        "fields": [
+          "Follow-up referrals",
+          "Disclosable information",
+          "Certifier"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PED-008",
+    "en": "Pediatric nutritional assessment",
+    "fr": "Évaluation nutritionnelle pédiatrique",
+    "domain": "PED",
+    "domainEn": "Pediatrics and child health",
+    "domainFr": "Pédiatrie et santé de l'enfant",
+    "module": "M17",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Measurements",
+        "fields": [
+          "Age and anthropometry",
+          "Feeding history"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Risk",
+        "fields": [
+          "Approved classification and version",
+          "Other clinical factors"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Nutrition referral and review"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PED-009",
+    "en": "Pediatric discharge document",
+    "fr": "Fiche de sortie pédiatrique",
+    "domain": "PED",
+    "domainEn": "Pediatrics and child health",
+    "domainFr": "Pédiatrie et santé de l'enfant",
+    "module": "M17",
+    "kind": "discharge",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Course",
+        "fields": [
+          "Diagnosis",
+          "Treatment and response"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Caregiver",
+        "fields": [
+          "Medication instructions",
+          "Emergency signs and understanding"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Follow-up",
+        "fields": [
+          "Immunization and review"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PED-010",
+    "en": "Child safeguarding concern report",
+    "fr": "Fiche de signalement de protection de l'enfant",
+    "domain": "PED",
+    "domainEn": "Pediatrics and child health",
+    "domainFr": "Pédiatrie et santé de l'enfant",
+    "module": "M17",
+    "kind": "critical",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Concern",
+        "fields": [
+          "Observed evidence and objective facts",
+          "Reporter and time"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Safety",
+        "fields": [
+          "Immediate action",
+          "Authorized safeguarding referral"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Disclosure",
+        "fields": [
+          "Minimal necessary recipient",
+          "Protected record access"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]
