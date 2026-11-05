@@ -11,6 +11,7 @@ import {finishStaffOidcLogin} from "./oidc-session-orchestrator.mjs";
 import {reauthorizeClinicalStaffRequest,revokeStaffRequestSession,
  clearStaffTicketCookieOptions} from "./oidc-session-reauthorization.mjs";
 import {STAFF_TICKET_COOKIE,staffTicketCookieOptions} from "./opaque-staff-session.mjs";
+import {reauthorizeOrRevokeStaff} from "./oidc-reauthorize-or-revoke.mjs";
 import {OIDC_FLOW_COOKIE,clearOidcFlowCookieOptions} from "./oidc-login-flow.mjs";
 
 export class StaffSessionServiceError extends Error {
@@ -73,7 +74,7 @@ export function createStaffSessionService({
    }catch{deny();}
   },
   async authorize(request){
-   try{return await reauthorizeClinicalStaffRequest(request,{
+   try{return await reauthorizeOrRevokeStaff(request,{
     sessionStore,fetcher,nowMs:clock(),
     workforceConfig:config.workforce,introspectionConfig:config.introspection
    });}catch{deny();}
