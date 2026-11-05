@@ -2,7 +2,7 @@
 import {useCallback,useEffect,useRef,useState} from "react";
 import Link from "next/link";
 import "./clinical-read.css";
-export type LiveScreenId="G-S03"|"G-S10"|"M01-S03"|"M03-S03";
+export type LiveScreenId="G-S03"|"G-S10"|"M01-S01"|"M01-S03"|"M03-S03";
 type Status="idle"|"loading"|"ready"|"unauthenticated"|"not-disclosed"|"unavailable"|"invalid";
 type Facility={facilityId:string;revision:number};
 type Patient={patientId:string;identityStatus:"verified"|"provisional"|"merged";revision:number;facilityId:string};
@@ -13,6 +13,7 @@ const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[89ab0-9
 const definitions:Record<LiveScreenId,{en:string;fr:string;mode:"facility"|"health"|"patient"|"triage";limitsEn:string;limitsFr:string}>={
  "G-S03":{en:"Verified facility context",fr:"Contexte de l’établissement vérifié",mode:"facility",limitsEn:"This read verifies facility assignment; role/shift selection remains unimplemented until the OIDC/roster service is integrated.",limitsFr:"Cette lecture confirme l’établissement; le choix de rôle et d'équipe attend l’intégration du service de connexion et de planning."},
  "G-S10":{en:"Connectivity and dependency readiness",fr:"Connectivité et disponibilité des dépendances",mode:"health",limitsEn:"A green response indicates configured service reachability only, not clinical certification, backup assurance or safe offline operation.",limitsFr:"Une réponse positive indique seulement la disponibilité du service, non une certification clinique."},
+ "M01-S01":{en:"Exact-identifier patient lookup",fr:"Recherche par identifiant exact",mode:"patient",limitsEn:"Only a known canonical patient UUID can be checked. Name, date-of-birth, phone and fuzzy-match search are not connected. No demographics are disclosed; 404 never establishes whether the patient exists.",limitsFr:"Seul l’UUID canonique du patient est accepté. La recherche par nom, naissance ou téléphone n’est pas intégrée. Un résultat 404 ne prouve jamais l’existence du patient."},
  "M01-S03":{en:"Authorized patient identity record",fr:"Identité du patient autorisée",mode:"patient",limitsEn:"The backend currently discloses identity status and revision only. Demographics, contact data and corrections remain unavailable.",limitsFr:"Le service ne fournit actuellement que le statut de l'identité et sa révision; les données démographiques restent indisponibles."},
  "M03-S03":{en:"Authorized triage case status",fr:"Statut de triage autorisé",mode:"triage",limitsEn:"Current case and workflow status only. Vital signs, observation entry, priority decisions, clinical sign-off and handover are not enabled.",limitsFr:"Uniquement le statut du dossier et du parcours. Constantes, observations, priorité, signature et transfert ne sont pas activés."}
 };
