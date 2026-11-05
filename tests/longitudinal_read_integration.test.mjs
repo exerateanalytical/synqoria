@@ -41,7 +41,7 @@ test("verified staff cookies can carry server-proven dotted P07 capabilities",()
  assert.throws(()=>cookie(["patient:view","encounter/read"]),/not_verified/);
 });
 test("rejects unsupported resources, extra keys, invalid code and missing member scopes",()=>{
- assert.equal(parseLongitudinalParams("summary",{}),null===undefined?undefined:{}); // corrected below by explicit equivalence
+ assert.deepEqual(parseLongitudinalParams("summary",{}),{});
  assert.equal(parseLongitudinalParams("notes",{}),null);
  assert.equal(parseLongitudinalParams("summary",{tenantId:tenant}),null);
  assert.equal(parseLongitudinalParams("observations",{}),null);
