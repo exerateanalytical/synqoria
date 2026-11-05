@@ -170,3 +170,18 @@ test("authorized triage worklist forwards only permitted explicit case IDs and v
  assert.ok(requests[2].url.endsWith("/views/FACILITY_QUEUE"));
  assert.equal(requests[2].authorization,"Bearer "+token);
 });
+
+
+test("triage CSRF uses explicit trusted browser origin behind reverse proxy, never internal URL or spoofed Host",async()=>{
+ const publicOrigin="https://staff.synqoria-clinical.org";
+ const reverseProxyEnv={...env,SYNQORIA_WEB_PUBLIC_ORIGIN:publicOrigin};
+ const input={view:"FACILITY_QUEUE",caseIds:[caseId]};
+ const headers={"Content-Type":"application/json",Origin:publicOrigin,cookie:STAFF_COOKIE+"="+cookie,Host:"attacker.example.net"};
+ const req=new Request("https://internal.reverseproxy.local/api/clinical/triage/views/"+patient,{method:"POST",headers,body:JSON.stringify(input)});
+ const result=await readTriageWorklist(req,patient,{env:reverseProxyEnv,fetcher});
+ assert.equal(result.status,200);
+ const spoofed=new Request("https://internal.reverseproxy.local/api/clinical/triage/views/"+patient,{method:"POST",headers:{...headers,Origin:"https://attacker.example.net"},body:JSON.stringify(input)});
+ assert.equal((await readTriageWorklist(spoofed,patient,{env:reverseProxyEnv,fetcher})).status,403);
+ const untrustedOriginEnv={...env,SYNQORIA_WEB_PUBLIC_ORIGIN:"http://public.synqoria-clinical.org"};
+ assert.equal((await readTriageWorklist(req,patient,{env:untrustedOriginEnv,fetcher})).status,503);
+});
