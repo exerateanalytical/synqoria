@@ -3,6 +3,7 @@ import ClinicalReadWorkspace from "../ClinicalReadWorkspace";
 import type {LiveScreenId} from "../ClinicalReadWorkspace";
 import StaffPreferences from "../StaffPreferences";
 import TriageQueueWorkspace from "../TriageQueueWorkspace";
+import TriageReassessmentReview from "../TriageReassessmentReview";
 import HelpAndSafeNavigation from "../HelpAndSafeNavigation";
 import UnintegratedScreen from "../UnintegratedScreen";
 import type {CanonicalRouteSpec,ExtendedSpec,FlowPath,DocumentLink} from "../UnintegratedScreen";
@@ -52,6 +53,8 @@ export default async function OperationalScreen({params}:{params:Promise<{screen
  if(operational.has(screenId)){
   if(screenId==="G-S06")return <StaffPreferences/>;
   if(screenId==="M03-S01")return <TriageQueueWorkspace/>;
+  if(screenId==="M03-S04")return <TriageReassessmentReview/>;
+  if(screenId==="M03-S05")return <TriageQueueWorkspace screenId="M03-S05" initialView="PENDING_HANDOVERS" fixedView/>;
   if(screenId==="G-S11")return <HelpAndSafeNavigation mode="help"/>;
   if(screenId==="G-S12")return <HelpAndSafeNavigation mode="notFound"/>;
   if(screenId==="M31-S01")redirect("/hospital-documents");
