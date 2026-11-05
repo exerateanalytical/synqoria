@@ -40,7 +40,7 @@ const json=x=>new Response(JSON.stringify(x),{status:200,headers:{
 }});
 const host="https://staff.synqoria.org";
 function harness({active=true,workforceFacility=facility,missingAudit=false}={}){
- const replay=new Map(),sessions=new Map(),auditRows=[],network=[];
+ const replay=new Map(),sessions=new Map(),auditRows=[],network=[],dbEvents=[];
  let nonce="";
  const replaySql={query:async(sql,args)=>{
   const key=args[0];
@@ -55,6 +55,7 @@ function harness({active=true,workforceFacility=facility,missingAudit=false}={})
   throw Error("untrusted replay SQL");
  }};
  const sessionSql={query:async(sql,args)=>{
+  dbEvents.push(sql===SESSION_INSERT_SQL?"insert":sql===SESSION_READ_SQL?"read":sql===SESSION_REVOKE_SQL?"revoke":"unknown");
   if(sql===SESSION_INSERT_SQL){
    if(sessions.has(args[0]))return {rowCount:0,rows:[]};
    sessions.set(args[0],{sealed_record:args[1],expires_at:new Date(args[2])});
@@ -108,12 +109,12 @@ function harness({active=true,workforceFacility=facility,missingAudit=false}={})
    "&iss="+encodeURIComponent(issuer);
   return {flow,callback};
  }
- return {runtime,replay,sessions,auditRows,network,begin};
+ return {runtime,replay,sessions,auditRows,network,begin,dbEvents};
 }
 test("P03-B0052 trusted runtime composes replay, signed IdP, roster, encrypted session, audit and logout",async()=>{
  const h=harness(),{flow,callback}=await h.begin();
  const done=await h.runtime.http.callback(new Request(callback,{headers:{Cookie:flow}}));
- assert.equal(done.status,303, JSON.stringify({network:h.network,sessions:h.sessions.size,audits:h.auditRows.length,replay:h.replay.size,headers:Object.fromEntries(done.headers)}));assert.equal(done.headers.get("location"),"/workforce");
+ assert.equal(done.status,303, JSON.stringify({network:h.network,sessions:h.sessions.size,audits:h.auditRows.length,replay:h.replay.size,dbEvents:h.dbEvents,headers:Object.fromEntries(done.headers)}));assert.equal(done.headers.get("location"),"/workforce");
  assert.equal(h.sessions.size,1);
  assert.equal(h.auditRows.length,1);
  assert.equal(h.auditRows[0][3],"LOGIN_GRANTED");
