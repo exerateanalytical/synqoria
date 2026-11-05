@@ -34,7 +34,7 @@ const bearer=(claims)=>{
  const data=b64({alg:"RS256",kid:"signing-key",typ:"JWT"})+"."+b64(claims);
  return data+"."+sign("sha256",Buffer.from(data),privateKey).toString("base64url");
 };
-const fmt=x=>new Date(x).toISOString().replace(".000Z","Z");
+const fmt=x=>new Date(Math.floor(x/1000)*1000).toISOString().replace(".000Z","Z");
 const json=x=>new Response(JSON.stringify(x),{status:200,headers:{
  "Content-Type":"application/json","Cache-Control":"no-store"
 }});
