@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {randomBytes} from "node:crypto";
 import {sealStaffSession,openStaffSession,readSessionCookie,STAFF_COOKIE,secureCookieOptions} from "../apps/web/lib/clinical-session.mjs";
-import {readFacility,readPatient,readTriageCase,readCellHealth,configuredCellOrigin,verifyPatient,verifyTriageCase,validUuid} from "../apps/web/lib/clinical-cell.mjs";
+import {readFacility,readPatient,readTriageCase,readTriageWorklist,validateTriageViewRequest,readCellHealth,configuredCellOrigin,verifyPatient,verifyTriageCase,validUuid} from "../apps/web/lib/clinical-cell.mjs";
 import {defaultPreferences,encodePreferences,decodePreferences,sanitizePreferences} from "../apps/web/lib/workforce-preferences.mjs";
 
 const actor="11111111-1111-4111-8111-111111111111",tenant="22222222-2222-4222-8222-222222222222",facility="33333333-3333-4333-8333-333333333333",patient="44444444-4444-4444-8444-444444444444",caseId="55555555-5555-4555-8555-555555555555";
@@ -11,7 +11,7 @@ const env={SYNQORIA_STAFF_COOKIE_KEY:key,SYNQORIA_TRUSTED_CELL_ORIGIN:"https://c
 const now=Date.now(),token="VerifiedOpaqueToken1234567890";
 const payload={
  issuer:"SYNQORIA_OIDC_VERIFIED_V1",actorId:actor,tenantId:tenant,facilityId:facility,
- bearer:token,issuedAt:now-2000,expiresAt:now+900000,capabilities:["patient:view","facility:view","triage:assess"]
+ bearer:token,issuedAt:now-2000,expiresAt:now+900000,capabilities:["patient:view","facility:view","triage:assess","triage:queue"]
 };
 const cookie=sealStaffSession(payload,{env,now});
 const authorized=()=>new Request("https://app.synqoria-clinical.org/api/clinical/test",{headers:{cookie:STAFF_COOKIE+"="+cookie,Accept:"application/json"}});
@@ -25,6 +25,7 @@ function fetcher(url,init){
  if(url.endsWith("/api/v1/facility/context"))return Promise.resolve(json(facilityDto));
  if(url.endsWith("/api/v1/patients/"+patient))return Promise.resolve(json(patientDto));
  if(url.endsWith("/api/v1/triage/patients/"+patient+"/cases/"+caseId))return Promise.resolve(json(triageDto));
+ if(url.endsWith("/api/v1/triage/patients/"+patient+"/views/FACILITY_QUEUE"))return Promise.resolve(json({cases:[triageDto.case]}));
  if(url.endsWith("/health/live"))return Promise.resolve(json({process:"alive"}));
  if(url.endsWith("/health/ready"))return Promise.resolve(json({status:"ready"}));
  return Promise.resolve(json({status:404,code:"not_found"},404));
@@ -131,4 +132,41 @@ test("nonclinical preferences are allowlisted and exclude tokens, patient data a
  assert.ok(!serialized.includes(token));assert.ok(!serialized.includes(patient));
  assert.deepEqual(sanitizePreferences("bad"),defaultPreferences());
  assert.deepEqual(decodePreferences("{broken"),defaultPreferences());
+});
+
+test("triage worklist validates explicit case scope and prevents unrestricted patient search",()=>{
+ assert.equal(validateTriageViewRequest({view:"FACILITY_QUEUE",caseIds:[caseId]})?.caseIds.length,1);
+ assert.equal(validateTriageViewRequest({view:"FACILITY_QUEUE",caseIds:[]}),null);
+ assert.equal(validateTriageViewRequest({view:"FACILITY_QUEUE",caseIds:[caseId,caseId]}),null);
+ assert.equal(validateTriageViewRequest({view:"FACILITY_QUEUE",caseIds:[caseId],actorId:actor}),null);
+ assert.equal(validateTriageViewRequest({view:"STATION_QUEUE",caseIds:[caseId]}),null);
+ assert.equal(validateTriageViewRequest({view:"STATION_QUEUE",caseIds:[caseId],stationOrClinician:facility})?.view,"STATION_QUEUE");
+ assert.equal(validateTriageViewRequest({view:"ARRIVALS_SINCE",caseIds:[caseId],after:"not-time"}),null);
+});
+const worklistRequest=(input,origin="https://app.synqoria-clinical.org",loggedIn=true)=>{
+ return new Request("https://app.synqoria-clinical.org/api/clinical/triage/views/"+patient,{method:"POST",headers:{Origin:origin,"Content-Type":"application/json",...(loggedIn?{cookie:STAFF_COOKIE+"="+cookie}:{})},body:JSON.stringify(input)});
+};
+test("cross-origin POST and malformed requested view denied before upstream read",async()=>{
+ requests.length=0;
+ const input={view:"FACILITY_QUEUE",caseIds:[caseId]};
+ let r=await readTriageWorklist(worklistRequest(input,"https://attacker.example.org"),patient,{env,fetcher});
+ assert.equal(r.status,403);assert.equal(requests.length,0);
+ r=await readTriageWorklist(worklistRequest({...input,caseIds:[]}),patient,{env,fetcher});
+ assert.equal(r.status,400);assert.equal(requests.length,0);
+ r=await readTriageWorklist(worklistRequest(input,undefined,false),patient,{env,fetcher});
+ assert.equal(r.status,401);assert.equal(requests.length,0);
+});
+test("authorized triage worklist forwards only permitted explicit case IDs and validates source",async()=>{
+ requests.length=0;
+ const input={view:"FACILITY_QUEUE",caseIds:[caseId]};
+ const r=await readTriageWorklist(worklistRequest(input),patient,{env,fetcher});
+ assert.equal(r.status,200);
+ const body=await r.json();
+ assert.equal(body.facilityId,facility);
+ assert.equal(body.view,"FACILITY_QUEUE");
+ assert.deepEqual(body.cases,[triageDto.case]);
+ assert.equal(requests.length,3);
+ assert.equal(requests[2].method,"POST");
+ assert.ok(requests[2].url.endsWith("/views/FACILITY_QUEUE"));
+ assert.equal(requests[2].authorization,"Bearer "+token);
 });
