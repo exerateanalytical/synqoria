@@ -18,6 +18,15 @@ export class EncounterDisclosureError extends Error{
  constructor(){super("encounter_disclosure_denied");this.name="EncounterDisclosureError";}
 }
 const deny=()=>{throw new EncounterDisclosureError();};
+const trustedOrigin=value=>{
+ try{
+  const u=new URL(value);
+  return u.protocol==="https:"&&u.origin===value&&u.pathname==="/"&&
+   !u.username&&!u.password&&!u.port&&!u.search&&!u.hash&&u.hostname.includes(".")&&
+   ![".invalid",".test",".example",".localhost",".local"].some(s=>u.hostname.endsWith(s))&&
+   !/^[0-9.]+$/.test(u.hostname);
+ }catch{return false;}
+};
 async function payload(response){
  if(response?.status!==200||response.redirected===true||!response.body||
   !response.headers?.get("content-type")?.toLowerCase().startsWith("application/json")||
@@ -43,7 +52,7 @@ export async function authorizeEncounterDisclosure(staff,patientId,encounterId,o
   !staff.capabilities?.includes("patient:view")||
   typeof staff.bearer!=="string"||staff.bearer.length<16||
   !resources.has(operation)||typeof origin!=="string"||
-  !/^https:\/\/[^/?#]+$/.test(origin)||typeof fetcher!=="function"||
+  !trustedOrigin(origin)||typeof fetcher!=="function"||
   !Number.isSafeInteger(nowMs))deny();
  const resource=resources.get(operation);
  const requestBody=JSON.stringify({actorId:staff.actorId,tenantId:staff.tenantId,
