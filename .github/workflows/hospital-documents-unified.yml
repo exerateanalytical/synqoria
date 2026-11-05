@@ -46,6 +46,8 @@ jobs:
         run: node tests/print_browser_audit.mjs
       - name: Audit 304 PDF documents and retain samples
         run: node tests/hospital_documents_browser.mjs
+      - name: Generate all 376 structured-form blank sample PDFs with SHA256 manifest
+        run: node tests/print_all_376_pdfs.mjs
       - name: Upload both engines and all print evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -55,6 +57,7 @@ jobs:
             /tmp/synqoria-unified-document-evidence/
             /tmp/synqoria-print-browser/
             /tmp/synqoria-document-evidence/
+            /tmp/synqoria-structured-blank-pdfs/
           if-no-files-found: warn
           retention-days: 7
       - name: Release gate
