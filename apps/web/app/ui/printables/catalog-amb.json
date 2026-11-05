@@ -1,0 +1,348 @@
+[
+  {
+    "id": "HT-AMB-001",
+    "en": "Ambulance dispatch order",
+    "fr": "Ordre de mission ambulance",
+    "domain": "AMB",
+    "domainEn": "Ambulance and medical transport",
+    "domainFr": "Ambulance et transport sanitaire",
+    "module": "M25",
+    "kind": "order",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Request",
+        "fields": [
+          "Pickup and destination",
+          "Priority and caller"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Resources",
+        "fields": [
+          "Vehicle and crew",
+          "Dispatch time"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Safety",
+        "fields": [
+          "Patient condition and transport precautions"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-AMB-002",
+    "en": "Ambulance clinical run sheet",
+    "fr": "Fiche d'intervention préhospitalière",
+    "domain": "AMB",
+    "domainEn": "Ambulance and medical transport",
+    "domainFr": "Ambulance et transport sanitaire",
+    "module": "M25",
+    "kind": "clinical-note",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Scene",
+        "fields": [
+          "Pickup time",
+          "Initial observations",
+          "Primary complaint"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Care",
+        "fields": [
+          "Interventions and medicines with source",
+          "Serial vitals"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Transfer",
+        "fields": [
+          "Destination and receiving clinician",
+          "Handover status"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-AMB-003",
+    "en": "Patient interfacility transport authorization",
+    "fr": "Autorisation de transport interhospitalier",
+    "domain": "AMB",
+    "domainEn": "Ambulance and medical transport",
+    "domainFr": "Ambulance et transport sanitaire",
+    "module": "M25",
+    "kind": "handover",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Transfer",
+        "fields": [
+          "Sending and receiving facilities",
+          "Medical necessity"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Safeguards",
+        "fields": [
+          "Patient fitness for transport",
+          "Equipment and monitoring"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Acceptance",
+        "fields": [
+          "Clinicians and transfer time"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-AMB-004",
+    "en": "Ambulance equipment safety checklist",
+    "fr": "Liste de vérification du matériel ambulance",
+    "domain": "AMB",
+    "domainEn": "Ambulance and medical transport",
+    "domainFr": "Ambulance et transport sanitaire",
+    "module": "M25",
+    "kind": "checklist",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Vehicle",
+        "fields": [
+          "Identifier and shift",
+          "Equipment checks"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Supplies",
+        "fields": [
+          "Oxygen and medical kits",
+          "Expiry and functionality"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Acceptance",
+        "fields": [
+          "Driver/paramedic and supervisor"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-AMB-005",
+    "en": "Medical oxygen usage log",
+    "fr": "Registre d'utilisation d'oxygène",
+    "domain": "AMB",
+    "domainEn": "Ambulance and medical transport",
+    "domainFr": "Ambulance et transport sanitaire",
+    "module": "M25",
+    "kind": "log",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Oxygen",
+        "fields": [
+          "Source cylinder and serial",
+          "Start pressure"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Use",
+        "fields": [
+          "Patient encounter",
+          "Time and amount",
+          "Responsible operator"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Refill",
+        "fields": [
+          "Stock movement reference"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-AMB-006",
+    "en": "Medical transport passenger manifest",
+    "fr": "Manifeste de transport sanitaire",
+    "domain": "AMB",
+    "domainEn": "Ambulance and medical transport",
+    "domainFr": "Ambulance et transport sanitaire",
+    "module": "M25",
+    "kind": "log",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Journey",
+        "fields": [
+          "Vehicle",
+          "Origin/destination and time"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Occupants",
+        "fields": [
+          "Patient references",
+          "Escorts",
+          "Crew"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Safety",
+        "fields": [
+          "Security and authorized handover"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-AMB-007",
+    "en": "Transport recipient acknowledgment",
+    "fr": "Accusé de remise au service receveur",
+    "domain": "AMB",
+    "domainEn": "Ambulance and medical transport",
+    "domainFr": "Ambulance et transport sanitaire",
+    "module": "M25",
+    "kind": "handover",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Patient",
+        "fields": [
+          "Verified identity",
+          "Condition on arrival"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Receipt",
+        "fields": [
+          "Receiving team and timestamp",
+          "Outstanding monitoring"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Closure",
+        "fields": [
+          "Transport record and exceptions"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-AMB-008",
+    "en": "Medical transport billing voucher",
+    "fr": "Bon de facturation transport sanitaire",
+    "domain": "AMB",
+    "domainEn": "Ambulance and medical transport",
+    "domainFr": "Ambulance et transport sanitaire",
+    "module": "M25",
+    "kind": "invoice",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Transport",
+        "fields": [
+          "Service reference",
+          "Distance/time and rate source"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Items",
+        "fields": [
+          "Ambulance category",
+          "Consumables and additional charges"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Billing",
+        "fields": [
+          "Authorized patient/payer share and linked invoice"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-AMB-009",
+    "en": "Ambulance decontamination record",
+    "fr": "Fiche de désinfection de l'ambulance",
+    "domain": "AMB",
+    "domainEn": "Ambulance and medical transport",
+    "domainFr": "Ambulance et transport sanitaire",
+    "module": "M25",
+    "kind": "checklist",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Vehicle",
+        "fields": [
+          "Equipment and cabin areas",
+          "Shift"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Cleaning",
+        "fields": [
+          "Approved protocol and products",
+          "Contact time"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Clearance",
+        "fields": [
+          "Supervisor and readiness"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]
