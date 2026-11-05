@@ -1,5 +1,5 @@
 import Link from "next/link";
-import flows from "../../../../../registers/ui-cross-module-workflow-14.json";
+import flows from "../../../../../../registers/ui-cross-module-workflow-14.json";
 import "../catalog.css";
 export default function ClinicalWorkflowMap(){
  return <main className="syn-catalog"><nav className="syn-crumb" aria-label="Breadcrumb"><Link href="/ui/catalog">Canonical screens</Link><span>/</span><span aria-current="page">Workflow maps</span></nav>
