@@ -232,7 +232,7 @@ export async function readTriageAudit(request,patientId,caseId,options={}){
  const history=await safeFetch(scope.origin,stem+"/history?afterRevision="+afterRevision,scope.staff.bearer,scope.fetcher,{maxBytes:32768});
  if(history.status!==200)return reject(history.status===401?401:history.status===404?404:503,"audit_unavailable");
  const verified=validateTriageAuditPage(history.body,afterRevision);
- if(!verified)return reject(503,"invalid_source_record");
+ if(!verified||verified.history.some(event=>event.revision>caseSource.body.case.revision))return reject(503,"invalid_source_record");
  // Only source-verified non-PHI audit metadata is projected to the browser.
  return ok({
   patientId,caseId,facilityId:scope.staff.facilityId,
