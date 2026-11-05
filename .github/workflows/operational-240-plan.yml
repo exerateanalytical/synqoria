@@ -1,0 +1,26 @@
+name: SYNQORIA 240-screen one-cycle execution plan — register integrity
+on:
+  push:
+    branches:
+      - plan/240-screens-single-execution-2026-11-05
+permissions:
+  contents: read
+jobs:
+  verify-plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Assert exact coverage 240 unique screens in 30 batches of eight
+        run: node --test tests/operational_240_one_cycle_plan.test.mjs
+      - name: Reconcile whole 261-screen gap register against canonical specification
+        run: node --test tests/operational_gap_registry.test.mjs
+      - name: Validate 261 URL register and 21 partial/240 locked statuses
+        run: node --test tests/canonical_261_route_registry.test.mjs
+      - name: Explicitly state planning output, not implemented screen work
+        run: |
+          echo "30 PLANNED batches x 8 assigned screens = 240 missing domain integrations."
+          echo "This job verifies assignment/register integrity ONLY; zero clinical workflows or screen backend integrations are completed by the planning PR."
