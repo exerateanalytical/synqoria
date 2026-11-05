@@ -20,6 +20,7 @@ import {requireAuditedStaffLogout} from "./audited-staff-logout.mjs";
 import {createStaffAuthHttpHandlers} from "./staff-auth-http-handlers.mjs";
 import {verifyIdentitySqlClients} from "./identity-db-role-verification.mjs";
 import {requireClinicalIdentitySafety} from "./clinical-identity-safety.mjs";
+import {verifyIdentitySchemaPolicies} from "./identity-db-schema-policies.mjs";
 export class StaffIdentityRuntimeError extends Error{
  constructor(){super("staff_identity_runtime_unavailable");this.name="StaffIdentityRuntimeError";}
 }
@@ -77,5 +78,6 @@ export function createStaffIdentityRuntime({
 export async function createVerifiedStaffIdentityRuntime(options={}){
  requireClinicalIdentitySafety(options.env);
  await verifyIdentitySqlClients(options);
+ await verifyIdentitySchemaPolicies(options.replaySql);
  return createStaffIdentityRuntime(options);
 }
