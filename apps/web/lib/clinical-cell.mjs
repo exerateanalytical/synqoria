@@ -21,23 +21,24 @@ export function configuredCellOrigin(env=process.env){
   return u.origin;
  }catch{return null;}
 }
-async function safeFetch(origin,path,bearer,fetcher){
+async function safeFetch(origin,path,bearer,fetcher,{method="GET",body=null,maxBytes=8192}={}){
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),7000);
  try{
   const headers={Accept:"application/json"};
   if(bearer)headers.Authorization="Bearer "+bearer;
-  const r=await fetcher(origin+path,{method:"GET",headers,cache:"no-store",credentials:"omit",redirect:"error",signal:controller.signal});
+  if(method==="POST")headers["Content-Type"]="application/json";
+  const r=await fetcher(origin+path,{method,headers,...(body===null?{}:{body:JSON.stringify(body)}),cache:"no-store",credentials:"omit",redirect:"error",signal:controller.signal});
   if(r.status===401)return {status:401};
   if(r.status===403||r.status===404)return {status:404};
   if(r.status===503)return {status:503};
   if(r.status!==200||!r.headers.get("content-type")?.toLowerCase().startsWith("application/json"))return {status:503};
   const length=r.headers.get("content-length");
-  if(length!==null&&(!/^\d{1,5}$/.test(length)||Number(length)>8192))return {status:503};
+  if(length!==null&&(!/^\d{1,5}$/.test(length)||Number(length)>maxBytes))return {status:503};
   if(!r.body)return {status:503};
   const reader=r.body.getReader();
   const chunks=[];let size=0;
-  try{for(;;){const n=await reader.read();if(n.done)break;size+=n.value.byteLength;if(size>8192){await reader.cancel();return {status:503};}chunks.push(n.value);}}
+  try{for(;;){const n=await reader.read();if(n.done)break;size+=n.value.byteLength;if(size>maxBytes){await reader.cancel();return {status:503};}chunks.push(n.value);}}
   finally{reader.releaseLock();}
   const bytes=new Uint8Array(size);let off=0;for(const chunk of chunks){bytes.set(chunk,off);off+=chunk.length;}
   const body=JSON.parse(new TextDecoder("utf-8",{fatal:true}).decode(bytes));
@@ -111,4 +112,54 @@ export async function readCellHealth(request,options={}){
  if(live.status!==200||live.body?.process!=="alive")return reject(503,"clinical_service_unavailable");
  if(ready.status!==200||ready.body?.status!=="ready")return reject(503,"clinical_integrations_not_ready");
  return ok({process:"alive",readiness:"ready",kind:"service_health_only",clinicalCertification:false});
+}
+
+const worklistViewNames=new Set(["FACILITY_QUEUE","STATION_QUEUE","PENDING_HANDOVERS","MANUAL_ESCALATIONS","PENDING_REASSESSMENTS","SAFETY_HOLDS","CLINICIAN_WORKLIST","ARRIVALS_SINCE"]);
+export function validateTriageViewRequest(value){
+ if(!value||typeof value!=="object"||Array.isArray(value))return null;
+ const allowed=new Set(["view","caseIds","stationOrClinician","after"]);
+ if(Object.keys(value).some(x=>!allowed.has(x)))return null;
+ if(!worklistViewNames.has(value.view)||!Array.isArray(value.caseIds)||value.caseIds.length<1||value.caseIds.length>50||!value.caseIds.every(validUuid)||new Set(value.caseIds).size!==value.caseIds.length)return null;
+ const station=["STATION_QUEUE","CLINICIAN_WORKLIST"].includes(value.view),time=value.view==="ARRIVALS_SINCE";
+ if(station!==("stationOrClinician" in value)||time!==("after" in value))return null;
+ if(station&&!validUuid(value.stationOrClinician))return null;
+ if(time&&(typeof value.after!=="string"||!/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?Z$/.test(value.after)||!Number.isFinite(Date.parse(value.after))))return null;
+ return Object.freeze({view:value.view,caseIds:Object.freeze([...value.caseIds]),...(station?{stationOrClinician:value.stationOrClinician}:{}),...(time?{after:value.after}:{})});
+}
+async function readBoundedJsonRequest(request,maxBytes=4096){
+ if(!request.body)return null;
+ const length=request.headers.get("content-length");
+ if(length!==null&&(!/^\d{1,5}$/.test(length)||Number(length)>maxBytes))return null;
+ const reader=request.body.getReader();const chunks=[];let size=0;
+ try{
+  for(;;){const entry=await reader.read();if(entry.done)break;size+=entry.value.byteLength;if(size>maxBytes){await reader.cancel();return null;}chunks.push(entry.value);}
+ }catch{return null;}finally{reader.releaseLock();}
+ try{
+  const all=new Uint8Array(size);let offset=0;for(const x of chunks){all.set(x,offset);offset+=x.length;}
+  return JSON.parse(new TextDecoder("utf-8",{fatal:true}).decode(all));
+ }catch{return null;}
+}
+export async function readTriageWorklist(request,patientId,options={}){
+ if(!validUuid(patientId))return reject(400,"invalid_request");
+ const originHeader=request.headers.get("origin");
+ if(!originHeader||originHeader!==new URL(request.url).origin)return reject(403,"origin_denied");
+ if(!/^application\/json(?:;\s*charset=utf-8)?$/i.test(request.headers.get("content-type")||""))return reject(415,"unsupported_media_type");
+ const input=validateTriageViewRequest(await readBoundedJsonRequest(request));
+ if(!input)return reject(400,"invalid_request");
+ const scope=await admission(request,{...options,capability:"triage:queue"});
+ if(scope.error)return scope.error;
+ if(!scope.staff.capabilities.includes("patient:view"))return reject(404,"not_found");
+ const patientRecord=await safeFetch(scope.origin,"/api/v1/patients/"+patientId,scope.staff.bearer,scope.fetcher);
+ if(patientRecord.status!==200)return reject(patientRecord.status===401?401:patientRecord.status===404?404:503,"patient_unavailable");
+ if(!verifyPatient(patientRecord.body,patientId))return reject(503,"invalid_source_record");
+ const result=await safeFetch(scope.origin,"/api/v1/triage/patients/"+patientId+"/views/"+input.view,scope.staff.bearer,scope.fetcher,{method:"POST",body:Object.fromEntries(Object.entries(input).filter(([k])=>k!=="view")),maxBytes:32768});
+ if(result.status!==200)return reject(result.status===401?401:result.status===404?404:503,"triage_unavailable");
+ const entries=result.body.cases;
+ if(Object.keys(result.body).length!==1||!Array.isArray(entries)||entries.length>input.caseIds.length||entries.length>50)return reject(503,"invalid_source_record");
+ const seen=new Set();
+ for(const row of entries){
+  if(!row||typeof row.caseId!=="string"||!input.caseIds.includes(row.caseId)||seen.has(row.caseId)||!verifyTriageCase({case:row},row.caseId))return reject(503,"invalid_source_record");
+  seen.add(row.caseId);
+ }
+ return ok({cases:entries,facilityId:scope.staff.facilityId,view:input.view});
 }
