@@ -41,9 +41,9 @@ async function safeFetch(origin,path,bearer,fetcher,{method="GET",body=null,maxB
   try{for(;;){const n=await reader.read();if(n.done)break;size+=n.value.byteLength;if(size>maxBytes){await reader.cancel();return {status:503};}chunks.push(n.value);}}
   finally{reader.releaseLock();}
   const bytes=new Uint8Array(size);let off=0;for(const chunk of chunks){bytes.set(chunk,off);off+=chunk.length;}
-  const body=JSON.parse(new TextDecoder("utf-8",{fatal:true}).decode(bytes));
-  if(!body||typeof body!=="object"||Array.isArray(body))return {status:503};
-  return {status:200,body};
+  const parsedBody=JSON.parse(new TextDecoder("utf-8",{fatal:true}).decode(bytes));
+  if(!parsedBody||typeof parsedBody!=="object"||Array.isArray(parsedBody))return {status:503};
+  return {status:200,body:parsedBody};
  }catch{return {status:503};}
  finally{clearTimeout(timeout);}
 }
