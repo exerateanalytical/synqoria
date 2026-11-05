@@ -20,7 +20,7 @@ function recordFail(spec,width,key,detail){failures.push({id:spec.id,layout:spec
 function activeLabelCount(spec,tab,counts){
  const n=spec.fields.length;
  switch(spec.layout){
-  case "F":return tab===spec.tabs.length-1?counts.review:spec.fields.filter(f=>f.tabIndex===tab).length===counts.fields;
+  case "F":return tab===spec.tabs.length-1?counts.review===spec.fields.length:spec.fields.filter(f=>f.tabIndex===tab).length===counts.fields;
   case "D":return tab===2?true:(tab===0?Math.max(1,Math.ceil(n/2)):n-Math.max(1,Math.ceil(n/2)))===counts.details;
   case "X":return tab===2?true:(tab===0?Math.ceil(n/2):n-Math.ceil(n/2))===counts.compare;
   case "L":return counts.headers===n+1;
