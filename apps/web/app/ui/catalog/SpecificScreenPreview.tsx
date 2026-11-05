@@ -29,6 +29,16 @@ const states=[
  {key:"S13",label:"Not found or retired",message:"A safe deep-link response must not disclose a patient’s existence."}
 ] as const;
 const unique = (values:string[])=>[...new Set(values)];
+const patientScopeModules=new Set(["M01","M02","M03","M04","M05","M06","M07","M08","M09","M10","M11","M12","M13","M14","M15","M16","M17","M18","M19","M20","M25","M26","M27","M31","M32","M37"]);
+function ProtectedContext({spec}:{spec:SpecificScreenSpec}){
+ const scoped=patientScopeModules.has(spec.module);
+ return <section className="syn-specific-context" aria-label="Protected operational and patient context">
+  <h3>Verified context required</h3>
+  <dl><div><dt>Hospital cell / facility</dt><dd>Not connected</dd></div><div><dt>Staff role / active shift</dt><dd>Not verified</dd></div>
+  {scoped?<><div><dt>Patient: two approved identifiers</dt><dd>Unavailable without authorization</dd></div><div><dt>Encounter and location</dt><dd>Not connected</dd></div><div><dt>Allergy assessment state</dt><dd>Not yet assessed / source unavailable</dd></div></>:<div><dt>Resource or administrative scope</dt><dd>Not connected</dd></div>}
+  </dl><p>Do not infer scope, patient existence, allergies or encounter ownership from this preview.</p>
+ </section>;
+}
 function LockedAction({label,reason="Requires verified authorization and server source"}:{label:string;reason?:string}){return <button type="button" disabled className="syn-specific-locked" title={reason}>{label}<small>{reason}</small></button>}
 function Empty({kind}:{kind:string}){return <section className="syn-specific-empty" role="status"><strong>No authorized {kind} loaded</strong><p>Data remains unavailable until current tenant, facility, actor and record access are established. No sample patient values or financial figures are invented.</p></section>}
 function TabBar({spec,active,onChange,children}:{spec:SpecificScreenSpec;active:number;onChange:(n:number)=>void;children:ReactNode}){
@@ -134,6 +144,7 @@ export function SpecificScreenPreview({spec}:{spec:SpecificScreenSpec}){
  return <div className="syn-ui-preview syn-specific" data-specific-screen={spec.id} data-layout={spec.layout}>
   <div className="syn-specific-status"><div><strong>{spec.module} · {spec.moduleName}</strong><p>{spec.eligibilityNote} · Actual access requires server authorization.</p></div><span className="syn-chip">Screen-specific preview</span></div>
   <div className="syn-specific-banner" role="status"><strong>Design specimen only — no patient or transaction data connected</strong><p>Do not enter real information. Clinical actions, exports and signed decisions cannot be performed from this interface.</p></div>
+  <ProtectedContext spec={spec}/>
   <div className="syn-specific-quick"><a href="#specific-workspace">Workspace</a><a href="#specific-workflow">Workflow</a><a href="#specific-states">States</a><button type="button" className="syn-specific-secondary" onClick={()=>setShowHelp(v=>!v)} aria-expanded={showHelp}>{showHelp?"Hide help":"Help and action inventory"}</button></div>
   {showHelp&&<section className="syn-specific-help"><h3>Registered UI controls and dialogs</h3><ul>{unique(spec.controls).map(c=><li key={c}>{c}</li>)}</ul><h4>Required protected dialogs</h4><p>{spec.modalContracts.join(" · ")}</p><p>Candidate print outputs: {spec.printContractCandidates.length?spec.printContractCandidates.join(", "):"none specified for this screen"}. All exports locked.</p></section>}
   <section id="specific-workspace" aria-label={spec.title+" interactive specimen"}><TabBar spec={spec} active={tab} onChange={setTab}>{body()}</TabBar></section>
