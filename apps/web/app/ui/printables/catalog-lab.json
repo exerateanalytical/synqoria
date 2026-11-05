@@ -66,8 +66,8 @@
         "id": "s02",
         "heading": "Specimen",
         "fields": [
-          "Type",
-          "Site",
+          "Specimen type",
+          "Specimen site",
           "Collected time",
           "Received time"
         ]
