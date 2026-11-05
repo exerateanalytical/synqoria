@@ -2,6 +2,9 @@ name: SYNQORIA real staff read-screens and BFF safety gate
 on:
   push:
     branches: [work/real-clinical-screens-first-slice-2026-11-05]
+concurrency:
+  group: synqoria-real-screens-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
