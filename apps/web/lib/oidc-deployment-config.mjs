@@ -6,6 +6,7 @@
  * Production deployments MUST source these variables through approved
  * service secret provisioning. This parser fails closed on missing/mismatch.
  */
+import {parseStaffRolePolicy} from "./staff-role-capability-policy.mjs";
 const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[89ab0-9a-f]{12}$/i;
 const client=/^[A-Za-z0-9._~-]{3,128}$/;
 const secret=/^[A-Za-z0-9._~-]{32,512}$/;
@@ -87,6 +88,7 @@ export function loadTrustedStaffIdentityConfig(env){
    introspectionEndpoint:inspect.href,clientSecret:env.SYNQORIA_OIDC_CLIENT_SECRET,
    apiAudience:env.SYNQORIA_OIDC_API_AUDIENCE}),
   workforce:Object.freeze({issuer:issuer.href,workforceOrigin:workforce.href,
+   ...(env.SYNQORIA_ROLE_POLICY_JSON!==undefined?{rolePolicy:parseStaffRolePolicy(env.SYNQORIA_ROLE_POLICY_JSON,env.SYNQORIA_EXPECTED_TENANT_ID)}:{}),
    expectedTenantId:env.SYNQORIA_EXPECTED_TENANT_ID,
    expectedFacilityId:env.SYNQORIA_EXPECTED_FACILITY_ID}),
   jwks:keyset(env.SYNQORIA_OIDC_JWKS_JSON),
