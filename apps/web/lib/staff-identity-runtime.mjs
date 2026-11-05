@@ -18,6 +18,7 @@ import {createStaffSessionService} from "./oidc-staff-service.mjs";
 import {requireAuditedStaffLogin} from "./audited-staff-login.mjs";
 import {requireAuditedStaffLogout} from "./audited-staff-logout.mjs";
 import {createStaffAuthHttpHandlers} from "./staff-auth-http-handlers.mjs";
+import {verifyIdentitySqlClients} from "./identity-db-role-verification.mjs";
 export class StaffIdentityRuntimeError extends Error{
  constructor(){super("staff_identity_runtime_unavailable");this.name="StaffIdentityRuntimeError";}
 }
@@ -64,4 +65,15 @@ export function createStaffIdentityRuntime({
    publicOrigin:cfg.publicOrigin
   })
  });
+}
+
+
+/**
+ * P03-B0053 deployment entrypoint: no live identity runtime before positive
+ * cryptographic and DB-role preflight. The low-level constructor above is
+ * retained for hermetic tests and dependency-injected source simulation.
+ */
+export async function createVerifiedStaffIdentityRuntime(options={}){
+ await verifyIdentitySqlClients(options);
+ return createStaffIdentityRuntime(options);
 }
