@@ -55,7 +55,7 @@
     "domain": "SUP",
     "domainEn": "Procurement suppliers and stores",
     "domainFr": "Achats fournisseurs et magasin",
-    "module": "M21",
+    "module": "M22",
     "kind": "goods-receipt",
     "context": "administrative",
     "sections": [
