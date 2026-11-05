@@ -1,0 +1,437 @@
+[
+  {
+    "id": "P17",
+    "en": "Custody and release record",
+    "fr": "Registre de garde et remise du corps",
+    "domain": "MOR",
+    "domainEn": "Mortuary and decedent services",
+    "domainFr": "Morgue et services mortuaires",
+    "module": "M27",
+    "kind": "custody",
+    "context": "decedent",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Identity",
+        "fields": [
+          "Decedent identifiers and verified source",
+          "Death record reference"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Custody",
+        "fields": [
+          "Received date/time",
+          "Sender",
+          "Storage location",
+          "Condition/seal"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Release",
+        "fields": [
+          "Authorized recipient",
+          "Legal authority and identity check",
+          "Handover signatures and timestamp"
+        ]
+      },
+      {
+        "id": "s04",
+        "heading": "Audit",
+        "fields": [
+          "Custody chain and exceptions"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MOR-002",
+    "en": "Medical death summary",
+    "fr": "Résumé médical de décès",
+    "domain": "MOR",
+    "domainEn": "Mortuary and decedent services",
+    "domainFr": "Morgue et services mortuaires",
+    "module": "M27",
+    "kind": "clinical-report",
+    "context": "decedent",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Death",
+        "fields": [
+          "Date/time and clinician confirmation",
+          "Place and encounter"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Clinical",
+        "fields": [
+          "Cause-of-death documentation per local authority",
+          "Relevant diagnoses and source"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Notification",
+        "fields": [
+          "Family and official reporting"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MOR-003",
+    "en": "Decedent identification verification",
+    "fr": "Vérification de l'identité du défunt",
+    "domain": "MOR",
+    "domainEn": "Mortuary and decedent services",
+    "domainFr": "Morgue et services mortuaires",
+    "module": "M27",
+    "kind": "checklist",
+    "context": "decedent",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Identification",
+        "fields": [
+          "Wristband or identifiers",
+          "Second source",
+          "Verified by"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Condition",
+        "fields": [
+          "Provisional identity",
+          "Discrepancy and resolution"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Custody",
+        "fields": [
+          "Witness and timestamp"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MOR-004",
+    "en": "Body transfer authorization",
+    "fr": "Autorisation de transfert du corps",
+    "domain": "MOR",
+    "domainEn": "Mortuary and decedent services",
+    "domainFr": "Morgue et services mortuaires",
+    "module": "M27",
+    "kind": "handover",
+    "context": "decedent",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Transfer",
+        "fields": [
+          "Origin and destination",
+          "Decedent reference",
+          "Transport agent"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Authority",
+        "fields": [
+          "Family/legal and facility permissions",
+          "Permit status"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Custody",
+        "fields": [
+          "Departure and receiving confirmation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MOR-005",
+    "en": "Family release authorization",
+    "fr": "Autorisation de restitution à la famille",
+    "domain": "MOR",
+    "domainEn": "Mortuary and decedent services",
+    "domainFr": "Morgue et services mortuaires",
+    "module": "M27",
+    "kind": "consent",
+    "context": "decedent",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Representative",
+        "fields": [
+          "Next of kin and identity evidence",
+          "Legal basis"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Release",
+        "fields": [
+          "Requested body and destination",
+          "Cultural or handling instructions"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Authorization",
+        "fields": [
+          "Mortuary manager and witnesses"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MOR-006",
+    "en": "Mortuary cold storage log",
+    "fr": "Registre de conservation frigorifique",
+    "domain": "MOR",
+    "domainEn": "Mortuary and decedent services",
+    "domainFr": "Morgue et services mortuaires",
+    "module": "M27",
+    "kind": "log",
+    "context": "decedent",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Storage",
+        "fields": [
+          "Chamber and shelf",
+          "Entry/exit reference"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Monitoring",
+        "fields": [
+          "Temperature",
+          "Equipment status",
+          "Excursion events"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Custody",
+        "fields": [
+          "Shift check and corrective response"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MOR-007",
+    "en": "Mortuary intake and inventory ledger",
+    "fr": "Registre des entrées en morgue",
+    "domain": "MOR",
+    "domainEn": "Mortuary and decedent services",
+    "domainFr": "Morgue et services mortuaires",
+    "module": "M27",
+    "kind": "log",
+    "context": "decedent",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Intake",
+        "fields": [
+          "Decedent reference",
+          "Source service",
+          "Time and condition"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Storage",
+        "fields": [
+          "Location and custody",
+          "Property inventory"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Release",
+        "fields": [
+          "Authorized recipient and timestamp"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MOR-008",
+    "en": "Postmortem examination request",
+    "fr": "Demande d'autopsie",
+    "domain": "MOR",
+    "domainEn": "Mortuary and decedent services",
+    "domainFr": "Morgue et services mortuaires",
+    "module": "M27",
+    "kind": "order",
+    "context": "decedent",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Authority",
+        "fields": [
+          "Requester and legal authorization",
+          "Reason and scope"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Clinical",
+        "fields": [
+          "Relevant history and infection precautions"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Transfer",
+        "fields": [
+          "Pathologist",
+          "Specimens and chain of custody"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MOR-009",
+    "en": "Decedent release confirmation certificate",
+    "fr": "Attestation de remise de corps",
+    "domain": "MOR",
+    "domainEn": "Mortuary and decedent services",
+    "domainFr": "Morgue et services mortuaires",
+    "module": "M27",
+    "kind": "certificate",
+    "context": "decedent",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Released",
+        "fields": [
+          "Decedent verified identifier",
+          "Date/time and place"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Authority",
+        "fields": [
+          "Receiving party and basis",
+          "Permit"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Attestation",
+        "fields": [
+          "Facility official",
+          "Custody and witness"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MOR-010",
+    "en": "Postmortem/autopsy consent record",
+    "fr": "Consentement à autopsie selon autorité",
+    "domain": "MOR",
+    "domainEn": "Mortuary and decedent services",
+    "domainFr": "Morgue et services mortuaires",
+    "module": "M27",
+    "kind": "consent",
+    "context": "decedent",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Scope",
+        "fields": [
+          "Examination type and limitations",
+          "Applicable legal authority"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Explanation",
+        "fields": [
+          "Nature of examination",
+          "Questions and disclosure"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Authorized family or public authority and examiner"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MOR-011",
+    "en": "Decedent personal effects handover",
+    "fr": "Remise des effets personnels du défunt",
+    "domain": "MOR",
+    "domainEn": "Mortuary and decedent services",
+    "domainFr": "Morgue et services mortuaires",
+    "module": "M27",
+    "kind": "handover",
+    "context": "decedent",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Inventory",
+        "fields": [
+          "Item and condition",
+          "Sealed property bag"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Custody",
+        "fields": [
+          "Holder",
+          "Recipient and identity",
+          "Date/time"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Exceptions",
+        "fields": [
+          "Missing property and dispute review"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]
