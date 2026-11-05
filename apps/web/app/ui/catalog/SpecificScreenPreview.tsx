@@ -44,7 +44,7 @@ function PreviewField({field,value,onChange}:{field:SpecificField;value:string;o
  const locked=field.widget==="restricted"||field.widget==="readonly";
  const props={id,disabled:locked,value,autoComplete:"off" as const,"aria-describedby":id+"-help",onChange:(e:{target:{value:string}})=>onChange(e.target.value)};
  const label=field.label;
- return <label htmlFor={id} className="syn-specific-field"><span>{label}</span>
+ return <label htmlFor={id} className="syn-specific-field" data-canonical-field={field.id}><span>{label}</span>
   {field.widget==="textarea"?<textarea {...props} maxLength={300} rows={4} placeholder="Demonstration text only"/>:
    <input {...props} type={locked?"text":field.widget} maxLength={160} spellCheck={false} placeholder={locked?"Server/clinical contract required":"Synthetic values only"}/>}
   <small id={id+"-help"}>{locked?"Locked until approved field dictionary and clinical/permission validation.":"Demonstration only. Requiredness, valid ranges and source are not yet approved."}</small>
