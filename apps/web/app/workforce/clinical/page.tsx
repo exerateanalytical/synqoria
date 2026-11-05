@@ -6,6 +6,8 @@ const sections=[
  {id:"G-S10",title:"Connectivity and readiness",description:"Check real configured cell liveness and dependency readiness.",level:"API-backed subset"},
  {id:"M01-S03",title:"Patient identity profile",description:"Retrieve authorized patient identity status and source revision only.",level:"API-backed subset"},
  {id:"M03-S03",title:"Triage assessment",description:"Read authorized patient-scoped case workflow metadata; no clinical mutation.",level:"API-backed subset"},
+ {id:"G-S11",title:"Help and support",description:"Search real application guidance and open verified feature entry points.",level:"Functional help"},
+ {id:"G-S12",title:"Not found and retired routes",description:"Return users to safe routes without disclosing protected information.",level:"Functional safe navigation"},
  {id:"M31-S01",title:"Document template catalogue",description:"Browse and filter the reconciled 662-code hospital template library.",level:"Functional catalogue"},
  {id:"M31-S03",title:"Document template preview",description:"Preview bilingual and print-safe structured forms; issuance locked.",level:"Functional preview"}
 ];
