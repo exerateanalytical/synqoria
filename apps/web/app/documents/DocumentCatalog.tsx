@@ -14,7 +14,7 @@ export function DocumentCatalog({items}:{items:DocumentListItem[]}){
  },[items,query,module,media,scope,sort]);
  const reset=()=>{setQuery("");setModule("");setMedia("");setScope("all");setSort("module");};
  return <div className="syn-doc-library">
-  <header className="syn-doc-library-hero">
+  <nav aria-label="Document library links"><Link href="/hospital-documents">Complete reconciled catalogue</Link> · <Link href="/ui/printables">376 structured hospital form templates</Link></nav><header className="syn-doc-library-hero">
    <p className="syn-doc-library-overline">SYNQORIA · Hospital documents · Source register v1</p>
    <h1>Hospital documents and form templates</h1>
    <p>Explore the 18 canonical printable outputs and 286 additional candidate forms across 40 modules. Open any item to inspect its full blank document layout and print a clearly labelled sample. No clinical data, signatures, legal consents or genuine payment records can be created here.</p>
