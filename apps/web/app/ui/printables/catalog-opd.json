@@ -1,0 +1,691 @@
+[
+  {
+    "id": "P09",
+    "en": "Referral letter",
+    "fr": "Lettre de référence médicale",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "referral",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Origin",
+        "fields": [
+          "Referring clinician and service",
+          "Receiving institution and service",
+          "Referral date",
+          "Priority"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Clinical summary",
+        "fields": [
+          "Reason",
+          "Relevant history",
+          "Working diagnosis",
+          "Findings and results"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Continuity",
+        "fields": [
+          "Treatment already given",
+          "Requested action",
+          "Contact and acknowledgement"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-OPD-002",
+    "en": "Outpatient consultation note",
+    "fr": "Note de consultation externe",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "clinical-note",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Encounter",
+        "fields": [
+          "Date and service",
+          "Chief complaint",
+          "Presenting history"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Examination",
+        "fields": [
+          "Vitals and source",
+          "Systems examination",
+          "Allergies review"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Assessment",
+          "Working diagnosis and code source",
+          "Investigations",
+          "Treatment and follow-up"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-OPD-003",
+    "en": "SOAP progress note",
+    "fr": "Note d’évolution SOAP",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "clinical-note",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Subjective",
+        "fields": [
+          "Symptoms",
+          "Patient concerns"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Objective",
+        "fields": [
+          "Examination findings",
+          "Measurements and sources"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Assessment",
+        "fields": [
+          "Problems and diagnostic certainty"
+        ]
+      },
+      {
+        "id": "s04",
+        "heading": "Plan",
+        "fields": [
+          "Orders",
+          "Counseling",
+          "Review time"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-OPD-004",
+    "en": "History and physical examination",
+    "fr": "Anamnèse et examen physique",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "clinical-note",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "History",
+        "fields": [
+          "Presenting issue",
+          "Medical history",
+          "Surgical history",
+          "Family and social factors"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Examination",
+        "fields": [
+          "General observation",
+          "System findings",
+          "Measurements"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Assessment",
+        "fields": [
+          "Differential diagnosis",
+          "Findings requiring escalation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-OPD-005",
+    "en": "Diagnosis and problem list printout",
+    "fr": "Liste des diagnostics et problèmes",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "table",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Problems",
+        "fields": [
+          "Code system",
+          "Code",
+          "Description",
+          "Active or resolved status",
+          "Onset and certainty"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Record",
+        "fields": [
+          "Author",
+          "Source revision",
+          "Review date"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-OPD-006",
+    "en": "Clinical note amendment document",
+    "fr": "Rectificatif de note clinique",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "amendment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Original record",
+        "fields": [
+          "Note identifier",
+          "Author and signature time",
+          "Original revision"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Amendment",
+        "fields": [
+          "Reason",
+          "Added or corrected content",
+          "Effective time",
+          "Link to original"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-OPD-007",
+    "en": "Medical examination certificate",
+    "fr": "Certificat médical d’examen",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "certificate",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Examination",
+        "fields": [
+          "Patient verification",
+          "Examined on",
+          "Examination purpose"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Conclusion",
+        "fields": [
+          "Findings approved for disclosure",
+          "Restrictions if clinically supported"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Validation",
+        "fields": [
+          "Clinician credentials",
+          "Signature and verification reference"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-OPD-008",
+    "en": "Sick leave medical certificate",
+    "fr": "Certificat d’arrêt de travail",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "certificate",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Work status",
+        "fields": [
+          "Clinical assessment date",
+          "Period recommended by authorized clinician",
+          "Work limitation summary"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Authorization",
+        "fields": [
+          "Issuing clinician",
+          "Certificate reference",
+          "Disclosure restriction"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-OPD-009",
+    "en": "Return-to-work medical review",
+    "fr": "Avis médical de reprise du travail",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "certificate",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Review",
+        "fields": [
+          "Date",
+          "Functional assessment",
+          "Required accommodations"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Conclusion",
+        "fields": [
+          "Cleared or restricted status",
+          "Follow-up",
+          "Issuer"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-OPD-010",
+    "en": "School and sports fitness certificate",
+    "fr": "Certificat d’aptitude scolaire ou sportive",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "certificate",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Examination",
+        "fields": [
+          "Activity requested",
+          "Relevant approved findings",
+          "Screening completed"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Decision",
+        "fields": [
+          "Fitness opinion by qualified clinician",
+          "Conditions",
+          "Review date"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-OPD-011",
+    "en": "Chronic illness follow-up plan",
+    "fr": "Plan de suivi de maladie chronique",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "care-plan",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Conditions",
+        "fields": [
+          "Active diagnoses",
+          "Baseline status",
+          "Risk and allergies review"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Monitoring",
+        "fields": [
+          "Measurements to follow",
+          "Responsible team",
+          "Follow-up appointments"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Actions",
+        "fields": [
+          "Patient advice",
+          "Escalation or return criteria"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-OPD-012",
+    "en": "Clinic medication reconciliation",
+    "fr": "Bilan comparatif des médicaments",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "medication",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Medication source",
+        "fields": [
+          "Home medication history",
+          "Source and verification",
+          "Allergy status"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Comparison",
+        "fields": [
+          "New orders",
+          "Continued medicines",
+          "Stopped medicines",
+          "Discrepancy rationale"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-OPD-013",
+    "en": "Follow-up visit instructions",
+    "fr": "Consignes de suivi clinique",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "instructions",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Visit outcome",
+        "fields": [
+          "Seen by",
+          "Encounter date",
+          "Assessment summary"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Plan",
+        "fields": [
+          "Follow-up date",
+          "Tests to complete",
+          "Safety warning signs",
+          "Contact route"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-OPD-014",
+    "en": "Comprehensive medical report",
+    "fr": "Rapport médical détaillé",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "clinical-report",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Report purpose",
+        "fields": [
+          "Requester authority",
+          "Period covered",
+          "Scope of disclosure"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Clinical history",
+        "fields": [
+          "Consultations",
+          "Findings",
+          "Investigation source"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Opinion",
+        "fields": [
+          "Clinician-authored interpretation",
+          "Limitations",
+          "Authenticated approval"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-OPD-015",
+    "en": "Specialty consultation assessment",
+    "fr": "Bilan de consultation spécialisée",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "clinical-note",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Specialty",
+        "fields": [
+          "Referred question",
+          "Specialty and clinician",
+          "Pertinent history"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Findings",
+        "fields": [
+          "Specialty examination",
+          "Investigations"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Recommendation",
+        "fields": [
+          "Clinical impression",
+          "Proposed care",
+          "Referral feedback"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-OPD-016",
+    "en": "Ward-round clinical note",
+    "fr": "Note de visite médicale",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "clinical-note",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Round",
+        "fields": [
+          "Date and clinician team",
+          "Active encounter"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Review",
+        "fields": [
+          "New symptoms",
+          "Observations and results",
+          "Response to care"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Orders",
+          "Pending tasks and owner"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-OPD-017",
+    "en": "Patient education acknowledgment",
+    "fr": "Accusé d'information thérapeutique",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "acknowledgment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Education",
+        "fields": [
+          "Topic and approved teaching material",
+          "Language and interpretation"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Understanding",
+        "fields": [
+          "Questions",
+          "Teach-back result",
+          "Follow-up support"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-OPD-018",
+    "en": "Clinical multidisciplinary case summary",
+    "fr": "Résumé de réunion pluridisciplinaire",
+    "domain": "OPD",
+    "domainEn": "Outpatient care and clinical records",
+    "domainFr": "Consultations et dossiers cliniques",
+    "module": "M05",
+    "kind": "clinical-report",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Case",
+        "fields": [
+          "Case reference and consent scope",
+          "Participating specialties"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Discussion",
+        "fields": [
+          "Clinical issues",
+          "Options considered",
+          "Risks and benefits"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Agreed actions",
+          "Responsible clinicians",
+          "Review date"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]
