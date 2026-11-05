@@ -33,7 +33,7 @@ jobs:
         with:
           node-version: "22"
       - name: Verify source-level unit tests
-        run: node --test tests/oidc_replay_postgres.test.mjs tests/oidc_one_use.test.mjs
+        run: node --test tests/oidc_replay_postgres.test.mjs tests/oidc_one_use.test.mjs tests/oidc_code_exchange.test.mjs tests/oidc_staff_verification.test.mjs tests/oidc_login_flow.test.mjs
       - name: Execute PostgreSQL migrations, permission and concurrency integration
         run: node --test tests/oidc_replay_postgres_integration.test.mjs
         env:
