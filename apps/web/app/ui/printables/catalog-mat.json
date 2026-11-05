@@ -1,0 +1,634 @@
+[
+  {
+    "id": "HT-MAT-001",
+    "en": "Antenatal consultation record",
+    "fr": "Fiche de consultation prénatale",
+    "domain": "MAT",
+    "domainEn": "Maternal obstetrics and newborn care",
+    "domainFr": "Maternité obstétrique et néonatologie",
+    "module": "M17",
+    "kind": "clinical-note",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Pregnancy",
+        "fields": [
+          "Gestational age source",
+          "Obstetric history",
+          "Maternal conditions"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Review",
+        "fields": [
+          "Blood pressure and weight with units",
+          "Fetal assessment",
+          "Laboratory screening"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Antenatal guidance",
+          "Referrals and next visit"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MAT-002",
+    "en": "Labor admission assessment",
+    "fr": "Fiche d'admission en salle de travail",
+    "domain": "MAT",
+    "domainEn": "Maternal obstetrics and newborn care",
+    "domainFr": "Maternité obstétrique et néonatologie",
+    "module": "M17",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Arrival",
+        "fields": [
+          "Gestation and dating source",
+          "Reason for admission",
+          "Maternal/fetal status"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Obstetric",
+        "fields": [
+          "Contractions",
+          "Membrane status",
+          "Prior pregnancy risks"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Responsible obstetric clinician",
+          "Monitoring orders"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MAT-003",
+    "en": "Labor monitoring partograph worksheet",
+    "fr": "Partogramme de surveillance du travail",
+    "domain": "MAT",
+    "domainEn": "Maternal obstetrics and newborn care",
+    "domainFr": "Maternité obstétrique et néonatologie",
+    "module": "M17",
+    "kind": "observation",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Labor timeline",
+        "fields": [
+          "Examination time",
+          "Cervical findings",
+          "Contraction pattern"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Maternal",
+        "fields": [
+          "Vital measures and fluids",
+          "Source and units"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Fetal",
+        "fields": [
+          "Heart rate and response",
+          "Interventions",
+          "Escalation decisions"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MAT-004",
+    "en": "Delivery and birth register",
+    "fr": "Registre des accouchements et naissances",
+    "domain": "MAT",
+    "domainEn": "Maternal obstetrics and newborn care",
+    "domainFr": "Maternité obstétrique et néonatologie",
+    "module": "M17",
+    "kind": "log",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Delivery",
+        "fields": [
+          "Time and mode",
+          "Clinician",
+          "Maternal record"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Newborn",
+        "fields": [
+          "Newborn record linkage",
+          "Sex recorded by approved policy",
+          "Birth weight and condition"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Outcomes",
+        "fields": [
+          "Complications and disposition"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MAT-005",
+    "en": "Delivery clinical summary",
+    "fr": "Compte rendu d'accouchement",
+    "domain": "MAT",
+    "domainEn": "Maternal obstetrics and newborn care",
+    "domainFr": "Maternité obstétrique et néonatologie",
+    "module": "M17",
+    "kind": "operative",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Labor",
+        "fields": [
+          "Gestational information",
+          "Progress and interventions"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Birth",
+        "fields": [
+          "Mode and time",
+          "Obstetric team and outcomes"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Aftercare",
+        "fields": [
+          "Estimated blood loss",
+          "Maternal complications",
+          "Newborn handover"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MAT-006",
+    "en": "Newborn initial examination",
+    "fr": "Fiche d'examen initial du nouveau-né",
+    "domain": "MAT",
+    "domainEn": "Maternal obstetrics and newborn care",
+    "domainFr": "Maternité obstétrique et néonatologie",
+    "module": "M17",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Identity",
+        "fields": [
+          "Mother-baby linkage and identifiers",
+          "Time of birth"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Measurements",
+        "fields": [
+          "Birth weight and unit",
+          "Length and head circumference"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Exam",
+        "fields": [
+          "Initial findings",
+          "Referrals and vaccination status"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MAT-007",
+    "en": "Apgar observation worksheet",
+    "fr": "Feuille d'évaluation Apgar",
+    "domain": "MAT",
+    "domainEn": "Maternal obstetrics and newborn care",
+    "domainFr": "Maternité obstétrique et néonatologie",
+    "module": "M17",
+    "kind": "observation",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Assessment",
+        "fields": [
+          "Times and scorer",
+          "Appearance",
+          "Pulse",
+          "Grimace",
+          "Activity",
+          "Respiration"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Documentation",
+        "fields": [
+          "Source and resuscitation context",
+          "Newborn traceability"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MAT-008",
+    "en": "Neonatal resuscitation record",
+    "fr": "Fiche de réanimation néonatale",
+    "domain": "MAT",
+    "domainEn": "Maternal obstetrics and newborn care",
+    "domainFr": "Maternité obstétrique et néonatologie",
+    "module": "M17",
+    "kind": "resuscitation",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Birth",
+        "fields": [
+          "Gestational and delivery context",
+          "Team"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Interventions",
+        "fields": [
+          "Time-sequenced actions",
+          "Airway and ventilation",
+          "Medications if prescribed"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Outcome",
+        "fields": [
+          "Clinical status",
+          "Nursery disposition and handover"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MAT-009",
+    "en": "Postnatal maternal review",
+    "fr": "Surveillance maternelle postnatale",
+    "domain": "MAT",
+    "domainEn": "Maternal obstetrics and newborn care",
+    "domainFr": "Maternité obstétrique et néonatologie",
+    "module": "M17",
+    "kind": "clinical-note",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Recovery",
+        "fields": [
+          "Vitals",
+          "Bleeding and pain",
+          "Wound or perineum"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Support",
+        "fields": [
+          "Feeding and mental health screen",
+          "Education"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Danger signs",
+          "Follow-up"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MAT-010",
+    "en": "Neonatal intensive care flowsheet",
+    "fr": "Feuille de soins intensifs néonatals",
+    "domain": "MAT",
+    "domainEn": "Maternal obstetrics and newborn care",
+    "domainFr": "Maternité obstétrique et néonatologie",
+    "module": "M17",
+    "kind": "observation",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Monitoring",
+        "fields": [
+          "Temperature and cardiorespiratory observations",
+          "Oxygen/ventilator source"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Nutrition",
+        "fields": [
+          "Feeding and fluids",
+          "Output"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Care",
+        "fields": [
+          "Medications",
+          "Devices and escalation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MAT-011",
+    "en": "Cesarean procedure consent",
+    "fr": "Consentement pour césarienne",
+    "domain": "MAT",
+    "domainEn": "Maternal obstetrics and newborn care",
+    "domainFr": "Maternité obstétrique et néonatologie",
+    "module": "M17",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Proposal",
+        "fields": [
+          "Procedure indication",
+          "Material risks and benefits",
+          "Alternatives including emergency context"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Decision",
+        "fields": [
+          "Questions and understanding",
+          "Patient/representative decision"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Verification",
+        "fields": [
+          "Obstetric clinician",
+          "Witness and interpreter if needed"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MAT-012",
+    "en": "Fetal monitoring interpretation form",
+    "fr": "Compte rendu de surveillance fœtale",
+    "domain": "MAT",
+    "domainEn": "Maternal obstetrics and newborn care",
+    "domainFr": "Maternité obstétrique et néonatologie",
+    "module": "M17",
+    "kind": "observation",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Tracing",
+        "fields": [
+          "Monitor source",
+          "Period and gestation",
+          "Tracing features"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Interpretation",
+        "fields": [
+          "Applicable approved classification and version",
+          "Clinician"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Response",
+        "fields": [
+          "Escalation and documentation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MAT-013",
+    "en": "Breastfeeding counseling form",
+    "fr": "Fiche de conseil en allaitement",
+    "domain": "MAT",
+    "domainEn": "Maternal obstetrics and newborn care",
+    "domainFr": "Maternité obstétrique et néonatologie",
+    "module": "M17",
+    "kind": "acknowledgment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Assessment",
+        "fields": [
+          "Feeding history and concerns",
+          "Infant status"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Teaching",
+        "fields": [
+          "Positioning and support",
+          "Materials and language"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Follow-up",
+        "fields": [
+          "Referral",
+          "Understanding and next review"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MAT-014",
+    "en": "Birth notification document",
+    "fr": "Déclaration de naissance",
+    "domain": "MAT",
+    "domainEn": "Maternal obstetrics and newborn care",
+    "domainFr": "Maternité obstétrique et néonatologie",
+    "module": "M17",
+    "kind": "certificate",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Birth",
+        "fields": [
+          "Date/time and location",
+          "Newborn identity link",
+          "Parent/guardian record"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Notification",
+        "fields": [
+          "Reporting facility",
+          "Attesting provider",
+          "Administrative verification"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Scope",
+        "fields": [
+          "Civil-registration integration status"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MAT-015",
+    "en": "Maternal discharge instructions",
+    "fr": "Consignes de sortie de maternité",
+    "domain": "MAT",
+    "domainEn": "Maternal obstetrics and newborn care",
+    "domainFr": "Maternité obstétrique et néonatologie",
+    "module": "M17",
+    "kind": "instructions",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Status",
+        "fields": [
+          "Mother and newborn review",
+          "Medications and observations"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Home",
+        "fields": [
+          "Bleeding/infection warning signs",
+          "Breastfeeding and care"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Follow-up",
+        "fields": [
+          "Appointments",
+          "Emergency contacts"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-MAT-016",
+    "en": "Newborn discharge summary",
+    "fr": "Résumé de sortie néonatale",
+    "domain": "MAT",
+    "domainEn": "Maternal obstetrics and newborn care",
+    "domainFr": "Maternité obstétrique et néonatologie",
+    "module": "M17",
+    "kind": "discharge",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Stay",
+        "fields": [
+          "Birth and admission facts",
+          "Diagnoses and treatment"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Findings",
+        "fields": [
+          "Measurements and screening results",
+          "Immunizations"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Continuity",
+        "fields": [
+          "Follow-up clinic",
+          "Outstanding investigations and responsible provider"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]
