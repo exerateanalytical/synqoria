@@ -8,7 +8,7 @@ const out=process.env.SYNQORIA_PRINT_AUDIT_DIR||"/tmp/synqoria-print-browser";
 mkdirSync(out,{recursive:true});
 const codes=["pat","opd","emr","nur","lab","rad","phm","sur","blo","mat","ped","con","fin","ins","sup","mor","gov","fac","amb","hr","qlt","reh","spc","sys"];
 const docs=codes.flatMap(c=>JSON.parse(readFileSync(new URL("../apps/web/app/ui/printables/catalog-"+c+".json",import.meta.url),"utf8")));
-const representative=codes.map(c=>docs.find(d=>d.domain===c));
+const representative=codes.map(c=>docs.find(d=>d.domain===c.toUpperCase()));
 const failures=[],viewports=[],shots=[],printed=[];
 const widths=[320,768,1440];
 const browser=await chromium.launch({headless:true,args:["--no-sandbox"]});
