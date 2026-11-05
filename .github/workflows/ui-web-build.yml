@@ -16,6 +16,8 @@ jobs:
           node-version: '22'
       - name: Install web workspace packages without running lifecycle scripts
         run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Build internal UX-core workspace typings
+        run: npm run build --workspace packages/ux-core
       - name: Strict web TypeScript check
         run: npm exec --workspace apps/web -- tsc --noEmit
       - name: Build Next web routes
