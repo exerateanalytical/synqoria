@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS synqoria_identity.staff_sessions (
  expires_at timestamptz NOT NULL,
  revoked_at timestamptz,
  CONSTRAINT session_digest_hex CHECK (session_digest ~ '^[0-9a-f]{64}$'),
- CONSTRAINT session_encrypted_v1 CHECK (sealed_record ~ '^v1\\.[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+$'),
+ CONSTRAINT session_encrypted_v1 CHECK (sealed_record ~ '^v1[.][A-Za-z0-9_-]+[.][A-Za-z0-9_-]+[.][A-Za-z0-9_-]+$'),
  CONSTRAINT session_ttl CHECK (expires_at > created_at AND expires_at <= created_at + INTERVAL '10 minutes'),
  CONSTRAINT revocation_order CHECK (revoked_at IS NULL OR revoked_at >= created_at)
 );
