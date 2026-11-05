@@ -2,14 +2,15 @@
   "schema": "synqoria.p03.identity-engineering-2026-11-05.v1",
   "date": "2026-11-05",
   "basePR": 26,
-  "branch": "work/p03-authoritative-staff-grants-2026-11-05",
+  "branch": "work/p03-b0054-b0063-deployment-guards-2026-11-06",
   "sourceBase": "499f25cab50bc8d6338e73061e757b4a5ecdf49d",
   "intent": {
     "requestedRunSize": 30,
     "candidateIds": "P03-B0034..P03-B0063",
-    "executedVerified": 10,
-    "unimplementedInThisRun": 20,
-    "runStatus": "INCOMPLETE"
+    "executedVerified": 20,
+    "unimplementedInThisRun": 10,
+    "runStatus": "INCOMPLETE",
+    "lastVerifiedId": "P03-B0053"
   },
   "boundary": {
     "stage": "engineering-foundations",
@@ -162,6 +163,147 @@
       },
       "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
       "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0044",
+      "scope": "Audited login ticket issuance and rollback",
+      "source": "apps/web/lib/audited-staff-login.mjs",
+      "test": "tests/audited_staff_login.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42125115966,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42125115966",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0045",
+      "scope": "Origin-bound logout with append-only revocation audit",
+      "source": "apps/web/lib/audited-staff-logout.mjs",
+      "test": "tests/audited_staff_logout.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42125276303,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42125276303",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0046",
+      "scope": "Expired-only session cleanup with limited PostgreSQL role",
+      "source": "apps/web/lib/expired-staff-session-janitor.mjs",
+      "test": "tests/expired_staff_session_janitor_postgres.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42125784520,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42125784520",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0047",
+      "scope": "Denied patient disclosure audit without patient PHI",
+      "source": "apps/web/lib/audited-patient-disclosure.mjs",
+      "test": "tests/audited_patient_disclosure.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42126144162,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42126144162",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0048",
+      "scope": "Denied encounter disclosure audit without encounter PHI",
+      "source": "apps/web/lib/audited-encounter-disclosure.mjs",
+      "test": "tests/audited_encounter_disclosure.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42126405722,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42126405722",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0049",
+      "scope": "Server-only OIDC HTTP/cookie response boundary",
+      "source": "apps/web/lib/staff-auth-http-handlers.mjs",
+      "test": "tests/staff_auth_http_handlers.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42126687789,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42126687789",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0050",
+      "scope": "Pinned IdP JWK secrets and hospital tenant config",
+      "source": "apps/web/lib/oidc-deployment-config.mjs",
+      "test": "tests/oidc_deployment_config.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42127023785,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42127023785",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0051",
+      "scope": "Browser canonical origin and Fetch Metadata guard",
+      "source": "apps/web/lib/staff-auth-request-origin.mjs",
+      "test": "tests/staff_auth_request_origin.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42127381029,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42127381029",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0052",
+      "scope": "Signed OIDC runtime integration and UTC fixture recovery",
+      "source": "apps/web/lib/staff-identity-runtime.mjs",
+      "test": "tests/staff_identity_runtime.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42128397182,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42128397182",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
+    },
+    {
+      "id": "P03-B0053",
+      "scope": "Real restricted PostgreSQL runtime role and RLS verification",
+      "source": "apps/web/lib/identity-db-role-verification.mjs",
+      "test": "tests/identity_db_role_postgres.test.mjs",
+      "verifiedBy": {
+        "type": "github_actions",
+        "runId": 42128796275,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42128796275",
+        "conclusion": "success"
+      },
+      "status": "IMPLEMENTED_FOCUSED_TESTED_NOT_PRODUCTION_INTEGRATED",
+      "clinicalScreenAccepted": false
     }
-  ]
+  ],
+  "reconciliation": "B0052 recovery PR #28; do not confuse P03 infrastructure with SYNQ-OPS screen packages"
 }
