@@ -25,13 +25,13 @@ const run=(sql,{fail=false}={})=>{
 };
 const esc=s=>s.replaceAll("'","''");
 const staffRole="SET ROLE synqoria_identity_audit_writer;\n";
-const args=(eventId,kind="LOGIN_GRANTED",outcome="PERMITTED",timestamp=Date.now())=>[
+const sqlArgs=(eventId,kind="LOGIN_GRANTED",outcome="PERMITTED",timestamp=Date.now())=>[
  "'"+eventId+"'","'"+ "a".repeat(64)+"'","'"+ "b".repeat(64)+"'",
  "'"+esc(kind)+"'","'"+esc(outcome)+"'","'"+randomUUID()+"'",String(timestamp)
 ].join(",");
 const append=(eventId,kind,outcome,at)=>staffRole+
  "PREPARE identity_audit(uuid,text,text,text,text,uuid,bigint) AS "+IDENTITY_AUDIT_INSERT_SQL+";\n"+
- "EXECUTE identity_audit("+args(eventId,kind,outcome,at)+");";
+ "EXECUTE identity_audit("+sqlArgs(eventId,kind,outcome,at)+");";
 
 test("P03-B0043 real audit table has insert-only NOLOGIN role and forced RLS",()=>{
  run("CREATE SCHEMA IF NOT EXISTS synqoria_identity;");
