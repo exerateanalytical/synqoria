@@ -6,7 +6,7 @@
     "domain": "OPD",
     "domainEn": "Outpatient care and clinical records",
     "domainFr": "Consultations et dossiers cliniques",
-    "module": "M05",
+    "module": "M16",
     "kind": "referral",
     "context": "patient",
     "sections": [
