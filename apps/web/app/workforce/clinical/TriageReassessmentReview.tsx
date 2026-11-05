@@ -75,7 +75,7 @@ export default function TriageReassessmentReview(){
    <div role="status" aria-live="polite" className="syn-audit-status" data-audit-status={phase}>{t[phase]}</div>
    {phase==="ready"&&<><div className="syn-audit-summary"><div><span>{t.facility}</span><strong>{facilityId}</strong></div><div><span>{t.current}</span><strong>{currentRevision??t.unknown}</strong></div><div><span>{t.total}</span><strong>{records.length}</strong></div></div>
     {records.length?<div className="syn-audit-scroll"><table><caption>{t.history} · M03-S04</caption><thead><tr><th scope="col">{t.revision}</th><th scope="col">{t.operation}</th><th scope="col">{t.occurred}</th><th scope="col">{t.digest}</th></tr></thead><tbody>{records.map(e=><tr key={e.revision}><td>{e.revision}</td><td>{e.operation.replaceAll("_"," ")}</td><td>{e.occurredAt}</td><td className="syn-audit-digest"><code>{e.digest}</code></td></tr>)}</tbody></table></div>:<p>{t.empty}</p>}
-    {next!==null?<button type="button" className="syn-audit-next" onClick={()=>void read(next)} disabled={phase==="loading"}><ChevronRight size={16} aria-hidden="true"/>{t.more}</button>:<p className="syn-audit-meta">{t.complete}</p>}
+    {next!==null?<button type="button" className="syn-audit-next" onClick={()=>void read(next)}><ChevronRight size={16} aria-hidden="true"/>{t.more}</button>:<p className="syn-audit-meta">{t.complete}</p>}
    </>}
    <section className="syn-audit-locked" aria-label={t.locked}><ShieldAlert size={20} aria-hidden="true"/><div><h3>{t.locked}</h3><p>{t.explain}</p></div><LockKeyhole size={19} aria-hidden="true"/></section>
   </section>
