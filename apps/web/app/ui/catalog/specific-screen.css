@@ -83,3 +83,11 @@
 @media(max-width:360px){.syn-specific-tabs button,.syn-specific-form-actions button,.syn-specific-toolbar>button,.syn-specific-footer button{flex:1 1 100%}.syn-specific-help{padding:12px}}
 @media(prefers-reduced-motion:reduce){.syn-specific *{transition:none!important;animation:none!important}}
 @media(forced-colors:active){.syn-specific-banner,.syn-specific-notice,.syn-specific-empty{border:2px solid CanvasText}}
+
+
+.syn-specific-filter-chips{display:flex;flex-wrap:wrap;gap:8px}
+.syn-specific-filter-chips span{display:inline-flex;align-items:center;border:1px solid #174ea6;border-radius:20px;padding:5px 10px;background:#fff;color:#174ea6;font-size:13px;max-width:100%;overflow-wrap:anywhere}
+.syn-specific-independent-check,.syn-specific-handover{display:flex;flex-direction:column;gap:8px;margin:14px 0;font-size:14px;font-weight:650}
+.syn-specific-independent-check{flex-direction:row;align-items:center}
+.syn-specific-independent-check input{width:22px;height:22px;min-height:22px;flex:0 0 22px}
+.syn-specific-handover textarea{background:#f1f3f5;color:#475569}
