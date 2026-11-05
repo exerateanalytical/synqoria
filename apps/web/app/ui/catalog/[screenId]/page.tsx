@@ -3,6 +3,8 @@ import {notFound} from "next/navigation";
 import registry from "../../../../../../registers/canonical-screens.json";
 import featureManifest from "../../../../../../registers/ui-specific-252-prototype-contracts.json";
 import flowMap from "../../../../../../registers/ui-cross-module-workflow-14.json";
+import enhancedDocs from "../../../../../../registers/hospital-document-template-catalog-v1.json";
+import {DOCUMENT_CATALOG} from "../../printables/registry";
 import type {SpecificScreenSpec} from "../SpecificScreenPreview";
 import {buildScreenContract} from "../screen-contract.mjs";
 import {ScreenPreviewClient} from "../ScreenPreviewClient";
@@ -22,6 +24,8 @@ export default async function ScreenCatalogueDetail({params}:{params:Promise<{sc
  const contract=buildScreenContract(s) as ScreenContract;
  const specificSpec=featureManifest.remainingSpecialized.find(x=>x.id===s.id) as SpecificScreenSpec|undefined;
  const connectedFlows=flowMap.flows.filter(x=>x.ids.includes(s.id));
+ const relatedStructured=DOCUMENT_CATALOG.filter(x=>x.module===s.module).slice(0,6);
+ const relatedPdf=enhancedDocs.templates.filter(x=>x.module===s.module).slice(0,6);
  const href=(id:string)=>"/ui/catalog/"+encodeURIComponent(id);
  return <div className="syn-ui">
   <a className="syn-skip" href="#screen-content">Skip to screen content</a>
@@ -37,7 +41,7 @@ export default async function ScreenCatalogueDetail({params}:{params:Promise<{sc
     <section className="syn-alert" role="status"><strong>No connected clinical system</strong><p>Do not enter real patient information. Interface entries are demonstration-only, never stored or sent. Final clinical actions, reports and exports remain locked.</p></section>
     <div className="syn-quick"><a href="#screen-ui">Screen workspace</a><a href="#related">Module navigation</a><Link href="/ui/catalog/components">Dialogs, controls and print catalogue</Link></div>
     <div className="syn-layout"><div className="syn-column"><section id="screen-ui" className="syn-panel"><div className="syn-section-head"><h2>{s.name}</h2><span className="syn-chip">S00–S13 states</span></div><ScreenPreviewClient contract={contract} specificSpec={specificSpec} related={peers.map(x=>({id:x.id,name:x.name}))}/></section></div>
-     <div className="syn-column"><section className="syn-panel" id="related"><h2>Related {s.module} screens</h2><nav className="syn-related">{peers.map(x=><Link key={x.id} href={href(x.id)} aria-current={x.id===s.id?"page":undefined}><span>{x.id}</span>{x.name}</Link>)}</nav></section>{connectedFlows.length>0&&<section className="syn-panel"><h2>Connected clinical workflows</h2>{connectedFlows.map(flow=><div key={flow.id}><h3>{flow.id} · {flow.title}</h3><p>{flow.exceptionPath}</p><nav className="syn-related">{flow.path.map(id=><Link key={id} href={"/ui/catalog/"+id} aria-current={id===s.id?"page":undefined}>{id}</Link>)}</nav></div>)}<Link href="/ui/catalog/workflows">All 14 workflows</Link></section>}<section className="syn-panel"><h2>Scope and gate status</h2><p>Field dictionary, role permissions, server-bound transitions, French localization, browser visual testing and clinical review must still be approved for this screen.</p><p><strong>Release:</strong> denied</p></section></div></div>
+     <div className="syn-column"><section className="syn-panel" id="related"><h2>Related {s.module} screens</h2><nav className="syn-related">{peers.map(x=><Link key={x.id} href={href(x.id)} aria-current={x.id===s.id?"page":undefined}><span>{x.id}</span>{x.name}</Link>)}</nav></section>{connectedFlows.length>0&&<section className="syn-panel"><h2>Connected clinical workflows</h2>{connectedFlows.map(flow=><div key={flow.id}><h3>{flow.id} · {flow.title}</h3><p>{flow.exceptionPath}</p><nav className="syn-related">{flow.path.map(id=><Link key={id} href={"/ui/catalog/"+id} aria-current={id===s.id?"page":undefined}>{id}</Link>)}</nav></div>)}<Link href="/ui/catalog/workflows">All 14 workflows</Link></section>}<section className="syn-panel"><h2>Associated document templates</h2><p>Blank, watermarked proofs; no clinical or fiscal issuance.</p><nav className="syn-related">{relatedStructured.map(x=><Link key={x.id} href={"/ui/printables/"+x.id}>{x.id} · {x.en}</Link>)}{relatedPdf.map(x=><Link key={x.id} href={"/documents/"+x.id}>{x.id} · {x.title}</Link>)}</nav><Link href="/hospital-documents">All hospital document templates</Link></section><section className="syn-panel"><h2>Scope and gate status</h2><p>Field dictionary, role permissions, server-bound transitions, French localization, browser visual testing and clinical review must still be approved for this screen.</p><p><strong>Release:</strong> denied</p></section></div></div>
     <nav className="syn-pager" aria-label="Previous and next screens">{i>0?<Link href={href(peers[i-1].id)}>Previous: {peers[i-1].name}</Link>:<span/>}{i+1<peers.length?<Link href={href(peers[i+1].id)}>Next: {peers[i+1].name}</Link>:<span/>}</nav>
    </main>
   </div>
