@@ -28,7 +28,10 @@ export function createIdentitySecurityAuditWriter(client,{pepper,now=Date.now}={
    typeof pepper!=="string"||!/^[0-9a-f]{64}$/i.test(pepper))deny();
  const secret=Buffer.from(pepper,"hex");
  return Object.freeze({
-  async append({actorId,tenantId,kind,outcome,correlationId}={}){
+  async append(input={}){
+   if(!input||typeof input!=="object"||Array.isArray(input)||
+      Object.keys(input).sort().join(",")!=="actorId,correlationId,kind,outcome,tenantId")deny();
+   const {actorId,tenantId,kind,outcome,correlationId}=input;
    if(![actorId,tenantId,correlationId].every(x=>typeof x==="string"&&UUID.test(x))||
      !kinds.has(kind)||!outcomes.has(outcome)||
      (kind==="LOGIN_GRANTED"&&outcome!=="PERMITTED")||
