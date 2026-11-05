@@ -1,0 +1,159 @@
+{
+  "version": "2026-11-05-real-code-first-slice",
+  "sourceBranch": "work/real-clinical-screens-first-slice-2026-11-05",
+  "authority": "registers/canonical-screens.json",
+  "canonicalScreenCount": 261,
+  "routeSlices": 9,
+  "liveApiReadSubsets": 4,
+  "nonclinicalFunctionalRoutes": 5,
+  "remainingWithoutOperationalRoute": 252,
+  "clinicallyAccepted": 0,
+  "clinicallyCertifiedModules": 0,
+  "clinicalRelease": "DENIED",
+  "blockers": [
+    "No production OIDC/MFA callback and verified session issuer",
+    "No production cell environment or end-to-end authenticated deployment evidence",
+    "Most 40 module APIs and exact clinical field dictionaries remain unimplemented/unapproved",
+    "No validated end-to-end mutations, clinical signatures, high-risk workflows, or regulator acceptance"
+  ],
+  "rows": [
+    {
+      "id": "G-S03",
+      "category": "verified-api-read-subset",
+      "endpoint": "/api/clinical/facility",
+      "functions": [
+        "Authenticated facility context read",
+        "Backend facility cross-check",
+        "Permission checked",
+        "EN/FR status"
+      ],
+      "missing": [
+        "OIDC/MFA issuer",
+        "Roster/shift selection",
+        "Role change transaction",
+        "Facility switch reauthorization"
+      ]
+    },
+    {
+      "id": "G-S06",
+      "category": "nonclinical-functional",
+      "endpoint": null,
+      "functions": [
+        "Non-PHI preferences persisted",
+        "EN/FR strings",
+        "Density, contrast, motion, time format",
+        "Cross-tab preferences update"
+      ],
+      "missing": [
+        "Remote preference syncing under approved staff identity",
+        "Manual accessibility acceptance"
+      ]
+    },
+    {
+      "id": "G-S10",
+      "category": "verified-api-read-subset",
+      "endpoint": "/api/clinical/health",
+      "functions": [
+        "Real cell process/readiness checks",
+        "Dependency failure handling",
+        "No false clinical readiness"
+      ],
+      "missing": [
+        "Deployed cell/observability integration",
+        "Approved downtime workflow",
+        "Offline local server acceptance"
+      ]
+    },
+    {
+      "id": "G-S11",
+      "category": "nonclinical-functional",
+      "endpoint": null,
+      "functions": [
+        "Searchable help topics",
+        "Real navigation",
+        "Bilingual guidance"
+      ],
+      "missing": [
+        "Approved helpdesk/ticket API integration",
+        "Institution-specific contacts and handbooks"
+      ]
+    },
+    {
+      "id": "G-S12",
+      "category": "nonclinical-functional",
+      "endpoint": null,
+      "functions": [
+        "Protected not-found navigation",
+        "Safe disclosure-free guidance",
+        "Bilingual content"
+      ],
+      "missing": [
+        "Retired-route policy by tenant",
+        "Actual replacement link authorizations"
+      ]
+    },
+    {
+      "id": "M01-S03",
+      "category": "verified-api-read-subset",
+      "endpoint": "/api/clinical/patients/{patientId}",
+      "functions": [
+        "Bounded patient metadata read",
+        "Backend scoped facility and patient verification",
+        "Identity status and source revision"
+      ],
+      "missing": [
+        "Full demographics",
+        "Contact/identifier history",
+        "Corrections workflow",
+        "Deployed OIDC/JDBC/RLS/audit integration"
+      ]
+    },
+    {
+      "id": "M03-S03",
+      "category": "verified-api-read-subset",
+      "endpoint": "/api/clinical/triage/{patientId}/{caseId}",
+      "functions": [
+        "Verified patient-scoped case metadata read",
+        "Triage stage, revision and assigned station",
+        "Deny-by-default service failures"
+      ],
+      "missing": [
+        "Observations and clinical vital signs",
+        "Authorized assessment commands",
+        "Clinical priority and scoring",
+        "Sign/handovers",
+        "Deployed triage HTTP + OIDC"
+      ]
+    },
+    {
+      "id": "M31-S01",
+      "category": "nonclinical-functional",
+      "endpoint": null,
+      "functions": [
+        "Browse/filter 662 document codes",
+        "View 376 structured + 304 PDF family",
+        "Print-safe preview navigation"
+      ],
+      "missing": [
+        "Template DB and role-based publishing",
+        "Real version/workflow approval",
+        "Institution-approved content"
+      ]
+    },
+    {
+      "id": "M31-S03",
+      "category": "nonclinical-functional",
+      "endpoint": null,
+      "functions": [
+        "Preview 376 structured templates",
+        "EN/FR sample heading",
+        "Browser print with sample watermark"
+      ],
+      "missing": [
+        "Authorized clinical template version approval",
+        "Accessibility/PDF standards certification",
+        "Real patient binding and issuance"
+      ]
+    }
+  ]
+}
