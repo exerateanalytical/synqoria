@@ -70,7 +70,7 @@ try{
     if(rep&&width===320){
      sampled.add(spec.module);await page.screenshot({path:resolve(out,spec.module+"-"+spec.id+"-320.png"),fullPage:true});sampleShots.push(spec.id);
     }
-    if(rep&&width===1440){await page.screenshot({path:resolve(out,spec.module+"-"+spec.id+"-1440.png"),fullPage:true});}
+    if(width===1440&&sampleShots.includes(spec.id)){await page.screenshot({path:resolve(out,spec.module+"-"+spec.id+"-1440.png"),fullPage:true});}
     for(let i=0;i<spec.tabs.length;i++){
      await page.getByRole("tab").nth(i).click();
      if((await page.getByRole("tab").nth(i).getAttribute("aria-selected"))!=="true")recordFail(spec,width,"tab-selection",i);
@@ -80,7 +80,7 @@ try{
       compare:document.querySelectorAll('.syn-specific-compare > section').length,
       headers:document.querySelectorAll('.syn-specific-data-table th').length,
       lanes:document.querySelectorAll('.syn-specific-lane').length,
-      metrics:document.querySelectorAll('.syn-specific-toolbar select:has(option[value]) option').length || document.querySelectorAll('.syn-specific-attrs strong').length,
+      metrics:document.querySelectorAll('select[data-metric-select="true"] option').length || document.querySelectorAll('.syn-specific-attrs strong').length,
       review:document.querySelectorAll('.syn-specific-attrs dt').length
      }));
      if(!activeLabelCount(spec,i,counts))recordFail(spec,width,"missing-field-groups",{tab:i,counts,expected:spec.fields.length});
