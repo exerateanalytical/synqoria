@@ -82,3 +82,18 @@
  .syn-doc-sample-ribbon{border:2px solid #74440a!important;color:#5a350e!important}
  .syn-doc-sheet-footer{margin-top:18px}
 }
+
+
+.syn-doc-complex-lineitems{padding:9px 0}
+.syn-doc-complex-lineitems>p{font-weight:700;color:#073656;font-size:11px;margin:0 0 8px}
+.syn-doc-complex-lineitems>small{display:block;color:#475569;font-size:10px;line-height:1.45;margin-top:8px}
+.syn-doc-lineitem-card{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;border:1px solid #d7dce1;border-radius:5px;padding:10px;break-inside:avoid;page-break-inside:avoid}
+.syn-doc-lineitem-card>div{display:grid;gap:6px;min-width:0;break-inside:avoid}
+.syn-doc-lineitem-card strong{font-weight:750;color:#475569;font-size:10px;line-height:1.35}
+.syn-doc-lineitem-card span{border-bottom:1px solid #b9c0c9;color:#475569;font-size:12px;min-height:15px}
+@media(max-width:850px){.syn-doc-lineitem-card{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@page{
+ @bottom-left{content:"SYNQORIA — UNISSUED SAMPLE";font-family:system-ui,sans-serif;font-size:8pt;color:#74440a}
+ @bottom-right{content:"Page " counter(page) " of " counter(pages);font-family:system-ui,sans-serif;font-size:8pt;color:#475569}
+}
+@media print{.syn-doc-lineitem-card{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
