@@ -26,19 +26,19 @@ test("all 261 canonical IDs have exactly one real application URL with no route 
 });
 test("route-only integration is never misreported as completed clinical work",()=>{
  assert.equal(routes.route_summary.registered,261);
- assert.equal(routes.route_summary.domainLocked,248);
- assert.equal(routes.route_summary.apiReadSubsets,8);
+ assert.equal(routes.route_summary.domainLocked,240);
+ assert.equal(routes.route_summary.apiReadSubsets,16);
  assert.equal(routes.route_summary.nonclinicalFunctional,5);
  assert.equal(implementation.routedScreenUrls,261);
- assert.equal(implementation.routeSlices,13);
- assert.equal(implementation.routeOnlyLocked,248);
- assert.equal(implementation.remainingWithoutOperationalRoute,248);
+ assert.equal(implementation.routeSlices,21);
+ assert.equal(implementation.routeOnlyLocked,240);
+ assert.equal(implementation.remainingWithoutOperationalRoute,240);
  assert.equal(implementation.clinicallyAccepted,0);
  assert.equal(implementation.clinicallyCertifiedModules,0);
  assert.equal(implementation.clinicalRelease,"DENIED");
  const totals={};
  for(const r of routes.screens)totals[r.implementation_status]=(totals[r.implementation_status]||0)+1;
- assert.deepEqual(totals,{route_registered_domain_adapter_missing:248,api_read_subset_not_clinically_complete:8,nonclinical_functional:5});
+ assert.deepEqual(totals,{route_registered_domain_adapter_missing:240,api_read_subset_not_clinically_complete:16,nonclinical_functional:5});
 });
 test("all 40 modules and shared routing families are covered, with explicit data groups",()=>{
  assert.equal(new Set(canonical.map(s=>s.module)).size,41);
@@ -49,10 +49,10 @@ test("all 40 modules and shared routing families are covered, with explicit data
   assert.ok(s.primary_action.trim(),s.id+" missing action intent");
  }
 });
-test("all 13 partial and nonclinical slices are preserved without shadowing",()=>{
+test("all 21 partial and nonclinical slices are preserved without shadowing",()=>{
  const source=readFileSync(new URL("../apps/web/app/workforce/clinical/[screenId]/page.tsx",import.meta.url),"utf8");
  for(const id of integrated.keys())assert.ok(canonical.some(x=>x.id===id));
- assert.equal(integrated.size,13);
+ assert.equal(integrated.size,21);
  for(const s of integrated.values()){
   const r=routes.screens.find(x=>x.screen_id===s.id);
   assert.equal(r.implementation_status,s.category==="verified-api-read-subset"?"api_read_subset_not_clinically_complete":"nonclinical_functional");
