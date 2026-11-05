@@ -1,0 +1,58 @@
+name: SYNQORIA identity UI build and browser gates
+on:
+  push:
+    branches: [work/ui-identity-registration-2026-11-05]
+  pull_request:
+    paths:
+      - 'apps/web/app/ui/catalog/**'
+      - 'tests/ui_identity_browser_audit.mjs'
+      - 'tests/ui_browser_audit.mjs'
+      - 'registers/canonical-screens.json'
+permissions:
+  contents: read
+jobs:
+  identity-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install workspaces
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Compile UX core validation and privacy primitives
+        run: npm run build --workspace packages/ux-core
+      - name: Verify canonical 261-screen contract
+        run: node --test tests/ui_catalog_coverage.test.mjs
+      - name: Strict web TypeScript check
+        run: npm exec --workspace apps/web -- tsc --noEmit
+      - name: Actual Next production build
+        run: npm run build --workspace apps/web
+      - name: Install browser runner
+        run: |
+          npm install --no-save playwright@1.56.1 --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Start compiled application
+        run: |
+          (cd apps/web && ../../node_modules/.bin/next start --port 3000) > /tmp/synqoria-identity-next.log 2>&1 &
+          for i in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:3000/ui/catalog >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/synqoria-identity-next.log
+          exit 1
+      - name: All 261 routes and seven representative generic layouts
+        run: node tests/ui_browser_audit.mjs
+      - name: Nine identity and registration routes in 27 responsive viewports
+        run: node tests/ui_identity_browser_audit.mjs
+      - name: Retain screenshot and route evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synqoria-identity-ui-evidence
+          path: |
+            /tmp/synqoria-ui-browser-audit/
+            /tmp/synqoria-ui-identity-audit/
+          if-no-files-found: warn
+          retention-days: 7
