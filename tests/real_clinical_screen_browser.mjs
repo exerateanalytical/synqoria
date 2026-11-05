@@ -108,7 +108,7 @@ try{
  }
  const page=await browser.newPage();
  await page.goto(base+"/workforce/clinical");
- if(await page.locator(".syn-live-index-item").count()!==10)errors.push({issue:"missing operational menu links"});
+ if(await page.locator('[data-route-directory="261"]').count()!==1||await page.locator("tbody tr").count()!==261)errors.push({issue:"missing canonical route directory or incomplete screen list"});
  await page.goto(base+"/workforce/clinical/M31-S01");
  if(!page.url().endsWith("/hospital-documents"))errors.push({issue:"template catalogue route did not reach working index"});
  await page.goto(base+"/workforce/clinical/M31-S03");
