@@ -26,7 +26,7 @@ try{
  assert.match(await root.locator(".syn-library-results").innerText(),/matching forms/);
  await root.locator(".syn-library-reset").click();
  await root.getByLabel("Only 18 canonical outputs (P01–P18)").check();
- assert.match(await root.locator(".syn-library-results").innerText(),/18 matching forms/);
+ assert.match(await root.locator(".syn-library-results").innerText(),/18\s+matching forms/);
  await root.close();
  for(const doc of representative){
   for(const width of widths){
