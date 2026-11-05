@@ -8,7 +8,7 @@ const out=process.env.SYNQORIA_UI_AUDIT_DIR||"/tmp/synqoria-ui-browser-audit";
 mkdirSync(out,{recursive:true});
 const registry=JSON.parse(readFileSync(new URL("../registers/canonical-screens.json",import.meta.url),"utf8"));
 const screens=registry.screen_register;
-const representatives={F:"G-S01",L:"G-S05",D:"G-S08",X:"G-S09",B:"M02-S01",T:"M06-S04",H:"G-S04"};
+const representatives={F:"M05-S02",L:"G-S05",D:"G-S08",X:"G-S09",B:"M02-S01",T:"M06-S04",H:"G-S04"};
 const widths=[320,768,1440];
 const summary={schemaVersion:1,phase:"browser specimen QA only",routesChecked:0,routeFailures:[],viewportChecks:[],checklist:{noBodyOverflow:true,noButtonGlow:true,noButtonOverlap:true,threeTabsEach:true},explicitExclusions:["No live clinical data","No approved domain forms","No cross-tenant API verification","No screen reader or WCAG certification","No approved medication/clinical rules","No 261-screen human usability signoff"]};
 for(const s of screens){
