@@ -50,12 +50,12 @@ function PreviewField({field,value,onChange}:{field:SpecificField;value:string;o
   <small id={id+"-help"}>{locked?"Locked until approved field dictionary and clinical/permission validation.":"Demonstration only. Requiredness, valid ranges and source are not yet approved."}</small>
  </label>;
 }
-function FormSpecimen({spec,tab,values,setField,onReview,onClear}:{spec:SpecificScreenSpec;tab:number;values:Record<string,string>;setField:(id:string,v:string)=>void;onReview:()=>void;onClear:()=>void}){
+function FormSpecimen({spec,tab,values,setField,onReview,onClear,onCancelReview}:{spec:SpecificScreenSpec;tab:number;values:Record<string,string>;setField:(id:string,v:string)=>void;onReview:()=>void;onClear:()=>void;onCancelReview:()=>void}){
  if(tab===spec.tabs.length-1)return <div>
   <h3>Review demonstration entry</h3>
   <p>No review of real clinical data is possible. The sections below show only whether an illustrative input was entered.</p>
   <dl className="syn-specific-attrs">{spec.fields.map(f=><div key={f.id}><dt>{f.label}</dt><dd>{f.widget==="restricted"?"Restricted":values[f.id]?.trim()?"Synthetic entry supplied":"Not entered"}</dd></div>)}</dl>
-  <section className="syn-specific-notice"><strong>Required independent safety checks</strong><p>{spec.authorityWorkflow}</p><p>All real inputs must pass approved validation, current source revision, RBAC, tenant/patient scope, idempotency, durable audit and service verification before action.</p></section><LockedAction label={spec.primaryAction}/></div>;
+  <section className="syn-specific-notice"><strong>Required independent safety checks</strong><p>{spec.authorityWorkflow}</p><p>All real inputs must pass approved validation, current source revision, RBAC, tenant/patient scope, idempotency, durable audit and service verification before action.</p></section><button type="button" className="syn-specific-secondary" onClick={onCancelReview}>Return to fields (cancel review)</button><LockedAction label={spec.primaryAction}/></div>;
  const fields=spec.fields.filter(f=>f.tabIndex===tab);
  return <div><h3>{spec.tabs[tab]}</h3><p>Fields taken from the canonical screen register. Unknown clinical constraints remain locked or unapproved.</p>
   <form className="syn-specific-form" noValidate onSubmit={e=>{e.preventDefault();onReview();}}>
@@ -64,14 +64,14 @@ function FormSpecimen({spec,tab,values,setField,onReview,onClear}:{spec:Specific
 }
 function Filters({spec}:{spec:SpecificScreenSpec}){
  const [q,setQ]=useState(""),[open,setOpen]=useState(false),[scope,setScope]=useState(""),[status,setStatus]=useState(""),[from,setFrom]=useState(""),[to,setTo]=useState(""),[sort,setSort]=useState("recent"),[size,setSize]=useState("25"),[applied,setApplied]=useState(false),[columns,setColumns]=useState(true);
- const [visible,setVisible]=useState<string[]>(spec.fields.map(f=>f.id));
+ const [visible,setVisible]=useState<string[]>(spec.fields.map(f=>f.id));const [view,setView]=useState<"table"|"cards">("table");
  const reset=()=>{setQ("");setScope("");setStatus("");setFrom("");setTo("");setApplied(false);setVisible(spec.fields.map(f=>f.id));};
  const show=spec.fields.filter(f=>visible.includes(f.id));
  return <div className="syn-specific-worklist">
   <div className="syn-specific-toolbar"><label>Search within authorized results<input type="search" value={q} onChange={e=>setQ(e.target.value)} maxLength={120} placeholder="Authorized search only — no server connected"/></label>
    <button type="button" className="syn-specific-secondary" aria-expanded={open} aria-controls="syn-specific-filter-panel" onClick={()=>setOpen(v=>!v)}>{open?"Hide filters":"Show filters"}</button>
    <button type="button" className="syn-specific-secondary" onClick={reset}>Clear filters</button>
-   <button type="button" className="syn-specific-secondary" aria-expanded={columns} onClick={()=>setColumns(v=>!v)}>{columns?"Hide columns":"Choose columns"}</button>
+   <button type="button" className="syn-specific-secondary" aria-expanded={columns} onClick={()=>setColumns(v=>!v)}>{columns?"Hide columns":"Choose columns"}</button><button type="button" className="syn-specific-secondary" aria-pressed={view==="table"} onClick={()=>setView("table")}>Table view</button><button type="button" className="syn-specific-secondary" aria-pressed={view==="cards"} onClick={()=>setView("cards")}>Card view</button>
   </div>
   {open&&<section id="syn-specific-filter-panel" className="syn-specific-filter-grid" aria-label="Scoped worklist filters">
    <label>Permitted scope<select value={scope} onChange={e=>setScope(e.target.value)}><option value="">All permitted scopes</option><option value="current">Current facility (preview)</option><option value="assigned">Assigned to me (preview)</option></select></label>
@@ -81,9 +81,9 @@ function Filters({spec}:{spec:SpecificScreenSpec}){
    <button type="button" className="syn-specific-primary" onClick={()=>setApplied(true)}>Apply filters</button>
   </section>}
   {columns&&<fieldset className="syn-specific-column-chooser"><legend>Visible information columns</legend>{spec.fields.map(f=><label key={f.id}><input type="checkbox" checked={visible.includes(f.id)} onChange={e=>setVisible(old=>e.target.checked?unique([...old,f.id]):old.length>1?old.filter(x=>x!==f.id):old)}/>{f.label}</label>)}</fieldset>}
-  {applied&&<p role="status" className="syn-specific-notice">Local filter choices updated. No hospital query was sent.</p>}
+  {applied&&<div role="status" className="syn-specific-notice"><p>Local filter choices updated. No hospital query was sent.</p><div className="syn-specific-filter-chips">{[scope,status,from,to,q].filter(Boolean).map((v,i)=><span key={i}>{v}</span>)}</div></div>}
   <div className="syn-specific-toolbar"><label>Sort by<select value={sort} onChange={e=>setSort(e.target.value)}><option value="recent">Newest first</option><option value="oldest">Oldest first</option><option value="label">Label</option></select></label><label>Items per page<select value={size} onChange={e=>setSize(e.target.value)}><option>10</option><option>25</option><option>50</option></select></label></div>
-  <div className="syn-specific-data-table"><table><caption>{spec.title}: no authorized results</caption><thead><tr>{show.map(f=><th key={f.id} scope="col">{f.label}</th>)}<th scope="col">Action</th></tr></thead><tbody><tr><td colSpan={show.length+1}>No data connected. Record actions remain unavailable.</td></tr></tbody></table></div>
+  {view==="table"?<div className="syn-specific-data-table"><table><caption>{spec.title}: no authorized results</caption><thead><tr>{show.map(f=><th key={f.id} scope="col">{f.label}</th>)}<th scope="col">Action</th></tr></thead><tbody><tr><td colSpan={show.length+1}>No data connected. Record actions remain unavailable.</td></tr></tbody></table></div>:<Empty kind="worklist cards"/>}
   <div className="syn-specific-pager"><button type="button" disabled>Previous page</button><span>Page 1 of 1 · 0 records</span><button type="button" disabled>Next page</button></div>
   <LockedAction label={spec.primaryAction}/></div>;
 }
@@ -95,7 +95,7 @@ function Details({spec,tab}:{spec:SpecificScreenSpec;tab:number}){
 function Compare({spec,tab,reason,onReason}:{spec:SpecificScreenSpec;tab:number;reason:string;onReason:(v:string)=>void}){
  const final=tab===spec.tabs.length-1;
  return <div><h3>{spec.tabs[tab]}</h3>
-  {final?<div className="syn-specific-review"><label>Review rationale (synthetic text only)<textarea rows={4} maxLength={300} value={reason} onChange={e=>onReason(e.target.value)} placeholder="Reason must be verified against source policy"/></label><p>Independent reviewer, version conflict, consent and source integrity must be server-confirmed.</p><LockedAction label={spec.primaryAction}/><LockedAction label="Request independent approval"/></div>:
+  {final?<div className="syn-specific-review"><label>Review rationale (synthetic text only)<textarea rows={4} maxLength={300} value={reason} onChange={e=>onReason(e.target.value)} placeholder="Reason must be verified against source policy"/></label><p>Independent reviewer, version conflict, consent and source integrity must be server-confirmed.</p><LockedAction label={spec.primaryAction}/><label className="syn-specific-independent-check"><input type="checkbox" checked={false} disabled/>Independent reviewer and current revision verification required</label><LockedAction label="Request independent approval"/></div>:
   <div className="syn-specific-compare">{spec.fields.filter((_,i)=>tab===0?i<Math.ceil(spec.fields.length/2):i>=Math.ceil(spec.fields.length/2)).map(f=><section key={f.id}><h4>{f.label}</h4><dl><div><dt>Current authoritative value</dt><dd>Not connected</dd></div><div><dt>Proposed or referenced value</dt><dd>Not connected</dd></div></dl></section>)}</div>}
  </div>;
 }
@@ -103,17 +103,17 @@ function Board({spec,tab}:{spec:SpecificScreenSpec;tab:number}){
  const [date,setDate]=useState(""),[resource,setResource]=useState(""),[status,setStatus]=useState(""),[view,setView]=useState<"board"|"list">("board");
  return <div><h3>{spec.tabs[tab]}</h3>
   <div className="syn-specific-toolbar"><label>Date<input type="date" value={date} onChange={e=>setDate(e.target.value)}/></label><label>Resource/location<select value={resource} onChange={e=>setResource(e.target.value)}><option value="">Authorized scope only</option><option value="assigned">Assigned resource (preview)</option></select></label><label>Status<select value={status} onChange={e=>setStatus(e.target.value)}><option value="">Any permitted status</option><option value="pending">Pending (preview)</option></select></label><button type="button" className="syn-specific-secondary" aria-pressed={view==="board"} onClick={()=>setView("board")}>Board</button><button type="button" className="syn-specific-secondary" aria-pressed={view==="list"} onClick={()=>setView("list")}>List</button><button type="button" className="syn-specific-secondary" onClick={()=>{setDate("");setResource("");setStatus("");}}>Clear</button></div>
-  <div className={view==="board"?"syn-specific-board":"syn-specific-board is-list"}>{spec.fields.map(f=><section className="syn-specific-lane" key={f.id}><h4>{f.label}</h4><p>No authorized items or resource assignments</p></section>)}</div><LockedAction label={spec.primaryAction}/></div>;
+  <div className={view==="board"?"syn-specific-board":"syn-specific-board is-list"}>{spec.fields.map(f=><section className="syn-specific-lane" key={f.id}><h4>{f.label}</h4><p>No authorized items or resource assignments</p></section>)}</div><label className="syn-specific-handover">Handover notes (server source required)<textarea disabled rows={3} placeholder="Protected handover is unavailable in UI prototype"/></label><LockedAction label={spec.primaryAction}/></div>;
 }
 function Timeline({spec,tab}:{spec:SpecificScreenSpec;tab:number}){
  const [from,setFrom]=useState(""),[to,setTo]=useState(""),[scope,setScope]=useState(""),[metric,setMetric]=useState(spec.fields[0]?.id||"");
  return <div><h3>{spec.tabs[tab]}</h3><div className="syn-specific-toolbar"><label>From<input type="date" value={from} onChange={e=>setFrom(e.target.value)}/></label><label>To<input type="date" value={to} min={from||undefined} onChange={e=>setTo(e.target.value)}/></label><label>Scope<select value={scope} onChange={e=>setScope(e.target.value)}><option value="">Permitted scope only</option><option value="current">Current facility (preview)</option></select></label><label>Measure<select data-metric-select="true" value={metric} onChange={e=>setMetric(e.target.value)}>{spec.fields.map(f=><option key={f.id} value={f.id}>{f.label}</option>)}</select></label></div>
   {tab===0?<Empty kind="time-series measurements"/>:tab===1?<div className="syn-specific-data-table"><table><caption>Accessible measurement table</caption><thead><tr><th scope="col">Timestamp</th><th scope="col">Value / unit</th><th scope="col">Source / revision</th></tr></thead><tbody><tr><td colSpan={3}>No authorized measurements</td></tr></tbody></table></div>:<div><Empty kind="audit/measurement corrections"/><p>Clinical units, reference intervals and source corrections require approved terminology and device evidence.</p></div>}
-  <LockedAction label={spec.primaryAction}/><LockedAction label="Export results"/></div>;
+  <LockedAction label={spec.primaryAction}/><LockedAction label="View authorized corrections"/><LockedAction label="Export results"/></div>;
 }
 function Dashboard({spec,tab}:{spec:SpecificScreenSpec;tab:number}){
- const label=tab===0?"assigned tasks":tab===1?"urgent exceptions":"service status";
- return <div><h3>{spec.tabs[tab]}</h3>{tab===0&&<div className="syn-specific-quick">{spec.navigation.modulePeers.filter(id=>id!==spec.id).slice(0,6).map(id=><Link href={"/ui/catalog/"+id} key={id}>{id} · Open task preview</Link>)}</div>}<Empty kind={label}/><div className="syn-specific-attrs">{spec.fields.map(f=><div key={f.id}><strong>{f.label}</strong><p>Server-owned metric or context unavailable</p></div>)}</div><LockedAction label={spec.primaryAction}/></div>;
+ const [scope,setScope]=useState("");const label=tab===0?"assigned tasks":tab===1?"urgent exceptions":"service status";
+ return <div><h3>{spec.tabs[tab]}</h3><div className="syn-specific-toolbar"><label>Assigned scope<select value={scope} onChange={e=>setScope(e.target.value)}><option value="">Current authorized scope</option><option value="facility">Current facility (preview)</option></select></label><LockedAction label="Refresh server status"/></div>{tab===0&&<div className="syn-specific-quick">{spec.navigation.modulePeers.filter(id=>id!==spec.id).slice(0,6).map(id=><Link href={"/ui/catalog/"+id} key={id}>{id} · Open task preview</Link>)}</div>}<Empty kind={label}/><div className="syn-specific-attrs">{spec.fields.map(f=><div key={f.id}><strong>{f.label}</strong><p>Server-owned metric or context unavailable</p></div>)}</div><LockedAction label={spec.primaryAction}/></div>;
 }
 export function SpecificScreenPreview({spec}:{spec:SpecificScreenSpec}){
  const [tab,setTab]=useState(0),[values,setValues]=useState<Record<string,string>>({}),[reason,setReason]=useState(""),[showHelp,setShowHelp]=useState(false),[state,setState]=useState("S00");
@@ -122,7 +122,7 @@ export function SpecificScreenPreview({spec}:{spec:SpecificScreenSpec}){
  const clear=()=>{setValues({});setReason("");setTab(0);setState("S00");};
  const body=():ReactNode=>{
   switch(spec.layout){
-   case "F":return <FormSpecimen spec={spec} tab={tab} values={values} setField={setField} onReview={()=>setTab(spec.tabs.length-1)} onClear={clear}/>;
+   case "F":return <FormSpecimen spec={spec} tab={tab} values={values} setField={setField} onReview={()=>setTab(spec.tabs.length-1)} onClear={clear} onCancelReview={()=>setTab(0)}/>;
    case "L":return <Filters spec={spec}/>;
    case "D":return <Details spec={spec} tab={tab}/>;
    case "X":return <Compare spec={spec} tab={tab} reason={reason} onReason={setReason}/>;
