@@ -1,12 +1,12 @@
 {
-  "version": "2026-11-05-261-route-coverage",
-  "sourceBranch": "work/canonical-261-route-coverage-2026-11-05",
+  "version": "2026-11-05-identity-triage-read-slice",
+  "sourceBranch": "work/clinical-identity-triage-read-integrations-2026-11-05",
   "authority": "registers/canonical-screens.json",
   "canonicalScreenCount": 261,
-  "routeSlices": 10,
-  "liveApiReadSubsets": 5,
+  "routeSlices": 13,
+  "liveApiReadSubsets": 8,
   "nonclinicalFunctionalRoutes": 5,
-  "remainingWithoutOperationalRoute": 251,
+  "remainingWithoutOperationalRoute": 248,
   "clinicallyAccepted": 0,
   "clinicallyCertifiedModules": 0,
   "clinicalRelease": "DENIED",
@@ -171,10 +171,61 @@
         "Clinical assessment and queue commands",
         "Authoritative audit/role review and deployment tests"
       ]
+    },
+    {
+      "id": "M01-S01",
+      "category": "verified-api-read-subset",
+      "endpoint": "GET /api/clinical/patients/{patientId}",
+      "functions": [
+        "Server-authorized exact-UUID lookup for already known patient ID",
+        "Trusted facility and patient scope checks",
+        "Unknown/denied patient indistinguishable 404",
+        "No name/contact search claims"
+      ],
+      "missing": [
+        "Indexed patient search across approved identification criteria",
+        "Name/DOB match confidence",
+        "Record merge and duplicate alerts",
+        "Production OIDC and clinical cell integration"
+      ]
+    },
+    {
+      "id": "M03-S04",
+      "category": "verified-api-read-subset",
+      "endpoint": "GET /api/clinical/triage/{patientId}/{caseId}/history?afterRevision={n}",
+      "functions": [
+        "Bounded strict triage audit page with 100-event maximum",
+        "Patient, facility and case reauthorization on each request",
+        "Controlled pagination with event revision/digest/timestamp",
+        "No reassessment write or medical priority inference"
+      ],
+      "missing": [
+        "Authorized reassessment command and clinician attestation",
+        "Verified observations and priority review",
+        "Production triage audit source deployment",
+        "Clinical approval and workflow certification"
+      ]
+    },
+    {
+      "id": "M03-S05",
+      "category": "verified-api-read-subset",
+      "endpoint": "POST /api/clinical/triage/views/{patientId}",
+      "functions": [
+        "Existing authoritative read-only PENDING_HANDOVERS view specialized for handover",
+        "Patient-scoped explicit case IDs, bounded 50 cases",
+        "Nurse/receiving clinician references from verified case projection only",
+        "No clinician assignment or handover signoff"
+      ],
+      "missing": [
+        "Handover transition command with idempotency and approval",
+        "Receiving clinician acknowledgement",
+        "Transfer acceptance and destination validation",
+        "Production OIDC/clinical cell integration"
+      ]
     }
   ],
   "routedScreenUrls": 261,
-  "routeOnlyLocked": 251,
+  "routeOnlyLocked": 248,
   "routeOnlyDefinition": "HTTP route exists, but its authoritative clinical data service, command handling and patient-scope workflow are not implemented. Route-only must never be represented as operational software.",
-  "criticalClarification": "261/261 URL coverage; 10/261 partial operational or functional nonclinical slices; 251/261 backend-locked domain workstations; 0/261 clinically certified."
+  "criticalClarification": "261/261 URL routes, 13/261 partial or nonclinical operation surfaces, 248/261 backend-locked domain routes, zero clinical workflow acceptances; OIDC/cell not deployed."
 }
