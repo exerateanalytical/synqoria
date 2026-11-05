@@ -61,6 +61,7 @@ const profiles:Record<string,PrintProfile>={
  "consent":norm(empty,["Patient / authorized representative","Qualified explaining clinician","Independent witness / interpreter if required"],"a4-portrait","The procedure-specific explanation, material risks, alternatives, capacity, voluntary choice, and applicable local legal text require qualified approval. This blank sample cannot capture valid consent."),
  "privacy":norm(["Recipient / purpose","Permitted data scope","Consent or legal basis","Expiry / restriction"],["Privacy officer","Data subject or legal representative when applicable"]),
  "critical":norm(["Event time","Critical finding","Notified role / channel","Readback / response","Escalation"],["Reporter","Receiving qualified clinician"]),
+ "audit":norm(["Event time","Actor / scope","Action","Source digest / provenance","Reviewer"],["Export owner","Independent audit reviewer"],"a4-landscape","Audit records require verified integrity, least-privilege disclosure, retention and encrypted transfer before issuance."),
  "quality":norm(["Control / criterion","Evidence","Outcome","Owner","Follow-up date"],["Quality assessor","Independent reviewer"]),
  "public-health":norm(["Indicator / code","Period","Verified aggregate","Source / denominator","Reviewer"],["Data officer","Authorized public health reviewer"],"a4-landscape"),
  "custody":norm(["Item / seal ID","Source and destination","Date / time","Sender","Receiver"],["Sending custodian","Receiving custodian"]),
