@@ -44,3 +44,16 @@ test("B0055 injection of one permissive additional policy cannot silently grant 
  try{await denied();}finally{sql("DROP POLICY dangerous_for_all ON synqoria_identity.oidc_replay_state;");}
  assert.equal((await verifyIdentitySchemaPolicies(client)).verified,true);
 });
+
+test("B0061 a correctly named but permissive USING(true) policy is denied by predicate attestation",async()=>{
+ sql("ALTER POLICY staff_session_active_read ON synqoria_identity.staff_sessions USING (true);");
+ try{await denied();}
+ finally{sql("ALTER POLICY staff_session_active_read ON synqoria_identity.staff_sessions USING (expires_at > clock_timestamp());");}
+ assert.equal((await verifyIdentitySchemaPolicies(client)).verified,true);
+});
+test("B0061 an INSERT policy without its bounded TTL must fail before identity boot",async()=>{
+ sql("ALTER POLICY staff_session_new_secure ON synqoria_identity.staff_sessions WITH CHECK (expires_at > clock_timestamp());");
+ try{await denied();}
+ finally{sql("ALTER POLICY staff_session_new_secure ON synqoria_identity.staff_sessions WITH CHECK (expires_at > clock_timestamp() AND expires_at <= clock_timestamp()+INTERVAL '10 minutes');");}
+ assert.equal((await verifyIdentitySchemaPolicies(client)).verified,true);
+});
