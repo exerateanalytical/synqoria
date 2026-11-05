@@ -1,0 +1,936 @@
+[
+  {
+    "id": "P03",
+    "en": "Specimen label",
+    "fr": "Étiquette de prélèvement",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "label",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Patient match",
+        "fields": [
+          "Approved patient identifiers",
+          "Encounter and order reference"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Collection",
+        "fields": [
+          "Specimen accession",
+          "Specimen type and site",
+          "Collected date/time",
+          "Collector initials"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Traceability",
+        "fields": [
+          "Container",
+          "Test routing",
+          "Barcode source status"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "P04",
+    "en": "Laboratory results report",
+    "fr": "Compte rendu des résultats de laboratoire",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "lab-result",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Report",
+        "fields": [
+          "Ordered investigation",
+          "Accession number",
+          "Result status",
+          "Ordering clinician"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Specimen",
+        "fields": [
+          "Type",
+          "Site",
+          "Collected time",
+          "Received time"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Analysis",
+        "fields": [
+          "Analyte and code",
+          "Observed value",
+          "Unit and reference interval",
+          "Flag and interpretation"
+        ]
+      },
+      {
+        "id": "s04",
+        "heading": "Release",
+        "fields": [
+          "Performing laboratory",
+          "Validator",
+          "Issued time and report version"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-003",
+    "en": "Laboratory test requisition",
+    "fr": "Bon de demande d'analyses",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "order",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Order",
+        "fields": [
+          "Test and code",
+          "Clinical indication",
+          "Urgency",
+          "Ordering provider"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Patient",
+        "fields": [
+          "Identity verification",
+          "Collection considerations",
+          "Infection precautions"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-004",
+    "en": "Specimen collection form",
+    "fr": "Fiche de prélèvement biologique",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "form",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Collection",
+        "fields": [
+          "Specimen source",
+          "Type and container",
+          "Time and collector"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Precautions",
+        "fields": [
+          "Fasting or preparation",
+          "Transport conditions",
+          "Label verification"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-005",
+    "en": "Specimen transport chain-of-custody",
+    "fr": "Chaîne de traçabilité des échantillons",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "log",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Transport",
+        "fields": [
+          "Accession",
+          "Container count",
+          "Storage temperature or condition"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Transfer",
+        "fields": [
+          "Sender",
+          "Courier",
+          "Recipient",
+          "Times",
+          "Breach and response"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-006",
+    "en": "Rejected specimen notice",
+    "fr": "Avis de rejet d’échantillon",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "notice",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Specimen",
+        "fields": [
+          "Accession and collection reference",
+          "Rejection reason",
+          "Observed quality issue"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Follow-up",
+        "fields": [
+          "Recollection instructions",
+          "Communicated to",
+          "Time"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-007",
+    "en": "Specimen accession log",
+    "fr": "Registre de réception des échantillons",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "log",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Accession",
+        "fields": [
+          "Receipt timestamp",
+          "Specimen condition",
+          "Identifier verification"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Processing",
+        "fields": [
+          "Laboratory section",
+          "Assigned test batch",
+          "Responsible staff"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-008",
+    "en": "Hematology panel report",
+    "fr": "Compte rendu d'hématologie",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "lab-result",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Report",
+        "fields": [
+          "Panel and ordered date",
+          "Specimen reference"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Results",
+        "fields": [
+          "Cell counts and units",
+          "Hemoglobin",
+          "Differential and flagged measurements"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Interpretation",
+        "fields": [
+          "Reference intervals",
+          "Comments",
+          "Validation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-009",
+    "en": "Clinical chemistry panel report",
+    "fr": "Compte rendu de biochimie clinique",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "lab-result",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Report",
+        "fields": [
+          "Chemistry order",
+          "Sample and method"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Results",
+        "fields": [
+          "Analyte",
+          "Numeric value and unit",
+          "Reference interval",
+          "Flag"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Interpretation",
+        "fields": [
+          "Verified finding",
+          "Released by"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-010",
+    "en": "Urinalysis result report",
+    "fr": "Compte rendu d'analyse d'urine",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "lab-result",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Sample",
+        "fields": [
+          "Urine type and collection",
+          "Preparation"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Results",
+        "fields": [
+          "Physical observations",
+          "Chemical strip",
+          "Microscopy findings"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Conclusion",
+        "fields": [
+          "Method",
+          "Interpretation and approval"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-011",
+    "en": "Microbiology culture report",
+    "fr": "Compte rendu de culture microbiologique",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "lab-result",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Specimen",
+        "fields": [
+          "Source and collection conditions",
+          "Accession"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Culture",
+        "fields": [
+          "Organism identification",
+          "Growth result",
+          "Method and incubation"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Interpretation",
+        "fields": [
+          "Verified conclusion",
+          "Critical communication"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-012",
+    "en": "Antimicrobial susceptibility report",
+    "fr": "Antibiogramme",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "lab-result",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Culture",
+        "fields": [
+          "Organism and isolate",
+          "Method"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Susceptibility",
+        "fields": [
+          "Antimicrobial agent",
+          "MIC or zone and unit",
+          "Interpretation standard and version"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Reviewer",
+          "Source result and release time"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-013",
+    "en": "Serology and immunology report",
+    "fr": "Compte rendu de sérologie et immunologie",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "lab-result",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Test",
+        "fields": [
+          "Assay and platform",
+          "Sample status"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Results",
+        "fields": [
+          "Antigen/antibody markers",
+          "Index/value",
+          "Units",
+          "Cutoff method"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Conclusion",
+        "fields": [
+          "Assay-specific interpretation and validation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-014",
+    "en": "Coagulation test report",
+    "fr": "Compte rendu d’hémostase",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "lab-result",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Tests",
+        "fields": [
+          "Coagulation analyte and method",
+          "Collection constraints"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Results",
+        "fields": [
+          "Prothrombin/INR and other measures",
+          "Units",
+          "Reference intervals"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Interferences",
+          "Author and verified status"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-015",
+    "en": "Hormone/endocrine report",
+    "fr": "Compte rendu d'endocrinologie",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "lab-result",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Assay",
+        "fields": [
+          "Hormone or test code",
+          "Method and specimen"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Results",
+        "fields": [
+          "Value",
+          "Unit",
+          "Reference interval according to relevant context"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Source and verified interpretation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-016",
+    "en": "Histopathology report",
+    "fr": "Compte rendu anatomopathologique",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "pathology",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Case",
+        "fields": [
+          "Tissue specimen and site",
+          "Procedure type",
+          "Accession"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Microscopy",
+        "fields": [
+          "Macroscopic description",
+          "Histological findings"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Conclusion",
+        "fields": [
+          "Diagnosis and coded classification if approved",
+          "Reviewer",
+          "Amendment/version"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-017",
+    "en": "Arterial blood gas report",
+    "fr": "Gazométrie artérielle",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "lab-result",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Collection",
+        "fields": [
+          "Sample type and time",
+          "Device context"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Values",
+        "fields": [
+          "pH and gases",
+          "Bicarbonate",
+          "Lactate if ordered",
+          "Units and reference"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Verification",
+        "fields": [
+          "Analytical source and quality flags"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-018",
+    "en": "Molecular/genetic test report",
+    "fr": "Compte rendu de biologie moléculaire",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "lab-result",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Test",
+        "fields": [
+          "Assay indication",
+          "Gene/target or organism",
+          "Method limitations"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Results",
+        "fields": [
+          "Detected variants or targets",
+          "Qualifiers",
+          "Interpretation"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Consent",
+        "fields": [
+          "Applicable disclosure restrictions",
+          "Validating specialist"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-019",
+    "en": "Critical laboratory result notification",
+    "fr": "Notification de résultat critique",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "critical",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Result",
+        "fields": [
+          "Critical value with unit",
+          "Source reference",
+          "Verified timestamp"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Notification",
+        "fields": [
+          "Receiver role",
+          "Communication channel",
+          "Readback",
+          "Escalation and action"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-020",
+    "en": "Laboratory internal quality control log",
+    "fr": "Registre de contrôle qualité interne",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "log",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Control",
+        "fields": [
+          "Batch and kit lot",
+          "Control material",
+          "Expected range"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Run",
+        "fields": [
+          "Instrument",
+          "Observed control",
+          "Pass/fail",
+          "Corrective action"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-021",
+    "en": "Laboratory report correction/amendment",
+    "fr": "Rectificatif de compte rendu de laboratoire",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "amendment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Original",
+        "fields": [
+          "Diagnostic report identifier",
+          "Previous result version",
+          "Release time"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Change",
+        "fields": [
+          "Corrected field/value",
+          "Clinical reason",
+          "Responsible analyst"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Communication",
+        "fields": [
+          "Affected clinician notification",
+          "Re-issued status"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-022",
+    "en": "Blood culture collection worksheet",
+    "fr": "Fiche de prélèvement d’hémoculture",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "form",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Patient",
+        "fields": [
+          "Identity verification",
+          "Clinical indication"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Bottles",
+        "fields": [
+          "Set and bottle identification",
+          "Collection site",
+          "Time and collector"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Transport",
+        "fields": [
+          "Handling and receipt"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-023",
+    "en": "Laboratory daily activity register",
+    "fr": "Registre journalier du laboratoire",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "log",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Period",
+        "fields": [
+          "Date",
+          "Department and analyser"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Activity",
+        "fields": [
+          "Tests received",
+          "Tests performed",
+          "Rejected samples",
+          "Critical alerts"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Sign-off",
+        "fields": [
+          "Laboratory supervisor"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-LAB-024",
+    "en": "External quality assessment response",
+    "fr": "Rapport d'évaluation externe de qualité",
+    "domain": "LAB",
+    "domainEn": "Laboratory and pathology",
+    "domainFr": "Laboratoire et anatomopathologie",
+    "module": "M11",
+    "kind": "quality",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Program",
+        "fields": [
+          "Provider and cycle",
+          "Material reference"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Findings",
+        "fields": [
+          "Target/observed comparison",
+          "Method and error classification"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Action",
+        "fields": [
+          "Corrective measures",
+          "Approval and due date"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]
