@@ -35,3 +35,10 @@
 @media(max-width:360px){.syn-live-workspace{padding:10px}.syn-live-actions button,.syn-live-languages button{flex:1 1 100%}.syn-live-header,.syn-live-panel{padding:12px}}
 @media(prefers-reduced-motion:reduce){.syn-live-workspace *{animation:none!important;transition:none!important}}
 @media print{.syn-live-actions,.syn-live-form,.syn-live-languages{display:none!important}.syn-live-workspace{background:#fff}}
+
+.syn-live-index-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px;margin:14px 0 24px}
+.syn-live-index-item{border:1px solid #d7dce1;border-radius:10px;background:#fff;padding:16px;display:flex;flex-direction:column;gap:7px}
+.syn-live-index-item small{font-size:12px;font-weight:750;color:#174ea6}
+.syn-live-index-item h3{margin:0;font-size:17px}
+.syn-live-index-item h3 a{display:inline-flex;align-items:center;min-height:44px;color:#073656}
+.syn-live-index-item p{font-size:13px;color:#475569;margin:0}
