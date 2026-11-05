@@ -6,7 +6,7 @@
     "domain": "PHM",
     "domainEn": "Pharmacy and medication safety",
     "domainFr": "Pharmacie et sécurité médicamenteuse",
-    "module": "M13",
+    "module": "M08",
     "kind": "prescription",
     "context": "patient",
     "sections": [
