@@ -1,0 +1,50 @@
+name: SYNQORIA all-screen browser verification
+on:
+  push:
+    branches: [work/ui-all-261-specific-2026-11-05]
+permissions:
+  contents: read
+jobs:
+  ui-chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install JS workspaces
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Build reusable UX core
+        run: npm run build --workspace packages/ux-core
+      - name: Compile Next app for production
+        run: npm run build --workspace apps/web
+      - name: Install Chromium browser test runtime
+        run: |
+          npm install --no-save playwright@1.56.1 --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Start compiled Next on loopback
+        run: |
+          (cd apps/web && ../../node_modules/.bin/next start --port 3000) > /tmp/synqoria-ui-all-next.log 2>&1 &
+          for i in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:3000/ui/catalog >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/synqoria-ui-all-next.log
+          exit 1
+      - name: All 252 specialist screens at mobile and desktop, plus all 261 HTTP routes
+        run: node tests/ui_all_specific_browser_audit.mjs
+      - name: Verify nine identity workflows at three widths
+        run: node tests/ui_identity_browser_audit.mjs
+      - name: Retain responsive screenshots and exact findings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synqoria-all-261-ui-browser-evidence
+          path: |
+            /tmp/synqoria-ui-all-screen-audit/
+            /tmp/synqoria-ui-identity-audit/
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Limitations
+        run: echo "No live clinical/API system, no approved patient permissions, no accessibility certification or 261-screen clinical acceptance in this smoke test"
