@@ -175,3 +175,68 @@ export async function readTriageWorklist(request,patientId,options={}){
  }
  return ok({cases:entries,facilityId:scope.staff.facilityId,view:input.view});
 }
+
+
+/**
+ * M03-S04: bounded patient-scoped reassessment/audit read. Never infers clinical
+ * reassessment from an event name, and never permits an assessment write.
+ * Facility, patient and case are verified before the audit source is queried.
+ */
+const auditOperation=/^[A-Z_]{2,80}$/;
+const auditDigest=/^[0-9a-f]{64}$/;
+const auditInstant=/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?Z$/;
+export function validateTriageAuditPage(raw,afterRevision){
+ if(!Number.isSafeInteger(afterRevision)||afterRevision<0||afterRevision>2147483647)return null;
+ if(!raw||typeof raw!=="object"||Array.isArray(raw)||
+   Object.keys(raw).sort().join(",")!=="history,nextAfterRevision"||
+   !Array.isArray(raw.history)||raw.history.length>100)return null;
+ let prior=afterRevision;
+ const result=[];
+ for(const item of raw.history){
+  if(!item||typeof item!=="object"||Array.isArray(item)||
+    Object.keys(item).sort().join(",")!=="digest,occurredAt,operation,revision"||
+    !Number.isSafeInteger(item.revision)||item.revision<=prior||item.revision>2147483647||
+    typeof item.operation!=="string"||!auditOperation.test(item.operation)||
+    typeof item.occurredAt!=="string"||!auditInstant.test(item.occurredAt)||
+    !Number.isFinite(Date.parse(item.occurredAt))||
+    typeof item.digest!=="string"||!auditDigest.test(item.digest))return null;
+  prior=item.revision;
+  result.push({revision:item.revision,operation:item.operation,occurredAt:item.occurredAt,digest:item.digest});
+ }
+ const next=raw.nextAfterRevision;
+ if(next!==null&&(!Number.isSafeInteger(next)||next!==prior||result.length!==100||prior===afterRevision))return null;
+ return {history:result,nextAfterRevision:next};
+}
+export async function readTriageAudit(request,patientId,caseId,options={}){
+ if(!validUuid(patientId)||!validUuid(caseId))return reject(400,"invalid_request");
+ let afterRevision;
+ try{
+  const url=new URL(request.url);
+  if([...url.searchParams.keys()].some(x=>x!=="afterRevision")||
+   url.searchParams.getAll("afterRevision").length>1)return reject(400,"invalid_cursor");
+  const raw=url.searchParams.get("afterRevision")??"0";
+  if(!/^(?:0|[1-9]\d{0,9})$/.test(raw))return reject(400,"invalid_cursor");
+  afterRevision=Number(raw);
+  if(afterRevision>2147483647)return reject(400,"invalid_cursor");
+ }catch{return reject(400,"invalid_cursor");}
+ const scope=await admission(request,{...options,capability:"triage:assess"});
+ if(scope.error)return scope.error;
+ if(!scope.staff.capabilities.includes("patient:view"))return reject(404,"not_found");
+ const patientSource=await safeFetch(scope.origin,"/api/v1/patients/"+patientId,scope.staff.bearer,scope.fetcher);
+ if(patientSource.status!==200)return reject(patientSource.status===401?401:patientSource.status===404?404:503,"patient_unavailable");
+ if(!verifyPatient(patientSource.body,patientId))return reject(503,"invalid_source_record");
+ const stem="/api/v1/triage/patients/"+patientId+"/cases/"+caseId;
+ const caseSource=await safeFetch(scope.origin,stem,scope.staff.bearer,scope.fetcher);
+ if(caseSource.status!==200)return reject(caseSource.status===401?401:caseSource.status===404?404:503,"case_unavailable");
+ if(!verifyTriageCase(caseSource.body,caseId))return reject(503,"invalid_source_record");
+ const history=await safeFetch(scope.origin,stem+"/history?afterRevision="+afterRevision,scope.staff.bearer,scope.fetcher,{maxBytes:32768});
+ if(history.status!==200)return reject(history.status===401?401:history.status===404?404:503,"audit_unavailable");
+ const verified=validateTriageAuditPage(history.body,afterRevision);
+ if(!verified)return reject(503,"invalid_source_record");
+ // Only source-verified non-PHI audit metadata is projected to the browser.
+ return ok({
+  patientId,caseId,facilityId:scope.staff.facilityId,
+  currentCaseRevision:caseSource.body.case.revision,
+  history:verified.history,nextAfterRevision:verified.nextAfterRevision
+ });
+}
