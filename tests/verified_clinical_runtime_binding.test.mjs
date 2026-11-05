@@ -77,6 +77,13 @@ test("B0063 unverified and hand-crafted staff runtime instances cannot enter cli
 });
 test("B0063 positively attested staff runtime supplies only fail-closed clinical read handlers",async()=>{
  const runtime=await createVerifiedStaffIdentityRuntime(options());
+ assert.deepEqual({
+  publicOrigin:runtime.configuration.publicOrigin,
+  tenantId:runtime.configuration.expectedTenantId,
+  facilityId:runtime.configuration.expectedFacilityId,
+  auditType:typeof runtime.auditWriter?.append,
+  authorizeType:typeof runtime.authorize
+ },{publicOrigin,tenantId:tenant,facilityId:facility,auditType:"function",authorizeType:"function"});
  let called=0;
  const binding=createVerifiedClinicalRuntimeBinding(runtime,{...env},{
   fetcher:async()=>{called++;throw Error("should not contact clinical backend without auth");}
