@@ -5,6 +5,7 @@ const sections=[
  {id:"G-S06",title:"Staff preferences",description:"Language, time format, contrast, density and motion; saved without clinical data.",level:"Functional nonclinical"},
  {id:"G-S10",title:"Connectivity and readiness",description:"Check real configured cell liveness and dependency readiness.",level:"API-backed subset"},
  {id:"M01-S03",title:"Patient identity profile",description:"Retrieve authorized patient identity status and source revision only.",level:"API-backed subset"},
+ {id:"M03-S01",title:"Restricted triage queue",description:"Read a real authorized explicit-case worklist with view filters and no clinical mutations.",level:"API-backed subset"},
  {id:"M03-S03",title:"Triage assessment",description:"Read authorized patient-scoped case workflow metadata; no clinical mutation.",level:"API-backed subset"},
  {id:"G-S11",title:"Help and support",description:"Search real application guidance and open verified feature entry points.",level:"Functional help"},
  {id:"G-S12",title:"Not found and retired routes",description:"Return users to safe routes without disclosing protected information.",level:"Functional safe navigation"},
