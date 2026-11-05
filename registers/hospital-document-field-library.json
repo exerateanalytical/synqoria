@@ -2187,7 +2187,7 @@
       "fields": [
         {
           "id": "signature_1",
-          "label": "Decision-maker identity and authority",
+          "label": "Authorized signer identity and verified role",
           "type": "text",
           "required": "policy-pending",
           "source": "authoritative-service-required",
@@ -2195,7 +2195,7 @@
         },
         {
           "id": "signature_2",
-          "label": "Patient/representative acknowledgment",
+          "label": "Professional / organizational registration or representative authority",
           "type": "text",
           "required": "policy-pending",
           "source": "authoritative-service-required",
@@ -2203,7 +2203,7 @@
         },
         {
           "id": "signature_3",
-          "label": "Clinician/witness roles",
+          "label": "Applicable witness, patient or representative acknowledgment requirement",
           "type": "text",
           "required": "policy-pending",
           "source": "authoritative-service-required",
@@ -2211,7 +2211,7 @@
         },
         {
           "id": "signature_4",
-          "label": "Event timestamp",
+          "label": "Approval or signature timestamp",
           "type": "datetime",
           "required": "policy-pending",
           "source": "authoritative-service-required",
@@ -2219,7 +2219,7 @@
         },
         {
           "id": "signature_5",
-          "label": "Signature evidence source reference",
+          "label": "Source-bound signature evidence reference",
           "type": "text",
           "required": "policy-pending",
           "source": "authoritative-service-required",
@@ -2227,7 +2227,7 @@
         },
         {
           "id": "signature_6",
-          "label": "E-signature verification status (not image alone)",
+          "label": "Signature verification and independent approval status",
           "type": "text",
           "required": "policy-pending",
           "source": "authoritative-service-required",
