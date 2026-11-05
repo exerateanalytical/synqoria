@@ -23,6 +23,8 @@ SELECT c.relname AS table_name,
      'name', p.polname,
      'command', p.polcmd,
      'permissive', p.polpermissive,
+     'using', pg_get_expr(p.polqual,p.polrelid),
+     'with_check', pg_get_expr(p.polwithcheck,p.polrelid),
      'roles', (SELECT array_agg(r.rolname ORDER BY r.rolname)
                FROM pg_roles r WHERE r.oid=ANY(p.polroles))
    ) ORDER BY p.polname)
@@ -52,6 +54,27 @@ const spec={
   identity_security_audit_append_only:["a","synqoria_identity_audit_writer"]
  }
 };
+/**
+ * P03-B0061. Compare the compiled policy predicate, not only its name.
+ * A DBA could otherwise replace a correctly named policy with USING(true).
+ * Only the exact reviewed live/expired TTL and append-only expressions pass.
+ */
+const expectedPredicates={
+ oidc_replay_runtime_read_live:"expires_at>clock_timestamp",
+ oidc_replay_runtime_create_live:"expires_at>clock_timestampandexpires_at<=clock_timestamp+'00:05:00'::interval",
+ oidc_replay_runtime_consume_live:"expires_at>clock_timestamp",
+ oidc_replay_janitor_read_expired:"expires_at<=clock_timestamp",
+ oidc_replay_janitor_delete_expired:"expires_at<=clock_timestamp",
+ staff_session_active_read:"expires_at>clock_timestamp",
+ staff_session_new_secure:"expires_at>clock_timestampandexpires_at<=clock_timestamp+'00:10:00'::interval",
+ staff_session_revoke_once:"expires_at>clock_timestamp",
+ staff_session_janitor_read_expired:"expires_at<=clock_timestamp",
+ staff_session_janitor_delete_expired:"expires_at<=clock_timestamp",
+ identity_security_audit_append_only:"occurred_at<=clock_timestamp+'00:01:00'::intervalandoccurred_at>=clock_timestamp-'00:02:00'::interval"
+};
+function normalizedPredicate(x){
+ return typeof x==="string" ? x.toLowerCase().replace(/[()\s]/g,"") : null;
+}
 export async function verifyIdentitySchemaPolicies(client){
  if(!client||typeof client.query!=="function")deny();
  let data;
@@ -69,6 +92,10 @@ export async function verifyIdentitySchemaPolicies(client){
    if(!match||seen.has(policy.name)||policy.permissive!==true||
       policy.command!==match[0]||!Array.isArray(policy.roles)||
       policy.roles.length!==1||policy.roles[0]!==match[1])deny();
+   const raw=policy.command==="a"?policy.with_check:policy.using;
+   if((policy.command==="a"&&policy.using!==null)||
+      (policy.command!=="a"&&policy.with_check!==null)||
+      normalizedPredicate(raw)!==expectedPredicates[policy.name])deny();
    seen.add(policy.name);
   }
  }
