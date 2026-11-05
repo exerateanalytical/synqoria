@@ -62,10 +62,10 @@ export function verifyTriageCase(dto,caseId){
   typeof x.arrivedAt==="string"&&/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?Z$/.test(x.arrivedAt)&&Number.isFinite(Date.parse(x.arrivedAt))&&
   ["paused","safetyHold","manualEscalation"].every(k=>typeof x[k]==="boolean");
 }
-async function admission(request,{env=process.env,fetcher=fetch,capability="patient:view"}={}){
+async function admission(request,{env=process.env,fetcher=fetch,capability="patient:view",additionalCapabilities=[]}={}){
  const staff=readSessionCookie(request.headers.get("cookie"),{env});
  if(!staff)return {error:reject(401,"authentication_required")};
- if(!staff.capabilities.includes(capability))return {error:reject(404,"not_found")};
+ if(!staff.capabilities.includes(capability)||!additionalCapabilities.every(c=>staff.capabilities.includes(c)))return {error:reject(404,"not_found")};
  const origin=configuredCellOrigin(env);
  if(!origin)return {error:reject(503,"cell_not_integrated")};
  const facility=await safeFetch(origin,"/api/v1/facility/context",staff.bearer,fetcher);
@@ -89,7 +89,7 @@ export async function readPatient(request,patientId,options={}){
 }
 export async function readTriageCase(request,patientId,caseId,options={}){
  if(!validUuid(patientId)||!validUuid(caseId))return reject(400,"invalid_request");
- const scope=await admission(request,{...options,capability:"triage:assess"});
+ const scope=await admission(request,{...options,capability:"triage:assess",additionalCapabilities:["patient:view"]});
  if(scope.error)return scope.error;
  if(!scope.staff.capabilities.includes("patient:view"))return reject(404,"not_found");
  const record=await safeFetch(scope.origin,"/api/v1/patients/"+encodeURIComponent(patientId),scope.staff.bearer,scope.fetcher);
@@ -158,7 +158,7 @@ export async function readTriageWorklist(request,patientId,options={}){
  if(!/^application\/json(?:;\s*charset=utf-8)?$/i.test(request.headers.get("content-type")||""))return reject(415,"unsupported_media_type");
  const input=validateTriageViewRequest(await readBoundedJsonRequest(request));
  if(!input)return reject(400,"invalid_request");
- const scope=await admission(request,{...options,capability:"triage:queue"});
+ const scope=await admission(request,{...options,capability:"triage:queue",additionalCapabilities:["patient:view"]});
  if(scope.error)return scope.error;
  if(!scope.staff.capabilities.includes("patient:view"))return reject(404,"not_found");
  const patientRecord=await safeFetch(scope.origin,"/api/v1/patients/"+patientId,scope.staff.bearer,scope.fetcher);
@@ -219,7 +219,7 @@ export async function readTriageAudit(request,patientId,caseId,options={}){
   afterRevision=Number(raw);
   if(afterRevision>2147483647)return reject(400,"invalid_cursor");
  }catch{return reject(400,"invalid_cursor");}
- const scope=await admission(request,{...options,capability:"triage:assess"});
+ const scope=await admission(request,{...options,capability:"triage:assess",additionalCapabilities:["patient:view"]});
  if(scope.error)return scope.error;
  if(!scope.staff.capabilities.includes("patient:view"))return reject(404,"not_found");
  const patientSource=await safeFetch(scope.origin,"/api/v1/patients/"+patientId,scope.staff.bearer,scope.fetcher);
