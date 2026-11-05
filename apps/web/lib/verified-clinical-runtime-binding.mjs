@@ -27,7 +27,7 @@ const names=[
  "SYNQORIA_REQUIRE_ENCOUNTER_DISCLOSURE","SYNQORIA_AUDIT_DENIED_ENCOUNTER_DISCLOSURE"
 ];
 export function createVerifiedClinicalRuntimeBinding(runtime,env,{
- fetcher=fetch,now=Date.now()
+ fetcher=fetch,now=Date.now
 }={}){
  try{
   assertVerifiedStaffIdentityRuntime(runtime);
