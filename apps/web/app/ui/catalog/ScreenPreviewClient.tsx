@@ -104,7 +104,7 @@ export function ScreenPreviewClient({contract,related}:{contract:ScreenContract;
  const current=states.find(s=>s.id===state)!;
  const isFieldForm=contract.layout==="F";
  function mainPanel():ReactNode{
-  if(active===contract.tabs.length-1)return <WorkflowArea contract={contract}/>;
+  if(contract.tabs[active]==="Workflow")return <WorkflowArea contract={contract}/>;
   if(contract.layout==="F")return <FormArea contract={contract} values={values} onSet={setField} review={active===1||review} onReview={()=>{setReview(true);setActive(1)}} onReset={clear}/>;
   if(contract.layout==="L")return active===1?<div><SectionHeader title="Filter and result permissions"/><p>Search, scope, status, sort, clear and pagination controls are available in Results. Only authorized queries may return records.</p><WorklistArea contract={contract}/></div>:<WorklistArea contract={contract}/>;
   if(contract.layout==="D")return active===1?<DetailArea contract={contract}/>:active===2?<EmptyRecords label="audited history"/>:<DetailArea contract={contract}/>;
