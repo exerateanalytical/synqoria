@@ -25,7 +25,7 @@ jobs:
         run: node --test tests/oidc_staff_verification.test.mjs tests/oidc_login_flow.test.mjs tests/oidc_one_use.test.mjs tests/oidc_code_exchange.test.mjs tests/oidc_token_introspection.test.mjs
       - name: Verify 261-screen integrity and no unapproved writes
         run: |
-          node --test tests/operational_240_one_cycle_plan.test.mjs tests/operational_gap_registry.test.mjs
+          node --test tests/operational_240_one_cycle_plan.test.mjs tests/operational_gap_registry.test.mjs tests/p03_identity_engineering_ledger.test.mjs
           python3 tests/test_navigation_contract.py
       - name: Gate statement
         run: echo "Staff-source contract tests only, not deployed hospital IdP, staff issuer, tenant grants, or clinical release."
