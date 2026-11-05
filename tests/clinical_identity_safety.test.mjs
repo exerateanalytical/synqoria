@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {requireClinicalIdentitySafety,ClinicalIdentitySafetyError} from "../apps/web/lib/clinical-identity-safety.mjs";
 const env={
  SYNQORIA_RUNTIME_MODE:"production",
+ SYNQORIA_ROLE_POLICY_JSON:JSON.stringify({tenantId:"11111111-1111-4111-8111-111111111111",version:1,roles:{nurse:["patient:view"]}}),
  SYNQORIA_TRUSTED_CELL_ORIGIN:"https://clinical.synqoria.org/",
  SYNQORIA_EXPECTED_TENANT_ID:"11111111-1111-4111-8111-111111111111",
  SYNQORIA_EXPECTED_FACILITY_ID:"22222222-2222-4222-8222-222222222222",
