@@ -25,6 +25,8 @@ jobs:
         run: |
           node --test tests/operational_240_one_cycle_plan.test.mjs
           node --test tests/operational_gap_registry.test.mjs
+      - name: Check all 261 real route URLs and deny unapproved clinical commands
+        run: python3 tests/test_navigation_contract.py
       - name: Qualification boundary
         run: |
           echo "P03 JWT validation source tests only. Production OIDC, MFA callback, session revocation, tenant/clinical grants and clinical screens remain UNVERIFIED."
