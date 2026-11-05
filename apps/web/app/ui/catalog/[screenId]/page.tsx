@@ -13,7 +13,7 @@ import "../catalog.css";
 
 type CanonicalScreen={id:string;module:string;name:string;layout:string;data_input_groups:string;primary_action:string};
 const screens=registry.screen_register as CanonicalScreen[];
-const implementedRoutes=new Set(["G-S03","G-S06","G-S10","G-S11","G-S12","M01-S03","M03-S03","M31-S01","M31-S03"]);
+const implementedRoutes=new Set(["G-S03","G-S06","G-S10","G-S11","G-S12","M01-S03","M03-S01","M03-S03","M31-S01","M31-S03"]);
 const modules=Array.from(new Set(screens.map(s=>s.module)));
 export function generateStaticParams(){return screens.map(s=>({screenId:s.id}));}
 export default async function ScreenCatalogueDetail({params}:{params:Promise<{screenId:string}>}){
