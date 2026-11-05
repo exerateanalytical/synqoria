@@ -25,6 +25,8 @@ export function requireClinicalIdentitySafety(env){
  if(!env||typeof env!=="object"||
     !["production","staging"].includes(env.SYNQORIA_RUNTIME_MODE)||
     REQUIRED.some(name=>env[name]!=="1")||
+    typeof env.SYNQORIA_ROLE_POLICY_JSON!=="string"||
+    env.SYNQORIA_ROLE_POLICY_JSON.length<24||env.SYNQORIA_ROLE_POLICY_JSON.length>16384||
     env.SYNQORIA_ALLOW_DEMO_SESSIONS!==undefined||
     env.SYNQORIA_ALLOW_LEGACY_STAFF_COOKIE!==undefined||
     env.SYNQORIA_ALLOW_UNVERIFIED_STAFF!==undefined)deny();
