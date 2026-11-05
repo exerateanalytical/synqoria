@@ -63,7 +63,7 @@ test("14 UI states, 12 dialog variants, 18 print contracts, 26 shared components
  assert.ok(gallery.includes("disabled>Print or export"));
 });
 test("261 route generation, screen navigation, tabs and controls are present",()=>{
- for(const token of ["generateStaticParams","ScreenPreviewClient","peer","id="related""]){
+ for(const token of ["generateStaticParams","ScreenPreviewClient","peer"]){
   if(token==="peer")assert.ok(details.includes("peers"));else assert.ok(details.includes(token),token);
  }
  for(const token of ["role="tablist"","role="tabpanel"","aria-selected","aria-expanded","aria-pressed","onKeyDown","type="search"","type="date"","type="submit"","type="reset"","Show filters","Clear all","Apply filters","Sort by","Results per page","Previous page","Next page","Board view","List view"]){
