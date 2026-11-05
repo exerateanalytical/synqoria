@@ -1,6 +1,6 @@
 {
-  "version": "2026-11-05-safe-route-registration",
-  "notes": "All 261 canonical Next.js URLs are now registered as code routes. Only 10 retain independently implemented screen slices (5 restricted API read subsets and 5 functional nonclinical/navigation surfaces); 251 resolve to domain-specific safety-gated workstations. A route resolving HTTP 200 MUST NOT be counted as an integrated clinical workflow, API, module, signed document or production-ready screen. All clinical certification remains DENIED.",
+  "version": "2026-11-05-identity-triage-partial-read",
+  "notes": "All 261 canonical application URLs resolve. 13 are nonclinical functional or guarded read subsets (8 read APIs, 5 nonclinical), and 248 other canonical routes are backend-locked. NO clinical screen workflow is certified or write-enabled. Do not equate routability with real hospital operations.",
   "shell_roots": [
     {
       "shell": "workforce",
@@ -119,7 +119,7 @@
       "screen_id": "M01-S01",
       "module": "M01",
       "route": "/workforce/clinical/M01-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "api_read_subset_not_clinically_complete",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -231,7 +231,7 @@
       "screen_id": "M03-S04",
       "module": "M03",
       "route": "/workforce/clinical/M03-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "api_read_subset_not_clinically_complete",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -239,7 +239,7 @@
       "screen_id": "M03-S05",
       "module": "M03",
       "route": "/workforce/clinical/M03-S05",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "api_read_subset_not_clinically_complete",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -2110,9 +2110,9 @@
   ],
   "route_summary": {
     "registered": 261,
-    "apiReadSubsets": 5,
+    "apiReadSubsets": 8,
     "nonclinicalFunctional": 5,
-    "domainLocked": 251,
+    "domainLocked": 248,
     "clinicallyAccepted": 0,
     "clinicallyCertifiedModules": 0
   }
