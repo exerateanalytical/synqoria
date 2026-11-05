@@ -5,7 +5,7 @@ import {chromium} from "playwright";
 const base=process.env.SYNQORIA_UI_BASE_URL||"http://127.0.0.1:3000";
 const folder=process.env.SYNQORIA_REAL_UI_EVIDENCE||"/tmp/synqoria-real-screen-evidence";
 mkdirSync(folder,{recursive:true});
-const screens=["G-S03","G-S06","G-S10","G-S11","G-S12","M01-S01","M01-S03","M03-S01","M03-S03","M03-S04","M03-S05"];
+const screens=["G-S03","G-S06","G-S10","G-S11","G-S12","M01-S01","M01-S03","M03-S01","M03-S03","M03-S04","M03-S05","M04-S02","M05-S01","M05-S04","M05-S05","M06-S02","M06-S03","M06-S04","M06-S05"];
 const errors=[],samples=[],views=[];
 const browser=await chromium.launch({headless:true,args:["--no-sandbox"]});
 const patient="44444444-4444-4444-8444-444444444444",caseId="55555555-5555-4555-8555-555555555555";
@@ -17,7 +17,10 @@ try{
   ["/api/clinical/health",503],
   ["/api/clinical/patients/bad-patient-id",400],
   ["/api/clinical/triage/"+patient+"/"+caseId+"/history",401],
-  ["/api/clinical/triage/bad-patient-id/"+caseId,400]
+  ["/api/clinical/triage/bad-patient-id/"+caseId,400],
+  ["/api/clinical/longitudinal/"+patient+"/"+caseId+"/summary",401],
+  ["/api/clinical/longitudinal/"+patient+"/"+caseId+"/observations?code=8310-5",401],
+  ["/api/clinical/longitudinal/bad-patient/"+caseId+"/summary",400]
  ];
  for(const [path,status] of api){
   const r=await fetch(base+path,{headers:{Accept:"application/json"}});
@@ -78,6 +81,20 @@ try{
      await page.getByRole("button",{name:"Read permitted triage cases"}).click();
      await page.locator('[data-triage-queue-status="login"]').waitFor();
     }
+    if(["M04-S02","M05-S01","M05-S04","M05-S05","M06-S02","M06-S03","M06-S04","M06-S05"].includes(screen)){
+     await page.getByRole("button",{name:"Load authorized record"}).click();
+     await page.locator('[data-clinical-status="invalid"]').waitFor();
+     await page.getByLabel("Patient UUID").fill(patient);
+     await page.getByLabel("Encounter UUID").fill(caseId);
+     if(["M05-S04","M05-S05","M06-S03","M06-S05"].includes(screen))
+       await page.getByLabel("Clinical note / observation UUID").fill("66666666-6666-4666-8666-666666666666");
+     if(["M06-S02","M06-S04"].includes(screen))
+       await page.getByLabel("Measurement code").fill("8310-5");
+     await page.getByRole("button",{name:"Load authorized record"}).click();
+     await page.locator('[data-clinical-status="login"]').waitFor();
+     await page.getByRole("button",{name:"Clear patient context"}).click();
+     assert.equal(await page.getByLabel("Patient UUID").inputValue(),"");
+    }
     if(screen==="M03-S04"){
      await page.getByRole("button",{name:"Read source audit history"}).click();
      await page.locator('[data-audit-status="invalid"]').waitFor();
@@ -133,7 +150,7 @@ try{
  if(!page.url().endsWith("/ui/printables"))errors.push({issue:"printable preview route not reached"});
  await page.close();
 }finally{await browser.close();}
-const results={screens:screens.length,viewportCases:views.length,expectedViewportCases:screens.length*3,apiChecks:8,redirects:2,images:samples.length,errors,clinicalCertification:"DENIED",limits:["No deployed OIDC session issuer","No configured real clinical cell in tests","Clinical field dictionaries and clinical mutation APIs unfinished"]};
+const results={screens:screens.length,viewportCases:views.length,expectedViewportCases:screens.length*3,apiChecks:11,redirects:2,images:samples.length,errors,clinicalCertification:"DENIED",limits:["No deployed OIDC session issuer","No configured real clinical cell in tests","Clinical field dictionaries and clinical mutation APIs unfinished"]};
 writeFileSync(resolve(folder,"real-screen-browser.json"),JSON.stringify(results,null,2)+"\n");
 console.log(JSON.stringify({screens:results.screens,viewports:results.viewportCases,apiChecks:results.apiChecks,redirects:results.redirects,errors:errors.length,samples:results.images},null,2));
 assert.equal(results.viewportCases,results.expectedViewportCases);
