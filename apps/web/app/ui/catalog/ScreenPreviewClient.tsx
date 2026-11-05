@@ -4,6 +4,8 @@ import type {KeyboardEvent, ReactNode} from "react";
 import Link from "next/link";
 import "./interaction.css";
 import {IdentityRegistrationPreview,isIdentityPreview} from "./IdentityRegistrationPreview";
+import {SpecificScreenPreview} from "./SpecificScreenPreview";
+import type {SpecificScreenSpec} from "./SpecificScreenPreview";
 
 export type ScreenContract = {
  screenId:string; module:string; title:string; layout:"F"|"L"|"D"|"X"|"B"|"T"|"H";
@@ -98,7 +100,7 @@ function Tabs({contract,active,onSelect,children}:{contract:ScreenContract;activ
  }
  return <div><div className="syn-real-tabs" role="tablist" aria-label={contract.title+" sections"}>{contract.tabs.map((tab,i)=><button key={tab} type="button" ref={node=>{tabRefs.current[i]=node}} role="tab" id={base+"tab"+i} aria-controls={base+"panel"} aria-selected={active===i} tabIndex={active===i?0:-1} onClick={()=>onSelect(i)} onKeyDown={e=>onKey(e,i)}>{tab}</button>)}</div><div role="tabpanel" id={base+"panel"} aria-labelledby={base+"tab"+active} tabIndex={0} className="syn-tabpanel">{children}</div></div>;
 }
-export function ScreenPreviewClient({contract,related}:{contract:ScreenContract;related:{id:string;name:string}[]}){
+export function ScreenPreviewClient({contract,related,specificSpec}:{contract:ScreenContract;related:{id:string;name:string}[];specificSpec?:SpecificScreenSpec}){
  const [active,setActive]=useState(0);const [values,setValues]=useState<Record<string,string>>({});const [reason,setReason]=useState("");const [review,setReview]=useState(false);const [state,setState]=useState<ScreenState>("initial");const [detailsOpen,setDetailsOpen]=useState(false);const [helpOpen,setHelpOpen]=useState(false);
  const setField=(key:string,value:string)=>{setValues(v=>({...v,[key]:value}));setReview(false);setState("dirty");};
  const clear=()=>{setValues({});setReview(false);setReason("");setState("initial");};
@@ -116,6 +118,7 @@ export function ScreenPreviewClient({contract,related}:{contract:ScreenContract;
   return <EmptyRecords/>;
  }
  if(isIdentityPreview(contract.screenId))return <IdentityRegistrationPreview screenId={contract.screenId} primaryAction={contract.primaryAction}/>;
+ if(specificSpec)return <SpecificScreenPreview spec={specificSpec}/>;
  return <div className="syn-ui-preview" data-screen-id={contract.screenId}>
  <div className="syn-preview-toolbar"><span className="syn-chip">UI specimen · {contract.layout}</span><button type="button" className="syn-preview-secondary" onClick={()=>setDetailsOpen(v=>!v)} aria-expanded={detailsOpen}>Control inventory ({contract.controls.length})</button><button type="button" className="syn-preview-secondary" onClick={()=>setHelpOpen(v=>!v)} aria-expanded={helpOpen}>Help & safety</button></div>
  {detailsOpen&&<section className="syn-inventory"><h3>Registered layout controls</h3><ul>{contract.controls.map(x=><li key={x}>{x}</li>)}</ul><p>Proposed shared layout controls are not a substitute for the per-screen field/role review.</p></section>}
