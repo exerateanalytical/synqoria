@@ -39,7 +39,7 @@ export function createIdentitySecurityAuditWriter(client,{pepper,now=Date.now}={
    const timestamp=now();
    if(!Number.isSafeInteger(timestamp)||timestamp<1)deny();
    const id=randomUUID();
-   const args=[id,digest(secret,"actor",actorId),digest(secret,"tenant",tenantId),
+   const args=[id,digest(secret,"actor",tenantId+"|"+actorId),digest(secret,"tenant",tenantId),
      kind,outcome,correlationId,timestamp];
    try{
     const result=await client.query(IDENTITY_AUDIT_INSERT_SQL,args);
