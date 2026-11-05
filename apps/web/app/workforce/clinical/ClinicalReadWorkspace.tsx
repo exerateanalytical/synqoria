@@ -79,7 +79,7 @@ export default function ClinicalReadWorkspace({screenId}:{screenId:LiveScreenId}
     <div className="syn-live-actions"><button type="submit" disabled={status==="loading"}>{status==="ready"?t.again:t.refresh}</button><button type="button" onClick={clear}>{t.clear}</button></div>
    </form>}
    {(info.mode==="facility"||info.mode==="health")&&<div className="syn-live-actions"><button type="button" onClick={()=>void run()} disabled={status==="loading"}>{status==="ready"?t.again:t.refresh}</button><button type="button" onClick={clear}>{t.clear}</button></div>}
-   <div className="syn-live-status" aria-live="polite" role="status" data-clinical-read-status={status}>{t[status]}</div>
+   <div className="syn-live-status" aria-live="polite" role="status" data-clinical-read-status={status}>{status==="not-disclosed"?t.notDisclosed:t[status]}</div>
    {status==="ready"&&<section className="syn-live-data" aria-label={t.context}><h3>{t.context}</h3><dl>{detailRows.map(([name,value])=><div key={name}><dt>{name}</dt><dd>{String(value)}</dd></div>)}</dl>{checkedAt&&<p>Checked at: {checkedAt}</p>}</section>}
    <section className="syn-live-locked"><h3>{t.gate}</h3><p>{t.locked}</p><p>{t.notCertified}</p></section>
   </section>
