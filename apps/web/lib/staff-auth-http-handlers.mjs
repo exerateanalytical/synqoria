@@ -1,3 +1,4 @@
+import {requireCanonicalStaffAuthRequest} from "./staff-auth-request-origin.mjs";
 /**
  * SYNQORIA P03-B0049: server-only Next/Fetch-compatible login HTTP boundary.
  *
@@ -47,7 +48,7 @@ function trustedIssuer(issuer,authorization){
  return endpoint.href;
 }
 export function createStaffAuthHttpHandlers(service,{
- issuer,redirectPath="/workforce"
+ issuer,redirectPath="/workforce",publicOrigin=null
 }={}){
  if(!service||typeof service.begin!=="function"||
     typeof service.complete!=="function"||typeof service.logout!=="function"||
@@ -55,6 +56,10 @@ export function createStaffAuthHttpHandlers(service,{
  return Object.freeze({
   async start(request){
    if(request?.method!=="GET")return response(405,{Allow:"GET"});
+   if(publicOrigin!==null){
+    try{requireCanonicalStaffAuthRequest(request,{publicOrigin,operation:"start"});}
+    catch{return response(403);}
+   }
    try{
     const start=await service.begin();
     const location=trustedIssuer(issuer,start?.authorizationUrl);
@@ -65,6 +70,10 @@ export function createStaffAuthHttpHandlers(service,{
   },
   async callback(request){
    if(request?.method!=="GET")return response(405,{Allow:"GET"});
+   if(publicOrigin!==null){
+    try{requireCanonicalStaffAuthRequest(request,{publicOrigin,operation:"callback"});}
+    catch{return response(403);}
+   }
    try{
     const done=await service.complete(request);
     const h=headers();h.set("Location",redirectPath);
@@ -77,6 +86,10 @@ export function createStaffAuthHttpHandlers(service,{
   },
   async logout(request){
    if(request?.method!=="POST")return response(405,{Allow:"POST"});
+   if(publicOrigin!==null){
+    try{requireCanonicalStaffAuthRequest(request,{publicOrigin,operation:"logout"});}
+    catch{return response(403);}
+   }
    try{
     const done=await service.logout(request);
     const h=headers();
