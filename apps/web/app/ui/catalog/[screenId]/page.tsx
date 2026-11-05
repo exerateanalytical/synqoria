@@ -1,6 +1,8 @@
 import Link from "next/link";
 import {notFound} from "next/navigation";
 import registry from "../../../../../../registers/canonical-screens.json";
+import featureManifest from "../../../../../../registers/ui-specific-252-prototype-contracts.json";
+import type {SpecificScreenSpec} from "../SpecificScreenPreview";
 import {buildScreenContract} from "../screen-contract.mjs";
 import {ScreenPreviewClient} from "../ScreenPreviewClient";
 import type {ScreenContract} from "../ScreenPreviewClient";
@@ -17,6 +19,7 @@ export default async function ScreenCatalogueDetail({params}:{params:Promise<{sc
  const peers=screens.filter(x=>x.module===s.module);
  const i=peers.findIndex(x=>x.id===s.id);
  const contract=buildScreenContract(s) as ScreenContract;
+ const specificSpec=featureManifest.remainingSpecialized.find(x=>x.id===s.id) as SpecificScreenSpec|undefined;
  const href=(id:string)=>"/ui/catalog/"+encodeURIComponent(id);
  return <div className="syn-ui">
   <a className="syn-skip" href="#screen-content">Skip to screen content</a>
@@ -31,7 +34,7 @@ export default async function ScreenCatalogueDetail({params}:{params:Promise<{sc
     <header className="syn-title"><div><p className="syn-kicker">{s.module} · {s.id} · {s.layout} layout</p><h1>{s.name}</h1><p>Each canonical data group is represented. Shared controls remain proposals until per-screen field, clinical, permission and workflow reviews are completed.</p></div><span className="syn-chip">Design-stage preview</span></header>
     <section className="syn-alert" role="status"><strong>No connected clinical system</strong><p>Do not enter real patient information. Interface entries are demonstration-only, never stored or sent. Final clinical actions, reports and exports remain locked.</p></section>
     <div className="syn-quick"><a href="#screen-ui">Screen workspace</a><a href="#related">Module navigation</a><Link href="/ui/catalog/components">Dialogs, controls and print catalogue</Link></div>
-    <div className="syn-layout"><div className="syn-column"><section id="screen-ui" className="syn-panel"><div className="syn-section-head"><h2>{s.name}</h2><span className="syn-chip">S00–S13 states</span></div><ScreenPreviewClient contract={contract} related={peers.map(x=>({id:x.id,name:x.name}))}/></section></div>
+    <div className="syn-layout"><div className="syn-column"><section id="screen-ui" className="syn-panel"><div className="syn-section-head"><h2>{s.name}</h2><span className="syn-chip">S00–S13 states</span></div><ScreenPreviewClient contract={contract} specificSpec={specificSpec} related={peers.map(x=>({id:x.id,name:x.name}))}/></section></div>
      <div className="syn-column"><section className="syn-panel" id="related"><h2>Related {s.module} screens</h2><nav className="syn-related">{peers.map(x=><Link key={x.id} href={href(x.id)} aria-current={x.id===s.id?"page":undefined}><span>{x.id}</span>{x.name}</Link>)}</nav></section><section className="syn-panel"><h2>Scope and gate status</h2><p>Field dictionary, role permissions, server-bound transitions, French localization, browser visual testing and clinical review must still be approved for this screen.</p><p><strong>Release:</strong> denied</p></section></div></div>
     <nav className="syn-pager" aria-label="Previous and next screens">{i>0?<Link href={href(peers[i-1].id)}>Previous: {peers[i-1].name}</Link>:<span/>}{i+1<peers.length?<Link href={href(peers[i+1].id)}>Next: {peers[i+1].name}</Link>:<span/>}</nav>
    </main>
