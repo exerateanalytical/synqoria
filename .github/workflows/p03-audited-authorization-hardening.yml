@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: "22"
       - name: P03-B0044 login audit order and rollback
-        run: node --test tests/audited_staff_login.test.mjs
+        run: node --test tests/audited_staff_login.test.mjs tests/audited_staff_logout.test.mjs
       - name: Regress prior cryptographic, workforce and opaque-session invariants
         run: |
           node --test tests/oidc_staff_service.test.mjs tests/oidc_session_orchestrator.test.mjs tests/oidc_session_reauthorization.test.mjs tests/identity_security_audit.test.mjs tests/oidc_one_use.test.mjs tests/postgres_staff_session_store.test.mjs
