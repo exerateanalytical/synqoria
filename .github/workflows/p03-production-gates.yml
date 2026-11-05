@@ -27,6 +27,7 @@ jobs:
           node-version: '22'
       - run: node --test tests/clinical_identity_safety.test.mjs
       - run: node --test tests/identity_db_schema_policies.test.mjs
+      - run: node --test tests/oidc_reauthorize_or_revoke.test.mjs tests/oidc_staff_service.test.mjs
       - run: node --test tests/identity_db_schema_policies_postgres.test.mjs
         env:
           SYNQORIA_POSTGRES_INTEGRATION: '1'
