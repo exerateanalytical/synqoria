@@ -12,3 +12,8 @@ export function readCellHealth(request:Request,options?:ReadOptions):Promise<Res
 export type TriageWorklistInput={view:string;caseIds:readonly string[];stationOrClinician?:string;after?:string};
 export function validateTriageViewRequest(value:unknown):TriageWorklistInput|null;
 export function readTriageWorklist(request:Request,patientId:string,options?:ReadOptions):Promise<Response>;
+
+export interface TriageAuditRecord{revision:number;operation:string;occurredAt:string;digest:string}
+export interface VerifiedTriageAuditPage{history:TriageAuditRecord[];nextAfterRevision:number|null}
+export function validateTriageAuditPage(raw:unknown,afterRevision:number):VerifiedTriageAuditPage|null;
+export function readTriageAudit(request:Request,patientId:string,caseId:string,options?:ReadOptions):Promise<Response>;
