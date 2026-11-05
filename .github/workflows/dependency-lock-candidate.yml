@@ -1,4 +1,4 @@
-# Human-reviewed dependency resolution candidate. No automatic commit, merge or clinical release.
+# Human-reviewed dependency candidate. Publish only on isolated draft-PR branch; never auto-merge or authorize release.
 name: Propose npm lockfile (manual review required)
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
     paths:
       - .github/workflows/dependency-lock-candidate.yml
 permissions:
-  contents: read
+  contents: write
 jobs:
   propose-lock:
     runs-on: ubuntu-latest
@@ -30,7 +30,7 @@ jobs:
         run: |
           python3 tools/dependency_release_gate.py
           python3 tools/verify_lock_integrity.py
-      - name: Preserve lockfile for independent review, not automatic adoption
+      - name: Verify clean install from the resolved lockfile\n        run: npm ci --ignore-scripts --no-audit --no-fund\n      - name: Preserve lockfile for independent review, not automatic adoption
         if: always()
         uses: actions/upload-artifact@v4
         with:
