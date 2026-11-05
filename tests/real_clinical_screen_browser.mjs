@@ -5,7 +5,7 @@ import {chromium} from "playwright";
 const base=process.env.SYNQORIA_UI_BASE_URL||"http://127.0.0.1:3000";
 const folder=process.env.SYNQORIA_REAL_UI_EVIDENCE||"/tmp/synqoria-real-screen-evidence";
 mkdirSync(folder,{recursive:true});
-const screens=["G-S03","G-S06","G-S10","G-S11","G-S12","M01-S03","M03-S03"];
+const screens=["G-S03","G-S06","G-S10","G-S11","G-S12","M01-S03","M03-S01","M03-S03"];
 const errors=[],samples=[],views=[];
 const browser=await chromium.launch({headless:true,args:["--no-sandbox"]});
 const patient="44444444-4444-4444-8444-444444444444",caseId="55555555-5555-4555-8555-555555555555";
@@ -26,6 +26,9 @@ try{
   const body=await r.json();
   if(!body.code||JSON.stringify(body).includes("Bearer"))errors.push({path,issue:"unsafe response"});
  }
+ const triageNoSession=await fetch(base+"/api/clinical/triage/views/"+patient,{method:"POST",headers:{"Origin":base,"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({view:"FACILITY_QUEUE",caseIds:[caseId]})});
+ if(triageNoSession.status!==401)errors.push({path:"triage/worklist",issue:"missing staff session was not denied",actual:triageNoSession.status});
+ if(triageNoSession.headers.get("cache-control")!=="no-store, private")errors.push({path:"triage/worklist",issue:"missing response privacy"});
  for(const width of [320,768,1440]){
   for(const screen of screens){
    const page=await browser.newPage({viewport:{width,height:900}});
@@ -66,6 +69,14 @@ try{
      await page.getByRole("button",{name:"Clear sensitive context"}).click();
      assert.equal(await page.getByLabel("Patient UUID").inputValue(),"");
     }
+    if(screen==="M03-S01"){
+     await page.getByRole("button",{name:"Read permitted triage cases"}).click();
+     await page.locator('[data-triage-queue-status="invalid"]').waitFor();
+     await page.getByLabel("Patient UUID").fill(patient);
+     await page.locator("textarea").fill(caseId);
+     await page.getByRole("button",{name:"Read permitted triage cases"}).click();
+     await page.locator('[data-triage-queue-status="login"]').waitFor();
+    }
     if(screen==="M03-S03"){
      await page.getByLabel("Patient UUID").fill(patient);
      await page.getByLabel("Triage case UUID").fill(caseId);
@@ -97,14 +108,14 @@ try{
  }
  const page=await browser.newPage();
  await page.goto(base+"/workforce/clinical");
- if(await page.locator(".syn-live-index-item").count()!==9)errors.push({issue:"missing operational menu links"});
+ if(await page.locator(".syn-live-index-item").count()!==10)errors.push({issue:"missing operational menu links"});
  await page.goto(base+"/workforce/clinical/M31-S01");
  if(!page.url().endsWith("/hospital-documents"))errors.push({issue:"template catalogue route did not reach working index"});
  await page.goto(base+"/workforce/clinical/M31-S03");
  if(!page.url().endsWith("/ui/printables"))errors.push({issue:"printable preview route not reached"});
  await page.close();
 }finally{await browser.close();}
-const results={screens:screens.length,viewportCases:views.length,expectedViewportCases:screens.length*3,apiChecks:6,redirects:2,images:samples.length,errors,clinicalCertification:"DENIED",limits:["No deployed OIDC session issuer","No configured real clinical cell in tests","Clinical field dictionaries and clinical mutation APIs unfinished"]};
+const results={screens:screens.length,viewportCases:views.length,expectedViewportCases:screens.length*3,apiChecks:7,redirects:2,images:samples.length,errors,clinicalCertification:"DENIED",limits:["No deployed OIDC session issuer","No configured real clinical cell in tests","Clinical field dictionaries and clinical mutation APIs unfinished"]};
 writeFileSync(resolve(folder,"real-screen-browser.json"),JSON.stringify(results,null,2)+"\n");
 console.log(JSON.stringify({screens:results.screens,viewports:results.viewportCases,apiChecks:results.apiChecks,redirects:results.redirects,errors:errors.length,samples:results.images},null,2));
 assert.equal(results.viewportCases,results.expectedViewportCases);
