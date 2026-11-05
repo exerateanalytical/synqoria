@@ -1,0 +1,3975 @@
+{
+  "version": "v1",
+  "source": "SYNQORIA modules v2.1 and UI/UX Master v1.1; supplemented by WHO LQMS and HL7 FHIR report concepts",
+  "status": "schema candidates; per-facility policy and clinical approval pending",
+  "fieldGroups": {
+    "patient": {
+      "id": "patient",
+      "title": "Patient",
+      "fields": [
+        {
+          "id": "patient_1",
+          "label": "Patient name",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "patient_2",
+          "label": "Local patient identifier",
+          "type": "identifier",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "patient_3",
+          "label": "Second verified identifier",
+          "type": "identifier",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "patient_4",
+          "label": "Date of birth / estimated age and source",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "patient_5",
+          "label": "Identity verification status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "guardian": {
+      "id": "guardian",
+      "title": "Guardian",
+      "fields": [
+        {
+          "id": "guardian_1",
+          "label": "Guardian or representative name",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "guardian_2",
+          "label": "Relationship and authority",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "guardian_3",
+          "label": "Authority verified on",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "guardian_4",
+          "label": "Scope and expiry of representation",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "guardian_5",
+          "label": "Interpreter and communication needs",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "encounter": {
+      "id": "encounter",
+      "title": "Encounter",
+      "fields": [
+        {
+          "id": "encounter_1",
+          "label": "Encounter identifier",
+          "type": "identifier",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "encounter_2",
+          "label": "Service/department",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "encounter_3",
+          "label": "Visit class and reason",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "encounter_4",
+          "label": "Attending clinician",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "encounter_5",
+          "label": "Encounter start",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "encounter_6",
+          "label": "Ward/bed when relevant",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "provider": {
+      "id": "provider",
+      "title": "Provider",
+      "fields": [
+        {
+          "id": "provider_1",
+          "label": "Ordering/referring professional",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "provider_2",
+          "label": "Professional registration reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "provider_3",
+          "label": "Department/contact",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "provider_4",
+          "label": "Order identifier",
+          "type": "identifier",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "provider_5",
+          "label": "Order placed on",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "document": {
+      "id": "document",
+      "title": "Document",
+      "fields": [
+        {
+          "id": "document_1",
+          "label": "Document number",
+          "type": "identifier",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "document_2",
+          "label": "Document status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "document_3",
+          "label": "Document version",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "document_4",
+          "label": "Issued at",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "document_5",
+          "label": "Prepared by and role",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "document_6",
+          "label": "Original source record reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "contact": {
+      "id": "contact",
+      "title": "Contact",
+      "fields": [
+        {
+          "id": "contact_1",
+          "label": "Phone number",
+          "type": "tel",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "contact_2",
+          "label": "Email address",
+          "type": "email",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "contact_3",
+          "label": "Address",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "contact_4",
+          "label": "Preferred language",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "contact_5",
+          "label": "Emergency contact and relationship",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "identity": {
+      "id": "identity",
+      "title": "Identity",
+      "fields": [
+        {
+          "id": "identity_1",
+          "label": "Identity document type/issuer",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "identity_2",
+          "label": "Document reference",
+          "type": "identifier",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "identity_3",
+          "label": "Recorded name",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "identity_4",
+          "label": "Identity confidence",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "identity_5",
+          "label": "Identity steward",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "identity_6",
+          "label": "Evidence provenance",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "triage": {
+      "id": "triage",
+      "title": "Triage",
+      "fields": [
+        {
+          "id": "triage_1",
+          "label": "Arrival time",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "triage_2",
+          "label": "Presenting complaint",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "triage_3",
+          "label": "Triage observations",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "triage_4",
+          "label": "Approved triage category",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "triage_5",
+          "label": "Reassessment due",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "triage_6",
+          "label": "Escalation recipient",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "vitals": {
+      "id": "vitals",
+      "title": "Vitals",
+      "fields": [
+        {
+          "id": "vitals_1",
+          "label": "Measurement time",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "vitals_2",
+          "label": "Measurement site/method",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "vitals_3",
+          "label": "Temperature",
+          "type": "measurement",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "vitals_4",
+          "label": "Pulse",
+          "type": "measurement",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "vitals_5",
+          "label": "Blood pressure",
+          "type": "measurement",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "vitals_6",
+          "label": "Respiratory rate",
+          "type": "measurement",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "vitals_7",
+          "label": "Oxygen saturation",
+          "type": "measurement",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "vitals_8",
+          "label": "Source and observer",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "assessment": {
+      "id": "assessment",
+      "title": "Assessment",
+      "fields": [
+        {
+          "id": "assessment_1",
+          "label": "History and reason",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "assessment_2",
+          "label": "Relevant findings",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "assessment_3",
+          "label": "Assessment and differential",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "assessment_4",
+          "label": "Relevant existing conditions",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "assessment_5",
+          "label": "Contraindications and alerts",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "assessment_6",
+          "label": "Clinician decision",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "plan": {
+      "id": "plan",
+      "title": "Plan",
+      "fields": [
+        {
+          "id": "plan_1",
+          "label": "Treatment or care plan",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "plan_2",
+          "label": "Next steps and responsible team",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "plan_3",
+          "label": "Monitoring requirements",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "plan_4",
+          "label": "Follow-up date",
+          "type": "date",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "plan_5",
+          "label": "Patient instructions",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "plan_6",
+          "label": "Escalation criteria",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "handover": {
+      "id": "handover",
+      "title": "Handover",
+      "fields": [
+        {
+          "id": "handover_1",
+          "label": "Sending service and clinician",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "handover_2",
+          "label": "Receiving service and clinician",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "handover_3",
+          "label": "Situation",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "handover_4",
+          "label": "Relevant background",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "handover_5",
+          "label": "Assessment",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "handover_6",
+          "label": "Recommendations",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "handover_7",
+          "label": "Acceptance outcome and time",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "bed": {
+      "id": "bed",
+      "title": "Bed",
+      "fields": [
+        {
+          "id": "bed_1",
+          "label": "Ward",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "bed_2",
+          "label": "Bed identifier",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "bed_3",
+          "label": "Isolation/safety constraints",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "bed_4",
+          "label": "Availability and cleaning status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "bed_5",
+          "label": "Reservation reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "bed_6",
+          "label": "Accepting team",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "discharge": {
+      "id": "discharge",
+      "title": "Discharge",
+      "fields": [
+        {
+          "id": "discharge_1",
+          "label": "Reason for discharge",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "discharge_2",
+          "label": "Discharge diagnosis",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "discharge_3",
+          "label": "Significant procedures/results",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "discharge_4",
+          "label": "Pending tests and ownership",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "discharge_5",
+          "label": "Medication reconciliation status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "discharge_6",
+          "label": "Follow-up and safety-net instructions",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "discharge_7",
+          "label": "Discharge status and time",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "referral": {
+      "id": "referral",
+      "title": "Referral",
+      "fields": [
+        {
+          "id": "referral_1",
+          "label": "Receiving facility/clinician",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "referral_2",
+          "label": "Reason and priority",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "referral_3",
+          "label": "Relevant history and findings",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "referral_4",
+          "label": "Attached results / records",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "referral_5",
+          "label": "Disclosure authority",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "referral_6",
+          "label": "Acknowledgment and outcome",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "allergy": {
+      "id": "allergy",
+      "title": "Allergy",
+      "fields": [
+        {
+          "id": "allergy_1",
+          "label": "Assessment status (known/unknown/not assessed)",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "allergy_2",
+          "label": "Substance with coded reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "allergy_3",
+          "label": "Reaction",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "allergy_4",
+          "label": "Severity and certainty",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "allergy_5",
+          "label": "Source and verification",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "allergy_6",
+          "label": "Last review timestamp",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "prescription": {
+      "id": "prescription",
+      "title": "Prescription",
+      "fields": [
+        {
+          "id": "prescription_1",
+          "label": "Medication order line items",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "prescription_2",
+          "label": "Indication/diagnosis",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "prescription_3",
+          "label": "Allergy and interaction review status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "prescription_4",
+          "label": "Renal/hepatic/pregnancy checks if relevant",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "prescription_5",
+          "label": "Prescriber and registration",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "prescription_6",
+          "label": "Duration and review date",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "prescription_7",
+          "label": "Substitution / dispense instructions",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "medAdministration": {
+      "id": "medAdministration",
+      "title": "Med Administration",
+      "fields": [
+        {
+          "id": "medAdministration_1",
+          "label": "Administration row details",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "medAdministration_2",
+          "label": "Medication order reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "medAdministration_3",
+          "label": "Dose identity",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "medAdministration_4",
+          "label": "Administration time",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "medAdministration_5",
+          "label": "Route and site",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "medAdministration_6",
+          "label": "Reason for omission/hold",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "medAdministration_7",
+          "label": "Administrator and witness",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "medicationReconcile": {
+      "id": "medicationReconcile",
+      "title": "Medication Reconcile",
+      "fields": [
+        {
+          "id": "medicationReconcile_1",
+          "label": "Source medication lists",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "medicationReconcile_2",
+          "label": "Current and changed items",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "medicationReconcile_3",
+          "label": "Discrepancies and reason",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "medicationReconcile_4",
+          "label": "Reconciler identity",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "medicationReconcile_5",
+          "label": "Verification status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "specimen": {
+      "id": "specimen",
+      "title": "Specimen",
+      "fields": [
+        {
+          "id": "specimen_1",
+          "label": "Specimen accession",
+          "type": "identifier",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "specimen_2",
+          "label": "Specimen type and anatomical site",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "specimen_3",
+          "label": "Collection timestamp",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "specimen_4",
+          "label": "Collector",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "specimen_5",
+          "label": "Container and transport conditions",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "specimen_6",
+          "label": "Receipt timestamp",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "specimen_7",
+          "label": "Acceptance/rejection status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "labOrder": {
+      "id": "labOrder",
+      "title": "Lab Order",
+      "fields": [
+        {
+          "id": "labOrder_1",
+          "label": "Requested tests and codes",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "labOrder_2",
+          "label": "Clinical indication",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "labOrder_3",
+          "label": "Specimen requirements",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "labOrder_4",
+          "label": "Priority",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "labOrder_5",
+          "label": "Ordering clinician",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "labOrder_6",
+          "label": "Collected by",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "labResults": {
+      "id": "labResults",
+      "title": "Lab Results",
+      "fields": [
+        {
+          "id": "labResults_1",
+          "label": "Analyte/test results",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "labResults_2",
+          "label": "Specimen accession",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "labResults_3",
+          "label": "Collection and received time",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "labResults_4",
+          "label": "Result and verification time",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "labResults_5",
+          "label": "Method / instrument",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "labResults_6",
+          "label": "Reference intervals and critical flags",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "labResults_7",
+          "label": "Interpretation / remarks",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "labSafety": {
+      "id": "labSafety",
+      "title": "Lab Safety",
+      "fields": [
+        {
+          "id": "labSafety_1",
+          "label": "Critical result and threshold provenance",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "labSafety_2",
+          "label": "Result time",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "labSafety_3",
+          "label": "Receiving clinician",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "labSafety_4",
+          "label": "Notification method and attempts",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "labSafety_5",
+          "label": "Read-back acknowledgment",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "labSafety_6",
+          "label": "Escalation timestamp",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "microbiology": {
+      "id": "microbiology",
+      "title": "Microbiology",
+      "fields": [
+        {
+          "id": "microbiology_1",
+          "label": "Specimen and culture conditions",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "microbiology_2",
+          "label": "Organisms and identification",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "microbiology_3",
+          "label": "Antimicrobial susceptibility",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "microbiology_4",
+          "label": "Resistant pattern interpretation",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "microbiology_5",
+          "label": "Infection control notification",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "pathology": {
+      "id": "pathology",
+      "title": "Pathology",
+      "fields": [
+        {
+          "id": "pathology_1",
+          "label": "Specimen container and site",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "pathology_2",
+          "label": "Gross description",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "pathology_3",
+          "label": "Microscopic description",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "pathology_4",
+          "label": "Diagnosis and stage source",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "pathology_5",
+          "label": "Blocks/slides identifiers",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "pathology_6",
+          "label": "Ancillary studies",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "imagingOrder": {
+      "id": "imagingOrder",
+      "title": "Imaging Order",
+      "fields": [
+        {
+          "id": "imagingOrder_1",
+          "label": "Modality and anatomical region",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "imagingOrder_2",
+          "label": "Clinical indication",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "imagingOrder_3",
+          "label": "Requested protocol",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "imagingOrder_4",
+          "label": "Pregnancy/implant/contrast safety status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "imagingOrder_5",
+          "label": "Priority",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "imagingOrder_6",
+          "label": "Ordering clinician",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "imagingReport": {
+      "id": "imagingReport",
+      "title": "Imaging Report",
+      "fields": [
+        {
+          "id": "imagingReport_1",
+          "label": "Modality and study identifier",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "imagingReport_2",
+          "label": "Study timestamp",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "imagingReport_3",
+          "label": "Technique",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "imagingReport_4",
+          "label": "Clinical indication",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "imagingReport_5",
+          "label": "Comparison studies",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "imagingReport_6",
+          "label": "Findings",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "imagingReport_7",
+          "label": "Impression",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "imagingReport_8",
+          "label": "Radiologist sign-off status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "contrast": {
+      "id": "contrast",
+      "title": "Contrast",
+      "fields": [
+        {
+          "id": "contrast_1",
+          "label": "Indication and agent",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "contrast_2",
+          "label": "Allergy/renal/pregnancy screening",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "contrast_3",
+          "label": "Contrast administration source",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "contrast_4",
+          "label": "Reaction status and management",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "contrast_5",
+          "label": "Reviewer and time",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "surgicalChecklist": {
+      "id": "surgicalChecklist",
+      "title": "Surgical Checklist",
+      "fields": [
+        {
+          "id": "surgicalChecklist_1",
+          "label": "Pre-induction verification",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "surgicalChecklist_2",
+          "label": "Before incision verification",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "surgicalChecklist_3",
+          "label": "Before departure verification",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "surgicalChecklist_4",
+          "label": "Team briefing",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "surgicalChecklist_5",
+          "label": "Count/implant checks",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "surgicalChecklist_6",
+          "label": "Exceptions, escalations and reason",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "procedure": {
+      "id": "procedure",
+      "title": "Procedure",
+      "fields": [
+        {
+          "id": "procedure_1",
+          "label": "Procedure and site",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "procedure_2",
+          "label": "Procedure date and start/end time",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "procedure_3",
+          "label": "Diagnosis and indication",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "procedure_4",
+          "label": "Team and operator",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "procedure_5",
+          "label": "Anesthesia mode/source",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "procedure_6",
+          "label": "Findings, technique and complications",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "procedure_7",
+          "label": "Specimens and implants",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "procedure_8",
+          "label": "Postoperative instructions",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "anesthesia": {
+      "id": "anesthesia",
+      "title": "Anesthesia",
+      "fields": [
+        {
+          "id": "anesthesia_1",
+          "label": "Pre-anesthetic assessment",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "anesthesia_2",
+          "label": "Airway and risk findings",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "anesthesia_3",
+          "label": "Anesthetic plan and consent status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "anesthesia_4",
+          "label": "Medication and fluids record",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "anesthesia_5",
+          "label": "Intraoperative observations",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "anesthesia_6",
+          "label": "Recovery and handover",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "bloodRequest": {
+      "id": "bloodRequest",
+      "title": "Blood Request",
+      "fields": [
+        {
+          "id": "bloodRequest_1",
+          "label": "Component type and units requested",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "bloodRequest_2",
+          "label": "Clinical indication",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "bloodRequest_3",
+          "label": "Special requirements",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "bloodRequest_4",
+          "label": "Sample identification",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "bloodRequest_5",
+          "label": "Compatibility testing",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "bloodRequest_6",
+          "label": "Prescriber acknowledgment",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "transfusion": {
+      "id": "transfusion",
+      "title": "Transfusion",
+      "fields": [
+        {
+          "id": "transfusion_1",
+          "label": "Component/unit identifiers",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "transfusion_2",
+          "label": "Compatibility and identity checks",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "transfusion_3",
+          "label": "Issue/release and start time",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "transfusion_4",
+          "label": "Observations before/during/after",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "transfusion_5",
+          "label": "Reaction/interruptions",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "transfusion_6",
+          "label": "Completed by and witness",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "reaction": {
+      "id": "reaction",
+      "title": "Reaction",
+      "fields": [
+        {
+          "id": "reaction_1",
+          "label": "Event or reaction timestamp",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "reaction_2",
+          "label": "Suspected agent/component",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "reaction_3",
+          "label": "Signs and findings",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "reaction_4",
+          "label": "Immediate response",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "reaction_5",
+          "label": "Notification and escalation",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "reaction_6",
+          "label": "Follow-up and classification",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "financeLines": {
+      "id": "financeLines",
+      "title": "Finance Lines",
+      "fields": [
+        {
+          "id": "financeLines_1",
+          "label": "Itemized charges",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "financeLines_2",
+          "label": "Currency and unit amounts",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "financeLines_3",
+          "label": "Discount basis/authorization",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "financeLines_4",
+          "label": "Tax code, rate and amount",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "financeLines_5",
+          "label": "Subtotal",
+          "type": "money",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "financeLines_6",
+          "label": "Grand total",
+          "type": "money",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "financeLines_7",
+          "label": "Source charge references",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "payment": {
+      "id": "payment",
+      "title": "Payment",
+      "fields": [
+        {
+          "id": "payment_1",
+          "label": "Payment transaction identifier",
+          "type": "identifier",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "payment_2",
+          "label": "Invoice reference",
+          "type": "identifier",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "payment_3",
+          "label": "Paid amount and currency",
+          "type": "money",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "payment_4",
+          "label": "Payment channel",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "payment_5",
+          "label": "Payer reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "payment_6",
+          "label": "Authorization/settlement status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "payment_7",
+          "label": "Change and balance if cash",
+          "type": "money",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "refund": {
+      "id": "refund",
+      "title": "Refund",
+      "fields": [
+        {
+          "id": "refund_1",
+          "label": "Original receipt and payment reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "refund_2",
+          "label": "Refund amount and currency",
+          "type": "money",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "refund_3",
+          "label": "Reason and supporting evidence",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "refund_4",
+          "label": "Maker/checker identity",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "refund_5",
+          "label": "Gateway outcome",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "refund_6",
+          "label": "Final settlement receipt",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "payer": {
+      "id": "payer",
+      "title": "Payer",
+      "fields": [
+        {
+          "id": "payer_1",
+          "label": "Payer organization",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "payer_2",
+          "label": "Member/beneficiary reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "payer_3",
+          "label": "Plan and coverage dates",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "payer_4",
+          "label": "Authorization reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "payer_5",
+          "label": "Covered/excluded items",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "payer_6",
+          "label": "Claim state and adjustments",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "consent": {
+      "id": "consent",
+      "title": "Consent",
+      "fields": [
+        {
+          "id": "consent_1",
+          "label": "Proposed intervention / procedure",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "consent_2",
+          "label": "Purpose and expected benefits",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "consent_3",
+          "label": "Material risks and possible complications",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "consent_4",
+          "label": "Reasonable alternatives and no-treatment option",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "consent_5",
+          "label": "Opportunity for questions and responses",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "consent_6",
+          "label": "Voluntary decision, refusal and withdrawal explanation",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "consent_7",
+          "label": "Capacity and language/interpreter assessment",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "consent_8",
+          "label": "Authorized decision-maker and relationship",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "signature": {
+      "id": "signature",
+      "title": "Signature",
+      "fields": [
+        {
+          "id": "signature_1",
+          "label": "Decision-maker identity and authority",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "signature_2",
+          "label": "Patient/representative acknowledgment",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "signature_3",
+          "label": "Clinician/witness roles",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "signature_4",
+          "label": "Event timestamp",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "signature_5",
+          "label": "Signature evidence source reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "signature_6",
+          "label": "E-signature verification status (not image alone)",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "operationInventory": {
+      "id": "operationInventory",
+      "title": "Operation Inventory",
+      "fields": [
+        {
+          "id": "operationInventory_1",
+          "label": "Item/SKU and batch",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "operationInventory_2",
+          "label": "Warehouse / store",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "operationInventory_3",
+          "label": "Quantity and unit",
+          "type": "measurement",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "operationInventory_4",
+          "label": "Lot/serial or expiry",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "operationInventory_5",
+          "label": "Custodian",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "operationInventory_6",
+          "label": "Request/issue reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "purchase": {
+      "id": "purchase",
+      "title": "Purchase",
+      "fields": [
+        {
+          "id": "purchase_1",
+          "label": "Supplier legal identity and contacts",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "purchase_2",
+          "label": "Procurement request / contract reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "purchase_3",
+          "label": "Items and quantities",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "purchase_4",
+          "label": "Currency, rate and taxes",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "purchase_5",
+          "label": "Delivery terms and location",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "purchase_6",
+          "label": "Authorization and maker-checker",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "goodsReceipt": {
+      "id": "goodsReceipt",
+      "title": "Goods Receipt",
+      "fields": [
+        {
+          "id": "goodsReceipt_1",
+          "label": "Purchase order reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "goodsReceipt_2",
+          "label": "Supplier dispatch reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "goodsReceipt_3",
+          "label": "Received products, accepted/rejected qty",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "goodsReceipt_4",
+          "label": "Lot/serial and expiry",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "goodsReceipt_5",
+          "label": "Inspection results",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "goodsReceipt_6",
+          "label": "Receiving custodian and timestamp",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "inventoryAudit": {
+      "id": "inventoryAudit",
+      "title": "Inventory Audit",
+      "fields": [
+        {
+          "id": "inventoryAudit_1",
+          "label": "Inventory location",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "inventoryAudit_2",
+          "label": "Count rows",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "inventoryAudit_3",
+          "label": "Count date",
+          "type": "date",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "inventoryAudit_4",
+          "label": "Variance and causes",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "inventoryAudit_5",
+          "label": "Independent verifier",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "inventoryAudit_6",
+          "label": "Adjustment approval status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "asset": {
+      "id": "asset",
+      "title": "Asset",
+      "fields": [
+        {
+          "id": "asset_1",
+          "label": "Asset identifier/serial",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "asset_2",
+          "label": "Manufacturer/model",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "asset_3",
+          "label": "Assigned facility/location",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "asset_4",
+          "label": "Custody and condition",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "asset_5",
+          "label": "Maintenance history",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "asset_6",
+          "label": "Service/next due date",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "maintenance": {
+      "id": "maintenance",
+      "title": "Maintenance",
+      "fields": [
+        {
+          "id": "maintenance_1",
+          "label": "Issue/repair ticket",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "maintenance_2",
+          "label": "Asset / location",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "maintenance_3",
+          "label": "Fault description",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "maintenance_4",
+          "label": "Safety isolation/incident status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "maintenance_5",
+          "label": "Work performed",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "maintenance_6",
+          "label": "Technician and verification",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "maintenance_7",
+          "label": "Return to service status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "hr": {
+      "id": "hr",
+      "title": "Hr",
+      "fields": [
+        {
+          "id": "hr_1",
+          "label": "Staff identifier",
+          "type": "identifier",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "hr_2",
+          "label": "Department/role",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "hr_3",
+          "label": "Employment/credential reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "hr_4",
+          "label": "Employment date",
+          "type": "date",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "hr_5",
+          "label": "Supervisor/approver",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "hr_6",
+          "label": "Confidentiality restrictions",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "payroll": {
+      "id": "payroll",
+      "title": "Payroll",
+      "fields": [
+        {
+          "id": "payroll_1",
+          "label": "Payroll period",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "payroll_2",
+          "label": "Employee ID and statutory components",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "payroll_3",
+          "label": "Earnings and deductions",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "payroll_4",
+          "label": "Gross, net, and currency",
+          "type": "money",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "payroll_5",
+          "label": "Bank/payment reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "payroll_6",
+          "label": "Approval and audit status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "leave": {
+      "id": "leave",
+      "title": "Leave",
+      "fields": [
+        {
+          "id": "leave_1",
+          "label": "Leave category and requested dates",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "leave_2",
+          "label": "Available entitlement and policy",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "leave_3",
+          "label": "Coverage / replacement",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "leave_4",
+          "label": "Employee request",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "leave_5",
+          "label": "Approver and decision",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "leave_6",
+          "label": "Return-to-work status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "transport": {
+      "id": "transport",
+      "title": "Transport",
+      "fields": [
+        {
+          "id": "transport_1",
+          "label": "Ambulance/vehicle identifier",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "transport_2",
+          "label": "Dispatch request and priority",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "transport_3",
+          "label": "Pickup and destination",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "transport_4",
+          "label": "Crew and driver",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "transport_5",
+          "label": "Timeline and handover",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "transport_6",
+          "label": "Patient monitoring and events",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "dietary": {
+      "id": "dietary",
+      "title": "Dietary",
+      "fields": [
+        {
+          "id": "dietary_1",
+          "label": "Nutrition order and restrictions",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "dietary_2",
+          "label": "Allergies and diet safety source",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "dietary_3",
+          "label": "Meal plan/texture/fluid limits",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "dietary_4",
+          "label": "Tray/delivery checks",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "dietary_5",
+          "label": "Service time and recipient",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "dietary_6",
+          "label": "Exceptions and refusal",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "mortuary": {
+      "id": "mortuary",
+      "title": "Mortuary",
+      "fields": [
+        {
+          "id": "mortuary_1",
+          "label": "Decedent identification and source",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "mortuary_2",
+          "label": "Time and place of death",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "mortuary_3",
+          "label": "Authorizing clinical document",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "mortuary_4",
+          "label": "Custody transfer log",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "mortuary_5",
+          "label": "Property/inventory and seals",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "mortuary_6",
+          "label": "Release recipient, authority and ID",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "incident": {
+      "id": "incident",
+      "title": "Incident",
+      "fields": [
+        {
+          "id": "incident_1",
+          "label": "Incident class and severity",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "incident_2",
+          "label": "Occurrence time and location",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "incident_3",
+          "label": "Narrative and immediate containment",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "incident_4",
+          "label": "Affected resources",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "incident_5",
+          "label": "Escalation/notifications",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "incident_6",
+          "label": "Root cause and CAPA owners",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "quality": {
+      "id": "quality",
+      "title": "Quality",
+      "fields": [
+        {
+          "id": "quality_1",
+          "label": "Indicator / standard and source",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "quality_2",
+          "label": "Reporting period",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "quality_3",
+          "label": "Numerator and denominator",
+          "type": "measurement",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "quality_4",
+          "label": "Exceptions and data quality",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "quality_5",
+          "label": "Corrective action and owner",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "quality_6",
+          "label": "Verification status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "facility": {
+      "id": "facility",
+      "title": "Facility",
+      "fields": [
+        {
+          "id": "facility_1",
+          "label": "Hospital cell and facility",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "facility_2",
+          "label": "Department and service",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "facility_3",
+          "label": "Physical location",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "facility_4",
+          "label": "Licensed capacity/status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "facility_5",
+          "label": "Responsible manager",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "facility_6",
+          "label": "Effective date and change reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "terminology": {
+      "id": "terminology",
+      "title": "Terminology",
+      "fields": [
+        {
+          "id": "terminology_1",
+          "label": "Code system and version",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "terminology_2",
+          "label": "Code/display and language",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "terminology_3",
+          "label": "Value set membership",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "terminology_4",
+          "label": "Approved rule or mapping",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "terminology_5",
+          "label": "Clinical review decision and date",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "terminology_6",
+          "label": "Effective/retired status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "docControl": {
+      "id": "docControl",
+      "title": "Doc Control",
+      "fields": [
+        {
+          "id": "docControl_1",
+          "label": "Template identifier and version",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "docControl_2",
+          "label": "Author/owner and approver",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "docControl_3",
+          "label": "Review date and next review",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "docControl_4",
+          "label": "Effective/expiry date",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "docControl_5",
+          "label": "Controlled copies and distribution",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "docControl_6",
+          "label": "Retirement / supersession",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "privacy": {
+      "id": "privacy",
+      "title": "Privacy",
+      "fields": [
+        {
+          "id": "privacy_1",
+          "label": "Processing purpose and lawful basis review",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "privacy_2",
+          "label": "Patient/requestor identity and role",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "privacy_3",
+          "label": "Requested data categories",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "privacy_4",
+          "label": "Recipient / disclosure scope",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "privacy_5",
+          "label": "Consent or authorization reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "privacy_6",
+          "label": "Decision and audit evidence",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "access": {
+      "id": "access",
+      "title": "Access",
+      "fields": [
+        {
+          "id": "access_1",
+          "label": "Named actor / subject identifier",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "access_2",
+          "label": "Role/permission requested",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "access_3",
+          "label": "Resource and facility scope",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "access_4",
+          "label": "Justification and expiry",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "access_5",
+          "label": "Independent reviewer",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "access_6",
+          "label": "Session/MFA and access outcome",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "audit": {
+      "id": "audit",
+      "title": "Audit",
+      "fields": [
+        {
+          "id": "audit_1",
+          "label": "Event ID and timestamp",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "audit_2",
+          "label": "Actor and role",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "audit_3",
+          "label": "Affected resource and tenant scope",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "audit_4",
+          "label": "Event type and reason",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "audit_5",
+          "label": "Prior/current version references",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "audit_6",
+          "label": "Evidence retention and export authorization",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "integration": {
+      "id": "integration",
+      "title": "Integration",
+      "fields": [
+        {
+          "id": "integration_1",
+          "label": "Partner/client application",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "integration_2",
+          "label": "Authorized data scope",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "integration_3",
+          "label": "API contract version and endpoint",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "integration_4",
+          "label": "Credential and rotation status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "integration_5",
+          "label": "Retry/idempotency and delivery status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "integration_6",
+          "label": "Security review and support reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "device": {
+      "id": "device",
+      "title": "Device",
+      "fields": [
+        {
+          "id": "device_1",
+          "label": "Device identifier/model/serial",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "device_2",
+          "label": "Patient/facility binding and time",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "device_3",
+          "label": "Calibration and maintenance state",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "device_4",
+          "label": "Data transfer and provenance",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "device_5",
+          "label": "Connectivity anomalies",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "device_6",
+          "label": "Reviewer acknowledgment",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "notification": {
+      "id": "notification",
+      "title": "Notification",
+      "fields": [
+        {
+          "id": "notification_1",
+          "label": "Recipient class/scope",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "notification_2",
+          "label": "Message template version",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "notification_3",
+          "label": "Trigger and severity",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "notification_4",
+          "label": "Channel and delivery attempts",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "notification_5",
+          "label": "Acknowledgment and escalation",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "notification_6",
+          "label": "Redaction / confidentiality status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "offline": {
+      "id": "offline",
+      "title": "Offline",
+      "fields": [
+        {
+          "id": "offline_1",
+          "label": "Authoritative source and ownership",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "offline_2",
+          "label": "Local pending draft references",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "offline_3",
+          "label": "Last trusted synchronization time",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "offline_4",
+          "label": "Conflict and duplicate detection",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "offline_5",
+          "label": "Operator review and reconciliation",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "offline_6",
+          "label": "Release decision and evidence",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "platform": {
+      "id": "platform",
+      "title": "Platform",
+      "fields": [
+        {
+          "id": "platform_1",
+          "label": "Cell identifier and region",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "platform_2",
+          "label": "Deploy/release candidate",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "platform_3",
+          "label": "Change request and approver",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "platform_4",
+          "label": "Health and compatibility checks",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "platform_5",
+          "label": "Rollback decision and evidence",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "platform_6",
+          "label": "Observed release status",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "recovery": {
+      "id": "recovery",
+      "title": "Recovery",
+      "fields": [
+        {
+          "id": "recovery_1",
+          "label": "Incident and affected cell",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "recovery_2",
+          "label": "Recovery point/time objective",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "recovery_3",
+          "label": "Backup and integrity evidence",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "recovery_4",
+          "label": "Restore test and checksum",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "recovery_5",
+          "label": "Reconciliation of external effects",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "recovery_6",
+          "label": "Release authorization and audit",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "education": {
+      "id": "education",
+      "title": "Education",
+      "fields": [
+        {
+          "id": "education_1",
+          "label": "Instruction topic and consent/acknowledgment",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "education_2",
+          "label": "Patient/guardian comprehension",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "education_3",
+          "label": "Language and interpreter",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "education_4",
+          "label": "Teach-back outcome",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "education_5",
+          "label": "Materials provided and version",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "education_6",
+          "label": "Follow-up plan",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "travel": {
+      "id": "travel",
+      "title": "Travel",
+      "fields": [
+        {
+          "id": "travel_1",
+          "label": "Journey/dispatch reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "travel_2",
+          "label": "Stops and responsible service",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "travel_3",
+          "label": "Pickup/drop-off timestamp",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "travel_4",
+          "label": "Safety requirements",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "travel_5",
+          "label": "Escalation contact",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "travel_6",
+          "label": "Completion evidence",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "label": {
+      "id": "label",
+      "title": "Label",
+      "fields": [
+        {
+          "id": "label_1",
+          "label": "Human-readable patient identifiers",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "label_2",
+          "label": "Encounter or specimen/accession identifier",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "label_3",
+          "label": "Print date and time",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "label_4",
+          "label": "Barcode payload source",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "label_5",
+          "label": "Printer stock/profile identifier",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "label_6",
+          "label": "Verification by staff",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "complaint": {
+      "id": "complaint",
+      "title": "Complaint",
+      "fields": [
+        {
+          "id": "complaint_1",
+          "label": "Service or patient feedback reference",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "complaint_2",
+          "label": "Category and date",
+          "type": "datetime",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "complaint_3",
+          "label": "Narrative and desired remedy",
+          "type": "textarea",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "complaint_4",
+          "label": "Resolution owner",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "complaint_5",
+          "label": "Escalation and response date",
+          "type": "date",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "complaint_6",
+          "label": "Privacy restrictions",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "training": {
+      "id": "training",
+      "title": "Training",
+      "fields": [
+        {
+          "id": "training_1",
+          "label": "Staff and role",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "training_2",
+          "label": "Training topic/material version",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "training_3",
+          "label": "Trainer / assessor",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "training_4",
+          "label": "Completion date",
+          "type": "date",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "training_5",
+          "label": "Competency result and observation",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "training_6",
+          "label": "Remediation and reassessment",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    },
+    "operations": {
+      "id": "operations",
+      "title": "Operations",
+      "fields": [
+        {
+          "id": "operations_1",
+          "label": "Scope/department",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "operations_2",
+          "label": "Work period",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "operations_3",
+          "label": "Tasks and priority",
+          "type": "table",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "operations_4",
+          "label": "Assigned owner",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "operations_5",
+          "label": "Completion evidence",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        },
+        {
+          "id": "operations_6",
+          "label": "Exceptions and handover",
+          "type": "text",
+          "required": "policy-pending",
+          "source": "authoritative-service-required",
+          "recordValue": false
+        }
+      ]
+    }
+  }
+}
