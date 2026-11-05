@@ -62,8 +62,24 @@ export function verifyTriageCase(dto,caseId){
   typeof x.arrivedAt==="string"&&/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?Z$/.test(x.arrivedAt)&&Number.isFinite(Date.parse(x.arrivedAt))&&
   ["paused","safetyHold","manualEscalation"].every(k=>typeof x[k]==="boolean");
 }
-export async function admission(request,{env=process.env,fetcher=fetch,capability="patient:view",additionalCapabilities=[]}={}){
- const staff=readSessionCookie(request.headers.get("cookie"),{env});
+export async function admission(request,{env=process.env,fetcher=fetch,capability="patient:view",additionalCapabilities=[],sessionResolver=null}={}){
+ const opaqueRequired=env?.SYNQORIA_REQUIRE_OPAQUE_STAFF_SESSION==="1";
+ if(opaqueRequired&&typeof sessionResolver!=="function")
+  return {error:reject(503,"opaque_session_not_integrated")};
+ let staff;
+ if(sessionResolver!==null){
+  if(typeof sessionResolver!=="function")
+   return {error:reject(503,"session_resolver_invalid")};
+  try{staff=await sessionResolver(request);}catch{return {error:reject(401,"authentication_required")};}
+  const validSession=staff&&validUuid(staff.actorId)&&validUuid(staff.tenantId)&&
+   validUuid(staff.facilityId)&&Number.isSafeInteger(staff.sessionExpiresAt)&&
+   staff.sessionExpiresAt>Date.now()&&typeof staff.bearer==="string"&&
+   /^[A-Za-z0-9_.~-]{16,8192}$/.test(staff.bearer)&&
+   Array.isArray(staff.capabilities)&&staff.capabilities.length>0&&
+   staff.capabilities.length<=64&&new Set(staff.capabilities).size===staff.capabilities.length&&
+   staff.capabilities.every(x=>typeof x==="string"&&/^[a-z][a-z0-9:._-]{2,63}$/.test(x));
+  if(!validSession)return {error:reject(401,"authentication_required")};
+ }else staff=readSessionCookie(request.headers.get("cookie"),{env});
  if(!staff)return {error:reject(401,"authentication_required")};
  if(!staff.capabilities.includes(capability)||!additionalCapabilities.every(c=>staff.capabilities.includes(c)))return {error:reject(404,"not_found")};
  const origin=configuredCellOrigin(env);
