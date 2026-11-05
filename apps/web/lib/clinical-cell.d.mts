@@ -9,3 +9,6 @@ export function readFacility(request:Request,options?:ReadOptions):Promise<Respo
 export function readPatient(request:Request,patientId:string,options?:ReadOptions):Promise<Response>;
 export function readTriageCase(request:Request,patientId:string,caseId:string,options?:ReadOptions):Promise<Response>;
 export function readCellHealth(request:Request,options?:ReadOptions):Promise<Response>;
+export type TriageWorklistInput={view:string;caseIds:readonly string[];stationOrClinician?:string;after?:string};
+export function validateTriageViewRequest(value:unknown):TriageWorklistInput|null;
+export function readTriageWorklist(request:Request,patientId:string,options?:ReadOptions):Promise<Response>;
