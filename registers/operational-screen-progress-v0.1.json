@@ -3,10 +3,10 @@
   "sourceBranch": "work/real-clinical-screens-first-slice-2026-11-05",
   "authority": "registers/canonical-screens.json",
   "canonicalScreenCount": 261,
-  "routeSlices": 9,
-  "liveApiReadSubsets": 4,
+  "routeSlices": 10,
+  "liveApiReadSubsets": 5,
   "nonclinicalFunctionalRoutes": 5,
-  "remainingWithoutOperationalRoute": 252,
+  "remainingWithoutOperationalRoute": 251,
   "clinicallyAccepted": 0,
   "clinicallyCertifiedModules": 0,
   "clinicalRelease": "DENIED",
@@ -153,6 +153,23 @@
         "Authorized clinical template version approval",
         "Accessibility/PDF standards certification",
         "Real patient binding and issuance"
+      ]
+    },
+    {
+      "id": "M03-S01",
+      "category": "verified-api-read-subset",
+      "endpoint": "POST /api/clinical/triage/views/{patientId}",
+      "functions": [
+        "Patient-scoped explicit case ID worklist",
+        "All eight restricted worklist views with required filters",
+        "Server-verified tenant, facility, case and role boundaries",
+        "Safe local stage filter/sorting; no speculative patient data"
+      ],
+      "missing": [
+        "Production OIDC and durable clinical data service",
+        "Authorized facility-wide queue discovery outside the explicit ID subset",
+        "Clinical assessment and queue commands",
+        "Authoritative audit/role review and deployment tests"
       ]
     }
   ]
