@@ -18,6 +18,15 @@ export class PatientScopeAuthorizationError extends Error {
 }
 const deny=()=>{throw new PatientScopeAuthorizationError();};
 const isUuid=s=>typeof s==="string"&&UUID.test(s);
+const trustedOrigin=value=>{
+ try{
+  const u=new URL(value);
+  return u.protocol==="https:"&&u.origin===value&&!u.username&&!u.password&&
+   !u.port&&!u.search&&!u.hash&&u.pathname==="/"&&u.hostname.includes(".")&&
+   ![".invalid",".test",".example",".localhost",".local"].some(s=>u.hostname.endsWith(s))&&
+   !/^[0-9.]+$/.test(u.hostname);
+ }catch{return false;}
+};
 async function readBounded(response){
  if(response?.status!==200||response.redirected===true||!response.body||
    !response.headers?.get("content-type")?.toLowerCase().startsWith("application/json")||
@@ -44,7 +53,7 @@ export async function authorizePatientDisclosure(staff,patientId,resource,{
    !Array.isArray(staff.capabilities)||!staff.capabilities.includes("patient:view")||
    typeof staff.bearer!=="string"||staff.bearer.length<16||
    !resources.has(resource)||typeof origin!=="string"||
-   !/^https:\/\/[^/?#]+$/.test(origin)||typeof fetcher!=="function"||
+   !trustedOrigin(origin)||typeof fetcher!=="function"||
    !Number.isSafeInteger(nowMs))deny();
  const input={actorId:staff.actorId,tenantId:staff.tenantId,facilityId:staff.facilityId,
   patientId,resource,purpose:"TREATMENT"};
