@@ -36,7 +36,12 @@ export async function finishStaffOidcLogin(callbackUrl,cookie,config,{
    !replayStore||typeof replayStore.consume!=="function"||
    typeof fetcher!=="function"||typeof issueServerSession!=="function"||
    !config.oidc||!config.token||!config.introspection||!config.workforce||
-   !config.jwks||typeof config.apiAudience!=="string"||!config.apiAudience)deny();
+   !config.jwks||typeof config.apiAudience!=="string"||!config.apiAudience||
+   config.oidc.issuer!==config.token.issuer||config.oidc.issuer!==config.introspection.issuer||
+   config.oidc.issuer!==config.workforce.issuer||
+   config.oidc.clientId!==config.token.clientId||
+   config.oidc.clientId!==config.introspection.clientId||
+   config.introspection.apiAudience!==config.apiAudience)deny();
  try{
   const proof=await consumeOneUseOidcAuthorization(callbackUrl,cookie,config.oidc,replayStore,{now:nowMs});
   // No retry after a downstream failure: replay reservation was consumed first.
