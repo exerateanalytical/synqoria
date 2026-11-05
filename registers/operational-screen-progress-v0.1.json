@@ -1,6 +1,6 @@
 {
-  "version": "2026-11-05-real-code-first-slice",
-  "sourceBranch": "work/real-clinical-screens-first-slice-2026-11-05",
+  "version": "2026-11-05-261-route-coverage",
+  "sourceBranch": "work/canonical-261-route-coverage-2026-11-05",
   "authority": "registers/canonical-screens.json",
   "canonicalScreenCount": 261,
   "routeSlices": 10,
@@ -172,5 +172,9 @@
         "Authoritative audit/role review and deployment tests"
       ]
     }
-  ]
+  ],
+  "routedScreenUrls": 261,
+  "routeOnlyLocked": 251,
+  "routeOnlyDefinition": "HTTP route exists, but its authoritative clinical data service, command handling and patient-scope workflow are not implemented. Route-only must never be represented as operational software.",
+  "criticalClarification": "261/261 URL coverage; 10/261 partial operational or functional nonclinical slices; 251/261 backend-locked domain workstations; 0/261 clinically certified."
 }
