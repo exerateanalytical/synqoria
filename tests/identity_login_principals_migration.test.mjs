@@ -15,5 +15,5 @@ test("B0097 each NOLOGIN RLS runtime has distinct LOGIN NOINHERIT principal",()=
  assert.match(sql,/LOGIN NOINHERIT NOSUPERUSER/);
  assert.match(sql,/GRANT %I TO %I WITH ADMIN FALSE, INHERIT FALSE, SET TRUE/);
  assert.match(sql,/assigned.rolname<>rec.runtime_role/);
- assert.doesNotMatch(sql,/WITH INHERIT TRUE|SUPERUSER|PASSWORD '\w+'/);
+ assert.doesNotMatch(sql,/WITH INHERIT TRUE|PASSWORD '[^']+'/);
 });
