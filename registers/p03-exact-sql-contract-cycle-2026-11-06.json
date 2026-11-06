@@ -1,0 +1,452 @@
+{
+  "schema": "synqoria.p03.exact-sql-contract-cycle.v1",
+  "parentPullRequest": 32,
+  "sourcePullRequest": 33,
+  "branch": "work/p03-b0124-b0153-contract-guard-engineering-2026-11-06",
+  "cycle": {
+    "target": 30,
+    "plannedIds": "P03-B0124..P03-B0153",
+    "verifiedCount": 29,
+    "remaining": 1,
+    "cycleComplete": false
+  },
+  "verifiedSourceHead": "4bc0e511456cdbf16eb4b8ce63446dba86cc0eaf",
+  "sourceEvidence": [
+    {
+      "id": "P03-B0124",
+      "description": "exactly ten distinct reviewed SQL source operations in immutable catalogue",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0125",
+      "description": "role catalog probe accepts zero arguments for each isolated runtime",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0126",
+      "description": "exact harmless health SQL and no data-returning SELECT variants",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0127",
+      "description": "exact current and session role SQL without caller-provided arguments",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0128",
+      "description": "policy introspection is only callable from restricted replay runtime",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0129",
+      "description": "OIDC replay reservations reject foreign state namespaces and malformed state digest",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0130",
+      "description": "replay expiry is positive bounded integer and never arbitrary SQL interval",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0131",
+      "description": "OIDC state consume requires one canonical single-use state digest",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0132",
+      "description": "staff session inserts accept SHA-256 lowercase digest, never raw ticket",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0133",
+      "description": "session ciphertext has canonical AEAD v1 IV, encrypted body and tag",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0134",
+      "description": "reject unbounded ciphertext and noncanonical base64 encodings",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0135",
+      "description": "staff session expiry must be finite absolute millisecond epoch integer",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0136",
+      "description": "session read accepts precisely one server-derived SHA256 ticket digest",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0137",
+      "description": "session revoke has same digest-only input, never browser ticket",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0138",
+      "description": "audit event ID and correlation ID require syntactically valid UUIDs",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0139",
+      "description": "audit actor and tenant pseudonyms are SHA-256 digests, never raw identity",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0140",
+      "description": "audit event kind must be from closed clinical identity security dictionary",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0141",
+      "description": "audit outcome cannot represent successful access for denied events",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0142",
+      "description": "audit occurred-at timestamp rejects string, float, negative or out-of-range",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0143",
+      "description": "ad hoc unreviewed SELECT on sensitive metadata is always denied",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0144",
+      "description": "common table expressions, arbitrary INSERT and DELETE cannot escape manifest",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0145",
+      "description": "exact SQL byte identity denies comments, trailing semicolons and whitespace",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0146",
+      "description": "cross-role valid SQL operations still cannot be dispatched",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0147",
+      "description": "an invalid array/prototype or oversized parameter bundle never opens DB",
+      "source": "apps/web/lib/identity-sql-contracts.mjs",
+      "test": "tests/identity_sql_contracts.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163168759,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0148",
+      "description": "real PG16 strictly validated replay keys, bounded reserve and atomic consume",
+      "source": "apps/web/lib/oidc-replay-postgres.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163411382,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163411382",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0149",
+      "description": "actual PG16 encrypted staff session is durable and owner-scoped",
+      "source": "apps/web/lib/postgres-staff-session-store.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163411382,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163411382",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0150",
+      "description": "session digest and role isolation rejects forged direct reads on actual PG16",
+      "source": "apps/web/lib/postgres-staff-session-store.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163411382,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163411382",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0151",
+      "description": "append-only pseudonymous audit records written by live restricted PG16 role",
+      "source": "apps/web/lib/identity-security-audit.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163411382,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163411382",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0152",
+      "description": "PG16 enforces physical cross-role table SELECT revocation below SQL contracts",
+      "source": "apps/web/lib/identity-attested-db-query.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163411382,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163411382",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    }
+  ],
+  "additionalEvidence": {
+    "unitAndSignedLogin": "https://github.com/exerateanalytical/synqoria/actions/runs/42163168759",
+    "tlsPostgres16": "https://github.com/exerateanalytical/synqoria/actions/runs/42163411382"
+  },
+  "dependencies": {
+    "reviewedNpmLockMerged": false,
+    "reviewedExpoBuildMerged": false,
+    "normalEngineeringWorkflowPassing": false,
+    "liveHospitalIdentityConfigured": false,
+    "productionKeycloakConfigured": false,
+    "clinicalDisclosureEndpointDeployed": false,
+    "ops001SharedRoutesReconciled": false
+  },
+  "safety": {
+    "canonicalModules": 40,
+    "canonicalScreens": 261,
+    "domainLockedPending": 240,
+    "operationalPackagesAccepted": 0,
+    "globalEngineeringBacklogClosed": false,
+    "screenProductionStageAuthorized": false,
+    "clinicalRelease": "DENIED",
+    "certification": "DEFERRED"
+  },
+  "blockers": [
+    "Build-owner PR #23/npm v3 lock and PR #24/Expo script changes are CI-only candidate overlays; no reviewed merge",
+    "Live PostgreSQL tests run against disposable synthetic PG16 instance, not deployed hospital cell",
+    "Keycloak production realm, per-cell consent/disclosure services and workforce source not deployed",
+    "OPS001 PR #30 shared auth-route overlap requires reviewed owner reconciliation",
+    "Root engineering CI remains failed and global engineering acceptance remains open"
+  ]
+}
