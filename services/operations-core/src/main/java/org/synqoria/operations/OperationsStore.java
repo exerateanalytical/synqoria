@@ -153,15 +153,34 @@ public final class OperationsStore {
   * Proof is bound to aggregate version AND action to prevent reuse after changes.
   */
  private OperationWorkflow.TrustedEvidence authoritativeEvidence(OperationWorkflow.Actor actor,
-                            OperationWorkflow.Item current,ModuleCatalog.Step step){
+                            OperationWorkflow.Item current,ModuleCatalog.Step step,
+                            Map<String,Object> incoming){
   if(step.evidence().isEmpty())return OperationWorkflow.TrustedEvidence.none();
+  String referenceField=switch(step.evidence()){
+   case "verified_signature" -> "signatureRef";
+   case "document_lineage" -> "previousRef";
+   case "biomed_inspection" -> "inspectionRef";
+   case "transport_handover" -> "handoverRef";
+   case "delivery_receipt" -> "deliveryRef";
+   case "purchase_receipt" -> "receiptRef";
+   case "invoice_matched" -> "invoiceRef";
+   case "supplier_qualified" -> "qualificationRef";
+   case "vehicle_driver_qualified" -> "vehicleRef";
+   default -> null;
+  };
+  Object reference=referenceField==null?null:
+   incoming.containsKey(referenceField)?incoming.get(referenceField):
+   current.fields().get(referenceField);
+  if(referenceField!=null&&(!(reference instanceof String value)||value.isBlank()))
+   throw new WorkflowViolation("trusted_evidence_reference_required");
   Long count=jdbc.queryForObject(
    "SELECT count(*) FROM synqoria_operations.external_evidence " +
    "WHERE cell_id=? AND facility_id=? AND item_id=? AND for_action=? AND expected_version=? " +
-   "AND evidence_kind=? AND approver_id <> ? AND revoked_at IS NULL " +
+   "AND evidence_kind=? AND (? IS NULL OR external_ref=?) " +
+   "AND approver_id <> ? AND revoked_at IS NULL " +
    "AND valid_from<=clock_timestamp() AND valid_until>clock_timestamp()",
    Long.class,actor.cell(),actor.facility(),current.id(),step.action(),current.version(),
-   step.evidence(),current.createdBy());
+   step.evidence(),reference,reference,current.createdBy());
   if(count==null||count<1)throw new WorkflowViolation("trusted_evidence_required");
   return new OperationWorkflow.TrustedEvidence(Set.of(step.evidence()));
  }
@@ -174,7 +193,7 @@ public final class OperationsStore {
    if(previous!=null)return getVersionedReplay(module,previous,req.expectedVersion()+1);
    OperationWorkflow.Item before=getLocked(module,id,true);
    ModuleCatalog.Step required=ModuleCatalog.require(module).transition(before.status(),req.action());
-   OperationWorkflow.TrustedEvidence admitted=authoritativeEvidence(actor,before,required);
+   OperationWorkflow.TrustedEvidence admitted=authoritativeEvidence(actor,before,required,req.fields());
    var change=OperationWorkflow.advance(before,req.action(),req.expectedVersion(),actor,
     admitted,req.fields());
    var next=change.item();

@@ -97,7 +97,7 @@ final class OperationsAuthorityPgIntegrationTest {
   assertThrows(WorkflowViolation.class,()->service.transition(reviewer,"M23",asset.id(),cmd));
   attest(admin,asset.id(),REVIEWER,"COMMISSION",3,"biomed_inspection","wrong-version");
   assertThrows(WorkflowViolation.class,()->service.transition(reviewer,"M23",asset.id(),cmd));
-  attest(admin,asset.id(),REVIEWER,"COMMISSION",1,"biomed_inspection","BIOMED-2026-99");
+  attest(admin,asset.id(),REVIEWER,"COMMISSION",1,"biomed_inspection","INSP-2026-99");
   var approved=service.transition(reviewer,"M23",asset.id(),cmd);
   assertEquals("COMMISSIONED",approved.status());assertEquals(2,approved.version());
   assertThrows(Exception.class,()->new JdbcTemplate(runtime()).update(

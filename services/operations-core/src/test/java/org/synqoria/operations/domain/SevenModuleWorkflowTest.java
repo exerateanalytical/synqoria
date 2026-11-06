@@ -49,8 +49,8 @@ final class SevenModuleWorkflowTest {
    creator,OperationWorkflow.TrustedEvidence.none(),Map.of()));
   item=OperationWorkflow.advance(item,"APPROVE",2,approver,OperationWorkflow.TrustedEvidence.none(),Map.of()).item();
   item=OperationWorkflow.advance(item,"ORDER",3,creator,OperationWorkflow.TrustedEvidence.none(),Map.of("purchaseRef","PO-2026-001")).item();
-  item=OperationWorkflow.advance(item,"RECEIVE",4,creator,OperationWorkflow.TrustedEvidence.none(),Map.of("receiptRef","GRN-2026-009")).item();
-  item=OperationWorkflow.advance(item,"MATCH",5,approver,OperationWorkflow.TrustedEvidence.none(),Map.of("invoiceRef","INV-2026-009")).item();
+  item=OperationWorkflow.advance(item,"RECEIVE",4,creator,new OperationWorkflow.TrustedEvidence(Set.of("purchase_receipt")),Map.of("receiptRef","GRN-2026-009")).item();
+  item=OperationWorkflow.advance(item,"MATCH",5,approver,new OperationWorkflow.TrustedEvidence(Set.of("invoice_matched")),Map.of("invoiceRef","INV-2026-009")).item();
   item=OperationWorkflow.advance(item,"CLOSE",6,creator,OperationWorkflow.TrustedEvidence.none(),Map.of()).item();
   assertEquals("CLOSED",item.status());assertEquals(7,item.version());
  }
@@ -88,9 +88,9 @@ final class SevenModuleWorkflowTest {
   var item=OperationWorkflow.create("M25","TRIP",UUID.randomUUID(),
    actor(A,"m25:create"),Map.of("title","Interfacility transport","vehicleRef","AMB-1","driverRef","DRV-1","originRef","LOC-1","destinationRef","LOC-2"));
   item=OperationWorkflow.advance(item,"ASSIGN",1,actor(B,"m25:assign"),
-   OperationWorkflow.TrustedEvidence.none(),Map.of()).item();
+   new OperationWorkflow.TrustedEvidence(Set.of("vehicle_driver_qualified")),Map.of()).item();
   item=OperationWorkflow.advance(item,"DISPATCH",2,actor(B,"m25:dispatch"),
-   OperationWorkflow.TrustedEvidence.none(),Map.of()).item();
+   new OperationWorkflow.TrustedEvidence(Set.of("vehicle_driver_qualified")),Map.of()).item();
   item=OperationWorkflow.advance(item,"ARRIVE",3,actor(B,"m25:arrive"),
    OperationWorkflow.TrustedEvidence.none(),Map.of()).item();
   var arrived=item;
