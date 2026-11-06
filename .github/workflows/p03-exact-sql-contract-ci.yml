@@ -1,0 +1,25 @@
+name: P03 SQL contract guard source and signed login checks
+on:
+  push:
+    branches:
+      - work/p03-b0124-b0153-contract-guard-engineering-2026-11-06
+permissions:
+  contents: read
+jobs:
+  exact-sql-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: B0124–B0147 distinct statement, role and parameter adversarial tests
+        run: node --test tests/identity_sql_contracts.test.mjs
+      - name: Legacy transactional role, TLS poisoning and signed OIDC login regression
+        run: |
+          node --test tests/identity_attested_db_query.test.mjs tests/identity_production_integration.test.mjs tests/identity_restricted_transport.test.mjs tests/identity_bounded_transport_response.test.mjs tests/identity_db_schema_policies.test.mjs tests/identity_db_role_verification.test.mjs
+      - name: Keep previous local batch ledger integrity and release denial
+        run: node --test tests/p03_runtime_build_ledger.test.mjs
+      - name: No clinical deployment or acceptance by tests
+        run: echo "SYNQORIA SQL contract evidence is engineering-only, clinical release DENIED."
