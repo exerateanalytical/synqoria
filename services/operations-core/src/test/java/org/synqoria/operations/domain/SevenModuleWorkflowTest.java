@@ -40,7 +40,7 @@ final class SevenModuleWorkflowTest {
   var creator=actor(A,"m21:create","m21:submit","m21:order","m21:receive","m21:close");
   var approver=actor(B,"m21:approve","m21:match");
   var item=OperationWorkflow.create("M21","REQUISITION",UUID.randomUUID(),creator,
-   Map.of("title","Examination furniture","currency","XAF","amountMinor",10000));
+   Map.of("title","Examination furniture","currency","XAF","amountMinor",10000,"supplierRef","supplier-39","costCentre","operations"));
   item=OperationWorkflow.advance(item,"SUBMIT",1,creator,OperationWorkflow.TrustedEvidence.none(),Map.of()).item();
   var submitted=item;
   assertThrows(WorkflowViolation.class,()->OperationWorkflow.advance(submitted,"APPROVE",2,
@@ -48,15 +48,15 @@ final class SevenModuleWorkflowTest {
   assertThrows(WorkflowViolation.class,()->OperationWorkflow.advance(submitted,"ORDER",2,
    creator,OperationWorkflow.TrustedEvidence.none(),Map.of()));
   item=OperationWorkflow.advance(item,"APPROVE",2,approver,OperationWorkflow.TrustedEvidence.none(),Map.of()).item();
-  item=OperationWorkflow.advance(item,"ORDER",3,creator,OperationWorkflow.TrustedEvidence.none(),Map.of()).item();
-  item=OperationWorkflow.advance(item,"RECEIVE",4,creator,OperationWorkflow.TrustedEvidence.none(),Map.of()).item();
-  item=OperationWorkflow.advance(item,"MATCH",5,approver,OperationWorkflow.TrustedEvidence.none(),Map.of()).item();
+  item=OperationWorkflow.advance(item,"ORDER",3,creator,OperationWorkflow.TrustedEvidence.none(),Map.of("purchaseRef","PO-2026-001")).item();
+  item=OperationWorkflow.advance(item,"RECEIVE",4,creator,OperationWorkflow.TrustedEvidence.none(),Map.of("receiptRef","GRN-2026-009")).item();
+  item=OperationWorkflow.advance(item,"MATCH",5,approver,OperationWorkflow.TrustedEvidence.none(),Map.of("invoiceRef","INV-2026-009")).item();
   item=OperationWorkflow.advance(item,"CLOSE",6,creator,OperationWorkflow.TrustedEvidence.none(),Map.of()).item();
   assertEquals("CLOSED",item.status());assertEquals(7,item.version());
  }
  @Test void inventoryQuarantineRequiresIndependentQualityEvidence(){
   var item=OperationWorkflow.create("M22","STOCK_ITEM",UUID.randomUUID(),
-   actor(A,"m22:create"),Map.of("title","Sterile stock cabinets","quantity",3));
+   actor(A,"m22:create"),Map.of("title","Sterile stock cabinets","quantity",3,"sku","CAB-001","lot","LOT-001","bin","MAIN","unit","piece","receiptRef","GRN-001"));
   var gate=item;
   assertThrows(WorkflowViolation.class,()->OperationWorkflow.advance(gate,"RELEASE",1,
    actor(B,"m22:release"),OperationWorkflow.TrustedEvidence.none(),Map.of()));
@@ -70,7 +70,7 @@ final class SevenModuleWorkflowTest {
  }
  @Test void biomedicalAssetCannotReturnToServiceWithoutInspectedProof(){
   var item=OperationWorkflow.create("M23","ASSET",UUID.randomUUID(),
-   actor(A,"m23:create"),Map.of("title","Diagnostic equipment","serial","BIO-109"));
+   actor(A,"m23:create"),Map.of("title","Diagnostic equipment","serial","BIO-109","locationRef","ward-1","inspectionRef","INSP-123"));
   var before=item;
   assertThrows(WorkflowViolation.class,()->OperationWorkflow.advance(before,"COMMISSION",1,
    actor(B,"m23:commission"),OperationWorkflow.TrustedEvidence.none(),Map.of()));
@@ -86,7 +86,7 @@ final class SevenModuleWorkflowTest {
  }
  @Test void ambulanceHandoverIsNotEquivalentToArrival(){
   var item=OperationWorkflow.create("M25","TRIP",UUID.randomUUID(),
-   actor(A,"m25:create"),Map.of("title","Interfacility transport"));
+   actor(A,"m25:create"),Map.of("title","Interfacility transport","vehicleRef","AMB-1","driverRef","DRV-1","originRef","LOC-1","destinationRef","LOC-2"));
   item=OperationWorkflow.advance(item,"ASSIGN",1,actor(B,"m25:assign"),
    OperationWorkflow.TrustedEvidence.none(),Map.of()).item();
   item=OperationWorkflow.advance(item,"DISPATCH",2,actor(B,"m25:dispatch"),
@@ -101,7 +101,7 @@ final class SevenModuleWorkflowTest {
  }
  @Test void publishingFacilityConfigRequiresApprovalAndIndependentImpactAssessment(){
   var item=OperationWorkflow.create("M29","CONFIGURATION",UUID.randomUUID(),
-   actor(A,"m29:create"),Map.of("title","Emergency ward","schemaVersion","v3"));
+   actor(A,"m29:create"),Map.of("title","Emergency ward","schemaVersion","v3","changeImpact","Scoped ward configuration"));
   var initialConfig=item;
   assertThrows(WorkflowViolation.class,()->OperationWorkflow.advance(initialConfig,"REVIEW",1,
    actor(A,"m29:review"),OperationWorkflow.TrustedEvidence.none(),Map.of()));
@@ -118,18 +118,18 @@ final class SevenModuleWorkflowTest {
    actor(A,"m31:create"),Map.of("title","Lab report"));
   assertEquals("DRAFT",template.status());
   var doc=OperationWorkflow.create("M31","DOCUMENT",UUID.randomUUID(),
-   actor(A,"m31:create"),Map.of("title","Report template"));
+   actor(A,"m31:create"),Map.of("title","Report template","templateRef","TMPL-1","storageRef","OBJECT-1","contentDigest","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
   assertEquals("DOCUMENT_DRAFT",doc.status());
   var unsignedDocument=doc;
   assertThrows(WorkflowViolation.class,()->OperationWorkflow.advance(unsignedDocument,"SIGN",1,
    actor(B,"m31:sign"),OperationWorkflow.TrustedEvidence.none(),Map.of()));
   doc=OperationWorkflow.advance(doc,"SIGN",1,actor(B,"m31:sign"),
-   new OperationWorkflow.TrustedEvidence(Set.of("verified_signature")),Map.of()).item();
+   new OperationWorkflow.TrustedEvidence(Set.of("verified_signature")),Map.of("signatureRef","SIG-001")).item();
   assertEquals("DOCUMENT_SIGNED",doc.status());
  }
  @Test void notificationDeliveryNeverCountsAsStaffAcknowledgement(){
   var notification=OperationWorkflow.create("M37","MESSAGE",UUID.randomUUID(),
-   actor(A,"m37:create"),Map.of("title","Equipment recall","recipientRef","staff-3"));
+   actor(A,"m37:create"),Map.of("title","Equipment recall","recipientRef","staff-3","templateRef","TPL-7","channel","internal","deliveryRef","DLV-001"));
   assertThrows(WorkflowViolation.class,()->OperationWorkflow.advance(notification,"DELIVER",1,
    actor(B,"m37:deliver"),OperationWorkflow.TrustedEvidence.none(),Map.of()));
   var delivered=OperationWorkflow.advance(notification,"DELIVER",1,actor(B,"m37:deliver"),

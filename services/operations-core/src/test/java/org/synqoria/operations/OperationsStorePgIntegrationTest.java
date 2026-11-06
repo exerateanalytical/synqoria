@@ -39,7 +39,7 @@ final class OperationsStorePgIntegrationTest {
   Assumptions.assumeTrue("1".equals(System.getenv("SYNQORIA_OPS_PG_TEST")));
   DataSource ds=source();OperationsStore store=store(ds);
   UUID createId=UUID.randomUUID();
-  Map<String,Object> fields=Map.of("title","General hospital desks","currency","XAF","amountMinor",100000);
+  Map<String,Object> fields=Map.of("title","General hospital desks","currency","XAF","amountMinor",100000,"supplierRef","supplier-39","costCentre","operations");
   OperationsApi.NewItem req=new OperationsApi.NewItem("REQUISITION",fields,createId);
   var created=store.create(maker(),"M21",req);
   assertEquals("DRAFT",created.status());assertEquals(1,created.version());
