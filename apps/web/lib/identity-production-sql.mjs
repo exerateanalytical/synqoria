@@ -6,6 +6,7 @@
  * initializeVerifiedStaffRoutes additionally attests role and policy state
  * using these same client objects before permitting any auth route.
  */
+import {createConnectionAttestedSqlClient} from "./identity-attested-db-query.mjs";
 const SPECS=Object.freeze([
  Object.freeze({key:"replaySql",env:"SYNQORIA_IDENTITY_REPLAY_DSN",role:"synqoria_oidc_replay_runtime"}),
  Object.freeze({key:"sessionSql",env:"SYNQORIA_IDENTITY_SESSION_DSN",role:"synqoria_staff_session_runtime"}),
@@ -54,16 +55,19 @@ export async function createRestrictedIdentityPools({env,Pool}={}){
     idleTimeoutMillis:15000,allowExitOnIdle:false,
     application_name:"synqoria-identity-"+item.key
    });
-   if(!p||typeof p.query!=="function"||typeof p.end!=="function")deny();
+   if(!p||typeof p.connect!=="function"||typeof p.end!=="function")deny();
    pools.push(p);
   }
  }catch{
   await Promise.allSettled(pools.map(p=>p.end()));
   deny();
  }
+ let clients;
+ try{clients=endpoints.map((item,i)=>createConnectionAttestedSqlClient(pools[i],item.role));}
+ catch{await Promise.allSettled(pools.map(p=>p.end()));deny();}
  let closed=false;
  return Object.freeze({
-  replaySql:pools[0],sessionSql:pools[1],auditSql:pools[2],
+  replaySql:clients[0],sessionSql:clients[1],auditSql:clients[2],
   async close(){
    if(closed)return;
    closed=true;
