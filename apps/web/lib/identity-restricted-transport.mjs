@@ -3,6 +3,7 @@
  * Do not forward client-supplied HTTP methods, credentials, tokens or URLs.
  * Token-exchange, introspection and workforce credentials are not interchangeable.
  */
+import {verifyBoundedIdentityResponse} from "./identity-bounded-transport-response.mjs";
 export class IdentityTransportError extends Error{
  constructor(){super("identity_transport_denied");this.name="IdentityTransportError";}
 }
@@ -57,7 +58,7 @@ export function createRestrictedIdentityTransport(config,{fetcher=fetch}={}){
   if(!Object.values(urls).includes(url)||!options||typeof options!=="object"||
      options.method!=="POST"||options.redirect!=="error"||
      options.credentials!=="omit"||options.cache!=="no-store"||
-     !options.signal||typeof options.signal.aborted!=="boolean"||
+     !options.signal||typeof options.signal.aborted!=="boolean"||options.signal.aborted||
      typeof options.body!=="string"||options.body.length<1||
      options.body.length>32768)deny();
   const headers=exactHeaders(options);
@@ -93,7 +94,8 @@ export function createRestrictedIdentityTransport(config,{fetcher=fetch}={}){
       (typeof response.url==="string"&&response.url!==""&&response.url!==url)||
       !response?.headers?.get("content-type")?.toLowerCase().startsWith("application/json")||
       !response?.headers?.get("cache-control")?.toLowerCase().includes("no-store"))deny();
-   return response;
+   return await verifyBoundedIdentityResponse(response,{expectedUrl:url,
+    maxBytes:url===urls.exchange?32768:16384,signal:options.signal});
   }catch{deny();}
  };
 }
