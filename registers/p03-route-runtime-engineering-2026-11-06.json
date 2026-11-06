@@ -6,8 +6,8 @@
   "cycle": {
     "target": 30,
     "plannedIds": "P03-B0064..P03-B0093",
-    "verifiedCount": 5,
-    "remaining": 25,
+    "verifiedCount": 29,
+    "remaining": 1,
     "cycleComplete": false
   },
   "sourceEvidence": [
@@ -81,19 +81,367 @@
       },
       "clinicalAccepted": false,
       "productionDeployed": false
+    },
+    {
+      "id": "P03-B0069",
+      "description": "TLS PostgreSQL pools with three dedicated restricted principals",
+      "source": "apps/web/lib/identity-production-sql.mjs",
+      "test": "tests/identity_production_sql.test.mjs",
+      "runId": 42140552145,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42140552145",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0070",
+      "description": "Pinned IdP and roster HTTP destination and redirect guard",
+      "source": "apps/web/lib/identity-restricted-transport.mjs",
+      "test": "tests/identity_restricted_transport.test.mjs",
+      "runId": 42140552145,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42140552145",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0071",
+      "description": "Explicit trusted production identity startup and no-fallback failure",
+      "source": "apps/web/lib/staff-identity-production-startup.mjs",
+      "test": "tests/identity_production_startup.test.mjs",
+      "runId": 42140552145,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42140552145",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0072",
+      "description": "Node Next instrumentation startup registration",
+      "source": "apps/web/instrumentation.ts",
+      "test": "tests/identity_next_instrumentation.test.mjs",
+      "runId": 42140552145,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42140552145",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0073",
+      "description": "Integration safety gate over bootstrap and runtime composition",
+      "source": "tests/identity_startup_release_gate.test.mjs",
+      "test": "tests/identity_startup_release_gate.test.mjs",
+      "runId": 42140552145,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42140552145",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0074",
+      "description": "Attest each SQL statement on the exact acquired backend connection",
+      "source": "apps/web/lib/identity-attested-db-query.mjs",
+      "test": "tests/identity_attested_db_query.test.mjs",
+      "runId": 42141023127,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42141023127",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0075",
+      "description": "Require negotiated TLS 1.2+ and strong backend cipher",
+      "source": "apps/web/lib/identity-attested-db-query.mjs",
+      "test": "tests/identity_attested_db_query.test.mjs",
+      "runId": 42141023127,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42141023127",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0076",
+      "description": "Reject PostgreSQL RLS bypass, privilege escalation and cross-role membership",
+      "source": "apps/web/lib/identity-attested-db-query.mjs",
+      "test": "tests/identity_attested_db_query.test.mjs",
+      "runId": 42141023127,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42141023127",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0077",
+      "description": "Release acquired SQL backend after denial without leaking secrets",
+      "source": "apps/web/lib/identity-attested-db-query.mjs",
+      "test": "tests/identity_attested_db_query.test.mjs",
+      "runId": 42141023127,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42141023127",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0078",
+      "description": "Live IdP discovery issuer and exact endpoint comparison",
+      "source": "apps/web/lib/identity-provider-preflight.mjs",
+      "test": "tests/identity_provider_preflight.test.mjs",
+      "runId": 42141400042,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42141400042",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0079",
+      "description": "Verify authorization-code/PKCE S256 discovery support",
+      "source": "apps/web/lib/identity-provider-preflight.mjs",
+      "test": "tests/identity_provider_preflight.test.mjs",
+      "runId": 42141400042,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42141400042",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0080",
+      "description": "Match live signing keys against pinned public JWK material",
+      "source": "apps/web/lib/identity-provider-preflight.mjs",
+      "test": "tests/identity_provider_preflight.test.mjs",
+      "runId": 42141400042,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42141400042",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0081",
+      "description": "Fail closed on redirected, malformed or oversized IdP preflight responses",
+      "source": "apps/web/lib/identity-provider-preflight.mjs",
+      "test": "tests/identity_provider_preflight.test.mjs",
+      "runId": 42141400042,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42141400042",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0082",
+      "description": "Token exchange code verifier, client and redirect binding",
+      "source": "apps/web/lib/identity-restricted-transport.mjs",
+      "test": "tests/identity_restricted_transport.test.mjs",
+      "runId": 42141681635,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42141681635",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0083",
+      "description": "Introspection Basic credential and access-token envelope isolation",
+      "source": "apps/web/lib/identity-restricted-transport.mjs",
+      "test": "tests/identity_restricted_transport.test.mjs",
+      "runId": 42141681635,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42141681635",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0084",
+      "description": "Workforce live-Bearer and issuer/subject JSON binding",
+      "source": "apps/web/lib/identity-restricted-transport.mjs",
+      "test": "tests/identity_restricted_transport.test.mjs",
+      "runId": 42141681635,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42141681635",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0085",
+      "description": "No SSRF/forwarded headers, wrong media type or cacheable identity transport",
+      "source": "apps/web/lib/identity-restricted-transport.mjs",
+      "test": "tests/identity_restricted_transport.test.mjs",
+      "runId": 42141681635,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42141681635",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0086",
+      "description": "Identity HTTP responses prohibit token-bearing bodies and invalid statuses",
+      "source": "apps/web/lib/identity-http-response-policy.mjs",
+      "test": "tests/identity_http_response_policy.test.mjs",
+      "runId": 42142080055,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42142080055",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0087",
+      "description": "Enforce issuer-pinned OIDC redirects and internal callback landing",
+      "source": "apps/web/lib/identity-http-response-policy.mjs",
+      "test": "tests/identity_http_response_policy.test.mjs",
+      "runId": 42142080055,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42142080055",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0088",
+      "description": "Host-only, Secure, HttpOnly, SameSite cookie and expiry envelope",
+      "source": "apps/web/lib/identity-http-response-policy.mjs",
+      "test": "tests/identity_http_response_policy.test.mjs",
+      "runId": 42142080055,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42142080055",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0089",
+      "description": "Enforce no-store, CSP and no-CORS on identity HTTP responses",
+      "source": "apps/web/lib/identity-http-response-policy.mjs",
+      "test": "tests/identity_http_response_policy.test.mjs",
+      "runId": 42142080055,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42142080055",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0090",
+      "description": "Integrated trusted startup verifies role/RLS/TLS and live IdP discovery",
+      "source": "tests/identity_production_integration.test.mjs",
+      "test": "tests/identity_production_integration.test.mjs",
+      "runId": 42142563008,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42142563008",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0091",
+      "description": "End-to-end mock service signed OIDC login issues audited opaque staff ticket",
+      "source": "tests/identity_production_integration.test.mjs",
+      "test": "tests/identity_production_integration.test.mjs",
+      "runId": 42142563008,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42142563008",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0092",
+      "description": "Integrated callback replay, logout origin and session revocation checks",
+      "source": "tests/identity_production_integration.test.mjs",
+      "test": "tests/identity_production_integration.test.mjs",
+      "runId": 42142563008,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42142563008",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
     }
   ],
-  "nextCandidate": "P03-B0069",
+  "nextCandidate": "P03-B0093",
   "blockers": [
-    "Real independent TLS PostgreSQL client factory and credential provisioning not connected to Next deployment startup",
-    "Production IdP/workforce/patient-disclosure backend not deployed",
-    "Broad app npm lockfile/build CI remains separate and failed",
-    "All clinical acceptance and certification deferred"
+    "Production PostgreSQL TLS certificate, per-role DSNs, independent provisioning and migrations remain undeployed",
+    "No pinned pg runtime dependency reconciled into apps/web package manifest and npm lockfile/build PR #23/#24; production-enabled bootstrap denies without it",
+    "Trusted Keycloak issuer, signing key rotation, vault secrets, staff roster and clinical disclosure services require live installation and verification",
+    "Full Next/Expo build and clinical/operational acceptance are not verified on this P03 branch",
+    "Global SYNQORIA engineering backlog is not closed, regardless of completion of this local P03 30-batch cycle",
+    "All clinical acceptance and certification deferred; security release gates remain mandatory"
   ],
   "safety": {
     "operationalScreenPackagesAccepted": 0,
     "screenCount": 261,
     "domainLockedPending": 240,
     "clinicalRelease": "DENIED"
+  },
+  "globalEngineeringBacklogClosed": false,
+  "sourceQualification": {
+    "type": "focused_node_and_hermetic_integration",
+    "lastFullyVerifiedHead": "905ae657ef51e067a042981a926d495a596e661a",
+    "fullApplicationBuildVerified": false,
+    "liveProductionPostgresTlsVerified": false,
+    "liveIdpDeploymentVerified": false,
+    "clinicalAcceptanceVerified": false,
+    "note": "Tests exercise real cryptographic/session code but inject Keycloak, roster and PostgreSQL evidence fixtures. Some pre-existing PostgreSQL 16 CI tests are separately scoped. These do not qualify deployed hospital services."
   }
 }
