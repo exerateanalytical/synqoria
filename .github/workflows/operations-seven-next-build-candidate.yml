@@ -24,10 +24,10 @@ jobs:
         run: |
           set -euo pipefail
           git fetch --no-tags origin refs/heads/work/real-next-expo-build-corrections-2026-11-05:refs/remotes/origin/operations-pr24
-          for path in apps/staff-mobile/app.json apps/staff-mobile/index.js apps/staff-mobile/package.json apps/patient-mobile/app.json apps/patient-mobile/index.js apps/patient-mobile/package.json; do
+          for path in apps/web/package.json apps/staff-mobile/app.json apps/staff-mobile/index.js apps/staff-mobile/package.json apps/patient-mobile/app.json apps/patient-mobile/index.js apps/patient-mobile/package.json; do
             git show "refs/remotes/origin/operations-pr24:$path" > "$path"
           done
-          node -e "const fs=require('fs');for(const w of ['staff-mobile','patient-mobile']){const p=JSON.parse(fs.readFileSync('apps/'+w+'/package.json'));if(p.devDependencies.typescript!=='5.8.3'||p.dependencies.react!=='19.1.2')process.exit(1)}"
+          node -e "const fs=require('fs');for(const w of ['staff-mobile','patient-mobile']){const p=JSON.parse(fs.readFileSync('apps/'+w+'/package.json'));if(p.devDependencies.typescript!=='5.8.3'||p.dependencies.react!=='19.1.2')process.exit(1)}const w=JSON.parse(fs.readFileSync('apps/web/package.json'));if(w.dependencies.react!=='19.1.2'||w.dependencies.next!=='15.5.9')process.exit(1)"
       - name: Reconcile temporary npm dependency graph without changing separate PR #23 lockfile
         run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
       - name: Install reconciled workspace dependency graph
