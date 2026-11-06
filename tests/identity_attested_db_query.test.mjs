@@ -107,3 +107,24 @@ test("B0101 forged role changes or SQL multi-statements denied before acquiring 
  await assert.rejects(()=>c.query("SELECT 1",{}),IdentityAttestedQueryError);
  assert.deepEqual(h.events,[]);
 });
+
+test("B0110 SQL pool discards denied, poisoned or unverifiable connection on release",async()=>{
+ for(const opt of [{failAt:"operation"},{failAt:"commit"},{stream:verifiedStream({authorized:false})}]){
+  const h=mock(good(),opt),orig=h.pool.connect.bind(h.pool),flags=[];
+  h.pool.connect=async()=>{
+   const c=await orig(),oldRelease=c.release;
+   c.release=(discard)=>{flags.push(discard);oldRelease();};
+   return c;
+  };
+  await assert.rejects(()=>use(h).query("SELECT sensitive"),IdentityAttestedQueryError);
+  assert.deepEqual(flags,[true]);
+ }
+ const h=mock(),orig=h.pool.connect.bind(h.pool),flags=[];
+ h.pool.connect=async()=>{
+  const c=await orig(),oldRelease=c.release;
+  c.release=(discard)=>{flags.push(discard);oldRelease();};
+  return c;
+ };
+ await use(h).query("SELECT 1");
+ assert.deepEqual(flags,[false]);
+});

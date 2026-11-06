@@ -81,7 +81,7 @@ export function createConnectionAttestedSqlClient(pool,expectedRole,expectedLogi
  return Object.freeze({
   async query(statement,params=[]){
    if(!statementAllowed(statement)||!Array.isArray(params)||params.length>32)deny();
-   let connection,transaction=false,committed=false;
+   let connection,transaction=false,committed=false,discard=false;
    try{
     connection=await pool.connect();
     if(!connection||typeof connection.query!=="function"||
@@ -97,13 +97,16 @@ export function createConnectionAttestedSqlClient(pool,expectedRole,expectedLogi
     committed=true;
     return result;
    }catch{
+    // Once a privilege probe or SQL operation fails, do not reuse its backend.
+    // Even after successful ROLLBACK, a transport/role failure is quarantined.
+    discard=true;
     if(connection&&transaction&&!committed){
      try{await connection.query("ROLLBACK");}catch{/* failure already denied */}
     }
     deny();
    }finally{
     if(connection&&typeof connection.release==="function"){
-     try{connection.release();}catch{deny();}
+     try{connection.release(discard);}catch{deny();}
     }
    }
   }
