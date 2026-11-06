@@ -120,7 +120,8 @@ final class SevenModuleWorkflowTest {
   var doc=OperationWorkflow.create("M31","DOCUMENT",UUID.randomUUID(),
    actor(A,"m31:create"),Map.of("title","Report template"));
   assertEquals("DOCUMENT_DRAFT",doc.status());
-  assertThrows(WorkflowViolation.class,()->OperationWorkflow.advance(doc,"SIGN",1,
+  var unsignedDocument=doc;
+  assertThrows(WorkflowViolation.class,()->OperationWorkflow.advance(unsignedDocument,"SIGN",1,
    actor(B,"m31:sign"),OperationWorkflow.TrustedEvidence.none(),Map.of()));
   doc=OperationWorkflow.advance(doc,"SIGN",1,actor(B,"m31:sign"),
    new OperationWorkflow.TrustedEvidence(Set.of("verified_signature")),Map.of()).item();
