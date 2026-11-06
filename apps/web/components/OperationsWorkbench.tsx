@@ -111,9 +111,9 @@ type Props={moduleId:string;screenId:string;name:string;nameFr:string;action:str
 export function OperationsWorkbench({moduleId,screenId,name,nameFr,action,inputGroups}:Props){
  const definition=SHAPES[moduleId];
  const flow=screenFlows.flows[screenId as keyof typeof screenFlows.flows];
- const allowedTypes=flow.recordTypes;
- const allowedActions=flow.actions;
- const allowedMovements=flow.movements;
+ const allowedTypes:string[]=flow.recordTypes;
+ const allowedActions:Set<string>=new Set(flow.actions);
+ const allowedMovements:string[]=flow.movements;
  const displayedFields=new Set<string>(flow.fields);
  const canCreate=new Set(["M21-S01","M21-S02","M21-S06","M22-S01","M22-S02","M22-S03",
   "M23-S01","M23-S03","M25-S01","M25-S02","M29-S02","M31-S02","M31-S04",
@@ -154,7 +154,7 @@ export function OperationsWorkbench({moduleId,screenId,name,nameFr,action,inputG
   return ()=>{current=false;};
  },[moduleId,moduleRoute]);
  const actions=useMemo(()=>moduleSpec?.steps.filter(x=>
-  x.from===selected?.status&&allowedActions.includes(x.action))||[],
+  x.from===selected?.status&&allowedActions.has(x.action))||[],
   [moduleSpec,selected?.status,allowedActions]);
  const fields=definition.fields.filter(f=>displayedFields.has(f.key));
  const viewItems=items.filter(item=>allowedTypes.includes(item.recordType));
