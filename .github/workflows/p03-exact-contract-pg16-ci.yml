@@ -1,0 +1,85 @@
+name: P03 exact SQL contracts real PG16 and TLS candidate
+on:
+  push:
+    branches:
+      - work/p03-b0124-b0153-contract-guard-engineering-2026-11-06
+permissions:
+  contents: read
+jobs:
+  real-tls-identity-db:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate ephemeral CA and DNS-pinned PostgreSQL TLS server certificate
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/p03tls"
+          cd "$RUNNER_TEMP/p03tls"
+          openssl req -x509 -newkey rsa:3072 -nodes -days 2 \
+            -keyout ca.key -out ca.crt -subj "/CN=SYNQORIA-TEST-CA" \
+            -addext "basicConstraints=critical,CA:TRUE" \
+            -addext "keyUsage=critical,keyCertSign,cRLSign"
+          openssl req -new -newkey rsa:2048 -nodes \
+            -keyout server.key -out server.csr -subj "/CN=pg-ci.synqoria.org"
+          printf 'subjectAltName=DNS:pg-ci.synqoria.org\nkeyUsage=digitalSignature,keyEncipherment\nextendedKeyUsage=serverAuth\nbasicConstraints=CA:FALSE\n' > server.ext
+          openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
+            -out server.crt -days 2 -extfile server.ext
+          chmod 600 server.key
+      - name: Start local disposable PostgreSQL16 and enable verified TLS
+        run: |
+          set -euo pipefail
+          docker run -d --name synqoria-p03-pg -e POSTGRES_PASSWORD=ci-admin -e POSTGRES_DB=synqoria_ci -p 5432:5432 postgres:16
+          # The postgres image briefly opens its init cluster, then shuts it down.
+          # Do not treat pg_isready in that transient phase as stable SQL service.
+          sleep 5
+          for i in $(seq 1 45); do
+            if docker exec synqoria-p03-pg psql -U postgres -d synqoria_ci -Atc 'SELECT 1' 2>/dev/null | grep -qx 1; then
+              sleep 2
+              if docker exec synqoria-p03-pg psql -U postgres -d synqoria_ci -Atc 'SELECT 1' 2>/dev/null | grep -qx 1; then break; fi
+            fi
+            sleep 1
+          done
+          docker exec synqoria-p03-pg psql -U postgres -d synqoria_ci -Atc 'SELECT 1' | grep -qx 1
+          docker cp "$RUNNER_TEMP/p03tls/server.key" synqoria-p03-pg:/var/lib/postgresql/data/server.key
+          docker cp "$RUNNER_TEMP/p03tls/server.crt" synqoria-p03-pg:/var/lib/postgresql/data/server.crt
+          docker exec -u root synqoria-p03-pg chown postgres:postgres /var/lib/postgresql/data/server.key /var/lib/postgresql/data/server.crt
+          docker exec -u root synqoria-p03-pg chmod 600 /var/lib/postgresql/data/server.key
+          docker exec synqoria-p03-pg psql -U postgres -d synqoria_ci -c "ALTER SYSTEM SET ssl = 'on'"
+          docker exec synqoria-p03-pg psql -U postgres -d synqoria_ci -c "ALTER SYSTEM SET ssl_cert_file = 'server.crt'"
+          docker exec synqoria-p03-pg psql -U postgres -d synqoria_ci -c "ALTER SYSTEM SET ssl_key_file = 'server.key'"
+          docker restart synqoria-p03-pg
+          for i in $(seq 1 45); do
+            if docker exec synqoria-p03-pg pg_isready -U postgres -d synqoria_ci >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          docker exec synqoria-p03-pg psql -U postgres -d synqoria_ci -At -c "SHOW ssl" | grep -qx on
+          echo '127.0.0.1 pg-ci.synqoria.org' | sudo tee -a /etc/hosts
+      - name: Apply actual identity migrations and create isolated test-only role credentials
+        run: |
+          set -euo pipefail
+          for p in oidc_replay_state_candidate.sql oidc_replay_roles_rls_v1.sql staff_sessions_v1.sql staff_session_janitor_v1.sql staff_security_audit_v1.sql identity_runtime_login_principals_v1.sql; do
+            docker exec -i synqoria-p03-pg psql -U postgres -d synqoria_ci -v ON_ERROR_STOP=1 < "services/identity/db/$p"
+          done
+          docker exec synqoria-p03-pg psql -U postgres -d synqoria_ci -v ON_ERROR_STOP=1 -c "ALTER ROLE synqoria_oidc_replay_login WITH PASSWORD 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'"
+          docker exec synqoria-p03-pg psql -U postgres -d synqoria_ci -v ON_ERROR_STOP=1 -c "ALTER ROLE synqoria_staff_session_login WITH PASSWORD 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'"
+          docker exec synqoria-p03-pg psql -U postgres -d synqoria_ci -v ON_ERROR_STOP=1 -c "ALTER ROLE synqoria_identity_audit_login WITH PASSWORD 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz'"
+      - name: Read verified base lockfile and create exact pg candidate dependency graph
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin refs/heads/work/reproducible-npm-lock-candidate-2026-11-05:refs/remotes/origin/p03-review-lock
+          git show refs/remotes/origin/p03-review-lock:package-lock.json > package-lock.json
+          echo "6fa90a4aa72db790d86b7782d45ced40389b5f8987da65138fae7548b5f9eb2b  package-lock.json" | sha256sum -c -
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          npm ci --no-audit --no-fund
+      - name: Verify real CA-signed TLS, role transaction and forced-RLS isolation
+        env:
+          SYNQORIA_POSTGRES_TLS_TEST: '1'
+          SYNQORIA_TEST_CA_PATH: ${{ runner.temp }}/p03tls/ca.crt
+        run: node --test tests/identity_pg_tls_runtime.test.mjs tests/identity_sql_contracts.test.mjs
+      - name: Never treat synthetic database as clinical acceptance
+        if: always()
+        run: echo "Postgres16 disposable TLS integration only; no patient, production credentials or clinical release."
