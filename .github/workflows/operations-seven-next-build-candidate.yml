@@ -20,7 +20,9 @@ jobs:
           git fetch --no-tags origin refs/heads/work/reproducible-npm-lock-candidate-2026-11-05:refs/remotes/origin/ops-review-lock
           git show refs/remotes/origin/ops-review-lock:package-lock.json > package-lock.json
           echo "6fa90a4aa72db790d86b7782d45ced40389b5f8987da65138fae7548b5f9eb2b  package-lock.json" | sha256sum -c -
-      - name: Install separately reviewed application workspace graph
+      - name: Reconcile temporary npm dependency graph without changing separate PR #23 lockfile
+        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+      - name: Install reconciled workspace dependency graph
         run: npm ci --no-audit --no-fund
       - name: Compile actual UX core and Next.js operations screens
         run: |
