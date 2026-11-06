@@ -1,3 +1,4 @@
+import {assertIdentitySqlContract} from "./identity-sql-contracts.mjs";
 /**
  * P03-B0097..B0100: REAL least-privilege PostgreSQL login → NOLOGIN role gate.
  *
@@ -80,15 +81,12 @@ function attest(result,role,principal){
    r.login_has_expected_membership!==true||r.login_has_extra_membership!==false||
    r.login_can_set_role!==true||r.login_inherit_role!==false)deny();
 }
-const statementAllowed=x=>typeof x==="string"&&x.length>0&&x.length<=20000&&
- /^\s*(?:SELECT|INSERT|DELETE)\b/i.test(x)&&
- !/[;]/.test(x)&&!/(?:\bSET\s+ROLE\b|\bRESET\s+ROLE\b|\bCOMMIT\b|\bROLLBACK\b)/i.test(x);
 /** Enforce physical-connection identity and no multi-statement role changes. */
 export function createConnectionAttestedSqlClient(pool,expectedRole,expectedLogin){
  if(!pool||typeof pool.connect!=="function"||bound[expectedRole]!==expectedLogin)deny();
  return Object.freeze({
   async query(statement,params=[]){
-   if(!statementAllowed(statement)||!Array.isArray(params)||params.length>32)deny();
+   try{assertIdentitySqlContract(expectedRole,statement,params);}catch{deny();}
    let connection,transaction=false,committed=false,discard=false;
    try{
     connection=await pool.connect();
