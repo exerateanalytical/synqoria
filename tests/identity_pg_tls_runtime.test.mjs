@@ -162,13 +162,19 @@ test("B0121 live RLS policy predicate drift denies preflight until corrected",as
 });
 test("B0122 disposable PG16 OIDC replay is atomic across eight concurrent clients",async()=>{
  const at=Date.now();
- const replay=postgresOidcReplayStore(pools.replaySql,{now:()=>at});
- const state="synqoria:oidc:state:v1:"+"d".repeat(64);
- const attempts=await Promise.all(Array.from({length:8},()=>replay.reserve(state,at+120000)));
- assert.equal(attempts.filter(Boolean).length,1);
- const consumes=await Promise.all(Array.from({length:8},()=>replay.consume(state,at)));
- assert.equal(consumes.filter(Boolean).length,1);
- assert.equal(await replay.consume(state,at),false);
+ const other=await createRestrictedIdentityPools({env,Pool});
+ try{
+  const stores=[postgresOidcReplayStore(pools.replaySql,{now:()=>at}),
+   postgresOidcReplayStore(other.replaySql,{now:()=>at})];
+  const state="synqoria:oidc:state:v1:"+"d".repeat(64);
+  const attempts=await Promise.all(Array.from({length:8},(_,i)=>
+   stores[i%2].reserve(state,at+120000)));
+  assert.equal(attempts.filter(Boolean).length,1);
+  const consumes=await Promise.all(Array.from({length:8},(_,i)=>
+   stores[i%2].consume(state,at)));
+  assert.equal(consumes.filter(Boolean).length,1);
+  assert.equal(await stores[0].consume(state,at),false);
+ }finally{await other.close();}
 });
 
 test("P03 disposable PostgreSQL role/TLS suite closes all restricted pools",async()=>{await pools.close();});
