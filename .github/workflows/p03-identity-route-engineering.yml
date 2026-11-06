@@ -17,7 +17,7 @@ jobs:
       - name: Verify restricted runtime binding and route invariants
         run: node --test tests/verified_staff_auth_route.test.mjs tests/verified_clinical_runtime_binding.test.mjs tests/oidc_start_next_route.test.mjs tests/oidc_callback_next_route.test.mjs tests/oidc_logout_next_route.test.mjs tests/staff_route_bootstrap.test.mjs
       - name: Verify deployment TLS, pinned identity transport and startup
-        run: node --test tests/identity_production_sql.test.mjs tests/identity_attested_db_query.test.mjs tests/identity_provider_preflight.test.mjs tests/identity_restricted_transport.test.mjs tests/identity_production_startup.test.mjs tests/identity_next_instrumentation.test.mjs tests/identity_startup_release_gate.test.mjs
+        run: node --test tests/identity_production_sql.test.mjs tests/identity_attested_db_query.test.mjs tests/identity_provider_preflight.test.mjs tests/identity_http_response_policy.test.mjs tests/identity_restricted_transport.test.mjs tests/identity_production_startup.test.mjs tests/identity_next_instrumentation.test.mjs tests/identity_startup_release_gate.test.mjs
       - name: Preserve prior encrypted staff identity suite
         run: node --test tests/staff_identity_runtime.test.mjs tests/staff_auth_http_handlers.test.mjs
       - name: Scope

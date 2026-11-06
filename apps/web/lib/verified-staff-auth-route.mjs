@@ -7,6 +7,7 @@
  */
 import {assertVerifiedStaffIdentityRuntime}
  from "./staff-identity-runtime.mjs";
+import {assertSafeStaffAuthResponse} from "./identity-http-response-policy.mjs";
 const SAFE_HEADERS=Object.freeze({
  "Cache-Control":"no-store, private",
  "Pragma":"no-cache",
@@ -35,7 +36,7 @@ export async function dispatchVerifiedStaffAuthRoute(operation,request){
  if(current===null)return staffRouteNotReady();
  try{
   const answer=await current.http[operation](request);
-  if(!(answer instanceof Response)||![200,204,303,401,403,405,503].includes(answer.status))deny();
+  assertSafeStaffAuthResponse(answer,{operation,issuer:current.configuration?.identityIssuer});
   return answer;
  }catch{
   return staffRouteNotReady();

@@ -71,7 +71,8 @@ export function createStaffIdentityRuntime({
   configuration:Object.freeze({
    expectedTenantId:cfg.workforce.expectedTenantId,
    expectedFacilityId:cfg.workforce.expectedFacilityId,
-   publicOrigin:cfg.publicOrigin
+   publicOrigin:cfg.publicOrigin,
+   identityIssuer:cfg.oidc.issuer
   })
  });
 }
