@@ -40,4 +40,5 @@ jobs:
         run: node --test tests/operations_screen_catalog.test.mjs
       - name: Keep build candidate separate from release certification
         if: always()
-        run: echo "Next build does not authorize clinical or operational writes, PR #23 lock stays independently owned."
+        run: | 
+          echo "Next build does not authorize clinical or operational writes. The PR 23 dependency lock remains independently owned."
