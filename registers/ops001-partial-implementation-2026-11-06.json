@@ -157,8 +157,18 @@
   "blockers": [
     "Shared PR stack unmerged; GATE-00/GATE-01/GATE-02/GATE-03 not fully satisfied",
     "No deployed identity SQL credentials/Keycloak/vault/roster configured for Next route handlers",
-    "No app production build on this branch until npm lockfile and Next/Expo build PRs reconcile",
-    "No browser Playwright 320–1920 proof, test DB migrations, clinical reviewer signoff, or emergency grant policy"
+    "No browser Playwright 320–1920 proof, test DB migrations, clinical reviewer signoff, or emergency grant policy",
+    "Official mainline npm lockfile merge and independent Expo/full-stack checks remain pending despite passing isolated pinned-lock Next web build"
   ],
-  "nextCandidate": "SYNQ-OPS-002 only after source/contract and owner recheck; do not count the current package as accepted"
+  "nextCandidate": "SYNQ-OPS-002 only after source/contract and owner recheck; do not count the current package as accepted",
+  "buildEvidence": {
+    "runId": 42138615934,
+    "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42138615934",
+    "conclusion": "success",
+    "scope": "whole Next.js web compilation, TS validation and 1217 static routes",
+    "method": "temporary CI overlay of PR23 npm-v3 lockfile; compile UX core before web; no lock committed",
+    "clinicalAcceptance": false,
+    "environmentDeployment": false,
+    "visualBrowserAcceptance": false
+  }
 }
