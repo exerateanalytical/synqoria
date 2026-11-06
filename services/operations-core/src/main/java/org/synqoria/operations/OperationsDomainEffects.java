@@ -186,6 +186,8 @@ final class OperationsDomainEffects {
    case "ESCALATE"->"ESCALATED";default->null;
   };
   if(state==null)return;
+  if(action.equals("ACKNOWLEDGE")&&!item.lastActor().equals(ref(item,"recipientRef")))
+   throw new WorkflowViolation("notification_recipient_mismatch");
   String delivery=action.equals("DELIVER")?str(item,"deliveryRef"):null;
   UUID acknowledged=action.equals("ACKNOWLEDGE")?item.lastActor():null;
   update(jdbc,"UPDATE synqoria_operations.notification_jobs "+

@@ -165,7 +165,7 @@ public final class OperationsStore {
    case "purchase_receipt" -> "receiptRef";
    case "invoice_matched" -> "invoiceRef";
    case "supplier_qualified" -> "qualificationRef";
-   case "vehicle_driver_qualified" -> "vehicleRef";
+   case "vehicle_driver_qualified" -> current.recordType().equals("VEHICLE")?"inspectionRef":"vehicleRef";
    default -> null;
   };
   Object reference=referenceField==null?null:
