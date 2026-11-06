@@ -40,7 +40,7 @@ jobs:
           SYNQORIA_OPS_TEST_ADMIN_JDBC_URL: jdbc:postgresql://127.0.0.1:5432/ops_ci
           SYNQORIA_OPS_TEST_ADMIN_USER: postgres
           SYNQORIA_OPS_TEST_ADMIN_PASSWORD: ops-ci-admin
-        run: mvn -B -ntp -Dtest=OperationsStorePgIntegrationTest,OperationsAuthorityPgIntegrationTest test
+        run: mvn -B -ntp -Dtest=OperationsStorePgIntegrationTest,OperationsAuthorityPgIntegrationTest,OperationsBusinessPgIntegrationTest test
       - name: Explicitly deny deployment implication
         if: always()
         run: echo "Disposable PG18.6-JDBC synthetic verification; clinical release DENIED."

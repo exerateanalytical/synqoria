@@ -204,9 +204,8 @@ final class OperationsBusinessPgIntegrationTest {
   doc=next(s,"M31",doc,"RESIGN",reviewer,Map.of("signatureRef","SIG-042"));
   assertEquals("DOCUMENT_SIGNED",doc.status());
   assertEquals(3,count("document_versions",doc.id()));
-  assertThrows(Exception.class,()->admin().queryForObject(
-   "SELECT count(*) FROM synqoria_operations.document_versions WHERE item_id=?",Long.class,
-   UUID.fromString("00000000-0000-0000-0000-000000000000"))==null);
+  assertThrows(Exception.class,()->new JdbcTemplate(runtime()).update(
+   "DELETE FROM synqoria_operations.document_versions WHERE item_id=?",doc.id()));
  }
  @Test void m37DeliveryReceiptIsNotAcknowledgementAndOnlyNamedRecipientCanAccept(){
   ready();var s=store();var maker=actor(A,"m37:create","m37:acknowledge");
