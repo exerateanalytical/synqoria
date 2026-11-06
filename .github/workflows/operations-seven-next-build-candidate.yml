@@ -1,0 +1,33 @@
+name: SYNQORIA seven modules actual Next build candidate
+on:
+  push:
+    branches:
+      - work/operations-seven-module-service-2026-11-06
+permissions:
+  contents: read
+jobs:
+  build-screen-previews:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Use separately owned SHA-checked npm v3 lockfile CI overlay
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin refs/heads/work/reproducible-npm-lock-candidate-2026-11-05:refs/remotes/origin/ops-review-lock
+          git show refs/remotes/origin/ops-review-lock:package-lock.json > package-lock.json
+          echo "6fa90a4aa72db790d86b7782d45ced40389b5f8987da65138fae7548b5f9eb2b  package-lock.json" | sha256sum -c -
+      - name: Install separately reviewed application workspace graph
+        run: npm ci --no-audit --no-fund
+      - name: Compile actual UX core and Next.js operations screens
+        run: |
+          npm run build --workspace @synqoria/ux-core
+          npm run build --workspace @synqoria/web
+      - name: Check 35 unique screen IDs match canonical source
+        run: node --test tests/operations_screen_catalog.test.mjs
+      - name: Keep build candidate separate from release certification
+        if: always()
+        run: echo "Next build does not authorize clinical or operational writes, PR #23 lock stays independently owned."
