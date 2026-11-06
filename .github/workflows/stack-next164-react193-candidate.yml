@@ -1,0 +1,52 @@
+name: SYNQORIA Next 16.4 React 19.3 stable-web upgrade candidate
+on:
+  push:
+    branches:
+      - work/latest-stable-stack-governance-2026-11-06
+permissions:
+  contents: read
+jobs:
+  next164-react193:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - name: Read existing PR23 lockfile without modifying its owner branch
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin refs/heads/work/reproducible-npm-lock-candidate-2026-11-05:refs/remotes/origin/stack-pr23
+          git show refs/remotes/origin/stack-pr23:package-lock.json > package-lock.json
+          echo "6fa90a4aa72db790d86b7782d45ced40389b5f8987da65138fae7548b5f9eb2b  package-lock.json" | sha256sum -c -
+      - name: Temporarily align PR24 Expo packages and test latest stable web versions
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin refs/heads/work/real-next-expo-build-corrections-2026-11-05:refs/remotes/origin/stack-pr24
+          for path in apps/staff-mobile/package.json apps/patient-mobile/package.json; do
+            git show "refs/remotes/origin/stack-pr24:$path" > "$path"
+          done
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const path='apps/web/package.json';
+          const web=JSON.parse(fs.readFileSync(path,'utf8'));
+          web.dependencies.next='16.4.5';
+          web.dependencies.react='19.3.1';
+          web.dependencies['react-dom']='19.3.1';
+          web.devDependencies['@types/react']='19.3.0';
+          fs.writeFileSync(path,JSON.stringify(web,null,2)+'\n');
+          NODE
+      - name: Resolve reproducible candidate lock and install all exact workspaces
+        run: |
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          npm ci --no-audit --no-fund
+      - name: Actually compile new-generation UX and Next 16.4.5/React 19.3.1
+        run: |
+          npm run build --workspace @synqoria/ux-core
+          npm run build --workspace @synqoria/web
+          node --test tests/operations_screen_catalog.test.mjs tests/stack_stable_policy.test.mjs
+      - name: Show latest stable candidate status, never deploy from this CI overlay
+        if: always()
+        run: |
+          echo "Only a temporary upgrade compatibility build. No PR23/PR24 source replaced, no signed clinical release."
