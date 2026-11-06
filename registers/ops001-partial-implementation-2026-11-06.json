@@ -1,0 +1,164 @@
+{
+  "schema": "synqoria.screen-package-partial-evidence.v1",
+  "authority": "docs/authority/SYNQORIA_UIUX_Master_v1.1.md",
+  "architecture": "docs/authority/SYNQORIA_Platform_Architecture_v2.1.md",
+  "date": "2026-11-06",
+  "batchId": "SYNQ-OPS-001",
+  "branch": "work/ops001-shared-auth-patient-read-2026-11-06",
+  "baseCommit": "36e0186d0305e5432f9baba3ba30ea3504024b6c",
+  "planSource": "registers/operational-240-one-cycle-batches-v1.json",
+  "reportStatus": "VERIFIED_PARTIAL_BLOCKED_DEPENDENCY",
+  "accepted": false,
+  "clinicallyCertified": false,
+  "screenCount": 8,
+  "sourceWorkstations": 8,
+  "sourceScreenTests": "focused_source_and_attested_runtime_simulation_only",
+  "releaseGate": "DENIED",
+  "acceptedOperationalPackages": 0,
+  "canonicalScreens": 261,
+  "domainLockedScreenIntegrationsWithoutFullAcceptance": 240,
+  "modules": 40,
+  "trustedRuntime": {
+    "installedInProduction": false,
+    "externalDbMigrationVerified": false,
+    "patientDisclosureServiceDeployed": false,
+    "registrationCommandDeployed": false
+  },
+  "focusedTests": [
+    {
+      "runId": 42137601181,
+      "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42137601181",
+      "scope": "source syntax and UX, bounded exact lookup, fake-role denial, P03 attested runtime simulation",
+      "conclusion": "success"
+    }
+  ],
+  "screens": [
+    {
+      "id": "G-S01",
+      "module": "SHARED",
+      "title": "Sign in",
+      "canonicalPrimaryAction": "Authenticate",
+      "route": "/workforce/clinical/G-S01",
+      "status": "VERIFIED_PARTIAL",
+      "accepted": false,
+      "implementation": "OIDC start route and institution-managed sign-in UX; no live installed IdP",
+      "remainingGates": [
+        "Keycloak/approved issuer deployment",
+        "real SQL replay/session/audit client provisioning",
+        "browser test against live IdP"
+      ]
+    },
+    {
+      "id": "G-S02",
+      "module": "SHARED",
+      "title": "MFA and account recovery",
+      "canonicalPrimaryAction": "Verify challenge",
+      "route": "/workforce/clinical/G-S02",
+      "status": "VERIFIED_PARTIAL",
+      "accepted": false,
+      "implementation": "One-use OIDC callback linked to approved identity runtime; no local OTP storage",
+      "remainingGates": [
+        "actual MFA enrollment/recovery provider",
+        "live MFA negative/expiry/recovery test",
+        "approved recovery workflow"
+      ]
+    },
+    {
+      "id": "G-S04",
+      "module": "SHARED",
+      "title": "Role home and task hub",
+      "canonicalPrimaryAction": "Open assigned task",
+      "route": "/workforce/clinical/G-S04",
+      "status": "VERIFIED_PARTIAL",
+      "accepted": false,
+      "implementation": "Exact verified facility context and role-safe navigation; no fabricated task list",
+      "remainingGates": [
+        "current approved role task API",
+        "urgent-exception source and permissions",
+        "actual role/worklist acceptance"
+      ]
+    },
+    {
+      "id": "G-S05",
+      "module": "SHARED",
+      "title": "Global patient search",
+      "canonicalPrimaryAction": "Open verified patient context",
+      "route": "/workforce/clinical/G-S05",
+      "status": "VERIFIED_PARTIAL",
+      "accepted": false,
+      "implementation": "Same-origin bounded exact patient ID POST with per-request authorization/consent",
+      "remainingGates": [
+        "authoritative patient/demographic search contract",
+        "deployed patient disclosure endpoint and real PostgreSQL/RLS",
+        "real patient dataset access/security tests"
+      ]
+    },
+    {
+      "id": "G-S07",
+      "module": "SHARED",
+      "title": "Session lock and reauthentication",
+      "canonicalPrimaryAction": "Resume session",
+      "route": "/workforce/clinical/G-S07",
+      "status": "VERIFIED_PARTIAL",
+      "accepted": false,
+      "implementation": "Automatic server revocation attempt on lock, opaque cookie logout route and strict error state",
+      "remainingGates": [
+        "cross-tab/site-wide lock enforcement",
+        "live IdP reauthentication/expiry tests",
+        "verified session revocation on real hospital network"
+      ]
+    },
+    {
+      "id": "G-S08",
+      "module": "SHARED",
+      "title": "Access denied and access request",
+      "canonicalPrimaryAction": "Request authorized review",
+      "route": "/workforce/clinical/G-S08",
+      "status": "BLOCKED_DEPENDENCY",
+      "accepted": false,
+      "implementation": "Bilingual safe denied-access explanation and navigation; ticket submission deliberately disabled",
+      "remainingGates": [
+        "server-approved review request API",
+        "reviewer workflow and SoD",
+        "durable request audit and owner signoff"
+      ]
+    },
+    {
+      "id": "G-S09",
+      "module": "SHARED",
+      "title": "Emergency access request",
+      "canonicalPrimaryAction": "Activate policy-approved access",
+      "route": "/workforce/clinical/G-S09",
+      "status": "BLOCKED_DEPENDENCY",
+      "accepted": false,
+      "implementation": "Bilingual emergency policy gate without PHI input, grant creation or bypass",
+      "remainingGates": [
+        "hospital emergency access policy service",
+        "scope/TTL/dual-control and post-event review",
+        "real DB audit and clinical signoff"
+      ]
+    },
+    {
+      "id": "M01-S02",
+      "module": "M01",
+      "title": "New patient registration",
+      "canonicalPrimaryAction": "Register patient",
+      "route": "/workforce/clinical/M01-S02",
+      "status": "BLOCKED_DEPENDENCY",
+      "accepted": false,
+      "implementation": "Registration requirements and locked intake-preview navigation; no patient PHI collection",
+      "remainingGates": [
+        "idempotent patient-registration command with duplicate checks",
+        "consent and identifier issuance dictionaries",
+        "transactional DB/RLS/outbox, recovery and clinical acceptance"
+      ]
+    }
+  ],
+  "blockers": [
+    "Shared PR stack unmerged; GATE-00/GATE-01/GATE-02/GATE-03 not fully satisfied",
+    "No deployed identity SQL credentials/Keycloak/vault/roster configured for Next route handlers",
+    "No app production build on this branch until npm lockfile and Next/Expo build PRs reconcile",
+    "No browser Playwright 320–1920 proof, test DB migrations, clinical reviewer signoff, or emergency grant policy"
+  ],
+  "nextCandidate": "SYNQ-OPS-002 only after source/contract and owner recheck; do not count the current package as accepted"
+}
