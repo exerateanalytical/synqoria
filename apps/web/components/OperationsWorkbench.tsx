@@ -172,15 +172,26 @@ export function OperationsWorkbench({moduleId,screenId,name,nameFr,action,inputG
   }catch(err){setNotice("Request not completed: "+friendly(err));}
   finally{setBusy(false);}
  };
- async function open(item:Item){
+ function open(item:Item){
   setSelected(item);setBalances([]);setDetails(null);setChangeValues({});
-  try{setDetails(await call<DomainDetails>(moduleRoute+"/"+item.id+"/details"));}
-  catch(err){setNotice("Operational details unavailable: "+friendly(err));}
-  if(moduleId==="M22"&&item.recordType==="STOCK_ITEM"){
-   try{setBalances(await call<Balance[]>(moduleRoute+"/"+item.id+"/balances"));}
-   catch(err){setNotice("Stock balances unavailable: "+friendly(err));}
-  }
  }
+ useEffect(()=>{
+  if(!selected||state!=="authorized"){
+   setDetails(null);setBalances([]);return;
+  }
+  let current=true;
+  const item=selected;
+  const path=moduleRoute+"/"+item.id;
+  call<DomainDetails>(path+"/details")
+   .then(data=>{if(current)setDetails(data);})
+   .catch(error=>{if(current){setDetails(null);setNotice("Operational details unavailable: "+friendly(error));}});
+  if(moduleId==="M22"&&item.recordType==="STOCK_ITEM"){
+   call<Balance[]>(path+"/balances")
+    .then(data=>{if(current)setBalances(data);})
+    .catch(error=>{if(current){setBalances([]);setNotice("Stock balances unavailable: "+friendly(error));}});
+  }
+  return ()=>{current=false;};
+ },[selected?.id,selected?.version,state,moduleId,moduleRoute]);
  const printField=(field:Field,value:string,handler:(key:string,v:string)=>void,prefix:string)=>{
   const id=prefix+"-"+moduleId+"-"+field.key;
   return <label className={styles.opsField} htmlFor={id} key={field.key}>
