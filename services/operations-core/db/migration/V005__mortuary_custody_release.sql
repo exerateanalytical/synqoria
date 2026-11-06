@@ -155,6 +155,8 @@ CREATE TABLE synqoria_operations.mortuary_audit_events (
   REFERENCES synqoria_operations.mortuary_cases(cell_id,facility_id,case_id),
  UNIQUE(cell_id,facility_id,case_id,case_version)
 );
+ALTER TABLE synqoria_operations.mortuary_audit_events
+ ADD UNIQUE(cell_id,facility_id,event_id);
 CREATE TABLE synqoria_operations.mortuary_outbox (
  event_id uuid PRIMARY KEY,
  cell_id uuid NOT NULL,
@@ -169,8 +171,6 @@ CREATE TABLE synqoria_operations.mortuary_outbox (
   REFERENCES synqoria_operations.mortuary_audit_events(cell_id,facility_id,event_id),
  CHECK(NOT(payload ? 'name') AND NOT(payload ? 'death_ref'))
 );
-ALTER TABLE synqoria_operations.mortuary_audit_events
- ADD UNIQUE(cell_id,facility_id,event_id);
 CREATE INDEX mortuary_pending_events ON synqoria_operations.mortuary_outbox
 (created_at,event_id) WHERE published_at IS NULL;
 
