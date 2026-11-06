@@ -30,6 +30,7 @@ public final class OperationWorkflow {
   ModuleCatalog.Module spec=ModuleCatalog.require(moduleId);
   actor.require(moduleId.toLowerCase(Locale.ROOT)+":create");
   validateFields(spec,fields);
+  OperationalRules.validateNew(moduleId,type,fields);
   return new Item(Objects.requireNonNull(id),actor.cell,actor.facility,moduleId,type,
    spec.initial(type),1L,actor.actor,actor.actor,fields);
  }
@@ -49,6 +50,7 @@ public final class OperationWorkflow {
   var nextFields=new LinkedHashMap<>(current.fields);
   nextFields.putAll(changedFields);
   validateFields(spec,nextFields);
+  OperationalRules.requireFields(current.module,current.recordType,action,nextFields);
   var next=new Item(current.id,current.cell,current.facility,current.module,current.recordType,
    step.to(),current.version+1,current.createdBy,actor.actor,nextFields);
   return new Next(next,step);
