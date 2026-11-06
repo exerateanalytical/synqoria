@@ -1,0 +1,22 @@
+name: P03 identity route engineering
+on:
+  push:
+    branches:
+      - work/p03-b0064-b0093-identity-route-engineering-2026-11-06
+permissions:
+  contents: read
+jobs:
+  identity-http:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify restricted runtime binding and route invariants
+        run: node --test tests/verified_staff_auth_route.test.mjs tests/verified_clinical_runtime_binding.test.mjs
+      - name: Preserve prior encrypted staff identity suite
+        run: node --test tests/staff_identity_runtime.test.mjs tests/staff_auth_http_handlers.test.mjs
+      - name: Scope
+        run: echo "Identity HTTP source only. No real DB connection, IdP deployment or clinical acceptance."
