@@ -9,6 +9,7 @@ type Item={id:string;cell:string;facility:string;module:string;recordType:string
 type Step={from:string;action:string;to:string;permission:string;makerChecker:boolean;evidence:string};
 type Module={id:string;name:string;recordTypes:string[];allowedFields:string[];steps:Step[]};
 type Balance={lot:string;bin:string;onHand:number;reserved:number;available:number;version:number};
+type DomainDetails={module:string;itemId:string;aggregateVersion:number;rows:Record<string,string|number|null>[]};
 type Field={key:string;label:string;kind?:"number"|"datetime"|"email"|"text";required?:boolean};
 const D=(key:string,label:string,kind:Field["kind"]="text",required=false):Field=>({key,label,kind,required});
 const SHAPES:Record<string,{recordTypes:string[];fields:Field[]}>={
@@ -122,6 +123,7 @@ export function OperationsWorkbench({moduleId,screenId,name,nameFr,action,inputG
  const [items,setItems]=useState<Item[]>([]);
  const [selected,setSelected]=useState<Item|null>(null);
  const [balances,setBalances]=useState<Balance[]>([]);
+ const [details,setDetails]=useState<DomainDetails|null>(null);
  const [recordType,setRecordType]=useState(allowedTypes[0]);
  const [newValues,setNewValues]=useState<Record<string,string>>({});
  const [changeValues,setChangeValues]=useState<Record<string,string>>({});
@@ -171,7 +173,9 @@ export function OperationsWorkbench({moduleId,screenId,name,nameFr,action,inputG
   finally{setBusy(false);}
  };
  async function open(item:Item){
-  setSelected(item);setBalances([]);setChangeValues({});
+  setSelected(item);setBalances([]);setDetails(null);setChangeValues({});
+  try{setDetails(await call<DomainDetails>(moduleRoute+"/"+item.id+"/details"));}
+  catch(err){setNotice("Operational details unavailable: "+friendly(err));}
   if(moduleId==="M22"&&item.recordType==="STOCK_ITEM"){
    try{setBalances(await call<Balance[]>(moduleRoute+"/"+item.id+"/balances"));}
    catch(err){setNotice("Stock balances unavailable: "+friendly(err));}
@@ -272,6 +276,18 @@ export function OperationsWorkbench({moduleId,screenId,name,nameFr,action,inputG
     <dl className={styles.opsDetails}>
      {Object.entries(selected.fields).map(([key,value])=><div key={key}><dt>{key}</dt><dd>{String(value)}</dd></div>)}
     </dl>
+    <h4>Authoritative domain records and history</h4>
+    {!details||details.itemId!==selected.id?<p className={styles.caption}>Loading authorized details…</p>:
+     details.rows.length===0?<p className={styles.caption}>No supplementary domain projection has been recorded for this item type.</p>:
+      <div className={styles.opsTableWrap} role="region" aria-label="Domain-specific operational details">
+       <table className={styles.opsTable}>
+        <thead><tr><th>Field</th>{details.rows.map((_,i)=><th key={i}>Record {i+1}</th>)}</tr></thead>
+        <tbody>{Object.keys(details.rows[0]).map(key=><tr key={key}>
+         <th scope="row">{key.replaceAll("_"," ")}</th>
+         {details.rows.map((row,i)=><td key={i}>{row[key]===null?"—":String(row[key])}</td>)}
+        </tr>)}</tbody>
+       </table>
+      </div>}
     <h4>Update details for the next authorized action</h4>
     <p className={styles.caption}>Provide additional evidence references or values; unchanged fields are preserved.</p>
     <div className={styles.opsFields}>
