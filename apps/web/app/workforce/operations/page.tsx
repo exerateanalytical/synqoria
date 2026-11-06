@@ -25,12 +25,12 @@ export default function SevenOperationsCatalogue(){
   <header className={styles.header}>
    <p className={styles.eyebrow}>SYNQORIA / Hospital operations / Gestion hospitalière</p>
    <h1>Operations modules / Modules opérationnels</h1>
-   <p>Seven canonical modules, 35 mapped workstations. These are nonclinical
-    locked UI previews until verified staff/facility identity, database and
-    document or device sign-off connections are reviewed.</p>
+   <p>Seven canonical modules and 35 functional staff workstations, available only after
+    a verified hospital login, authoritative facility/shift grants and database-backed permissions.</p>
    <p className={styles.warning} role="status">
-    No live staff session, hospital data or executable workflow is connected.
-    Les opérations en production ne sont pas autorisées.
+    Hospital records and actions remain inaccessible without configured identity, roster,
+    clinical or supplier evidence and a protected operational service.
+    Accès soumis à autorisation institutionnelle.
    </p>
   </header>
   <section id="modules" className={styles.modules} aria-label="Seven operations modules">
@@ -49,7 +49,7 @@ export default function SevenOperationsCatalogue(){
     </article>;
    })}
   </section>
-  <footer className={styles.footer}>Engineering preview. No authenticated records, orders,
-   notification dispatches, document signatures or clinical decisions are available.</footer>
+  <footer className={styles.footer}>Secure workstations use a server-only session gateway. Orders and approvals require
+   verified institutional authorizations. No automated clinical decisions.</footer>
  </main>;
 }
