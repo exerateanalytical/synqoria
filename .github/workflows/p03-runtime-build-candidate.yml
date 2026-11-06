@@ -38,7 +38,7 @@ jobs:
         run: npm run build --workspace @synqoria/web
       - name: Execute full P03 source and trusted startup regression
         run: |
-          node --test tests/identity_production_sql.test.mjs tests/identity_restricted_transport.test.mjs tests/identity_production_startup.test.mjs tests/identity_production_integration.test.mjs tests/identity_next_instrumentation.test.mjs tests/identity_http_response_policy.test.mjs tests/p03_route_runtime_ledger.test.mjs
+          node --test tests/identity_production_sql.test.mjs tests/identity_attested_db_query.test.mjs tests/identity_login_principals_migration.test.mjs tests/identity_restricted_transport.test.mjs tests/identity_production_startup.test.mjs tests/identity_production_integration.test.mjs tests/identity_next_instrumentation.test.mjs tests/identity_http_response_policy.test.mjs tests/p03_route_runtime_ledger.test.mjs
       - name: Preserve generated lock candidate as unmerged CI evidence
         if: always()
         uses: actions/upload-artifact@v4

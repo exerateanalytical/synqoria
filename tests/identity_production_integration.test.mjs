@@ -34,11 +34,8 @@ const actor="11111111-1111-4111-8111-111111111111";
 const tenant="22222222-2222-4222-8222-222222222222";
 const facility="33333333-3333-4333-8333-333333333333";
 const shift="44444444-4444-4444-8444-444444444444";
-const roles=[
- "synqoria_oidc_replay_runtime",
- "synqoria_staff_session_runtime",
- "synqoria_identity_audit_writer"
-];
+const roles=["synqoria_oidc_replay_runtime","synqoria_staff_session_runtime","synqoria_identity_audit_writer"];
+const logins=["synqoria_oidc_replay_login","synqoria_staff_session_login","synqoria_identity_audit_login"];
 const {privateKey,publicKey}=generateKeyPairSync("rsa",{modulusLength:2048});
 const jwk={...publicKey.export({format:"jwk"}),kid:"signing-key",alg:"RS256",use:"sig"};
 const b64=x=>Buffer.from(JSON.stringify(x)).toString("base64url");
@@ -77,9 +74,9 @@ const env={
   nurse:["patient:view","facility:view"]}}),
  SYNQORIA_OIDC_JWKS_JSON:JSON.stringify({keys:[jwk]}),
  SYNQORIA_IDENTITY_DB_CA_PEM:PEM,
- SYNQORIA_IDENTITY_REPLAY_DSN:"postgresql://"+roles[0]+":"+"x".repeat(44)+"@db.synqoria.internal:5432/synqoria_identity",
- SYNQORIA_IDENTITY_SESSION_DSN:"postgresql://"+roles[1]+":"+"y".repeat(44)+"@db.synqoria.internal:5432/synqoria_identity",
- SYNQORIA_IDENTITY_AUDIT_DSN:"postgresql://"+roles[2]+":"+"z".repeat(44)+"@db.synqoria.internal:5432/synqoria_identity"
+ SYNQORIA_IDENTITY_REPLAY_DSN:"postgresql://"+logins[0]+":"+"x".repeat(44)+"@db.synqoria.internal:5432/synqoria_identity",
+ SYNQORIA_IDENTITY_SESSION_DSN:"postgresql://"+logins[1]+":"+"y".repeat(44)+"@db.synqoria.internal:5432/synqoria_identity",
+ SYNQORIA_IDENTITY_AUDIT_DSN:"postgresql://"+logins[2]+":"+"z".repeat(44)+"@db.synqoria.internal:5432/synqoria_identity"
 };
 const policies={
  oidc_replay_state:[
@@ -120,9 +117,12 @@ const policyRows=()=>Object.entries(policies).map(([table_name,items])=>({
 }));
 const replay=new Map(),sessions=new Map(),audits=[],events=[],connections=[];
 let currentNonce="";
-const goodConnection=role=>({
- role_name:role,row_security:"on",superuser:false,bypass_rls:false,
- create_role:false,create_db:false,cross_role_member:false,
+const goodConnection=(role,login)=>({
+ role_name:role,login_name:login,row_security:"on",
+ superuser:false,bypass_rls:false,create_role:false,create_db:false,cross_role_member:false,
+ login_can_login:true,login_inherit:false,login_superuser:false,login_bypass_rls:false,
+ login_create_role:false,login_create_db:false,
+ login_has_expected_membership:true,login_has_extra_membership:false,
  tls_active:true,tls_version:"TLSv1.3",tls_cipher:"TLS_AES_256_GCM_SHA384"
 });
 const goodRole=role=>({
@@ -138,10 +138,20 @@ class Pool{
  async connect(){
   events.push("connect:"+this.role);
   const role=this.role;
+  let effectiveRole=null;
   return {
    async query(sql,args){
-    if(sql===IDENTITY_CONNECTION_ATTEST_SQL)return {rowCount:1,rows:[goodConnection(role)]};
-    if(sql===IDENTITY_ROLE_PROBE_SQL)return {rowCount:1,rows:[goodRole(role)]};
+    if(sql==="BEGIN")return {rowCount:null,rows:[]};
+    if(sql.startsWith("SET LOCAL ROLE ")){
+     if(sql!=="SET LOCAL ROLE "+roles[logins.indexOf(role)])throw Error("wrong local role");
+     effectiveRole=sql.slice("SET LOCAL ROLE ".length);
+     return {rowCount:null,rows:[]};
+    }
+    if(sql==="COMMIT"||sql==="ROLLBACK"){
+     effectiveRole=null;return {rowCount:null,rows:[]};
+    }
+    if(sql===IDENTITY_CONNECTION_ATTEST_SQL)return {rowCount:1,rows:[goodConnection(effectiveRole,role)]};
+    if(sql===IDENTITY_ROLE_PROBE_SQL)return {rowCount:1,rows:[goodRole(effectiveRole)]};
     if(sql===IDENTITY_SCHEMA_POLICY_SQL)return {rowCount:3,rows:policyRows()};
     if(sql===OIDC_REPLAY_RESERVE_SQL){
      const key=args[0];

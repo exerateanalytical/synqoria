@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {createRestrictedIdentityPools,IdentityProductionSqlError}
  from "../apps/web/lib/identity-production-sql.mjs";
 const PEM="-----BEGIN CERTIFICATE-----\n"+("QUJD".repeat(35))+"\n-----END CERTIFICATE-----\n";
-const ROLES=["synqoria_oidc_replay_runtime","synqoria_staff_session_runtime","synqoria_identity_audit_writer"];
+const ROLES=["synqoria_oidc_replay_login","synqoria_staff_session_login","synqoria_identity_audit_login"];
 const env=()=>({
  SYNQORIA_IDENTITY_DB_CA_PEM:PEM,
  SYNQORIA_IDENTITY_REPLAY_DSN:"postgresql://"+ROLES[0]+":"+"x".repeat(44)+"@db.hospital.internal:5432/synqoria_identity",
