@@ -47,6 +47,7 @@ export async function ops001ServerAction(action,request){
   if(action==="callback"&&request?.method==="GET")return await c.identity.callback(request);
   if(action==="logout"&&request?.method==="POST")return await c.identity.logout(request);
   if(action==="patient-lookup"&&request?.method==="POST")return await c.lookup.lookup(request);
+  if(action==="facility"&&request?.method==="GET")return await c.lookup.readFacility(request);
   return deny(405,"method_not_allowed");
  }catch{return deny(503,"verified_staff_service_unavailable");}
 }
