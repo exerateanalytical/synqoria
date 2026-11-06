@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '22'
       - name: Verify restricted runtime binding and route invariants
-        run: node --test tests/verified_staff_auth_route.test.mjs tests/verified_clinical_runtime_binding.test.mjs
+        run: node --test tests/verified_staff_auth_route.test.mjs tests/verified_clinical_runtime_binding.test.mjs tests/oidc_start_next_route.test.mjs
       - name: Preserve prior encrypted staff identity suite
         run: node --test tests/staff_identity_runtime.test.mjs tests/staff_auth_http_handlers.test.mjs
       - name: Scope
