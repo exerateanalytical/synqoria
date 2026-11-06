@@ -41,6 +41,11 @@ public final class OperationsApi {
   if(request==null||request.commandId()==null)throw new WorkflowViolation("idempotency_key_required");
   return store.create(admission.requireAuthoritativeGrant(jwt),module,request);
  }
+ @GetMapping("/{module}/items/{itemId}/details")
+ public Map<String,Object> details(@PathVariable String module,@PathVariable UUID itemId,
+  @AuthenticationPrincipal Jwt jwt){
+  return store.details(admission.requireAuthoritativeGrant(jwt),module,itemId);
+ }
  @PostMapping("/{module}/items/{itemId}/transitions")
  public OperationWorkflow.Item transition(@PathVariable String module,@PathVariable UUID itemId,
   @RequestBody TransitionItem request,@AuthenticationPrincipal Jwt jwt){

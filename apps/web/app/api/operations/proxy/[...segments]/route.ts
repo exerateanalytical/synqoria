@@ -8,10 +8,11 @@ const uuid="[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[1-8][a-fA-F0-9]{3}-[89aAbB][a-fA-F0-9
 const listing=new RegExp("^"+moduleIds+"/items$");
 const record=new RegExp("^"+moduleIds+"/items/"+uuid+"$");
 const stockBalances=new RegExp("^M22/items/"+uuid+"/balances$");
+const domainDetails=new RegExp("^"+moduleIds+"/items/"+uuid+"/details$");
 const transitions=new RegExp("^"+moduleIds+"/items/"+uuid+"/transitions$");
 const stockMovement=new RegExp("^M22/items/"+uuid+"/movements$");
 function allow(path:string,method:"GET"|"POST"){
- if(method==="GET")return path==="catalog"||listing.test(path)||record.test(path)||stockBalances.test(path);
+ if(method==="GET")return path==="catalog"||listing.test(path)||record.test(path)||stockBalances.test(path)||domainDetails.test(path);
  return listing.test(path)||transitions.test(path)||stockMovement.test(path);
 }
 function send(error:string,status:number){return NextResponse.json({error},{status,headers:{"Cache-Control":"no-store"}});}

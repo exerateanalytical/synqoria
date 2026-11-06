@@ -331,4 +331,48 @@ public final class OperationsStore {
   });
  }
 
+ 
+ /**
+  * Read-only domain projections. Source data is in authoritative cell-scoped tables
+  * and is never queried outside the current RLS-verified transaction.
+  * The clinical patient encounter and signed document bytes are deliberately excluded.
+  */
+ public Map<String,Object> details(OperationWorkflow.Actor actor,String module,UUID id){
+  ModuleCatalog.require(module);
+  actor.require(module.toLowerCase(Locale.ROOT)+":read");
+  return scoped(actor,()->{
+   var item=getLocked(module,id,false);
+   List<Map<String,Object>> rows=switch(module){
+    case "M21" -> jdbc.queryForList("SELECT supplier_ref,purchase_ref,amount_minor,currency,"+
+     "state,receipt_ref,invoice_ref,ordered_at FROM synqoria_operations.procurement_orders "+
+     "WHERE cell_id=? AND facility_id=? AND item_id=?",actor.cell(),actor.facility(),id);
+    case "M22" -> jdbc.queryForList("SELECT lot_code,bin_code,on_hand,reserved,version "+
+     "FROM synqoria_operations.stock_balances WHERE cell_id=? AND facility_id=? AND item_id=? "+
+     "ORDER BY lot_code,bin_code LIMIT 100",actor.cell(),actor.facility(),id);
+    case "M23" -> jdbc.queryForList("SELECT asset_ref,technician_ref,inspection_ref,"+
+     "state,due_at,verified_at FROM synqoria_operations.maintenance_orders "+
+     "WHERE cell_id=? AND facility_id=? AND item_id=?",actor.cell(),actor.facility(),id);
+    case "M25" -> jdbc.queryForList("SELECT vehicle_ref,driver_ref,origin_ref,destination_ref,"+
+     "state,assigned_at,ended_at FROM synqoria_operations.transport_assignments "+
+     "WHERE cell_id=? AND facility_id=? AND item_id=?",actor.cell(),actor.facility(),id);
+    case "M29" -> jdbc.queryForList("SELECT config_key,schema_version,item_version,"+
+     "content_digest,published_by,published_at,superseded_at "+
+     "FROM synqoria_operations.facility_publications WHERE cell_id=? AND facility_id=? AND item_id=? "+
+     "ORDER BY item_version DESC LIMIT 50",actor.cell(),actor.facility(),id);
+    case "M31" -> jdbc.queryForList("SELECT document_version,disposition,content_digest,"+
+     "signature_ref,previous_ref,actor_id,occurred_at FROM synqoria_operations.document_versions "+
+     "WHERE cell_id=? AND facility_id=? AND item_id=? "+
+     "ORDER BY document_version DESC LIMIT 50",actor.cell(),actor.facility(),id);
+    case "M37" -> jdbc.queryForList("SELECT recipient_ref,template_ref,channel,state,"+
+     "delivery_ref,delivery_attempts,next_attempt_at,acknowledged_by,updated_at "+
+     "FROM synqoria_operations.notification_jobs WHERE cell_id=? AND facility_id=? AND item_id=?",
+     actor.cell(),actor.facility(),id);
+    default -> throw new WorkflowViolation("unknown_module");
+   };
+   // Not all types own a separate materialized detail row (e.g. supplier/vehicle).
+   return Map.of("module",module,"itemId",item.id().toString(),
+    "aggregateVersion",item.version(),"rows",rows);
+  });
+ }
+
 }
