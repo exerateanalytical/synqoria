@@ -7,6 +7,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
+import {postgresOidcReplayStore} from "../apps/web/lib/oidc-replay-postgres.mjs";
 import {createRequire} from "node:module";
 import {execFileSync} from "node:child_process";
 import {createRestrictedIdentityPools,IdentityProductionSqlError}
@@ -159,4 +160,15 @@ test("B0121 live RLS policy predicate drift denies preflight until corrected",as
  finally{admin("ALTER POLICY oidc_replay_runtime_read_live ON synqoria_identity.oidc_replay_state USING (expires_at > clock_timestamp())");}
  assert.equal((await verifyIdentitySchemaPolicies(pools.replaySql)).verified,true);
 });
+test("B0122 disposable PG16 OIDC replay is atomic across eight concurrent clients",async()=>{
+ const at=Date.now();
+ const replay=postgresOidcReplayStore(pools.replaySql,{now:()=>at});
+ const state="synqoria:oidc:state:v1:"+"d".repeat(64);
+ const attempts=await Promise.all(Array.from({length:8},()=>replay.reserve(state,at+120000)));
+ assert.equal(attempts.filter(Boolean).length,1);
+ const consumes=await Promise.all(Array.from({length:8},()=>replay.consume(state,at)));
+ assert.equal(consumes.filter(Boolean).length,1);
+ assert.equal(await replay.consume(state,at),false);
+});
+
 test("P03 disposable PostgreSQL role/TLS suite closes all restricted pools",async()=>{await pools.close();});
