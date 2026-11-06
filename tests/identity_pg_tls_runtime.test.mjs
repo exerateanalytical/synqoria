@@ -81,7 +81,7 @@ test("B0106 role elevation is transaction-local and resets before the same backe
  try{
   const scoped=createConnectionAttestedSqlClient(rawPool,
    "synqoria_oidc_replay_runtime",login[0]);
-  const actor=(await scoped.query("SELECT current_user AS active_role")).rows[0].active_role;
+  const actor=(await scoped.query("SELECT current_user AS active_role,session_user AS login_role")).rows[0].active_role;
   assert.equal(actor,"synqoria_oidc_replay_runtime");
   const raw=await rawPool.connect();
   try{
@@ -103,7 +103,7 @@ test("B0108 PostgreSQL might accept cleartext, but identity runtime refuses an u
  try{
   const scoped=createConnectionAttestedSqlClient(rawPool,
    "synqoria_oidc_replay_runtime",login[0]);
-  await assert.rejects(()=>scoped.query("SELECT 1"),IdentityAttestedQueryError);
+  await assert.rejects(()=>scoped.query("SELECT 1 AS ok"),IdentityAttestedQueryError);
  }finally{await rawPool.end();}
 });
 test("B0109 swapped PostgreSQL login principal with another role's secret fails authentication",async()=>{
@@ -117,12 +117,12 @@ test("B0109 swapped PostgreSQL login principal with another role's secret fails 
 test("B0105 privilege drift on LOGIN principal is detected on subsequent physical SQL connection",async()=>{
  admin("GRANT synqoria_staff_session_runtime TO synqoria_oidc_replay_login");
  try{
-  await assert.rejects(()=>pools.replaySql.query("SELECT 1"),IdentityAttestedQueryError);
+  await assert.rejects(()=>pools.replaySql.query("SELECT 1 AS ok"),IdentityAttestedQueryError);
  }finally{admin("REVOKE synqoria_staff_session_runtime FROM synqoria_oidc_replay_login");}
  assert.equal((await pools.replaySql.query("SELECT 1 AS ok")).rows[0].ok,1);
  admin("ALTER ROLE synqoria_oidc_replay_login BYPASSRLS");
  try{
-  await assert.rejects(()=>pools.replaySql.query("SELECT 1"),IdentityAttestedQueryError);
+  await assert.rejects(()=>pools.replaySql.query("SELECT 1 AS ok"),IdentityAttestedQueryError);
  }finally{admin("ALTER ROLE synqoria_oidc_replay_login NOBYPASSRLS");}
  assert.equal((await pools.replaySql.query("SELECT 1 AS ok")).rows[0].ok,1);
 });
@@ -131,7 +131,7 @@ test("B0117 PostgreSQL16 changing INHERIT or SET grant options cannot bypass ide
  for(const mode of ["INHERIT TRUE, SET TRUE","INHERIT FALSE, SET FALSE"]){
   admin("REVOKE synqoria_oidc_replay_runtime FROM synqoria_oidc_replay_login");
   admin("GRANT synqoria_oidc_replay_runtime TO synqoria_oidc_replay_login WITH ADMIN FALSE, "+mode);
-  try{await assert.rejects(()=>pools.replaySql.query("SELECT 1"),IdentityAttestedQueryError);}
+  try{await assert.rejects(()=>pools.replaySql.query("SELECT 1 AS ok"),IdentityAttestedQueryError);}
   finally{
    admin("REVOKE synqoria_oidc_replay_runtime FROM synqoria_oidc_replay_login");
    admin("GRANT synqoria_oidc_replay_runtime TO synqoria_oidc_replay_login WITH ADMIN FALSE, INHERIT FALSE, SET TRUE");
@@ -141,17 +141,17 @@ test("B0117 PostgreSQL16 changing INHERIT or SET grant options cannot bypass ide
 });
 test("B0118 PostgreSQL16 replication, hidden runtime memberships, or role privileges deny",async()=>{
  admin("ALTER ROLE synqoria_oidc_replay_login REPLICATION");
- try{await assert.rejects(()=>pools.replaySql.query("SELECT 1"),IdentityAttestedQueryError);}
+ try{await assert.rejects(()=>pools.replaySql.query("SELECT 1 AS ok"),IdentityAttestedQueryError);}
  finally{admin("ALTER ROLE synqoria_oidc_replay_login NOREPLICATION");}
  admin("GRANT pg_read_all_data TO synqoria_oidc_replay_runtime");
- try{await assert.rejects(()=>pools.replaySql.query("SELECT 1"),IdentityAttestedQueryError);}
+ try{await assert.rejects(()=>pools.replaySql.query("SELECT 1 AS ok"),IdentityAttestedQueryError);}
  finally{admin("REVOKE pg_read_all_data FROM synqoria_oidc_replay_runtime");}
  assert.equal((await pools.replaySql.query("SELECT 1 AS ok")).rows[0].ok,1);
 });
-test("B0120 fixed PostgreSQL transaction deadline interrupts long-running SQL",async()=>{
+test("B0120 SQL contracts deny arbitrary PostgreSQL sleep before executing it",async()=>{
  const started=Date.now();
  await assert.rejects(()=>pools.replaySql.query("SELECT pg_sleep(6)"),IdentityAttestedQueryError);
- assert.ok(Date.now()-started<9000,"long SQL must not finish successfully");
+ assert.ok(Date.now()-started<1000,"unauthorized sleep must be denied before DB acquisition");
  assert.equal((await pools.replaySql.query("SELECT 1 AS ok")).rows[0].ok,1);
 });
 test("B0121 live RLS policy predicate drift denies preflight until corrected",async()=>{

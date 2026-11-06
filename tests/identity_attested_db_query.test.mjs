@@ -49,8 +49,8 @@ function mock(probe=good(),{failAt=null,stream=verifiedStream()}={}){
 const use=h=>createConnectionAttestedSqlClient(h.pool,role,login);
 test("B0098 each SQL operation verifies live Node TLS socket then begins local role transaction",async()=>{
  const h=mock(),c=use(h);
- assert.deepEqual((await c.query("SELECT 1")).rows,[{ok:true}]);
- assert.deepEqual((await c.query("SELECT 2")).rows,[{ok:true}]);
+ assert.deepEqual((await c.query("SELECT 1 AS ok")).rows,[{ok:true}]);
+ assert.deepEqual((await c.query("SELECT 1 AS ok")).rows,[{ok:true}]);
  assert.deepEqual(h.events,[
   "connect","begin","statementLimit","lockLimit","idleLimit","set","attest","operation","commit","release",
   "connect","begin","statementLimit","lockLimit","idleLimit","set","attest","operation","commit","release"]);
@@ -66,7 +66,7 @@ test("B0099 reject unauthenticated socket, broken peer certificate, TLS downgrad
  ];
  for(const stream of insecure){
   const h=mock(good(),{stream});
-  await assert.rejects(()=>use(h).query("SELECT 1"),IdentityAttestedQueryError);
+  await assert.rejects(()=>use(h).query("SELECT 1 AS ok"),IdentityAttestedQueryError);
   assert.deepEqual(h.events,["connect","release"]);
  }
  for(const changes of [
@@ -74,7 +74,7 @@ test("B0099 reject unauthenticated socket, broken peer certificate, TLS downgrad
   {cross_role_member:true},{superuser:true},{bypass_rls:true}
  ]){
   const h=mock(good(changes));
-  await assert.rejects(()=>use(h).query("SELECT 1"),IdentityAttestedQueryError);
+  await assert.rejects(()=>use(h).query("SELECT 1 AS ok"),IdentityAttestedQueryError);
   assert.deepEqual(h.events,["connect","begin","statementLimit","lockLimit","idleLimit","set","attest","rollback","release"]);
  }
 });
@@ -88,7 +88,7 @@ test("B0100 refuse privileged or inherited LOGIN principals and extra role membe
   {runtime_inherit:true},{runtime_replication:true}
  ]){
   const h=mock(good(changes));
-  await assert.rejects(()=>use(h).query("SELECT 1"),IdentityAttestedQueryError);
+  await assert.rejects(()=>use(h).query("SELECT 1 AS ok"),IdentityAttestedQueryError);
   assert.equal(h.events.includes("operation"),false);
   assert.equal(h.events.at(-2),"rollback");
  }
@@ -96,7 +96,7 @@ test("B0100 refuse privileged or inherited LOGIN principals and extra role membe
 test("B0101 connection, SQL and commit errors redact messages and rollback before release",async()=>{
  for(const failAt of ["connect","begin","statementLimit","lockLimit","idleLimit","set","attest","operation","commit"]){
   const h=mock(good(),{failAt});
-  await assert.rejects(()=>use(h).query("SELECT protected"),e=>{
+  await assert.rejects(()=>use(h).query("SELECT 1 AS ok"),e=>{
    assert.equal(e.message,"identity_attested_query_denied");
    assert.doesNotMatch(e.message,/credential|privacy|postgres/);return true;
   });
@@ -113,7 +113,7 @@ test("B0101 forged role changes or SQL multi-statements denied before acquiring 
   "SELECT 1; SET ROLE postgres","DELETE FROM x; SELECT 1","COMMIT"]){
   await assert.rejects(()=>c.query(statement,[]),IdentityAttestedQueryError);
  }
- await assert.rejects(()=>c.query("SELECT 1",{}),IdentityAttestedQueryError);
+ await assert.rejects(()=>c.query("SELECT 1 AS ok",{}),IdentityAttestedQueryError);
  assert.deepEqual(h.events,[]);
 });
 
@@ -125,7 +125,7 @@ test("B0110 SQL pool discards denied, poisoned or unverifiable connection on rel
    c.release=(discard)=>{flags.push(discard);oldRelease();};
    return c;
   };
-  await assert.rejects(()=>use(h).query("SELECT sensitive"),IdentityAttestedQueryError);
+  await assert.rejects(()=>use(h).query("SELECT 1 AS ok"),IdentityAttestedQueryError);
   assert.deepEqual(flags,[true]);
  }
  const h=mock(),orig=h.pool.connect.bind(h.pool),flags=[];
@@ -134,6 +134,6 @@ test("B0110 SQL pool discards denied, poisoned or unverifiable connection on rel
   c.release=(discard)=>{flags.push(discard);oldRelease();};
   return c;
  };
- await use(h).query("SELECT 1");
+ await use(h).query("SELECT 1 AS ok");
  assert.deepEqual(flags,[false]);
 });
