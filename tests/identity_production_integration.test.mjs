@@ -120,7 +120,9 @@ let currentNonce="";
 const goodConnection=(role,login)=>({
  role_name:role,login_name:login,row_security:"on",
  superuser:false,bypass_rls:false,create_role:false,create_db:false,cross_role_member:false,
- login_can_login:true,login_inherit:false,login_superuser:false,login_bypass_rls:false,
+ login_can_login:true,login_inherit:false,login_replication:false,
+ runtime_can_login:false,runtime_inherit:false,runtime_replication:false,
+ login_can_set_role:true,login_inherit_role:false,login_superuser:false,login_bypass_rls:false,
  login_create_role:false,login_create_db:false,
  login_has_expected_membership:true,login_has_extra_membership:false,
 });
@@ -143,7 +145,11 @@ class Pool{
     getProtocol:()=>"TLSv1.3",getCipher:()=>({name:"TLS_AES_256_GCM_SHA384"}),
     getPeerCertificate:()=>({raw:Buffer.alloc(512)})}},
    async query(sql,args){
-    if(sql==="BEGIN")return {rowCount:null,rows:[]};
+    if(sql==="BEGIN"||
+       sql==="SET LOCAL statement_timeout = '5000ms'"||
+       sql==="SET LOCAL lock_timeout = '1000ms'"||
+       sql==="SET LOCAL idle_in_transaction_session_timeout = '7000ms'")
+      return {rowCount:null,rows:[]};
     if(sql.startsWith("SET LOCAL ROLE ")){
      if(sql!=="SET LOCAL ROLE "+roles[logins.indexOf(role)])throw Error("wrong local role");
      effectiveRole=sql.slice("SET LOCAL ROLE ".length);
