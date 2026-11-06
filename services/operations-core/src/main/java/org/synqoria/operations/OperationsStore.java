@@ -136,6 +136,7 @@ public final class OperationsStore {
     "VALUES (?,?,?,?,?,?,?,?,?,?::jsonb)",
     draft.id(),draft.cell(),draft.facility(),draft.module(),draft.recordType(),
     draft.status(),draft.version(),draft.createdBy(),draft.lastActor(),encode(draft.fields()));
+   OperationsDomainEffects.onCreate(jdbc,draft);
    recordChange(actor,req.commandId(),draft,"CREATE",null);
    completeCommand(actor,req.commandId(),draft);
    return draft;
@@ -181,6 +182,7 @@ public final class OperationsStore {
     "fields=?::jsonb,updated_at=clock_timestamp() WHERE id=? AND module_id=? AND version=?",
     next.status(),next.version(),next.lastActor(),encode(next.fields()),id,module,
     before.version())!=1)throw new WorkflowViolation("stale_version");
+   OperationsDomainEffects.onTransition(jdbc,before,next,change.step().action());
    recordChange(actor,req.commandId(),next,change.step().action(),before.status());
    completeCommand(actor,req.commandId(),next);
    return next;
