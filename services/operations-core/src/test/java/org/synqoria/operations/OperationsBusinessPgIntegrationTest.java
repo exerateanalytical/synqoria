@@ -75,7 +75,8 @@ final class OperationsBusinessPgIntegrationTest {
   var review=actor(B,"m21:qualify","m21:approve","m21:match");
   var supplier=create(store,"M21","SUPPLIER",maker,data("title","Qualified hospital supplier",
    "registrationRef","RC-2026-041","taxRef","NIU-041","qualificationRef","QUAL-2026-041"));
-  assertThrows(WorkflowViolation.class,()->next(store,"M21",supplier,"QUALIFY",review,Map.of()));
+  var unqualifiedSupplier=supplier;
+  assertThrows(WorkflowViolation.class,()->next(store,"M21",unqualifiedSupplier,"QUALIFY",review,Map.of()));
   evidence(supplier.id(),"QUALIFY",1,"supplier_qualified","QUAL-2026-041");
   supplier=next(store,"M21",supplier,"QUALIFY",review,Map.of());
   assertEquals("SUPPLIER_QUALIFIED",supplier.status());
@@ -204,8 +205,9 @@ final class OperationsBusinessPgIntegrationTest {
   doc=next(s,"M31",doc,"RESIGN",reviewer,Map.of("signatureRef","SIG-042"));
   assertEquals("DOCUMENT_SIGNED",doc.status());
   assertEquals(3,count("document_versions",doc.id()));
+  var completedDocument=doc;
   assertThrows(Exception.class,()->new JdbcTemplate(runtime()).update(
-   "DELETE FROM synqoria_operations.document_versions WHERE item_id=?",doc.id()));
+   "DELETE FROM synqoria_operations.document_versions WHERE item_id=?",completedDocument.id()));
  }
  @Test void m37DeliveryReceiptIsNotAcknowledgementAndOnlyNamedRecipientCanAccept(){
   ready();var s=store();var maker=actor(A,"m37:create","m37:acknowledge");
