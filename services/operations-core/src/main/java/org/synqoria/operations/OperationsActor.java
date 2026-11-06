@@ -19,7 +19,7 @@ public final class OperationsActor {
    if(grants==null||grants.isEmpty()||grants.size()>128)throw new WorkflowViolation("grant_denied");
    Set<String> distinct=new HashSet<>(grants);
    if(distinct.size()!=grants.size()||distinct.stream().anyMatch(
-      v->v==null||!v.matches("m(21|22|23|25|29|31|37):[a-z_]{1,40}")))
+      v->v==null||!v.matches("m(21|22|23|25|27|29|31|37):[a-z_]{1,40}")))
     throw new WorkflowViolation("grant_denied");
    Number expires=jwt.getClaim("synqoria_grant_expires");
    if(expires==null||expires.longValue()<=Instant.now().getEpochSecond()||
