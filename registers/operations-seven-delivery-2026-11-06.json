@@ -1,0 +1,173 @@
+{
+  "schema": "synqoria.operations.seven.delivery.v1",
+  "recordedAt": "2026-11-06",
+  "targetModuleIds": [
+    "M21",
+    "M22",
+    "M23",
+    "M25",
+    "M29",
+    "M31",
+    "M37"
+  ],
+  "targetModuleCount": 7,
+  "canonicalScreenCount": 35,
+  "branch": "work/operations-seven-module-service-2026-11-06",
+  "baseCommit": "96d45960e2b7ad0039818de259b2782d2cbca86f",
+  "implementationStatus": "PARTIAL_FOUNDATIONS_WITH_LOCKED_PREVIEW",
+  "actualProductionModulesCompleted": 0,
+  "clinicalOrOperationalScreenAccepted": 0,
+  "globalEngineeringBacklogClosed": false,
+  "clinicalRelease": "DENIED",
+  "certification": "DEFERRED",
+  "sources": {
+    "plan": "docs/program/SEVEN_OPERATIONS_MODULES_PLAN_2026-11-06.md",
+    "java": "services/operations-core/src/main/java/org/synqoria/operations/",
+    "postgres": "services/operations-core/db/migration/V001__seven_operations_cells.sql",
+    "screenshots": "apps/web/app/workforce/operations/",
+    "uiContracts": "apps/web/lib/operations-screen-catalog.json"
+  },
+  "ciVerifiedExamples": {
+    "javaDomain": "https://github.com/exerateanalytical/synqoria/actions/runs/42303727918",
+    "disposablePostgres16": "https://github.com/exerateanalytical/synqoria/actions/runs/42303727902",
+    "actualJdbcAtomicity": "https://github.com/exerateanalytical/synqoria/actions/runs/42303727956",
+    "screenContracts": "https://github.com/exerateanalytical/synqoria/actions/runs/42303727932"
+  },
+  "dependencies": {
+    "authoritativeWorkforceGrant": true,
+    "readOnlyOrLockedUIUntilVerified": true,
+    "rootEngineeringWorkflowPassing": false,
+    "uiCandidateBuildVerified": false,
+    "independentPR23BuildOwner": true,
+    "independentPR16DocumentFormsOwner": true,
+    "independentPR33AuthenticationOwner": true
+  },
+  "modules": [
+    {
+      "id": "M21",
+      "canonicalScreens": 6,
+      "javaWorkflowFoundations": true,
+      "postgresGenericPersistence": true,
+      "scopedOIdcApiSource": true,
+      "staticPreviewScreens": 6,
+      "fullOperationalIntegration": false,
+      "endToEndAuthVerified": false,
+      "productionCompleted": false,
+      "securityReviewed": false,
+      "accepted": false,
+      "unresolved": [
+        "Independent verified supplier qualification authority",
+        "Requisition/PO document printable and finance ledger",
+        "Real goods-receipt invoice matching and procurement acceptance"
+      ]
+    },
+    {
+      "id": "M22",
+      "canonicalScreens": 5,
+      "javaWorkflowFoundations": true,
+      "postgresGenericPersistence": true,
+      "scopedOIdcApiSource": true,
+      "staticPreviewScreens": 5,
+      "fullOperationalIntegration": false,
+      "endToEndAuthVerified": false,
+      "productionCompleted": false,
+      "securityReviewed": false,
+      "accepted": false,
+      "unresolved": [
+        "Transactional wiring of stock movement ledger into JDBC/API",
+        "Warehouse lot/bin count reconciliation and maker-checker approval",
+        "Supplier receipt evidence and authorised returns"
+      ]
+    },
+    {
+      "id": "M23",
+      "canonicalScreens": 5,
+      "javaWorkflowFoundations": true,
+      "postgresGenericPersistence": true,
+      "scopedOIdcApiSource": true,
+      "staticPreviewScreens": 5,
+      "fullOperationalIntegration": false,
+      "endToEndAuthVerified": false,
+      "productionCompleted": false,
+      "securityReviewed": false,
+      "accepted": false,
+      "unresolved": [
+        "Authoritative biomedical inspection and maintenance record provider",
+        "Verified safety clearance for return-to-service",
+        "Equipment calibration/recall and retirement ledger"
+      ]
+    },
+    {
+      "id": "M25",
+      "canonicalScreens": 5,
+      "javaWorkflowFoundations": true,
+      "postgresGenericPersistence": true,
+      "scopedOIdcApiSource": true,
+      "staticPreviewScreens": 5,
+      "fullOperationalIntegration": false,
+      "endToEndAuthVerified": false,
+      "productionCompleted": false,
+      "securityReviewed": false,
+      "accepted": false,
+      "unresolved": [
+        "Vehicle/driver rosters, dispatch conflict detection",
+        "Protected ambulance clinical handover evidence",
+        "Location/ETA/communications and operational approval"
+      ]
+    },
+    {
+      "id": "M29",
+      "canonicalScreens": 4,
+      "javaWorkflowFoundations": true,
+      "postgresGenericPersistence": true,
+      "scopedOIdcApiSource": true,
+      "staticPreviewScreens": 4,
+      "fullOperationalIntegration": false,
+      "endToEndAuthVerified": false,
+      "productionCompleted": false,
+      "securityReviewed": false,
+      "accepted": false,
+      "unresolved": [
+        "Signed/versioned configuration publishing to cells",
+        "Hierarchy constraints, service catalog and impact analysis",
+        "Rollback and disconnected-cell consistency"
+      ]
+    },
+    {
+      "id": "M31",
+      "canonicalScreens": 6,
+      "javaWorkflowFoundations": true,
+      "postgresGenericPersistence": true,
+      "scopedOIdcApiSource": true,
+      "staticPreviewScreens": 6,
+      "fullOperationalIntegration": false,
+      "endToEndAuthVerified": false,
+      "productionCompleted": false,
+      "securityReviewed": false,
+      "accepted": false,
+      "unresolved": [
+        "Merge reviewed document forms/templates from PR #16",
+        "Signature identity/verification and immutable object archival",
+        "Document amendments and legal retention approval"
+      ]
+    },
+    {
+      "id": "M37",
+      "canonicalScreens": 4,
+      "javaWorkflowFoundations": true,
+      "postgresGenericPersistence": true,
+      "scopedOIdcApiSource": true,
+      "staticPreviewScreens": 4,
+      "fullOperationalIntegration": false,
+      "endToEndAuthVerified": false,
+      "productionCompleted": false,
+      "securityReviewed": false,
+      "accepted": false,
+      "unresolved": [
+        "Delivery worker, external channel adapters, retries and quotas",
+        "Delivery receipt verification without PHI leakage",
+        "Clinically reviewed escalation and actual staff acknowledgement"
+      ]
+    }
+  ]
+}

@@ -14,6 +14,6 @@ jobs:
         with:
           node-version: '22'
       - name: Match 35 screen contracts against canonical source and keep write actions denied
-        run: node --test tests/operations_screen_catalog.test.mjs
+        run: node --test tests/operations_screen_catalog.test.mjs tests/operations_delivery_ledger.test.mjs
       - name: No clinical acceptance claim
         run: echo "The 35 screens are LOCKED PREVIEWS, not user-accepted production workstations."
