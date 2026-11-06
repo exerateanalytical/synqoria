@@ -16,7 +16,8 @@ BEGIN
   ) AS v(login_name,runtime_role)
  LOOP
   IF NOT EXISTS(SELECT 1 FROM pg_roles WHERE rolname=rec.runtime_role
-    AND rolcanlogin=false AND rolsuper=false AND rolbypassrls=false) THEN
+    AND rolcanlogin=false AND rolinherit=false AND rolreplication=false
+    AND rolcreaterole=false AND rolcreatedb=false AND rolsuper=false AND rolbypassrls=false) THEN
    RAISE EXCEPTION 'identity runtime roles must exist as restricted NOLOGIN';
   END IF;
   IF NOT EXISTS(SELECT 1 FROM pg_roles WHERE rolname=rec.login_name) THEN
