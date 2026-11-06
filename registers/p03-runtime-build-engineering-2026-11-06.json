@@ -2,13 +2,13 @@
   "schema": "synqoria.p03.production-runtime-build.v1",
   "branch": "work/p03-b0094-b0123-runtime-build-2026-11-06",
   "baseCommit": "0fb7beccd89f1e2421144c7827d48453fb0a6ad7",
-  "verifiedSourceHead": "caa9a092899b713d168c9565e7b47fab4d0828da",
+  "verifiedSourceHead": "a7a997bbf955d0c1595e73938c784f7326440a5a",
   "stage": "ENGINEERING_INCOMPLETE",
   "cycle": {
     "target": 30,
     "plannedIds": "P03-B0094..P03-B0123",
-    "verifiedCount": 18,
-    "remaining": 12,
+    "verifiedCount": 29,
+    "remaining": 1,
     "cycleComplete": false
   },
   "sourceEvidence": [
@@ -263,13 +263,170 @@
       },
       "clinicalAccepted": false,
       "productionDeployed": false
+    },
+    {
+      "id": "P03-B0112",
+      "description": "Strict upstream HTTP response type, status, redirects, sensitive cookies and caching are rejected before any trusted identity downstream parser",
+      "source": "apps/web/lib/identity-bounded-transport-response.mjs",
+      "test": "tests/identity_bounded_transport_response.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42161507885,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42161507885",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0113",
+      "description": "OIDC upstream JSON content-length and media-type constraints reject compressed, oversized, short or inconsistent responses",
+      "source": "apps/web/lib/identity-bounded-transport-response.mjs",
+      "test": "tests/identity_bounded_transport_response.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42161507885,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42161507885",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0114",
+      "description": "Bounded streaming IdP and workforce response reader enforces actual byte ceiling and cancels oversized bodies",
+      "source": "apps/web/lib/identity-bounded-transport-response.mjs",
+      "test": "tests/identity_bounded_transport_response.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42161507885,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42161507885",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0115",
+      "description": "Upstream invalid UTF-8, invalid or primitive JSON is denied; parsed JSON is returned in normalized confidential response",
+      "source": "apps/web/lib/identity-bounded-transport-response.mjs",
+      "test": "tests/identity_bounded_transport_response.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42161507885,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42161507885",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0116",
+      "description": "Pre-aborted or mid-body aborted upstream identity responses are denied before browser or staff-session exposure",
+      "source": "apps/web/lib/identity-restricted-transport.mjs",
+      "test": "tests/identity_bounded_transport_response.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42161507885,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42161507885",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0117",
+      "description": "PostgreSQL 16 role membership grant SET and INHERIT option drift is attested and denied on a live database",
+      "source": "apps/web/lib/identity-attested-db-query.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42161256670,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42161256670",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0118",
+      "description": "PostgreSQL replication and unapproved parent-role membership are rejected for restricted login and runtime principals",
+      "source": "apps/web/lib/identity-attested-db-query.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42161256670,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42161256670",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0119",
+      "description": "Transaction-local statement, lock and idle timeouts are installed before role switch; mock SQL traces verify exact ordering",
+      "source": "apps/web/lib/identity-attested-db-query.mjs",
+      "test": "tests/identity_attested_db_query.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42161507968,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42161507968",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0120",
+      "description": "Real PostgreSQL16 overlong SQL is interrupted by transaction deadline with secure rollback and subsequent usability",
+      "source": "apps/web/lib/identity-attested-db-query.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42161256670,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42161256670",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0121",
+      "description": "Real database ALTER POLICY predicate drift fails identity policy reattestation and cannot authorize incorrect records",
+      "source": "apps/web/lib/identity-db-schema-policies.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42161256670,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42161256670",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0122",
+      "description": "Atomic OIDC replay reservation and consumption are verified against two independent physical TLS PostgreSQL pools",
+      "source": "apps/web/lib/oidc-replay-postgres.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42161507856,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42161507856",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
     }
   ],
   "additionalEvidence": {
     "realNextBuild": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639591",
     "fullAppNextExpoBuildOverlay": "https://github.com/exerateanalytical/synqoria/actions/runs/42147435726",
     "disposablePostgresTls": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639483",
-    "restrictedRoleTests": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639482"
+    "restrictedRoleTests": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639482",
+    "boundedIdentityHttp": "https://github.com/exerateanalytical/synqoria/actions/runs/42161507885",
+    "postgresPolicyTimeouts": "https://github.com/exerateanalytical/synqoria/actions/runs/42161256670",
+    "atomicReplayAcrossIndependentPools": "https://github.com/exerateanalytical/synqoria/actions/runs/42161507856"
   },
   "dependencies": {
     "sourceCandidateUsesLockFromDraftPR23": true,
