@@ -17,6 +17,17 @@ const bound=Object.freeze({
  synqoria_identity_audit_writer:"synqoria_identity_audit_login"
 });
 const cipher=/^[A-Za-z0-9_-]{8,128}$/;
+function assertAuthenticatedTls(client){
+ const socket=client?.connection?.stream;
+ if(!socket||socket.encrypted!==true||socket.authorized!==true||
+    typeof socket.getProtocol!=="function"||typeof socket.getCipher!=="function"||
+    typeof socket.getPeerCertificate!=="function")deny();
+ const protocol=socket.getProtocol(),info=socket.getCipher(),cert=socket.getPeerCertificate();
+ if(!["TLSv1.2","TLSv1.3"].includes(protocol)||
+    typeof info?.name!=="string"||!cipher.test(info.name)||
+    /(?:NULL|EXPORT|RC4|MD5|3DES|DES)/i.test(info.name)||
+    !cert?.raw||!Buffer.isBuffer(cert.raw)||cert.raw.length<256)deny();
+}
 export const IDENTITY_CONNECTION_ATTEST_SQL=`
 SELECT current_user AS role_name,
  session_user AS login_name,
@@ -43,13 +54,11 @@ SELECT current_user AS role_name,
      'synqoria_oidc_replay_runtime',
      'synqoria_staff_session_runtime',
      'synqoria_identity_audit_writer') AND other.oid<>runtime.oid)
-   AS cross_role_member,
- ssl.ssl AS tls_active,ssl.version AS tls_version,ssl.cipher AS tls_cipher
+   AS cross_role_member
 FROM pg_roles runtime
 JOIN pg_roles login ON login.rolname=session_user
-JOIN pg_stat_ssl ssl ON ssl.pid=pg_backend_pid()
 WHERE runtime.rolname=current_user`.trim();
-const keys="bypass_rls,create_db,create_role,cross_role_member,login_bypass_rls,login_can_login,login_create_db,login_create_role,login_has_expected_membership,login_has_extra_membership,login_inherit,login_name,login_superuser,role_name,row_security,superuser,tls_active,tls_cipher,tls_version";
+const keys="bypass_rls,create_db,create_role,cross_role_member,login_bypass_rls,login_can_login,login_create_db,login_create_role,login_has_expected_membership,login_has_extra_membership,login_inherit,login_name,login_superuser,role_name,row_security,superuser";
 function attest(result,role,principal){
  if(result?.rowCount!==1||!Array.isArray(result.rows)||result.rows.length!==1)deny();
  const r=result.rows[0];
@@ -61,9 +70,7 @@ function attest(result,role,principal){
    r.login_can_login!==true||r.login_inherit!==false||
    r.login_superuser!==false||r.login_bypass_rls!==false||
    r.login_create_role!==false||r.login_create_db!==false||
-   r.login_has_expected_membership!==true||r.login_has_extra_membership!==false||
-   r.tls_active!==true||!["TLSv1.2","TLSv1.3"].includes(r.tls_version)||
-   !cipher.test(r.tls_cipher)||/(?:NULL|EXPORT|RC4|MD5|3DES|DES)/i.test(r.tls_cipher))deny();
+   r.login_has_expected_membership!==true||r.login_has_extra_membership!==false)deny();
 }
 const statementAllowed=x=>typeof x==="string"&&x.length>0&&x.length<=20000&&
  /^\s*(?:SELECT|INSERT|DELETE)\b/i.test(x)&&
@@ -79,6 +86,7 @@ export function createConnectionAttestedSqlClient(pool,expectedRole,expectedLogi
     connection=await pool.connect();
     if(!connection||typeof connection.query!=="function"||
        typeof connection.release!=="function")deny();
+    assertAuthenticatedTls(connection);
     await connection.query("BEGIN");
     transaction=true;
     // Fixed canonical role: never derived from request, bearer or SQL results.

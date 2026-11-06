@@ -123,7 +123,6 @@ const goodConnection=(role,login)=>({
  login_can_login:true,login_inherit:false,login_superuser:false,login_bypass_rls:false,
  login_create_role:false,login_create_db:false,
  login_has_expected_membership:true,login_has_extra_membership:false,
- tls_active:true,tls_version:"TLSv1.3",tls_cipher:"TLS_AES_256_GCM_SHA384"
 });
 const goodRole=role=>({
  role_name:role,row_security:"on",superuser:false,bypass_rls:false,
@@ -140,6 +139,9 @@ class Pool{
   const role=this.role;
   let effectiveRole=null;
   return {
+   connection:{stream:{encrypted:true,authorized:true,
+    getProtocol:()=>"TLSv1.3",getCipher:()=>({name:"TLS_AES_256_GCM_SHA384"}),
+    getPeerCertificate:()=>({raw:Buffer.alloc(512)})}},
    async query(sql,args){
     if(sql==="BEGIN")return {rowCount:null,rows:[]};
     if(sql.startsWith("SET LOCAL ROLE ")){
