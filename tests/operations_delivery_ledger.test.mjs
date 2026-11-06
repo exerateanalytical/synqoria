@@ -8,6 +8,8 @@ const screens=JSON.parse(read("registers/canonical-screens.json")).screen_regist
 test("Seven module delivery ledger matches canonical IDs/counts and does not fake production completion",()=>{
  assert.equal(d.schema,"synqoria.operations.seven.delivery.v1");
  assert.equal(d.targetModuleCount,7);
+ assert.equal(d.interactiveCanonicalScreenRoutes,35);
+ assert.equal(d.domainTablesWithForcedRls,14);
  assert.equal(d.modules.length,7);
  assert.equal(new Set(d.modules.map(x=>x.id)).size,7);
  assert.equal(d.modules.reduce((n,x)=>n+x.canonicalScreens,0),35);
@@ -15,7 +17,10 @@ test("Seven module delivery ledger matches canonical IDs/counts and does not fak
   assert.ok(canonical.module_register.some(x=>x.id===m.id));
   assert.equal(screens.filter(x=>x.module===m.id).length,m.canonicalScreens);
   assert.ok(m.javaWorkflowFoundations);
-  assert.equal(m.staticPreviewScreens,m.canonicalScreens);
+  assert.equal(m.interactiveScreenRoutes,m.canonicalScreens);
+  assert.equal(m.staticPreviewScreens,0);
+  assert.equal(m.moduleSpecificPersistence,true);
+  assert.equal(m.domainSpecificReadModel,true);
   assert.equal(m.fullOperationalIntegration,false);
   assert.equal(m.productionCompleted,false);
   assert.equal(m.accepted,false);
@@ -24,6 +29,8 @@ test("Seven module delivery ledger matches canonical IDs/counts and does not fak
  assert.equal(d.actualProductionModulesCompleted,0);
  assert.equal(d.clinicalOrOperationalScreenAccepted,0);
  assert.equal(d.clinicalRelease,"DENIED");
+ assert.equal(d.dependencies.oidcProductionSessionFlowEndToEndVerified,false);
+ assert.equal(d.dependencies.realHospitalRosterIssuerIntegrated,false);
  assert.equal(d.globalEngineeringBacklogClosed,false);
  assert.equal(d.dependencies.authoritativeWorkforceGrant,true);
 });

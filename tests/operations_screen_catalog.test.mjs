@@ -8,7 +8,7 @@ const c=JSON.parse(read("apps/web/lib/operations-screen-catalog.json"));
 const allowed=new Set(["M21","M22","M23","M25","M29","M31","M37"]);
 test("seven admin module UI preview contracts preserve all 35 canonical screen IDs and actions",()=>{
  assert.equal(c.schema,"synqoria.admin.seven.screen-contract.v1");
- assert.equal(c.status,"locked_preview_only");
+ assert.equal(c.status,"auth_required_workstation_candidate_not_accepted");
  assert.equal(c.moduleCount,7);assert.equal(c.screenCount,35);
  assert.deepEqual(new Set(c.modules.map(m=>m.id)),allowed);
  const screens=c.modules.flatMap(m=>m.screens);
@@ -20,7 +20,7 @@ test("seven admin module UI preview contracts preserve all 35 canonical screen I
   assert.equal(old.name,s.name);
   assert.equal(old.primary_action,s.primaryAction);
   assert.equal(old.data_input_groups,s.dataInputGroups);
-  assert.equal(s.status,"LOCKED_PREVIEW");
+  assert.equal(s.status,"AUTH_REQUIRED_UNACCEPTED");
   assert.ok(s.nameFr.length>4);
  }
 });

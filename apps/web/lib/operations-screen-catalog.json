@@ -1,7 +1,7 @@
 {
   "schema": "synqoria.admin.seven.screen-contract.v1",
   "authoritativeSource": "registers/canonical-screens.json",
-  "status": "locked_preview_only",
+  "status": "auth_required_workstation_candidate_not_accepted",
   "moduleCount": 7,
   "screenCount": 35,
   "modules": [
@@ -17,7 +17,7 @@
           "layout": "L",
           "dataInputGroups": "Requester, department, items, value, urgency and approval status",
           "primaryAction": "Open requisition",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M21-S02",
@@ -26,7 +26,7 @@
           "layout": "F",
           "dataInputGroups": "Items, quantities, justification, budget reference and delivery need",
           "primaryAction": "Submit requisition",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M21-S03",
@@ -35,7 +35,7 @@
           "layout": "X",
           "dataInputGroups": "Request, budget, quotations, conflicts of interest and approver",
           "primaryAction": "Approve requisition",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M21-S04",
@@ -44,7 +44,7 @@
           "layout": "F",
           "dataInputGroups": "Supplier, items, price, terms, delivery dates and approval",
           "primaryAction": "Issue purchase order",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M21-S05",
@@ -53,7 +53,7 @@
           "layout": "X",
           "dataInputGroups": "Order, delivered quantities, condition, receipt and supplier invoice",
           "primaryAction": "Record matched receipt",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M21-S06",
@@ -62,7 +62,7 @@
           "layout": "D",
           "dataInputGroups": "Supplier identity, contacts, terms, qualification documents and status",
           "primaryAction": "Update supplier qualification",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         }
       ]
     },
@@ -78,7 +78,7 @@
           "layout": "L",
           "dataInputGroups": "Item, location, available, reserved, reorder and unit",
           "primaryAction": "Open stock item",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M22-S02",
@@ -87,7 +87,7 @@
           "layout": "F",
           "dataInputGroups": "Item, quantity, unit, supplier, document, location and inspection",
           "primaryAction": "Receive goods",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M22-S03",
@@ -96,7 +96,7 @@
           "layout": "F",
           "dataInputGroups": "Requesting unit, items, quantities, destination and approval",
           "primaryAction": "Issue approved stock",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M22-S04",
@@ -105,7 +105,7 @@
           "layout": "F",
           "dataInputGroups": "Source, destination, custody, condition and quantity",
           "primaryAction": "Record movement",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M22-S05",
@@ -114,7 +114,7 @@
           "layout": "X",
           "dataInputGroups": "Expected quantity, counted quantity, variance, reason and approver",
           "primaryAction": "Approve adjustment",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         }
       ]
     },
@@ -130,7 +130,7 @@
           "layout": "L",
           "dataInputGroups": "Asset ID, type, location, operational status and next maintenance",
           "primaryAction": "Open asset",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M23-S02",
@@ -139,7 +139,7 @@
           "layout": "D",
           "dataInputGroups": "Serial, supplier, warranty, installation, commissioning evidence and safety status",
           "primaryAction": "Record commissioning decision",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M23-S03",
@@ -148,7 +148,7 @@
           "layout": "L",
           "dataInputGroups": "Asset, fault, severity, technician, due time and downtime",
           "primaryAction": "Open work order",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M23-S04",
@@ -157,7 +157,7 @@
           "layout": "F",
           "dataInputGroups": "Findings, work, parts, calibration, tests and technician",
           "primaryAction": "Submit maintenance record",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M23-S05",
@@ -166,7 +166,7 @@
           "layout": "X",
           "dataInputGroups": "Safety tests, reviewer, restrictions, disposal evidence and status",
           "primaryAction": "Approve asset disposition",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         }
       ]
     },
@@ -182,7 +182,7 @@
           "layout": "B",
           "dataInputGroups": "Requests, urgency, vehicles, crew, availability and position timestamp",
           "primaryAction": "Assign transport",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M25-S02",
@@ -191,7 +191,7 @@
           "layout": "F",
           "dataInputGroups": "Patient, pickup, destination, clinical needs, time and requester",
           "primaryAction": "Submit transport request",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M25-S03",
@@ -200,7 +200,7 @@
           "layout": "F",
           "dataInputGroups": "Vehicle, crew, route, equipment checks and receiving site",
           "primaryAction": "Dispatch assigned vehicle",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M25-S04",
@@ -209,7 +209,7 @@
           "layout": "F",
           "dataInputGroups": "Departure, arrival, events, care notes, receiver and acknowledgement",
           "primaryAction": "Complete handover",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M25-S05",
@@ -218,7 +218,7 @@
           "layout": "D",
           "dataInputGroups": "Trip timeline, delays, cancellations, vehicle issues and escalations",
           "primaryAction": "Record exception resolution",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         }
       ]
     },
@@ -234,7 +234,7 @@
           "layout": "D",
           "dataInputGroups": "Organization, sites, departments, locations and ownership",
           "primaryAction": "Open configuration node",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M29-S02",
@@ -243,7 +243,7 @@
           "layout": "F",
           "dataInputGroups": "Code, name, parent, service type, availability and effective dates",
           "primaryAction": "Submit configuration draft",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M29-S03",
@@ -252,7 +252,7 @@
           "layout": "L",
           "dataInputGroups": "Services, departments, eligible resources, status and effective version",
           "primaryAction": "Open service configuration",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M29-S04",
@@ -261,7 +261,7 @@
           "layout": "X",
           "dataInputGroups": "Changed values, dependent workflows, effective time, approvals and rollback",
           "primaryAction": "Publish reviewed configuration",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         }
       ]
     },
@@ -277,7 +277,7 @@
           "layout": "L",
           "dataInputGroups": "Template, module, locale, version, status and owner",
           "primaryAction": "Open template",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M31-S02",
@@ -286,7 +286,7 @@
           "layout": "F",
           "dataInputGroups": "Sections, fields, data bindings, validation, layout and language strings",
           "primaryAction": "Save template draft",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M31-S03",
@@ -295,7 +295,7 @@
           "layout": "X",
           "dataInputGroups": "Desktop mobile print previews, sample data, accessibility and approval",
           "primaryAction": "Approve template version",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M31-S04",
@@ -304,7 +304,7 @@
           "layout": "F",
           "dataInputGroups": "Template version, patient context, content, attachments and draft status",
           "primaryAction": "Save document draft",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M31-S05",
@@ -313,7 +313,7 @@
           "layout": "X",
           "dataInputGroups": "Final rendered content, signer authority, signature, prior versions and amendment reason",
           "primaryAction": "Sign reviewed document",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M31-S06",
@@ -322,7 +322,7 @@
           "layout": "D",
           "dataInputGroups": "Document version, status, access scope, retention and print metadata",
           "primaryAction": "Print authorized document",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         }
       ]
     },
@@ -338,7 +338,7 @@
           "layout": "L",
           "dataInputGroups": "Priority label, patient context when authorized, sender, sent time and acknowledgement",
           "primaryAction": "Open notification",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M37-S02",
@@ -347,7 +347,7 @@
           "layout": "D",
           "dataInputGroups": "Message, source task, delivery history, acknowledgement and deadline",
           "primaryAction": "Acknowledge responsibility",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M37-S03",
@@ -356,7 +356,7 @@
           "layout": "F",
           "dataInputGroups": "Purpose, language, approved message, channels, recipients and escalation",
           "primaryAction": "Submit routing change",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         },
         {
           "id": "M37-S04",
@@ -365,7 +365,7 @@
           "layout": "L",
           "dataInputGroups": "Attempt history, channel errors, due escalation, accountable owner and next action",
           "primaryAction": "Resolve delivery failure",
-          "status": "LOCKED_PREVIEW"
+          "status": "AUTH_REQUIRED_UNACCEPTED"
         }
       ]
     }

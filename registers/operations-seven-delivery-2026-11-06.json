@@ -12,9 +12,9 @@
   ],
   "targetModuleCount": 7,
   "canonicalScreenCount": 35,
-  "branch": "work/operations-seven-module-service-2026-11-06",
-  "baseCommit": "96d45960e2b7ad0039818de259b2782d2cbca86f",
-  "implementationStatus": "PARTIAL_FOUNDATIONS_WITH_LOCKED_PREVIEW",
+  "branch": "work/seven-operations-real-workflows-2026-11-06",
+  "baseCommit": "462afed691d632d2b2be25c815d1f61459dbcc97",
+  "implementationStatus": "REAL_DB_WORKFLOWS_WITH_AUTH_GATES_AND_UNINTEGRATED_EXTERNAL_AUTHORITIES",
   "actualProductionModulesCompleted": 0,
   "clinicalOrOperationalScreenAccepted": 0,
   "globalEngineeringBacklogClosed": false,
@@ -25,14 +25,22 @@
     "java": "services/operations-core/src/main/java/org/synqoria/operations/",
     "postgres": "services/operations-core/db/migration/V001__seven_operations_cells.sql",
     "screenshots": "apps/web/app/workforce/operations/",
-    "uiContracts": "apps/web/lib/operations-screen-catalog.json"
+    "uiContracts": "apps/web/lib/operations-screen-catalog.json",
+    "screenFlows": "apps/web/lib/operations-screen-flows.json",
+    "webWorkstations": "apps/web/components/OperationsWorkbench.tsx",
+    "operationalDomainEffects": "services/operations-core/src/main/java/org/synqoria/operations/OperationsDomainEffects.java",
+    "roleAuthority": "services/operations-core/src/main/java/org/synqoria/operations/WorkforceAdmission.java",
+    "migrations": "services/operations-core/db/migration/V001__seven_operations_cells.sql through V004__seven_domain_records.sql"
   },
   "ciVerifiedExamples": {
     "javaDomain": "https://github.com/exerateanalytical/synqoria/actions/runs/42305322201",
     "disposablePostgres16": "https://github.com/exerateanalytical/synqoria/actions/runs/42305322027",
     "actualJdbcAtomicity": "https://github.com/exerateanalytical/synqoria/actions/runs/42305324162",
     "screenContracts": "https://github.com/exerateanalytical/synqoria/actions/runs/42305322265",
-    "actualNextBuildCandidate": "https://github.com/exerateanalytical/synqoria/actions/runs/42305322016"
+    "actualNextBuildCandidate": "https://github.com/exerateanalytical/synqoria/actions/runs/42305322016",
+    "realSevenModuleDbWorkflows": "https://github.com/exerateanalytical/synqoria/actions/runs/42313396169",
+    "testedJava25And27": "https://github.com/exerateanalytical/synqoria/actions/runs/42313396065",
+    "testedWebRoutes": "https://github.com/exerateanalytical/synqoria/actions/runs/42313396175"
   },
   "dependencies": {
     "authoritativeWorkforceGrant": true,
@@ -41,7 +49,15 @@
     "uiCandidateBuildVerified": true,
     "independentPR23BuildOwner": true,
     "independentPR16DocumentFormsOwner": true,
-    "independentPR33AuthenticationOwner": true
+    "independentPR33AuthenticationOwner": true,
+    "workforceRosterSchemeImplementedAndTested": true,
+    "realHospitalRosterIssuerIntegrated": false,
+    "externalOperationalAuthoritiesIntegrated": false,
+    "oidcProductionSessionFlowEndToEndVerified": false,
+    "stagingHospitalCellDeployed": false,
+    "signedDocumentObjectStorageIntegrated": false,
+    "smsEmailPushDeliveryAdapterIntegrated": false,
+    "realPatientConsentedTransportHandoverIntegrated": false
   },
   "modules": [
     {
@@ -50,17 +66,21 @@
       "javaWorkflowFoundations": true,
       "postgresGenericPersistence": true,
       "scopedOIdcApiSource": true,
-      "staticPreviewScreens": 6,
+      "staticPreviewScreens": 0,
       "fullOperationalIntegration": false,
       "endToEndAuthVerified": false,
       "productionCompleted": false,
       "securityReviewed": false,
       "accepted": false,
       "unresolved": [
-        "Independent verified supplier qualification authority",
-        "Requisition/PO document printable and finance ledger",
-        "Real goods-receipt invoice matching and procurement acceptance"
-      ]
+        "Live bank/ERP GL posting and supplier onboarding/reconciliation external adapters",
+        "Institutional goods receipt, invoice/payment three-way match independently accepted",
+        "Purchase order PDFs and approved print templates"
+      ],
+      "interactiveScreenRoutes": 6,
+      "moduleSpecificPersistence": true,
+      "domainSpecificReadModel": true,
+      "workforceGrantChecksSourcePresent": true
     },
     {
       "id": "M22",
@@ -68,17 +88,21 @@
       "javaWorkflowFoundations": true,
       "postgresGenericPersistence": true,
       "scopedOIdcApiSource": true,
-      "staticPreviewScreens": 5,
+      "staticPreviewScreens": 0,
       "fullOperationalIntegration": false,
       "endToEndAuthVerified": false,
       "productionCompleted": false,
       "securityReviewed": false,
       "accepted": false,
       "unresolved": [
-        "Transactional wiring of stock movement ledger into JDBC/API",
-        "Warehouse lot/bin count reconciliation and maker-checker approval",
-        "Supplier receipt evidence and authorised returns"
-      ]
+        "Warehouse barcode/RFID physical-count authority and maker-checker stock adjustments",
+        "Supplier receiving systems must sign verified goods receipt provenance",
+        "Offline warehouse synchronization and stock count/valuation acceptance"
+      ],
+      "interactiveScreenRoutes": 5,
+      "moduleSpecificPersistence": true,
+      "domainSpecificReadModel": true,
+      "workforceGrantChecksSourcePresent": true
     },
     {
       "id": "M23",
@@ -86,17 +110,21 @@
       "javaWorkflowFoundations": true,
       "postgresGenericPersistence": true,
       "scopedOIdcApiSource": true,
-      "staticPreviewScreens": 5,
+      "staticPreviewScreens": 0,
       "fullOperationalIntegration": false,
       "endToEndAuthVerified": false,
       "productionCompleted": false,
       "securityReviewed": false,
       "accepted": false,
       "unresolved": [
-        "Authoritative biomedical inspection and maintenance record provider",
-        "Verified safety clearance for return-to-service",
-        "Equipment calibration/recall and retirement ledger"
-      ]
+        "Certified biomedical inspection/maintenance authority and calibration feed",
+        "Equipment recall, critical asset maintenance scheduling and service-level reporting",
+        "Actual clinical safety validation before in-use medical equipment release"
+      ],
+      "interactiveScreenRoutes": 5,
+      "moduleSpecificPersistence": true,
+      "domainSpecificReadModel": true,
+      "workforceGrantChecksSourcePresent": true
     },
     {
       "id": "M25",
@@ -104,17 +132,21 @@
       "javaWorkflowFoundations": true,
       "postgresGenericPersistence": true,
       "scopedOIdcApiSource": true,
-      "staticPreviewScreens": 5,
+      "staticPreviewScreens": 0,
       "fullOperationalIntegration": false,
       "endToEndAuthVerified": false,
       "productionCompleted": false,
       "securityReviewed": false,
       "accepted": false,
       "unresolved": [
-        "Vehicle/driver rosters, dispatch conflict detection",
-        "Protected ambulance clinical handover evidence",
-        "Location/ETA/communications and operational approval"
-      ]
+        "Authorized ambulance crew roster integration and real vehicle operations",
+        "Clinical consent/protected patient transfer handover integration",
+        "GPS/ETA, dispatch emergency escalation and dispatcher operational acceptance"
+      ],
+      "interactiveScreenRoutes": 5,
+      "moduleSpecificPersistence": true,
+      "domainSpecificReadModel": true,
+      "workforceGrantChecksSourcePresent": true
     },
     {
       "id": "M29",
@@ -122,17 +154,21 @@
       "javaWorkflowFoundations": true,
       "postgresGenericPersistence": true,
       "scopedOIdcApiSource": true,
-      "staticPreviewScreens": 4,
+      "staticPreviewScreens": 0,
       "fullOperationalIntegration": false,
       "endToEndAuthVerified": false,
       "productionCompleted": false,
       "securityReviewed": false,
       "accepted": false,
       "unresolved": [
-        "Signed/versioned configuration publishing to cells",
-        "Hierarchy constraints, service catalog and impact analysis",
-        "Rollback and disconnected-cell consistency"
-      ]
+        "Signed versioned facility/service propagation to disconnected hospital cells",
+        "Hierarchy/reference integrity with dependent finance, billing and scheduling",
+        "Live rollback/disaster recovery and staged approval process"
+      ],
+      "interactiveScreenRoutes": 4,
+      "moduleSpecificPersistence": true,
+      "domainSpecificReadModel": true,
+      "workforceGrantChecksSourcePresent": true
     },
     {
       "id": "M31",
@@ -140,17 +176,21 @@
       "javaWorkflowFoundations": true,
       "postgresGenericPersistence": true,
       "scopedOIdcApiSource": true,
-      "staticPreviewScreens": 6,
+      "staticPreviewScreens": 0,
       "fullOperationalIntegration": false,
       "endToEndAuthVerified": false,
       "productionCompleted": false,
       "securityReviewed": false,
       "accepted": false,
       "unresolved": [
-        "Merge reviewed document forms/templates from PR #16",
-        "Signature identity/verification and immutable object archival",
-        "Document amendments and legal retention approval"
-      ]
+        "Owner PR #16 PDF/document forms reconciliation",
+        "Real signature validation, encrypted immutable object storage and legal retention",
+        "Patient consent/access control and signed/print document acceptance"
+      ],
+      "interactiveScreenRoutes": 6,
+      "moduleSpecificPersistence": true,
+      "domainSpecificReadModel": true,
+      "workforceGrantChecksSourcePresent": true
     },
     {
       "id": "M37",
@@ -158,18 +198,28 @@
       "javaWorkflowFoundations": true,
       "postgresGenericPersistence": true,
       "scopedOIdcApiSource": true,
-      "staticPreviewScreens": 4,
+      "staticPreviewScreens": 0,
       "fullOperationalIntegration": false,
       "endToEndAuthVerified": false,
       "productionCompleted": false,
       "securityReviewed": false,
       "accepted": false,
       "unresolved": [
-        "Delivery worker, external channel adapters, retries and quotas",
-        "Delivery receipt verification without PHI leakage",
-        "Clinically reviewed escalation and actual staff acknowledgement"
-      ]
+        "Actual channel adapters/worker and provider callbacks for email SMS push",
+        "Failure rate controls, retry backoff, delivery receipt cryptographic trust",
+        "Clinically reviewed escalation and per-recipient acknowledgement rollout"
+      ],
+      "interactiveScreenRoutes": 4,
+      "moduleSpecificPersistence": true,
+      "domainSpecificReadModel": true,
+      "workforceGrantChecksSourcePresent": true
     }
   ],
-  "finalSourceBuildCheckpoint": "820c57bf4a7d2bf897814cb59d89dde92c3cef35"
+  "finalSourceBuildCheckpoint": "820c57bf4a7d2bf897814cb59d89dde92c3cef35",
+  "moduleSpecificWorkflowCount": 7,
+  "interactiveCanonicalScreenRoutes": 35,
+  "acceptedScreenCount": 0,
+  "domainTablesWithForcedRls": 14,
+  "readModelCount": 7,
+  "stackedPr": "https://github.com/exerateanalytical/synqoria/pull/36"
 }
