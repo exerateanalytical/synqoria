@@ -1,0 +1,24 @@
+name: SYNQORIA seven operations modules Java21 domain
+on:
+  push:
+    branches:
+      - work/operations-seven-module-service-2026-11-06
+permissions:
+  contents: read
+jobs:
+  compile-and-domain-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: services/operations-core/pom.xml
+      - name: Compile Java Spring Boot 4 operations module and run source tests
+        working-directory: services/operations-core
+        run: mvn -B -ntp -DskipTests=false test
+      - name: Show restricted release scope
+        run: echo "Seven admin module workflow slices; no clinical release or completed user screens are claimed."
