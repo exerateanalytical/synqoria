@@ -13,7 +13,7 @@ import {createRestrictedIdentityPools,IdentityProductionSqlError}
  from "../apps/web/lib/identity-production-sql.mjs";
 import {verifyIdentitySqlClients} from "../apps/web/lib/identity-db-role-verification.mjs";
 import {verifyIdentitySchemaPolicies} from "../apps/web/lib/identity-db-schema-policies.mjs";
-import {IdentityAttestedQueryError} from "../apps/web/lib/identity-attested-db-query.mjs";
+import {IdentityAttestedQueryError,IDENTITY_CONNECTION_ATTEST_SQL} from "../apps/web/lib/identity-attested-db-query.mjs";
 if(process.env.SYNQORIA_POSTGRES_TLS_TEST!=="1")
  throw Error("Requires isolated TLS PostgreSQL 16 CI database");
 const {Pool,Client}=createRequire(import.meta.url)("pg");
@@ -42,6 +42,18 @@ const admin=sql=>{
 let pools;
 test("B0102 actual TLS PostgreSQL 16 server and 3 LOGIN principals satisfy NOLOGIN role gate",async()=>{
  pools=await createRestrictedIdentityPools({env,Pool});
+ const diagnostic=new Client({connectionString:dsn(0),ssl:{ca,rejectUnauthorized:true,servername:host}});
+ await diagnostic.connect();
+ try{
+  await diagnostic.query("BEGIN");
+  await diagnostic.query("SET LOCAL ROLE synqoria_oidc_replay_runtime");
+  const raw=await diagnostic.query(IDENTITY_CONNECTION_ATTEST_SQL);
+  console.log("CI disposable identity attestation fields:",raw.rows[0]||{rowCount:raw.rowCount});
+  await diagnostic.query("ROLLBACK");
+ }catch(error){
+  console.log("CI disposable identity SQLSTATE:",error.code,error.message);
+  throw error;
+ }finally{await diagnostic.end();}
  const roles=await verifyIdentitySqlClients(pools);
  assert.equal(roles.verified,true);
  assert.equal(roles.roles.replay,"synqoria_oidc_replay_runtime");
