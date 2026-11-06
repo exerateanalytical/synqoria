@@ -151,6 +151,11 @@ function PatientLookup({locale}:{locale:Locale}){
  const [status,setStatus]=useState<"idle"|"loading"|"invalid"|"denied"|"unavailable"|"ready">("idle");
  const ctrl=useRef<AbortController|null>(null);
  const erase=useCallback(()=>{ctrl.current?.abort();setPatient(null);setId("");setStatus("idle");},[]);
+ useEffect(()=>{
+  // A facility/session change invalidates any in-flight patient request and
+  // clears previous scoped results, even if the browser remains visible.
+  if(scope!=="verified")erase();
+ },[scope,erase]);
  useEffect(()=>{const hide=()=>{if(document.visibilityState==="hidden")erase();};
   document.addEventListener("visibilitychange",hide);
   return ()=>{ctrl.current?.abort();document.removeEventListener("visibilitychange",hide);};
@@ -165,6 +170,10 @@ function PatientLookup({locale}:{locale:Locale}){
     body:JSON.stringify({patientId:requested}),signal:ctl.signal});
    if(ctl.signal.aborted)return;
    if(r.status!==200){setStatus(r.status===401||r.status===404?"denied":"unavailable");return;}
+   if(!r.headers.get("cache-control")?.toLowerCase().includes("no-store")||
+      !r.headers.get("content-type")?.toLowerCase().startsWith("application/json")){
+    setStatus("unavailable");return;
+   }
    const dto:unknown=await r.json();
    if(ctl.signal.aborted)return;
    const value=dto as Partial<Patient>|null;
@@ -184,7 +193,7 @@ function PatientLookup({locale}:{locale:Locale}){
     "Saisissez uniquement un UUID canonique autorisé. N’entrez ni nom, ni téléphone, ni notes médicales.")}</p>
    <form onSubmit={e=>void search(e)} autoComplete="off" className="ops001-form">
     <label htmlFor="ops001-patient">{t(locale,"Canonical patient UUID","UUID canonique du patient")}</label>
-    <input id="ops001-patient" value={id} onChange={e=>{setId(e.target.value.trim());setPatient(null);setStatus("idle");}}
+    <input id="ops001-patient" value={id} onChange={e=>{ctrl.current?.abort();setId(e.target.value.trim());setPatient(null);setStatus("idle");}}
      type="text" maxLength={36} inputMode="text" autoCapitalize="off" spellCheck={false}
      disabled={scope!=="verified"} placeholder="xxxxxxxx-xxxx-4xxx-8xxx-xxxxxxxxxxxx" aria-describedby="ops001-search-hint"/>
     <p className="ops001-note" id="ops001-search-hint">{t(locale,"No patient identifier is saved in browser storage or added to the page URL.",
