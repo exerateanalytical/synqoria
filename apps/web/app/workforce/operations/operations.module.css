@@ -24,3 +24,59 @@
 .footer{font-size:13px;color:#526377;margin-top:40px;line-height:1.6}
 @media(max-width:480px){.root{padding:16px 12px}.module{padding:16px}.screenList a{font-size:14px}.actions button{width:100%}}
 @media(prefers-reduced-motion:reduce){.root *{animation:none!important;transition:none!important}}
+
+/* Production-capable permission-gated operations workbench. No glow. */
+.opsWorkbench{margin-top:24px;max-width:1320px;min-width:0}
+.opsHeader{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.opsHeader>div:first-child{flex:1 1 300px;min-width:0}
+.opsHeader h2{font-size:clamp(21px,3vw,28px);line-height:1.25}
+.opsHeader p{max-width:85ch}
+.opsToolbar{display:flex;gap:8px;flex-wrap:wrap}
+.opsToolbar button,.opsWorkbench button{cursor:pointer;min-height:44px}
+.opsWorkbench button:disabled{cursor:not-allowed}
+.opsAlert{border:1px solid #b78f3c;border-radius:8px;color:#633f0a;
+ background:#fff8e8;padding:14px;margin:18px 0}
+.opsGate{padding:clamp(16px,3vw,28px);border:1px solid #9aabc1;border-radius:12px;
+ background:#fff;max-width:720px;margin:18px 0}
+.opsGate h3{margin-top:0}
+.opsLink{display:inline-flex;min-height:44px;align-items:center;border-radius:8px;
+ border:1px solid #244a71;color:#fff;background:#244a71;padding:10px 16px;
+ text-decoration:none;font-weight:650}
+.opsLink:hover{background:#173652}
+.opsColumns{display:grid;grid-template-columns:minmax(230px,.8fr) minmax(0,1.4fr);gap:18px;margin:22px 0}
+.opsPanel{border:1px solid #d7dce2;border-radius:12px;background:#fff;
+ padding:clamp(16px,2.2vw,25px);min-width:0;margin-bottom:18px}
+.opsPanel h3{font-size:19px;margin:0 0 10px}
+.opsPanel h4{font-size:16px;margin:26px 0 10px}
+.opsRecords{list-style:none;padding:0;margin:14px 0;display:grid;gap:8px}
+.opsRecord{display:flex;width:100%;min-height:54px;text-align:left;flex-direction:column;
+ gap:4px;background:#fafbfc;border:1px solid #cbd5df;border-radius:8px;padding:10px 12px;
+ color:#1e3a57}
+.opsRecord[aria-pressed="true"]{border:2px solid #244a71;background:#edf3f8}
+.opsRecord strong,.opsRecord small{overflow-wrap:anywhere}
+.opsRecord small{font-size:12px;color:#526277}
+.opsField{display:flex;flex-direction:column;gap:6px;min-width:0;font-weight:600;font-size:13px;color:#243b53}
+.opsField input,.opsField select{background:#fff;border:1px solid #64748b;border-radius:8px;
+ width:100%;min-width:0;min-height:46px;padding:9px 11px;font-size:16px;color:#162e43}
+.opsField input:focus-visible,.opsField select:focus-visible,
+.opsWorkbench button:focus-visible,.opsLink:focus-visible{outline:3px solid #1664d4;outline-offset:3px}
+.opsFields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:16px 0}
+.opsPrimary{background:#244a71;color:#fff;border-color:#244a71;font-weight:700}
+.opsDetails{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+.opsDetails div{border:1px solid #d9e0e7;background:#fbfcfd;border-radius:8px;padding:11px;min-width:0}
+.opsDetails dt{color:#5b6778;font-size:12px;font-weight:700}
+.opsDetails dd{margin:5px 0 0;font-size:14px;overflow-wrap:anywhere}
+.opsActions{display:flex;flex-wrap:wrap;gap:10px}
+.opsAction{display:flex;flex-direction:column;gap:4px;max-width:220px}
+.opsAction small{font-size:12px;color:#586779}
+.opsAction button{background:#fff;color:#204c75;border:1px solid #7592ae;font-weight:650}
+.opsStock{border-top:1px solid #d9e0e7;margin-top:28px;padding-top:8px}
+.opsTableWrap{overflow-x:auto;max-width:100%}
+.opsTable{width:100%;border-collapse:collapse;font-size:14px}
+.opsTable th,.opsTable td{border-bottom:1px solid #dce2e9;padding:10px;text-align:left}
+.opsBack{display:flex;margin:20px 0}
+.opsBack a{display:inline-flex;padding:10px 0;min-height:44px;align-items:center}
+@media(max-width:900px){.opsColumns{grid-template-columns:minmax(0,1fr)}.opsDetails{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.opsFields,.opsDetails{grid-template-columns:minmax(0,1fr)}
+ .opsPanel{padding:16px}.opsToolbar{width:100%}.opsToolbar button{flex:1}
+ .opsAction{max-width:100%}.opsActions{display:grid;grid-template-columns:minmax(0,1fr)}}
