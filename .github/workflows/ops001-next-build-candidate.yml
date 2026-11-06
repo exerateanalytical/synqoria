@@ -29,6 +29,8 @@ jobs:
           node -e "const fs=require('fs');const l=JSON.parse(fs.readFileSync('package-lock.json'));if(l.lockfileVersion!==3)process.exit(1)"
       - name: Install pinned workspaces from build-owner lock candidate
         run: npm ci --no-audit --no-fund
+      - name: Compile pinned UX core workspace before web imports
+        run: npm run build --workspace @synqoria/ux-core
       - name: Compile the entire actual Next.js workforce web application
         run: npm run build --workspace @synqoria/web
       - name: Scope note
