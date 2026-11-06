@@ -28,6 +28,7 @@ jobs:
           docker exec synqoria-ops-jdbc-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 -c "CREATE ROLE synqoria_operations_runtime LOGIN NOINHERIT NOSUPERUSER NOCREATEROLE NOCREATEDB NOREPLICATION NOBYPASSRLS PASSWORD 'ops-ci-only'"
           docker exec -i synqoria-ops-jdbc-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < services/operations-core/db/migration/V001__seven_operations_cells.sql
           docker exec -i synqoria-ops-jdbc-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < services/operations-core/db/migration/V002__workforce_and_operational_evidence.sql
+          docker exec -i synqoria-ops-jdbc-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < services/operations-core/db/migration/V003__stock_journal_command_uniqueness.sql
       - name: Exercise Java repository actual JDBC optimistic versioning, idempotency, RLS, audit and outbox
         working-directory: services/operations-core
         env:
@@ -35,7 +36,10 @@ jobs:
           SYNQORIA_OPS_TEST_JDBC_URL: jdbc:postgresql://127.0.0.1:5432/ops_ci
           SYNQORIA_OPS_TEST_DB_USER: synqoria_operations_runtime
           SYNQORIA_OPS_TEST_DB_PASSWORD: ops-ci-only
-        run: mvn -B -ntp -Dtest=OperationsStorePgIntegrationTest test
+          SYNQORIA_OPS_TEST_ADMIN_JDBC_URL: jdbc:postgresql://127.0.0.1:5432/ops_ci
+          SYNQORIA_OPS_TEST_ADMIN_USER: postgres
+          SYNQORIA_OPS_TEST_ADMIN_PASSWORD: ops-ci-admin
+        run: mvn -B -ntp -Dtest=OperationsStorePgIntegrationTest,OperationsAuthorityPgIntegrationTest test
       - name: Explicitly deny deployment implication
         if: always()
         run: echo "Disposable PG18.6-JDBC synthetic verification; clinical release DENIED."

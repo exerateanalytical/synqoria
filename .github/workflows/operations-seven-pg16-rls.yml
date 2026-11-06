@@ -28,6 +28,7 @@ jobs:
           set -euo pipefail
           docker exec -i synqoria-ops-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < services/operations-core/db/migration/V001__seven_operations_cells.sql
           docker exec -i synqoria-ops-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < services/operations-core/db/migration/V002__workforce_and_operational_evidence.sql
+          docker exec -i synqoria-ops-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < services/operations-core/db/migration/V003__stock_journal_command_uniqueness.sql
       - name: Confirm six FORCE RLS tables, no public access and missing-scope default deny
         run: |
           set -euo pipefail
