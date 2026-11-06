@@ -29,6 +29,7 @@ jobs:
           docker exec -i synqoria-ops-jdbc-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < services/operations-core/db/migration/V001__seven_operations_cells.sql
           docker exec -i synqoria-ops-jdbc-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < services/operations-core/db/migration/V002__workforce_and_operational_evidence.sql
           docker exec -i synqoria-ops-jdbc-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < services/operations-core/db/migration/V003__stock_journal_command_uniqueness.sql
+          docker exec -i synqoria-ops-jdbc-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < services/operations-core/db/migration/V004__seven_domain_records.sql
       - name: Exercise Java repository actual JDBC optimistic versioning, idempotency, RLS, audit and outbox
         working-directory: services/operations-core
         env:

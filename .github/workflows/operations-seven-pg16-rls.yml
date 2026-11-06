@@ -29,11 +29,12 @@ jobs:
           docker exec -i synqoria-ops-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < services/operations-core/db/migration/V001__seven_operations_cells.sql
           docker exec -i synqoria-ops-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < services/operations-core/db/migration/V002__workforce_and_operational_evidence.sql
           docker exec -i synqoria-ops-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < services/operations-core/db/migration/V003__stock_journal_command_uniqueness.sql
+          docker exec -i synqoria-ops-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < services/operations-core/db/migration/V004__seven_domain_records.sql
       - name: Confirm six FORCE RLS tables, no public access and missing-scope default deny
         run: |
           set -euo pipefail
           n=$(docker exec synqoria-ops-pg psql -U postgres -d ops_ci -Atc "SELECT count(*) FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='synqoria_operations' AND c.relkind='r' AND c.relrowsecurity AND c.relforcerowsecurity")
-          test "$n" = 8
+          test "$n" = 14
           docker exec synqoria-ops-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 -c "
             SET ROLE synqoria_operations_runtime;
             SELECT count(*) FROM synqoria_operations.items;" | grep -q 0
