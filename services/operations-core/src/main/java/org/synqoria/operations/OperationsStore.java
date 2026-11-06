@@ -176,7 +176,7 @@ public final class OperationsStore {
   Long count=jdbc.queryForObject(
    "SELECT count(*) FROM synqoria_operations.external_evidence " +
    "WHERE cell_id=? AND facility_id=? AND item_id=? AND for_action=? AND expected_version=? " +
-   "AND evidence_kind=? AND (? IS NULL OR external_ref=?) " +
+   "AND evidence_kind=? AND (?::text IS NULL OR external_ref=?) " +
    "AND approver_id <> ? AND revoked_at IS NULL " +
    "AND valid_from<=clock_timestamp() AND valid_until>clock_timestamp()",
    Long.class,actor.cell(),actor.facility(),current.id(),step.action(),current.version(),
