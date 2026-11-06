@@ -51,6 +51,14 @@ final class OperationsDomainEffects {
   String module=after.module(),type=after.recordType();
   if(module.equals("M21")&&type.equals("REQUISITION"))procurement(jdbc,after,action);
   if(module.equals("M23")&&type.equals("WORK_ORDER"))maintenance(jdbc,after,action);
+  if(module.equals("M23")&&type.equals("ASSET")&&action.equals("RETURN_TO_SERVICE")){
+   UUID work=ref(after,"workOrderRef");
+   Long verified=jdbc.queryForObject(
+    "SELECT count(*) FROM synqoria_operations.maintenance_orders " +
+    "WHERE cell_id=? AND facility_id=? AND item_id=? AND asset_ref=? AND state='VERIFIED'",
+    Long.class,after.cell(),after.facility(),work,after.id());
+   if(verified==null||verified!=1)throw new WorkflowViolation("maintenance_clearance_not_verified");
+  }
   if(module.equals("M25")&&type.equals("TRIP"))transport(jdbc,after,action);
   if(module.equals("M29"))configuration(jdbc,after,action);
   if(module.equals("M31")&&type.equals("DOCUMENT"))document(jdbc,after,action);
@@ -118,6 +126,13 @@ final class OperationsDomainEffects {
      "AND module_id='M25' AND record_type='VEHICLE' AND status='VEHICLE_AVAILABLE'",
      Long.class,vehicle,item.cell(),item.facility());
     if(ready==null||ready!=1)throw new WorkflowViolation("vehicle_not_qualified");
+    UUID driver=ref(item,"driverRef");
+    Long onShift=jdbc.queryForObject(
+     "SELECT count(*) FROM synqoria_operations.workforce_grants WHERE cell_id=? AND facility_id=? " +
+     "AND actor_id=? AND active AND shift_from<=clock_timestamp() AND " +
+     "shift_until>clock_timestamp() AND valid_until>clock_timestamp()",
+     Long.class,item.cell(),item.facility(),driver);
+    if(onShift==null||onShift!=1)throw new WorkflowViolation("driver_shift_not_authorized");
     update(jdbc,"INSERT INTO synqoria_operations.transport_assignments "+
      "(cell_id,facility_id,item_id,vehicle_ref,driver_ref,origin_ref,destination_ref) VALUES(?,?,?,?,?,?,?)",
      item.cell(),item.facility(),item.id(),vehicle.toString(),str(item,"driverRef"),
@@ -169,6 +184,14 @@ final class OperationsDomainEffects {
  }
  private static void document(JdbcTemplate jdbc,OperationWorkflow.Item item,String action){
   if(!Set.of("SIGN","AMEND","RESIGN").contains(action))return;
+  if(action.equals("SIGN")){
+   UUID template=ref(item,"templateRef");
+   Long approved=jdbc.queryForObject(
+    "SELECT count(*) FROM synqoria_operations.items WHERE cell_id=? AND facility_id=? " +
+    "AND id=? AND module_id='M31' AND record_type='TEMPLATE' AND status='PUBLISHED'",
+    Long.class,item.cell(),item.facility(),template);
+   if(approved==null||approved!=1)throw new WorkflowViolation("document_template_not_published");
+  }
   String disposition=action.equals("SIGN")?"SIGNED":action.equals("AMEND")?"AMENDMENT":"RESIGNED";
   String digest=str(item,"contentDigest");
   String signature=action.equals("AMEND")?null:str(item,"signatureRef");
