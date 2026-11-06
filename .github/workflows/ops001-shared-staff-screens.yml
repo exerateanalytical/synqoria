@@ -31,6 +31,8 @@ jobs:
         run: node --test tests/ops001_attested_runtime.test.mjs
       - name: All eight screen-specific Next source and WCAG layout checks
         run: node --test tests/ops001_ui_source.test.cjs
+      - name: Preserve exact 8-screen acceptance boundaries
+        run: node --test tests/ops001_screen_evidence.test.mjs
       - name: Preserve P03 attested runtime and existing clinical admissions
         run: node --test tests/verified_clinical_runtime_binding.test.mjs tests/clinical_opaque_session_admission.test.mjs
       - name: Preserve canonical routes and 240 screen plan
