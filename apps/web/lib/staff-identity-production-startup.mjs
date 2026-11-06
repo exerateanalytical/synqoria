@@ -12,6 +12,7 @@ import {loadTrustedStaffIdentityConfig} from "./oidc-deployment-config.mjs";
 import {initializeVerifiedStaffRoutes} from "./staff-route-bootstrap.mjs";
 import {createRestrictedIdentityPools} from "./identity-production-sql.mjs";
 import {createRestrictedIdentityTransport} from "./identity-restricted-transport.mjs";
+import {verifyTrustedIdentityProvider} from "./identity-provider-preflight.mjs";
 export class IdentityStartupError extends Error{
  constructor(){super("identity_startup_denied");this.name="IdentityStartupError";}
 }
@@ -40,6 +41,7 @@ export async function initializeProductionStaffIdentity({
   try{
    requireClinicalIdentitySafety(env);
    const config=loadTrustedStaffIdentityConfig(env);
+   await verifyTrustedIdentityProvider(config,{fetcher});
    const loaded=await loadPg();
    pools=await createRestrictedIdentityPools({env,Pool:loaded?.Pool});
    const transport=createRestrictedIdentityTransport(config,{fetcher});
