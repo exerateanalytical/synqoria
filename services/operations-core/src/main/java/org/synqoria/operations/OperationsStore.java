@@ -146,6 +146,24 @@ public final class OperationsStore {
   if(item.version()!=version)throw new WorkflowViolation("idempotency_result_superseded");
   return item;
  }
+ /**
+  * A patient or staff API request cannot create an evidence claim.
+  * Only an independent evidence issuer/migration role may INSERT rows.
+  * Proof is bound to aggregate version AND action to prevent reuse after changes.
+  */
+ private OperationWorkflow.TrustedEvidence authoritativeEvidence(OperationWorkflow.Actor actor,
+                            OperationWorkflow.Item current,ModuleCatalog.Step step){
+  if(step.evidence().isEmpty())return OperationWorkflow.TrustedEvidence.none();
+  Long count=jdbc.queryForObject(
+   "SELECT count(*) FROM synqoria_operations.external_evidence " +
+   "WHERE cell_id=? AND facility_id=? AND item_id=? AND for_action=? AND expected_version=? " +
+   "AND evidence_kind=? AND approver_id <> ? AND revoked_at IS NULL " +
+   "AND valid_from<=clock_timestamp() AND valid_until>clock_timestamp()",
+   Long.class,actor.cell(),actor.facility(),current.id(),step.action(),current.version(),
+   step.evidence(),current.createdBy());
+  if(count==null||count<1)throw new WorkflowViolation("trusted_evidence_required");
+  return new OperationWorkflow.TrustedEvidence(Set.of(step.evidence()));
+ }
  public OperationWorkflow.Item transition(OperationWorkflow.Actor actor,String module,
                                           UUID id,OperationsApi.TransitionItem req){
   ModuleCatalog.require(module);
@@ -154,8 +172,10 @@ public final class OperationsStore {
    UUID previous=beginCommand(actor,req.commandId(),hash);
    if(previous!=null)return getVersionedReplay(module,previous,req.expectedVersion()+1);
    OperationWorkflow.Item before=getLocked(module,id,true);
+   ModuleCatalog.Step required=ModuleCatalog.require(module).transition(before.status(),req.action());
+   OperationWorkflow.TrustedEvidence admitted=authoritativeEvidence(actor,before,required);
    var change=OperationWorkflow.advance(before,req.action(),req.expectedVersion(),actor,
-    OperationWorkflow.TrustedEvidence.none(),req.fields());
+    admitted,req.fields());
    var next=change.item();
    if(jdbc.update("UPDATE synqoria_operations.items SET status=?,version=?,last_actor=?," +
     "fields=?::jsonb,updated_at=clock_timestamp() WHERE id=? AND module_id=? AND version=?",
