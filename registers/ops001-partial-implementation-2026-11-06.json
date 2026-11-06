@@ -157,8 +157,8 @@
   "blockers": [
     "Shared PR stack unmerged; GATE-00/GATE-01/GATE-02/GATE-03 not fully satisfied",
     "No deployed identity SQL credentials/Keycloak/vault/roster configured for Next route handlers",
-    "No browser Playwright 320–1920 proof, test DB migrations, clinical reviewer signoff, or emergency grant policy",
-    "Official mainline npm lockfile merge and independent Expo/full-stack checks remain pending despite passing isolated pinned-lock Next web build"
+    "Official mainline npm lockfile merge and independent Expo/full-stack checks remain pending despite passing isolated pinned-lock Next web build",
+    "Independent clinical acceptance, semantic WCAG 2.2 AA, keyboard and detailed visual inspection, real clinical DB/IdP/consent E2E and backend persistence remain pending"
   ],
   "nextCandidate": "SYNQ-OPS-002 only after source/contract and owner recheck; do not count the current package as accepted",
   "buildEvidence": {
@@ -170,5 +170,38 @@
     "clinicalAcceptance": false,
     "environmentDeployment": false,
     "visualBrowserAcceptance": false
+  },
+  "browserEvidence": {
+    "runId": 42139339436,
+    "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42139339436",
+    "conclusion": "success",
+    "headSha": "70c91000e52c80b543ecebb2365cfba83af4f634",
+    "tool": "Playwright 1.56.1 Chromium",
+    "checks": 48,
+    "screenIds": 8,
+    "viewportWidthsPx": [
+      320,
+      375,
+      768,
+      1024,
+      1440,
+      1920
+    ],
+    "assertions": [
+      "route HTTP 200 and canonical screen ID",
+      "render no global horizontal overflow <=2px",
+      "no uncaught browser runtime error",
+      "EN/FR toggle",
+      "unverified patient input locked",
+      "emergency grants remain disabled"
+    ],
+    "screenshotArtifactId": 13466921045,
+    "screenshotArtifactUrl": "https://github.com/exerateanalytical/synqoria/actions/runs/42139339436/artifacts/13466921045",
+    "screenshots": 4,
+    "screenshotZipSha256": "8819c5635ff6c753c7e6e4654cead2b034b4fdf829ed4c150a36ad848f7e41ee",
+    "reviewStatus": "AUTOMATED_VIEWPORT_CHECK_ONLY_MANUAL_VISUAL_REVIEW_PENDING",
+    "liveClinicalIdpTested": false,
+    "wcag22AAManualAudit": false,
+    "clinicalOwnerAccepted": false
   }
 }
