@@ -226,4 +226,41 @@ test("B0150 session digest and role isolation rejects forged direct reads on act
  assert.equal(good.rowCount,0);
 });
 
+
+test("B0151 append-only pseudonymous audit records written by live restricted PG16 role",async()=>{
+ const at=Date.now();
+ const writer=createIdentitySecurityAuditWriter(pools.auditSql,
+  {pepper:"c".repeat(64),now:()=>at});
+ const result=await writer.append({
+  actorId:"11111111-1111-4111-8111-111111111111",
+  tenantId:"22222222-2222-4222-8222-222222222222",
+  correlationId:"55555555-5555-4555-8555-555555555555",
+  kind:"LOGIN_DENIED",outcome:"DENIED"
+ });
+ assert.match(result.eventId,/^[0-9a-f-]{36}$/);
+ assert.equal(result.createdAt,at);
+ await assert.rejects(()=>pools.auditSql.query(
+  "DELETE FROM synqoria_identity.staff_security_audit WHERE TRUE"),
+  IdentityAttestedQueryError);
+});
+test("B0152 PG16 enforces physical cross-role table SELECT revocation below SQL contracts",async()=>{
+ const rows=[
+  [0,"synqoria_oidc_replay_runtime","synqoria_identity.staff_sessions"],
+  [1,"synqoria_staff_session_runtime","synqoria_identity.staff_security_audit"],
+  [2,"synqoria_identity_audit_writer","synqoria_identity.oidc_replay_state"]
+ ];
+ for(const [idx,role,table] of rows){
+  const raw=new Client({connectionString:dsn(idx),ssl:{
+   ca,rejectUnauthorized:true,servername:host},connectionTimeoutMillis:2500});
+  await raw.connect();
+  try{
+   await raw.query("BEGIN");
+   await raw.query("SET LOCAL ROLE "+role);
+   await assert.rejects(()=>raw.query("SELECT * FROM "+table));
+  }finally{
+   try{await raw.query("ROLLBACK");}finally{await raw.end();}
+  }
+ }
+});
+
 test("P03 disposable PostgreSQL role/TLS suite closes all restricted pools",async()=>{await pools.close();});
