@@ -1,0 +1,283 @@
+{
+  "schema": "synqoria.p03.production-runtime-build.v1",
+  "branch": "work/p03-b0094-b0123-runtime-build-2026-11-06",
+  "baseCommit": "0fb7beccd89f1e2421144c7827d48453fb0a6ad7",
+  "verifiedSourceHead": "fd66445b7ef7f66e3631c8550fdacdc333ea40fb",
+  "stage": "ENGINEERING_INCOMPLETE",
+  "cycle": {
+    "target": 30,
+    "plannedIds": "P03-B0094..P03-B0123",
+    "verifiedCount": 17,
+    "remaining": 13,
+    "cycleComplete": false
+  },
+  "sourceEvidence": [
+    {
+      "id": "P03-B0094",
+      "description": "Exact pg@8.23.1 runtime dependency in web workspace",
+      "source": "apps/web/package.json",
+      "test": "tests/p03_runtime_build_candidate.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42147639591,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639591",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0095",
+      "description": "SHA-pinned lockfile overlay and production pg dependency tree integrity",
+      "source": "tools/p03_verify_runtime_lock.cjs",
+      "test": "tests/p03_runtime_build_candidate.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42147639591,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639591",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0096",
+      "description": "Real compiled Next.js identity instrumentation candidate with retained native-overlay build CI",
+      "source": "apps/web/next.config.ts",
+      "test": "tests/p03_runtime_build_candidate.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42147639591,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639591",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0097",
+      "description": "Three dedicated LOGIN/NOINHERIT principals for existing NOLOGIN runtime PostgreSQL RLS roles",
+      "source": "services/identity/db/identity_runtime_login_principals_v1.sql",
+      "test": "tests/identity_login_principals_migration.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42147639482,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639482",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0098",
+      "description": "One physical PostgreSQL client carries BEGIN, SET LOCAL ROLE, exact role attestation, SQL and commit",
+      "source": "apps/web/lib/identity-attested-db-query.mjs",
+      "test": "tests/identity_attested_db_query.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42147639482,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639482",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0099",
+      "description": "Cryptographically authorized pinned peer certificate and negotiated TLS/cipher verification on real Node socket",
+      "source": "apps/web/lib/identity-attested-db-query.mjs",
+      "test": "tests/identity_attested_db_query.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42147639482,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639482",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0100",
+      "description": "Restricted role membership, non-privileged LOGIN and FORCE-RLS active scope enforcement",
+      "source": "apps/web/lib/identity-attested-db-query.mjs",
+      "test": "tests/identity_attested_db_query.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42147639482,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639482",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0101",
+      "description": "Error sanitization, atomic rollback, no multi-statement privilege-changing SQL",
+      "source": "apps/web/lib/identity-attested-db-query.mjs",
+      "test": "tests/identity_attested_db_query.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42147639482,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639482",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0102",
+      "description": "Disposable actual PostgreSQL16 CA-signed TLS with three separate LOGIN principals, runtime roles and attested policy catalog",
+      "source": "tests/identity_pg_tls_runtime.test.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42147639483,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639483",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0103",
+      "description": "Real PostgreSQL direct LOGIN principal cannot read privileged NOLOGIN RLS table",
+      "source": "tests/identity_pg_tls_runtime.test.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42147639483,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639483",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0104",
+      "description": "Real PostgreSQL cross-table access and audit-scope isolation",
+      "source": "tests/identity_pg_tls_runtime.test.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42147639483,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639483",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0105",
+      "description": "Real PostgreSQL detects extra role grants and BYPASSRLS drift without letting query through",
+      "source": "tests/identity_pg_tls_runtime.test.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42147639483,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639483",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0106",
+      "description": "Physical PostgreSQL role switch resets to original LOGIN principal on transaction completion",
+      "source": "tests/identity_pg_tls_runtime.test.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42147639483,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639483",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0107",
+      "description": "Live pinned CA mismatch denies identity TLS establishment",
+      "source": "tests/identity_pg_tls_runtime.test.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42147639483,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639483",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0108",
+      "description": "Live PostgreSQL plaintext transport, even if DB accepts it, is denied by staff identity SQL runtime",
+      "source": "tests/identity_pg_tls_runtime.test.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42147639483,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639483",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0109",
+      "description": "Live mismatched database login/credential pair denied before authorization",
+      "source": "tests/identity_pg_tls_runtime.test.mjs",
+      "test": "tests/identity_pg_tls_runtime.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42147639483,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639483",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0110",
+      "description": "Discard and quarantine PostgreSQL pooled backend after failed TLS/role probe or SQL operation",
+      "source": "apps/web/lib/identity-attested-db-query.mjs",
+      "test": "tests/identity_attested_db_query.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42147639482,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639482",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    }
+  ],
+  "additionalEvidence": {
+    "realNextBuild": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639591",
+    "fullAppNextExpoBuildOverlay": "https://github.com/exerateanalytical/synqoria/actions/runs/42147435726",
+    "disposablePostgresTls": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639483",
+    "restrictedRoleTests": "https://github.com/exerateanalytical/synqoria/actions/runs/42147639482"
+  },
+  "dependencies": {
+    "sourceCandidateUsesLockFromDraftPR23": true,
+    "expoBuildUsesTemporaryPR24Overlay": true,
+    "normalEngineeringWorkflowPassing": false,
+    "liveHospitalIdentityConfigured": false,
+    "clinicalDisclosureEndpointDeployed": false
+  },
+  "globalEngineeringBacklogClosed": false,
+  "blockers": [
+    "Reconcile and merge exact npm runtime lock with reviewed build-owner PRs #23/#24; P03 branch does not contain committed lock candidate",
+    "Qualify production PostgreSQL role credentials, pinned TLS CA and deployment migrations in real hospital cell; CI Postgres is disposable",
+    "Deploy live Keycloak, signing-key/vault lifecycle and tenant-scoped staff roster/shift grants",
+    "Deploy and test authoritative patient/encounter disclosure and audit and integrate OPS001 identity routes by reviewed PR rather than overwriting",
+    "Full root engineering workflow remains failed while lockfile not reconciled; audit and certification deferred"
+  ],
+  "safety": {
+    "canonicalModules": 40,
+    "canonicalScreens": 261,
+    "domainLockedPending": 240,
+    "operationalPackagesAccepted": 0,
+    "clinicalRelease": "DENIED",
+    "certification": "DEFERRED"
+  }
+}
