@@ -34,7 +34,7 @@
     {
       "component": "Java production JDK",
       "version": "25.0.5",
-      "status": "SOURCE_PINNED_CI_RUNNING",
+      "status": "SOURCE_PINNED_CI_VERIFIED",
       "owner": "operations-core",
       "source": "https://www.oracle.com/java/technologies/downloads/",
       "notes": "Current LTS. Compile to Java 25. Image/update exact patch and digest chosen on deployment."
@@ -42,7 +42,7 @@
     {
       "component": "Java latest GA compatibility",
       "version": "27.0.1",
-      "status": "MATRIX_CI_RUNNING",
+      "status": "MATRIX_CI_VERIFIED",
       "owner": "operations-core",
       "source": "https://www.oracle.com/java/technologies/downloads/",
       "notes": "Stable GA, non-LTS, requires semiannual major upgrades; not production default."
@@ -50,7 +50,7 @@
     {
       "component": "Spring Boot",
       "version": "4.1.2",
-      "status": "SOURCE_PINNED_TESTING",
+      "status": "SOURCE_PINNED_CI_VERIFIED",
       "owner": "operations-core",
       "source": "https://spring.io/blog/2026/10/23/spring-boot-4-1-2-available-now/",
       "notes": "4.2.0 RC is not stable; Spring Boot 4.1.2 officially supports Java 27."
@@ -66,7 +66,7 @@
     {
       "component": "Node.js",
       "version": "26.13.0",
-      "status": "CI_MAJOR_UPDATED_PENDING_ALL_BUILDS",
+      "status": "CI_RUNTIME_VERIFIED",
       "owner": "web-native-build",
       "source": "https://nodejs.org/en/about/previous-releases",
       "notes": "Active LTS, 27 is alpha."
@@ -74,7 +74,7 @@
     {
       "component": "Next.js",
       "version": "16.4.5",
-      "status": "TARGET_PENDING_COMPATIBILITY",
+      "status": "WEB_CANDIDATE_VERIFIED_NOT_MERGED",
       "owner": "PR23-PR24-web-owner",
       "source": "https://www.npmjs.com/package/next",
       "notes": "Requires reviewed lockfile, migration and Next build; current merged source still 15.x."
@@ -82,7 +82,7 @@
     {
       "component": "React web",
       "version": "19.3.1",
-      "status": "TARGET_PENDING_COMPATIBILITY",
+      "status": "WEB_CANDIDATE_VERIFIED_NOT_MERGED",
       "owner": "PR23-PR24-web-owner",
       "source": "https://github.com/facebook/react/releases",
       "notes": "Match react and react-dom exact patch."
@@ -90,7 +90,7 @@
     {
       "component": "Expo SDK",
       "version": "58.0.23",
-      "status": "TARGET_PENDING_COMPATIBILITY",
+      "status": "ANDROID_CANDIDATE_VERIFIED_NOT_MERGED",
       "owner": "PR24-native-owner",
       "source": "https://docs.expo.dev/versions/latest/",
       "notes": "Use matching Expo SDK58 React Native/React versions, not arbitrary latest npm."
@@ -98,7 +98,7 @@
     {
       "component": "React Native",
       "version": "0.88.1",
-      "status": "TARGET_PENDING_EXPO_PROOF",
+      "status": "ANDROID_CANDIDATE_VERIFIED_NOT_MERGED",
       "owner": "PR24-native-owner",
       "source": "https://reactnative.dev/",
       "notes": "Match Expo 58 peer matrix."
@@ -106,7 +106,7 @@
     {
       "component": "React on Expo mobile",
       "version": "19.3.0",
-      "status": "TARGET_PENDING_EXPO_PROOF",
+      "status": "ANDROID_CANDIDATE_VERIFIED_NOT_MERGED",
       "owner": "PR24-native-owner",
       "source": "https://docs.expo.dev/versions/latest/",
       "notes": "Exact Expo 58 reference compatible React; web React 19.3.1 must be separately confirmed."
@@ -199,5 +199,23 @@
       "source": "https://www.python.org/",
       "notes": "Future gated clinical decision support, not replacement for Java transactional core."
     }
-  ]
+  ],
+  "verifiedCandidateEvidence": {
+    "java25And27": "https://github.com/exerateanalytical/synqoria/actions/runs/42307201716",
+    "pg186": "https://github.com/exerateanalytical/synqoria/actions/runs/42307201820",
+    "pgJdbc186": "https://github.com/exerateanalytical/synqoria/actions/runs/42307201701",
+    "next164React193Node26": "https://github.com/exerateanalytical/synqoria/actions/runs/42307201738",
+    "expo58Rn088StaffAndPatientAndroid": "https://github.com/exerateanalytical/synqoria/actions/runs/42307201740",
+    "node26OriginalNextBuild": "https://github.com/exerateanalytical/synqoria/actions/runs/42307201767",
+    "policyContract": "https://github.com/exerateanalytical/synqoria/actions/runs/42307201770"
+  },
+  "mergedProductionUpgrade": false,
+  "sourcesRemainOwnedBy": [
+    "PR #23 build lock",
+    "PR #24 Expo and web baseline",
+    "PR #33 identity",
+    "PR #34 admin module foundations",
+    "P07 event contracts"
+  ],
+  "finalValidatedPriorHead": "26036d8cdd50bb66af221d6d3c401d43059e2445"
 }

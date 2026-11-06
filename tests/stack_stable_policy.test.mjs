@@ -8,6 +8,12 @@ test("policy declares exact Java 25 LTS and separately checked latest stable Jav
  assert.equal(v.productionJavaJdk,"25");
  assert.equal(v.latestStableJavaTestedInCi,"27");
  assert.equal(v.globalClinicalRelease,"DENIED");
+ assert.equal(v.mergedProductionUpgrade,false);
+ assert.equal(v.verifiedCandidateEvidence.java25And27,
+  "https://github.com/exerateanalytical/synqoria/actions/runs/42307201716");
+ assert.equal(v.verifiedCandidateEvidence.expo58Rn088StaffAndPatientAndroid,
+  "https://github.com/exerateanalytical/synqoria/actions/runs/42307201740");
+
  assert.equal(v.operationalModulesComplete,0);
  assert.equal(v.operationalScreensAccepted,0);
  const pom=read("services/operations-core/pom.xml");
@@ -35,8 +41,8 @@ test("stable stack manifest is deduplicated and does not promote unverified targ
  assert.equal(entries.get("Redis").version,"8.10.3");
  assert.equal(entries.get("Kong Gateway").version,null);
  assert.equal(entries.get("Kong Gateway").status,"VERSION_NOT_VERIFIED");
- assert.equal(entries.get("Next.js").status,"TARGET_PENDING_COMPATIBILITY");
- assert.equal(entries.get("Expo SDK").status,"TARGET_PENDING_COMPATIBILITY");
+ assert.equal(entries.get("Next.js").status,"WEB_CANDIDATE_VERIFIED_NOT_MERGED");
+ assert.equal(entries.get("Expo SDK").status,"ANDROID_CANDIDATE_VERIFIED_NOT_MERGED");
 });
 test("primary disposable PostgreSQL18.6 and Java25 CI workflow pins are explicit",()=>{
  for(const path of [".github/workflows/operations-seven-jdbc-integration.yml",
