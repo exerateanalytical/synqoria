@@ -2,14 +2,14 @@
   "schema": "synqoria.p03.production-runtime-build.v1",
   "branch": "work/p03-b0094-b0123-runtime-build-2026-11-06",
   "baseCommit": "0fb7beccd89f1e2421144c7827d48453fb0a6ad7",
-  "verifiedSourceHead": "a7a997bbf955d0c1595e73938c784f7326440a5a",
+  "verifiedSourceHead": "362b2ce63cbc3390a034052a4926f5be9488be12",
   "stage": "ENGINEERING_INCOMPLETE",
   "cycle": {
     "target": 30,
     "plannedIds": "P03-B0094..P03-B0123",
-    "verifiedCount": 29,
-    "remaining": 1,
-    "cycleComplete": false
+    "verifiedCount": 30,
+    "remaining": 0,
+    "cycleComplete": true
   },
   "sourceEvidence": [
     {
@@ -413,6 +413,20 @@
         "kind": "github_actions",
         "runId": 42161507856,
         "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42161507856",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0123",
+      "description": "Guarded final 30-increment source/CI ledger, unique contiguous source-test provenance, clinical release denial and shared cross-workstream handoff",
+      "source": "tests/p03_runtime_build_ledger.test.mjs",
+      "test": "tests/p03_runtime_build_ledger.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42161696833,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42161696833",
         "conclusion": "success"
       },
       "clinicalAccepted": false,

@@ -6,10 +6,10 @@ const d=JSON.parse(read("registers/p03-runtime-build-engineering-2026-11-06.json
 test("P03 B0123 ledger is contiguous, unique, source/test backed with completed CI evidence",()=>{
  assert.equal(d.schema,"synqoria.p03.production-runtime-build.v1");
  assert.equal(d.cycle.target,30);
- assert.ok([29,30].includes(d.cycle.verifiedCount));
+ assert.equal(d.cycle.verifiedCount,30);
  assert.equal(d.cycle.verifiedCount,d.sourceEvidence.length);
  assert.equal(d.cycle.remaining,30-d.cycle.verifiedCount);
- assert.equal(d.cycle.cycleComplete,d.cycle.verifiedCount===30);
+ assert.equal(d.cycle.cycleComplete,true);
  assert.deepEqual(d.sourceEvidence.map(x=>x.id),
   Array.from({length:d.cycle.verifiedCount},(_,i)=>"P03-B"+String(94+i).padStart(4,"0")));
  for(const e of d.sourceEvidence){
