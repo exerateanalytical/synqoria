@@ -28,16 +28,17 @@
     "uiContracts": "apps/web/lib/operations-screen-catalog.json"
   },
   "ciVerifiedExamples": {
-    "javaDomain": "https://github.com/exerateanalytical/synqoria/actions/runs/42303727918",
-    "disposablePostgres16": "https://github.com/exerateanalytical/synqoria/actions/runs/42303727902",
-    "actualJdbcAtomicity": "https://github.com/exerateanalytical/synqoria/actions/runs/42303727956",
-    "screenContracts": "https://github.com/exerateanalytical/synqoria/actions/runs/42303727932"
+    "javaDomain": "https://github.com/exerateanalytical/synqoria/actions/runs/42305322201",
+    "disposablePostgres16": "https://github.com/exerateanalytical/synqoria/actions/runs/42305322027",
+    "actualJdbcAtomicity": "https://github.com/exerateanalytical/synqoria/actions/runs/42305324162",
+    "screenContracts": "https://github.com/exerateanalytical/synqoria/actions/runs/42305322265",
+    "actualNextBuildCandidate": "https://github.com/exerateanalytical/synqoria/actions/runs/42305322016"
   },
   "dependencies": {
     "authoritativeWorkforceGrant": true,
     "readOnlyOrLockedUIUntilVerified": true,
     "rootEngineeringWorkflowPassing": false,
-    "uiCandidateBuildVerified": false,
+    "uiCandidateBuildVerified": true,
     "independentPR23BuildOwner": true,
     "independentPR16DocumentFormsOwner": true,
     "independentPR33AuthenticationOwner": true
@@ -169,5 +170,6 @@
         "Clinically reviewed escalation and actual staff acknowledgement"
       ]
     }
-  ]
+  ],
+  "finalSourceBuildCheckpoint": "820c57bf4a7d2bf897814cb59d89dde92c3cef35"
 }
