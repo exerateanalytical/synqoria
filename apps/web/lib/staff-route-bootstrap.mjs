@@ -20,7 +20,7 @@ let initialized=null;
 let ongoing=null;
 
 export async function initializeVerifiedStaffRoutes({
- env,replaySql,sessionSql,auditSql,fetcher,now
+ env,replaySql,sessionSql,auditSql,fetcher,now=Date.now
 }={}){
  if(initialized!==null)return initialized;
  if(ongoing!==null)return ongoing;
