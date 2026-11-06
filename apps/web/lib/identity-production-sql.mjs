@@ -8,9 +8,9 @@
  */
 import {createConnectionAttestedSqlClient} from "./identity-attested-db-query.mjs";
 const SPECS=Object.freeze([
- Object.freeze({key:"replaySql",env:"SYNQORIA_IDENTITY_REPLAY_DSN",role:"synqoria_oidc_replay_runtime"}),
- Object.freeze({key:"sessionSql",env:"SYNQORIA_IDENTITY_SESSION_DSN",role:"synqoria_staff_session_runtime"}),
- Object.freeze({key:"auditSql",env:"SYNQORIA_IDENTITY_AUDIT_DSN",role:"synqoria_identity_audit_writer"})
+ Object.freeze({key:"replaySql",env:"SYNQORIA_IDENTITY_REPLAY_DSN",role:"synqoria_oidc_replay_runtime",login:"synqoria_oidc_replay_login"}),
+ Object.freeze({key:"sessionSql",env:"SYNQORIA_IDENTITY_SESSION_DSN",role:"synqoria_staff_session_runtime",login:"synqoria_staff_session_login"}),
+ Object.freeze({key:"auditSql",env:"SYNQORIA_IDENTITY_AUDIT_DSN",role:"synqoria_identity_audit_writer",login:"synqoria_identity_audit_login"})
 ]);
 export class IdentityProductionSqlError extends Error{
  constructor(){super("identity_production_sql_denied");this.name="IdentityProductionSqlError";}
@@ -43,7 +43,7 @@ function trustedCa(pem){
 export async function createRestrictedIdentityPools({env,Pool}={}){
  if(!env||typeof env!=="object"||typeof Pool!=="function")deny();
  const ca=trustedCa(env.SYNQORIA_IDENTITY_DB_CA_PEM);
- const endpoints=SPECS.map(s=>({...s,url:parseDsn(env[s.env],s.role)}));
+ const endpoints=SPECS.map(s=>({...s,url:parseDsn(env[s.env],s.login)}));
  if(new Set(endpoints.map(x=>x.url.href)).size!==3)deny();
  const pools=[];
  try{
@@ -63,7 +63,7 @@ export async function createRestrictedIdentityPools({env,Pool}={}){
   deny();
  }
  let clients;
- try{clients=endpoints.map((item,i)=>createConnectionAttestedSqlClient(pools[i],item.role));}
+ try{clients=endpoints.map((item,i)=>createConnectionAttestedSqlClient(pools[i],item.role,item.login));}
  catch{await Promise.allSettled(pools.map(p=>p.end()));deny();}
  let closed=false;
  return Object.freeze({
