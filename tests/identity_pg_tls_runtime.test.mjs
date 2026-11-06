@@ -49,6 +49,16 @@ test("B0102 actual TLS PostgreSQL 16 server and 3 LOGIN principals satisfy NOLOG
   await diagnostic.query("SET LOCAL ROLE synqoria_oidc_replay_runtime");
   const raw=await diagnostic.query(IDENTITY_CONNECTION_ATTEST_SQL);
   console.log("CI disposable identity attestation fields:",raw.rows[0]||{rowCount:raw.rowCount});
+  for(const query of [
+   "SELECT current_user AS active,session_user AS login,pg_backend_pid() AS pid",
+   "SELECT count(*)::int AS count FROM pg_roles WHERE rolname=current_user",
+   "SELECT count(*)::int AS count FROM pg_roles WHERE rolname=session_user",
+   "SELECT count(*)::int AS count FROM pg_stat_ssl WHERE pid=pg_backend_pid()",
+   "SELECT * FROM pg_stat_ssl WHERE pid=pg_backend_pid()"
+  ]){
+   const probe=await diagnostic.query(query);
+   console.log("CI diagnostic (no secrets):",probe.rows);
+  }
   await diagnostic.query("ROLLBACK");
  }catch(error){
   console.log("CI disposable identity SQLSTATE:",error.code,error.message);
