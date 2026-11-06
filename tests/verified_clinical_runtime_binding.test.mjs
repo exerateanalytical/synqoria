@@ -1,4 +1,5 @@
 import {bindVerifiedStaffRouteRuntime,dispatchVerifiedStaffAuthRoute,StaffRouteBootstrapError} from "../apps/web/lib/verified-staff-auth-route.mjs";
+import {initializeVerifiedStaffRoutes} from "../apps/web/lib/staff-route-bootstrap.mjs";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {generateKeyPairSync} from "node:crypto";
@@ -105,8 +106,9 @@ test("B0063 mismatched deployed facility and missing clinical safety settings re
 });
 
 test("P03-B0064 installed verified runtime mediates route access without exposing identity secrets",async()=>{
- const runtime=await createVerifiedStaffIdentityRuntime(options());
+ const runtime=await initializeVerifiedStaffRoutes(options());
  assert.deepEqual(bindVerifiedStaffRouteRuntime(runtime),{bound:true});
+ assert.equal(await initializeVerifiedStaffRoutes(options()),runtime);
  const notAuthenticated=await dispatchVerifiedStaffAuthRoute("callback",
   new Request(publicOrigin+"api/auth/oidc/callback?code=forged&state=forged"));
  assert.equal(notAuthenticated.status,401);
