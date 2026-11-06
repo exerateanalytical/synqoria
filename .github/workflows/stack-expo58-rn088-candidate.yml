@@ -34,6 +34,7 @@ jobs:
             m.dependencies.expo='58.0.23';
             m.dependencies['react-native']='0.88.1';
             m.dependencies.react='19.3.0';
+            m.devDependencies['@types/react']='19.3.0';
             fs.writeFileSync(p,JSON.stringify(m,null,2)+'\n');
           }
           NODE
