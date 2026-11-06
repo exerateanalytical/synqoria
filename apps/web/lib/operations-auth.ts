@@ -28,7 +28,7 @@ export function opsConfig():OpsConfig{
   clientSecret:process.env.SYNQORIA_OPS_OIDC_CLIENT_SECRET};
 }
 export function opsEqual(a:string,b:string):boolean{
- const one=Buffer.from(a),two=Buffer.from(b);
+ const one=new TextEncoder().encode(a),two=new TextEncoder().encode(b);
  return one.length===two.length && timingSafeEqual(one,two);
 }
 export function opsRandom(){return randomBytes(32).toString("base64url");}
