@@ -2,7 +2,7 @@ name: SYNQORIA Expo 58 React Native 0.88 stable-native upgrade candidate
 on:
   push:
     branches:
-      - work/latest-stable-stack-governance-2026-11-06
+      - work/seven-operations-real-workflows-2026-11-06
 permissions:
   contents: read
 jobs:
