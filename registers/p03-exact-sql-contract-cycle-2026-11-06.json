@@ -6,11 +6,11 @@
   "cycle": {
     "target": 30,
     "plannedIds": "P03-B0124..P03-B0153",
-    "verifiedCount": 29,
-    "remaining": 1,
-    "cycleComplete": false
+    "verifiedCount": 30,
+    "remaining": 0,
+    "cycleComplete": true
   },
-  "verifiedSourceHead": "4bc0e511456cdbf16eb4b8ce63446dba86cc0eaf",
+  "verifiedSourceHead": "e890d9c13cb8a5d71f09475a80497e8a9f13164d",
   "sourceEvidence": [
     {
       "id": "P03-B0124",
@@ -413,6 +413,20 @@
         "kind": "github_actions",
         "runId": 42163411382,
         "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163411382",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0153",
+      "description": "Independent last-cycle CI evidence-ledger integrity, unique contiguous source/test records and fail-closed clinical release ownership handoff",
+      "source": "tests/p03_exact_sql_contract_cycle_ledger.test.mjs",
+      "test": "tests/p03_exact_sql_contract_cycle_ledger.test.mjs",
+      "verifiedBy": {
+        "kind": "github_actions",
+        "runId": 42163684323,
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42163684323",
         "conclusion": "success"
       },
       "clinicalAccepted": false,

@@ -9,10 +9,10 @@ test("B0153 P03 source cycle is contiguous, source/test backed and CI-evidenced"
  assert.equal(d.parentPullRequest,32);
  assert.equal(d.sourcePullRequest,33);
  assert.equal(d.cycle.target,30);
- assert.ok([29,30].includes(d.cycle.verifiedCount));
+ assert.equal(d.cycle.verifiedCount,30);
  assert.equal(d.cycle.verifiedCount,d.sourceEvidence.length);
  assert.equal(d.cycle.remaining,30-d.cycle.verifiedCount);
- assert.equal(d.cycle.cycleComplete,d.cycle.verifiedCount===30);
+ assert.equal(d.cycle.cycleComplete,true);
  assert.deepEqual(d.sourceEvidence.map(x=>x.id),
   Array.from({length:d.cycle.verifiedCount},
    (_,i)=>"P03-B"+String(124+i).padStart(4,"0")));
