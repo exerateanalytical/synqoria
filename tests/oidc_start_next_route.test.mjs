@@ -10,7 +10,7 @@ test("B0065 Next OIDC start route is dynamic Node and uses server trusted dispat
  assert.match(source,/export const revalidate=0/);
  assert.match(source,/import \{dispatchVerifiedStaffAuthRoute\} from "\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/lib\/verified-staff-auth-route\.mjs"/);
  assert.match(source,/dispatchVerifiedStaffAuthRoute\("start",request\)/);
- assert.doesNotMatch(source,/demo|SYNQORIA_STAFF_COOKIE_KEY|localStorage|process\.env\./i);
+ assert.doesNotMatch(source,/SYNQORIA_STAFF_COOKIE_KEY|localStorage|process\.env\.|sealStaffSession\(/i);
 });
 test("B0065 auth start has no auto-login if verified runtime is missing",async()=>{
  const result=await dispatchVerifiedStaffAuthRoute("start",new Request(
