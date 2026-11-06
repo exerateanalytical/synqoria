@@ -1,0 +1,203 @@
+{
+  "schema": "synqoria.release.latest-supported-stable.v1",
+  "asOf": "2026-11-06",
+  "policy": "STABLE_GA_COMPATIBLE_PINNED_AND_TESTED",
+  "productionJavaJdk": "25",
+  "latestStableJavaTestedInCi": "27",
+  "exclusions": [
+    "alpha",
+    "beta",
+    "rc",
+    "snapshot",
+    "canary",
+    "nightly",
+    "floating_latest_tags",
+    "unreviewed_major_upgrades"
+  ],
+  "targetVsDeployed": "Targets and CI probes are NOT proof of production deployment or programme completion.",
+  "globalClinicalRelease": "DENIED",
+  "certification": "DEFERRED",
+  "operationalModulesComplete": 0,
+  "operationalScreensAccepted": 0,
+  "prereqs": [
+    "verified supplier GA release/version and lifecycle",
+    "explicit compatibility matrix for each coupled stack",
+    "exact package lock and immutable artifact digest",
+    "vulnerability/licence/SBOM provenance review",
+    "automated domain/API/security regression",
+    "disposable real PostgreSQL RLS and migration rollback",
+    "reproducible web/mobile build",
+    "nonproduction hospital-cell staging and patient privacy safety review",
+    "independent change approval and canary rollback"
+  ],
+  "versions": [
+    {
+      "component": "Java production JDK",
+      "version": "25.0.5",
+      "status": "SOURCE_PINNED_CI_RUNNING",
+      "owner": "operations-core",
+      "source": "https://www.oracle.com/java/technologies/downloads/",
+      "notes": "Current LTS. Compile to Java 25. Image/update exact patch and digest chosen on deployment."
+    },
+    {
+      "component": "Java latest GA compatibility",
+      "version": "27.0.1",
+      "status": "MATRIX_CI_RUNNING",
+      "owner": "operations-core",
+      "source": "https://www.oracle.com/java/technologies/downloads/",
+      "notes": "Stable GA, non-LTS, requires semiannual major upgrades; not production default."
+    },
+    {
+      "component": "Spring Boot",
+      "version": "4.1.2",
+      "status": "SOURCE_PINNED_TESTING",
+      "owner": "operations-core",
+      "source": "https://spring.io/blog/2026/10/23/spring-boot-4-1-2-available-now/",
+      "notes": "4.2.0 RC is not stable; Spring Boot 4.1.2 officially supports Java 27."
+    },
+    {
+      "component": "PostgreSQL",
+      "version": "18.6",
+      "status": "TEST_CONTAINER_VERIFIED_NOT_DEPLOYED",
+      "owner": "operations-core",
+      "source": "https://www.postgresql.org/docs/release/18.6/",
+      "notes": "Latest stable major 18; PostgreSQL 19 still RC. Keep isolated DB/backup migration review."
+    },
+    {
+      "component": "Node.js",
+      "version": "26.13.0",
+      "status": "CI_MAJOR_UPDATED_PENDING_ALL_BUILDS",
+      "owner": "web-native-build",
+      "source": "https://nodejs.org/en/about/previous-releases",
+      "notes": "Active LTS, 27 is alpha."
+    },
+    {
+      "component": "Next.js",
+      "version": "16.4.5",
+      "status": "TARGET_PENDING_COMPATIBILITY",
+      "owner": "PR23-PR24-web-owner",
+      "source": "https://www.npmjs.com/package/next",
+      "notes": "Requires reviewed lockfile, migration and Next build; current merged source still 15.x."
+    },
+    {
+      "component": "React web",
+      "version": "19.3.1",
+      "status": "TARGET_PENDING_COMPATIBILITY",
+      "owner": "PR23-PR24-web-owner",
+      "source": "https://github.com/facebook/react/releases",
+      "notes": "Match react and react-dom exact patch."
+    },
+    {
+      "component": "Expo SDK",
+      "version": "58.0.23",
+      "status": "TARGET_PENDING_COMPATIBILITY",
+      "owner": "PR24-native-owner",
+      "source": "https://docs.expo.dev/versions/latest/",
+      "notes": "Use matching Expo SDK58 React Native/React versions, not arbitrary latest npm."
+    },
+    {
+      "component": "React Native",
+      "version": "0.88.1",
+      "status": "TARGET_PENDING_EXPO_PROOF",
+      "owner": "PR24-native-owner",
+      "source": "https://reactnative.dev/",
+      "notes": "Match Expo 58 peer matrix."
+    },
+    {
+      "component": "React on Expo mobile",
+      "version": "19.3.0",
+      "status": "TARGET_PENDING_EXPO_PROOF",
+      "owner": "PR24-native-owner",
+      "source": "https://docs.expo.dev/versions/latest/",
+      "notes": "Exact Expo 58 reference compatible React; web React 19.3.1 must be separately confirmed."
+    },
+    {
+      "component": "Keycloak",
+      "version": "26.8.2",
+      "status": "TARGET_NOT_DEPLOYED",
+      "owner": "P03-identity-owner",
+      "source": "https://github.com/keycloak/keycloak/releases",
+      "notes": "Apply urgent security fixes and verify realm migration before production."
+    },
+    {
+      "component": "Apache Kafka",
+      "version": "4.4.0",
+      "status": "TARGET_NOT_DEPLOYED",
+      "owner": "P07-events-owner",
+      "source": "https://kafka.apache.org/downloads/",
+      "notes": "Kafka major/client/connect compatibility + data-order test required."
+    },
+    {
+      "component": "Debezium",
+      "version": "3.7.1.Final",
+      "status": "TARGET_NOT_DEPLOYED",
+      "owner": "P07-events-owner",
+      "source": "https://debezium.io/releases/",
+      "notes": "Validate exact Kafka, PostgreSQL 18 and connector interoperability."
+    },
+    {
+      "component": "Redis",
+      "version": "8.10.3",
+      "status": "TARGET_NOT_DEPLOYED",
+      "owner": "runtime-cache-owner",
+      "source": "https://download.redis.io/releases/",
+      "notes": "Cache only; no authoritative patient state."
+    },
+    {
+      "component": "Kubernetes",
+      "version": "1.37.1",
+      "status": "TARGET_IF_OPERATIONS_JUSTIFY",
+      "owner": "SRE-owner",
+      "source": "https://kubernetes.io/releases/",
+      "notes": "Only per-cell where justified; verify provider's support and skew."
+    },
+    {
+      "component": "Prometheus",
+      "version": "3.16.0",
+      "status": "TARGET_NOT_DEPLOYED",
+      "owner": "observability-owner",
+      "source": "https://prometheus.io/download/",
+      "notes": "Exporter retention and privacy review."
+    },
+    {
+      "component": "OpenSearch",
+      "version": "3.9.0",
+      "status": "TARGET_NOT_DEPLOYED",
+      "owner": "search-owner",
+      "source": "https://opensearch.org/downloads/",
+      "notes": "Non-authoritative search only and redaction."
+    },
+    {
+      "component": "Grafana",
+      "version": "13.3.x",
+      "status": "MINOR_VERIFIED_PATCH_PENDING",
+      "owner": "observability-owner",
+      "source": "https://grafana.com/docs/grafana/latest/upgrade-guide/when-to-upgrade/",
+      "notes": "Find exact latest patch before pin; no guess."
+    },
+    {
+      "component": "Kong Gateway",
+      "version": null,
+      "status": "VERSION_NOT_VERIFIED",
+      "owner": "gateway-owner",
+      "source": "https://docs.konghq.com/",
+      "notes": "Choose exact maintained Community/Enterprise version before deploy; not invented."
+    },
+    {
+      "component": "Go query tier",
+      "version": null,
+      "status": "NOT_YET_APPROVED_FOR_DEPLOYMENT",
+      "owner": "query-performance-owner",
+      "source": "https://go.dev/",
+      "notes": "Only after profiling identifies need; no gratuitous service."
+    },
+    {
+      "component": "Python CDSS",
+      "version": null,
+      "status": "FUTURE_CLINICAL_GATE",
+      "owner": "CDSS-owner",
+      "source": "https://www.python.org/",
+      "notes": "Future gated clinical decision support, not replacement for Java transactional core."
+    }
+  ]
+}
