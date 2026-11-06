@@ -8,6 +8,10 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 import {postgresOidcReplayStore} from "../apps/web/lib/oidc-replay-postgres.mjs";
+import {createPostgresStaffSessionStore} from "../apps/web/lib/postgres-staff-session-store.mjs";
+import {createIdentitySecurityAuditWriter} from "../apps/web/lib/identity-security-audit.mjs";
+import {OIDC_REPLAY_CONSUME_SQL} from "../apps/web/lib/oidc-replay-postgres.mjs";
+import {SESSION_READ_SQL} from "../apps/web/lib/postgres-staff-session-store.mjs";
 import {createRequire} from "node:module";
 import {execFileSync} from "node:child_process";
 import {createRestrictedIdentityPools,IdentityProductionSqlError}
@@ -175,6 +179,51 @@ test("B0122 disposable PG16 OIDC replay is atomic across eight concurrent client
   assert.equal(consumes.filter(Boolean).length,1);
   assert.equal(await stores[0].consume(state,at),false);
  }finally{await other.close();}
+});
+
+
+test("B0148 real PG16 strictly validated replay keys, bounded reserve and atomic consume",async()=>{
+ const at=Date.now();
+ const store=postgresOidcReplayStore(pools.replaySql,{now:()=>at});
+ const key="synqoria:oidc:state:v1:"+"b".repeat(64);
+ assert.equal(await store.reserve(key,at+30000),true);
+ assert.equal(await store.reserve(key,at+30000),false);
+ assert.equal(await store.consume(key,at),true);
+ assert.equal(await store.consume(key,at),false);
+ await assert.rejects(()=>pools.replaySql.query(OIDC_REPLAY_CONSUME_SQL,["unscoped"]),
+  IdentityAttestedQueryError);
+});
+test("B0149 actual PG16 encrypted staff session is durable and owner-scoped",async()=>{
+ const now=Date.now();
+ const env={SYNQORIA_STAFF_TOKEN_WRAP_KEY:"a".repeat(64)};
+ const store=createPostgresStaffSessionStore(pools.sessionSql,{env,now:()=>now});
+ const ref=await store.issue({
+  actorId:"11111111-1111-4111-8111-111111111111",
+  tenantId:"22222222-2222-4222-8222-222222222222",
+  facilityId:"33333333-3333-4333-8333-333333333333",
+  shiftId:"44444444-4444-4444-8444-444444444444",
+  subject:"staff-user",role:"nurse",revision:1,
+  bearer:["header","payload","signature"].join("."),
+  capabilities:["patient:view"],issuedAt:now,expiresAt:now+120000
+ });
+ assert.match(ref,/^[A-Za-z0-9_-]{43}$/);
+ const record=await store.read(ref);
+ assert.equal(record.role,"nurse");
+ assert.equal(record.bearer,"header.payload.signature");
+ assert.deepEqual(record.capabilities,["patient:view"]);
+ assert.equal(record.expiresAt,now+120000);
+ assert.equal(await store.revoke(ref),true);
+ assert.equal(await store.read(ref),null);
+ assert.equal(await store.revoke(ref),false);
+});
+test("B0150 session digest and role isolation rejects forged direct reads on actual PG16",async()=>{
+ const bad=["a".repeat(63),"A".repeat(64),"ticket","".padStart(64,"x")];
+ for(const digest of bad)await assert.rejects(
+  ()=>pools.sessionSql.query(SESSION_READ_SQL,[digest]),IdentityAttestedQueryError);
+ await assert.rejects(()=>pools.replaySql.query(SESSION_READ_SQL,["a".repeat(64)]),
+  IdentityAttestedQueryError);
+ const good=await pools.sessionSql.query(SESSION_READ_SQL,["a".repeat(64)]);
+ assert.equal(good.rowCount,0);
 });
 
 test("P03 disposable PostgreSQL role/TLS suite closes all restricted pools",async()=>{await pools.close();});
