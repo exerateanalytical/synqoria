@@ -39,6 +39,6 @@ test("B0111 handoff identifies owned branch, remaining work and parent PR confli
  const handoff=readFileSync(new URL("../docs/program/SYNQORIA_MULTI_CHAT_HANDOFF.md",import.meta.url),"utf8");
  assert.match(handoff,/P03 runtime and actual database TLS continuation \(draft PR #32\)/);
  assert.match(handoff,/OPS001 PR #30/);
- assert.match(handoff,/13\/30 still UNIMPLEMENTED/);
+ assert.match(handoff,/12\/30 still UNIMPLEMENTED/);
  assert.match(handoff,/clinical release \*\*DENIED\*\*/);
 });
