@@ -1,0 +1,51 @@
+name: P03 runtime dependency and actual Next build candidate
+on:
+  push:
+    branches:
+      - work/p03-b0094-b0123-runtime-build-2026-11-06
+permissions:
+  contents: read
+jobs:
+  p03-runtime-next-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify web dependency and guarded startup source
+        run: node --test tests/p03_runtime_build_candidate.test.mjs
+      - name: Fetch independent reviewed lockfile candidate without changing its branch
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin refs/heads/work/reproducible-npm-lock-candidate-2026-11-05:refs/remotes/origin/p03-review-lock
+          git show refs/remotes/origin/p03-review-lock:package-lock.json > package-lock.json
+          echo "6fa90a4aa72db790d86b7782d45ced40389b5f8987da65138fae7548b5f9eb2b  package-lock.json" | sha256sum -c -
+      - name: Resolve exact pg dependency in temporary CI lockfile
+        run: |
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          node tools/p03_verify_runtime_lock.cjs
+      - name: Install complete pinned workspaces
+        run: npm ci --no-audit --no-fund
+      - name: Check actual Node pg Pool export and repeat lock integrity
+        run: |
+          node -e "if(typeof require('pg').Pool!=='function')process.exit(1)"
+          node tools/p03_verify_runtime_lock.cjs
+      - name: Compile UX core dependency
+        run: npm run build --workspace @synqoria/ux-core
+      - name: Compile real Next.js app with identity instrumentation
+        run: npm run build --workspace @synqoria/web
+      - name: Execute full P03 source and trusted startup regression
+        run: |
+          node --test tests/identity_production_sql.test.mjs tests/identity_restricted_transport.test.mjs tests/identity_production_startup.test.mjs tests/identity_production_integration.test.mjs tests/identity_next_instrumentation.test.mjs tests/identity_http_response_policy.test.mjs tests/p03_route_runtime_ledger.test.mjs
+      - name: Preserve generated lock candidate as unmerged CI evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p03-pg-runtime-lock-review-candidate
+          path: package-lock.json
+          if-no-files-found: warn
+      - name: Explicit release-denied assertion
+        if: always()
+        run: echo "Source/Next builds do not qualify live clinical authorization, patient screens, 40 modules or certification."
