@@ -124,5 +124,39 @@ test("B0105 privilege drift on LOGIN principal is detected on subsequent physica
   await assert.rejects(()=>pools.replaySql.query("SELECT 1"),IdentityAttestedQueryError);
  }finally{admin("ALTER ROLE synqoria_oidc_replay_login NOBYPASSRLS");}
  assert.equal((await pools.replaySql.query("SELECT 1 AS ok")).rows[0].ok,1);
- await pools.close();
 });
+
+test("B0117 PostgreSQL16 changing INHERIT or SET grant options cannot bypass identity admission",async()=>{
+ for(const mode of ["INHERIT TRUE, SET TRUE","INHERIT FALSE, SET FALSE"]){
+  admin("REVOKE synqoria_oidc_replay_runtime FROM synqoria_oidc_replay_login");
+  admin("GRANT synqoria_oidc_replay_runtime TO synqoria_oidc_replay_login WITH ADMIN FALSE, "+mode);
+  try{await assert.rejects(()=>pools.replaySql.query("SELECT 1"),IdentityAttestedQueryError);}
+  finally{
+   admin("REVOKE synqoria_oidc_replay_runtime FROM synqoria_oidc_replay_login");
+   admin("GRANT synqoria_oidc_replay_runtime TO synqoria_oidc_replay_login WITH ADMIN FALSE, INHERIT FALSE, SET TRUE");
+  }
+ }
+ assert.equal((await pools.replaySql.query("SELECT 1 AS ok")).rows[0].ok,1);
+});
+test("B0118 PostgreSQL16 replication, hidden runtime memberships, or role privileges deny",async()=>{
+ admin("ALTER ROLE synqoria_oidc_replay_login REPLICATION");
+ try{await assert.rejects(()=>pools.replaySql.query("SELECT 1"),IdentityAttestedQueryError);}
+ finally{admin("ALTER ROLE synqoria_oidc_replay_login NOREPLICATION");}
+ admin("GRANT pg_read_all_data TO synqoria_oidc_replay_runtime");
+ try{await assert.rejects(()=>pools.replaySql.query("SELECT 1"),IdentityAttestedQueryError);}
+ finally{admin("REVOKE pg_read_all_data FROM synqoria_oidc_replay_runtime");}
+ assert.equal((await pools.replaySql.query("SELECT 1 AS ok")).rows[0].ok,1);
+});
+test("B0120 fixed PostgreSQL transaction deadline interrupts long-running SQL",async()=>{
+ const started=Date.now();
+ await assert.rejects(()=>pools.replaySql.query("SELECT pg_sleep(6)"),IdentityAttestedQueryError);
+ assert.ok(Date.now()-started<9000,"long SQL must not finish successfully");
+ assert.equal((await pools.replaySql.query("SELECT 1 AS ok")).rows[0].ok,1);
+});
+test("B0121 live RLS policy predicate drift denies preflight until corrected",async()=>{
+ admin("ALTER POLICY oidc_replay_runtime_read_live ON synqoria_identity.oidc_replay_state USING (true)");
+ try{await assert.rejects(()=>verifyIdentitySchemaPolicies(pools.replaySql));}
+ finally{admin("ALTER POLICY oidc_replay_runtime_read_live ON synqoria_identity.oidc_replay_state USING (expires_at > clock_timestamp())");}
+ assert.equal((await verifyIdentitySchemaPolicies(pools.replaySql)).verified,true);
+});
+test("P03 disposable PostgreSQL role/TLS suite closes all restricted pools",async()=>{await pools.close();});
