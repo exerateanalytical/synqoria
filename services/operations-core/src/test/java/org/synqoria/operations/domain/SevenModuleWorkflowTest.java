@@ -102,7 +102,8 @@ final class SevenModuleWorkflowTest {
  @Test void publishingFacilityConfigRequiresApprovalAndIndependentImpactAssessment(){
   var item=OperationWorkflow.create("M29","CONFIGURATION",UUID.randomUUID(),
    actor(A,"m29:create"),Map.of("title","Emergency ward","schemaVersion","v3"));
-  assertThrows(WorkflowViolation.class,()->OperationWorkflow.advance(item,"REVIEW",1,
+  var initialConfig=item;
+  assertThrows(WorkflowViolation.class,()->OperationWorkflow.advance(initialConfig,"REVIEW",1,
    actor(A,"m29:review"),OperationWorkflow.TrustedEvidence.none(),Map.of()));
   item=OperationWorkflow.advance(item,"REVIEW",1,actor(B,"m29:review"),
    OperationWorkflow.TrustedEvidence.none(),Map.of()).item();
