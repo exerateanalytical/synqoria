@@ -48,4 +48,15 @@ public final class OperationsApi {
    throw new WorkflowViolation("invalid_transition");
   return store.transition(admission.requireAuthoritativeGrant(jwt),module,itemId,request);
  }
+ @GetMapping("/M22/items/{itemId}/balances")
+ public List<OperationsStore.StockBalanceView> balances(@PathVariable UUID itemId,
+   @AuthenticationPrincipal Jwt jwt){
+  return store.balances(admission.requireAuthoritativeGrant(jwt),itemId);
+ }
+ @PostMapping("/M22/items/{itemId}/movements")
+ public OperationsStore.StockBalanceView moveStock(@PathVariable UUID itemId,
+   @RequestBody OperationsStore.StockMovementRequest request,
+   @AuthenticationPrincipal Jwt jwt){
+  return store.moveStock(admission.requireAuthoritativeGrant(jwt),itemId,request);
+ }
 }

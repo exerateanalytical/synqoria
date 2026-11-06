@@ -199,4 +199,115 @@ public final class OperationsStore {
    "SELECT * FROM synqoria_operations.items WHERE cell_id=? AND facility_id=? AND module_id=? " +
    "ORDER BY updated_at DESC,id LIMIT ?",actor.cell(),actor.facility(),module,limit));
  }
+
+ /** The stock balances table is authoritative. Item.fields.quantity is only a request hint. */
+ public record StockMovementRequest(String movement,String lot,String bin,long quantity,
+                String referenceCode,long expectedVersion,UUID commandId){}
+ public record StockBalanceView(String lot,String bin,long onHand,long reserved,long available,long version){}
+ private static String code(String value){
+  if(value==null||!value.matches("[A-Za-z0-9_.:/-]{1,160}"))
+   throw new WorkflowViolation("invalid_reference");
+  return value;
+ }
+ private StockBalanceView loadBalance(UUID item,String lot,String bin,boolean lock){
+  List<StockBalanceView> values=jdbc.query(
+   "SELECT lot_code,bin_code,on_hand,reserved,version FROM synqoria_operations.stock_balances " +
+   "WHERE item_id=? AND lot_code=? AND bin_code=?"+(lock?" FOR UPDATE":""),
+   (rs,i)->new StockBalanceView(rs.getString("lot_code"),rs.getString("bin_code"),
+     rs.getLong("on_hand"),rs.getLong("reserved"),rs.getLong("on_hand")-rs.getLong("reserved"),
+     rs.getLong("version")),item,lot,bin);
+  if(values.size()!=1)throw new WorkflowViolation("stock_balance_not_found");
+  return values.getFirst();
+ }
+ public List<StockBalanceView> balances(OperationWorkflow.Actor actor,UUID stockItem){
+  actor.require("m22:read");
+  return scoped(actor,()->{
+   var item=getLocked("M22",stockItem,false);
+   if(!"STOCK_ITEM".equals(item.recordType()))throw new WorkflowViolation("record_type_denied");
+   return jdbc.query(
+    "SELECT lot_code,bin_code,on_hand,reserved,version FROM synqoria_operations.stock_balances " +
+    "WHERE cell_id=? AND facility_id=? AND item_id=? ORDER BY lot_code,bin_code LIMIT 100",
+    (rs,i)->new StockBalanceView(rs.getString("lot_code"),rs.getString("bin_code"),
+     rs.getLong("on_hand"),rs.getLong("reserved"),rs.getLong("on_hand")-rs.getLong("reserved"),
+     rs.getLong("version")),actor.cell(),actor.facility(),stockItem);
+  });
+ }
+ private boolean receiptProof(OperationWorkflow.Actor actor,OperationWorkflow.Item item,
+                         StockLedger.Movement movement,String ref){
+  String kind=switch(movement){
+   case RECEIVE -> "stock_receipt";
+   case RETURN -> "stock_return";
+   default -> "";
+  };
+  if(kind.isEmpty())return true;
+  Long count=jdbc.queryForObject("SELECT count(*) FROM synqoria_operations.external_evidence " +
+   "WHERE cell_id=? AND facility_id=? AND item_id=? AND for_action=? AND expected_version=? " +
+   "AND evidence_kind=? AND external_ref=? AND approver_id<>? AND revoked_at IS NULL " +
+   "AND valid_from<=clock_timestamp() AND valid_until>clock_timestamp()",
+   Long.class,actor.cell(),actor.facility(),item.id(),movement.name()+"_STOCK",
+   item.version(),kind,ref,item.createdBy());
+  return count!=null&&count>0;
+ }
+ public StockBalanceView moveStock(OperationWorkflow.Actor actor,UUID stockItem,StockMovementRequest req){
+  Objects.requireNonNull(req);
+  if(req.commandId()==null||req.expectedVersion()<1||req.quantity()<1||req.quantity()>1_000_000)
+   throw new WorkflowViolation("invalid_stock_movement");
+  String lot=code(req.lot()),bin=code(req.bin()),reference=code(req.referenceCode());
+  final StockLedger.Movement movement;
+  try{movement=StockLedger.Movement.valueOf(Objects.requireNonNull(req.movement()));}
+  catch(IllegalArgumentException | NullPointerException e){throw new WorkflowViolation("movement_not_allowed");}
+  if(movement==StockLedger.Movement.ADJUST)
+   throw new WorkflowViolation("signed_adjustment_review_required");
+  String permission=switch(movement){
+   case RECEIVE -> "m22:receive"; case RESERVE -> "m22:reserve"; case ISSUE -> "m22:issue";
+   case RELEASE -> "m22:release"; case RETURN -> "m22:return";
+   default -> throw new WorkflowViolation("movement_not_allowed");
+  };
+  actor.require(permission);
+  String fp=fingerprint("STOCK","M22",stockItem,req.expectedVersion(),movement.name(),
+    Map.of("lot",lot,"bin",bin,"quantity",req.quantity(),"referenceCode",reference));
+  return scoped(actor,()->{
+   UUID replay=beginCommand(actor,req.commandId(),fp);
+   if(replay!=null){
+    getVersionedReplay("M22",replay,req.expectedVersion()+1);
+    return loadBalance(stockItem,lot,bin,false);
+   }
+   OperationWorkflow.Item item=getLocked("M22",stockItem,true);
+   if(!"STOCK_ITEM".equals(item.recordType()))throw new WorkflowViolation("record_type_denied");
+   if(item.version()!=req.expectedVersion())throw new WorkflowViolation("stale_version");
+   if(movement==StockLedger.Movement.RESERVE||movement==StockLedger.Movement.ISSUE){
+    if(!Set.of("AVAILABLE","RESERVED").contains(item.status()))
+     throw new WorkflowViolation("stock_not_released");
+   }
+   boolean trustedReceipt=receiptProof(actor,item,StockLedger.Movement.RECEIVE,reference);
+   boolean trustedReturn=receiptProof(actor,item,StockLedger.Movement.RETURN,reference);
+   jdbc.update("INSERT INTO synqoria_operations.stock_balances " +
+    "(cell_id,facility_id,item_id,lot_code,bin_code,on_hand,reserved,version) " +
+    "VALUES(?,?,?,?,?,0,0,1) ON CONFLICT (cell_id,facility_id,item_id,lot_code,bin_code) DO NOTHING",
+    actor.cell(),actor.facility(),stockItem,lot,bin);
+   var current=loadBalance(stockItem,lot,bin,true);
+   var b=StockLedger.apply(new StockLedger.Balance(current.onHand(),current.reserved(),
+    current.version()),movement,req.quantity(),trustedReceipt,trustedReturn,false);
+   int affected=jdbc.update(
+    "UPDATE synqoria_operations.stock_balances SET on_hand=?,reserved=?,version=? " +
+    "WHERE cell_id=? AND facility_id=? AND item_id=? AND lot_code=? AND bin_code=? AND version=?",
+    b.onHand(),b.reserved(),b.version(),actor.cell(),actor.facility(),stockItem,lot,bin,current.version());
+   if(affected!=1)throw new WorkflowViolation("stale_stock_balance");
+   jdbc.update("INSERT INTO synqoria_operations.stock_movements" +
+    "(movement_id,cell_id,facility_id,item_id,lot_code,bin_code,movement,quantity,actor_id," +
+    "command_id,reference_code) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+    UUID.randomUUID(),actor.cell(),actor.facility(),stockItem,lot,bin,movement.name(),req.quantity(),
+    actor.actor(),req.commandId(),reference);
+   if(jdbc.update("UPDATE synqoria_operations.items SET version=?,last_actor=?,"+
+     "updated_at=clock_timestamp() WHERE id=? AND module_id='M22' AND version=?",
+     item.version()+1,actor.actor(),stockItem,item.version())!=1)
+     throw new WorkflowViolation("stale_version");
+   var next=new OperationWorkflow.Item(item.id(),item.cell(),item.facility(),item.module(),
+    item.recordType(),item.status(),item.version()+1,item.createdBy(),actor.actor(),item.fields());
+   recordChange(actor,req.commandId(),next,"STOCK_"+movement.name(),item.status());
+   completeCommand(actor,req.commandId(),next);
+   return new StockBalanceView(lot,bin,b.onHand(),b.reserved(),b.available(),b.version());
+  });
+ }
+
 }
