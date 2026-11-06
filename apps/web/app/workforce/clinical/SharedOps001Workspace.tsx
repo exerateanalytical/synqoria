@@ -210,7 +210,15 @@ function PatientLookup({locale}:{locale:Locale}){
  </div>;
 }
 function SessionLock({locale}:{locale:Locale}){
- const [state,setState]=useState<"locked"|"signingout"|"revoked"|"uncertain">("locked");
+ const [state,setState]=useState<"signingout"|"revoked"|"uncertain">("signingout");
+ const once=useRef(false);
+ useEffect(()=>{
+  // Opening the lock screen requests server revocation immediately; merely
+  // masking this React page must never be mistaken for globally locking tabs.
+  if(once.current)return;
+  once.current=true;
+  void signout();
+ },[]);
  async function signout(){
   setState("signingout");
   try{
@@ -224,8 +232,8 @@ function SessionLock({locale}:{locale:Locale}){
   <p>{state==="revoked"?t(locale,"Server revocation confirmed. Sign in again to resume.","Révocation serveur confirmée. Reconnectez-vous."):
    state==="uncertain"?t(locale,"Server revocation could not be confirmed. Keep this workstation locked and contact your administrator.",
     "Révocation serveur non confirmée. Gardez le poste verrouillé et contactez l’administrateur."):
-   t(locale,"No protected clinical content is shown on this page. Reauthentication is managed by the hospital IdP.",
-    "Aucune donnée clinique n’est affichée. La réauthentification est gérée par l’identité hospitalière.")}</p>
+   t(locale,"Requesting server revocation. This page conceals its own view; other open tabs are not secure until revocation is confirmed.",
+    "Révocation demandée. Cette page masque son contenu; les autres onglets ne sont sécurisés qu’après confirmation serveur.")}</p>
   <div className="ops001-actions"><button type="button" className="ops001-primary" onClick={()=>void signout()} disabled={state==="signingout"||state==="revoked"}>
    <LogOut size={18}/>{t(locale,"Revoke staff session","Révoquer la session")}</button>
    <Link href="/workforce/clinical/G-S01">{t(locale,"Return to verified sign-in","Retour à la connexion vérifiée")}<ArrowRight size={16}/></Link>
