@@ -1,0 +1,99 @@
+{
+  "schema": "synqoria.p03.runtime-routes.v1",
+  "stage": "ENGINEERING_INCOMPLETE",
+  "branch": "work/p03-b0064-b0093-identity-route-engineering-2026-11-06",
+  "base": "36e0186d0305e5432f9baba3ba30ea3504024b6c",
+  "cycle": {
+    "target": 30,
+    "plannedIds": "P03-B0064..P03-B0093",
+    "verifiedCount": 5,
+    "remaining": 25,
+    "cycleComplete": false
+  },
+  "sourceEvidence": [
+    {
+      "id": "P03-B0064",
+      "description": "Verified runtime-only staff auth dispatcher, fail closed until trusted bootstrap",
+      "source": "apps/web/lib/verified-staff-auth-route.mjs",
+      "test": "tests/verified_staff_auth_route.test.mjs",
+      "runId": 42138437846,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42138437846",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0065",
+      "description": "Real Next.js server-side OIDC authorization/PKCE begin route",
+      "source": "apps/web/app/api/auth/oidc/start/route.ts",
+      "test": "tests/oidc_start_next_route.test.mjs",
+      "runId": 42138813728,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42138813728",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0066",
+      "description": "Real Next.js server-side one-use audited callback route",
+      "source": "apps/web/app/api/auth/oidc/callback/route.ts",
+      "test": "tests/oidc_callback_next_route.test.mjs",
+      "runId": 42138813728,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42138813728",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0067",
+      "description": "Real Next.js server-side origin-checked audited POST logout route",
+      "source": "apps/web/app/api/auth/logout/route.ts",
+      "test": "tests/oidc_logout_next_route.test.mjs",
+      "runId": 42138813728,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42138813728",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    },
+    {
+      "id": "P03-B0068",
+      "description": "One-shot restricted DB/IdP verified identity bootstrap, no browser-configured identity",
+      "source": "apps/web/lib/staff-route-bootstrap.mjs",
+      "test": "tests/staff_route_bootstrap.test.mjs",
+      "integrationTest": "tests/verified_clinical_runtime_binding.test.mjs",
+      "runId": 42139089029,
+      "verifiedBy": {
+        "kind": "github_actions",
+        "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42139089029",
+        "conclusion": "success"
+      },
+      "clinicalAccepted": false,
+      "productionDeployed": false
+    }
+  ],
+  "nextCandidate": "P03-B0069",
+  "blockers": [
+    "Real independent TLS PostgreSQL client factory and credential provisioning not connected to Next deployment startup",
+    "Production IdP/workforce/patient-disclosure backend not deployed",
+    "Broad app npm lockfile/build CI remains separate and failed",
+    "All clinical acceptance and certification deferred"
+  ],
+  "safety": {
+    "operationalScreenPackagesAccepted": 0,
+    "screenCount": 261,
+    "domainLockedPending": 240,
+    "clinicalRelease": "DENIED"
+  }
+}
