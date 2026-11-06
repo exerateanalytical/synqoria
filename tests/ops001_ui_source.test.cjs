@@ -27,6 +27,10 @@ test("OPS001 eight exact canonical IDs mount distinct source-backed screen flows
  assert.match(src,/SessionLock/);
  assert.ok(!src.includes("localStorage"));
  assert.ok(!src.includes("sessionStorage"));
+ assert.ok(src.includes('ctrl.current?.abort();setId('));
+ assert.ok(src.includes('if(scope!=="verified")erase()'));
+ assert.ok(src.includes('r.headers.get("cache-control")'));
+ assert.ok(src.includes('r.headers.get("content-type")'));
 });
 test("OPS001 auth, lookup and logout Next routes are source wired to the same verified provider",()=>{
  const expected=[
