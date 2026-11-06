@@ -2,7 +2,7 @@ name: SYNQORIA seven-module real JDBC atomicity integration
 on:
   push:
     branches:
-      - work/operations-seven-module-service-2026-11-06
+      - work/latest-stable-stack-governance-2026-11-06
 permissions:
   contents: read
 jobs:
@@ -14,13 +14,13 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '21'
+          java-version: '25'
           cache: maven
           cache-dependency-path: services/operations-core/pom.xml
-      - name: Start disposable PostgreSQL 16 on loopback
+      - name: Start disposable PostgreSQL 18.6 on loopback
         run: |
           set -euo pipefail
-          docker run -d --name synqoria-ops-jdbc-pg -e POSTGRES_PASSWORD=ops-ci-admin -e POSTGRES_DB=ops_ci -p 127.0.0.1:5432:5432 postgres:16
+          docker run -d --name synqoria-ops-jdbc-pg -e POSTGRES_PASSWORD=ops-ci-admin -e POSTGRES_DB=ops_ci -p 127.0.0.1:5432:5432 postgres:18.6
           for i in $(seq 1 45); do
             docker exec synqoria-ops-jdbc-pg psql -U postgres -d ops_ci -Atc 'SELECT 1' 2>/dev/null | grep -qx 1 && break
             sleep 1
@@ -37,4 +37,4 @@ jobs:
         run: mvn -B -ntp -Dtest=OperationsStorePgIntegrationTest test
       - name: Explicitly deny deployment implication
         if: always()
-        run: echo "Disposable PG16-JDBC synthetic verification; clinical release DENIED."
+        run: echo "Disposable PG18.6-JDBC synthetic verification; clinical release DENIED."

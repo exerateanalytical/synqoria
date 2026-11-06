@@ -1,23 +1,27 @@
-name: SYNQORIA seven operations modules Java21 domain
+name: SYNQORIA operations Java25 LTS and Java27 compatibility
 on:
   push:
     branches:
-      - work/operations-seven-module-service-2026-11-06
+      - work/latest-stable-stack-governance-2026-11-06
 permissions:
   contents: read
 jobs:
   compile-and-domain-tests:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        java: ['25', '27']
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '21'
+          java-version: ${{ matrix.java }}
           cache: maven
           cache-dependency-path: services/operations-core/pom.xml
-      - name: Compile Java Spring Boot 4 operations module and run source tests
+      - name: Compile Spring Boot 4 on current LTS or latest stable JDK and run source tests
         working-directory: services/operations-core
         run: mvn -B -ntp -DskipTests=false test
       - name: Show restricted release scope

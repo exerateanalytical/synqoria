@@ -1,8 +1,8 @@
-name: SYNQORIA seven operations real PostgreSQL16 RLS migration
+name: SYNQORIA seven operations real PostgreSQL18.6 RLS migration
 on:
   push:
     branches:
-      - work/operations-seven-module-service-2026-11-06
+      - work/latest-stable-stack-governance-2026-11-06
 permissions:
   contents: read
 jobs:
@@ -11,15 +11,15 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-      - name: Start disposable isolated PG16 (not hospital production)
+      - name: Start disposable isolated PG18.6 (not hospital production)
         run: |
           set -euo pipefail
-          docker run -d --name synqoria-ops-pg -e POSTGRES_PASSWORD=ci-only -e POSTGRES_DB=ops_ci postgres:16
+          docker run -d --name synqoria-ops-pg -e POSTGRES_PASSWORD=ci-only -e POSTGRES_DB=ops_ci postgres:18.6
           for i in $(seq 1 45); do
             docker exec synqoria-ops-pg psql -U postgres -d ops_ci -Atc 'SELECT 1' 2>/dev/null | grep -qx 1 && break
             sleep 1
           done
-          docker exec synqoria-ops-pg psql -U postgres -d ops_ci -Atc 'SHOW server_version_num' | grep -E '^16'
+          docker exec synqoria-ops-pg psql -U postgres -d ops_ci -Atc 'SHOW server_version_num' | grep -E '^18'
       - name: Provision restricted non-owner runtime in disposable database
         run: |
           docker exec synqoria-ops-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 -c 'CREATE ROLE synqoria_operations_runtime LOGIN NOINHERIT NOSUPERUSER NOCREATEROLE NOCREATEDB NOREPLICATION NOBYPASSRLS'
@@ -89,4 +89,4 @@ jobs:
           fi
       - name: Never imply deployed hospital system or operational acceptance
         if: always()
-        run: echo "PG16 synthetic CI only; clinical release DENIED, seven modules not clinically accepted."
+        run: echo "PG18.6 synthetic CI only; clinical release DENIED, seven modules not clinically accepted."

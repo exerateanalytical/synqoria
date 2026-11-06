@@ -2,7 +2,7 @@ name: SYNQORIA 35 operations screen contract previews
 on:
   push:
     branches:
-      - work/operations-seven-module-service-2026-11-06
+      - work/latest-stable-stack-governance-2026-11-06
 permissions:
   contents: read
 jobs:
@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '26'
       - name: Match 35 screen contracts against canonical source and keep write actions denied
         run: node --test tests/operations_screen_catalog.test.mjs tests/operations_delivery_ledger.test.mjs
       - name: No clinical acceptance claim
