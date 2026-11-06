@@ -15,7 +15,13 @@ SELECT current_user AS role_name,
  current_setting('row_security') AS row_security,
  r.rolsuper AS superuser,r.rolbypassrls AS bypass_rls,
  r.rolcreaterole AS create_role,r.rolcreatedb AS create_db,
- ssl.ssl AS tls_active,ssl.version AS tls_version,ssl.cipher AS tls_cipher
+ ssl.ssl AS tls_active,ssl.version AS tls_version,ssl.cipher AS tls_cipher,
+ EXISTS(
+ SELECT 1 FROM pg_auth_members m JOIN pg_roles other ON other.oid=m.roleid
+ WHERE m.member=r.oid AND other.rolname IN (
+ 'synqoria_oidc_replay_runtime','synqoria_staff_session_runtime',
+ 'synqoria_identity_audit_writer') AND other.rolname<>r.rolname
+ ) AS cross_role_member
 FROM pg_roles r
 JOIN pg_stat_ssl ssl ON ssl.pid=pg_backend_pid()
 WHERE r.rolname=current_user`;
@@ -25,9 +31,9 @@ function attest(result,expected){
  if(!result||result.rowCount!==1||!Array.isArray(result.rows)||result.rows.length!==1)deny();
  const row=result.rows[0];
  if(!row||Object.keys(row).sort().join(",")!==
-   "bypass_rls,create_db,create_role,role_name,row_security,superuser,tls_active,tls_cipher,tls_version"||
+   "bypass_rls,create_db,create_role,cross_role_member,role_name,row_security,superuser,tls_active,tls_cipher,tls_version"||
    row.role_name!==expected||row.row_security!=="on"||
-   row.superuser!==false||row.bypass_rls!==false||
+   row.superuser!==false||row.bypass_rls!==false||row.cross_role_member!==false||
    row.create_role!==false||row.create_db!==false||
    row.tls_active!==true||!["TLSv1.2","TLSv1.3"].includes(row.tls_version)||
    typeof row.tls_cipher!=="string"||!CIPHER.test(row.tls_cipher)||

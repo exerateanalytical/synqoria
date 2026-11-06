@@ -15,6 +15,7 @@ test("B0069 three independently restricted TLS pools use CA verification, never 
  class Pool{
   constructor(config){options.push(config);instances.push(this);this.ended=0;}
   async query(){return {rowCount:0,rows:[]};}
+  async connect(){return {query:async()=>({rowCount:0,rows:[]}),release(){}};}
   async end(){this.ended++;}
  }
  const pools=await createRestrictedIdentityPools({env:env(),Pool});
@@ -51,6 +52,7 @@ test("B0069 partial connection construction errors close already created pools",
  class Pool{
   constructor(){created++;if(created===2)throw Error("pool error");}
   async query(){return {};}
+  async connect(){return {query:async()=>({rowCount:0,rows:[]}),release(){}};}
   async end(){ended++;}
  }
  await assert.rejects(()=>createRestrictedIdentityPools({env:env(),Pool}),IdentityProductionSqlError);
