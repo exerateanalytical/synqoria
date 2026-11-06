@@ -21,35 +21,31 @@ public final class OperationsApi {
  public record TransitionItem(String action,long expectedVersion,Map<String,Object> fields,UUID commandId){}
  @GetMapping("/catalog")
  public Collection<ModuleCatalog.Module> catalog(@AuthenticationPrincipal Jwt jwt){
-  Objects.requireNonNull(OperationsActor.fromVerifiedJwt(jwt));
+  admission.requireAuthoritativeGrant(jwt);
   return ModuleCatalog.all().values();
  }
  @GetMapping("/{module}/items")
  public List<OperationWorkflow.Item> list(@PathVariable String module,@RequestParam(defaultValue="50")int limit,
    @AuthenticationPrincipal Jwt jwt){
-  admission.requireAuthoritativeGrant(jwt);
-  return store.list(OperationsActor.fromVerifiedJwt(jwt),module,limit);
+  return store.list(admission.requireAuthoritativeGrant(jwt),module,limit);
  }
  @GetMapping("/{module}/items/{itemId}")
  public OperationWorkflow.Item one(@PathVariable String module,@PathVariable UUID itemId,
   @AuthenticationPrincipal Jwt jwt){
-  admission.requireAuthoritativeGrant(jwt);
-  return store.one(OperationsActor.fromVerifiedJwt(jwt),module,itemId);
+  return store.one(admission.requireAuthoritativeGrant(jwt),module,itemId);
  }
  @PostMapping("/{module}/items")
  @ResponseStatus(HttpStatus.CREATED)
  public OperationWorkflow.Item create(@PathVariable String module,@RequestBody NewItem request,
   @AuthenticationPrincipal Jwt jwt){
   if(request==null||request.commandId()==null)throw new WorkflowViolation("idempotency_key_required");
-  admission.requireAuthoritativeGrant(jwt);
-  return store.create(OperationsActor.fromVerifiedJwt(jwt),module,request);
+  return store.create(admission.requireAuthoritativeGrant(jwt),module,request);
  }
  @PostMapping("/{module}/items/{itemId}/transitions")
  public OperationWorkflow.Item transition(@PathVariable String module,@PathVariable UUID itemId,
   @RequestBody TransitionItem request,@AuthenticationPrincipal Jwt jwt){
   if(request==null||request.commandId()==null||request.expectedVersion()<1)
    throw new WorkflowViolation("invalid_transition");
-  admission.requireAuthoritativeGrant(jwt);
-  return store.transition(OperationsActor.fromVerifiedJwt(jwt),module,itemId,request);
+  return store.transition(admission.requireAuthoritativeGrant(jwt),module,itemId,request);
  }
 }
