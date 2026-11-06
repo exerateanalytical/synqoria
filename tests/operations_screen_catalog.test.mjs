@@ -27,6 +27,21 @@ test("seven admin module UI preview contracts preserve all 35 canonical screen I
 test("operational UI preview is responsive and cannot execute unverified privileged actions",()=>{
  assert.ok(existsSync(new URL("apps/web/app/workforce/operations/page.tsx",root)));
  assert.ok(existsSync(new URL("apps/web/app/workforce/operations/[module]/[screen]/page.tsx",root)));
+ const flows=JSON.parse(read("apps/web/lib/operations-screen-flows.json"));
+ assert.equal(Object.keys(flows.flows).length,35);
+ for(const module of c.modules){
+  for(const screen of module.screens){
+   const flow=flows.flows[screen.id];
+   assert.ok(flow,screen.id);
+   assert.equal(flow.module,module.id);
+   assert.ok(flow.fields.length>=1);
+   assert.ok(flow.recordTypes.length>=1);
+   assert.ok(flow.safety.length>=5);
+  }
+ }
+ const workbench=read("apps/web/components/OperationsWorkbench.tsx");
+ for(const token of ["viewItems","allowedActions","allowedMovements","displayedFields"])
+  assert.match(workbench,new RegExp(token));
  const details=read("apps/web/app/workforce/operations/[module]/[screen]/page.tsx");
  assert.match(details,/OperationsWorkbench/);
  const ui=read("apps/web/components/OperationsWorkbench.tsx");

@@ -80,3 +80,5 @@
 @media(max-width:600px){.opsFields,.opsDetails{grid-template-columns:minmax(0,1fr)}
  .opsPanel{padding:16px}.opsToolbar{width:100%}.opsToolbar button{flex:1}
  .opsAction{max-width:100%}.opsActions{display:grid;grid-template-columns:minmax(0,1fr)}}
+
+.opsSingle{display:grid;grid-template-columns:minmax(0,1fr);max-width:900px;gap:16px;margin:22px 0}

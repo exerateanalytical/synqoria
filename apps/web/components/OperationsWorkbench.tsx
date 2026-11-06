@@ -2,6 +2,7 @@
 import {useCallback,useEffect,useMemo,useState} from "react";
 import Link from "next/link";
 import styles from "../app/workforce/operations/operations.module.css";
+import screenFlows from "../lib/operations-screen-flows.json";
 
 type Item={id:string;cell:string;facility:string;module:string;recordType:string;status:string;version:number;
  createdBy:string;lastActor:string;fields:Record<string,string|number>};
@@ -109,14 +110,22 @@ function friendly(error:unknown){
 type Props={moduleId:string;screenId:string;name:string;nameFr:string;action:string;inputGroups:string};
 export function OperationsWorkbench({moduleId,screenId,name,nameFr,action,inputGroups}:Props){
  const definition=SHAPES[moduleId];
+ const flow=screenFlows.flows[screenId as keyof typeof screenFlows.flows];
+ const allowedTypes=flow.recordTypes;
+ const allowedActions=flow.actions;
+ const allowedMovements=flow.movements;
+ const displayedFields=new Set<string>(flow.fields);
+ const canCreate=new Set(["M21-S01","M21-S02","M21-S06","M22-S01","M22-S02","M22-S03",
+  "M23-S01","M23-S03","M25-S01","M25-S02","M29-S02","M31-S02","M31-S04",
+  "M37-S01","M37-S03"]).has(screenId);
  const [moduleSpec,setSpec]=useState<Module|null>(null);
  const [items,setItems]=useState<Item[]>([]);
  const [selected,setSelected]=useState<Item|null>(null);
  const [balances,setBalances]=useState<Balance[]>([]);
- const [recordType,setRecordType]=useState(definition.recordTypes[0]);
+ const [recordType,setRecordType]=useState(allowedTypes[0]);
  const [newValues,setNewValues]=useState<Record<string,string>>({});
  const [changeValues,setChangeValues]=useState<Record<string,string>>({});
- const [movement,setMovement]=useState("RECEIVE");
+ const [movement,setMovement]=useState(allowedMovements[0]||"RECEIVE");
  const [stockValues,setStockValues]=useState<Record<string,string>>({});
  const [busy,setBusy]=useState(false);
  const [state,setState]=useState<"loading"|"authorized"|"signin"|"unavailable">("loading");
@@ -144,9 +153,12 @@ export function OperationsWorkbench({moduleId,screenId,name,nameFr,action,inputG
    });
   return ()=>{current=false;};
  },[moduleId,moduleRoute]);
- const actions=useMemo(()=>moduleSpec?.steps.filter(x=>x.from===selected?.status)||[],
-  [moduleSpec,selected?.status]);
- const fields=definition.fields;
+ const actions=useMemo(()=>moduleSpec?.steps.filter(x=>
+  x.from===selected?.status&&allowedActions.includes(x.action))||[],
+  [moduleSpec,selected?.status,allowedActions]);
+ const fields=definition.fields.filter(f=>displayedFields.has(f.key));
+ const viewItems=items.filter(item=>allowedTypes.includes(item.recordType));
+ const fieldsForScreen=fields;
  const setField=(key:string,value:string,change=false)=>{
   const setter=change?setChangeValues:setNewValues;
   setter(old=>({...old,[key]:value}));
@@ -185,6 +197,7 @@ export function OperationsWorkbench({moduleId,screenId,name,nameFr,action,inputG
     <h2 id="workbench-heading">{name}</h2>
     <p lang="fr" className={styles.fr}>{nameFr}</p>
     <p className={styles.caption}>Canonical action: {action}. Required information: {inputGroups}.</p>
+    <p className={styles.caption}>Workflow gate: {flow.safety.replaceAll("_"," ")}. Server-side role and independent evidence controls apply.</p>
    </div>
    <div className={styles.opsToolbar}>
     <button type="button" onClick={()=>refresh().catch(err=>{
@@ -213,12 +226,12 @@ export function OperationsWorkbench({moduleId,screenId,name,nameFr,action,inputG
     and an approved staff shift. Operations remain blocked if any requirement is missing.</p>
   </div>}
   {state==="authorized"&&<>
-   <div className={styles.opsColumns}>
+   <div className={canCreate?styles.opsColumns:styles.opsSingle}>
     <section className={styles.opsPanel} aria-label="Records">
      <h3>Records · Dossiers</h3>
-     <p className={styles.caption}>{items.length} scoped records (up to 50 shown)</p>
-     {items.length===0?<p>No authorized records are available. Start with a new record.</p>:
-      <ul className={styles.opsRecords}>{items.map(item=><li key={item.id}>
+     <p className={styles.caption}>{viewItems.length} scoped records of the screen-specific record types (up to 50 shown)</p>
+     {viewItems.length===0?<p>No authorized records are available for this workstation.</p>:
+      <ul className={styles.opsRecords}>{viewItems.map(item=><li key={item.id}>
        <button type="button" onClick={()=>open(item)} className={styles.opsRecord}
         aria-pressed={selected?.id===item.id}>
         <strong>{String(item.fields.title||item.recordType)}</strong>
@@ -226,12 +239,12 @@ export function OperationsWorkbench({moduleId,screenId,name,nameFr,action,inputG
        </button>
       </li>)}</ul>}
     </section>
-    <section className={styles.opsPanel} aria-labelledby="create-record-heading">
+    {canCreate&&<section className={styles.opsPanel} aria-labelledby="create-record-heading">
      <h3 id="create-record-heading">Create authorized record</h3>
      <p className={styles.caption}>Complete the relevant fields. Approvals and external evidence cannot be self-attested.</p>
      <label className={styles.opsField}>Record type
       <select value={recordType} onChange={e=>setRecordType(e.target.value)}>
-       {definition.recordTypes.map(t=><option key={t} value={t}>{t}</option>)}
+       {allowedTypes.map(t=><option key={t} value={t}>{t}</option>)}
       </select>
      </label>
      <form onSubmit={e=>{e.preventDefault();execute(async()=>{
@@ -248,7 +261,7 @@ export function OperationsWorkbench({moduleId,screenId,name,nameFr,action,inputG
        {busy?"Processing…":"Create record"}
       </button>
      </form>
-    </section>
+    </section>}
    </div>
    {selected&&<section className={styles.opsPanel} aria-labelledby="record-detail-heading">
     <div className={styles.opsHeader}>
@@ -270,7 +283,7 @@ export function OperationsWorkbench({moduleId,screenId,name,nameFr,action,inputG
      <div className={styles.opsActions}>
       {actions.map(step=><div className={styles.opsAction} key={step.action}>
        <button type="button" disabled={busy} onClick={()=>execute(async()=>{
-        const fields=readForm(changeValues,definition.fields);
+        const fields=readForm(changeValues,fieldsForScreen);
         const updated=await call<Item>(moduleRoute+"/"+selected.id+"/transitions",{
          method:"POST",body:{action:step.action,expectedVersion:selected.version,
           commandId:crypto.randomUUID(),fields}});
@@ -280,7 +293,7 @@ export function OperationsWorkbench({moduleId,screenId,name,nameFr,action,inputG
         {step.evidence?" · verified "+step.evidence:""}</small>
       </div>)}
      </div>}
-    {moduleId==="M22"&&selected.recordType==="STOCK_ITEM"&&
+    {moduleId==="M22"&&selected.recordType==="STOCK_ITEM"&&allowedMovements.length>0&&
      <section className={styles.opsStock} aria-label="Inventory movements">
       <h4>Lot/bin stock ledger</h4>
       {balances.length===0?<p>No stock balance recorded yet.</p>:
@@ -299,7 +312,7 @@ export function OperationsWorkbench({moduleId,screenId,name,nameFr,action,inputG
        <div className={styles.opsFields}>
         <label className={styles.opsField}>Movement
          <select value={movement} onChange={e=>setMovement(e.target.value)}>
-          {["RECEIVE","RESERVE","ISSUE","RELEASE","RETURN"].map(v=><option key={v}>{v}</option>)}
+          {allowedMovements.map(v=><option key={v}>{v}</option>)}
          </select>
         </label>
         {["lot","bin","quantity","referenceCode"].map(k=><label className={styles.opsField} key={k}>
