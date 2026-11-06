@@ -32,11 +32,15 @@ export const IDENTITY_CONNECTION_ATTEST_SQL=`
 SELECT current_user AS role_name,
  session_user AS login_name,
  current_setting('row_security') AS row_security,
+ runtime.rolcanlogin AS runtime_can_login,
+ runtime.rolinherit AS runtime_inherit,
+ runtime.rolreplication AS runtime_replication,
  runtime.rolsuper AS superuser,
  runtime.rolbypassrls AS bypass_rls,
  runtime.rolcreaterole AS create_role,
  runtime.rolcreatedb AS create_db,
  login.rolcanlogin AS login_can_login,
+ login.rolreplication AS login_replication,
  login.rolinherit AS login_inherit,
  login.rolsuper AS login_superuser,
  login.rolbypassrls AS login_bypass_rls,
@@ -46,19 +50,20 @@ SELECT current_user AS role_name,
    WHERE m.member=login.oid AND m.roleid=runtime.oid)
    AS login_has_expected_membership,
  EXISTS(SELECT 1 FROM pg_auth_members m
+   WHERE m.member=login.oid AND m.roleid=runtime.oid AND m.set_option=true)
+   AS login_can_set_role,
+ EXISTS(SELECT 1 FROM pg_auth_members m
+   WHERE m.member=login.oid AND m.roleid=runtime.oid AND m.inherit_option=true)
+   AS login_inherit_role,
+ EXISTS(SELECT 1 FROM pg_auth_members m
    WHERE m.member=login.oid AND m.roleid<>runtime.oid)
    AS login_has_extra_membership,
- EXISTS(SELECT 1 FROM pg_auth_members m
-   JOIN pg_roles other ON other.oid=m.roleid
-   WHERE m.member=runtime.oid AND other.rolname IN (
-     'synqoria_oidc_replay_runtime',
-     'synqoria_staff_session_runtime',
-     'synqoria_identity_audit_writer') AND other.oid<>runtime.oid)
+ EXISTS(SELECT 1 FROM pg_auth_members m WHERE m.member=runtime.oid)
    AS cross_role_member
 FROM pg_roles runtime
 JOIN pg_roles login ON login.rolname=session_user
 WHERE runtime.rolname=current_user`.trim();
-const keys="bypass_rls,create_db,create_role,cross_role_member,login_bypass_rls,login_can_login,login_create_db,login_create_role,login_has_expected_membership,login_has_extra_membership,login_inherit,login_name,login_superuser,role_name,row_security,superuser";
+const keys="bypass_rls,create_db,create_role,cross_role_member,login_bypass_rls,login_can_login,login_can_set_role,login_create_db,login_create_role,login_has_expected_membership,login_has_extra_membership,login_inherit,login_inherit_role,login_name,login_replication,login_superuser,role_name,row_security,runtime_can_login,runtime_inherit,runtime_replication,superuser";
 function attest(result,role,principal){
  if(result?.rowCount!==1||!Array.isArray(result.rows)||result.rows.length!==1)deny();
  const r=result.rows[0];
@@ -66,11 +71,14 @@ function attest(result,role,principal){
    r.role_name!==role||r.login_name!==principal||r.row_security!=="on"||
    r.superuser!==false||r.bypass_rls!==false||
    r.create_role!==false||r.create_db!==false||
-   r.cross_role_member!==false||
+   r.cross_role_member!==false||r.runtime_can_login!==false||
+   r.runtime_inherit!==false||r.runtime_replication!==false||
    r.login_can_login!==true||r.login_inherit!==false||
+   r.login_replication!==false||
    r.login_superuser!==false||r.login_bypass_rls!==false||
    r.login_create_role!==false||r.login_create_db!==false||
-   r.login_has_expected_membership!==true||r.login_has_extra_membership!==false)deny();
+   r.login_has_expected_membership!==true||r.login_has_extra_membership!==false||
+   r.login_can_set_role!==true||r.login_inherit_role!==false)deny();
 }
 const statementAllowed=x=>typeof x==="string"&&x.length>0&&x.length<=20000&&
  /^\s*(?:SELECT|INSERT|DELETE)\b/i.test(x)&&
@@ -89,6 +97,9 @@ export function createConnectionAttestedSqlClient(pool,expectedRole,expectedLogi
     assertAuthenticatedTls(connection);
     await connection.query("BEGIN");
     transaction=true;
+    await connection.query("SET LOCAL statement_timeout = '5000ms'");
+    await connection.query("SET LOCAL lock_timeout = '1000ms'");
+    await connection.query("SET LOCAL idle_in_transaction_session_timeout = '7000ms'");
     // Fixed canonical role: never derived from request, bearer or SQL results.
     await connection.query("SET LOCAL ROLE "+expectedRole);
     attest(await connection.query(IDENTITY_CONNECTION_ATTEST_SQL,[]),expectedRole,expectedLogin);
