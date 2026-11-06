@@ -36,7 +36,7 @@ jobs:
       - name: Install pinned Playwright Chromium for browser-only UI verification
         run: |
           npm install --global playwright@1.56.1
-          playwright install --with-deps chromium
+          playwright install chromium
       - name: Verify 8 screen routes across 6 responsive browser widths
         run: node tests/ops001_browser_smoke.cjs
       - name: Preserve screenshot evidence for independent visual audit
