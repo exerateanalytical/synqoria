@@ -58,8 +58,9 @@ final class OperationsAuthorityPgIntegrationTest {
  }
  @Test void authoritativeRosterRequiresCurrentShiftRevisionAndScopeAndRuntimeCannotWriteIt(){
   Assumptions.assumeTrue("1".equals(System.getenv("SYNQORIA_OPS_PG_TEST")));
-  var admin=new JdbcTemplate(owner());var runtimeJdbc=new JdbcTemplate(runtime());
-  var admission=new WorkforceAdmission(runtimeJdbc,new DataSourceTransactionManager(runtime()));
+  var admin=new JdbcTemplate(owner());DataSource runtimeDataSource=runtime();
+  var runtimeJdbc=new JdbcTemplate(runtimeDataSource);
+  var admission=new WorkforceAdmission(runtimeJdbc,new DataSourceTransactionManager(runtimeDataSource));
   // An independent DBA/integration authority provisions this fixture, NEVER API users.
   admin.update("INSERT INTO synqoria_operations.workforce_grants " +
    "(cell_id,facility_id,actor_id,grant_revision,permissions,active,shift_from,shift_until," +
