@@ -1,0 +1,61 @@
+name: SYNQORIA Expo 58 React Native 0.88 stable-native upgrade candidate
+on:
+  push:
+    branches:
+      - work/latest-stable-stack-governance-2026-11-06
+permissions:
+  contents: read
+jobs:
+  expo58-rn088:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - name: Base from independently owned PR23/PR24 build candidates
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin refs/heads/work/reproducible-npm-lock-candidate-2026-11-05:refs/remotes/origin/stack-pr23
+          git fetch --no-tags origin refs/heads/work/real-next-expo-build-corrections-2026-11-05:refs/remotes/origin/stack-pr24
+          git show refs/remotes/origin/stack-pr23:package-lock.json > package-lock.json
+          echo "6fa90a4aa72db790d86b7782d45ced40389b5f8987da65138fae7548b5f9eb2b  package-lock.json" | sha256sum -c -
+          for path in apps/web/package.json apps/staff-mobile/app.json apps/staff-mobile/index.js apps/staff-mobile/package.json apps/patient-mobile/app.json apps/patient-mobile/index.js apps/patient-mobile/package.json; do
+            git show "refs/remotes/origin/stack-pr24:$path" > "$path"
+          done
+      - name: Overlay latest stable Expo SDK / RN / mobile React in runner only
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs');
+          for(const w of ['staff-mobile','patient-mobile']){
+            const p='apps/'+w+'/package.json';
+            const m=JSON.parse(fs.readFileSync(p,'utf8'));
+            m.dependencies.expo='58.0.23';
+            m.dependencies['react-native']='0.88.1';
+            m.dependencies.react='19.3.0';
+            fs.writeFileSync(p,JSON.stringify(m,null,2)+'\n');
+          }
+          NODE
+      - name: Resolve exact native workspace dependency graph
+        run: |
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          npm ci --no-audit --no-fund
+      - name: Compile reusable UX workspace
+        run: npm run build --workspace @synqoria/ux-core
+      - name: Test staff native Expo 58 Android export
+        working-directory: apps/staff-mobile
+        env:
+          CI: '1'
+          EXPO_NO_TELEMETRY: '1'
+        run: npx --no-install expo export --platform android
+      - name: Test patient native Expo 58 Android export
+        working-directory: apps/patient-mobile
+        env:
+          CI: '1'
+          EXPO_NO_TELEMETRY: '1'
+        run: npx --no-install expo export --platform android
+      - name: No native production deployment is authorized
+        if: always()
+        run: |
+          echo "Temporary Expo 58/RN 0.88 upgrade test only, clinical release DENIED; iOS, device, accessibility and acceptance tests still required."
