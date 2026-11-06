@@ -27,6 +27,8 @@ jobs:
         run: npm install --global typescript@5.8.3
       - name: Verified patient lookup request and runtime gate
         run: node --test tests/ops001_patient_lookup.test.mjs tests/ops001_runtime_bridge.test.mjs
+      - name: Positive attested OIDC/runtime and protected no-PHI lookup orchestration
+        run: node --test tests/ops001_attested_runtime.test.mjs
       - name: All eight screen-specific Next source and WCAG layout checks
         run: node --test tests/ops001_ui_source.test.cjs
       - name: Preserve P03 attested runtime and existing clinical admissions
