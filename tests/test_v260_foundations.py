@@ -10,7 +10,7 @@ class Foundation(unittest.TestCase):
   self.assertTrue(execute([('pass',[sys.executable,'-c','pass'])],ROOT)['passed'])
   self.assertEqual(execute([('missing',['/no/such/command'])],ROOT)['checks'][0]['exit_code'],127)
  def test_lock(self):
-  self.assertIn('missing_package_lock',audit(ROOT))
+  self.assertEqual(audit(ROOT),[], 'Merged production workspace must have a verified pinned lock')
   with tempfile.TemporaryDirectory() as d:
    p=pathlib.Path(d)
    for rel in ['package.json','apps/web/package.json','apps/staff-mobile/package.json','apps/patient-mobile/package.json','packages/ux-core/package.json']:
