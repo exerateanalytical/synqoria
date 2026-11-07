@@ -1,0 +1,38 @@
+name: SYNQORIA operations Java route / OpenAPI parity (source evidence only)
+on:
+  pull_request:
+    paths:
+      - 'services/operations-core/src/main/java/org/synqoria/operations/OperationsApi.java'
+      - 'services/operations-core/src/main/java/org/synqoria/operations/OperationsIntegrationApi.java'
+      - 'services/operations-core/src/main/java/org/synqoria/operations/OperationsConnectorApi.java'
+      - 'services/operations-core/src/main/java/org/synqoria/operations/OperationsStore.java'
+      - 'services/operations-core/src/main/java/org/synqoria/operations/OperationsIntegrationService.java'
+      - 'services/operations-core/src/main/java/org/synqoria/operations/OperationsConnectorService.java'
+      - 'contracts/openapi/synqoria-operations-shared-v1.json'
+      - 'tests/test_operations_openapi_parity.py'
+      - '.github/workflows/operations-openapi-parity-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'services/operations-core/src/main/java/org/synqoria/operations/OperationsApi.java'
+      - 'services/operations-core/src/main/java/org/synqoria/operations/OperationsIntegrationApi.java'
+      - 'services/operations-core/src/main/java/org/synqoria/operations/OperationsConnectorApi.java'
+      - 'contracts/openapi/synqoria-operations-shared-v1.json'
+      - 'tests/test_operations_openapi_parity.py'
+permissions:
+  contents: read
+jobs:
+  route-and-security-parity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Contract is valid JSON OpenAPI 3.1
+        run: python -m json.tool contracts/openapi/synqoria-operations-shared-v1.json > /dev/null
+      - name: Verify all existing Java controller paths, HTTP verbs, workforce/scope and permission contracts
+        run: python -m unittest discover -s tests -p test_operations_openapi_parity.py -v
+      - name: Contract evidence boundary
+        run: echo 'Java annotation versus OpenAPI source contract parity; not runtime, clinical certification, or activated provider integration'
