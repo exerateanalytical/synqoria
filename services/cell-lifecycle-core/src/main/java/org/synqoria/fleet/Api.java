@@ -49,6 +49,7 @@ public class Api {
  // ---- routing directory
  @GetMapping("/routes") public ResponseEntity<Map<String,Object>> routes(@RequestParam(defaultValue="0")int page,@RequestParam(defaultValue="25")int size,@AuthenticationPrincipal Jwt j){return ok(routing.routes(actor(j),page,size));}
  @GetMapping("/routing/{routeKey}") public ResponseEntity<Map<String,Object>> routingLookup(@PathVariable String routeKey,@AuthenticationPrincipal Jwt j){return ok(routing.lookup(actor(j),routeKey));}
+ @GetMapping("/routing/{routeKey}/fence") public ResponseEntity<Map<String,Object>> routingFence(@PathVariable String routeKey,@AuthenticationPrincipal Jwt j){return ok(routing.routingFence(actor(j),routeKey));}
  @PostMapping("/routes") public ResponseEntity<Object> routeCreate(@RequestHeader(value=K,required=false)String k,@RequestBody RoutingService.RouteRequest b,@AuthenticationPrincipal Jwt j){return out(routing.createRoute(actor(j),key(k),req(b)));}
  @PostMapping("/routes/{id}/switch") public ResponseEntity<Object> routeSwitch(@PathVariable UUID id,@RequestHeader(value=K,required=false)String k,@RequestBody RoutingService.Switch b,@AuthenticationPrincipal Jwt j){return out(routing.switchRoute(actor(j),key(k),id,req(b)));}
  // ---- releases and rollouts
