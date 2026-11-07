@@ -1,7 +1,7 @@
 {
   "schemaVersion": "synqoria.reconciliation.v1",
-  "generatedAtUtc": "2026-11-07T14:53:26+00:00",
-  "mainShaInspected": "fbc237f377b5245808301a456c3b3d5e592a66d4",
+  "generatedAtUtc": "2026-11-07T15:23:24+00:00",
+  "mainShaInspected": "e00361873a90f5edceea38e9f567cca38263d55a",
   "canonical": {
     "plannedModules": 40,
     "canonicalScreens": 261
@@ -21,7 +21,7 @@
     "confirmedUnbuiltModules": null,
     "confirmedFullyBuiltModules": null,
     "clinicallyAcceptedModules": 0,
-    "openPrs": 1
+    "openPrs": 2
   },
   "activeWork": {
     "claude": {
@@ -85,6 +85,14 @@
       "title": "M23 preventive maintenance, calibration tracking and servicing calendar (Issue #68) - 28/30 verified, 2 partial",
       "head": "aa9633d9413dbc831d953c90063d03369a9ecf62",
       "branch": "work/claude-m23-preventive-maintenance-2026-11-07",
+      "base": "main",
+      "draft": false
+    },
+    {
+      "number": 74,
+      "title": "OPS001: remove obsolete Next15 lock overlay and test canonical Next16 production web build",
+      "head": "28eb3f841b30f7499a96fd345d9aa6e009837735",
+      "branch": "work/chatgpt-ops001-canonical-lock-ci-2026-11-07",
       "base": "main",
       "draft": false
     }
@@ -535,7 +543,7 @@
     },
     {
       "id": "M39",
-      "codeSignals": 25,
+      "codeSignals": 28,
       "exampleSourcePaths": [
         "apps/web/components/fleet/Fleet.tsx",
         "apps/web/components/fleet/Hub.tsx",
