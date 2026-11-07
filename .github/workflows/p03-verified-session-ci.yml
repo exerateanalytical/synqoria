@@ -1,0 +1,27 @@
+name: SYNQORIA P03 verified OIDC session boundary (synthetic signed tokens)
+on:
+  pull_request:
+    paths:
+      - 'apps/web/lib/verified-oidc-session.mjs'
+      - 'tests/verified_oidc_session.test.mjs'
+      - '.github/workflows/p03-verified-session-ci.yml'
+  push:
+    paths:
+      - 'apps/web/lib/verified-oidc-session.mjs'
+      - 'tests/verified_oidc_session.test.mjs'
+      - '.github/workflows/p03-verified-session-ci.yml'
+permissions:
+  contents: read
+jobs:
+  jwt-signature-boundary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - name: Verify real RSA signatures and fail-closed OIDC discovery with synthetic tokens
+        run: node --test tests/verified_oidc_session.test.mjs
+      - name: Scope
+        run: echo 'Reusable verification library only. Real P03 issuer and M38 Next session route are not wired in this PR.'
