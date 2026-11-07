@@ -81,7 +81,8 @@ class AuditPgIntegrationTest {
    store.ingest(ingest,key(),event)).code());
   proof(event);
   UUID cmd=key();
-  var first=store.ingest(ingest,cmd,event),again=store.ingest(ingest,cmd,event);
+  var first=store.ingest(ingest,cmd,event);
+  var again=store.ingest(ingest,cmd,event);
   assertEquals(id(first).toString(),String.valueOf(body(again).get("id")));
   assertTrue(Boolean.TRUE.equals(store.verify(timeline,stream).get("verified")));
   assertEquals(1L,store.verify(timeline,stream).get("count"));
@@ -125,9 +126,13 @@ class AuditPgIntegrationTest {
   assertThrows(DataAccessException.class,()->admin.update(
    "UPDATE synqoria_audit.ingest_attestations SET source_actor=? WHERE proof_id=?",
    REVIEWER,first.proofId()));
-  assertThrows(DataAccessException.class,()->admin.update(
+  assertEquals(1,admin.update(
    "UPDATE synqoria_audit.ingest_attestations SET revoked_at=clock_timestamp() "+
    "WHERE proof_id=?",first.proofId()));
+  assertThrows(DataAccessException.class,()->admin.update(
+   "UPDATE synqoria_audit.ingest_attestations SET revoked_at=NULL WHERE proof_id=?",first.proofId()));
+  assertEquals("audit_attestation_required",assertThrows(Problem.class,()->
+   store.ingest(ingest,key(),first)).code());
  }
  @Test void independentExportReviewOnlyProducesNonclinicalIntegrityManifest(){
   UUID stream=key();accepted(event(stream,1));
