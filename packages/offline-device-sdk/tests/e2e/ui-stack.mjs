@@ -44,9 +44,9 @@ await mk("maker", ["m38:transfer_propose", "m38:sync_read", "m38:head_publish"],
 const require = createRequire(join(web, "package.json"));
 const next = spawn(process.execPath, [require.resolve("next/dist/bin/next"), "dev", "-p", String(PORT), "-H", "127.0.0.1"], {cwd: web, stdio: ["ignore", "pipe", "pipe"], env: {...process.env, NEXT_TELEMETRY_DISABLED: "1",
  SYNQORIA_OPS_OIDC_ISSUER: ISSUER, SYNQORIA_OPS_OIDC_CLIENT_ID: "m38-ui", SYNQORIA_OPS_WEB_ORIGIN: `https://localhost:${PORT}`, SYNQORIA_OPS_API_ORIGIN: ORIGIN,
- SYNQORIA_OFFLINE_API_ORIGIN: ORIGIN, SYNQORIA_OFFLINE_OIDC_AUDIENCE: AUDIENCE, SYNQORIA_OFFLINE_SESSION_VERIFIER: "jwks"}});
+ SYNQORIA_OFFLINE_API_ORIGIN: ORIGIN, SYNQORIA_OFFLINE_OIDC_AUDIENCE: AUDIENCE, SYNQORIA_OPS_OIDC_AUDIENCE: AUDIENCE}});
 let log = ""; next.stdout.on("data", d => { log += d; }); next.stderr.on("data", d => { log += d; });
-for (let i = 0; i < 180; i++) { try { await fetch(`http://127.0.0.1:${PORT}/api/offline/session`); break; } catch { await new Promise(r => setTimeout(r, 1000)); } }
+for (let i = 0; i < 180; i++) { try { await fetch(`http://127.0.0.1:${PORT}/api/operations/auth/verified-session`); break; } catch { await new Promise(r => setTimeout(r, 1000)); } }
 const csrf = "c".repeat(48);
 const out = {url: `http://localhost:${PORT}/workforce/offline/status`, maker: tok("maker", ALL), nurseToken: tok("nurse", ["m38:sync_submit", "m38:sync_read"]), nurse: ids.nurse, deviceId: dev.id, csrf};
 writeFileSync(process.env.UI_STACK_INFO ?? join(rig.dir, "ui-stack.json"), JSON.stringify(out));

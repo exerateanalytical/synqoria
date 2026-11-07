@@ -17,7 +17,7 @@ const realWeb = join(repo, "apps", "web");
 // A minimal Next app made of VERBATIM COPIES of the real route handlers and their libraries. The full apps/web tree is not used because its instrumentation hook
 // (P03 identity bootstrap, owned by the integration lead) does not bundle under every Next version; this keeps the test about the offline routes only.
 const web = join(repo, ".e2e-shadow");
-const SHADOW_FILES = ["app/api/offline/proxy/[...segments]/route.ts", "app/api/offline/session/route.ts", "lib/operations-auth.ts", "lib/offline/proxy-policy.ts", "lib/offline/identity.ts"];
+const SHADOW_FILES = ["app/api/offline/proxy/[...segments]/route.ts", "app/api/operations/auth/verified-session/route.ts", "lib/operations-auth.ts", "lib/operations-verified-session.mjs", "lib/verified-oidc-session.mjs", "lib/offline/proxy-policy.ts"];
 const PORT = Number(process.env.E2E_WEB_PORT ?? 3100), WEB = `http://127.0.0.1:${PORT}`, WEB_ORIGIN = `https://localhost:${PORT}`;
 const RUN = process.env.RIG_TLS === "1" && process.env.SYNQORIA_LIVE_RIG === "1";      // started by launch.mjs (trusts the rig certificate)
 const rig = new Rig();
@@ -53,10 +53,10 @@ before(async () => {
  const nextBin = require.resolve("next/dist/bin/next");
  next = spawn(process.execPath, [nextBin, "dev", "-p", String(PORT), "-H", "127.0.0.1"], {cwd: web, stdio: ["ignore", "pipe", "pipe"], env: {...process.env, NODE_ENV: "development", NEXT_TELEMETRY_DISABLED: "1",
   SYNQORIA_OPS_OIDC_ISSUER: ISSUER, SYNQORIA_OPS_OIDC_CLIENT_ID: "m38-e2e", SYNQORIA_OPS_WEB_ORIGIN: WEB_ORIGIN, SYNQORIA_OPS_API_ORIGIN: ORIGIN,
-  SYNQORIA_OFFLINE_API_ORIGIN: ORIGIN, SYNQORIA_OFFLINE_OIDC_AUDIENCE: AUDIENCE, SYNQORIA_OFFLINE_SESSION_VERIFIER: "jwks"}});
+  SYNQORIA_OFFLINE_API_ORIGIN: ORIGIN, SYNQORIA_OFFLINE_OIDC_AUDIENCE: AUDIENCE, SYNQORIA_OPS_OIDC_AUDIENCE: AUDIENCE}});
  next.stdout.on("data", d => { nextLog += d; }); next.stderr.on("data", d => { nextLog += d; });
  for (let i = 0; i < 180; i++) {
-  try { const r = await fetch(WEB + "/api/offline/session"); if (r.status > 0) return; } catch { /* starting */ }
+  try { const r = await fetch(WEB + "/api/operations/auth/verified-session"); if (r.status > 0) return; } catch { /* starting */ }
   if (next.exitCode !== null) throw new Error("next exited: " + nextLog.slice(-1500));
   await new Promise(r => setTimeout(r, 1000));
  }
@@ -71,13 +71,13 @@ after(async () => {
 });
 
 const test2 = (n, f) => test(n, {skip: !RUN && "run through tests/e2e/launch.mjs"}, f);
-test2("session route: verifies the token cryptographically and returns identifiers only", async () => {
+test2("P03 verified-session route (consumed by the device): verifies the token cryptographically and returns identifiers only", async () => {
  const t = tok("nurse", NURSE_PERMS);
- const r = await web_("GET", "/api/offline/session", t);
+ const r = await web_("GET", "/api/operations/auth/verified-session", t);
  assert.equal(r.status, 200); assert.deepEqual(Object.keys(r.json).sort(), ["expiresAt", "scope", "userId"]);
  assert.equal(r.json.userId, ids.nurse); assert.equal(r.json.scope, `${A.cell}/${A.facility}`);
  assert.ok(!r.text.includes(t) && !r.text.includes("eyJ"), "the token is never returned");
- assert.equal(r.status === 200 && (await fetch(WEB + "/api/offline/session", {headers: {Cookie: cookie(t)}})).headers.get("cache-control"), "no-store");
+ assert.equal(r.status === 200 && (await fetch(WEB + "/api/operations/auth/verified-session", {headers: {Cookie: cookie(t)}})).headers.get("cache-control"), "no-store, max-age=0");
 });
 
 test2("session route fails closed: no cookie, forged, tampered, unsigned, wrong audience/issuer, expired, over-long grant", async () => {
@@ -90,11 +90,16 @@ test2("session route fails closed: no cookie, forged, tampered, unsigned, wrong 
   "garbage": "not-a-token"
  };
  for (const [name, t] of Object.entries(cases)) {
-  const r = await web_("GET", "/api/offline/session", t === null ? undefined : t);
+  const r = await web_("GET", "/api/operations/auth/verified-session", t === null ? undefined : t);
   assert.equal(r.status, 401, name + " -> " + r.status);
   assert.ok(!r.text.includes("userId"), name);
  }
  assert.ok(forged.length === 3);
+});
+
+test2("verified-session route denies a valid token that lacks m38:sync_read (identity is not authorization)", async () => {
+ const r = await web_("GET", "/api/operations/auth/verified-session", tok("nurse", ["m38:sync_submit"]));
+ assert.equal(r.status, 401); assert.ok(!r.text.includes("userId"));
 });
 
 test2("proxy: cookie authentication, allow-list, query filter, bounds and idempotency", async () => {

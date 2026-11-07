@@ -15,7 +15,7 @@ export type SessionState={session:Session|null;blocked:boolean};
 /** blocked = the server refuses to vouch for an identity (verifier not integrated / unavailable): enrollment, unlock and sync stay disabled. */
 export async function readSession():Promise<SessionState>{
  try{
-  const r=await fetch("/api/offline/session",{credentials:"same-origin",cache:"no-store"});
+  const r=await fetch("/api/operations/auth/verified-session",{credentials:"same-origin",cache:"no-store"});
   if(r.status===503)return {session:null,blocked:true};
   if(!r.ok)return {session:null,blocked:false};
   const j=await r.json() as Session;
