@@ -452,4 +452,35 @@ final class MortuaryStorePgIntegrationTest {
    "WHERE case_id=? AND proof_kind='HANDOVER_RECEIPT'",otherReceiver,authorized.caseId()));
  }
 
+
+ @Test void databaseLifecycleDeniesForgedDirectSqlAndUnloggedTransitions(){
+  pgOnly();
+  var service=store();
+  var c=receive(service,UUID.randomUUID());
+  UUID id=c.caseId();
+  assertThrows(Exception.class,()->admin().update(
+   "UPDATE synqoria_operations.mortuary_cases SET decedent_ref=? WHERE case_id=?",
+   UUID.randomUUID(),id));
+  assertThrows(Exception.class,()->admin().update(
+   "UPDATE synqoria_operations.mortuary_cases SET state='RELEASED',"+
+   "version=version+1,released_at=clock_timestamp(),last_actor=?,updated_at=clock_timestamp() "+
+   "WHERE case_id=?",OFFICER,id));
+  // Even a valid-looking transition is rolled back if not accompanied by its
+  // matching transactionally committed command, audit event and outbox event.
+  assertThrows(Exception.class,()->admin().update(
+   "UPDATE synqoria_operations.mortuary_cases SET state='IDENTIFIED',"+
+   "version=version+1,last_actor=?,updated_at=clock_timestamp() WHERE case_id=?",
+   OFFICER,id));
+  assertEquals("RECEIVED",service.one(who(OFFICER,"m27:read"),id).state());
+  var identified=identify(service,c);
+  assertEquals("IDENTIFIED",identified.state());
+  var stored=store(service,identified);
+  assertEquals("STORED",stored.state());
+  assertThrows(Exception.class,()->admin().update(
+   "UPDATE synqoria_operations.mortuary_cases SET current_storage='UNATTESTED-BAY',"+
+   "version=version+1,updated_at=clock_timestamp() WHERE case_id=?",id));
+  assertEquals(stored.currentStorage(),
+   service.one(who(OFFICER,"m27:read"),id).currentStorage());
+ }
+
 }
