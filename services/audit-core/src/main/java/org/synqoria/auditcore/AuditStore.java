@@ -81,7 +81,8 @@ public class AuditStore{
   if(!Set.of("evidence_events","export_requests","retention_reviews").contains(table))
    throw new Problem("invalid_collection");
   try{return jdbc.queryForMap("SELECT * FROM synqoria_audit."+table+
-   " WHERE cell_id=? AND facility_id=? AND id=? FOR UPDATE",actor.cell(),actor.facility(),id);}
+   " WHERE cell_id=? AND facility_id=? AND id=?"+(table.equals("evidence_events")?"":" FOR UPDATE"),
+   actor.cell(),actor.facility(),id);}
   catch(EmptyResultDataAccessException e){throw new Problem("not_found");}
  }
  private void log(Actor actor,UUID key,String type,UUID id,String action,long version){
@@ -196,7 +197,8 @@ public class AuditStore{
   });
   return scoped(actor,()->jdbc.queryForList("SELECT * FROM synqoria_audit."+table+
    " WHERE cell_id=? AND facility_id=? ORDER BY "+
-   (table.equals("evidence_events")?"recorded_at":"created_at")+" DESC LIMIT ?",
+   (table.equals("evidence_events")?"recorded_at":
+     table.equals("retention_holds")?"issued_at":"created_at")+" DESC LIMIT ?",
    actor.cell(),actor.facility(),limit));
  }
  public Map<String,Object> detail(Actor actor,UUID id){
