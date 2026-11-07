@@ -1,0 +1,25 @@
+server:
+  port: ${SYNQORIA_AUDIT_PORT:8097}
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+spring:
+  application:
+    name: synqoria-audit-core
+  datasource:
+    url: ${SYNQORIA_AUDIT_JDBC_URL}
+    username: ${SYNQORIA_AUDIT_DB_USERNAME}
+    password: ${SYNQORIA_AUDIT_DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 0
+      connection-timeout: 5000
+  sql:
+    init:
+      mode: never
+synqoria:
+  audit:
+    issuer: ${SYNQORIA_AUDIT_OIDC_ISSUER}
+    audience: ${SYNQORIA_AUDIT_OIDC_AUDIENCE}
+    db-runtime-role: ${SYNQORIA_AUDIT_DB_RUNTIME_ROLE:synqoria_audit_runtime}
