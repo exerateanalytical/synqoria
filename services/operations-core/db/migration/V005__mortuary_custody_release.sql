@@ -9,6 +9,10 @@ CREATE TABLE synqoria_operations.mortuary_cases (
  decedent_ref uuid NOT NULL,
  intake_ref varchar(160) NOT NULL,
  death_ref varchar(160) NOT NULL,
+ originating_unit_ref varchar(160) NOT NULL,
+ intake_authorization_ref varchar(160) NOT NULL,
+ belongings_seal_ref varchar(160) NOT NULL,
+ intake_receiving_staff uuid NOT NULL,
  state varchar(32) NOT NULL CHECK(state IN
   ('RECEIVED','IDENTIFIED','STORED','RELEASE_REVIEWED','RELEASE_AUTHORIZED','RELEASED')),
  version bigint NOT NULL CHECK(version>=1),
@@ -23,7 +27,8 @@ CREATE TABLE synqoria_operations.mortuary_cases (
  CHECK((state IN('STORED','RELEASE_REVIEWED','RELEASE_AUTHORIZED') AND current_storage IS NOT NULL)
   OR (state IN('RECEIVED','IDENTIFIED','RELEASED') AND current_storage IS NULL)),
  CHECK((state='RELEASED') = (released_at IS NOT NULL)),
- CHECK(intake_ref<>'' AND death_ref<>'')
+ CHECK(intake_ref<>'' AND death_ref<>'' AND originating_unit_ref<>'' AND
+       intake_authorization_ref<>'' AND belongings_seal_ref<>'')
 );
 CREATE INDEX mortuary_worklist ON synqoria_operations.mortuary_cases
 (cell_id,facility_id,state,updated_at DESC,case_id);
@@ -41,9 +46,10 @@ CREATE TABLE synqoria_operations.mortuary_authority_evidence (
   'AUTHORIZE_RELEASE','HANDOVER')),
  expected_version bigint NOT NULL CHECK(expected_version>=0),
  proof_kind varchar(32) NOT NULL CHECK(proof_kind IN
- ('DEATH_CONFIRMED','IDENTITY_ATTESTED','IDENTITY_VERIFIED','STORAGE_SAFE',
+ ('DEATH_CONFIRMED','IDENTITY_ATTESTED','INTAKE_AUTHORIZED','BELONGINGS_SEALED',
+  'IDENTITY_VERIFIED','STORAGE_SAFE',
   'CUSTODY_ACCEPTED','LEGAL_RELEASE','RECIPIENT_VERIFIED',
-  'RELEASE_AUTHORIZATION','HANDOVER_RECEIPT')),
+  'RELEASE_AUTHORIZATION','HANDOVER_RECEIPT','BELONGINGS_RELEASED')),
  external_ref varchar(160) NOT NULL,
  authority_issuer varchar(160) NOT NULL,
  approved_by uuid NOT NULL,
@@ -92,6 +98,10 @@ CREATE TABLE synqoria_operations.mortuary_custody_events (
  to_storage varchar(160),
  actor_id uuid NOT NULL,
  receiving_staff_id uuid,
+ seal_ref varchar(160),
+ condition_code varchar(40),
+ witness_staff_id uuid,
+ belongings_ref varchar(160),
  evidence_ref varchar(160) NOT NULL,
  occurred_at timestamptz NOT NULL DEFAULT clock_timestamp(),
  FOREIGN KEY(cell_id,facility_id,case_id)
@@ -101,7 +111,12 @@ CREATE TABLE synqoria_operations.mortuary_custody_events (
  CHECK((event_type IN ('STORE','TRANSFER') AND to_storage IS NOT NULL AND receiving_staff_id IS NOT NULL)
   OR (event_type IN ('INTAKE','HANDOVER') AND to_storage IS NULL)),
  CHECK(event_type<>'TRANSFER' OR
-  (from_storage IS NOT NULL AND from_storage<>to_storage AND receiving_staff_id<>actor_id))
+  (from_storage IS NOT NULL AND from_storage<>to_storage AND receiving_staff_id<>actor_id)),
+ CHECK(event_type<>'INTAKE' OR
+  (receiving_staff_id IS NOT NULL AND seal_ref IS NOT NULL AND belongings_ref IS NOT NULL)),
+ CHECK(event_type NOT IN('STORE','TRANSFER') OR
+  (seal_ref IS NOT NULL AND condition_code IS NOT NULL)),
+ CHECK(event_type<>'HANDOVER' OR (witness_staff_id IS NOT NULL AND belongings_ref IS NOT NULL))
 );
 CREATE INDEX mortuary_custody_chain ON synqoria_operations.mortuary_custody_events
  (cell_id,facility_id,case_id,case_version DESC);
