@@ -47,7 +47,7 @@ jobs:
           npm install --package-lock-only --ignore-scripts --no-audit --no-fund
           npm ci --no-audit --no-fund
       - name: Contract-test real M16 routes and authenticated API proxy
-        run: node --test tests/m16_referrals_web.test.mjs
+        run: node --test tests/m16_referrals_web.test.mjs tests/m16_referrals_openapi.test.mjs
       - name: Build UX and 5 canonical workstations
         run: |
           npm run build --workspace @synqoria/ux-core
