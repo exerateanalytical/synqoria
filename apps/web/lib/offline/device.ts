@@ -1,11 +1,11 @@
 // Browser wiring of the M38 device SDK to the existing same-origin proxy and the existing operations sign-in (P03/OIDC).
 // No tokens are handled here: the HttpOnly cookie travels with same-origin requests; the SDK only sees fetch + the CSRF value.
-import {ContractCache,DurableQueue,Diagnostics,EncryptedStore,IdbKeyVault,IdbStore,KeyManager,LeaderElector,SyncEngine,Transport,redactedExport,applyLockPolicy,DEFAULT_DEVICE_POLICY} from "../../../../packages/offline-device-sdk/src/index.ts";
+import {ContractCache,DurableQueue,Diagnostics,EncryptedStore,IdbKeyVault,IdbStore,KeyManager,LeaderElector,SyncEngine,Transport,redactedExport,applyLockPolicy,DEFAULT_DEVICE_POLICY,SyncScheduler,DEFAULT_SCHEDULER} from "../../../../packages/offline-device-sdk/src/index.ts";
 import type {DeviceBinding,Session} from "../../../../packages/offline-device-sdk/src/index.ts";
 
 const CSRF_COOKIE="__Host-synq_ops_csrf";
 const BINDING_KEY="synq_device_binding";
-export type Device={engine:SyncEngine;queue:DurableQueue;km:KeyManager;binding:DeviceBinding;session:()=>Session|null;diag:Diagnostics;exportMetadata:()=>Promise<ReturnType<typeof redactedExport>>;lock:()=>Promise<void>;wipe:()=>Promise<{lost:number}>};
+export type Device={engine:SyncEngine;scheduler:SyncScheduler;queue:DurableQueue;km:KeyManager;binding:DeviceBinding;session:()=>Session|null;diag:Diagnostics;exportMetadata:()=>Promise<ReturnType<typeof redactedExport>>;lock:()=>Promise<void>;wipe:()=>Promise<{lost:number}>};
 
 function csrf():string{
  const pair=document.cookie.split("; ").find(x=>x.startsWith(CSRF_COOKIE+"="));
@@ -47,7 +47,9 @@ export async function openDevice(binding:DeviceBinding,session:()=>Session|null,
  const tabId=globalThis.crypto.randomUUID();
  const engine=new SyncEngine({store:enc,plain,km,queue,transport:new Transport({fetch:(u,i)=>fetch(u,i),csrf}),cache:new ContractCache(),binding,session,clock:()=>Date.now(),
   rng:Math.random,diag,leader:new LeaderElector(plain,()=>Date.now(),tabId),online:()=>navigator.onLine});
- return {engine,queue,km,binding,session,diag,
+ const locks=(navigator as Navigator&{locks?:{request:unknown}}).locks;
+ const scheduler=new SyncScheduler(engine,{set:(f,m)=>window.setTimeout(f,m),clear:id=>window.clearTimeout(id as number)},DEFAULT_SCHEDULER,locks?(locks as unknown as ConstructorParameters<typeof SyncScheduler>[3]):null);
+ return {engine,scheduler,queue,km,binding,session,diag,
   exportMetadata:async()=>redactedExport(await queue.list(),new Date().toISOString()),
   lock:async()=>{await applyLockPolicy(km,plain,DEFAULT_DEVICE_POLICY.onLogout);},
   wipe:()=>applyLockPolicy(km,plain,"WIPE")};

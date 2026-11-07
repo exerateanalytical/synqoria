@@ -43,7 +43,7 @@ export class LeaderElector {
 }
 
 /** Browser adapter: navigator.locks gives true mutual exclusion across tabs; run(fn) executes only if the lock is free. */
-export async function webLockLeader<T>(locks: { request: (name: string, opts: { ifAvailable: boolean }, cb: (lock: unknown | null) => Promise<T | undefined>) => Promise<T | undefined> },
- fn: () => Promise<T>): Promise<T | undefined> {
- return locks.request("synqoria-offline-sync", { ifAvailable: true }, async lock => (lock ? fn() : undefined));
+export interface LockManagerLike { request<R>(name: string, opts: { ifAvailable: boolean }, cb: (lock: unknown | null) => Promise<R | undefined>): Promise<R | undefined> }
+export async function webLockLeader<T>(locks: LockManagerLike, fn: () => Promise<T>): Promise<T | undefined> {
+ return locks.request<T>("synqoria-offline-sync", { ifAvailable: true }, async lock => (lock ? fn() : undefined));
 }

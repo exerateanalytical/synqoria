@@ -12,3 +12,4 @@ export * from "./conflict.ts";
 export * from "./policy.ts";
 export * from "./sync.ts";
 export * from "./idb.ts";
+export * from "./scheduler.ts";

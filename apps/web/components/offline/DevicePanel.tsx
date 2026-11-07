@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import {useCallback,useEffect,useRef,useState} from "react";
 import {ActionButton,Badge,Empty,Field,Notice,fmtTime,styles,toneFor,useOf} from "./ui";
 import {bindDevice,forgetBinding,openDevice,readSession,savedBinding} from "../../lib/offline/device";
@@ -50,17 +51,23 @@ export default function DevicePanel(){
   if(!r.ok)throw new Error(r.code);
   setBinding(r.binding);const d=await openDevice(r.binding,()=>sessionRef.current);setDevice(d);await refresh(d);setMsg(t("dv.bound"));
  });
- const unlock=()=>run(async()=>{if(!device)return;await device.engine.resume();await device.engine.refreshReference();await refresh(device);});
+ const unlock=()=>run(async()=>{if(!device)return;await device.engine.resume();await device.engine.refreshReference();device.scheduler.start();await refresh(device);});    // automatic sync starts only after a verified unlock
  const refreshRef=()=>run(async()=>{if(!device)return;const ok=await device.engine.refreshReference();if(!ok)throw new Error("fleet_unavailable");setMsg(t("dv.refreshed"));});
  const sync=()=>run(async()=>{if(!device)return;const r=await device.engine.drain();setReport(r);if(r.status==="SUSPENDED"&&r.reason)setErr(r.reason);await refresh(device);});
- const lock=()=>run(async()=>{if(!device)return;await device.lock();await refresh(device);setMsg(t("dv.locknote"));});
- const wipe=()=>run(async()=>{if(!device)return;await device.wipe();forgetBinding();setBinding(null);setDevice(null);setEntries([]);setConfirmWipe(false);setMsg(t("dv.wiped"));});
+ const lock=()=>run(async()=>{if(!device)return;device.scheduler.stop();await device.lock();await refresh(device);setMsg(t("dv.locknote"));});
+ const wipe=()=>run(async()=>{if(!device)return;device.scheduler.stop();await device.wipe();forgetBinding();setBinding(null);setDevice(null);setEntries([]);setConfirmWipe(false);setMsg(t("dv.wiped"));});
  const exportMeta=()=>run(async()=>{
   if(!device)return;
   const blob=new Blob([JSON.stringify(await device.exportMetadata(),null,1)],{type:"application/json"});
   const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="queue-metadata.json";document.body.appendChild(a);a.click();a.remove();
   setTimeout(()=>URL.revokeObjectURL(url),1000);setMsg(t("dv.exported"));
  });
+ useEffect(()=>{
+  if(!device)return;
+  const onOnline=()=>device.scheduler.nudge();
+  window.addEventListener("online",onOnline);
+  return()=>{window.removeEventListener("online",onOnline);device.scheduler.stop();};
+ },[device]);
  const noDevice=!device?t("disabled.select"):null;
 
  return <section className={styles.panel} aria-labelledby="dv-h">
@@ -89,7 +96,7 @@ export default function DevicePanel(){
    <div className={styles.tableWrap}><table className={styles.table}>
     <thead><tr><th>#</th><th>{t("dv.operation")}</th><th>{t("common.status")}</th><th>{t("q.expires")}</th></tr></thead>
     <tbody>{entries.map(e=><tr key={e.seq}><td className={styles.mono}>{e.seq}</td><td className={styles.mono}>{e.operationType}</td>
-     <td><Badge tone={toneFor(e.state==="CONFLICTED"?"CONFLICT":e.state==="DENIED"?"REJECTED":e.state)}>{enumLabel(lang,"local",e.state)}</Badge>{e.code&&<span className={styles.hint} style={{display:"block"}}>{t(`code.${e.code}` as Key)!==`code.${e.code}`?t(`code.${e.code}` as Key):e.code}</span>}</td>
+     <td><Badge tone={toneFor(e.state==="CONFLICTED"?"CONFLICT":e.state==="DENIED"?"REJECTED":e.state)}>{enumLabel(lang,"local",e.state)}</Badge>{e.state==="CONFLICTED"&&<Link className={styles.link} href="/workforce/offline/conflicts">{t("nav.conflicts")}</Link>}{e.code&&<span className={styles.hint} style={{display:"block"}}>{t(`code.${e.code}` as Key)!==`code.${e.code}`?t(`code.${e.code}` as Key):e.code}</span>}</td>
      <td>{fmtTime(lang,e.expiresAt)}</td></tr>)}</tbody>
    </table></div>
    <ul className={styles.cards}>{entries.map(e=><li key={e.seq} className={styles.card}><strong className={styles.mono}>#{e.seq} {e.operationType}</strong> <Badge tone={toneFor(e.state==="CONFLICTED"?"CONFLICT":e.state==="DENIED"?"REJECTED":e.state)}>{enumLabel(lang,"local",e.state)}</Badge></li>)}</ul>

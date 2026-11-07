@@ -34,8 +34,8 @@ Branch `work/claude-m38-device-client-integration-2026-11-07`, from `main` @ `aa
 Data flow for one change: admission (contract approved, not safety-gated, offline-allowed, epoch current, scope/user match) -> atomic enqueue (sequence + quotas + sealed write) -> batch persisted *before* sending (key + sequence numbers) -> `POST sync/batches` with `Idempotency-Key` -> per-command outcomes applied -> in-flight marker cleared last -> payload purged on a final outcome.
 
 ## 2. What was built (paths)
-* `packages/offline-device-sdk/src`: `types, validate, store, crypto, queue, admission, backoff, transport, leader, diagnostics, conflict, policy, sync, idb, index` (+ `package.json`, `tsconfig.json`; not a workspace member)
-* `packages/offline-device-sdk/tests`: `core, sync, interop, security` (+ `helpers.mjs` fake server, `fixtures/m38-real-batch-replies.json`)
+* `packages/offline-device-sdk/src`: `types, validate, store, crypto, queue, admission, backoff, transport, leader, diagnostics, conflict, policy, sync, scheduler, idb, index` (+ `package.json`, `tsconfig.json`; not a workspace member)
+* `packages/offline-device-sdk/tests`: `core, sync, interop, security, scheduler, idb` (+ `helpers.mjs` fake server, `fixtures/m38-real-batch-replies.json`) and `live/{rig.mjs,live.test.mjs}` (real-service rig)
 * `apps/web/lib/offline/device.ts`, `apps/web/components/offline/DevicePanel.tsx` (mounted by `StatusBoard.tsx`), `apps/web/app/api/offline/session/route.ts`
 * Changed: `apps/web/lib/offline/proxy-policy.ts` (+`POST sync/batches`, +`GET devices/{id}/cursor`), `apps/web/app/api/offline/proxy/[...segments]/route.ts` (1 MiB bound for `sync/batches` only), `apps/web/lib/offline/i18n.ts` (+`dv.*`, `enum.local.*`, device errors, EN/FR), `tests/m38_offline_frontend.test.mjs`, `apps/web/tsconfig.json`
 * `services/offline-sync-core/src/test/java/.../SdkInteropFixtureTest.java` (test only; no service code changed)
@@ -73,33 +73,34 @@ Legend: **V** implemented and verified by the tests named; **P** partially imple
 | 05 | P | AES-GCM + key lifecycle verified in Node; `IdbStore`/`IdbKeyVault` not exercised in a real browser; no Expo/SecureStore adapter |
 | 06 | V | atomic enqueue, append-only sequence, quotas, retention (`core`) |
 | 07 | V | admission matrix (`core`); server re-adjudicates |
-| 08 | P | connectivity probe, manual sync and bounded jittered backoff verified; no automatic scheduler/timer loop in the UI |
+| 08 | V | `SyncScheduler` (injected timers): drain, idle polling, nudge on enqueue/`online`, bounded jittered retry, stops on suspension/wipe, never overlaps; wired in the device panel after a verified unlock. Verified with fake timers (`scheduler`); the browser wiring is typed, not run in a browser |
 | 09 | V | <= 50, batch keys, partial/retryable outcomes, cursor persistence (`sync`) |
-| 10 | P | restart/kill/partition/expiry verified with the in-memory store; not with a real browser process |
+| 10 | P | restart/kill/partition/expiry verified with the in-memory store, and `IdbStore`/`IdbKeyVault` logic verified against an in-memory IndexedDB **double** (`idb`); not with a real browser engine or a real process kill |
 | 11 | P | stale/invalid epoch and frozen records refused locally and answered by the server fixture; no lease acquisition API exists on the server to wire |
-| 12 | P | exact server codes preserved; deterministic resolution request builder with reviewer != author; the resolution screen is the existing server-backed S03, not re-wired to the local queue |
+| 12 | P | exact server codes preserved; deterministic resolution request builder with reviewer != author, verified **live** (the real service also refuses the author with 403); conflicted entries link to the existing server-backed S03 screen; the resolution is not performed from the local queue view |
 | 13 | D | proposal only (section 5) |
 | 14 | V | local per-command states + exact server code; list in DevicePanel |
 | 15 | P | suspend/lock/wipe on expiry and revocation verified in the SDK; UI not browser-verified |
 | 16 | P | LOCK/WIPE policy and retention verified; policy is not remotely configurable |
-| 17 | P | lease election verified with racing instances; `webLockLeader` adapter exists but is not wired or tested |
+| 17 | V | lease election verified with racing instances; Web Locks adapter wired into the scheduler and verified against a lock-API double (a real browser lock manager was not run) |
 | 18 | P | EN/FR parity enforced by test, existing design tokens; no accessibility audit, no screen-reader test |
 | 19 | V | allow-list sanitiser, leak test over a full run |
 | 20 | V | metadata-only export (SDK + button); no payload, key, command id |
 | 21 | P | DevicePanel on the existing status screen; the other existing pages were already server-backed |
 | 22 | P | uses the existing cookie sign-in; no hard-coded grants; no end-to-end run against a live IdP |
 | 23 | V | `tests/test_m38_device_sdk_contract.py` (drift proven by a negative run) |
-| 24 | P | **golden replies recorded from the real service on PostgreSQL 18** and replayed through the SDK; drift guarded in Java. **No live HTTP/OIDC end-to-end run** (the service needs an https issuer) |
+| 24 | V | **live run**: the SDK drives the real Spring service over HTTP (JWTs validated against a real HTTPS OIDC issuer) on real PostgreSQL 18 with forced RLS, synthetic records, device-bound accounts (`tests/live`, 10 tests). Not covered: the Next proxy and cookie sign-in in front of the service |
 | 25 | V | drop / drop-after-processing / duplicate / http 503 / retry budget (`sync`) against the fake and the recorded real replies |
-| 26 | P | client-side scope/user isolation verified; server-side isolation verified by the M38 Java suite; no combined live test |
-| 27 | P | expired session (401), revoked device (403), missing permission (403), user mismatch, maker/checker (SDK + M38 Java tests); not against a live IdP |
+| 26 | V | live: another hospital's tokens see no devices/heads, get 404 for the device and cursor; a device bound to hospital A refuses a hospital-B session; PostgreSQL RLS is in the path |
+| 27 | V | live against the real service: expired token (401), grant longer than 15 minutes (401), missing `m38:sync_submit` (403), wrong user (`device_user_mismatch`), revoked device (`device_revoked` then wipe), maker/checker on conflict resolution, wrong issuer/audience (401). The IdP is a local test issuer, not P03 |
 | 28 | P | static and direct privacy checks; no penetration test |
 | 29 | V* | dedicated workflow (below). *Result for the pushed SHA is on the PR |
 | 30 | V | this note |
-Totals: **V 12 (incl. 29 pending CI)**, **P 17**, **D 1**, **not done 0**. 30/30 is **not** claimed; no package is marked complete without its tests.
+Totals: **V 17**, **P 12**, **D 1**, **not done 0** (30 packages). 30/30 is **not** claimed; a **V** means implemented and verified by the named tests, and the notes say what each verification does and does not cover.
 
 ## 7. Verification evidence
-* `node --test packages/offline-device-sdk/tests/` -> **41 pass, 0 fail** (core 13, sync 17, interop 7, security 4).
+* `node --test packages/offline-device-sdk/tests/` -> **47 pass, 0 fail, 10 skipped** (core 13, sync 17, interop 7, security 4, scheduler 3, idb 3; the 10 skipped are the live-rig tests, which run only with `SYNQORIA_LIVE_RIG=1`).
+* **Live rig** (`SYNQORIA_LIVE_RIG=1`, real service jar + PostgreSQL 18 + HTTPS OIDC issuer + openssl/keytool): **10 pass, 0 fail**; the CI job `live-rig` runs it on every push.
 * `tsc -p packages/offline-device-sdk/tsconfig.json` (TypeScript 5.8.3, strict, `erasableSyntaxOnly`) -> no errors. Web DevicePanel/device.ts/session route type-check under the web tsconfig flags (css-module declaration supplied by Next).
 * `python tests/test_m38_device_sdk_contract.py` -> 9 routes, contract 1.0.0; negative run (renamed route and field) fails as intended.
 * `node --test tests/m38_offline_frontend.test.mjs` -> 9/9 (updated for the device routes and the 1 MiB bound).
@@ -107,11 +108,11 @@ Totals: **V 12 (incl. 29 pending CI)**, **P 17**, **D 1**, **not done 0**. 30/30
 * GitHub Actions for the exact pushed SHA: see the PR.
 
 ## 8. Real limitations
-No real browser/emulator/device run (IndexedDB adapters, service worker, background sync and mobile shells are untested); no automatic sync scheduler; no attachment transfer; no Expo adapters; no live OIDC + service + browser exercise; no `next build` evidence unless the informational CI lane reports it; remote retention policy absent; Web Locks adapter unwired.
+No real browser/emulator/device run (IndexedDB is verified only against an in-memory double; service worker/background sync and mobile shells are untested); no attachment transfer; no Expo adapters; the live rig bypasses the Next proxy and cookie sign-in (it talks to the service directly with test-issuer JWTs); `next build` and web `tsc` fail in CI for reasons that pre-date this branch (duplicate React types in the shared module shells, missing `@synqoria/ux-core@0.57.0` for the M27 lane); remote retention policy absent; no accessibility audit.
 
 ## 9. Integration dependencies for the integration lead
 1. Approve storage dependencies if native shells are wanted (`expo-sqlite`, `expo-secure-store`) - adapters then implement `Store`/`KeyVault`.
 2. Provide a device registration path (administrative UI or API) and decide who may register devices for whom.
 3. Decide the session-introspection source of truth (this branch adds a minimal, non-verifying `GET /api/offline/session`; a verified one belongs to P03).
-4. A live end-to-end rig (https issuer, service, browser) to turn packages 22/24/26/27 from **P** to **V**.
+4. A browser-level end-to-end rig (Next proxy + cookie sign-in + a real browser engine) to turn packages 10/22 from **P** to **V**; the service-level live rig already exists (`tests/live`).
 5. Domain adapters in the owning clinical modules that consume accepted commands (already an open M38 server dependency).

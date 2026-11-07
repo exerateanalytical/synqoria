@@ -48,7 +48,7 @@ export class IdbStore implements Store {
    await new Promise<void>((res, rej) => { w.oncomplete = () => res(); w.onerror = () => rej(w.error); w.onabort = () => rej(w.error); });
    return out;
   };
-  const locks = (globalThis.navigator as Navigator & { locks?: LockManager }).locks;
+  const locks = (globalThis.navigator as (Navigator & { locks?: LockManager }) | undefined)?.locks;
   return locks ? locks.request("synqoria-offline-store-" + this.name, { mode: "exclusive" }, run) as Promise<T> : run();
  }
 }
