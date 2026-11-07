@@ -42,6 +42,7 @@ class IntegrationPgTest{
   try(Connection c=root.getConnection();Statement s=c.createStatement()){
    s.execute(Files.readString(Path.of("db","migration","V001__m35_partner_integration_control.sql")));
    s.execute(Files.readString(Path.of("db","migration","V002__m35_immutable_control_transitions.sql")));
+   s.execute(Files.readString(Path.of("db","migration","V003__m35_replay_status_width.sql")));
   }
   var runtime=ds("synqoria_integration_runtime","m35-ci-only");
   store=new IntegrationStore(new JdbcTemplate(runtime),JsonMapper.builder().build(),
