@@ -318,4 +318,48 @@ final class MortuaryStorePgIntegrationTest {
    pending.caseId(),cmd("AUTHORIZE_RELEASE",pending.version(),null,null,null,recipient,legal)));
   assertEquals("RELEASE_REVIEWED",service.one(who(OFFICER,"m27:read"),item.caseId()).state());
  }
+
+ @Test void authorityEvidenceAndLegalHoldsCannotBeRetargetedErasedOrReactivated(){
+  pgOnly();
+  var service=store();
+  var item=receive(service,UUID.randomUUID());
+  var admin=admin();
+  final UUID decedent=item.decedentRef(), caseId=item.caseId();
+  assertThrows(Exception.class,()->admin.update(
+   "UPDATE synqoria_operations.mortuary_authority_evidence SET proof_kind='IDENTITY_ATTESTED' "+
+   "WHERE decedent_ref=? AND proof_kind='DEATH_CONFIRMED'",decedent));
+  assertThrows(Exception.class,()->admin.update(
+   "UPDATE synqoria_operations.mortuary_authority_evidence SET digest_sha256=repeat('b',64) "+
+   "WHERE decedent_ref=? AND proof_kind='DEATH_CONFIRMED'",decedent));
+  assertThrows(Exception.class,()->admin.update(
+   "UPDATE synqoria_operations.mortuary_authority_evidence "+
+   "SET valid_until=valid_until+interval '1 day' WHERE decedent_ref=? "+
+   "AND proof_kind='DEATH_CONFIRMED'",decedent));
+  assertThrows(Exception.class,()->admin.update(
+   "DELETE FROM synqoria_operations.mortuary_authority_evidence WHERE decedent_ref=?",decedent));
+  assertEquals(1,admin.update(
+   "UPDATE synqoria_operations.mortuary_authority_evidence "+
+   "SET revoked_at=clock_timestamp() WHERE decedent_ref=? "+
+   "AND proof_kind='DEATH_CONFIRMED'",decedent));
+  assertThrows(Exception.class,()->admin.update(
+   "UPDATE synqoria_operations.mortuary_authority_evidence "+
+   "SET revoked_at=NULL WHERE decedent_ref=? AND proof_kind='DEATH_CONFIRMED'",decedent));
+  UUID hold=UUID.randomUUID();
+  admin.update("INSERT INTO synqoria_operations.mortuary_legal_holds "+
+   "(hold_id,cell_id,facility_id,case_id,authority_ref,reason_code,ordered_by) "+
+   "VALUES(?,?,?,?,?,?,?)",hold,CELL,FAC,caseId,"COURT-ORDER-V1","COURT_REVIEW",AUTHORITY);
+  assertThrows(Exception.class,()->admin.update(
+   "UPDATE synqoria_operations.mortuary_legal_holds SET authority_ref='COURT-ORDER-V2' "+
+   "WHERE hold_id=?",hold));
+  assertThrows(Exception.class,()->admin.update(
+   "DELETE FROM synqoria_operations.mortuary_legal_holds WHERE hold_id=?",hold));
+  assertEquals(1,admin.update(
+   "UPDATE synqoria_operations.mortuary_legal_holds "+
+   "SET active=false,rescinded_at=clock_timestamp() WHERE hold_id=?",hold));
+  assertThrows(Exception.class,()->admin.update(
+   "UPDATE synqoria_operations.mortuary_legal_holds "+
+   "SET active=true,rescinded_at=NULL WHERE hold_id=?",hold));
+  assertFalse(service.legalHolds(who(REVIEWER,"m27:review"),caseId).getFirst().active());
+ }
+
 }
