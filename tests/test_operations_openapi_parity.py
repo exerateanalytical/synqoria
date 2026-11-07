@@ -76,6 +76,19 @@ class OperationsContractParity(unittest.TestCase):
         self.assertIn("m22:receive", (JAVA/"OperationsStore.java").read_text(encoding="utf-8"))
         self.assertIn('actor.require("m25:assign")',(JAVA/"OperationsConnectorService.java").read_text(encoding="utf-8"))
 
+    def test_record_dto_fields_match_current_java_source(self):
+        for name, schema in self.doc["components"]["schemas"].items():
+            source_file=schema.get("x-java-source-record")
+            if not source_file:
+                continue
+            with self.subTest(record=name):
+                java=(ROOT/source_file).read_text(encoding="utf-8")
+                match=re.search(r"public record "+re.escape(name)+r"\\((.*?)\\)\\s*\\{",java,re.S)
+                self.assertIsNotNone(match,"missing Java record "+name)
+                chunks=re.split(r",(?!(?:[^<>]*>))",match.group(1))
+                fields={chunk.strip().split()[-1] for chunk in chunks if chunk.strip()}
+                self.assertEqual(set(schema["properties"]),fields,"Java DTO contract drift in "+name)
+
     def test_no_duplicate_m27_mortuary_contract(self):
         self.assertTrue((ROOT/"contracts/openapi/synqoria-m27-mortuary-v1.yaml").exists())
         self.assertFalse(any("/M27/cases" in path for method,path in self.endpoints))
