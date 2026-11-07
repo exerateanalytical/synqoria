@@ -1,7 +1,7 @@
 {
   "schemaVersion": "synqoria.reconciliation.v1",
-  "generatedAtUtc": "2026-11-07T12:52:15+00:00",
-  "mainShaInspected": "b5f405a988b05556ac6c7dcc4e3693b4de1eacf6",
+  "generatedAtUtc": "2026-11-07T12:52:56+00:00",
+  "mainShaInspected": "8ce6f891827080b9fee270cbd896c171a5037167",
   "canonical": {
     "plannedModules": 40,
     "canonicalScreens": 261
@@ -58,18 +58,17 @@
         58,
         61,
         62,
-        63
+        63,
+        64
       ],
       "futureOrder": [
-        "Validate PR #64 source and merge only after Java25/PostgreSQL18.6 + generated OpenAPI + consolidated checks; verify bot post-merge reconciliation",
-        "Integrate the M39 trusted route-fence source and live service discovery into Kong/Envoy with mTLS and two-cell fail-closed tests; no auto deployment",
-        "Implement M39 provisioning executors with least privilege, idempotency and maker-checker gates, without pretending database records provision infrastructure",
-        "Implement M40 independent backup collection/verification agent and actual disposable PostgreSQL WAL/PITR restore tests",
-        "Review and merge Claude's M38 PR #56 only after verified session replacement and live Next browser/proxy tests; do not duplicate M38",
-        "Reconcile M01–M37 against existing code and historical branches via Claude Issue #60; implement only proven gaps"
+        "Wire the M39 route fence and signed routing admission into real Kong/Envoy gateway data plane using workload OIDC, mTLS and trusted cell registry; test two disposable hospital cells, switching/fencing, key rotation and outage behavior",
+        "Finish M39 infrastructure provisioning and execution adapter, ensuring actual infrastructure changes only after approval/qualifications, with idempotency, audit, rollback and least privilege",
+        "Build M40 independent backup collectors and real disposable PostgreSQL WAL/PITR rehearsal with evidence and safe recovery approvals",
+        "Review Claude M38 PR #56 after rebase and verified P03 offline-session replacement, browser/proxy E2E, SDK tests and no duplication",
+        "Complete Claude Issue #60 forensic reconciliation of M01-M37 and implement only independently proven missing capabilities"
       ],
-      "currentPr": 64,
-      "currentScope": "M39 authoritative route target fence API and verified gateway routing admission library"
+      "lastCompleted": "M39 authoritative route fence and trusted destination admission library (PR #64; merged b5f405a988b05556ac6c7dcc4e3693b4de1eacf6)"
     }
   },
   "openPullRequests": [
@@ -529,7 +528,7 @@
       "clinicalAccepted": false,
       "attestedEngineeringEvidence": {
         "pr": 51,
-        "scope": "M39 management-plane source PR #51 and routing/health additions #54,#58 are merged; authoritative target/epoch/health fence and gateway admission PR #64 under review. Real Kong/Envoy, infrastructure executor and hospital deployment remain outstanding."
+        "scope": "M39 management plane PR #51, signed routing gate #54, health observer #58, and authoritative route-target/live directory fence plus gateway admission PR #64 merged; actual Kong/Envoy integration, provisioning executor and hospital deployment NOT completed."
       }
     },
     {
