@@ -21,22 +21,26 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "22"
-      - name: Read approved candidate lock without changing this branch
+          node-version: "26"
+      - name: Verify canonical root dependency lock without historical overlay
         run: |
-          git fetch --no-tags origin refs/heads/work/reproducible-npm-lock-candidate-2026-11-05:refs/remotes/origin/ops001-lock-reference
-          git show refs/remotes/origin/ops001-lock-reference:package-lock.json > package-lock.json
+          set -euo pipefail
+          test -f package-lock.json
           node -e "const fs=require('fs');const l=JSON.parse(fs.readFileSync('package-lock.json'));if(l.lockfileVersion!==3)process.exit(1)"
-      - name: Install pinned workspaces from build-owner lock candidate
+      - name: Install current committed Next16/React19 locked workspaces
         run: npm ci --no-audit --no-fund
       - name: Compile pinned UX core workspace before web imports
         run: npm run build --workspace @synqoria/ux-core
       - name: Compile the entire actual Next.js workforce web application
         run: npm run build --workspace @synqoria/web
-      - name: Install pinned Playwright Chromium for browser-only UI verification
+      - name: Use pre-installed Chrome on the GitHub Ubuntu image with pinned Playwright API
         run: |
-          npm install --global playwright@1.56.1
-          playwright install chromium
+          set -euo pipefail
+          npm install --global playwright@1.56.1 --no-audit --no-fund
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)"
+          test -n "$CHROME"
+          "$CHROME" --version
+          echo "SYNQORIA_CHROME_EXECUTABLE=$CHROME" >> "$GITHUB_ENV"
       - name: Verify 8 screen routes across 6 responsive browser widths
         run: node tests/ops001_browser_smoke.cjs
       - name: Preserve screenshot evidence for independent visual audit
@@ -47,4 +51,4 @@ jobs:
           path: evidence/ops001/browser
           if-no-files-found: warn
       - name: Scope note
-        run: echo "Candidate cross-PR overlay only. No committed lock, clinical acceptance, deployment or certification."
+        run: echo "Canonical committed dependency lock tested. Browser smoke alone is NOT clinical acceptance, deployment or certification."

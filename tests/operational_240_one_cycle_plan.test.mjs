@@ -58,5 +58,19 @@ test("every module with a missing integration is covered without changing canoni
  assert.equal(actual.size,41);
  const routed=read("registers/screen-routes.json");
  assert.equal(routed.screens.length,261);
- for(const s of flat)assert.equal(routed.screens.find(x=>x.screen_id===s.id).implementation_status,"route_registered_domain_adapter_missing");
+ // This is the pinned historical 240-work-item plan: later separately merged
+ // modules can progress from missing to source/API evidence, but never be
+ // silently counted as clinically accepted by this plan.
+ const admissible=new Set([
+  "route_registered_domain_adapter_missing",
+  "api_read_subset_not_clinically_complete",
+  "source_api_workflow_ci_verified_unaccepted",
+  "existing_module_source_integrated_unaccepted"
+ ]);
+ for(const s of flat){
+  const record=routed.screens.find(x=>x.screen_id===s.id);
+  assert.ok(record,"canonical route not found: "+s.id);
+  assert.ok(admissible.has(record.implementation_status),
+    s.id+" has unsupported/possibly accepted route state "+record.implementation_status);
+ }
 });

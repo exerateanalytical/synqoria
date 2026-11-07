@@ -35,9 +35,9 @@ test("OPS001 eight exact canonical IDs mount distinct source-backed screen flows
 test("OPS001 auth, lookup and logout Next routes are source wired to the same verified provider",()=>{
  const expected=[
   ["apps/web/app/api/auth/status/route.ts","ops001PublicStatusResponse"],
-  ["apps/web/app/api/auth/oidc/start/route.ts","login"],
-  ["apps/web/app/api/auth/oidc/callback/route.ts","callback"],
-  ["apps/web/app/api/auth/logout/route.ts","logout"],
+  ["apps/web/app/api/auth/oidc/start/route.ts",'dispatchVerifiedStaffAuthRoute("start"'],
+  ["apps/web/app/api/auth/oidc/callback/route.ts",'dispatchVerifiedStaffAuthRoute("callback"'],
+  ["apps/web/app/api/auth/logout/route.ts",'dispatchVerifiedStaffAuthRoute("logout"'],
   ["apps/web/app/api/clinical/patient-lookup/route.ts","patient-lookup"],
   ["apps/web/app/api/ops001/facility/route.ts","facility"]
  ];
