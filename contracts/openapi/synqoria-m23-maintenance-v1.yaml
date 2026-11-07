@@ -1,0 +1,326 @@
+openapi: 3.1.0
+info:
+  title: SYNQORIA M23 Preventive Maintenance, Calibration and Servicing Calendar API
+  version: 1.0.0-draft
+  description: |
+    Extension of the existing M23 assets and work orders (operations-core). It plans, links, verifies independently and reports;
+    it never creates or transitions work orders and never returns an asset to service (those stay in the existing
+    /{module}/items/{id}/transitions state machine with its trusted-evidence gates).
+    A plan is a hospital-internal schedule, not manufacturer certification. Supplier / engineer references are stored UNATTESTED.
+    Cost references are administrative only; nothing is posted to a ledger. Source-integration contract: no hospital deployment,
+    issuer, migration approval or clinical acceptance is implied.
+  contact:
+    name: OPES Health Systems
+servers:
+  - url: /api/v1/operations
+security:
+  - facilityStaffJwt: []
+tags:
+  - name: Policy
+  - name: Plans
+  - name: Planner
+  - name: Calendar and history
+  - name: Inspection and calibration
+  - name: Work-order references
+paths:
+  /M23/maintenance/policies:
+    get:
+      tags: [Policy]
+      operationId: listMaintenancePolicies
+      summary: Effective policy per safety class (approved facility policy or explicit safe default)
+      x-synqoria-permission: m23:read
+      responses:
+        '200': {description: Four classes, content: {application/json: {schema: {type: array, items: {$ref: '#/components/schemas/Result'}}}}}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+    post:
+      tags: [Policy]
+      operationId: proposeMaintenancePolicy
+      summary: Propose a facility policy version (never looser than the safe default; needs independent approval)
+      x-synqoria-permission: m23:pm_propose
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/PolicyRequest'}}}}
+      responses:
+        '201': {$ref: '#/components/responses/Result'}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+        '409': {$ref: '#/components/responses/Conflict'}
+  /M23/maintenance/policies/{safetyClass}/versions/{version}/decision:
+    post:
+      tags: [Policy]
+      operationId: decideMaintenancePolicy
+      summary: Approve or reject a pending policy version (maker-checker)
+      x-synqoria-permission: m23:pm_approve
+      parameters: [{$ref: '#/components/parameters/SafetyClass'}, {$ref: '#/components/parameters/Version'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/Decision'}}}}
+      responses:
+        '200': {$ref: '#/components/responses/Result'}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+        '409': {$ref: '#/components/responses/Conflict'}
+  /M23/maintenance/plans:
+    get:
+      tags: [Plans]
+      operationId: listMaintenancePlans
+      summary: Latest version of each live plan
+      x-synqoria-permission: m23:read
+      parameters: [{$ref: '#/components/parameters/Limit'}]
+      responses:
+        '200': {description: Plans, content: {application/json: {schema: {type: array, items: {$ref: '#/components/schemas/Result'}}}}}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+    post:
+      tags: [Plans]
+      operationId: proposeMaintenancePlan
+      summary: Propose version 1 of the single live plan for an asset
+      x-synqoria-permission: m23:pm_propose
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/PlanRequest'}}}}
+      responses:
+        '201': {$ref: '#/components/responses/Result'}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+        '409': {$ref: '#/components/responses/Conflict'}
+  /M23/maintenance/plans/{planId}/versions:
+    post:
+      tags: [Plans]
+      operationId: proposeMaintenancePlanVersion
+      summary: Propose the next immutable version of a plan
+      x-synqoria-permission: m23:pm_propose
+      parameters: [{$ref: '#/components/parameters/PlanId'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/PlanRequest'}}}}
+      responses:
+        '201': {$ref: '#/components/responses/Result'}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+        '409': {$ref: '#/components/responses/Conflict'}
+  /M23/maintenance/plans/{planId}/versions/{version}/decision:
+    post:
+      tags: [Plans]
+      operationId: decideMaintenancePlanVersion
+      summary: Approve or reject a pending plan version (maker-checker); approval supersedes the previous version and withdraws unlinked future occurrences
+      x-synqoria-permission: m23:pm_approve
+      parameters: [{$ref: '#/components/parameters/PlanId'}, {$ref: '#/components/parameters/Version'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/Decision'}}}}
+      responses:
+        '200': {$ref: '#/components/responses/Result'}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+        '409': {$ref: '#/components/responses/Conflict'}
+  /M23/maintenance/planner/generate:
+    post:
+      tags: [Planner]
+      operationId: generateMaintenanceOccurrences
+      summary: Acquire the planner lease, deterministically materialise occurrences for the horizon, release the lease
+      x-synqoria-permission: m23:pm_plan_run
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/GenerateRequest'}}}}
+      responses:
+        '200': {$ref: '#/components/responses/Result'}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+        '409': {$ref: '#/components/responses/Conflict'}
+  /M23/maintenance/planner/escalate:
+    post:
+      tags: [Planner]
+      operationId: escalateOverdueMaintenance
+      summary: Raise one leveled escalation per overdue occurrence; emits the M37 notification contract through the outbox only
+      x-synqoria-permission: m23:pm_plan_run
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/CommandOnly'}}}}
+      responses:
+        '200': {$ref: '#/components/responses/Result'}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+  /M23/maintenance/planner/health:
+    get:
+      tags: [Planner]
+      operationId: maintenancePlannerHealth
+      summary: UNKNOWN / HEALTHY / DEGRADED / STALE; unknown or stale is never healthy
+      x-synqoria-permission: m23:read
+      parameters:
+        - {name: staleAfterMinutes, in: query, required: false, schema: {type: integer, minimum: 1, maximum: 1440, default: 120}}
+      responses:
+        '200': {$ref: '#/components/responses/Result'}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+  /M23/maintenance/calendar:
+    get:
+      tags: [Calendar and history]
+      operationId: maintenanceCalendar
+      summary: Bounded servicing calendar (range at most 366 days, at most 200 rows) with projection and escalation level
+      x-synqoria-permission: m23:read
+      parameters:
+        - {name: from, in: query, required: true, schema: {type: string, format: date-time}}
+        - {name: to, in: query, required: true, schema: {type: string, format: date-time}}
+        - {name: limit, in: query, required: false, schema: {type: integer, minimum: 1, maximum: 200, default: 100}}
+      responses:
+        '200': {description: Occurrences, content: {application/json: {schema: {type: array, items: {$ref: '#/components/schemas/Result'}}}}}
+        '400': {$ref: '#/components/responses/Invalid'}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+  /M23/maintenance/occurrences/{occurrenceId}/work-order:
+    post:
+      tags: [Plans]
+      operationId: linkMaintenanceWorkOrder
+      summary: Link a planned occurrence to an EXISTING open work order of the same offline asset (one active service per asset)
+      x-synqoria-permission: m23:pm_link
+      parameters: [{$ref: '#/components/parameters/OccurrenceId'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/LinkRequest'}}}}
+      responses:
+        '200': {$ref: '#/components/responses/Result'}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+        '409': {$ref: '#/components/responses/Conflict'}
+  /M23/maintenance/occurrences/{occurrenceId}/completion:
+    post:
+      tags: [Plans]
+      operationId: completeMaintenanceOccurrence
+      summary: Close an occurrence after the independently verified work order (and calibration evidence where required); never changes the asset
+      x-synqoria-permission: m23:pm_complete
+      parameters: [{$ref: '#/components/parameters/OccurrenceId'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/CompleteRequest'}}}}
+      responses:
+        '200': {$ref: '#/components/responses/Result'}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+  /M23/maintenance/assets/{assetId}/history:
+    get:
+      tags: [Calendar and history]
+      operationId: maintenanceAssetHistory
+      summary: Audit events, occurrences and calibration dates; staff identities only with m23:audit_read
+      x-synqoria-permission: m23:read
+      parameters: [{$ref: '#/components/parameters/AssetId'}, {$ref: '#/components/parameters/Limit'}]
+      responses:
+        '200': {$ref: '#/components/responses/Result'}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+        '404': {$ref: '#/components/responses/Denied'}
+  /M23/maintenance/assets/{assetId}/calibrations:
+    post:
+      tags: [Inspection and calibration]
+      operationId: recordAssetCalibration
+      summary: Record a calibration bound to independently issued, unexpired, single-use trusted evidence
+      x-synqoria-permission: m23:calibrate
+      parameters: [{$ref: '#/components/parameters/AssetId'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/CalibrationRequest'}}}}
+      responses:
+        '201': {$ref: '#/components/responses/Result'}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+        '409': {$ref: '#/components/responses/Conflict'}
+  /M23/maintenance/inspections/pending:
+    get:
+      tags: [Inspection and calibration]
+      operationId: pendingMaintenanceInspections
+      summary: Work awaiting verification that the caller may independently verify, with a fail-closed evidenceReady flag
+      x-synqoria-permission: m23:return
+      parameters: [{$ref: '#/components/parameters/Limit'}]
+      responses:
+        '200': {description: Queue, content: {application/json: {schema: {type: array, items: {$ref: '#/components/schemas/Result'}}}}}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+  /M23/maintenance/work-orders/{workOrderId}/service-references:
+    post:
+      tags: [Work-order references]
+      operationId: addMaintenanceServiceReference
+      summary: Record an UNATTESTED supplier / engineer document reference (never satisfies a trusted-evidence gate)
+      x-synqoria-permission: m23:pm_record
+      parameters: [{$ref: '#/components/parameters/WorkOrderId'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/ServiceReferenceRequest'}}}}
+      responses:
+        '201': {$ref: '#/components/responses/Result'}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+        '409': {$ref: '#/components/responses/Conflict'}
+  /M23/maintenance/work-orders/{workOrderId}/costs:
+    post:
+      tags: [Work-order references]
+      operationId: addMaintenanceCostReference
+      summary: Record an administrative repair-cost reference (amount in minor units; no ledger posting)
+      x-synqoria-permission: m23:pm_record
+      parameters: [{$ref: '#/components/parameters/WorkOrderId'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/CostRequest'}}}}
+      responses:
+        '201': {$ref: '#/components/responses/Result'}
+        '401': {$ref: '#/components/responses/Denied'}
+        '403': {$ref: '#/components/responses/Denied'}
+        '409': {$ref: '#/components/responses/Conflict'}
+components:
+  securitySchemes:
+    facilityStaffJwt:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Verified issuer/audience JWT plus a CURRENT shift-bounded workforce grant; cell and facility come from the verified token, never from the request.
+  parameters:
+    SafetyClass: {name: safetyClass, in: path, required: true, schema: {type: string, enum: [LOW, MEDIUM, HIGH, CRITICAL]}}
+    Version: {name: version, in: path, required: true, schema: {type: integer, minimum: 1}}
+    PlanId: {name: planId, in: path, required: true, schema: {type: string, format: uuid}}
+    OccurrenceId: {name: occurrenceId, in: path, required: true, schema: {type: string, format: uuid}}
+    AssetId: {name: assetId, in: path, required: true, schema: {type: string, format: uuid}}
+    WorkOrderId: {name: workOrderId, in: path, required: true, schema: {type: string, format: uuid}}
+    Limit: {name: limit, in: query, required: false, schema: {type: integer, minimum: 1, maximum: 100, default: 50}}
+  responses:
+    Result: {description: Result object (replayed unchanged for a repeated commandId), content: {application/json: {schema: {$ref: '#/components/schemas/Result'}}}}
+    Denied: {description: Unauthenticated, not permitted, or not found in the caller's cell and facility, content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+    Conflict: {description: Version, lease, uniqueness or idempotency conflict, content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+    Invalid: {description: Bounds or format violation, content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+  schemas:
+    Error: {type: object, required: [error], properties: {error: {type: string}}}
+    Result: {type: object, additionalProperties: true}
+    CommandId: {type: string, format: uuid, description: Idempotency key; same key and same request replays the stored result, same key with a different request is a conflict}
+    CommandOnly: {type: object, required: [commandId], properties: {commandId: {$ref: '#/components/schemas/CommandId'}}}
+    CompleteRequest: {type: object, required: [commandId], properties: {commandId: {$ref: '#/components/schemas/CommandId'}}}
+    Decision: {type: object, required: [approve, commandId], properties: {approve: {type: boolean}, commandId: {$ref: '#/components/schemas/CommandId'}}}
+    GenerateRequest:
+      type: object
+      required: [commandId]
+      properties:
+        horizonDays: {type: integer, minimum: 1, maximum: 120, default: 30}
+        commandId: {$ref: '#/components/schemas/CommandId'}
+    PolicyRequest:
+      type: object
+      required: [safetyClass, intervalDays, graceHours, escalateAfterHours, commandId]
+      properties:
+        safetyClass: {type: string, enum: [LOW, MEDIUM, HIGH, CRITICAL]}
+        intervalDays: {type: integer, minimum: 1, maximum: 730}
+        calibrationIntervalDays: {type: integer, minimum: 1, maximum: 1095}
+        graceHours: {type: integer, minimum: 0, maximum: 720}
+        escalateAfterHours: {type: integer, minimum: 1, maximum: 2160}
+        commandId: {$ref: '#/components/schemas/CommandId'}
+    PlanRequest:
+      type: object
+      required: [assetId, serviceType, intervalDays, timezone, anchorDate, localTime, commandId]
+      properties:
+        assetId: {type: string, format: uuid}
+        serviceType: {type: string, enum: [PREVENTIVE, CALIBRATION, PREVENTIVE_AND_CALIBRATION]}
+        intervalDays: {type: integer, minimum: 1, maximum: 730}
+        calibrationIntervalDays: {type: integer, minimum: 1, maximum: 1095}
+        timezone: {type: string, description: IANA zone id, example: Africa/Douala}
+        anchorDate: {type: string, format: date}
+        localTime: {type: string, example: '09:00'}
+        calendarRule: {type: string, enum: [EXACT_DAY, NEXT_WEEKDAY], default: EXACT_DAY}
+        commandId: {$ref: '#/components/schemas/CommandId'}
+    LinkRequest: {type: object, required: [workOrderId, commandId], properties: {workOrderId: {type: string, format: uuid}, commandId: {$ref: '#/components/schemas/CommandId'}}}
+    CalibrationRequest:
+      type: object
+      required: [performedAt, nextDueAt, evidenceRef, commandId]
+      properties:
+        performedAt: {type: string, format: date-time}
+        nextDueAt: {type: string, format: date-time}
+        evidenceRef: {type: string, maxLength: 160}
+        commandId: {$ref: '#/components/schemas/CommandId'}
+    ServiceReferenceRequest:
+      type: object
+      required: [kind, externalRef, issuerName, commandId]
+      properties:
+        kind: {type: string, enum: [SUPPLIER_REPORT, ENGINEER_CERTIFICATE, MANUFACTURER_BULLETIN]}
+        externalRef: {type: string, maxLength: 160}
+        issuerName: {type: string, maxLength: 160}
+        commandId: {$ref: '#/components/schemas/CommandId'}
+    CostRequest:
+      type: object
+      required: [amountMinor, currency, costCentreRef, commandId]
+      properties:
+        amountMinor: {type: integer, format: int64, minimum: 0, maximum: 1000000000000}
+        currency: {type: string, pattern: '^[A-Z]{3}$'}
+        costCentreRef: {type: string, maxLength: 160}
+        noteRef: {type: string, maxLength: 160}
+        commandId: {$ref: '#/components/schemas/CommandId'}

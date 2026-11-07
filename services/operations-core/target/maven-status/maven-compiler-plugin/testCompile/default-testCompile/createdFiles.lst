@@ -1,0 +1,11 @@
+org\synqoria\operations\mortuary\MortuaryStorePgIntegrationTest.class
+org\synqoria\operations\domain\MaintenanceRulesTest.class
+org\synqoria\operations\domain\SevenModuleWorkflowTest.class
+org\synqoria\operations\mortuary\MortuaryWorkflowTest.class
+org\synqoria\operations\OperationsStorePgIntegrationTest.class
+org\synqoria\operations\OperationsAuthorityPgIntegrationTest.class
+org\synqoria\operations\OperationsBusinessPgIntegrationTest.class
+org\synqoria\operations\domain\StockLedgerTest.class
+org\synqoria\operations\MaintenancePgIntegrationTest.class
+org\synqoria\operations\OperationsIntegrationsPgTest.class
+org\synqoria\operations\OperationsConnectorPgTest.class

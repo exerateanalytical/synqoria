@@ -112,7 +112,13 @@ final class OperationsBusinessPgIntegrationTest {
   var work=create(s,"M23","WORK_ORDER",maker,data("title","Safety inspection",
    "assetRef",asset.id().toString(),"dueAt","2026-11-08T12:00:00Z"));
   work=next(s,"M23",work,"OPEN_WORK",maker,Map.of());
-  work=next(s,"M23",work,"ASSIGN_WORK",inspector,Map.of("technicianRef","biomed-42"));
+  UUID technician=UUID.fromString("66000000-0000-4000-8000-000000000006");
+  admin().update("INSERT INTO synqoria_operations.workforce_grants " +
+   "(cell_id,facility_id,actor_id,grant_revision,permissions,active,shift_from,shift_until," +
+   "valid_until,approved_by,source_ref) VALUES(?,?,?,1,ARRAY['m23:maintenance']::text[],true," +
+   "clock_timestamp()-interval '1 hour',clock_timestamp()+interval '1 hour'," +
+   "clock_timestamp()+interval '2 hours',?,'trusted-biomed-roster-synthetic')",CELL,FAC,technician,B);
+  work=next(s,"M23",work,"ASSIGN_WORK",inspector,Map.of("technicianRef",technician.toString()));
   evidence(work.id(),"COMPLETE_WORK",3,"biomed_inspection","WORK-INSPECT-41");
   work=next(s,"M23",work,"COMPLETE_WORK",inspector,Map.of("inspectionRef","WORK-INSPECT-41"));
   evidence(work.id(),"VERIFY_WORK",4,"calibration_safe","CAL-41");

@@ -57,6 +57,7 @@ public final class OperationalRules {
    if(digest instanceof String s&&!s.matches("[a-f0-9]{64}"))
     throw new WorkflowViolation("invalid_document_digest");
   }
+  if(module.equals("M23")&&type.equals("ASSET"))MaintenanceRules.validateAssetMetadata(values);
   if(module.equals("M22")){
    Object qty=values.get("quantity");
    if(qty instanceof Number n && (n.longValue()<1||n.longValue()>1_000_000))
@@ -66,6 +67,7 @@ public final class OperationalRules {
  public static void validateNew(String module,String type,Map<String,Object>fields){
   if(!(fields.get("title") instanceof String title)||title.isBlank())
    throw new WorkflowViolation("title_required");
+  if(module.equals("M23")&&type.equals("ASSET"))MaintenanceRules.validateAssetMetadata(fields);
   if(module.equals("M31")&&type.equals("DOCUMENT")&&fields.containsKey("signatureRef"))
    throw new WorkflowViolation("signature_cannot_be_client_declared");
  }

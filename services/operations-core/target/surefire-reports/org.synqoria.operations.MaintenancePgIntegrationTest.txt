@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.synqoria.operations.MaintenancePgIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 25, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.67 s -- in org.synqoria.operations.MaintenancePgIntegrationTest
