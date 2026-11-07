@@ -203,6 +203,30 @@ class FleetPgIntegrationTest {
   ok(fleet.transition(ops,k(),t[1],new FleetService.Transition(ver(c),"DRAINING","draining for maintenance")));
   assertEquals("route_unavailable",code(()->routing.lookup(gateway,"acme.prod")));                       // not ACTIVE: refuse
  }
+ @Test void routingFenceReadsActualPostgresTargetVersionAndFreshHealthUnderRls(){
+  UUID[] acme=liveCell("acme"),beta=liveCell("beta");
+  route("acme.prod",acme[1]);route("beta.prod",beta[1]);
+  Map<String,Object> f=routing.routingFence(gateway,"acme.prod");
+  assertEquals("acme.prod",f.get("routeKey"));
+  assertEquals(acme[1].toString(),f.get("cellId"));
+  assertEquals(1L,((Number)f.get("placementEpoch")).longValue());
+  assertEquals(2L,((Number)f.get("directoryVersion")).longValue());
+  assertEquals("ACTIVE",f.get("cellState"));
+  assertEquals("HEALTHY",f.get("health"));
+  assertTrue(f.get("observedAt") instanceof String);
+  assertEquals("permission_denied",code(()->routing.routingFence(ops,"acme.prod")));
+  Actor acmeOperator=actor(plane,unit,Set.of(acme[0]),Perm.ROUTE_READ);
+  assertEquals("not_found",code(()->routing.routingFence(acmeOperator,"beta.prod")));
+  assertEquals("not_found",code(()->routing.routingFence(gateway,"missing.prod")));
+  clock.now=clock.now.plusSeconds(1);
+  ok(fleet.reportHealth(ops,k(),acme[1],new FleetService.HealthReport("UNHEALTHY",clock.instant(),null)));
+  assertEquals("route_unavailable",code(()->routing.routingFence(gateway,"acme.prod")));
+  healthy(acme[1]);
+  assertDoesNotThrow(()->routing.routingFence(gateway,"acme.prod"));
+  clock.now=clock.now.plusSeconds(Domain.HEALTH_MAX_AGE_SECONDS+10);
+  assertEquals("route_unavailable",code(()->routing.routingFence(gateway,"acme.prod")));
+ }
+
  @Test void routeSwitchesRefuseStaleEpochsCrossTenantTargetsAndNeverGoBackwards(){
   UUID[] a=liveCell("acme"),b=liveCell("beta");UUID route=route("acme.prod",a[1]);
   Map<String,Object> a2=body(ok(fleet.requestTenant(ops,k(),prov("acme-two"))));          // a second cell for the SAME tenant
