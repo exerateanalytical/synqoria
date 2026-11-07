@@ -1,0 +1,58 @@
+name: M32 privacy five-screen Next16 React19 verified build
+on:
+  push:
+    branches:
+      - work/chatgpt-m32-consent-privacy-2026-11-07
+  pull_request:
+    paths:
+      - 'apps/web/components/privacy/**'
+      - 'apps/web/lib/privacy/**'
+      - 'apps/web/app/workforce/privacy/**'
+      - 'apps/web/app/api/privacy/**'
+      - 'tests/m32_privacy_frontend.test.mjs'
+      - '.github/workflows/m32-privacy-web.yml'
+permissions:
+  contents: read
+jobs:
+  privacy-next:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - name: SHA-pin the separately owned PR23 lockfile in CI runner only
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin refs/heads/work/reproducible-npm-lock-candidate-2026-11-05:refs/remotes/origin/m32-pr23
+          git show refs/remotes/origin/m32-pr23:package-lock.json > package-lock.json
+          echo "6fa90a4aa72db790d86b7782d45ced40389b5f8987da65138fae7548b5f9eb2b  package-lock.json" | sha256sum -c -
+      - name: Apply independently owned PR24 native build candidates, latest stable Next and React candidate in CI only
+        run: |
+          git fetch --no-tags origin refs/heads/work/real-next-expo-build-corrections-2026-11-05:refs/remotes/origin/m32-pr24
+          for path in apps/staff-mobile/package.json apps/patient-mobile/package.json; do
+            git show "refs/remotes/origin/m32-pr24:$path" > "$path"
+          done
+          node - <<'NODE'
+          const fs=require('node:fs');const path='apps/web/package.json';
+          const web=JSON.parse(fs.readFileSync(path,'utf8'));
+          web.dependencies.next='16.4.5';
+          web.dependencies.react='19.3.1';
+          web.dependencies['react-dom']='19.3.1';
+          web.devDependencies['@types/react']='19.3.0';
+          fs.writeFileSync(path,JSON.stringify(web,null,2)+'\n');
+          NODE
+      - name: Install supported workspaces without persisting dependency changes
+        run: |
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          npm ci --no-audit --no-fund
+      - name: Validate M32 privacy routes, proxy and screen contracts
+        run: node --test tests/m32_privacy_frontend.test.mjs
+      - name: Build UX core and production-framework five M32 workstations
+        run: |
+          npm run build --workspace @synqoria/ux-core
+          npm run build --workspace @synqoria/web
+      - name: Explicitly withhold hospital/clinical acceptance
+        if: always()
+        run: echo "M32 source build only. Institutional consent signing, privacy law and clinical deployment acceptance DENIED."
