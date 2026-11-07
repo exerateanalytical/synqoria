@@ -1,0 +1,50 @@
+name: OPS001 Next.js pinned-lock candidate build
+on:
+  push:
+    branches:
+      - work/ops001-shared-auth-patient-read-2026-11-06
+  pull_request:
+    paths:
+      - apps/web/app/workforce/clinical/**
+      - apps/web/app/api/auth/**
+      - apps/web/app/api/ops001/**
+      - apps/web/app/api/clinical/patient-lookup/**
+      - apps/web/lib/ops001-*
+      - .github/workflows/ops001-next-build-candidate.yml
+permissions:
+  contents: read
+jobs:
+  nextjs-web-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Read approved candidate lock without changing this branch
+        run: |
+          git fetch --no-tags origin refs/heads/work/reproducible-npm-lock-candidate-2026-11-05:refs/remotes/origin/ops001-lock-reference
+          git show refs/remotes/origin/ops001-lock-reference:package-lock.json > package-lock.json
+          node -e "const fs=require('fs');const l=JSON.parse(fs.readFileSync('package-lock.json'));if(l.lockfileVersion!==3)process.exit(1)"
+      - name: Install pinned workspaces from build-owner lock candidate
+        run: npm ci --no-audit --no-fund
+      - name: Compile pinned UX core workspace before web imports
+        run: npm run build --workspace @synqoria/ux-core
+      - name: Compile the entire actual Next.js workforce web application
+        run: npm run build --workspace @synqoria/web
+      - name: Install pinned Playwright Chromium for browser-only UI verification
+        run: |
+          npm install --global playwright@1.56.1
+          playwright install chromium
+      - name: Verify 8 screen routes across 6 responsive browser widths
+        run: node tests/ops001_browser_smoke.cjs
+      - name: Preserve screenshot evidence for independent visual audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ops001-responsive-browser-screenshots
+          path: evidence/ops001/browser
+          if-no-files-found: warn
+      - name: Scope note
+        run: echo "Candidate cross-PR overlay only. No committed lock, clinical acceptance, deployment or certification."

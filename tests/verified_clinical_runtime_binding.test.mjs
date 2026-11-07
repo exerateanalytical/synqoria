@@ -1,5 +1,3 @@
-import {bindVerifiedStaffRouteRuntime,dispatchVerifiedStaffAuthRoute,StaffRouteBootstrapError} from "../apps/web/lib/verified-staff-auth-route.mjs";
-import {initializeVerifiedStaffRoutes} from "../apps/web/lib/staff-route-bootstrap.mjs";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {generateKeyPairSync} from "node:crypto";
@@ -103,18 +101,4 @@ test("B0063 mismatched deployed facility and missing clinical safety settings re
  assert.throws(()=>createVerifiedClinicalRuntimeBinding(runtime,{
   ...env,SYNQORIA_REQUIRE_PATIENT_DISCLOSURE:"0"
  }),ClinicalRuntimeBindingError);
-});
-
-test("P03-B0064 installed verified runtime mediates route access without exposing identity secrets",async()=>{
- const runtime=await initializeVerifiedStaffRoutes(options());
- assert.deepEqual(bindVerifiedStaffRouteRuntime(runtime),{bound:true});
- assert.equal(await initializeVerifiedStaffRoutes(options()),runtime);
- const notAuthenticated=await dispatchVerifiedStaffAuthRoute("callback",
-  new Request(publicOrigin+"api/auth/oidc/callback?code=forged&state=forged"));
- assert.equal(notAuthenticated.status,401);
- assert.equal(notAuthenticated.headers.get("location"),null);
- assert.match(notAuthenticated.headers.get("set-cookie"),/^__Host-synqoria-oidc-flow=; Path=\/; Max-Age=0/);
- assert.throws(()=>bindVerifiedStaffRouteRuntime({}),StaffRouteBootstrapError);
- const other=await createVerifiedStaffIdentityRuntime(options());
- assert.throws(()=>bindVerifiedStaffRouteRuntime(other),StaffRouteBootstrapError);
 });

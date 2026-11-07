@@ -1,0 +1,43 @@
+name: SYNQORIA OPS001 shared staff screens
+on:
+  push:
+    branches:
+      - work/ops001-shared-auth-patient-read-2026-11-06
+  pull_request:
+    paths:
+      - apps/web/lib/ops001-*
+      - apps/web/app/api/auth/**
+      - apps/web/app/api/ops001/**
+      - apps/web/app/api/clinical/patient-lookup/**
+      - apps/web/app/workforce/clinical/SharedOps001Workspace.tsx
+      - apps/web/app/workforce/clinical/ops001-workspace.css
+      - tests/ops001_*
+permissions:
+  contents: read
+jobs:
+  ops001:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install pinned TSX parser for source-only check
+        run: npm install --global typescript@5.8.3
+      - name: Verified patient lookup request and runtime gate
+        run: node --test tests/ops001_patient_lookup.test.mjs tests/ops001_runtime_bridge.test.mjs
+      - name: Positive attested OIDC/runtime and protected no-PHI lookup orchestration
+        run: node --test tests/ops001_attested_runtime.test.mjs
+      - name: All eight screen-specific Next source and WCAG layout checks
+        run: node --test tests/ops001_ui_source.test.cjs
+      - name: Preserve exact 8-screen acceptance boundaries
+        run: node --test tests/ops001_screen_evidence.test.mjs
+      - name: Preserve P03 attested runtime and existing clinical admissions
+        run: node --test tests/verified_clinical_runtime_binding.test.mjs tests/clinical_opaque_session_admission.test.mjs
+      - name: Preserve canonical routes and 240 screen plan
+        run: |
+          python3 tests/test_navigation_contract.py
+          node --test tests/operational_240_one_cycle_plan.test.mjs
+      - name: Release boundary
+        run: echo "OPS001 source partial only; no eight-screen package acceptance or clinical deployment evidence."

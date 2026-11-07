@@ -8,6 +8,8 @@ import LongitudinalReadWorkspace from "../LongitudinalReadWorkspace";
 import type {LongitudinalScreenId} from "../LongitudinalReadWorkspace";
 import HelpAndSafeNavigation from "../HelpAndSafeNavigation";
 import UnintegratedScreen from "../UnintegratedScreen";
+import SharedOps001Workspace from "../SharedOps001Workspace";
+import type {Ops001Screen} from "../SharedOps001Workspace";
 import type {CanonicalRouteSpec,ExtendedSpec,FlowPath,DocumentLink} from "../UnintegratedScreen";
 import canonical from "../../../../../../registers/canonical-screens.json";
 import specials from "../../../../../../registers/ui-specific-252-prototype-contracts.json";
@@ -22,6 +24,7 @@ import {DOCUMENT_CATALOG} from "../../../ui/printables/registry";
 export const dynamic="force-dynamic";
 const allScreens=canonical.screen_register as CanonicalRouteSpec[];
 const operational=new Set(implementation.rows.map(x=>x.id));
+const ops001=new Set(["G-S01","G-S02","G-S04","G-S05","G-S07","G-S08","G-S09","M01-S02"]);
 const longitudinal=new Set(["M04-S02","M05-S01","M05-S04","M05-S05","M06-S02","M06-S03","M06-S04","M06-S05"]);
 const moduleNames:Record<string,string>={
  SHARED:"Shared identity and workspace",
@@ -52,6 +55,11 @@ export default async function OperationalScreen({params}:{params:Promise<{screen
  const {screenId}=await params;
  const screen=allScreens.find(s=>s.id===screenId);
  if(!screen)notFound();
+ // SYNQ-OPS-001 source-integrated slices only. Never mutate clinical
+ // acceptance or invent missing emergency / patient-registration APIs.
+ if(ops001.has(screenId))
+  return <SharedOps001Workspace screenId={screenId as Ops001Screen}/>;
+
  // Preserve the real, independently tested subset rather than replacing it with a generic renderer.
  if(operational.has(screenId)){
   if(longitudinal.has(screenId))return <LongitudinalReadWorkspace screenId={screenId as LongitudinalScreenId}/>;

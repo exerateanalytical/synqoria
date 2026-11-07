@@ -1,0 +1,19 @@
+name: SYNQORIA latest stable release policy contract gate
+on:
+  push:
+    branches:
+      - work/seven-operations-real-workflows-2026-11-06
+permissions:
+  contents: read
+jobs:
+  version-policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - name: Assert latest stable source targets and fail-closed adoption statuses
+        run: node --test tests/stack_stable_policy.test.mjs
+      - name: No production deployment or certification implied
+        run: echo "Latest stable targets are tracked; full system not automatically migrated or clinically released."
