@@ -163,6 +163,28 @@ def validate(d, repo, check_paths=True):
     return errs
 
 
+def first_diff(a, b, path=""):
+    if type(a) != type(b):
+        return path or "/"
+    if isinstance(a, dict):
+        for k in sorted(set(a) | set(b)):
+            if k not in a or k not in b:
+                return path + "/" + k
+            r = first_diff(a[k], b[k], path + "/" + k)
+            if r:
+                return r
+        return ""
+    if isinstance(a, list):
+        if len(a) != len(b):
+            return path + " (length %d vs %d)" % (len(a), len(b))
+        for i, (x, y) in enumerate(zip(a, b)):
+            r = first_diff(x, y, path + "/%d" % i)
+            if r:
+                return r
+        return ""
+    return "" if a == b else path + " (%r vs %r)" % (str(a)[:80], str(b)[:80])
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dir", default="registers/reconciliation")
@@ -180,7 +202,7 @@ def main():
                                   stdout=subprocess.DEVNULL)
             for n in REQUIRED:
                 if open(os.path.join(t, n), "rb").read() != open(os.path.join(d, n), "rb").read():
-                    errs.append("rescan differs from committed output: " + n)
+                    errs.append("rescan differs from committed output: " + n + " at " + first_diff(load(t, n), load(d, n)))
     for e in errs:
         print("FAIL:", e)
     print("reconciliation validation: %s (%d problem%s)" % ("FAILED" if errs else "ok", len(errs), "" if len(errs) == 1 else "s"))
