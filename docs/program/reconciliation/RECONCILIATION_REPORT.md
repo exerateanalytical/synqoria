@@ -62,6 +62,15 @@ Status vocabulary: **verified** = produced by the tool, checked by the validator
 4. **Screen register drift** for 17 screens - integration lead (owns `registers/screen-routes.json`).
 5. `services/identity` has no outbox table; byte-identical files and table-name collisions need review before any consolidation.
 
+## Hand-off to the integration lead (machine form: `backlog.json` -> `handoff`)
+* **Need no further implementation:** none can be named (needs a signed human review).
+* **Require integration (17):** M01, M02, M04-M06, M16, M24, M26-M28, M30, M32, M34, M35, M38-M40.
+* **Confirmed functionality/CI gaps (9):** M03 (no CI for its tests); M21-M23, M25, M29, M31, M33, M37 (no OpenAPI contract attributed).
+* **Positively confirmed never built:** none. The 14 unknown modules need a human audit first.
+* **Simplest first:** BL-004 (M03 CI workflow), BL-009..BL-012 and BL-005..BL-008 (one operations-core contract describing existing endpoints), BL-003 (register drift).
+* **Claude next:** BL-004, the operations-core contract items, and the human-audit items BL-001/BL-002 (audits to be reviewed by the lead). **Integration lead:** BL-003, BL-014, BL-015. **Module owner then lead:** BL-013.
+* **Dependencies:** the seven operations-core modules share one contract task; M04-M06 share one slice; anything on M27 shells waits for the ux-core/React fix; the unknown-module audit extends the anchors file.
+
 ## Limits (read before using these numbers)
 * Attribution is by module id in paths, service ownership, and curated anchors. Source named only by capability and not anchored is **not seen**; that is why 14 modules are UNKNOWN rather than "missing".
 * "Latest mapped CI" is the most recent run of the mapped workflow on any branch; 33 of 47 workflows' latest runs were failures, many on historical or quarantined branches. Per-module run URLs and head SHAs are in the evidence; they are not claimed to be at the baseline SHA and are not a pass/fail verdict on the module.

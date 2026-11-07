@@ -1,14 +1,105 @@
 {
  "confirmedCount": 12,
+ "handoff": {
+  "assignClaudeNext": [
+   "BL-004",
+   "BL-009",
+   "BL-010",
+   "BL-011",
+   "BL-012",
+   "BL-001",
+   "BL-005",
+   "BL-006",
+   "BL-007",
+   "BL-008",
+   "BL-002"
+  ],
+  "assignIntegrationLead": [
+   "BL-003",
+   "BL-015",
+   "BL-014"
+  ],
+  "assignModuleOwner": [
+   "BL-013"
+  ],
+  "crossModuleDependencies": [
+   "M21, M22, M23, M25, M29, M31, M37 share services/operations-core: one contract task covers all seven",
+   "M04, M05, M06 share one longitudinal slice: attribution must be settled once before per-module work",
+   "any change touching M27 shells depends on the integration lead's ux-core/React fix",
+   "audit of the 14 unknown modules depends on the capability-anchors file being extended by a human reviewer"
+  ],
+  "modulesNeedingNoFurtherImplementation": [],
+  "modulesNeedingNoFurtherImplementationNote": "none can be named: that needs a signed human review (implemented_and_verified); no module has one",
+  "modulesPositivelyConfirmedNeverBuilt": [],
+  "modulesPositivelyConfirmedNeverBuiltNote": "none: confirmed absence needs a signed human audit; the 14 unknown modules are audit candidates, not build orders",
+  "modulesRequiringIntegration": [
+   "M01",
+   "M02",
+   "M04",
+   "M05",
+   "M06",
+   "M16",
+   "M24",
+   "M26",
+   "M27",
+   "M28",
+   "M30",
+   "M32",
+   "M34",
+   "M35",
+   "M38",
+   "M39",
+   "M40"
+  ],
+  "modulesUnknown": [
+   "M07",
+   "M08",
+   "M09",
+   "M10",
+   "M11",
+   "M12",
+   "M13",
+   "M14",
+   "M15",
+   "M17",
+   "M18",
+   "M19",
+   "M20",
+   "M36"
+  ],
+  "modulesWithConfirmedFunctionalityGaps": [
+   "M03",
+   "M21",
+   "M22",
+   "M23",
+   "M25",
+   "M29",
+   "M31",
+   "M33",
+   "M37"
+  ],
+  "simplestFirst": [
+   "BL-004",
+   "BL-009",
+   "BL-010",
+   "BL-011",
+   "BL-012",
+   "BL-003",
+   "BL-005",
+   "BL-006"
+  ]
+ },
  "itemCount": 15,
  "items": [
   {
    "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
    "boundedPrScope": [
     "the module's own paths only"
    ],
    "confirmed": true,
    "dependsOn": [],
+   "effort": "S",
    "evidence": [
     {
      "attributedPathCount": 51,
@@ -28,11 +119,13 @@
   },
   {
    "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
    "boundedPrScope": [
     "the module's own paths only"
    ],
    "confirmed": true,
    "dependsOn": [],
+   "effort": "S",
    "evidence": [
     {
      "attributedPathCount": 53,
@@ -52,11 +145,13 @@
   },
   {
    "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
    "boundedPrScope": [
     "the module's own paths only"
    ],
    "confirmed": true,
    "dependsOn": [],
+   "effort": "S",
    "evidence": [
     {
      "attributedPathCount": 53,
@@ -76,11 +171,13 @@
   },
   {
    "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
    "boundedPrScope": [
     "the module's own paths only"
    ],
    "confirmed": true,
    "dependsOn": [],
+   "effort": "S",
    "evidence": [
     {
      "attributedPathCount": 69,
@@ -100,11 +197,13 @@
   },
   {
    "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
    "boundedPrScope": [
     "the module's own paths only"
    ],
    "confirmed": true,
    "dependsOn": [],
+   "effort": "S",
    "evidence": [
     {
      "attributedPathCount": 53,
@@ -124,12 +223,14 @@
   },
   {
    "acceptance": "each module has a recorded human audit with source paths or an explicit confirmed-absent finding signed in the evidence matrix",
+   "assignTo": "claude",
    "boundedPrScope": [
     "docs/program/reconciliation/**",
     "registers/reconciliation/inputs/capability-anchors.json"
    ],
    "confirmed": false,
    "dependsOn": [],
+   "effort": "L",
    "evidence": [
     {
      "finding": "no source attributed by id/ownership/anchor; status UNKNOWN (not proven unbuilt)",
@@ -155,11 +256,13 @@
   },
   {
    "acceptance": "every listed screen is either re-statused with evidence or the evidence is explained",
+   "assignTo": "integration-lead",
    "boundedPrScope": [
     "registers/screen-routes.json (integration lead only)"
    ],
    "confirmed": true,
    "dependsOn": [],
+   "effort": "S",
    "evidence": [
     {
      "finding": "register status disagrees with inventory evidence",
@@ -193,11 +296,13 @@
   },
   {
    "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
    "boundedPrScope": [
     "the module's own paths only"
    ],
    "confirmed": true,
    "dependsOn": [],
+   "effort": "S",
    "evidence": [
     {
      "attributedPathCount": 53,
@@ -217,11 +322,13 @@
   },
   {
    "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
    "boundedPrScope": [
     "the module's own paths only"
    ],
    "confirmed": true,
    "dependsOn": [],
+   "effort": "S",
    "evidence": [
     {
      "attributedPathCount": 53,
@@ -241,11 +348,13 @@
   },
   {
    "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
    "boundedPrScope": [
     "the module's own paths only"
    ],
    "confirmed": true,
    "dependsOn": [],
+   "effort": "S",
    "evidence": [
     {
      "attributedPathCount": 53,
@@ -265,11 +374,13 @@
   },
   {
    "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
    "boundedPrScope": [
     "the module's own paths only"
    ],
    "confirmed": true,
    "dependsOn": [],
+   "effort": "S",
    "evidence": [
     {
      "attributedPathCount": 53,
@@ -289,11 +400,13 @@
   },
   {
    "acceptance": "transactional outbox or documented reason events are not required",
+   "assignTo": "module-owner-then-integration-lead",
    "boundedPrScope": [
     "services/identity/db/**"
    ],
    "confirmed": true,
    "dependsOn": [],
+   "effort": "M",
    "evidence": [
     {
      "service": "services/identity",
@@ -309,6 +422,7 @@
   },
   {
    "acceptance": "each module has a recorded human audit with source paths or an explicit confirmed-absent finding signed in the evidence matrix",
+   "assignTo": "claude",
    "boundedPrScope": [
     "docs/program/reconciliation/**",
     "registers/reconciliation/inputs/capability-anchors.json"
@@ -317,6 +431,7 @@
    "dependsOn": [
     "BL-001"
    ],
+   "effort": "L",
    "evidence": [
     {
      "finding": "no source attributed by id/ownership/anchor; status UNKNOWN (not proven unbuilt)",
@@ -338,11 +453,13 @@
   },
   {
    "acceptance": "overlaps are confirmed intentional per-service tables or consolidated",
+   "assignTo": "integration-lead",
    "boundedPrScope": [
     "service db/**"
    ],
    "confirmed": false,
    "dependsOn": [],
+   "effort": "M",
    "evidence": [
     {
      "collisions": {
@@ -409,11 +526,13 @@
   },
   {
    "acceptance": "each group is intentionally mirrored (documented) or consolidated",
+   "assignTo": "integration-lead",
    "boundedPrScope": [
     "listed duplicate paths only"
    ],
    "confirmed": true,
    "dependsOn": [],
+   "effort": "S",
    "evidence": [
     {
      "groups": [

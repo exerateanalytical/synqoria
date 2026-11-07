@@ -665,10 +665,35 @@ def pkg30_backlog(mods, screens, contracts, dup, canon):
     if screens["duplicateStaticEntrypoints"]:
         add("Duplicate static page entrypoints for screens", "duplicate-screen", "high", [{"screens": screens["duplicateStaticEntrypoints"]}], [], "UI owner", ["apps/web/app/**"], "one entrypoint per screen", True)
     sev = {"high": 0, "medium": 1, "low": 2}
+    for it in items:
+        k = it["kind"]
+        it["effort"] = {"facet-gap": "S", "register-drift": "S", "duplication": "S", "duplication-candidate": "M", "security-gap": "M", "event-gap": "M", "audit": "L", "duplicate-screen": "S"}.get(k, "M")
+        it["assignTo"] = "integration-lead" if k in ("register-drift", "duplication", "duplication-candidate", "duplicate-screen") else ("claude" if k in ("audit", "facet-gap") else "module-owner-then-integration-lead")
     items.sort(key=lambda i: (sev[i["severity"]], not i["confirmed"], i["id"]))
     for r, it in enumerate(items, 1):
         it["rank"] = r
-    return {"schemaVersion": "synqoria.reconciliation.backlog.v1", "ranking": "severity (high>medium>low), then confirmed before unconfirmed, then id", "itemCount": len(items),
+    cls = collections.defaultdict(list)
+    for m in mods:
+        cls[m["classification"]].append(m["id"])
+    handoff = {
+        "modulesNeedingNoFurtherImplementation": [],
+        "modulesNeedingNoFurtherImplementationNote": "none can be named: that needs a signed human review (implemented_and_verified); no module has one",
+        "modulesRequiringIntegration": cls["implemented_requiring_integration"],
+        "modulesWithConfirmedFunctionalityGaps": sorted({i["evidence"][0]["module"] for i in items if i["kind"] == "facet-gap" and i["confirmed"] and "module" in i["evidence"][0]}),
+        "modulesPositivelyConfirmedNeverBuilt": [],
+        "modulesPositivelyConfirmedNeverBuiltNote": "none: confirmed absence needs a signed human audit; the 14 unknown modules are audit candidates, not build orders",
+        "modulesUnknown": cls["unknown_insufficient_evidence"],
+        "simplestFirst": [i["id"] for i in sorted(items, key=lambda i: ({"S": 0, "M": 1, "L": 2}[i["effort"]], i["rank"])) if i["confirmed"]][:8],
+        "assignClaudeNext": [i["id"] for i in items if i["assignTo"] == "claude"],
+        "assignIntegrationLead": [i["id"] for i in items if i["assignTo"] == "integration-lead"],
+        "assignModuleOwner": [i["id"] for i in items if i["assignTo"] == "module-owner-then-integration-lead"],
+        "crossModuleDependencies": [
+            "M21, M22, M23, M25, M29, M31, M37 share services/operations-core: one contract task covers all seven",
+            "M04, M05, M06 share one longitudinal slice: attribution must be settled once before per-module work",
+            "any change touching M27 shells depends on the integration lead's ux-core/React fix",
+            "audit of the 14 unknown modules depends on the capability-anchors file being extended by a human reviewer"],
+    }
+    return {"handoff": handoff, "schemaVersion": "synqoria.reconciliation.backlog.v1", "ranking": "severity (high>medium>low), then confirmed before unconfirmed, then id", "itemCount": len(items),
             "confirmedCount": sum(1 for i in items if i["confirmed"]), "items": items,
             "note": "confirmed=false items are audit work, not proven gaps. No item instructs rebuilding a module from a naming signal."}
 

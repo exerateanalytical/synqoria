@@ -126,6 +126,12 @@ class Negative(Mutable):
             self.edit("module-inventory.json", f)
             self.assertFails("without a recorded human review")
 
+    def test_handoff_cannot_declare_modules_never_built_without_human_review(self):
+        def f(o):
+            o["handoff"]["modulesPositivelyConfirmedNeverBuilt"] = ["M07"]
+        self.edit("backlog.json", f)
+        self.assertFails("without human review")
+
     def test_clinical_acceptance_claim_is_rejected(self):
         def f(o):
             o["modules"][3]["clinicalAccepted"] = True

@@ -118,6 +118,17 @@ def validate(d, repo, check_paths=True):
             err("backlog %s is marked confirmed without evidence" % b["id"])
         if re.search(r"(?i)\b(rebuild|regenerate|re-?implement)\b", b["title"]):
             err("backlog %s proposes rebuilding a module" % b["id"])
+    h = back.get("handoff", {})
+    if h.get("modulesNeedingNoFurtherImplementation") or h.get("modulesPositivelyConfirmedNeverBuilt"):
+        if not all(r.get("humanReviewed") for r in inv["modules"] if r["id"] in (h.get("modulesNeedingNoFurtherImplementation", []) + h.get("modulesPositivelyConfirmedNeverBuilt", []))):
+            err("handoff names modules as finished/never built without human review")
+    known = {b["id"] for b in back["items"]}
+    for k in ("simplestFirst", "assignClaudeNext", "assignIntegrationLead", "assignModuleOwner"):
+        if not set(h.get(k, [])) <= known:
+            err("handoff %s references unknown backlog ids" % k)
+    for b in back["items"]:
+        if b.get("assignTo") not in ("claude", "integration-lead", "module-owner-then-integration-lead") or b.get("effort") not in ("S", "M", "L"):
+            err("backlog %s lacks assignTo/effort" % b["id"])
     ranks = [b["rank"] for b in back["items"]]
     if ranks != list(range(1, len(ranks) + 1)):
         err("backlog ranks must be 1..n in order")
