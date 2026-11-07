@@ -1,0 +1,78 @@
+name: SYNQORIA M26 nutrition CI (engineering evidence, not clinical certification)
+on:
+  push:
+    branches:
+      - work/claude-m26-nutrition-2026-11-07
+    paths:
+      - 'services/nutrition-core/**'
+      - 'contracts/openapi/synqoria-m26-nutrition-v1.yaml'
+      - 'apps/web/components/nutrition/**'
+      - 'apps/web/lib/nutrition/**'
+      - 'apps/web/app/workforce/nutrition/**'
+      - 'apps/web/app/api/nutrition/**'
+      - 'tests/m26_nutrition_frontend.test.mjs'
+      - 'tests/test_m26_openapi_contract.py'
+      - '.github/workflows/m26-nutrition-ci.yml'
+  pull_request:
+    paths:
+      - 'services/nutrition-core/**'
+      - 'contracts/openapi/synqoria-m26-nutrition-v1.yaml'
+      - 'apps/web/components/nutrition/**'
+      - 'apps/web/lib/nutrition/**'
+      - 'tests/m26_nutrition_frontend.test.mjs'
+      - '.github/workflows/m26-nutrition-ci.yml'
+permissions:
+  contents: read
+jobs:
+  java-pg18:
+    name: Java 25 + Spring Boot 4.1.2 + disposable PostgreSQL 18.6 (RLS, concurrency, domain)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+          cache-dependency-path: services/nutrition-core/pom.xml
+      - name: Start disposable PostgreSQL 18.6 on loopback
+        run: |
+          set -euo pipefail
+          docker run -d --name m26-pg -e POSTGRES_PASSWORD=m26-ci-admin -e POSTGRES_DB=m26_ci -p 127.0.0.1:5432:5432 postgres:18.6
+          for i in $(seq 1 60); do
+            docker exec m26-pg psql -U postgres -d m26_ci -Atc 'SELECT 1' 2>/dev/null | grep -qx 1 && break
+            sleep 1
+          done
+          docker exec m26-pg psql -U postgres -d m26_ci -Atc 'SHOW server_version'
+      - name: Domain, API admission and real PostgreSQL integration tests
+        working-directory: services/nutrition-core
+        env:
+          SYNQORIA_NUTRITION_PG_TEST: '1'
+          SYNQORIA_NUTRITION_TEST_JDBC_URL: jdbc:postgresql://127.0.0.1:5432/m26_ci
+          SYNQORIA_NUTRITION_TEST_ADMIN_USER: postgres
+          SYNQORIA_NUTRITION_TEST_ADMIN_PASSWORD: m26-ci-admin
+        run: mvn -B -ntp verify
+      - name: Surefire summary
+        if: always()
+        run: grep -h "Tests run" services/nutrition-core/target/surefire-reports/*.txt || true
+      - name: Explicitly deny deployment implication
+        if: always()
+        run: echo "Disposable PG18.6 synthetic verification; clinical release DENIED."
+  contract-and-web:
+    name: OpenAPI parity + frontend logic/UX/i18n tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install 'PyYAML==6.0.3'
+      - name: OpenAPI contract parity with the Spring routes
+        run: python tests/test_m26_openapi_contract.py
+      - name: Frontend dictionaries, proxy allow-list, client and static UX rules
+        run: node --test tests/m26_nutrition_frontend.test.mjs
