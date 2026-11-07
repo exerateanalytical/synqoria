@@ -1,0 +1,36 @@
+name: SYNQORIA P03 verified session route and Next build
+on:
+  pull_request:
+    paths:
+      - 'apps/web/app/api/operations/auth/verified-session/**'
+      - 'apps/web/lib/operations-verified-session.*'
+      - 'tests/operations_verified_session.test.mjs'
+      - '.github/workflows/p03-verified-session-route-ci.yml'
+  push:
+    paths:
+      - 'apps/web/app/api/operations/auth/verified-session/**'
+      - 'apps/web/lib/operations-verified-session.*'
+      - 'tests/operations_verified_session.test.mjs'
+      - '.github/workflows/p03-verified-session-route-ci.yml'
+permissions:
+  contents: read
+jobs:
+  verified-session-and-real-next-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+          cache: npm
+      - name: Signed OIDC session regression
+        run: node --test tests/verified_oidc_session.test.mjs tests/operations_verified_session.test.mjs
+      - name: Install canonical npm lock
+        run: npm ci --no-audit --no-fund
+      - name: Build UX core
+        run: npm run build --workspace @synqoria/ux-core
+      - name: Build Next P03 operations endpoint
+        run: npm run build --workspace @synqoria/web
+      - name: Scope disclaimer
+        run: echo 'This is an authenticated session endpoint, not a production identity provider or revoked-session introspection.'
