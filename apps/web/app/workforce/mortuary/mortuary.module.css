@@ -47,4 +47,4 @@
 @media(max-width:900px){.columns{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:640px){.fields,.facts{grid-template-columns:minmax(0,1fr)}.controls{width:100%}.controls button{flex:1}.panel{padding:16px}}
 @media print{.controls,.list,.links,.actionPanel,.notice{display:none}.columns{display:block}.panel{border:0;padding:8px}.root{color:#111}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+@media(prefers-reduced-motion:reduce){.root *, .root *::before, .root *::after{transition:none!important;animation:none!important}}
