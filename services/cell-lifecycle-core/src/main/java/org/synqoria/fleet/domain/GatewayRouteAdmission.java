@@ -73,6 +73,9 @@ public final class GatewayRouteAdmission {
 
  /** Re-check the live directory after signature admission to avoid stale target swaps. */
  public Target admit(String requestedRouteKey) {
+  // Reject untrusted route identifiers BEFORE any signed/control-plane HTTP lookup.
+  if(requestedRouteKey==null || !requestedRouteKey.matches("[a-z0-9][a-z0-9.-]{2,119}"))
+   throw new Rejected("route_binding_denied");
   try {
    Envelope signedDecision=signed.fetch(requestedRouteKey);
    UUID signedCell=verifier.admit(requestedRouteKey,signedDecision);
