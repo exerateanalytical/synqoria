@@ -79,7 +79,7 @@ public class RoutingService {
     "JOIN synqoria_fleet.cells c ON c.id=r.target_cell "+
     "JOIN synqoria_fleet.directory_state ds ON ds.cell_id=r.cell_id AND ds.facility_id=r.facility_id "+
     "LEFT JOIN LATERAL (SELECT status,observed_at FROM synqoria_fleet.cell_health x "+
-    "WHERE x.target_cell=c.id ORDER BY observed_at DESC LIMIT 1) h ON true "+
+    "WHERE x.target_cell=c.id ORDER BY observed_at DESC,recorded_at DESC,id DESC LIMIT 1) h ON true "+
     "WHERE r.route_key=?",routeKey);
    Instant observed=r.get("observedAt")==null?null:Instant.parse((String)r.get("observedAt"));
    if(!Domain.routable((String)r.get("state"),(String)r.get("health"),observed,now))
@@ -107,7 +107,7 @@ public class RoutingService {
   return db.scoped(a,()->{
    Instant now=db.clock.instant();
    List<Map<String,Object>> rows=db.rows("SELECT r.target_cell,r.placement_epoch,c.state,h.status AS health,h.observed_at FROM synqoria_fleet.routes r JOIN synqoria_fleet.cells c ON c.id=r.target_cell "+
-    "LEFT JOIN LATERAL (SELECT status,observed_at FROM synqoria_fleet.cell_health x WHERE x.target_cell=c.id ORDER BY observed_at DESC LIMIT 1) h ON true WHERE r.route_key=?",routeKey);
+    "LEFT JOIN LATERAL (SELECT status,observed_at FROM synqoria_fleet.cell_health x WHERE x.target_cell=c.id ORDER BY observed_at DESC,recorded_at DESC,id DESC LIMIT 1) h ON true WHERE r.route_key=?",routeKey);
    if(rows.isEmpty())throw new Violation("not_found");
    Map<String,Object> r=rows.getFirst();
    Instant observed=r.get("observedAt")==null?null:Instant.parse((String)r.get("observedAt"));
