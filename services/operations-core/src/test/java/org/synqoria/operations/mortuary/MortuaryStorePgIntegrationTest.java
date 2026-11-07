@@ -174,30 +174,33 @@ final class MortuaryStorePgIntegrationTest {
   assertEquals(4,s.custodyHistory(who(OFFICER,"m27:read"),id).size());
   assertEquals(2,s.approvals(who(REVIEWER,"m27:review"),id).size());
   assertEquals(7,s.audit(who(APPROVER,"m27:audit"),id).size());
+  long finalizedVersion=c.version();
   assertThrows(WorkflowViolation.class,()->s.change(who(HANDOVER,"m27:handover"),id,
-   cmd("HANDOVER",c.version(),null,null,null,recipient,legal)));
+   cmd("HANDOVER",finalizedVersion,null,null,null,recipient,legal)));
  }
  @Test void legalHoldAndStaleVersionBlockReleaseAndCustodyCannotBeSelfReceived(){
   pgOnly();var s=store();var c=store(s,identify(s,receive(s,UUID.randomUUID())));
   var immutable=c;
-  assertThrows(WorkflowViolation.class,()->s.change(who(OFFICER,"m27:transfer"),c.caseId(),
-   cmd("TRANSFER",c.version(),"CUSTODY","BAY-02",OFFICER,null,null)));
+  final UUID heldCase=c.caseId();
+  final long heldVersion=c.version();
+  assertThrows(WorkflowViolation.class,()->s.change(who(OFFICER,"m27:transfer"),heldCase,
+   cmd("TRANSFER",heldVersion,"CUSTODY","BAY-02",OFFICER,null,null)));
   UUID hold=UUID.randomUUID();
   admin().update("INSERT INTO synqoria_operations.mortuary_legal_holds "+
    "(hold_id,cell_id,facility_id,case_id,authority_ref,reason_code,ordered_by) "+
    "VALUES(?,?,?,?,?,?,?)",hold,CELL,FAC,c.caseId(),"HOLD-M27","INVESTIGATION",AUTHORITY);
-  assertThrows(WorkflowViolation.class,()->s.change(who(REVIEWER,"m27:review"),c.caseId(),
-   cmd("REVIEW_RELEASE",c.version(),null,null,null,"RECIPIENT-M27","LEGAL-M27")));
+  assertThrows(WorkflowViolation.class,()->s.change(who(REVIEWER,"m27:review"),heldCase,
+   cmd("REVIEW_RELEASE",heldVersion,null,null,null,"RECIPIENT-M27","LEGAL-M27")));
   evidence(c.decedentRef(),c.caseId(),"REVIEW_RELEASE",c.version(),"LEGAL_RELEASE","LEGAL-M27",ISSUER);
   evidence(c.decedentRef(),c.caseId(),"REVIEW_RELEASE",c.version(),"RECIPIENT_VERIFIED","RECIPIENT-M27",ISSUER);
-  assertThrows(WorkflowViolation.class,()->s.change(who(REVIEWER,"m27:review"),c.caseId(),
-   cmd("REVIEW_RELEASE",c.version(),null,null,null,"RECIPIENT-M27","LEGAL-M27")));
+  assertThrows(WorkflowViolation.class,()->s.change(who(REVIEWER,"m27:review"),heldCase,
+   cmd("REVIEW_RELEASE",heldVersion,null,null,null,"RECIPIENT-M27","LEGAL-M27")));
   admin().update("UPDATE synqoria_operations.mortuary_legal_holds SET active=false,"+
    "rescinded_at=clock_timestamp() WHERE hold_id=?",hold);
   c=s.change(who(REVIEWER,"m27:review"),c.caseId(),
    cmd("REVIEW_RELEASE",c.version(),null,null,null,"RECIPIENT-M27","LEGAL-M27"));
   assertEquals("RELEASE_REVIEWED",c.state());
-  assertThrows(WorkflowViolation.class,()->s.change(who(APPROVER,"m27:authorize"),c.caseId(),
+  assertThrows(WorkflowViolation.class,()->s.change(who(APPROVER,"m27:authorize"),heldCase,
    cmd("AUTHORIZE_RELEASE",immutable.version(),null,null,null,"RECIPIENT-M27","LEGAL-M27")));
  }
 }
