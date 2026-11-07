@@ -1,0 +1,35 @@
+server:
+  port: ${SYNQORIA_RELIABILITY_PORT:8101}
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+  max-http-request-header-size: 16KB
+  tomcat:
+    max-swallow-size: 8MB
+spring:
+  application:
+    name: synqoria-reliability-core
+  servlet:
+    multipart:
+      enabled: false
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+  datasource:
+    url: ${SYNQORIA_RELIABILITY_JDBC_URL}
+    username: ${SYNQORIA_RELIABILITY_DB_USERNAME}
+    password: ${SYNQORIA_RELIABILITY_DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 0
+      connection-timeout: 5000
+  sql:
+    init:
+      mode: never
+synqoria:
+  reliability:
+    issuer: ${SYNQORIA_RELIABILITY_OIDC_ISSUER}
+    audience: ${SYNQORIA_RELIABILITY_OIDC_AUDIENCE}
+    db-runtime-role: ${SYNQORIA_RELIABILITY_DB_RUNTIME_ROLE:synqoria_reliability_runtime}
+    facility-zone: ${SYNQORIA_RELIABILITY_FACILITY_ZONE:UTC}

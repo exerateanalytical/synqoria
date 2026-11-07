@@ -1,0 +1,99 @@
+name: SYNQORIA M40 reliability CI (engineering evidence, not operational acceptance; no recovery guarantee)
+on:
+  push:
+    branches:
+      - work/claude-m40-reliability-recovery-2026-11-07
+    paths:
+      - 'services/reliability-core/**'
+      - 'contracts/openapi/synqoria-m40-reliability-v1.yaml'
+      - 'apps/web/components/reliability/**'
+      - 'apps/web/lib/reliability/**'
+      - 'apps/web/app/workforce/reliability/**'
+      - 'apps/web/app/api/reliability/**'
+      - 'tests/m40_reliability_frontend.test.mjs'
+      - 'tests/test_m40_openapi_contract.py'
+      - 'tools/m40_pg_backup_restore_exercise.sh'
+      - 'tools/gen_m40_openapi.py'
+      - '.github/workflows/m40-reliability-ci.yml'
+  pull_request:
+    paths:
+      - 'services/reliability-core/**'
+      - 'contracts/openapi/synqoria-m40-reliability-v1.yaml'
+      - 'apps/web/components/reliability/**'
+      - 'apps/web/lib/reliability/**'
+      - 'tests/m40_reliability_frontend.test.mjs'
+      - '.github/workflows/m40-reliability-ci.yml'
+permissions:
+  contents: read
+jobs:
+  java-pg18:
+    name: Java 25 + Spring Boot 4.1.2 + disposable PostgreSQL 18.6 (RLS, concurrency, governance)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+          cache-dependency-path: services/reliability-core/pom.xml
+      - name: Start disposable PostgreSQL 18.6 on loopback
+        run: |
+          set -euo pipefail
+          docker run -d --name m40-pg -e POSTGRES_PASSWORD=m40-ci-admin -e POSTGRES_DB=m40_ci -p 127.0.0.1:5432:5432 postgres:18.6
+          for i in $(seq 1 60); do
+            docker exec m40-pg psql -U postgres -d m40_ci -Atc 'SELECT 1' 2>/dev/null | grep -qx 1 && break
+            sleep 1
+          done
+          docker exec m40-pg psql -U postgres -d m40_ci -Atc 'SHOW server_version'
+      - name: Domain, admission and real PostgreSQL integration tests
+        working-directory: services/reliability-core
+        env:
+          SYNQORIA_RELIABILITY_PG_TEST: '1'
+          SYNQORIA_RELIABILITY_TEST_JDBC_URL: jdbc:postgresql://127.0.0.1:5432/m40_ci
+          SYNQORIA_RELIABILITY_TEST_ADMIN_USER: postgres
+          SYNQORIA_RELIABILITY_TEST_ADMIN_PASSWORD: m40-ci-admin
+        run: mvn -B -ntp verify
+      - name: Surefire summary
+        if: always()
+        run: grep -h "Tests run" services/reliability-core/target/surefire-reports/*.txt || true
+      - name: Real PostgreSQL logical backup/restore and corrupt-backup exercise (synthetic data)
+        env:
+          PG_CONTAINER: m40-pg
+          PG_USER: postgres
+        run: bash tools/m40_pg_backup_restore_exercise.sh m40-exercise-evidence.json
+      - name: Explicitly deny clinical use
+        if: always()
+        run: echo "Synthetic fixtures only; no real hospital data, backup or key was used and no figure here is a recovery guarantee."
+  java-27-compat:
+    name: Java 27 compatibility lane (informational, non-gating)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '27'
+      - name: Compile and run non-database tests on Java 27
+        working-directory: services/reliability-core
+        run: mvn -B -ntp -Djava.version=27 test
+  contract-and-web:
+    name: OpenAPI parity + frontend logic/UX/i18n tests (Node 26)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install 'PyYAML==6.0.3'
+      - name: OpenAPI contract parity with the Spring routes
+        run: python tests/test_m40_openapi_contract.py
+      - name: Frontend dictionaries, proxy allow-list, client, checksum and static UX rules
+        run: node --test tests/m40_reliability_frontend.test.mjs
