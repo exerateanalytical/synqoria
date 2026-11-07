@@ -225,7 +225,7 @@ class Negative(Mutable):
         orig = open(p, "rb").read()
         self.assertEqual(V.validate(self.d, REPO, check_paths=False), [])
         man = json.load(open(os.path.join(self.d, "manifest.json"), encoding="utf-8"))
-        man["inputs"]["prs"]["sha256"] = hashlib.sha256(orig + b"x").hexdigest()
+        man["inputs"]["prs"]["sha256"] = hashlib.sha256(orig.replace(b"\r\n", b"\n") + b"x").hexdigest()
         json.dump(man, open(os.path.join(self.d, "manifest.json"), "w", encoding="utf-8"), indent=1)
         self.assertFails("pinned input changed")
 

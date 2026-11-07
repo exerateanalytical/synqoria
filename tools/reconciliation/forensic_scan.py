@@ -328,7 +328,7 @@ def load_inputs(root):
         p = os.path.join(base, name)
         raw = open(p, "rb").read()
         inputs[key] = json.loads(raw.decode("utf-8"))
-        inputs["meta"][key] = {"path": "registers/reconciliation/inputs/" + name, "sha256": hashlib.sha256(raw).hexdigest()}
+        inputs["meta"][key] = {"path": "registers/reconciliation/inputs/" + name, "sha256": hashlib.sha256(raw.replace(b"\r\n", b"\n")).hexdigest()}
     return inputs
 
 

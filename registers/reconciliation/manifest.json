@@ -3,24 +3,25 @@
  "baselineSha": "fc4f84eb60e7ab7a023895eabfd8266cbda309c5",
  "branchSummary": {
   "notReachable": [
+   "work/claude-m01-m37-forensic-reconciliation-2026-11-07",
    "work/claude-m38-device-client-integration-2026-11-07"
   ],
   "reachableFromBaseline": 63,
-  "total": 64
+  "total": 65
  },
  "countingPolicy": "inventory evidence only; engineering pass != production integration != hospital acceptance != certification; unknown stays null",
  "inputs": {
   "anchors": {
    "path": "registers/reconciliation/inputs/capability-anchors.json",
-   "sha256": "10d3821bd1cc00935e55938fe165687c7b3b9302017868149a458c2123680fbc"
+   "sha256": "e99c817a128307b594461b922c7d3d315d82a7aef593a79a0803e3c88e9272e0"
   },
   "ci": {
    "path": "registers/reconciliation/inputs/ci-runs.json",
-   "sha256": "329423f440b2c33d17203f86fcf1519aa4ef02beaa0f12e63b788f25e42aecd3"
+   "sha256": "177851b49a484567cd94b2f2ade9b3b753d2dc71ec64863088d98f964740df17"
   },
   "prs": {
    "path": "registers/reconciliation/inputs/pr-snapshot.json",
-   "sha256": "dcd9d2907a93d3837f282df129653d18fae8feaaa13ba3f8c48b3631943b8311"
+   "sha256": "c3b31978c9847f083dd0130b2d28f299363f31501e6d7a341b0cd08755ce46ae"
   }
  },
  "lineageStatement": "A closed or merged PR head that is reachable from the baseline has its content in main; no unmerged historical branch content was found outside the listed notReachable branches.",
@@ -825,6 +826,12 @@
    "name": "work/chatgpt-p03-verified-session-route-2026-11-07",
    "reachableFromBaseline": true,
    "tip": "3be8b65d84d353c4afaeb9021b0917bebc203f3a"
+  },
+  {
+   "commitsNotInBaseline": 1,
+   "name": "work/claude-m01-m37-forensic-reconciliation-2026-11-07",
+   "reachableFromBaseline": false,
+   "tip": "e5d1a2c115c9ec26e7fd206b24ee53964ac2aacd"
   },
   {
    "commitsNotInBaseline": 0,

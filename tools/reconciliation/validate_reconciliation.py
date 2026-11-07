@@ -130,7 +130,7 @@ def validate(d, repo, check_paths=True):
         p = os.path.join(repo, v["path"])
         if not os.path.isfile(p):
             err("pinned input missing: " + v["path"])
-        elif hashlib.sha256(open(p, "rb").read()).hexdigest() != v["sha256"]:
+        elif hashlib.sha256(open(p, "rb").read().replace(b"\r\n", b"\n")).hexdigest() != v["sha256"]:
             err("pinned input changed since the scan: " + v["path"])
     # 6. paths exist at the baseline
     if check_paths:
