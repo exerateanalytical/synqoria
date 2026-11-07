@@ -1,0 +1,190 @@
+openapi: 3.1.0
+info:
+  title: SYNQORIA M30 Terminology, Formularies and Clinical Content Governance API
+  version: 1.0.0
+  description: |
+    Contract for canonical screens M30-S01..S05, implemented by `services/clinical-content-core`.
+    Engineering contract only; NOT clinical approval of any content.
+
+    **Scope.** Cell and facility come ONLY from the verified claims `synqoria_cell` / `synqoria_facility`; PostgreSQL
+    forced row-level security repeats the check. Out-of-scope resources answer `404 not_found`. Permissions come from the
+    closed, short-lived claim `synqoria_permissions` (see `x-permissions`).
+
+    **Safety model.** Content is inactive until an ACTIVE activation record exists. A rule package reaches APPROVED only
+    with live CLINICAL and POLICY approvals from two different reviewers, neither of whom authored it (enforced in Java and
+    by a database trigger). Approvals expire and can be revoked; revoking suspends live activation (fail-safe: nothing
+    active). Rule evaluation is **advisory**: the service never creates or alters prescriptions, orders, dispensing or
+    patient records. Missing facts yield `INDETERMINATE`, never a silent false.
+
+    **Idempotency** (`Idempotency-Key` required on every POST/PUT, replays include committed rejections) and
+    **concurrency** (`expectedVersion` -> `409 stale_version`) follow the M26 conventions. Published terminology, golden
+    cases, validation runs, audit events, approvals and activation history are append-only.
+    **Licensing.** LICENSED_RESTRICTED code systems require a recorded licence reference; content is never redistributed
+    by this API beyond the authorised facility scope.
+servers: [{url: /api/v1/content}]
+security: [{oidc: []}]
+tags:
+  - {name: Terminology, description: M30-S01}
+  - {name: Formulary, description: M30-S02}
+  - {name: Packages, description: M30-S03 / S04}
+  - {name: Activation, description: M30-S05}
+paths:
+  /code-systems:
+    get:
+      {tags: [Terminology], operationId: listCodeSystems, summary: Code systems with their effective version, parameters: [{$ref: '#/components/parameters/Page'}, {$ref: '#/components/parameters/Size'}], responses: {'200': {$ref: '#/components/responses/Page'}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '422': {$ref: '#/components/responses/Invalid'}}}
+    post:
+      {tags: [Terminology], operationId: createCodeSystem, summary: Register a code system (m26 -> m30:terminology_import), parameters: [{$ref: '#/components/parameters/IdempotencyKey'}], requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/SystemRequest'}}}}, responses: {'201': {description: Created, content: {application/json: {schema: {type: object, additionalProperties: true}}}}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '409': {$ref: '#/components/responses/Conflict'}, '422': {$ref: '#/components/responses/Invalid'}}}
+  /code-systems/{id}/versions:
+    get:
+      {tags: [Terminology], operationId: listCodeSystemVersions, summary: Published and rejected import attempts, parameters: [{$ref: '#/components/parameters/Id'}], responses: {'200': {description: Versions newest first, content: {application/json: {schema: {type: array, items: {type: object, additionalProperties: true}}}}}, '404': {$ref: '#/components/responses/NotFound'}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}}}
+  /code-systems/{id}/imports:
+    post:
+      tags: [Terminology]
+      operationId: importCodeSystemVersion
+      summary: Validated, checksum-verified import (m30:terminology_import)
+      description: Every problem found is reported. A failed import is recorded as REJECTED and answers `409 import_rejected` with codes in `details`; nothing is published. Published labels are permanent (`409 version_exists`). Removing an active concept without deprecating it is rejected.
+      parameters: [{$ref: '#/components/parameters/Id'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/ImportRequest'}}}}
+      responses: {'201': {description: Published version, content: {application/json: {schema: {type: object, additionalProperties: true}}}}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '404': {$ref: '#/components/responses/NotFound'}, '409': {$ref: '#/components/responses/Conflict'}, '422': {$ref: '#/components/responses/Invalid'}}
+  /concepts:
+    get:
+      tags: [Terminology]
+      operationId: searchConcepts
+      summary: Search the effective (or a given) version by code, English/French label or synonym
+      parameters:
+        - {name: systemId, in: query, schema: {type: string, format: uuid}}
+        - {name: versionId, in: query, schema: {type: string, format: uuid}}
+        - {name: q, in: query, schema: {type: string, maxLength: 100}}
+        - {name: status, in: query, schema: {type: string, enum: [ACTIVE, INACTIVE, DEPRECATED]}}
+        - {name: includeInactive, in: query, schema: {type: boolean, default: false}}
+        - {$ref: '#/components/parameters/Page'}
+        - {$ref: '#/components/parameters/Size'}
+      responses: {'200': {$ref: '#/components/responses/Page'}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '422': {$ref: '#/components/responses/Invalid'}}
+  /code-system-versions/{versionId}/roots:
+    get:
+      {tags: [Terminology], operationId: listRootConcepts, parameters: [{$ref: '#/components/parameters/VersionId'}, {$ref: '#/components/parameters/Page'}, {$ref: '#/components/parameters/Size'}], responses: {'200': {$ref: '#/components/responses/Page'}, '404': {$ref: '#/components/responses/NotFound'}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}}}
+  /code-system-versions/{versionId}/concepts/{code}:
+    get:
+      {tags: [Terminology], operationId: getConcept, summary: Concept with synonyms, children, ancestors and approved mappings, parameters: [{$ref: '#/components/parameters/VersionId'}, {name: code, in: path, required: true, schema: {type: string, pattern: '^[A-Za-z0-9._-]{1,64}$'}}], responses: {'200': {description: Concept, content: {application/json: {schema: {type: object, additionalProperties: true}}}}, '404': {$ref: '#/components/responses/NotFound'}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}}}
+  /mappings:
+    get:
+      {tags: [Terminology], operationId: listMappings, parameters: [{name: status, in: query, schema: {type: string, enum: [PROPOSED, APPROVED, REJECTED]}}, {$ref: '#/components/parameters/Page'}, {$ref: '#/components/parameters/Size'}], responses: {'200': {$ref: '#/components/responses/Page'}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}}}
+    post:
+      {tags: [Terminology], operationId: proposeMapping, summary: Propose a mapping (m30:mapping_propose), parameters: [{$ref: '#/components/parameters/IdempotencyKey'}], requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/MappingRequest'}}}}, responses: {'201': {description: Proposed, content: {application/json: {schema: {type: object, additionalProperties: true}}}}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '409': {$ref: '#/components/responses/Conflict'}, '422': {$ref: '#/components/responses/Invalid'}}}
+  /mappings/{id}/decision:
+    post:
+      {tags: [Terminology], operationId: decideMapping, summary: 'Independent decision (m30:mapping_approve); a second approved EQUIVALENT for the same source/target system is 409 mapping_conflict', parameters: [{$ref: '#/components/parameters/Id'}, {$ref: '#/components/parameters/IdempotencyKey'}], requestBody: {required: true, content: {application/json: {schema: {type: object, additionalProperties: false, required: [expectedVersion, approve], properties: {expectedVersion: {type: integer, minimum: 1}, approve: {type: boolean}}}}}}, responses: {'200': {description: Decided, content: {application/json: {schema: {type: object, additionalProperties: true}}}}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '404': {$ref: '#/components/responses/NotFound'}, '409': {$ref: '#/components/responses/Conflict'}}}
+  /formulary:
+    get:
+      {tags: [Formulary], operationId: listFormulary, parameters: [{name: status, in: query, schema: {$ref: '#/components/schemas/FormularyStatus'}}, {name: q, in: query, schema: {type: string, maxLength: 100}}, {$ref: '#/components/parameters/Page'}, {$ref: '#/components/parameters/Size'}], responses: {'200': {$ref: '#/components/responses/Page'}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '422': {$ref: '#/components/responses/Invalid'}}}
+    post:
+      {tags: [Formulary], operationId: createFormularyEntry, summary: 'Draft a formulary entry for an ACTIVE product concept (m30:formulary_edit)', parameters: [{$ref: '#/components/parameters/IdempotencyKey'}], requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/EntryRequest'}}}}, responses: {'201': {description: Draft, content: {application/json: {schema: {type: object, additionalProperties: true}}}}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '409': {$ref: '#/components/responses/Conflict'}, '422': {$ref: '#/components/responses/Invalid'}}}
+  /formulary/{id}:
+    get:
+      {tags: [Formulary], operationId: getFormularyEntry, parameters: [{$ref: '#/components/parameters/Id'}], responses: {'200': {description: Entry with history, content: {application/json: {schema: {type: object, additionalProperties: true}}}}, '404': {$ref: '#/components/responses/NotFound'}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}}}
+  /formulary/{id}/update:
+    post:
+      {tags: [Formulary], operationId: updateFormularyDraft, summary: Edit the author's own DRAFT, parameters: [{$ref: '#/components/parameters/Id'}, {$ref: '#/components/parameters/IdempotencyKey'}], requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/UpdateRequest'}}}}, responses: {'200': {description: Updated, content: {application/json: {schema: {type: object, additionalProperties: true}}}}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '404': {$ref: '#/components/responses/NotFound'}, '409': {$ref: '#/components/responses/Conflict'}, '422': {$ref: '#/components/responses/Invalid'}}}
+  /formulary/{id}/submit:
+    post:
+      {tags: [Formulary], operationId: submitFormularyEntry, parameters: [{$ref: '#/components/parameters/Id'}, {$ref: '#/components/parameters/IdempotencyKey'}], requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/Transition'}}}}, responses: {'200': {description: Submitted, content: {application/json: {schema: {type: object, additionalProperties: true}}}}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '404': {$ref: '#/components/responses/NotFound'}, '409': {$ref: '#/components/responses/Conflict'}}}
+  /formulary/{id}/withdraw:
+    post:
+      {tags: [Formulary], operationId: withdrawFormularyEntry, parameters: [{$ref: '#/components/parameters/Id'}, {$ref: '#/components/parameters/IdempotencyKey'}], requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/Transition'}}}}, responses: {'200': {description: Withdrawn, content: {application/json: {schema: {type: object, additionalProperties: true}}}}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '404': {$ref: '#/components/responses/NotFound'}, '409': {$ref: '#/components/responses/Conflict'}}}
+  /formulary/{id}/decision:
+    post:
+      {tags: [Formulary], operationId: decideFormularyEntry, summary: 'Independent clinical decision (m30:formulary_approve, not the author); approval supersedes the previous approved version atomically', parameters: [{$ref: '#/components/parameters/Id'}, {$ref: '#/components/parameters/IdempotencyKey'}], requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/Decision'}}}}, responses: {'200': {description: Decided, content: {application/json: {schema: {type: object, additionalProperties: true}}}}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '404': {$ref: '#/components/responses/NotFound'}, '409': {$ref: '#/components/responses/Conflict'}, '422': {$ref: '#/components/responses/Invalid'}}}
+  /packages:
+    get:
+      {tags: [Packages], operationId: listPackages, parameters: [{name: status, in: query, schema: {$ref: '#/components/schemas/PackageStatus'}}, {name: key, in: query, schema: {type: string}}, {$ref: '#/components/parameters/Page'}, {$ref: '#/components/parameters/Size'}], responses: {'200': {$ref: '#/components/responses/Page'}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '422': {$ref: '#/components/responses/Invalid'}}}
+    post:
+      {tags: [Packages], operationId: createPackage, summary: 'Create the next immutable-once-validated package version as DRAFT (m30:package_author)', parameters: [{$ref: '#/components/parameters/IdempotencyKey'}], requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/PackageRequest'}}}}, responses: {'201': {description: Draft package, content: {application/json: {schema: {$ref: '#/components/schemas/Package'}}}}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '409': {$ref: '#/components/responses/Conflict'}, '422': {$ref: '#/components/responses/Invalid'}}}
+  /packages/{id}:
+    get:
+      {tags: [Packages], operationId: getPackage, summary: 'Package with golden cases, validation runs, approvals and history', parameters: [{$ref: '#/components/parameters/Id'}], responses: {'200': {description: Package, content: {application/json: {schema: {$ref: '#/components/schemas/Package'}}}}, '404': {$ref: '#/components/responses/NotFound'}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}}}
+  /packages/{id}/validate:
+    post:
+      tags: [Packages]
+      operationId: validatePackage
+      summary: Run schema, golden-case, terminology-integrity, dependency and regression validation (m30:package_validate)
+      description: Always answers 200 with the stored report; the package becomes VALIDATED or the terminal VALIDATION_FAILED (author must create a new version).
+      parameters: [{$ref: '#/components/parameters/Id'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/Transition'}}}}
+      responses: {'200': {description: Package with report, content: {application/json: {schema: {$ref: '#/components/schemas/Package'}}}}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '404': {$ref: '#/components/responses/NotFound'}, '409': {$ref: '#/components/responses/Conflict'}}
+  /packages/{id}/submit:
+    post:
+      {tags: [Packages], operationId: submitPackage, summary: Submit a VALIDATED package for clinical review (m30:package_author), parameters: [{$ref: '#/components/parameters/Id'}, {$ref: '#/components/parameters/IdempotencyKey'}], requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/Transition'}}}}, responses: {'200': {description: In review, content: {application/json: {schema: {$ref: '#/components/schemas/Package'}}}}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '404': {$ref: '#/components/responses/NotFound'}, '409': {$ref: '#/components/responses/Conflict'}}}
+  /packages/{id}/review:
+    post:
+      tags: [Packages]
+      operationId: reviewPackage
+      summary: Clinical or policy sign-off (m30:review_clinical / m30:review_policy)
+      description: Reviewer must not be the author (403 `reviewer_must_be_independent`), may hold one live decision per package, and the role must match the permission. A rejection ends the version. APPROVED requires one live APPROVE per role.
+      parameters: [{$ref: '#/components/parameters/Id'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/ReviewRequest'}}}}
+      responses: {'200': {description: Package, content: {application/json: {schema: {$ref: '#/components/schemas/Package'}}}}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '404': {$ref: '#/components/responses/NotFound'}, '409': {$ref: '#/components/responses/Conflict'}, '422': {$ref: '#/components/responses/Invalid'}}
+  /packages/{id}/evaluate:
+    post:
+      {tags: [Packages], operationId: evaluatePackage, summary: 'Advisory dry evaluation against supplied facts (m30:package_validate); writes nothing', parameters: [{$ref: '#/components/parameters/Id'}], requestBody: {required: true, content: {application/json: {schema: {type: object, additionalProperties: false, required: [facts], properties: {facts: {type: object, additionalProperties: true}}}}}}, responses: {'200': {description: Results ordered by rule id, content: {application/json: {schema: {type: object, additionalProperties: true}}}}, '404': {$ref: '#/components/responses/NotFound'}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '422': {$ref: '#/components/responses/Invalid'}}}
+  /approvals/{id}/revoke:
+    post:
+      {tags: [Packages], operationId: revokeApproval, summary: 'Revoke an approval (m30:approval_revoke); the package becomes REVOKED and live activation is SUSPENDED', parameters: [{$ref: '#/components/parameters/Id'}, {$ref: '#/components/parameters/IdempotencyKey'}], requestBody: {required: true, content: {application/json: {schema: {type: object, additionalProperties: false, required: [reason], properties: {reason: {type: string, minLength: 1, maxLength: 500}}}}}}, responses: {'200': {description: Package, content: {application/json: {schema: {$ref: '#/components/schemas/Package'}}}}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '404': {$ref: '#/components/responses/NotFound'}, '409': {$ref: '#/components/responses/Conflict'}, '422': {$ref: '#/components/responses/Invalid'}}}
+  /activations/active:
+    get:
+      {tags: [Activation], operationId: listActiveContent, summary: Content currently in force for this facility, responses: {'200': {description: Active items, content: {application/json: {schema: {type: object, properties: {items: {type: array, items: {$ref: '#/components/schemas/Activation'}}}}}}}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}}}
+  /activations:
+    get:
+      {tags: [Activation], operationId: listActivationHistory, parameters: [{name: subjectKey, in: query, schema: {type: string}}, {$ref: '#/components/parameters/Page'}, {$ref: '#/components/parameters/Size'}], responses: {'200': {$ref: '#/components/responses/Page'}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '422': {$ref: '#/components/responses/Invalid'}}}
+    post:
+      tags: [Activation]
+      operationId: activate
+      summary: Atomic facility-scoped activation (m30:activation_manage)
+      description: Requires live CLINICAL and POLICY approvals (packages) or APPROVED status (formulary) / PUBLISHED (code system), the effective window, available dependencies, an activator who is not the author, and `expectedActiveId` equal to the currently ACTIVE activation (null if none). Supersedes the previous activation in the same transaction; concurrent attempts serialise.
+      parameters: [{$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/ActivateRequest'}}}}
+      responses: {'201': {description: Activation, content: {application/json: {schema: {$ref: '#/components/schemas/Activation'}}}}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '404': {$ref: '#/components/responses/NotFound'}, '409': {$ref: '#/components/responses/Conflict'}, '422': {$ref: '#/components/responses/Invalid'}}
+  /activations/impact:
+    get:
+      {tags: [Activation], operationId: activationImpact, summary: 'Dry-run impact and blockers; writes nothing (m30:activation_read)', parameters: [{name: subjectType, in: query, required: true, schema: {$ref: '#/components/schemas/SubjectType'}}, {name: subjectId, in: query, required: true, schema: {type: string, format: uuid}}], responses: {'200': {description: Impact, content: {application/json: {schema: {$ref: '#/components/schemas/Impact'}}}}, '404': {$ref: '#/components/responses/NotFound'}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '422': {$ref: '#/components/responses/Invalid'}}}
+  /activations/{id}/rollback:
+    post:
+      {tags: [Activation], operationId: rollbackActivation, summary: 'Re-pin the previous version through a new activation (m30:rollback); if it is no longer eligible nothing changes', parameters: [{$ref: '#/components/parameters/Id'}, {$ref: '#/components/parameters/IdempotencyKey'}], requestBody: {required: true, content: {application/json: {schema: {type: object, additionalProperties: false, required: [expectedVersion, reason], properties: {expectedVersion: {type: integer, minimum: 1}, reason: {type: string, minLength: 1, maxLength: 300}}}}}}, responses: {'201': {description: New ACTIVE activation, content: {application/json: {schema: {$ref: '#/components/schemas/Activation'}}}}, '401': {$ref: '#/components/responses/Unauthorized'}, '403': {$ref: '#/components/responses/Forbidden'}, '404': {$ref: '#/components/responses/NotFound'}, '409': {$ref: '#/components/responses/Conflict'}, '422': {$ref: '#/components/responses/Invalid'}}}
+components:
+  securitySchemes:
+    oidc: {type: openIdConnect, openIdConnectUrl: 'https://idp.invalid/.well-known/openid-configuration', description: Placeholder; issuer configured per hospital cell. Claims synqoria_cell, synqoria_facility, synqoria_permissions, synqoria_grant_expires.}
+  parameters:
+    IdempotencyKey: {name: Idempotency-Key, in: header, required: true, schema: {type: string, format: uuid}}
+    Id: {name: id, in: path, required: true, schema: {type: string, format: uuid}}
+    VersionId: {name: versionId, in: path, required: true, schema: {type: string, format: uuid}}
+    Page: {name: page, in: query, schema: {type: integer, minimum: 0, default: 0}}
+    Size: {name: size, in: query, schema: {type: integer, minimum: 1, maximum: 100, default: 25}}
+  responses:
+    Page: {description: One page, content: {application/json: {schema: {$ref: '#/components/schemas/Page'}}}}
+    Unauthorized: {description: 'identity_denied or grant_expired', content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+    Forbidden: {description: 'permission_denied, grant_denied or an independence rule (*_must_be_independent)', content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+    NotFound: {description: Absent or outside the caller's cell/facility, content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+    Conflict: {description: 'stale_version, idempotency_collision, invalid_transition, version_exists, import_rejected, mapping_conflict, approvals_incomplete, approval_expired, activation_conflict, dependency_not_active, nothing_to_roll_back, duplicate_record', content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+    Invalid: {description: 'Semantic validation failure', content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+  schemas:
+    Error: {type: object, required: [error, details], properties: {error: {type: string}, details: {type: array, items: {type: string}}}}
+    Page: {type: object, required: [items, page, size, total], properties: {items: {type: array, items: {type: object, additionalProperties: true}}, page: {type: integer}, size: {type: integer}, total: {type: integer}}}
+    FormularyStatus: {type: string, enum: [DRAFT, SUBMITTED, APPROVED, REJECTED, SUPERSEDED, WITHDRAWN]}
+    PackageStatus: {type: string, enum: [DRAFT, VALIDATED, VALIDATION_FAILED, IN_REVIEW, APPROVED, REJECTED, REVOKED, RETIRED]}
+    SubjectType: {type: string, enum: [RULE_PACKAGE, FORMULARY, CODE_SYSTEM]}
+    Transition: {type: object, additionalProperties: false, required: [expectedVersion], properties: {expectedVersion: {type: integer, minimum: 1}}}
+    SystemRequest: {type: object, additionalProperties: false, required: [systemUri, name, licensingClass], properties: {systemUri: {type: string, maxLength: 300}, name: {type: string, maxLength: 200}, licensingClass: {type: string, enum: [OPEN, INTERNAL, LICENSED_RESTRICTED]}, licenseRef: {type: [string, 'null'], maxLength: 200}}}
+    ConceptIn: {type: object, additionalProperties: false, required: [code, status, displayEn], properties: {code: {type: string, pattern: '^[A-Za-z0-9._-]{1,64}$'}, status: {type: string, enum: [ACTIVE, INACTIVE, DEPRECATED]}, displayEn: {type: string, maxLength: 500}, displayFr: {type: [string, 'null'], maxLength: 500}, parent: {type: [string, 'null']}, synonyms: {type: array, maxItems: 50, items: {type: string, maxLength: 300}}}}
+    ImportRequest: {type: object, additionalProperties: false, required: [versionLabel, declaredChecksum, effectiveFrom, provenance, concepts], properties: {versionLabel: {type: string, pattern: '^[A-Za-z0-9._-]{1,64}$'}, declaredChecksum: {type: string, pattern: '^[0-9a-f]{64}$', description: SHA-256 over concepts sorted by code; one `code|status|displayEn|displayFr|parent` line each joined by LF.}, effectiveFrom: {type: string, format: date-time}, provenance: {type: string, maxLength: 500}, concepts: {type: array, maxItems: 50000, items: {$ref: '#/components/schemas/ConceptIn'}}}}
+    MappingRequest: {type: object, additionalProperties: false, required: [sourceVersionId, sourceCode, targetVersionId, targetCode, relation], properties: {sourceVersionId: {type: string, format: uuid}, sourceCode: {type: string}, targetVersionId: {type: string, format: uuid}, targetCode: {type: string}, relation: {type: string, enum: [EQUIVALENT, NARROWER, BROADER, RELATED]}}}
+    EntryRequest: {type: object, additionalProperties: false, required: [entryKey, productVersionId, productCode, formulation, route, permittedUse], properties: {entryKey: {type: string, pattern: '^[A-Za-z0-9._-]{1,64}$'}, productVersionId: {type: string, format: uuid}, productCode: {type: string}, formulation: {type: string, maxLength: 80}, route: {type: string, pattern: '^[A-Z0-9_]{2,40}$'}, permittedUse: {type: string, maxLength: 500}, restrictions: {type: array, maxItems: 20, items: {type: string, maxLength: 200}}}}
+    UpdateRequest: {type: object, additionalProperties: false, required: [expectedVersion, formulation, route, permittedUse], properties: {expectedVersion: {type: integer, minimum: 1}, formulation: {type: string}, route: {type: string}, permittedUse: {type: string}, restrictions: {type: array, items: {type: string}}}}
+    Decision: {type: object, additionalProperties: false, required: [expectedVersion, approve], properties: {expectedVersion: {type: integer, minimum: 1}, approve: {type: boolean}, note: {type: string, maxLength: 300, description: Required when rejecting.}}}
+    PackageRequest: {type: object, additionalProperties: false, required: [packageKey, definition, sourceAttribution, effectiveFrom], properties: {packageKey: {type: string, pattern: '^[A-Za-z0-9._-]{1,64}$'}, definition: {type: object, description: 'Declarative rules: {schemaVersion:1, rules:[{id, when:{all|any:[{field,op,value}]}, advise:{code,severity,text:{en,fr}}}], codeRefs:[{system,code}]}.', additionalProperties: true}, sourceAttribution: {type: string, maxLength: 500}, dependsOn: {type: array, maxItems: 20, items: {type: object, required: [type, key], properties: {type: {type: string, enum: [CODE_SYSTEM]}, key: {type: string}}}}, effectiveFrom: {type: string, format: date-time}, effectiveTo: {type: [string, 'null'], format: date-time}, goldenCases: {type: array, maxItems: 200, items: {type: object, required: [name, facts, expected], properties: {name: {type: string, maxLength: 120}, facts: {type: object, additionalProperties: true}, expected: {type: object, description: 'Rule ids per verdict: {"FIRED":[...],"INDETERMINATE":[...]}; all others must be NOT_FIRED.', additionalProperties: true}}}}}}
+    ReviewRequest: {type: object, additionalProperties: false, required: [expectedVersion, role, approve, reason, validForDays], properties: {expectedVersion: {type: integer, minimum: 1}, role: {type: string, enum: [CLINICAL, POLICY]}, approve: {type: boolean}, reason: {type: string, minLength: 1, maxLength: 500}, validForDays: {type: integer, minimum: 1, maximum: 365}}}
+    Package: {type: object, properties: {id: {type: string, format: uuid}, packageKey: {type: string}, versionNo: {type: integer}, status: {$ref: '#/components/schemas/PackageStatus'}, definitionHash: {type: string}, sourceAttribution: {type: string}, effectiveFrom: {type: string, format: date-time}, effectiveTo: {type: [string, 'null']}, previousId: {type: [string, 'null'], format: uuid}, authorId: {type: string, format: uuid}, version: {type: integer}, report: {type: object, additionalProperties: true}, goldenCases: {type: array, items: {type: object, additionalProperties: true}}, validationRuns: {type: array, items: {type: object, additionalProperties: true}}, approvals: {type: array, items: {type: object, additionalProperties: true}}, history: {type: array, items: {type: object, additionalProperties: true}}}}
+    ActivateRequest: {type: object, additionalProperties: false, required: [subjectType, subjectId], properties: {subjectType: {$ref: '#/components/schemas/SubjectType'}, subjectId: {type: string, format: uuid}, expectedActiveId: {type: [string, 'null'], format: uuid}}}
+    Activation: {type: object, properties: {id: {type: string, format: uuid}, subjectType: {$ref: '#/components/schemas/SubjectType'}, subjectKey: {type: string}, subjectId: {type: string, format: uuid}, status: {type: string, enum: [ACTIVE, SUPERSEDED, ROLLED_BACK, SUSPENDED]}, activatedBy: {type: string, format: uuid}, activatedAt: {type: string, format: date-time}, previousId: {type: [string, 'null'], format: uuid}, endReason: {type: [string, 'null']}, impact: {type: object, additionalProperties: true}, version: {type: integer}}}
+    Impact: {type: object, properties: {subjectType: {type: string}, subjectKey: {type: string}, subjectId: {type: string}, canActivate: {type: boolean}, blockers: {type: array, items: {type: string}}, currentlyActive: {type: [string, 'null']}, changes: {type: object, additionalProperties: true}, dryRun: {type: boolean}}}
+x-permissions:
+  vocabulary: [m30:terminology_read, m30:terminology_import, m30:mapping_propose, m30:mapping_approve, m30:formulary_read, m30:formulary_edit, m30:formulary_approve, m30:package_read, m30:package_author, m30:package_validate, m30:review_clinical, m30:review_policy, m30:approval_revoke, m30:activation_read, m30:activation_manage, m30:rollback]
+  clinical-only: [m30:mapping_approve, m30:formulary_approve, m30:review_clinical, m30:review_policy, m30:approval_revoke]

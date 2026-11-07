@@ -1,0 +1,773 @@
+openapi: 3.1.0
+info:
+  title: SYNQORIA M26 Catering and Dietary Orders API
+  version: 1.0.0
+  summary: Dietary orders, meal production planning and meal delivery for one hospital cell and facility.
+  description: |
+    Versioned contract for canonical screens M26-S01..S04. Implemented by `services/nutrition-core`.
+    This is an engineering contract, NOT a clinical certification.
+
+    **Scope and authorization.** Every call requires an OIDC bearer JWT validated for issuer, audience and
+    signature. The cell and facility are taken ONLY from the verified claims `synqoria_cell` and
+    `synqoria_facility`; no header or parameter can select another scope, and PostgreSQL forced row-level
+    security repeats the check. Resources outside the caller's scope answer `404 not_found`, never `403`,
+    so existence is not disclosed across hospital cells. Permissions come from the short-lived claim
+    `synqoria_permissions` (closed vocabulary below, grant lifetime at most 15 minutes).
+
+    **Authority boundaries.** Patient identity, allergies and fasting instructions are owned by their
+    upstream authorities and are only consumed here through the `feed` operations (monotonic
+    `sourceVersion`, stale versions refused). M26 does not issue patient identifiers and does not edit allergy
+    meaning. Only holders of clinical permissions (`m26:order_prescribe`, `order_amend`, `order_approve`,
+    `order_revoke`, `subst_decide`) can create or change clinical dietary content; kitchen roles cannot.
+
+    **Idempotency.** Every state-changing call requires `Idempotency-Key` (UUID). Replaying the same key with
+    the same body returns the stored response (including committed 409 rejections); the same key with a
+    different body is `409 idempotency_collision`. Keys are scoped per actor, facility and cell.
+
+    **Concurrency.** Mutable resources carry an integer `version`. Transition bodies carry `expectedVersion`;
+    a mismatch is `409 stale_version`. Writers lock in the order dietary-order, meal, tray.
+
+    **Audit.** Every transition writes an immutable audit event and an outbox event in the same transaction
+    (`GET /orders/{id}/history`, `GET /trays/{id}`). Approved clinical content, delivery evidence and audit
+    events cannot be updated or deleted, even by the table owner.
+
+    **Safety gate.** The time-of-use gate (plan, release, prepare, dispatch approval, tray load, tray dispatch,
+    delivery) blocks when the diet is unknown, outdated, revoked, expired or contradictory, allergy
+    information is missing, older than the configured maximum (default 24 h) or newer than the clinical
+    reconciliation, an allergen conflicts, or a fasting instruction overlaps the meal. A blocked delivery
+    gate commits a hold and an escalated incident and answers `409 diet_safety_block` with `details`
+    listing the codes.
+  license: {name: Proprietary - OPES Health Systems, identifier: LicenseRef-OPES-Proprietary}
+servers:
+  - url: /api/v1/nutrition
+security:
+  - oidc: []
+tags:
+  - {name: Feed, description: Consumed upstream contracts (integration principal only)}
+  - {name: Worklist, description: M26-S01 Dietary patient worklist}
+  - {name: Orders, description: M26-S02 Dietary orders}
+  - {name: Production, description: M26-S03 Meal production planning}
+  - {name: Delivery, description: M26-S04 Meal delivery and acknowledgement}
+paths:
+  /feed/patients/{patientRef}/context:
+    put:
+      tags: [Feed]
+      operationId: feedPatientContext
+      summary: Apply a verified patient identity/ward projection (permission m26:clinical_feed)
+      parameters: [{$ref: '#/components/parameters/PatientRef'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/PatientContext'}}}}
+      responses:
+        '200': {$ref: '#/components/responses/FeedApplied'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /feed/patients/{patientRef}/allergies:
+    put:
+      tags: [Feed]
+      operationId: feedAllergies
+      summary: Apply the verified allergy snapshot from the allergy authority
+      parameters: [{$ref: '#/components/parameters/PatientRef'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/AllergyFeed'}}}}
+      responses:
+        '200': {$ref: '#/components/responses/FeedApplied'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /feed/fasting/{instructionRef}:
+    put:
+      tags: [Feed]
+      operationId: feedFasting
+      summary: Apply a verified fasting instruction (create, revoke or complete)
+      parameters:
+        - {name: instructionRef, in: path, required: true, schema: {type: string, format: uuid}}
+        - {$ref: '#/components/parameters/IdempotencyKey'}
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/FastingFeed'}}}}
+      responses:
+        '200': {$ref: '#/components/responses/FeedApplied'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /worklist:
+    get:
+      tags: [Worklist]
+      operationId: listWorklist
+      summary: M26-S01 admitted patients with diet, restrictions, fasting, meal status and exceptions (m26:worklist_read)
+      parameters:
+        - {name: ward, in: query, schema: {type: string, pattern: '^[A-Z0-9_-]{1,32}$'}}
+        - {name: mealStatus, in: query, schema: {type: string, enum: [PLANNED, PREPARED, DISPATCHED, DELIVERED, ACKNOWLEDGED, HELD]}}
+        - {name: orderStatus, in: query, description: NONE selects patients without a current approved order., schema: {type: string, enum: [NONE, PRESCRIBED, APPROVED, SUPERSEDED, CANCELLED, REVOKED, EXPIRED]}}
+        - {name: allergy, in: query, schema: {type: boolean}}
+        - {name: fasting, in: query, schema: {type: boolean}}
+        - {name: exception, in: query, schema: {type: boolean}}
+        - {name: q, in: query, description: Case-insensitive match on patient label or bed., schema: {type: string, maxLength: 80}}
+        - {name: sort, in: query, schema: {type: string, enum: [ward, patient, diet, meal, updated], default: ward}}
+        - {name: dir, in: query, schema: {type: string, enum: [asc, desc], default: asc}}
+        - {$ref: '#/components/parameters/Page'}
+        - {$ref: '#/components/parameters/Size'}
+      responses:
+        '200': {description: One page, content: {application/json: {schema: {$ref: '#/components/schemas/WorklistPage'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /worklist/{patientRef}:
+    get:
+      tags: [Worklist]
+      operationId: getWorklistPatient
+      summary: Patient dietary detail (orders, allergies, fasting, meals)
+      parameters: [{$ref: '#/components/parameters/PatientRef'}]
+      responses:
+        '200': {description: Detail, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+  /orders:
+    get:
+      tags: [Orders]
+      operationId: listOrders
+      summary: List dietary orders (m26:order_read)
+      parameters:
+        - {name: patientRef, in: query, schema: {type: string, format: uuid}}
+        - {name: status, in: query, schema: {$ref: '#/components/schemas/OrderStatus'}}
+        - {$ref: '#/components/parameters/Page'}
+        - {$ref: '#/components/parameters/Size'}
+      responses:
+        '200': {description: One page, content: {application/json: {schema: {$ref: '#/components/schemas/OrderPage'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '422': {$ref: '#/components/responses/Invalid'}
+    post:
+      tags: [Orders]
+      operationId: prescribeOrder
+      summary: Submit a dietary order from an authorized clinical source (m26:order_prescribe)
+      description: Creates a PRESCRIBED order. Kitchen principals are refused with 403. Contradictory content is 422 `diet_contradictory`.
+      parameters: [{$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/OrderRequest'}}}}
+      responses:
+        '201': {description: Created, content: {application/json: {schema: {$ref: '#/components/schemas/Order'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /orders/{orderId}:
+    get:
+      tags: [Orders]
+      operationId: getOrder
+      parameters: [{$ref: '#/components/parameters/OrderId'}]
+      responses:
+        '200': {description: Order, content: {application/json: {schema: {$ref: '#/components/schemas/Order'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+  /orders/{orderId}/history:
+    get:
+      tags: [Orders]
+      operationId: getOrderHistory
+      summary: Immutable audit history of the order
+      parameters: [{$ref: '#/components/parameters/OrderId'}]
+      responses:
+        '200': {description: Events oldest first, content: {application/json: {schema: {type: array, items: {$ref: '#/components/schemas/AuditEvent'}}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+  /orders/{orderId}/approve:
+    post:
+      tags: [Orders]
+      operationId: approveOrder
+      summary: Independent clinical check (m26:order_approve)
+      description: The approver must not be the prescriber (403 `approver_must_be_independent`). Requires a fresh allergy snapshot that the order's excluded allergens cover; otherwise 422 `allergy_reconciliation_required` / `allergen_not_excluded`. Approving an amendment supersedes the previous order atomically and holds its undelivered meals.
+      parameters: [{$ref: '#/components/parameters/OrderId'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/Transition'}}}}
+      responses: &orderTransitionResponses
+        '200': {description: Updated order, content: {application/json: {schema: {$ref: '#/components/schemas/Order'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /orders/{orderId}/amend:
+    post:
+      tags: [Orders]
+      operationId: amendOrder
+      summary: Authorized amendment of an APPROVED order (m26:order_amend)
+      description: Creates a new PRESCRIBED order that supersedes the approved one once independently approved. The approved order stays current until then.
+      parameters: [{$ref: '#/components/parameters/OrderId'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/AmendRequest'}}}}
+      responses:
+        '201': {description: New pending order, content: {application/json: {schema: {$ref: '#/components/schemas/Order'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /orders/{orderId}/cancel:
+    post:
+      tags: [Orders]
+      operationId: cancelOrder
+      summary: Cancel a PRESCRIBED or APPROVED order with a reason (m26:order_cancel)
+      parameters: [{$ref: '#/components/parameters/OrderId'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/Transition'}}}}
+      responses: *orderTransitionResponses
+  /orders/{orderId}/revoke:
+    post:
+      tags: [Orders]
+      operationId: revokeOrder
+      summary: Revoke an APPROVED order; undelivered meals are held and trays go to EXCEPTION (m26:order_revoke)
+      parameters: [{$ref: '#/components/parameters/OrderId'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/Transition'}}}}
+      responses: *orderTransitionResponses
+  /batches:
+    get:
+      tags: [Production]
+      operationId: listBatches
+      parameters:
+        - {name: ward, in: query, schema: {type: string}}
+        - {name: status, in: query, schema: {$ref: '#/components/schemas/BatchStatus'}}
+        - {$ref: '#/components/parameters/Page'}
+        - {$ref: '#/components/parameters/Size'}
+      responses:
+        '200': {description: One page, content: {application/json: {schema: {$ref: '#/components/schemas/Page'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '422': {$ref: '#/components/responses/Invalid'}
+    post:
+      tags: [Production]
+      operationId: createBatch
+      summary: Plan a ward/meal production batch (m26:plan_manage)
+      description: Generates one meal line per admitted patient whose current approved order passes the safety gate; all others are listed in `exceptions` with their codes. One live batch per ward, date and meal type.
+      parameters: [{$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/BatchRequest'}}}}
+      responses:
+        '201': {description: Draft batch, content: {application/json: {schema: {$ref: '#/components/schemas/Batch'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /batches/{batchId}:
+    get:
+      tags: [Production]
+      operationId: getBatch
+      parameters: [{$ref: '#/components/parameters/BatchId'}]
+      responses:
+        '200': {description: Batch with lines, portions, exceptions and substitutions, content: {application/json: {schema: {$ref: '#/components/schemas/Batch'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+  /batches/{batchId}/release:
+    post:
+      tags: [Production]
+      operationId: releaseBatch
+      summary: Release the production plan before its cutoff (m26:plan_release)
+      description: Re-evaluates every line under current clinical facts; unsafe lines become HELD. 422 `cutoff_passed` after the cutoff, 422 `batch_empty` when nothing remains.
+      parameters: [{$ref: '#/components/parameters/BatchId'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/BatchTransition'}}}}
+      responses: &batchTransitionResponses
+        '200': {description: Updated batch, content: {application/json: {schema: {$ref: '#/components/schemas/Batch'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /batches/{batchId}/prepared:
+    post:
+      tags: [Production]
+      operationId: markBatchPrepared
+      summary: Record preparation complete (m26:prep_record); pending substitutions block it
+      parameters: [{$ref: '#/components/parameters/BatchId'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/BatchTransition'}}}}
+      responses: *batchTransitionResponses
+  /batches/{batchId}/dispatch-approval:
+    post:
+      tags: [Production]
+      operationId: approveBatchDispatch
+      summary: Independent dispatch approval (m26:dispatch_approve)
+      description: The approver can be neither the planner nor the person who recorded preparation (403 `dispatch_must_be_independent`). Lines are re-checked once more.
+      parameters: [{$ref: '#/components/parameters/BatchId'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/BatchTransition'}}}}
+      responses: *batchTransitionResponses
+  /batches/{batchId}/cancel:
+    post:
+      tags: [Production]
+      operationId: cancelBatch
+      summary: Cancel a batch that has not been dispatch-approved (m26:plan_manage)
+      parameters: [{$ref: '#/components/parameters/BatchId'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/BatchTransition'}}}}
+      responses: *batchTransitionResponses
+  /substitutions:
+    post:
+      tags: [Production]
+      operationId: proposeSubstitution
+      summary: Propose a controlled substitution for a planned meal (m26:subst_propose)
+      parameters: [{$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/SubstitutionRequest'}}}}
+      responses:
+        '201': {description: Proposed, content: {application/json: {schema: {$ref: '#/components/schemas/Substitution'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /substitutions/{substitutionId}/decision:
+    post:
+      tags: [Production]
+      operationId: decideSubstitution
+      summary: Clinical decision on a substitution (m26:subst_decide, not the proposer)
+      description: Approval fails with 422 `substitution_allergen_conflict` when a substitute allergen matches the patient's allergies.
+      parameters:
+        - {name: substitutionId, in: path, required: true, schema: {type: string, format: uuid}}
+        - {$ref: '#/components/parameters/IdempotencyKey'}
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/Decision'}}}}
+      responses:
+        '200': {description: Decided, content: {application/json: {schema: {$ref: '#/components/schemas/Substitution'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /trays:
+    get:
+      tags: [Delivery]
+      operationId: listTrays
+      summary: Tray tracking by ward and status (m26:delivery_read)
+      parameters:
+        - {name: ward, in: query, schema: {type: string}}
+        - {name: status, in: query, schema: {$ref: '#/components/schemas/TrayStatus'}}
+        - {$ref: '#/components/parameters/Page'}
+        - {$ref: '#/components/parameters/Size'}
+      responses:
+        '200': {description: One page, content: {application/json: {schema: {$ref: '#/components/schemas/Page'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '422': {$ref: '#/components/responses/Invalid'}
+    post:
+      tags: [Delivery]
+      operationId: loadTray
+      summary: Load a tray for a dispatch-approved meal (m26:delivery_record)
+      description: One tray per meal. 409 `tray_already_issued` for a duplicate; 409 `diet_safety_block` (committed hold + incident) when the gate fails.
+      parameters: [{$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/LoadRequest'}}}}
+      responses:
+        '201': {description: Loaded, content: {application/json: {schema: {$ref: '#/components/schemas/Tray'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /trays/awaiting:
+    get:
+      tags: [Delivery]
+      operationId: listMealsAwaitingTray
+      summary: Dispatch-approved meals that have no tray yet
+      parameters: [{name: ward, in: query, schema: {type: string}}]
+      responses:
+        '200': {description: Up to 200 meals, content: {application/json: {schema: {type: array, items: {type: object, additionalProperties: true}}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+  /trays/{trayId}:
+    get:
+      tags: [Delivery]
+      operationId: getTray
+      parameters: [{$ref: '#/components/parameters/TrayId'}]
+      responses:
+        '200': {description: Tray with incidents and audit events, content: {application/json: {schema: {$ref: '#/components/schemas/Tray'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+  /trays/{trayId}/dispatch:
+    post:
+      tags: [Delivery]
+      operationId: dispatchTray
+      summary: Send a loaded tray to the ward (gate re-checked)
+      parameters: [{$ref: '#/components/parameters/TrayId'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/TrayTransition'}}}}
+      responses: &trayResponses
+        '200': {description: Updated tray, content: {application/json: {schema: {$ref: '#/components/schemas/Tray'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /trays/{trayId}/deliver:
+    post:
+      tags: [Delivery]
+      operationId: deliverTray
+      summary: Bedside handover with identity confirmation (m26:delivery_record)
+      description: The scanned/confirmed patient must equal the tray's patient. A mismatch commits a CRITICAL escalated WRONG_PATIENT incident, holds the meal, moves the tray to EXCEPTION and answers 409 `identity_mismatch`. The safety gate and the patient's admitted-ward status are re-checked.
+      parameters: [{$ref: '#/components/parameters/TrayId'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/DeliverRequest'}}}}
+      responses: *trayResponses
+  /trays/{trayId}/acknowledge:
+    post:
+      tags: [Delivery]
+      operationId: acknowledgeTray
+      summary: Ward acknowledgment (m26:ack_record, not the deliverer)
+      parameters: [{$ref: '#/components/parameters/TrayId'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/TrayTransition'}}}}
+      responses: *trayResponses
+  /trays/{trayId}/return:
+    post:
+      tags: [Delivery]
+      operationId: returnTray
+      summary: Return a tray to the kitchen
+      parameters: [{$ref: '#/components/parameters/TrayId'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/TrayTransition'}}}}
+      responses: *trayResponses
+  /trays/{trayId}/exceptions:
+    post:
+      tags: [Delivery]
+      operationId: reportTrayException
+      summary: Report a delivery exception; HIGH/CRITICAL incidents are created already escalated
+      parameters: [{$ref: '#/components/parameters/TrayId'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/ExceptionRequest'}}}}
+      responses:
+        '201': {description: Tray in EXCEPTION, content: {application/json: {schema: {$ref: '#/components/schemas/Tray'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /incidents:
+    get:
+      tags: [Delivery]
+      operationId: listIncidents
+      parameters:
+        - {name: status, in: query, schema: {type: string, enum: [OPEN, ESCALATED, RESOLVED]}}
+        - {$ref: '#/components/parameters/Page'}
+        - {$ref: '#/components/parameters/Size'}
+      responses:
+        '200': {description: One page, content: {application/json: {schema: {$ref: '#/components/schemas/Page'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+  /incidents/{incidentId}/escalate:
+    post:
+      tags: [Delivery]
+      operationId: escalateIncident
+      summary: Escalate an OPEN incident (m26:incident_escalate)
+      parameters: [{$ref: '#/components/parameters/IncidentId'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {type: object, additionalProperties: false, required: [expectedVersion, toRole], properties: {expectedVersion: {type: integer, minimum: 1}, toRole: {type: string, pattern: '^[A-Z_]{3,40}$'}}}}}}
+      responses: &incidentResponses
+        '200': {description: Updated incident, content: {application/json: {schema: {$ref: '#/components/schemas/Incident'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /incidents/{incidentId}/resolve:
+    post:
+      tags: [Delivery]
+      operationId: resolveIncident
+      summary: Resolve an incident with a note (m26:incident_resolve, not the reporter)
+      parameters: [{$ref: '#/components/parameters/IncidentId'}, {$ref: '#/components/parameters/IdempotencyKey'}]
+      requestBody: {required: true, content: {application/json: {schema: {type: object, additionalProperties: false, required: [expectedVersion, note], properties: {expectedVersion: {type: integer, minimum: 1}, note: {type: string, minLength: 1, maxLength: 500}}}}}}
+      responses: *incidentResponses
+components:
+  securitySchemes:
+    oidc:
+      type: openIdConnect
+      openIdConnectUrl: https://idp.invalid/.well-known/openid-configuration
+      description: Placeholder URL. The real issuer is configured per hospital cell (SYNQORIA_NUTRITION_OIDC_ISSUER). Required claims synqoria_cell, synqoria_facility, synqoria_permissions, synqoria_grant_expires.
+  parameters:
+    IdempotencyKey: {name: Idempotency-Key, in: header, required: true, schema: {type: string, format: uuid}}
+    PatientRef: {name: patientRef, in: path, required: true, schema: {type: string, format: uuid}}
+    OrderId: {name: orderId, in: path, required: true, schema: {type: string, format: uuid}}
+    BatchId: {name: batchId, in: path, required: true, schema: {type: string, format: uuid}}
+    TrayId: {name: trayId, in: path, required: true, schema: {type: string, format: uuid}}
+    IncidentId: {name: incidentId, in: path, required: true, schema: {type: string, format: uuid}}
+    Page: {name: page, in: query, description: Zero-based page., schema: {type: integer, minimum: 0, default: 0}}
+    Size: {name: size, in: query, schema: {type: integer, minimum: 1, maximum: 100, default: 25}}
+  responses:
+    FeedApplied: {description: Applied, or already applied for this sourceEventId, content: {application/json: {schema: {type: object, properties: {status: {type: string, enum: [applied, already_applied]}}}}}}
+    Unauthorized: {description: 'Missing/invalid token or expired grant (identity_denied, grant_expired)', content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+    Forbidden: {description: 'permission_denied, grant_denied or an independence rule (*_must_be_independent)', content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+    NotFound: {description: Absent or outside the caller's cell/facility, content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+    Conflict: {description: 'stale_version, idempotency_collision, invalid_transition, duplicate/ already-issued records, diet_safety_block, identity_mismatch, stale_source_version', content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+    Invalid: {description: 'Semantic validation failure, e.g. diet_contradictory, invalid_pagination, cutoff_passed', content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+  schemas:
+    Error:
+      type: object
+      required: [error, details]
+      properties:
+        error: {type: string, description: Stable machine code; never contains patient data.}
+        details: {type: array, items: {type: string}, description: 'Safety codes such as ALLERGY_OUTDATED, FASTING_ACTIVE, DIET_REVOKED.'}
+    Code: {type: string, pattern: '^[A-Z0-9_]{2,40}$'}
+    DietCategory: {type: string, enum: [REGULAR, DIABETIC, RENAL, CARDIAC, LOW_SODIUM, HIGH_PROTEIN, CLEAR_LIQUID, FULL_LIQUID, PUREED, NIL_BY_MOUTH]}
+    Texture: {type: string, enum: [NORMAL, SOFT_BITE_SIZED, MINCED_MOIST, PUREED, LIQUIDISED, NONE]}
+    MealType: {type: string, enum: [BREAKFAST, LUNCH, DINNER, SNACK]}
+    OrderStatus: {type: string, enum: [PRESCRIBED, APPROVED, SUPERSEDED, CANCELLED, REVOKED, EXPIRED]}
+    BatchStatus: {type: string, enum: [DRAFT, RELEASED, PREPARED, DISPATCH_APPROVED, CANCELLED]}
+    TrayStatus: {type: string, enum: [LOADED, IN_TRANSIT, DELIVERED, ACKNOWLEDGED, EXCEPTION, RETURNED]}
+    PatientContext:
+      type: object
+      additionalProperties: false
+      required: [sourceEventId, identityVersion, patientLabel, wardCode, bedCode, admitted, verifiedAt]
+      properties:
+        sourceEventId: {type: string, format: uuid}
+        identityVersion: {type: integer, minimum: 1}
+        patientLabel: {type: string, maxLength: 120, description: Minimal display label supplied by the identity authority.}
+        wardCode: {type: string, pattern: '^[A-Z0-9_-]{1,32}$'}
+        bedCode: {type: string, pattern: '^[A-Z0-9_-]{1,32}$'}
+        admitted: {type: boolean}
+        verifiedAt: {type: string, format: date-time}
+    AllergyFeed:
+      type: object
+      additionalProperties: false
+      required: [sourceEventId, sourceVersion, allergenCodes, verifiedAt]
+      properties:
+        sourceEventId: {type: string, format: uuid}
+        sourceVersion: {type: integer, minimum: 1}
+        allergenCodes: {type: array, maxItems: 64, items: {$ref: '#/components/schemas/Code'}, description: Empty list means verified no known allergies. A patient with no snapshot is UNKNOWN, not allergy-free.}
+        verifiedAt: {type: string, format: date-time}
+    FastingFeed:
+      type: object
+      additionalProperties: false
+      required: [sourceEventId, patientRef, sourceVersion, status, reasonCode, startsAt, verifiedAt]
+      properties:
+        sourceEventId: {type: string, format: uuid}
+        patientRef: {type: string, format: uuid}
+        sourceVersion: {type: integer, minimum: 1}
+        status: {type: string, enum: [ACTIVE, REVOKED, COMPLETED]}
+        reasonCode: {$ref: '#/components/schemas/Code'}
+        startsAt: {type: string, format: date-time}
+        endsAt: {type: [string, 'null'], format: date-time}
+        verifiedAt: {type: string, format: date-time}
+    OrderRequest:
+      type: object
+      additionalProperties: false
+      required: [patientRef, clinicalOrderRef, diet, texture, mealTiming, effectiveFrom]
+      properties:
+        patientRef: {type: string, format: uuid}
+        clinicalOrderRef: {type: string, format: uuid, description: Reference to the order in the clinical authority.}
+        diet: {$ref: '#/components/schemas/DietCategory'}
+        texture: {$ref: '#/components/schemas/Texture'}
+        restrictions: {type: array, maxItems: 20, items: {$ref: '#/components/schemas/Code'}}
+        excludedAllergens: {type: array, maxItems: 64, items: {$ref: '#/components/schemas/Code'}}
+        mealTiming: {type: array, items: {$ref: '#/components/schemas/MealType'}, description: Empty only for NIL_BY_MOUTH.}
+        specialInstructions: {type: string, maxLength: 500}
+        effectiveFrom: {type: string, format: date-time}
+        effectiveTo: {type: [string, 'null'], format: date-time}
+    AmendRequest:
+      type: object
+      additionalProperties: false
+      required: [expectedVersion, reason, content]
+      properties:
+        expectedVersion: {type: integer, minimum: 1}
+        reason: {type: string, minLength: 1, maxLength: 300}
+        content: {$ref: '#/components/schemas/OrderRequest'}
+    Transition:
+      type: object
+      additionalProperties: false
+      required: [expectedVersion]
+      properties:
+        expectedVersion: {type: integer, minimum: 1}
+        reason: {type: string, maxLength: 300, description: Required for cancel, revoke.}
+    Order:
+      type: object
+      properties:
+        id: {type: string, format: uuid}
+        patientRef: {type: string, format: uuid}
+        clinicalOrderRef: {type: string, format: uuid}
+        status: {$ref: '#/components/schemas/OrderStatus'}
+        dietCategory: {$ref: '#/components/schemas/DietCategory'}
+        texture: {$ref: '#/components/schemas/Texture'}
+        restrictions: {type: array, items: {type: string}}
+        excludedAllergens: {type: array, items: {type: string}}
+        mealTiming: {type: array, items: {$ref: '#/components/schemas/MealType'}}
+        specialInstructions: {type: string}
+        effectiveFrom: {type: string, format: date-time}
+        effectiveTo: {type: [string, 'null'], format: date-time}
+        prescriberId: {type: string, format: uuid}
+        approverId: {type: [string, 'null'], format: uuid}
+        approvedAt: {type: [string, 'null'], format: date-time}
+        reconciledAllergyVersion: {type: [integer, 'null']}
+        supersedesId: {type: [string, 'null'], format: uuid}
+        statusReason: {type: [string, 'null']}
+        version: {type: integer, minimum: 1}
+        createdAt: {type: string, format: date-time}
+        updatedAt: {type: string, format: date-time}
+    OrderPage:
+      allOf:
+        - {$ref: '#/components/schemas/Page'}
+        - {type: object, properties: {items: {type: array, items: {$ref: '#/components/schemas/Order'}}}}
+    Page:
+      type: object
+      required: [items, page, size, total]
+      properties:
+        items: {type: array, items: {type: object, additionalProperties: true}}
+        page: {type: integer}
+        size: {type: integer}
+        total: {type: integer}
+    WorklistRow:
+      type: object
+      properties:
+        patientRef: {type: string, format: uuid}
+        patientLabel: {type: string}
+        wardCode: {type: string}
+        bedCode: {type: string}
+        orderId: {type: [string, 'null'], format: uuid}
+        orderStatus: {type: [string, 'null']}
+        dietCategory: {type: [string, 'null']}
+        texture: {type: [string, 'null']}
+        restrictions: {type: [array, 'null'], items: {type: string}}
+        excludedAllergens: {type: [array, 'null'], items: {type: string}}
+        allergenCodes: {type: [array, 'null'], items: {type: string}}
+        allergyVerifiedAt: {type: [string, 'null'], format: date-time}
+        fastingReason: {type: [string, 'null']}
+        fastingUntil: {type: [string, 'null'], format: date-time}
+        mealId: {type: [string, 'null'], format: uuid}
+        mealStatus: {type: [string, 'null']}
+        mealType: {type: [string, 'null']}
+        mealUpdatedAt: {type: [string, 'null'], format: date-time}
+        holdReason: {type: [string, 'null']}
+        openIncidents: {type: integer}
+        hasException: {type: boolean}
+        exceptions: {type: array, items: {type: string}}
+    WorklistPage:
+      allOf:
+        - {$ref: '#/components/schemas/Page'}
+        - {type: object, properties: {items: {type: array, items: {$ref: '#/components/schemas/WorklistRow'}}}}
+    AuditEvent:
+      type: object
+      properties:
+        eventId: {type: string, format: uuid}
+        action: {type: string}
+        fromStatus: {type: [string, 'null']}
+        toStatus: {type: string}
+        aggregateVersion: {type: integer}
+        actorId: {type: string, format: uuid}
+        details: {type: object, additionalProperties: true}
+        occurredAt: {type: string, format: date-time}
+    BatchRequest:
+      type: object
+      additionalProperties: false
+      required: [wardCode, mealDate, mealType, cutoffAt]
+      properties:
+        wardCode: {type: string, pattern: '^[A-Z0-9_-]{1,32}$'}
+        mealDate: {type: string, format: date}
+        mealType: {$ref: '#/components/schemas/MealType'}
+        cutoffAt: {type: string, format: date-time, description: Must be in the future; release after this instant is refused.}
+    BatchTransition:
+      type: object
+      additionalProperties: false
+      required: [expectedVersion]
+      properties: {expectedVersion: {type: integer, minimum: 1}}
+    Batch:
+      type: object
+      properties:
+        id: {type: string, format: uuid}
+        wardCode: {type: string}
+        mealDate: {type: string, format: date}
+        mealType: {$ref: '#/components/schemas/MealType'}
+        status: {$ref: '#/components/schemas/BatchStatus'}
+        cutoffAt: {type: string, format: date-time}
+        plannedBy: {type: string, format: uuid}
+        preparedBy: {type: [string, 'null'], format: uuid}
+        dispatchApprovedBy: {type: [string, 'null'], format: uuid}
+        portions: {type: object, additionalProperties: {type: integer}, description: 'Keys DIET/TEXTURE, DIET:<category> and TOTAL.'}
+        exceptions: {type: array, items: {type: object, properties: {patientRef: {type: string}, codes: {type: array, items: {type: string}}}}}
+        lines: {type: array, items: {type: object, additionalProperties: true}}
+        substitutions: {type: array, items: {$ref: '#/components/schemas/Substitution'}}
+        version: {type: integer, minimum: 1}
+    SubstitutionRequest:
+      type: object
+      additionalProperties: false
+      required: [mealServiceId, originalItemCode, substituteItemCode, reasonCode]
+      properties:
+        mealServiceId: {type: string, format: uuid}
+        originalItemCode: {$ref: '#/components/schemas/Code'}
+        substituteItemCode: {$ref: '#/components/schemas/Code'}
+        substituteAllergens: {type: array, items: {$ref: '#/components/schemas/Code'}}
+        reasonCode: {$ref: '#/components/schemas/Code'}
+    Decision:
+      type: object
+      additionalProperties: false
+      required: [expectedVersion, approve]
+      properties:
+        expectedVersion: {type: integer, minimum: 1}
+        approve: {type: boolean}
+        note: {type: string, maxLength: 300}
+    Substitution:
+      type: object
+      properties:
+        id: {type: string, format: uuid}
+        mealServiceId: {type: string, format: uuid}
+        originalItemCode: {type: string}
+        substituteItemCode: {type: string}
+        substituteAllergens: {type: array, items: {type: string}}
+        reasonCode: {type: string}
+        status: {type: string, enum: [PROPOSED, APPROVED, REJECTED]}
+        proposedBy: {type: string, format: uuid}
+        decidedBy: {type: [string, 'null'], format: uuid}
+        version: {type: integer}
+    LoadRequest:
+      type: object
+      additionalProperties: false
+      required: [mealServiceId, trayCode]
+      properties:
+        mealServiceId: {type: string, format: uuid}
+        trayCode: {type: string, pattern: '^[A-Z0-9_-]{3,40}$'}
+    TrayTransition:
+      type: object
+      additionalProperties: false
+      required: [expectedVersion]
+      properties: {expectedVersion: {type: integer, minimum: 1}}
+    DeliverRequest:
+      type: object
+      additionalProperties: false
+      required: [expectedVersion, scannedPatientRef, identityMethod]
+      properties:
+        expectedVersion: {type: integer, minimum: 1}
+        scannedPatientRef: {type: string, format: uuid, description: Patient reference resolved from the wristband scan or the dual verbal check.}
+        identityMethod: {type: string, enum: [WRISTBAND_SCAN, DUAL_VERBAL]}
+    ExceptionRequest:
+      type: object
+      additionalProperties: false
+      required: [expectedVersion, incidentType, severity, description]
+      properties:
+        expectedVersion: {type: integer, minimum: 1}
+        incidentType: {type: string, enum: [REFUSED, LATE, MISSING_TRAY, OTHER, DIET_MISMATCH, ALLERGEN_RISK]}
+        severity: {type: string, enum: [LOW, MEDIUM, HIGH, CRITICAL]}
+        description: {type: string, maxLength: 500}
+    Tray:
+      type: object
+      properties:
+        id: {type: string, format: uuid}
+        trayCode: {type: string}
+        status: {$ref: '#/components/schemas/TrayStatus'}
+        mealServiceId: {type: string, format: uuid}
+        patientRef: {type: string, format: uuid}
+        patientLabel: {type: string}
+        wardCode: {type: string}
+        bedCode: {type: string}
+        mealType: {$ref: '#/components/schemas/MealType'}
+        mealStatus: {type: string}
+        holdReason: {type: [string, 'null']}
+        loadedBy: {type: string, format: uuid}
+        dispatchedBy: {type: [string, 'null'], format: uuid}
+        dispatchedAt: {type: [string, 'null'], format: date-time}
+        deliveredBy: {type: [string, 'null'], format: uuid}
+        deliveredAt: {type: [string, 'null'], format: date-time}
+        identityMethod: {type: [string, 'null']}
+        acknowledgedBy: {type: [string, 'null'], format: uuid}
+        acknowledgedAt: {type: [string, 'null'], format: date-time}
+        version: {type: integer, minimum: 1}
+        incidents: {type: array, items: {$ref: '#/components/schemas/Incident'}}
+        events: {type: array, items: {$ref: '#/components/schemas/AuditEvent'}}
+    Incident:
+      type: object
+      properties:
+        id: {type: string, format: uuid}
+        mealServiceId: {type: string, format: uuid}
+        trayId: {type: [string, 'null'], format: uuid}
+        incidentType: {type: string, enum: [WRONG_PATIENT, ALLERGEN_RISK, DIET_MISMATCH, DIET_UNKNOWN, REFUSED, LATE, MISSING_TRAY, OTHER]}
+        severity: {type: string, enum: [LOW, MEDIUM, HIGH, CRITICAL]}
+        status: {type: string, enum: [OPEN, ESCALATED, RESOLVED]}
+        description: {type: string}
+        reporterId: {type: string, format: uuid}
+        escalatedToRole: {type: [string, 'null']}
+        resolvedBy: {type: [string, 'null'], format: uuid}
+        version: {type: integer, minimum: 1}
+x-permissions:
+  vocabulary: [m26:worklist_read, m26:order_read, m26:order_prescribe, m26:order_amend, m26:order_approve, m26:order_cancel, m26:order_revoke, m26:plan_manage, m26:plan_release, m26:prep_record, m26:dispatch_approve, m26:subst_propose, m26:subst_decide, m26:delivery_read, m26:delivery_record, m26:ack_record, m26:incident_escalate, m26:incident_resolve, m26:clinical_feed]
+  clinical-only: [m26:order_prescribe, m26:order_amend, m26:order_approve, m26:order_revoke, m26:subst_decide]

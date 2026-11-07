@@ -1,0 +1,35 @@
+server:
+  port: ${SYNQORIA_ANALYTICS_PORT:8098}
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+  max-http-request-header-size: 16KB
+  tomcat:
+    max-swallow-size: 8MB
+spring:
+  application:
+    name: synqoria-analytics-core
+  servlet:
+    multipart:
+      enabled: false
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+  datasource:
+    url: ${SYNQORIA_ANALYTICS_JDBC_URL}
+    username: ${SYNQORIA_ANALYTICS_DB_USERNAME}
+    password: ${SYNQORIA_ANALYTICS_DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 0
+      connection-timeout: 5000
+  sql:
+    init:
+      mode: never
+synqoria:
+  analytics:
+    issuer: ${SYNQORIA_ANALYTICS_OIDC_ISSUER}
+    audience: ${SYNQORIA_ANALYTICS_OIDC_AUDIENCE}
+    db-runtime-role: ${SYNQORIA_ANALYTICS_DB_RUNTIME_ROLE:synqoria_analytics_runtime}
+    facility-zone: ${SYNQORIA_ANALYTICS_FACILITY_ZONE:UTC}

@@ -1,0 +1,93 @@
+name: SYNQORIA M28 analytics and BI CI (engineering evidence, not clinical, financial or governance sign-off)
+on:
+  push:
+    branches:
+      - work/claude-m28-analytics-bi-2026-11-07
+    paths:
+      - 'services/analytics-core/**'
+      - 'contracts/openapi/synqoria-m28-analytics-v1.yaml'
+      - 'apps/web/components/analytics/**'
+      - 'apps/web/lib/analytics/**'
+      - 'apps/web/app/workforce/analytics/**'
+      - 'apps/web/app/api/analytics/**'
+      - 'tests/m28_analytics_frontend.test.mjs'
+      - 'tests/test_m28_openapi_contract.py'
+      - 'tools/gen_m28_openapi.py'
+      - '.github/workflows/m28-analytics-ci.yml'
+  pull_request:
+    paths:
+      - 'services/analytics-core/**'
+      - 'contracts/openapi/synqoria-m28-analytics-v1.yaml'
+      - 'apps/web/components/analytics/**'
+      - 'apps/web/lib/analytics/**'
+      - 'tests/m28_analytics_frontend.test.mjs'
+      - '.github/workflows/m28-analytics-ci.yml'
+permissions:
+  contents: read
+jobs:
+  java-pg18:
+    name: Java 25 + Spring Boot 4.1.2 + disposable PostgreSQL 18.6 (RLS, concurrency, governance)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+          cache-dependency-path: services/analytics-core/pom.xml
+      - name: Start disposable PostgreSQL 18.6 on loopback
+        run: |
+          set -euo pipefail
+          docker run -d --name m28-pg -e POSTGRES_PASSWORD=m28-ci-admin -e POSTGRES_DB=m28_ci -p 127.0.0.1:5432:5432 postgres:18.6
+          for i in $(seq 1 60); do
+            docker exec m28-pg psql -U postgres -d m28_ci -Atc 'SELECT 1' 2>/dev/null | grep -qx 1 && break
+            sleep 1
+          done
+          docker exec m28-pg psql -U postgres -d m28_ci -Atc 'SHOW server_version'
+      - name: Domain, admission and real PostgreSQL integration tests
+        working-directory: services/analytics-core
+        env:
+          SYNQORIA_ANALYTICS_PG_TEST: '1'
+          SYNQORIA_ANALYTICS_TEST_JDBC_URL: jdbc:postgresql://127.0.0.1:5432/m28_ci
+          SYNQORIA_ANALYTICS_TEST_ADMIN_USER: postgres
+          SYNQORIA_ANALYTICS_TEST_ADMIN_PASSWORD: m28-ci-admin
+        run: mvn -B -ntp verify
+      - name: Surefire summary
+        if: always()
+        run: grep -h "Tests run" services/analytics-core/target/surefire-reports/*.txt || true
+      - name: Explicitly deny clinical use
+        if: always()
+        run: echo "Synthetic fixtures only; no real patient, financial or hospital data was used and no figure here is a validated hospital statistic."
+  java-27-compat:
+    name: Java 27 compatibility lane (informational, non-gating)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '27'
+      - name: Compile and run non-database tests on Java 27
+        working-directory: services/analytics-core
+        run: mvn -B -ntp -Djava.version=27 test
+  contract-and-web:
+    name: OpenAPI parity + frontend logic/UX/i18n tests (Node 26)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install 'PyYAML==6.0.3'
+      - name: OpenAPI contract parity with the Spring routes
+        run: python tests/test_m28_openapi_contract.py
+      - name: Frontend dictionaries, proxy allow-list, client, checksum and static UX rules
+        run: node --test tests/m28_analytics_frontend.test.mjs
