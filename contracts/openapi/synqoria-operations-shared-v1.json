@@ -3,7 +3,7 @@
   "info": {
     "title": "SYNQORIA shared operations and durable connectors source contract",
     "version": "1.0.0-draft",
-    "description": "Source-contract discovery for existing Java 25 controllers. M27 decedent/custody remains governed by the independent synqoria-m27-mortuary-v1.yaml. No hospital release or supplier/provider delivery certification."
+    "description": "Source-contract discovery for existing Java 25 controllers. M27 decedent/custody remains governed by the independent synqoria-m27-mortuary-v1.yaml. No hospital release or supplier/provider delivery certification. Typed DTO fields mirror the existing Java records. Nullable Java reference fields are not declared universally required; workflow validators remain authoritative."
   },
   "servers": [
     {
@@ -75,7 +75,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Item"
+                  }
                 }
               }
             }
@@ -139,7 +142,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "$ref": "#/components/schemas/Item"
                 }
               }
             }
@@ -165,8 +168,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "description": "Typed request shape is enforced by the Java record and domain service; not a caller-provided scope."
+                "$ref": "#/components/schemas/NewItem"
               }
             }
           }
@@ -225,7 +227,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "$ref": "#/components/schemas/Item"
                 }
               }
             }
@@ -300,7 +302,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "type": "object",
+                  "additionalProperties": true
                 }
               }
             }
@@ -375,7 +378,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "$ref": "#/components/schemas/Item"
                 }
               }
             }
@@ -401,8 +404,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "description": "Typed request shape is enforced by the Java record and domain service; not a caller-provided scope."
+                "$ref": "#/components/schemas/TransitionItem"
               }
             }
           }
@@ -488,7 +490,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProcurementExport"
+                  }
                 }
               }
             }
@@ -544,7 +549,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "$ref": "#/components/schemas/ProcurementExport"
                 }
               }
             }
@@ -615,7 +620,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "$ref": "#/components/schemas/BarcodeStock"
                 }
               }
             }
@@ -661,7 +666,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "$ref": "#/components/schemas/VehicleReservation"
                 }
               }
             }
@@ -687,8 +692,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "description": "Typed request shape is enforced by the Java record and domain service; not a caller-provided scope."
+                "$ref": "#/components/schemas/ReserveVehicleRequest"
               }
             }
           }
@@ -728,7 +732,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "$ref": "#/components/schemas/VehicleReservation"
                 }
               }
             }
@@ -801,7 +805,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "$ref": "#/components/schemas/PublicationPage"
                 }
               }
             }
@@ -847,7 +851,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NotificationLease"
+                  }
                 }
               }
             }
@@ -904,7 +911,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProcurementStatus"
+                  }
                 }
               }
             }
@@ -960,7 +970,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "$ref": "#/components/schemas/StockCount"
                 }
               }
             }
@@ -986,8 +996,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "description": "Typed request shape is enforced by the Java record and domain service; not a caller-provided scope."
+                "$ref": "#/components/schemas/Review"
               }
             }
           }
@@ -1027,7 +1036,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "$ref": "#/components/schemas/StockCount"
                 }
               }
             }
@@ -1053,8 +1062,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "description": "Typed request shape is enforced by the Java record and domain service; not a caller-provided scope."
+                "$ref": "#/components/schemas/CountRequest"
               }
             }
           }
@@ -1095,7 +1103,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": true
+                  }
                 }
               }
             }
@@ -1160,7 +1172,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": true
+                  }
                 }
               }
             }
@@ -1217,7 +1233,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": true
+                  }
                 }
               }
             }
@@ -1273,7 +1293,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StockBalanceView"
+                  }
                 }
               }
             }
@@ -1329,7 +1352,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScopedResult"
+                  "$ref": "#/components/schemas/StockBalanceView"
                 }
               }
             }
@@ -1355,8 +1378,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "description": "Typed request shape is enforced by the Java record and domain service; not a caller-provided scope."
+                "$ref": "#/components/schemas/StockMovementRequest"
               }
             }
           }
@@ -1387,6 +1409,438 @@
             }
           }
         ]
+      },
+      "NewItem": {
+        "type": "object",
+        "properties": {
+          "recordType": {
+            "type": "string"
+          },
+          "fields": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "commandId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "x-java-source-record": "services/operations-core/src/main/java/org/synqoria/operations/OperationsApi.java"
+      },
+      "TransitionItem": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "expectedVersion": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "fields": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "commandId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "x-java-source-record": "services/operations-core/src/main/java/org/synqoria/operations/OperationsApi.java"
+      },
+      "Review": {
+        "type": "object",
+        "properties": {
+          "accept": {
+            "type": "boolean"
+          }
+        },
+        "x-java-source-record": "services/operations-core/src/main/java/org/synqoria/operations/OperationsIntegrationApi.java"
+      },
+      "StockMovementRequest": {
+        "type": "object",
+        "properties": {
+          "movement": {
+            "type": "string"
+          },
+          "lot": {
+            "type": "string"
+          },
+          "bin": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "referenceCode": {
+            "type": "string"
+          },
+          "expectedVersion": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "commandId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "x-java-source-record": "services/operations-core/src/main/java/org/synqoria/operations/OperationsStore.java"
+      },
+      "StockBalanceView": {
+        "type": "object",
+        "properties": {
+          "lot": {
+            "type": "string"
+          },
+          "bin": {
+            "type": "string"
+          },
+          "onHand": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reserved": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "available": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "version": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "x-java-source-record": "services/operations-core/src/main/java/org/synqoria/operations/OperationsStore.java"
+      },
+      "Item": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "cell": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "facility": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "module": {
+            "type": "string"
+          },
+          "recordType": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "version": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "createdBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "lastActor": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "fields": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "x-java-source-record": "services/operations-core/src/main/java/org/synqoria/operations/domain/OperationWorkflow.java"
+      },
+      "ProcurementStatus": {
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "state": {
+            "type": "string"
+          },
+          "purchaseRef": {
+            "type": "string"
+          },
+          "receiptRef": {
+            "type": "string"
+          },
+          "invoiceRef": {
+            "type": "string"
+          },
+          "amountMinor": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "disposition": {
+            "type": "string"
+          }
+        },
+        "x-java-source-record": "services/operations-core/src/main/java/org/synqoria/operations/OperationsIntegrationService.java"
+      },
+      "StockCount": {
+        "type": "object",
+        "properties": {
+          "countId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "itemId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "lot": {
+            "type": "string"
+          },
+          "bin": {
+            "type": "string"
+          },
+          "expectedOnHand": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "expectedReserved": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "countedOnHand": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "stockVersion": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "state": {
+            "type": "string"
+          },
+          "requestedBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "reviewedBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "variance": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "x-java-source-record": "services/operations-core/src/main/java/org/synqoria/operations/OperationsIntegrationService.java"
+      },
+      "CountRequest": {
+        "type": "object",
+        "properties": {
+          "lot": {
+            "type": "string"
+          },
+          "bin": {
+            "type": "string"
+          },
+          "countedOnHand": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "commandId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "x-java-source-record": "services/operations-core/src/main/java/org/synqoria/operations/OperationsIntegrationService.java"
+      },
+      "ProcurementExport": {
+        "type": "object",
+        "properties": {
+          "exportId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "itemId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "itemVersion": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "purchaseRef": {
+            "type": "string"
+          },
+          "receiptRef": {
+            "type": "string"
+          },
+          "invoiceRef": {
+            "type": "string"
+          },
+          "amountMinor": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "digest": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          }
+        },
+        "x-java-source-record": "services/operations-core/src/main/java/org/synqoria/operations/OperationsConnectorService.java"
+      },
+      "BarcodeStock": {
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sku": {
+            "type": "string"
+          },
+          "lot": {
+            "type": "string"
+          },
+          "bin": {
+            "type": "string"
+          },
+          "onHand": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "reserved": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "stockVersion": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "x-java-source-record": "services/operations-core/src/main/java/org/synqoria/operations/OperationsConnectorService.java"
+      },
+      "VehicleReservation": {
+        "type": "object",
+        "properties": {
+          "reservationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "vehicleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "startAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reservationRef": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "x-java-source-record": "services/operations-core/src/main/java/org/synqoria/operations/OperationsConnectorService.java"
+      },
+      "ReserveVehicleRequest": {
+        "type": "object",
+        "properties": {
+          "vehicleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "startAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reservationRef": {
+            "type": "string"
+          }
+        },
+        "x-java-source-record": "services/operations-core/src/main/java/org/synqoria/operations/OperationsConnectorService.java"
+      },
+      "PublicationCursor": {
+        "type": "object",
+        "properties": {
+          "at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "x-java-source-record": "services/operations-core/src/main/java/org/synqoria/operations/OperationsConnectorService.java"
+      },
+      "PublicationPage": {
+        "type": "object",
+        "properties": {
+          "publications": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "nextCursor": {
+            "$ref": "#/components/schemas/PublicationCursor"
+          }
+        },
+        "x-java-source-record": "services/operations-core/src/main/java/org/synqoria/operations/OperationsConnectorService.java"
+      },
+      "NotificationLease": {
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "leaseId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "channel": {
+            "type": "string"
+          },
+          "recipientRef": {
+            "type": "string"
+          },
+          "templateRef": {
+            "type": "string"
+          },
+          "attempt": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "leaseUntil": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "x-java-source-record": "services/operations-core/src/main/java/org/synqoria/operations/OperationsConnectorService.java"
       }
     }
   }
