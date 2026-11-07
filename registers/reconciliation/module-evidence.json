@@ -26,6 +26,7 @@
      "workflow": "Engineering checks (not clinical certification)"
     }
    ],
+   "classification": "implemented_requiring_integration",
    "clinicalAccepted": false,
    "commits": {
     "count": 5,
@@ -262,6 +263,7 @@
      "workflow": "M02 5-screen Next16 React19 verified build"
     }
    ],
+   "classification": "implemented_requiring_integration",
    "clinicalAccepted": false,
    "commits": {
     "count": 3,
@@ -489,6 +491,7 @@
     }
    ],
    "ci": [],
+   "classification": "partially_implemented",
    "clinicalAccepted": false,
    "commits": {
     "count": 20,
@@ -737,6 +740,7 @@
      "workflow": "P07 v0.67.0 Inbox admission and recovery checks (not certification)"
     }
    ],
+   "classification": "implemented_requiring_integration",
    "clinicalAccepted": false,
    "commits": {
     "count": 19,
@@ -965,6 +969,7 @@
      "workflow": "P07 v0.67.0 Inbox admission and recovery checks (not certification)"
     }
    ],
+   "classification": "implemented_requiring_integration",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -1180,6 +1185,7 @@
      "workflow": "P07 v0.67.0 Inbox admission and recovery checks (not certification)"
     }
    ],
+   "classification": "implemented_requiring_integration",
    "clinicalAccepted": false,
    "commits": {
     "count": 18,
@@ -1383,6 +1389,7 @@
   {
    "anchors": [],
    "ci": [],
+   "classification": "unknown_insufficient_evidence",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -1498,6 +1505,7 @@
   {
    "anchors": [],
    "ci": [],
+   "classification": "unknown_insufficient_evidence",
    "clinicalAccepted": false,
    "commits": {
     "count": 1,
@@ -1628,6 +1636,7 @@
   {
    "anchors": [],
    "ci": [],
+   "classification": "unknown_insufficient_evidence",
    "clinicalAccepted": false,
    "commits": {
     "count": 1,
@@ -1746,6 +1755,7 @@
   {
    "anchors": [],
    "ci": [],
+   "classification": "unknown_insufficient_evidence",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -1862,6 +1872,7 @@
   {
    "anchors": [],
    "ci": [],
+   "classification": "unknown_insufficient_evidence",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -2002,6 +2013,7 @@
   {
    "anchors": [],
    "ci": [],
+   "classification": "unknown_insufficient_evidence",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -2131,6 +2143,7 @@
   {
    "anchors": [],
    "ci": [],
+   "classification": "unknown_insufficient_evidence",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -2259,6 +2272,7 @@
   {
    "anchors": [],
    "ci": [],
+   "classification": "unknown_insufficient_evidence",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -2382,6 +2396,7 @@
   {
    "anchors": [],
    "ci": [],
+   "classification": "unknown_insufficient_evidence",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -2527,6 +2542,7 @@
      "workflow": "M16 5-screen Next16 React19 verified build"
     }
    ],
+   "classification": "implemented_requiring_integration",
    "clinicalAccepted": false,
    "commits": {
     "count": 3,
@@ -2722,6 +2738,7 @@
   {
    "anchors": [],
    "ci": [],
+   "classification": "unknown_insufficient_evidence",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -2975,6 +2992,7 @@
   {
    "anchors": [],
    "ci": [],
+   "classification": "unknown_insufficient_evidence",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -3115,6 +3133,7 @@
   {
    "anchors": [],
    "ci": [],
+   "classification": "unknown_insufficient_evidence",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -3243,6 +3262,7 @@
   {
    "anchors": [],
    "ci": [],
+   "classification": "unknown_insufficient_evidence",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -3373,6 +3393,7 @@
     }
    ],
    "ci": [],
+   "classification": "partially_implemented",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -3619,6 +3640,7 @@
     }
    ],
    "ci": [],
+   "classification": "partially_implemented",
    "clinicalAccepted": false,
    "commits": {
     "count": 2,
@@ -3859,6 +3881,7 @@
     }
    ],
    "ci": [],
+   "classification": "partially_implemented",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -4098,6 +4121,7 @@
      "workflow": "SYNQORIA M24 HR and payroll CI (engineering evidence, not legal or payroll compliance sign-off)"
     }
    ],
+   "classification": "implemented_requiring_integration",
    "clinicalAccepted": false,
    "commits": {
     "count": 1,
@@ -4357,6 +4381,7 @@
     }
    ],
    "ci": [],
+   "classification": "partially_implemented",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -4596,6 +4621,7 @@
      "workflow": "SYNQORIA M26 nutrition CI (engineering evidence, not clinical certification)"
     }
    ],
+   "classification": "implemented_requiring_integration",
    "clinicalAccepted": false,
    "commits": {
     "count": 1,
@@ -4850,6 +4876,7 @@
      "workflow": "M27 canonical 5-screen React/Next latest-stable build"
     }
    ],
+   "classification": "implemented_requiring_integration",
    "clinicalAccepted": false,
    "commits": {
     "count": 3,
@@ -5089,6 +5116,7 @@
      "workflow": "SYNQORIA M28 analytics and BI CI (engineering evidence, not clinical, financial or governance sign-off)"
     }
    ],
+   "classification": "implemented_requiring_integration",
    "clinicalAccepted": false,
    "commits": {
     "count": 2,
@@ -5320,6 +5348,7 @@
     }
    ],
    "ci": [],
+   "classification": "partially_implemented",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -5548,6 +5577,7 @@
      "workflow": "SYNQORIA M30 clinical content CI (engineering evidence, not clinical approval)"
     }
    ],
+   "classification": "implemented_requiring_integration",
    "clinicalAccepted": false,
    "commits": {
     "count": 1,
@@ -5791,6 +5821,7 @@
     }
    ],
    "ci": [],
+   "classification": "partially_implemented",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -6053,6 +6084,7 @@
      "workflow": "M32 privacy five-screen Next16 React19 verified build"
     }
    ],
+   "classification": "implemented_requiring_integration",
    "clinicalAccepted": false,
    "commits": {
     "count": 1,
@@ -6281,6 +6313,7 @@
      "workflow": "SYNQORIA P03 verified OIDC session boundary (synthetic signed tokens)"
     }
    ],
+   "classification": "partially_implemented",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -6490,6 +6523,7 @@
      "workflow": "M34 audit five-screen Next16 React19 build"
     }
    ],
+   "classification": "implemented_requiring_integration",
    "clinicalAccepted": false,
    "commits": {
     "count": 1,
@@ -6717,6 +6751,7 @@
      "workflow": "M35 6-screen Next16 React19 verified build"
     }
    ],
+   "classification": "implemented_requiring_integration",
    "clinicalAccepted": false,
    "commits": {
     "count": 2,
@@ -6925,6 +6960,7 @@
   {
    "anchors": [],
    "ci": [],
+   "classification": "unknown_insufficient_evidence",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -7049,6 +7085,7 @@
     }
    ],
    "ci": [],
+   "classification": "partially_implemented",
    "clinicalAccepted": false,
    "commits": {
     "count": 0,
@@ -7288,6 +7325,7 @@
      "workflow": "SYNQORIA P03 verified OIDC session boundary (synthetic signed tokens)"
     }
    ],
+   "classification": "implemented_requiring_integration",
    "clinicalAccepted": false,
    "commits": {
     "count": 5,
@@ -7529,6 +7567,7 @@
      "workflow": "SYNQORIA M39 fleet lifecycle CI (engineering evidence, not operational acceptance; no real cell is touched)"
     }
    ],
+   "classification": "implemented_requiring_integration",
    "clinicalAccepted": false,
    "commits": {
     "count": 5,
@@ -7781,6 +7820,7 @@
      "workflow": "SYNQORIA M40 reliability CI (engineering evidence, not operational acceptance; no recovery guarantee)"
     }
    ],
+   "classification": "implemented_requiring_integration",
    "clinicalAccepted": false,
    "commits": {
     "count": 2,

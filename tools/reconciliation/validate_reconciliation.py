@@ -12,6 +12,8 @@ import argparse, collections, hashlib, json, os, re, subprocess, sys, tempfile
 
 ALLOWED_STATES = {"routes_registered_no_module_source_located", "partial_source_located", "engineering_slice_service_db_contract_tests"}
 FORBIDDEN_STATE_WORDS = re.compile(r"(?i)(accepted|certified|production[-_ ]ready|production[-_ ]integrated|fully[-_ ]built|complete)")
+AUTOMATED_CLASSES = {"unknown_insufficient_evidence", "partially_implemented", "implemented_requiring_integration"}
+HUMAN_ONLY_CLASSES = {"implemented_and_verified", "designed_not_implemented", "confirmed_not_implemented"}
 REQUIRED = ["manifest.json", "canonical-inventory.json", "historical-inventory.json", "provenance.json", "duplicate-fingerprints.json", "module-evidence.json",
             "screen-coverage.json", "contracts-events-security.json", "module-inventory.json", "backlog.json"]
 
@@ -83,6 +85,12 @@ def validate(d, repo, check_paths=True):
             err("%s productionIntegrated must be 'not_verified'" % r["id"])
         if r.get("humanReviewed") is not False and not r.get("reviewEvidence"):
             err("%s claims humanReviewed without reviewEvidence" % r["id"])
+    for r in inv["modules"]:
+        c = r.get("classification")
+        if c in HUMAN_ONLY_CLASSES and not (r.get("humanReviewed") and r.get("reviewEvidence")):
+            err("%s classified %s without a recorded human review" % (r["id"], c))
+        elif c not in AUTOMATED_CLASSES | HUMAN_ONLY_CLASSES:
+            err("%s has unrecognised classification %r" % (r["id"], c))
     for k in ("confirmedUnbuiltModules", "confirmedFullyBuiltModules", "productionReadyPercent"):
         if inv.get(k) is not None and not all(r.get("humanReviewed") for r in inv["modules"]):
             err("%s must be null until all 40 modules are human-audited" % k)

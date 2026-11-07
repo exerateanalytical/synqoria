@@ -118,6 +118,14 @@ class Negative(Mutable):
         self.edit("module-inventory.json", f)
         self.assertFails("unrecognised state")
 
+    def test_verified_or_confirmed_absent_classification_needs_human_review(self):
+        for cls in ("implemented_and_verified", "confirmed_not_implemented"):
+            def f(o, cls=cls):
+                o["modules"][0]["classification"] = cls
+            self.setUp()
+            self.edit("module-inventory.json", f)
+            self.assertFails("without a recorded human review")
+
     def test_clinical_acceptance_claim_is_rejected(self):
         def f(o):
             o["modules"][3]["clinicalAccepted"] = True

@@ -341,6 +341,16 @@ def load_inputs(root):
     return inputs
 
 
+def classify(state, has):
+    """Maps the inventory state onto the integration lead's six classes. 'implemented_and_verified', 'designed_not_implemented' and
+    'confirmed_not_implemented' are NEVER produced by automation: they need a signed human audit (the validator enforces this)."""
+    if state == "routes_registered_no_module_source_located":
+        return "unknown_insufficient_evidence"
+    if state == "engineering_slice_service_db_contract_tests" and has["webSource"] and has["ciWorkflow"]:
+        return "implemented_requiring_integration"
+    return "partially_implemented"
+
+
 def module_evidence(R, inputs, canon, prov):
     files = R.files()
     anchors = inputs["anchors"]
@@ -445,7 +455,7 @@ def module_evidence(R, inputs, canon, prov):
         pv = prev.get(mid, {})
         rows.append({
             "id": mid, "name": m["name"], "wave": m["wave"], "owner": m["owner"],
-            "state": state, "confidence": conf, "reviewMethod": "automated-inventory", "humanReviewed": False,
+            "state": state, "classification": classify(state, has), "confidence": conf, "reviewMethod": "automated-inventory", "humanReviewed": False,
             "rationale": rationale,
             "owned": {"byCategory": dict(sorted(by_cat.items())), "services": owned_svcs, "migrations": migrations, "contracts": contracts, "tests": tests[:12], "webPaths": web[:12], "anchorPaths": sorted(set(anchor_paths))[:12],
                       "pathCount": len(owned), "exemplars": sorted(owned)[:10]},
@@ -597,7 +607,7 @@ def pkg27_contracts_security(R, prov):
 def pkg28_inventory(mods, canon):
     rows = []
     for m in mods:
-        rows.append({"id": m["id"], "name": m["name"], "wave": m["wave"], "state": m["state"], "confidence": m["confidence"], "humanReviewed": m["humanReviewed"],
+        rows.append({"id": m["id"], "name": m["name"], "wave": m["wave"], "state": m["state"], "classification": m["classification"], "confidence": m["confidence"], "humanReviewed": m["humanReviewed"],
                      "ownedPathCount": m["owned"]["pathCount"], "services": m["owned"]["services"], "migrationCount": len(m["owned"]["migrations"]), "contractCount": len(m["owned"]["contracts"]),
                      "testPathCount": len(m["owned"]["tests"]), "ciWorkflows": [c["workflow"] for c in m["ci"]], "ciLatestRun": sorted({c["latestRunConclusion"] for c in m["ci"]}),
                      "screenCount": m["screens"]["count"], "missingFacets": m["missingFacets"], "evidencePaths": m["owned"]["exemplars"], "rationale": m["rationale"],
@@ -606,7 +616,7 @@ def pkg28_inventory(mods, canon):
     states = collections.Counter(r["state"] for r in rows)
     return {"schemaVersion": "synqoria.reconciliation.inventory.v1", "moduleCount": len(rows), "modules": rows, "stateCounts": dict(sorted(states.items())),
             "confirmedUnbuiltModules": None, "confirmedFullyBuiltModules": None, "productionReadyPercent": None,
-            "unbuiltCountRule": "null until every module has a definitive human audit; routes_registered_no_module_source_located is an UNKNOWN, not an unbuilt count"}
+            "classificationCounts": dict(sorted(collections.Counter(r["classification"] for r in rows).items())), "unbuiltCountRule": "null until every module has a definitive human audit; routes_registered_no_module_source_located is an UNKNOWN, not an unbuilt count"}
 
 
 def pkg30_backlog(mods, screens, contracts, dup, canon):
