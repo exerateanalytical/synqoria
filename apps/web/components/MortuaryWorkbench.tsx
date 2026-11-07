@@ -5,16 +5,19 @@ import Link from "next/link";
 import styles from "../app/workforce/mortuary/mortuary.module.css";
 
 type CaseView={
- caseId:string;decedentRef:string;state:string;version:number;
+ caseId:string;decedentRef:string;originatingUnitRef:string;belongingsSealRef:string;
+ intakeReceivingStaff:string;state:string;version:number;
  currentStorage:string|null;receivedAt:string;releasedAt:string|null
 };
 type Custody={version:number;eventType:string;fromStorage:string|null;toStorage:string|null;
- actorId:string;receivingStaffId:string|null;evidenceRef:string;occurredAt:string};
+ actorId:string;receivingStaffId:string|null;evidenceRef:string;occurredAt:string;
+ sealRef:string|null;conditionCode:string|null;witnessStaffId:string|null;belongingsRef:string|null};
 type Approval={stage:string;actorId:string;caseVersion:number;createdAt:string};
 type Audit={version:number;action:string;fromState:string|null;toState:string;actorId:string;occurredAt:string};
 type Screen="M27-S01"|"M27-S02"|"M27-S03"|"M27-S04"|"M27-S05";
 type Action="IDENTIFY"|"STORE"|"TRANSFER"|"REVIEW_RELEASE"|"AUTHORIZE_RELEASE"|"HANDOVER";
-type FieldKey="evidenceRef"|"storageCode"|"receivingStaffId"|"recipientRef"|"authorityRef";
+type FieldKey="evidenceRef"|"storageCode"|"receivingStaffId"|"recipientRef"|"authorityRef"
+ |"sealRef"|"conditionCode"|"witnessStaffId"|"belongingsReleaseRef";
 type Field={key:FieldKey;label:string;labelFr:string;hint:string};
 type State="loading"|"authorized"|"signin"|"forbidden"|"unavailable";
 const apiPrefix="/api/operations/proxy/M27/";
@@ -26,10 +29,14 @@ const fields:Record<Action,Field[]>={
  STORE:[
   {key:"storageCode",label:"Secure storage code",labelFr:"Emplacement sécurisé",hint:"Validated mortuary bay"},
   {key:"receivingStaffId",label:"Receiving staff UUID",labelFr:"Identifiant de l'agent réceptionnaire",hint:"Staff must have an active custody shift"},
+  {key:"sealRef",label:"Tamper-evident custody seal reference",labelFr:"Référence du scellé de garde",hint:"Verified sealed inventory"},
+  {key:"conditionCode",label:"Recorded custody condition code",labelFr:"Code d'état à la réception",hint:"Authorized controlled code, no free-text narrative"},
   {key:"evidenceRef",label:"Storage safety evidence reference",labelFr:"Preuve de conformité du stockage",hint:"Independently certified storage record"}],
  TRANSFER:[
   {key:"storageCode",label:"New storage location",labelFr:"Nouvel emplacement",hint:"Different from current location"},
   {key:"receivingStaffId",label:"Receiving staff UUID",labelFr:"Identifiant de l'agent réceptionnaire",hint:"Must be a different active employee"},
+  {key:"sealRef",label:"New custody seal reference",labelFr:"Nouveau scellé de garde",hint:"Tamper-evident documented seal"},
+  {key:"conditionCode",label:"Received condition code",labelFr:"Code de l'état reçu",hint:"Explicit controlled value"},
   {key:"evidenceRef",label:"Independent custody acceptance",labelFr:"Attestation indépendante de transfert",hint:"Externally verified signed custody evidence"}],
  REVIEW_RELEASE:[
   {key:"authorityRef",label:"Legal release authority reference",labelFr:"Référence de l'autorité légale",hint:"Independently signed release eligibility"},
@@ -40,6 +47,8 @@ const fields:Record<Action,Field[]>={
  HANDOVER:[
   {key:"authorityRef",label:"Approved release authority",labelFr:"Autorité de remise approuvée",hint:"Must match both reviewers"},
   {key:"recipientRef",label:"Verified handover recipient",labelFr:"Destinataire vérifié",hint:"Fresh identity verification required"},
+  {key:"witnessStaffId",label:"Independent witness staff UUID",labelFr:"Identifiant du témoin indépendant",hint:"Currently authorized receiving officer, separate from all release actors"},
+  {key:"belongingsReleaseRef",label:"Verified belongings return receipt",labelFr:"Récépissé de remise des effets",hint:"Independently attested belongings release"},
   {key:"evidenceRef",label:"Signed handover receipt reference",labelFr:"Référence du récépissé signé",hint:"Externally verified handover acknowledgement"}]
 };
 const applicable:Record<Screen,Partial<Record<string,Action[]>>>={
@@ -156,11 +165,12 @@ export function MortuaryWorkbench({screenId,name,nameFr,primaryAction}:{
   const data=form;
   try{
    const required=action==="RECEIVE"?
-    ["decedentRef","intakeRef","deathRef"]:fields[action].map(f=>f.key);
+    ["decedentRef","intakeRef","deathRef","originatingUnitRef","authorizationRef",
+     "belongingsSealRef","receivingStaffId"]:fields[action].map(f=>f.key);
    for(const key of required){
     const value=data[key]?.trim();
     if(!value)throw new Error("required_"+key);
-    if(key==="decedentRef"||key==="receivingStaffId"){
+    if(key==="decedentRef"||key==="receivingStaffId"||key==="witnessStaffId"){
      if(!uuid.test(value))throw new Error("invalid_"+key);
     }else if(!emailLessCode.test(value))throw new Error("invalid_"+key);
    }
@@ -171,7 +181,11 @@ export function MortuaryWorkbench({screenId,name,nameFr,primaryAction}:{
    let updated:CaseView;
    if(action==="RECEIVE"){
     updated=await request<CaseView>("cases",{decedentRef:data.decedentRef.trim(),
-     intakeRef:data.intakeRef.trim(),deathRef:data.deathRef.trim(),commandId:cmd});
+     intakeRef:data.intakeRef.trim(),deathRef:data.deathRef.trim(),
+     originatingUnitRef:data.originatingUnitRef.trim(),
+     authorizationRef:data.authorizationRef.trim(),
+     belongingsSealRef:data.belongingsSealRef.trim(),
+     receivingStaffId:data.receivingStaffId.trim(),commandId:cmd});
    }else{
     updated=await request<CaseView>(`cases/${selected!.caseId}/actions`,{
      action,expectedVersion:selected!.version,commandId:cmd,
@@ -179,7 +193,11 @@ export function MortuaryWorkbench({screenId,name,nameFr,primaryAction}:{
      storageCode:data.storageCode?.trim()||null,
      receivingStaffId:data.receivingStaffId?.trim()||null,
      recipientRef:data.recipientRef?.trim()||null,
-     authorityRef:data.authorityRef?.trim()||null
+     authorityRef:data.authorityRef?.trim()||null,
+     sealRef:data.sealRef?.trim()||null,
+     conditionCode:data.conditionCode?.trim()||null,
+     witnessStaffId:data.witnessStaffId?.trim()||null,
+     belongingsReleaseRef:data.belongingsReleaseRef?.trim()||null
     });
    }
    setForm({});setPendingCommand(null);
@@ -263,6 +281,10 @@ export function MortuaryWorkbench({screenId,name,nameFr,primaryAction}:{
        {fieldInput("decedentRef",say("Existing decedent identity UUID","Identifiant du défunt"),"Authoritatively verified registry identity","uuid")}
        {fieldInput("intakeRef",say("Identity intake attestation reference","Attestation d'admission"),"Registered incoming custody evidence")}
        {fieldInput("deathRef",say("Verified death record reference","Référence de l'acte de décès"),"Death confirmation from independent authority")}
+       {fieldInput("originatingUnitRef",say("Originating clinical unit","Service d'origine"),"Verified origin unit code")}
+       {fieldInput("authorizationRef",say("Intake authorization document","Document autorisant l'admission"),"Independent institutional intake authorization")}
+       {fieldInput("belongingsSealRef",say("Sealed belongings reference","Référence des effets personnels scellés"),"Independent sealed-belongings inventory")}
+       {fieldInput("receivingStaffId",say("Receiving mortuary officer UUID","Identifiant de l'agent réceptionnaire"),"Active shift, distinct from requesting intake officer","uuid")}
       </div>
       <button className={styles.primary} type="submit" disabled={busy}>
        {busy?say("Submitting…","Enregistrement…"):say("Record independently verified intake","Enregistrer l'admission vérifiée")}</button>
@@ -276,6 +298,9 @@ export function MortuaryWorkbench({screenId,name,nameFr,primaryAction}:{
       <dl className={styles.facts}>
        <div><dt>{say("Case ID","Référence du dossier")}</dt><dd>{selected.caseId}</dd></div>
        <div><dt>{say("Decedent identity reference","Référence du défunt")}</dt><dd>{selected.decedentRef}</dd></div>
+       <div><dt>{say("Originating unit","Service d'origine")}</dt><dd>{selected.originatingUnitRef}</dd></div>
+       <div><dt>{say("Sealed belongings","Effets personnels scellés")}</dt><dd>{selected.belongingsSealRef}</dd></div>
+       <div><dt>{say("Receiving officer","Agent réceptionnaire")}</dt><dd>{personRef(selected.intakeReceivingStaff)}</dd></div>
        <div><dt>{say("Current storage","Emplacement actuel")}</dt><dd>{selected.currentStorage||"—"}</dd></div>
        <div><dt>{say("Version","Version")}</dt><dd>{selected.version}</dd></div>
        <div><dt>{say("Received","Date de réception")}</dt><dd>{readableDate(selected.receivedAt)}</dd></div>
@@ -306,9 +331,12 @@ export function MortuaryWorkbench({screenId,name,nameFr,primaryAction}:{
        <div className={styles.tableWrap}><table className={styles.table}>
         <thead><tr><th>{say("Version","Version")}</th><th>{say("Event","Événement")}</th>
          <th>{say("From","Origine")}</th><th>{say("To","Destination")}</th>
+         <th>{say("Seal","Scellé")}</th><th>{say("Condition","État")}</th>
          <th>{say("Time","Date")}</th></tr></thead>
         <tbody>{custody.map(e=><tr key={e.version}><td>{e.version}</td>
          <td>{e.eventType}</td><td>{e.fromStorage||"—"}</td><td>{e.toStorage||"—"}</td>
+         <td>{e.sealRef||e.belongingsRef||"—"}</td>
+         <td>{e.conditionCode||"—"}</td>
          <td>{readableDate(e.occurredAt)}</td></tr>)}</tbody></table></div>}
       {(screen==="M27-S04"||screen==="M27-S05")&&<>
        <h3>{say("Independent release approvals","Approbations indépendantes")}</h3>
