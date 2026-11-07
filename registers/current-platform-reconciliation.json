@@ -1,7 +1,7 @@
 {
   "schemaVersion": "synqoria.reconciliation.v1",
-  "generatedAtUtc": "2026-11-07T13:56:26+00:00",
-  "mainShaInspected": "274d9a1a784d4649bdbcb14600e9d4d02f8a332a",
+  "generatedAtUtc": "2026-11-07T14:11:02+00:00",
+  "mainShaInspected": "73f5e3f3b06fe6faf9247ca8c68f51fe4cac2e25",
   "canonical": {
     "plannedModules": 40,
     "canonicalScreens": 261
@@ -21,7 +21,7 @@
     "confirmedUnbuiltModules": null,
     "confirmedFullyBuiltModules": null,
     "clinicallyAcceptedModules": 0,
-    "openPrs": 2
+    "openPrs": 0
   },
   "activeWork": {
     "claude": {
@@ -71,24 +71,7 @@
       "lastCompleted": "Single PR #66 Java25/PostgreSQL18.6 coordinated M21 procurement status, M22 cycle-count review, M25 vehicle availability, M29 publication feed and M37 due-delivery queue; merge 46c0e240cabd1735a3c0a5632091bb3b4c6d2e21; all five CI workflows passed"
     }
   },
-  "openPullRequests": [
-    {
-      "number": 56,
-      "title": "M38 offline device client + sync integration (SDK, PWA device panel, interop) - partial per #53",
-      "head": "909fd8ec7986f659306400d029b4ae0c12c95f7c",
-      "branch": "work/claude-m38-device-client-integration-2026-11-07",
-      "base": "main",
-      "draft": false
-    },
-    {
-      "number": 65,
-      "title": "M01-M37 forensic reconciliation: evidence registers, validator, ranked backlog (Issue #60) - partial, inventory only",
-      "head": "f15932b70fd127c91bcfd8dd0156a55a530385b6",
-      "branch": "work/claude-m01-m37-forensic-reconciliation-2026-11-07",
-      "base": "main",
-      "draft": false
-    }
-  ],
+  "openPullRequests": [],
   "modules": [
     {
       "id": "M01",
@@ -506,9 +489,10 @@
     },
     {
       "id": "M38",
-      "codeSignals": 19,
+      "codeSignals": 53,
       "exampleSourcePaths": [
         "apps/web/components/offline/Conflicts.tsx",
+        "apps/web/components/offline/DevicePanel.tsx",
         "apps/web/components/offline/History.tsx",
         "apps/web/components/offline/Hub.tsx",
         "apps/web/components/offline/Queue.tsx",
@@ -516,10 +500,9 @@
         "apps/web/components/offline/Transfers.tsx",
         "apps/web/components/offline/ui.tsx",
         "apps/web/lib/offline/client.ts",
+        "apps/web/lib/offline/device.ts",
         "apps/web/lib/offline/i18n.ts",
-        "apps/web/lib/offline/proxy-policy.ts",
-        "services/offline-sync-core/db/migration/V001__m38_offline_sync.sql",
-        "services/offline-sync-core/src/main/java/org/synqoria/offline/Api.java"
+        "apps/web/lib/offline/proxy-policy.ts"
       ],
       "sourceEvidence": "located",
       "implementation": "engineering_source_claimed_needs_system_acceptance",
