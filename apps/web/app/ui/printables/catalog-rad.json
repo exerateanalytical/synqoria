@@ -1,0 +1,526 @@
+[
+  {
+    "id": "P05",
+    "en": "Radiology diagnostic report",
+    "fr": "Compte rendu de radiologie",
+    "domain": "RAD",
+    "domainEn": "Radiology and diagnostic imaging",
+    "domainFr": "Imagerie médicale et radiologie",
+    "module": "M12",
+    "kind": "radiology",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Study",
+        "fields": [
+          "Examination and modality",
+          "Study/accession ID",
+          "Performed date/time",
+          "Requesting clinician"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Clinical question",
+        "fields": [
+          "Indication",
+          "Comparison study",
+          "Technique"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Findings",
+        "fields": [
+          "Structured observations",
+          "Impression and recommendations"
+        ]
+      },
+      {
+        "id": "s04",
+        "heading": "Approval",
+        "fields": [
+          "Radiologist",
+          "Report status",
+          "Issued version"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-RAD-002",
+    "en": "Diagnostic imaging request",
+    "fr": "Demande d'examen d'imagerie",
+    "domain": "RAD",
+    "domainEn": "Radiology and diagnostic imaging",
+    "domainFr": "Imagerie médicale et radiologie",
+    "module": "M12",
+    "kind": "order",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Requested",
+        "fields": [
+          "Imaging study and laterality",
+          "Clinical question",
+          "Priority"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Safety",
+        "fields": [
+          "Pregnancy screening status if applicable",
+          "Implant/device status",
+          "Contrast risks"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-RAD-003",
+    "en": "Contrast administration risk screening",
+    "fr": "Évaluation avant injection de contraste",
+    "domain": "RAD",
+    "domainEn": "Radiology and diagnostic imaging",
+    "domainFr": "Imagerie médicale et radiologie",
+    "module": "M12",
+    "kind": "screening",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Screen",
+        "fields": [
+          "Allergies and reactions",
+          "Relevant renal assessment and source",
+          "Medication considerations"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Plan",
+        "fields": [
+          "Clinical approval",
+          "Contrast agent/order",
+          "Emergency precautions"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-RAD-004",
+    "en": "MRI safety questionnaire",
+    "fr": "Questionnaire de sécurité IRM",
+    "domain": "RAD",
+    "domainEn": "Radiology and diagnostic imaging",
+    "domainFr": "Imagerie médicale et radiologie",
+    "module": "M12",
+    "kind": "screening",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Eligibility",
+        "fields": [
+          "Implanted devices and compatibility evidence",
+          "Metal exposure",
+          "Prior procedures"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Safety",
+        "fields": [
+          "Pregnancy or contrast considerations if applicable",
+          "Reviewer clearance"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-RAD-005",
+    "en": "Imaging pregnancy status screen",
+    "fr": "Vérification du statut de grossesse avant imagerie",
+    "domain": "RAD",
+    "domainEn": "Radiology and diagnostic imaging",
+    "domainFr": "Imagerie médicale et radiologie",
+    "module": "M12",
+    "kind": "screening",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Assessment",
+        "fields": [
+          "Relevant screening policy",
+          "Patient response/consent",
+          "Date and source"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Decision",
+        "fields": [
+          "Clinician assessment",
+          "Approved alternative or exception"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-RAD-006",
+    "en": "Ultrasound examination report",
+    "fr": "Compte rendu d'échographie",
+    "domain": "RAD",
+    "domainEn": "Radiology and diagnostic imaging",
+    "domainFr": "Imagerie médicale et radiologie",
+    "module": "M12",
+    "kind": "radiology",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Study",
+        "fields": [
+          "Anatomic region",
+          "Technique and measurements"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Findings",
+        "fields": [
+          "Organ or site observations",
+          "Comparison"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Impression",
+        "fields": [
+          "Interpreting clinician and signed status"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-RAD-007",
+    "en": "CT scan interpretation report",
+    "fr": "Compte rendu de scanner",
+    "domain": "RAD",
+    "domainEn": "Radiology and diagnostic imaging",
+    "domainFr": "Imagerie médicale et radiologie",
+    "module": "M12",
+    "kind": "radiology",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Acquisition",
+        "fields": [
+          "Body region",
+          "Technique",
+          "Contrast details"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Findings",
+        "fields": [
+          "Section-by-section findings",
+          "Relevant measurements",
+          "Critical finding"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Impression",
+        "fields": [
+          "Conclusion and follow-up"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-RAD-008",
+    "en": "MRI interpretation report",
+    "fr": "Compte rendu d’IRM",
+    "domain": "RAD",
+    "domainEn": "Radiology and diagnostic imaging",
+    "domainFr": "Imagerie médicale et radiologie",
+    "module": "M12",
+    "kind": "radiology",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Protocol",
+        "fields": [
+          "Study and sequences",
+          "Contrast use",
+          "Comparison"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Findings",
+        "fields": [
+          "Anatomy-specific description",
+          "Measurements"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Impression",
+        "fields": [
+          "Conclusion and limitations"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-RAD-009",
+    "en": "Plain X-ray report",
+    "fr": "Compte rendu de radiographie",
+    "domain": "RAD",
+    "domainEn": "Radiology and diagnostic imaging",
+    "domainFr": "Imagerie médicale et radiologie",
+    "module": "M12",
+    "kind": "radiology",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Study",
+        "fields": [
+          "Region and projection",
+          "Technique"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Findings",
+        "fields": [
+          "Radiological observations",
+          "Comparison"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Impression",
+        "fields": [
+          "Conclusion and clinician"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-RAD-010",
+    "en": "Mammography and breast imaging report",
+    "fr": "Compte rendu de mammographie",
+    "domain": "RAD",
+    "domainEn": "Radiology and diagnostic imaging",
+    "domainFr": "Imagerie médicale et radiologie",
+    "module": "M12",
+    "kind": "radiology",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Study",
+        "fields": [
+          "Views and modality",
+          "Prior images"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Findings",
+        "fields": [
+          "Location and morphology",
+          "Standardized category per reviewed guideline"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Recommendation",
+        "fields": [
+          "Follow-up and signature"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-RAD-011",
+    "en": "Imaging report amendment",
+    "fr": "Rectificatif de compte rendu d'imagerie",
+    "domain": "RAD",
+    "domainEn": "Radiology and diagnostic imaging",
+    "domainFr": "Imagerie médicale et radiologie",
+    "module": "M12",
+    "kind": "amendment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Original",
+        "fields": [
+          "Report identifier and issue time",
+          "Findings under correction"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Amendment",
+        "fields": [
+          "Revised findings",
+          "Reason",
+          "Linked versions"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Notification",
+        "fields": [
+          "Clinician alerted and timestamp"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-RAD-012",
+    "en": "Imaging media export handover",
+    "fr": "Remise d’imagerie au patient",
+    "domain": "RAD",
+    "domainEn": "Radiology and diagnostic imaging",
+    "domainFr": "Imagerie médicale et radiologie",
+    "module": "M12",
+    "kind": "handover",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Study",
+        "fields": [
+          "PACS study and media references",
+          "Export format"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Disclosure",
+        "fields": [
+          "Recipient and authorization",
+          "Release time",
+          "Integrity/verification reference"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-RAD-013",
+    "en": "Interventional radiology procedure summary",
+    "fr": "Résumé de radiologie interventionnelle",
+    "domain": "RAD",
+    "domainEn": "Radiology and diagnostic imaging",
+    "domainFr": "Imagerie médicale et radiologie",
+    "module": "M12",
+    "kind": "operative",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Procedure",
+        "fields": [
+          "Indication",
+          "Site and approach",
+          "Operator"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Devices",
+        "fields": [
+          "Contrast",
+          "Catheters or implants",
+          "Traceability"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Outcome",
+        "fields": [
+          "Complications",
+          "Follow-up and handover"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-RAD-014",
+    "en": "Imaging critical finding call sheet",
+    "fr": "Fiche de signalement d'une découverte critique",
+    "domain": "RAD",
+    "domainEn": "Radiology and diagnostic imaging",
+    "domainFr": "Imagerie médicale et radiologie",
+    "module": "M12",
+    "kind": "critical",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Finding",
+        "fields": [
+          "Report and study reference",
+          "Critical observation"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Notification",
+        "fields": [
+          "Responsible receiver",
+          "Contact and readback time"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Escalation",
+        "fields": [
+          "Action and completion evidence"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]

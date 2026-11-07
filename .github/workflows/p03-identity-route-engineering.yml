@@ -1,0 +1,26 @@
+name: P03 identity route engineering
+on:
+  push:
+    branches:
+      - work/p03-b0064-b0093-identity-route-engineering-2026-11-06
+permissions:
+  contents: read
+jobs:
+  identity-http:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify restricted runtime binding and route invariants
+        run: node --test tests/verified_staff_auth_route.test.mjs tests/verified_clinical_runtime_binding.test.mjs tests/oidc_start_next_route.test.mjs tests/oidc_callback_next_route.test.mjs tests/oidc_logout_next_route.test.mjs tests/staff_route_bootstrap.test.mjs
+      - name: Verify deployment TLS, pinned identity transport and startup
+        run: node --test tests/identity_production_sql.test.mjs tests/identity_attested_db_query.test.mjs tests/identity_provider_preflight.test.mjs tests/identity_http_response_policy.test.mjs tests/identity_restricted_transport.test.mjs tests/identity_production_startup.test.mjs tests/identity_production_integration.test.mjs tests/identity_next_instrumentation.test.mjs tests/identity_startup_release_gate.test.mjs
+      - name: Preserve prior encrypted staff identity suite
+        run: node --test tests/staff_identity_runtime.test.mjs tests/staff_auth_http_handlers.test.mjs
+      - name: Verify exact cycle ledger, source evidence and clinical release denial
+        run: node --test tests/p03_route_runtime_ledger.test.mjs
+      - name: Scope
+        run: echo "Identity source/deployment startup tests only. No real PG, external IdP, build, clinical acceptance or certification."

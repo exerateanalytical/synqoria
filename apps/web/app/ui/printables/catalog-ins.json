@@ -1,0 +1,471 @@
+[
+  {
+    "id": "HT-INS-001",
+    "en": "Insurance eligibility verification",
+    "fr": "Vérification d'éligibilité d'assurance",
+    "domain": "INS",
+    "domainEn": "Insurance claims and payer authorization",
+    "domainFr": "Assurance sinistres et autorisations",
+    "module": "M20",
+    "kind": "form",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Membership",
+        "fields": [
+          "Payer and policy",
+          "Beneficiary and relation",
+          "Validity"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Service",
+        "fields": [
+          "Requested category",
+          "Exclusions"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Response",
+        "fields": [
+          "Issuer reference",
+          "Effective period and status"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-INS-002",
+    "en": "Treatment preauthorization request",
+    "fr": "Demande de prise en charge préalable",
+    "domain": "INS",
+    "domainEn": "Insurance claims and payer authorization",
+    "domainFr": "Assurance sinistres et autorisations",
+    "module": "M20",
+    "kind": "order",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Payer",
+        "fields": [
+          "Policy and patient entitlement",
+          "Authorization ID"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Care",
+        "fields": [
+          "Proposed services and clinical justification",
+          "Requested dates"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Submission",
+        "fields": [
+          "Requester",
+          "Supporting documents and outcome"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-INS-003",
+    "en": "Insurance claim submission form",
+    "fr": "Déclaration de sinistre médical",
+    "domain": "INS",
+    "domainEn": "Insurance claims and payer authorization",
+    "domainFr": "Assurance sinistres et autorisations",
+    "module": "M20",
+    "kind": "claim",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Insured",
+        "fields": [
+          "Member and encounter reference",
+          "Coverage period"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Billed care",
+        "fields": [
+          "Coded service lines",
+          "Dates",
+          "Amounts"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Evidence",
+        "fields": [
+          "Reports and authorization",
+          "Submission source"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-INS-004",
+    "en": "Claim attachment cover sheet",
+    "fr": "Bordereau des justificatifs de remboursement",
+    "domain": "INS",
+    "domainEn": "Insurance claims and payer authorization",
+    "domainFr": "Assurance sinistres et autorisations",
+    "module": "M20",
+    "kind": "handover",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Claim",
+        "fields": [
+          "Reference",
+          "Payer destination"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Attachments",
+        "fields": [
+          "Invoices",
+          "Discharge note",
+          "Lab/imaging records where authorized"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Control",
+        "fields": [
+          "Consent and least-necessary scope",
+          "Receiver receipt"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-INS-005",
+    "en": "Payer adjudication outcome",
+    "fr": "Résultat de liquidation de remboursement",
+    "domain": "INS",
+    "domainEn": "Insurance claims and payer authorization",
+    "domainFr": "Assurance sinistres et autorisations",
+    "module": "M20",
+    "kind": "claim",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Decision",
+        "fields": [
+          "Claim and payer reference",
+          "Approved/rejected amount",
+          "Reasons and codes"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Financial",
+        "fields": [
+          "Patient liability and co-pay",
+          "Remittance reference"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Follow-up",
+        "fields": [
+          "Review and appeal deadline"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-INS-006",
+    "en": "Claim denial appeal",
+    "fr": "Recours contre rejet de remboursement",
+    "domain": "INS",
+    "domainEn": "Insurance claims and payer authorization",
+    "domainFr": "Assurance sinistres et autorisations",
+    "module": "M20",
+    "kind": "claim",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Original",
+        "fields": [
+          "Denied claim and payer reason",
+          "Date"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Appeal",
+        "fields": [
+          "Supporting clinical/financial facts",
+          "Requested correction"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Submission",
+        "fields": [
+          "Authorized officer and response status"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-INS-007",
+    "en": "Member benefit explanation",
+    "fr": "Détail de couverture du bénéficiaire",
+    "domain": "INS",
+    "domainEn": "Insurance claims and payer authorization",
+    "domainFr": "Assurance sinistres et autorisations",
+    "module": "M20",
+    "kind": "financial-statement",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Benefits",
+        "fields": [
+          "Plan/coverage terms",
+          "Covered and excluded categories"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Utilization",
+        "fields": [
+          "Authorized service dates",
+          "Limits and balance"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Caveat",
+        "fields": [
+          "Source and real-time verification"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-INS-008",
+    "en": "Insurer batch invoice",
+    "fr": "Facture groupée à l'assureur",
+    "domain": "INS",
+    "domainEn": "Insurance claims and payer authorization",
+    "domainFr": "Assurance sinistres et autorisations",
+    "module": "M20",
+    "kind": "invoice",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Batch",
+        "fields": [
+          "Insurer contract",
+          "Period",
+          "Invoice series"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Items",
+        "fields": [
+          "Claim reference",
+          "Patient account token",
+          "Service amount",
+          "Payer share"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Reconciliation",
+        "fields": [
+          "Total and approved status"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-INS-009",
+    "en": "Payment remittance advice",
+    "fr": "Avis de règlement de l'assureur",
+    "domain": "INS",
+    "domainEn": "Insurance claims and payer authorization",
+    "domainFr": "Assurance sinistres et autorisations",
+    "module": "M20",
+    "kind": "receipt",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Remittance",
+        "fields": [
+          "Payer",
+          "Date and transaction",
+          "Batch reference"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Allocations",
+        "fields": [
+          "Claim",
+          "Paid amount",
+          "Deduction reason"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Balancing",
+        "fields": [
+          "Ledger confirmation and unallocated items"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-INS-010",
+    "en": "Post-discharge insurance summary",
+    "fr": "Résumé de couverture à la sortie",
+    "domain": "INS",
+    "domainEn": "Insurance claims and payer authorization",
+    "domainFr": "Assurance sinistres et autorisations",
+    "module": "M20",
+    "kind": "financial-statement",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Encounter",
+        "fields": [
+          "Hospital stay and source",
+          "Insurer reference"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Coverage",
+        "fields": [
+          "Claims submitted",
+          "Authorizations and payment state"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Patient",
+        "fields": [
+          "Outstanding share and next steps"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-INS-011",
+    "en": "Insurance guarantee of payment",
+    "fr": "Lettre de garantie de prise en charge",
+    "domain": "INS",
+    "domainEn": "Insurance claims and payer authorization",
+    "domainFr": "Assurance sinistres et autorisations",
+    "module": "M20",
+    "kind": "notice",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Guarantee",
+        "fields": [
+          "Payer identity",
+          "Beneficiary and covered facility"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Coverage",
+        "fields": [
+          "Approved interventions",
+          "Caps and validity"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Issuance",
+        "fields": [
+          "Insurer confirmation/reference and restrictions"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-INS-012",
+    "en": "Prior authorization expiry and renewal",
+    "fr": "Renouvellement d'autorisation de soins",
+    "domain": "INS",
+    "domainEn": "Insurance claims and payer authorization",
+    "domainFr": "Assurance sinistres et autorisations",
+    "module": "M20",
+    "kind": "form",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Existing",
+        "fields": [
+          "Authorization and expiry",
+          "Care still required"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Renewal",
+        "fields": [
+          "Clinical justification",
+          "Requested period"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Outcome",
+        "fields": [
+          "Payer decision and effective status"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]

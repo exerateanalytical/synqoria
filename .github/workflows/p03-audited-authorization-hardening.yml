@@ -1,0 +1,33 @@
+name: SYNQORIA P03 audited authorization hardening
+on:
+  push:
+    branches:
+      - work/p03-audited-authorization-hardening-2026-11-05
+  pull_request:
+    paths:
+      - apps/web/lib/audited-staff-login.mjs
+      - tests/audited_staff_login.test.mjs
+      - .github/workflows/p03-audited-authorization-hardening.yml
+permissions:
+  contents: read
+jobs:
+  p03-audited-auth:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: P03-B0044 login audit order and rollback
+        run: node --test tests/audited_staff_login.test.mjs tests/audited_staff_logout.test.mjs tests/audited_patient_disclosure.test.mjs tests/audited_encounter_disclosure.test.mjs tests/staff_auth_http_handlers.test.mjs tests/oidc_deployment_config.test.mjs tests/staff_auth_request_origin.test.mjs tests/staff_identity_runtime.test.mjs
+      - name: Regress prior cryptographic, workforce and opaque-session invariants
+        run: |
+          node --test tests/oidc_staff_service.test.mjs tests/oidc_session_orchestrator.test.mjs tests/oidc_session_reauthorization.test.mjs tests/identity_security_audit.test.mjs tests/oidc_one_use.test.mjs tests/postgres_staff_session_store.test.mjs
+      - name: Registry and navigation consistency
+        run: |
+          node --test tests/p03_identity_engineering_ledger.test.mjs tests/operational_240_one_cycle_plan.test.mjs
+          python3 tests/test_navigation_contract.py
+      - name: Safe release boundary
+        run: |
+          echo "Unit/integration source checks only. No live hospital deployment, clinical acceptance or certified 8-screen batches."

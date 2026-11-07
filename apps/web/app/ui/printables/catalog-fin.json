@@ -1,0 +1,777 @@
+[
+  {
+    "id": "P10",
+    "en": "Hospital invoice",
+    "fr": "Facture d'hôpital",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "invoice",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Issuer",
+        "fields": [
+          "Hospital legal identity",
+          "Tax identifier as configured",
+          "Address and invoice series"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Recipient",
+        "fields": [
+          "Payer identity",
+          "Patient billing reference when authorized",
+          "Issue and due date"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Charges",
+        "fields": [
+          "Service code and description",
+          "Quantity",
+          "Unit price XAF",
+          "Discount and tax policy",
+          "Total"
+        ]
+      },
+      {
+        "id": "s04",
+        "heading": "Payment",
+        "fields": [
+          "Amount due",
+          "Prior payment and credit",
+          "Status from ledger"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "P11",
+    "en": "Payment receipt",
+    "fr": "Reçu de paiement",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "receipt",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Transaction",
+        "fields": [
+          "Receipt ID",
+          "Linked invoice",
+          "Payment date and confirmed status"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Payment",
+        "fields": [
+          "Amount in XAF",
+          "Payment method",
+          "Reference and reconciliation status",
+          "Refund/void status"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Accountability",
+        "fields": [
+          "Cashier and till",
+          "Legal entity",
+          "Source ledger ID"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FIN-003",
+    "en": "Hospital estimate and quotation",
+    "fr": "Devis estimatif hospitalier",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "estimate",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Estimate",
+        "fields": [
+          "Reference",
+          "Issuer",
+          "Validity period and scope"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Items",
+        "fields": [
+          "Anticipated service/code",
+          "Quantity",
+          "Unit price",
+          "Estimate limitations"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Terms",
+        "fields": [
+          "Currency",
+          "Payment and insurance assumptions",
+          "Patient acknowledgement"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FIN-004",
+    "en": "Admission deposit receipt",
+    "fr": "Reçu d'avance pour hospitalisation",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "receipt",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Deposit",
+        "fields": [
+          "Admission and payer reference",
+          "Amount received",
+          "Method"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Source",
+        "fields": [
+          "Receipt/ledger ID and cashier",
+          "Date"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Balance",
+        "fields": [
+          "Applied or unapplied status",
+          "Refund policy"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FIN-005",
+    "en": "Credit note and invoice reversal",
+    "fr": "Avoir et rectification de facture",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "invoice",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Original",
+        "fields": [
+          "Invoice and reason",
+          "Source posted amount"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Adjustment",
+        "fields": [
+          "Credited items and tax impact",
+          "Effective date",
+          "Approval"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Audit",
+        "fields": [
+          "Ledger reconciliation and linked credit note"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FIN-006",
+    "en": "Refund request and authorization",
+    "fr": "Demande et autorisation de remboursement",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "form",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Request",
+        "fields": [
+          "Payment source",
+          "Amount and reason",
+          "Recipient validation"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Authorization",
+        "fields": [
+          "Segregated checker",
+          "Risk review",
+          "Approval"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Outcome",
+        "fields": [
+          "Refund transaction",
+          "Status and payment method"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FIN-007",
+    "en": "Patient billing statement",
+    "fr": "Relevé de compte du patient",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "financial-statement",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Period",
+        "fields": [
+          "Payer reference",
+          "Billing account",
+          "Date range"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Activity",
+        "fields": [
+          "Invoices",
+          "Receipts",
+          "Credit notes",
+          "Adjustments"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Balance",
+        "fields": [
+          "Opening",
+          "Closing",
+          "Outstanding and source timestamp"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FIN-008",
+    "en": "Cashier daily reconciliation",
+    "fr": "Rapprochement journalier de caisse",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "reconciliation",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Till",
+        "fields": [
+          "Location",
+          "Shift",
+          "Opening float"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Transactions",
+        "fields": [
+          "Cash and electronic receipts",
+          "Cancellations and refunds",
+          "Source totals"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Closing",
+        "fields": [
+          "Counted cash",
+          "Difference",
+          "Supervisor approval"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FIN-009",
+    "en": "Hospital tax invoice copy",
+    "fr": "Copie de facture fiscale hospitalière",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "invoice",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Tax",
+        "fields": [
+          "Configured issuer identifier",
+          "Tax jurisdiction and rate",
+          "Fiscal document status"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Detail",
+        "fields": [
+          "Taxable and exempt items",
+          "Tax bases",
+          "Totals"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Controls",
+        "fields": [
+          "Authorized fiscal numbering and audit origin"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FIN-010",
+    "en": "Insurance patient copayment receipt",
+    "fr": "Reçu de ticket modérateur",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "receipt",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Payer",
+        "fields": [
+          "Insurance and member account",
+          "Patient portion"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Receipt",
+        "fields": [
+          "Collected amount",
+          "Invoice linkage",
+          "Payment reference"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Reconciliation",
+        "fields": [
+          "Insurer share source and cashier"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FIN-011",
+    "en": "Authorization-related patient estimate",
+    "fr": "Devis de prise en charge",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "estimate",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Payer",
+        "fields": [
+          "Insurer and authorization reference",
+          "Coverage status"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Planned care",
+        "fields": [
+          "Service and quantity",
+          "Estimated insured and patient shares"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Caveat",
+        "fields": [
+          "Coverage confirmation required"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FIN-012",
+    "en": "Patient installment payment agreement",
+    "fr": "Échéancier de règlement",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "financial-statement",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Account",
+        "fields": [
+          "Linked invoice and payer",
+          "Agreed balance"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Schedule",
+        "fields": [
+          "Due dates and amounts",
+          "Supported payment methods"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Policy and signatures",
+          "Breach/adjustment conditions"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FIN-013",
+    "en": "Hospital financial guarantee agreement",
+    "fr": "Engagement de garantie de paiement",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "consent",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Guarantee",
+        "fields": [
+          "Guarantor legal identity",
+          "Covered episode or amount",
+          "Terms"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Explanation",
+        "fields": [
+          "Scope and liability",
+          "Withdrawal conditions"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Signatures",
+        "fields": [
+          "Guarantor",
+          "Hospital representative and witness"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FIN-014",
+    "en": "Donor acknowledgment receipt",
+    "fr": "Reçu de don à l'hôpital",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "receipt",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Donation",
+        "fields": [
+          "Donor or anonymous reference",
+          "Purpose and restrictions"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Receipt",
+        "fields": [
+          "Confirmed amount/currency",
+          "Method and time",
+          "Ledger reference"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Compliance",
+        "fields": [
+          "Donation classification",
+          "Authorized issuer"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FIN-015",
+    "en": "Point-of-sale reversal record",
+    "fr": "Fiche d'annulation de transaction TPE",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "reconciliation",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Original",
+        "fields": [
+          "Merchant reference",
+          "Transaction ID",
+          "Amount"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Reversal",
+        "fields": [
+          "Reason",
+          "Initiating cashier",
+          "Independent authorization"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Confirmation",
+        "fields": [
+          "Gateway outcome and ledger reconciliation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FIN-016",
+    "en": "Duplicate receipt reissue log",
+    "fr": "Registre de réédition de reçus",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "log",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Document",
+        "fields": [
+          "Original receipt number",
+          "Reason for reissue"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Access",
+        "fields": [
+          "Requester",
+          "Authorizing officer"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Output",
+        "fields": [
+          "Copy marked as duplicate",
+          "Reissue time and audit ID"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FIN-017",
+    "en": "Proforma bill for expected services",
+    "fr": "Facture proforma des prestations",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "estimate",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Reference",
+        "fields": [
+          "Recipient and service",
+          "Currency"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Planned services",
+        "fields": [
+          "Service code",
+          "Estimate and assumptions"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Status",
+        "fields": [
+          "Not fiscal invoice",
+          "Validity and disclaimer"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FIN-018",
+    "en": "Billing dispute and correction form",
+    "fr": "Contestation et correction de facturation",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "form",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Dispute",
+        "fields": [
+          "Invoice and disputed line",
+          "Patient/payer reason"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Investigation",
+        "fields": [
+          "Service evidence",
+          "Reviewer and decision"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Resolution",
+        "fields": [
+          "Credit/invoice revision",
+          "Notification and audit"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FIN-019",
+    "en": "End-of-shift cashier handover",
+    "fr": "Passation de caisse en fin de service",
+    "domain": "FIN",
+    "domainEn": "Finance cashier billing and payment",
+    "domainFr": "Finance facturation caisse et paiements",
+    "module": "M19",
+    "kind": "handover",
+    "context": "financial",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Till",
+        "fields": [
+          "Opening/closing balance",
+          "Unsettled payments"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Custody",
+        "fields": [
+          "Cash and receipt books",
+          "Digital reconciliation status"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Handover",
+        "fields": [
+          "Outgoing/incoming cashier and supervisor"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]

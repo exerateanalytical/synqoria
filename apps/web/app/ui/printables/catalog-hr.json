@@ -1,0 +1,513 @@
+[
+  {
+    "id": "HT-HR-001",
+    "en": "Staff duty roster",
+    "fr": "Planning du personnel hospitalier",
+    "domain": "HR",
+    "domainEn": "Workforce hospital operations and payroll",
+    "domainFr": "Personnel opérations et paie",
+    "module": "M24",
+    "kind": "table",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Period",
+        "fields": [
+          "Department and shift cycle",
+          "Supervisor"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Assignment",
+        "fields": [
+          "Staff identifier",
+          "Role",
+          "Shift hours and location"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Coverage",
+        "fields": [
+          "Staffing minima and exceptions"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-HR-002",
+    "en": "Leave request and approval",
+    "fr": "Demande et autorisation de congés",
+    "domain": "HR",
+    "domainEn": "Workforce hospital operations and payroll",
+    "domainFr": "Personnel opérations et paie",
+    "module": "M24",
+    "kind": "form",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Employee",
+        "fields": [
+          "Staff ID",
+          "Department and entitlement"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Leave",
+        "fields": [
+          "Type",
+          "Start/end and days",
+          "Relief coverage"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Decision",
+        "fields": [
+          "Manager and HR approval"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-HR-003",
+    "en": "Time and attendance sheet",
+    "fr": "Feuille de pointage du personnel",
+    "domain": "HR",
+    "domainEn": "Workforce hospital operations and payroll",
+    "domainFr": "Personnel opérations et paie",
+    "module": "M24",
+    "kind": "log",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Shift",
+        "fields": [
+          "Staff and roster",
+          "Scheduled hours"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Attendance",
+        "fields": [
+          "Clock in/out and overtime",
+          "Exceptions"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Supervisor and payroll period"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-HR-004",
+    "en": "Clinical staff privilege verification",
+    "fr": "Vérification d'habilitation clinique",
+    "domain": "HR",
+    "domainEn": "Workforce hospital operations and payroll",
+    "domainFr": "Personnel opérations et paie",
+    "module": "M24",
+    "kind": "checklist",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Credential",
+        "fields": [
+          "Practitioner registration and category",
+          "Validity"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Privileges",
+        "fields": [
+          "Facility",
+          "Specialty",
+          "Authorized procedures"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Medical director and expiry"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-HR-005",
+    "en": "Staff competency assessment",
+    "fr": "Évaluation des compétences du personnel",
+    "domain": "HR",
+    "domainEn": "Workforce hospital operations and payroll",
+    "domainFr": "Personnel opérations et paie",
+    "module": "M24",
+    "kind": "assessment",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Staff",
+        "fields": [
+          "Role and required competencies",
+          "Assessor"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Evidence",
+        "fields": [
+          "Observed skills",
+          "Qualifications and performance"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Outcome",
+        "fields": [
+          "Remediation and review"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-HR-006",
+    "en": "Training attendance and certification",
+    "fr": "Attestation de formation du personnel",
+    "domain": "HR",
+    "domainEn": "Workforce hospital operations and payroll",
+    "domainFr": "Personnel opérations et paie",
+    "module": "M24",
+    "kind": "certificate",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Course",
+        "fields": [
+          "Program and objectives",
+          "Training dates"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Participation",
+        "fields": [
+          "Staff and instructor",
+          "Assessment status"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Issuance",
+        "fields": [
+          "Certificate authority and records"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-HR-007",
+    "en": "Staff onboarding and clearance",
+    "fr": "Fiche d'intégration et de contrôle du personnel",
+    "domain": "HR",
+    "domainEn": "Workforce hospital operations and payroll",
+    "domainFr": "Personnel opérations et paie",
+    "module": "M24",
+    "kind": "checklist",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Employment",
+        "fields": [
+          "Staff and department",
+          "Contract and identity checks"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Access",
+        "fields": [
+          "Role privileges",
+          "Data protection training",
+          "Equipment assignment"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Sign-off",
+        "fields": [
+          "HR and line manager"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-HR-008",
+    "en": "Department shift operational log",
+    "fr": "Main courante de service",
+    "domain": "HR",
+    "domainEn": "Workforce hospital operations and payroll",
+    "domainFr": "Personnel opérations et paie",
+    "module": "M24",
+    "kind": "log",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Shift",
+        "fields": [
+          "Department and team",
+          "Patient capacity if authorized"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Events",
+        "fields": [
+          "Staffing",
+          "Equipment",
+          "Critical operational issues"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Handover",
+        "fields": [
+          "Incoming responsible staff"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-HR-009",
+    "en": "Staff attendance exception report",
+    "fr": "Rapport d'absence et retard",
+    "domain": "HR",
+    "domainEn": "Workforce hospital operations and payroll",
+    "domainFr": "Personnel opérations et paie",
+    "module": "M24",
+    "kind": "form",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Attendance",
+        "fields": [
+          "Staff and scheduled shift",
+          "Actual time"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Explanation",
+        "fields": [
+          "Absence or lateness reason",
+          "Supporting evidence"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Manager and HR decision"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-HR-010",
+    "en": "Payroll payslip",
+    "fr": "Bulletin de paie",
+    "domain": "HR",
+    "domainEn": "Workforce hospital operations and payroll",
+    "domainFr": "Personnel opérations et paie",
+    "module": "M24",
+    "kind": "payslip",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Employment",
+        "fields": [
+          "Staff code",
+          "Pay period and position"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Earnings",
+        "fields": [
+          "Basic pay",
+          "Allowances",
+          "Overtime"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Deductions",
+        "fields": [
+          "Statutory deductions as configured",
+          "Other deductions"
+        ]
+      },
+      {
+        "id": "s04",
+        "heading": "Totals",
+        "fields": [
+          "Gross",
+          "Net XAF and employer details"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-HR-011",
+    "en": "Staff incident and disciplinary inquiry",
+    "fr": "Fiche d'incident professionnel",
+    "domain": "HR",
+    "domainEn": "Workforce hospital operations and payroll",
+    "domainFr": "Personnel opérations et paie",
+    "module": "M24",
+    "kind": "quality",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Incident",
+        "fields": [
+          "Reported conduct and date",
+          "Objective statements"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Review",
+        "fields": [
+          "Staff response and witnesses",
+          "Applicable policy"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Decision",
+        "fields": [
+          "Authorized HR/management action and appeal route"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-HR-012",
+    "en": "Hospital department monthly scorecard",
+    "fr": "Tableau de bord mensuel de service",
+    "domain": "HR",
+    "domainEn": "Workforce hospital operations and payroll",
+    "domainFr": "Personnel opérations et paie",
+    "module": "M24",
+    "kind": "table",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Period",
+        "fields": [
+          "Department and manager",
+          "Indicator dictionary"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Performance",
+        "fields": [
+          "Workload",
+          "Service timeliness",
+          "Quality and exceptions"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Targets and remedial actions"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-HR-013",
+    "en": "Hospital bed census daily report",
+    "fr": "Situation quotidienne des lits",
+    "domain": "HR",
+    "domainEn": "Workforce hospital operations and payroll",
+    "domainFr": "Personnel opérations et paie",
+    "module": "M24",
+    "kind": "table",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Capacity",
+        "fields": [
+          "Ward",
+          "Registered and available beds"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Patient flow",
+        "fields": [
+          "Admissions",
+          "Transfers and discharges"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Verification",
+        "fields": [
+          "Census source",
+          "Review time and author"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]

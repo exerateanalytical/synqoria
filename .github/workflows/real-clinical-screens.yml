@@ -1,0 +1,53 @@
+name: SYNQORIA real staff read-screens and BFF safety gate
+on:
+  push:
+    branches: [work/real-clinical-screens-first-slice-2026-11-05]
+concurrency:
+  group: synqoria-real-screens-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  real-screen-source-build-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test real encrypted sessions, scoped reads, tenant isolation, patient privacy and preferences
+        run: node --test tests/real_clinical_screen_runtime.test.mjs
+      - name: Install JS workspaces
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Compile shared UX core
+        run: npm run build --workspace packages/ux-core
+      - name: Strict web TypeScript
+        run: npm exec --workspace apps/web -- tsc --noEmit
+      - name: Next production build including real staff routes and API handlers
+        run: npm run build --workspace apps/web
+      - name: Install Chromium for actual browser interactions
+        run: |
+          npm install --no-save playwright@1.56.1 --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Start production site (no auth key or cell configured)
+        run: |
+          (cd apps/web && SYNQORIA_WEB_PUBLIC_ORIGIN=http://127.0.0.1:3000 ../../node_modules/.bin/next start --port 3000) > /tmp/synqoria-real-ui-next.log 2>&1 &
+          for i in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:3000/workforce/clinical >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/synqoria-real-ui-next.log
+          exit 1
+      - name: Verify live-screen controls and deny-by-default API behavior at three widths
+        run: node tests/real_clinical_screen_browser.mjs
+      - name: Publish real UI and authorization denial evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synqoria-operational-screens-safe-read-evidence
+          path: /tmp/synqoria-real-screen-evidence/
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Never count unintegrated or uncertified clinical screens as completed
+        run: echo "This work implements BFF API operations and UI wiring; production OIDC, cell and clinical acceptance remain DENIED"

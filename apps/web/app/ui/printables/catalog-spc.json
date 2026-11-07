@@ -1,0 +1,844 @@
+[
+  {
+    "id": "HT-SPC-001",
+    "en": "Cardiology consultation and ECG report",
+    "fr": "Compte rendu de cardiologie et ECG",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "clinical-report",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Clinical",
+        "fields": [
+          "Indication and symptoms",
+          "Cardiac history"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "ECG",
+        "fields": [
+          "Acquisition and source",
+          "Interpreted findings"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Cardiologist validation and follow-up"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-002",
+    "en": "Echocardiography interpretation report",
+    "fr": "Compte rendu d'échocardiographie",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "radiology",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Study",
+        "fields": [
+          "Indication and modality",
+          "Measurements with units"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Findings",
+        "fields": [
+          "Structural and functional interpretation",
+          "Comparison"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Cardiologist and report version"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-003",
+    "en": "Dialysis session order and record",
+    "fr": "Prescription et suivi de dialyse",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "procedure",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Order",
+        "fields": [
+          "Modality and prescription source",
+          "Access and patient identity"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Monitoring",
+        "fields": [
+          "Measurements before/during/after",
+          "Equipment and anticoagulation source"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Outcome",
+        "fields": [
+          "Complications and nephrologist review"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-004",
+    "en": "Renal clinic follow-up sheet",
+    "fr": "Suivi de néphrologie",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "clinical-note",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "History",
+        "fields": [
+          "Renal diagnosis",
+          "Medication review"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Findings",
+        "fields": [
+          "Laboratory source and fluid assessment",
+          "Symptoms"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Renal function monitoring and referral"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-005",
+    "en": "Oncology treatment-cycle checklist",
+    "fr": "Liste de contrôle de cycle oncologique",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "checklist",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Regimen",
+        "fields": [
+          "Protocol and version",
+          "Prescriber",
+          "Patient/body measurement source"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Safety",
+        "fields": [
+          "Laboratory and toxicity review",
+          "Independent dose verification"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Outcome",
+        "fields": [
+          "Authorization and administration status"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-006",
+    "en": "Chemotherapy administration chart",
+    "fr": "Feuille d'administration de chimiothérapie",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "mar",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Order",
+        "fields": [
+          "Validated regimen and cycle",
+          "Drug/strength/dose/unit/route"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Administration",
+        "fields": [
+          "Preparation and check",
+          "Actual time",
+          "Monitoring"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Safety",
+        "fields": [
+          "Reaction",
+          "Infusion stop and reviewer"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-007",
+    "en": "Oncology multidisciplinary review",
+    "fr": "Compte rendu de réunion oncologique",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "clinical-report",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Case",
+        "fields": [
+          "Staging and diagnostic evidence",
+          "Pathology review"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Discussion",
+        "fields": [
+          "Therapeutic options",
+          "Patient preferences"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Assigned treatment and review owner"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-008",
+    "en": "Diabetes clinic assessment",
+    "fr": "Fiche de suivi diabétologique",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "clinical-note",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "History",
+        "fields": [
+          "Diabetes type and treatment",
+          "Hypoglycemia history"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Measurement",
+        "fields": [
+          "Glucose/HbA1c sources and units",
+          "Complication screening"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Reviewed management and follow-up"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-009",
+    "en": "Neurology examination record",
+    "fr": "Fiche d'examen neurologique",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "History",
+        "fields": [
+          "Presenting symptoms and chronology",
+          "Relevant prior findings"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Exam",
+        "fields": [
+          "Mental status and cranial nerves",
+          "Motor and sensory",
+          "Coordination"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Conclusion",
+        "fields": [
+          "Clinician impression and investigations"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-010",
+    "en": "EEG interpretation report",
+    "fr": "Compte rendu d'électroencéphalogramme",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "clinical-report",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Study",
+        "fields": [
+          "Indication and protocol",
+          "Patient state and recording date"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Findings",
+        "fields": [
+          "Background and events",
+          "Technical limitations"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Interpretation",
+        "fields": [
+          "Neurologist and status"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-011",
+    "en": "Respiratory function test report",
+    "fr": "Compte rendu d'exploration fonctionnelle respiratoire",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "lab-result",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Study",
+        "fields": [
+          "Protocol and device calibration",
+          "Patient effort"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Values",
+        "fields": [
+          "Measured indices and units",
+          "Reference source"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Interpretation",
+        "fields": [
+          "Pulmonologist and report version"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-012",
+    "en": "Endoscopy procedure report",
+    "fr": "Compte rendu d'endoscopie",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "operative",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Indication",
+        "fields": [
+          "Consent and reason",
+          "Procedure technique"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Findings",
+        "fields": [
+          "Anatomy and lesions",
+          "Sampling and specimens"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Outcome",
+        "fields": [
+          "Complications",
+          "Recovery and follow-up"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-013",
+    "en": "Dental examination chart",
+    "fr": "Fiche d'examen dentaire",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Dental history",
+        "fields": [
+          "Complaint and oral hygiene",
+          "Allergies"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Chart",
+        "fields": [
+          "Tooth identifiers and surfaces",
+          "Clinical findings"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Treatment proposal and consent status"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-014",
+    "en": "Dental treatment procedure record",
+    "fr": "Compte rendu de soin dentaire",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "operative",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Procedure",
+        "fields": [
+          "Teeth and sites",
+          "Anesthesia",
+          "Treatment performed"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Materials",
+        "fields": [
+          "Lot traceability and restorations"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Outcome",
+        "fields": [
+          "Patient instructions and follow-up"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-015",
+    "en": "Ophthalmology vision examination",
+    "fr": "Bilan ophtalmologique",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Vision",
+        "fields": [
+          "Visual acuity and correction",
+          "Assessment method"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Exam",
+        "fields": [
+          "Intraocular pressure or findings",
+          "Eye and laterality"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Ophthalmologist opinion"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-016",
+    "en": "ENT evaluation record",
+    "fr": "Bilan ORL",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Complaint",
+        "fields": [
+          "Ear/nose/throat symptoms",
+          "Relevant history"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Examination",
+        "fields": [
+          "Site-specific findings and laterality",
+          "Hearing test"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Decision",
+        "fields": [
+          "Investigations and follow-up"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-017",
+    "en": "Mental health consultation and risk assessment",
+    "fr": "Évaluation de santé mentale",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "History",
+        "fields": [
+          "Presenting concerns and capacity",
+          "Relevant medical factors"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Risk",
+        "fields": [
+          "Qualified risk assessment and protective factors",
+          "Safety plan"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Follow-up",
+        "fields": [
+          "Clinician and restricted disclosure"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-018",
+    "en": "Psychotherapy session note",
+    "fr": "Note de séance de psychothérapie",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "clinical-note",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Session",
+        "fields": [
+          "Purpose and date",
+          "Therapeutic intervention"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Review",
+        "fields": [
+          "Patient response and safety",
+          "Next session"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Confidentiality",
+        "fields": [
+          "Restricted access and release policy"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-019",
+    "en": "Dermatology clinical assessment",
+    "fr": "Examen dermatologique",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "History",
+        "fields": [
+          "Lesion timeline and symptoms",
+          "Exposure history"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Exam",
+        "fields": [
+          "Anatomical locations and morphology",
+          "Photography consent"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Differential and biopsy if indicated"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-020",
+    "en": "Orthopedic fracture follow-up",
+    "fr": "Suivi orthopédique des fractures",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "clinical-note",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Injury",
+        "fields": [
+          "Fracture location and classification",
+          "Management to date"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Exam",
+        "fields": [
+          "Neurovascular assessment and imaging",
+          "Mobility"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Rehabilitation and review"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-021",
+    "en": "Palliative care and goals-of-care record",
+    "fr": "Fiche de soins palliatifs et objectifs",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "care-plan",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Context",
+        "fields": [
+          "Diagnosis and symptom burden",
+          "Decision-making capacity"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Preferences",
+        "fields": [
+          "Goals and surrogate",
+          "Treatment limitations under policy"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Care",
+        "fields": [
+          "Comfort plan and responsible team"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SPC-022",
+    "en": "Fertility clinic procedural consent and summary",
+    "fr": "Consentement et compte rendu de fertilité",
+    "domain": "SPC",
+    "domainEn": "Specialized clinical procedures and services",
+    "domainFr": "Soins spécialisés et procédures",
+    "module": "M17",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Procedure",
+        "fields": [
+          "Named fertility intervention",
+          "Risks and alternatives",
+          "Specimen/gamete handling policy"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Choice",
+        "fields": [
+          "Voluntary informed decision and proxy limits"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Traceability",
+        "fields": [
+          "Clinician",
+          "Witness and consent revision"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]

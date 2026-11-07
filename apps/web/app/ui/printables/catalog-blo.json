@@ -1,0 +1,429 @@
+[
+  {
+    "id": "P14",
+    "en": "Transfusion record",
+    "fr": "Fiche de transfusion",
+    "domain": "BLO",
+    "domainEn": "Blood bank and transfusion",
+    "domainFr": "Banque de sang et transfusion",
+    "module": "M15",
+    "kind": "transfusion",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Order",
+        "fields": [
+          "Patient identifiers",
+          "Component request and indication",
+          "Prescriber"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Product",
+        "fields": [
+          "Unit ID and compatibility",
+          "Blood group source",
+          "Expiry and release"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Administration",
+        "fields": [
+          "Start/end time",
+          "Two-person bedside verification",
+          "Monitoring and events"
+        ]
+      },
+      {
+        "id": "s04",
+        "heading": "Traceability",
+        "fields": [
+          "Staff and final disposition"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-BLO-002",
+    "en": "Blood component request",
+    "fr": "Demande de produits sanguins",
+    "domain": "BLO",
+    "domainEn": "Blood bank and transfusion",
+    "domainFr": "Banque de sang et transfusion",
+    "module": "M15",
+    "kind": "order",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Indication",
+        "fields": [
+          "Requested component and quantity",
+          "Clinical need and priority"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Compatibility",
+        "fields": [
+          "Patient group and test reference",
+          "Special requirements"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Authorization",
+        "fields": [
+          "Prescriber and blood bank acceptance"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-BLO-003",
+    "en": "Transfusion consent form",
+    "fr": "Consentement à la transfusion",
+    "domain": "BLO",
+    "domainEn": "Blood bank and transfusion",
+    "domainFr": "Banque de sang et transfusion",
+    "module": "M15",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Discussion",
+        "fields": [
+          "Indication",
+          "Material risks and benefits",
+          "Alternatives and questions"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Decision",
+        "fields": [
+          "Consent/refusal",
+          "Capacity and proxy authority",
+          "Interpreter"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Witness",
+        "fields": [
+          "Clinician and signature time"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-BLO-004",
+    "en": "Pretransfusion compatibility report",
+    "fr": "Résultat des tests prétransfusionnels",
+    "domain": "BLO",
+    "domainEn": "Blood bank and transfusion",
+    "domainFr": "Banque de sang et transfusion",
+    "module": "M15",
+    "kind": "lab-result",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Sample",
+        "fields": [
+          "Patient and specimen verification",
+          "Sample timestamp"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Testing",
+        "fields": [
+          "ABO/Rh",
+          "Antibody screen",
+          "Crossmatch result and method"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Release",
+        "fields": [
+          "Reviewer and validity window from policy"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-BLO-005",
+    "en": "Crossmatch verification worksheet",
+    "fr": "Fiche de contrôle de compatibilité",
+    "domain": "BLO",
+    "domainEn": "Blood bank and transfusion",
+    "domainFr": "Banque de sang et transfusion",
+    "module": "M15",
+    "kind": "checklist",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Identity",
+        "fields": [
+          "Patient and sample ID",
+          "Donor unit ID"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Testing",
+        "fields": [
+          "Compatibility testing and source",
+          "Outcome and limitations"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Technologist and independent verifier"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-BLO-006",
+    "en": "Blood issue and collection register",
+    "fr": "Registre de sortie des produits sanguins",
+    "domain": "BLO",
+    "domainEn": "Blood bank and transfusion",
+    "domainFr": "Banque de sang et transfusion",
+    "module": "M15",
+    "kind": "log",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Stock",
+        "fields": [
+          "Product group and identifier",
+          "Batch and expiry"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Issue",
+        "fields": [
+          "Recipient ward",
+          "Courier and time",
+          "Cold chain assessment"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Closure",
+        "fields": [
+          "Handover and accountability"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-BLO-007",
+    "en": "Blood product bag identification label",
+    "fr": "Étiquette d'identification de poche",
+    "domain": "BLO",
+    "domainEn": "Blood bank and transfusion",
+    "domainFr": "Banque de sang et transfusion",
+    "module": "M15",
+    "kind": "label",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Product",
+        "fields": [
+          "Component code",
+          "Unique unit ID",
+          "Expiry and storage conditions"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Trace",
+        "fields": [
+          "Supplier and testing",
+          "Status",
+          "Barcode source integrity"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-BLO-008",
+    "en": "Suspected transfusion reaction report",
+    "fr": "Déclaration d'incident transfusionnel",
+    "domain": "BLO",
+    "domainEn": "Blood bank and transfusion",
+    "domainFr": "Banque de sang et transfusion",
+    "module": "M15",
+    "kind": "adverse",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Reaction",
+        "fields": [
+          "Event time",
+          "Clinical signs and vital values",
+          "Product unit"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Response",
+        "fields": [
+          "Transfusion stop and notification",
+          "Investigations"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Hemovigilance",
+        "fields": [
+          "Classification by reviewer",
+          "Reporting and follow-up"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-BLO-009",
+    "en": "Blood component stock and temperature log",
+    "fr": "Registre de stock et températures",
+    "domain": "BLO",
+    "domainEn": "Blood bank and transfusion",
+    "domainFr": "Banque de sang et transfusion",
+    "module": "M15",
+    "kind": "log",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Storage",
+        "fields": [
+          "Refrigerator/freezer and device",
+          "Temperature and calibration"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Stock",
+        "fields": [
+          "Units received/released",
+          "Expiry",
+          "Deviations"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Corrective action and checker"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-BLO-010",
+    "en": "Blood unit return and quarantine record",
+    "fr": "Retour et quarantaine de poche de sang",
+    "domain": "BLO",
+    "domainEn": "Blood bank and transfusion",
+    "domainFr": "Banque de sang et transfusion",
+    "module": "M15",
+    "kind": "inventory",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Return",
+        "fields": [
+          "Unit ID",
+          "Issue time and storage evidence",
+          "Reason"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Disposition",
+        "fields": [
+          "Quarantine",
+          "Reuse decision under policy",
+          "Staff approval"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-BLO-011",
+    "en": "Transfusion traceability and recipient reconciliation",
+    "fr": "Traçabilité et rapprochement transfusionnel",
+    "domain": "BLO",
+    "domainEn": "Blood bank and transfusion",
+    "domainFr": "Banque de sang et transfusion",
+    "module": "M15",
+    "kind": "log",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Patient",
+        "fields": [
+          "Verified recipient and encounter",
+          "Product ID"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Administration",
+        "fields": [
+          "Started and completed",
+          "Reaction or interruption"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Reconciliation",
+        "fields": [
+          "Final status",
+          "Evidence and accountable staff"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]

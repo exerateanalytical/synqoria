@@ -1,0 +1,608 @@
+[
+  {
+    "id": "HT-EMR-001",
+    "en": "Emergency triage assessment",
+    "fr": "Fiche d’évaluation au triage",
+    "domain": "EMR",
+    "domainEn": "Emergency department and triage",
+    "domainFr": "Urgences et triage",
+    "module": "M03",
+    "kind": "triage",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Arrival",
+        "fields": [
+          "Arrival mode",
+          "Time",
+          "Complaint",
+          "Two-identifier status"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Observations",
+        "fields": [
+          "Vital signs with units and time",
+          "Consciousness and source",
+          "Pain assessment"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Disposition",
+        "fields": [
+          "Approved priority protocol and version",
+          "Assigned clinician",
+          "Reassessment due"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-EMR-002",
+    "en": "Emergency arrival handover",
+    "fr": "Transmission à l’arrivée aux urgences",
+    "domain": "EMR",
+    "domainEn": "Emergency department and triage",
+    "domainFr": "Urgences et triage",
+    "module": "M03",
+    "kind": "handover",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Source",
+        "fields": [
+          "Transport team",
+          "Referral details",
+          "Handover time"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Clinical",
+        "fields": [
+          "Presenting situation",
+          "Interventions already performed",
+          "Vital observations and chronology"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-EMR-003",
+    "en": "Trauma primary survey worksheet",
+    "fr": "Fiche de bilan initial traumatique",
+    "domain": "EMR",
+    "domainEn": "Emergency department and triage",
+    "domainFr": "Urgences et triage",
+    "module": "M03",
+    "kind": "checklist",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Context",
+        "fields": [
+          "Mechanism",
+          "Arrival time",
+          "Injury location"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Survey",
+        "fields": [
+          "Airway assessment",
+          "Breathing assessment",
+          "Circulation assessment",
+          "Disability",
+          "Exposure"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Action",
+        "fields": [
+          "Immediate findings and escalation owner"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-EMR-004",
+    "en": "Emergency neurological assessment",
+    "fr": "Examen neurologique aux urgences",
+    "domain": "EMR",
+    "domainEn": "Emergency department and triage",
+    "domainFr": "Urgences et triage",
+    "module": "M03",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Neurological",
+        "fields": [
+          "Eye response",
+          "Verbal response",
+          "Motor response",
+          "Assessment time"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Associated",
+        "fields": [
+          "Pupil examination",
+          "Lateralizing signs",
+          "Source and assessor"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-EMR-005",
+    "en": "Sepsis screening record",
+    "fr": "Fiche de dépistage du sepsis",
+    "domain": "EMR",
+    "domainEn": "Emergency department and triage",
+    "domainFr": "Urgences et triage",
+    "module": "M03",
+    "kind": "screening",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Risk",
+        "fields": [
+          "Infection concern",
+          "Applicable local criteria and version"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Findings",
+        "fields": [
+          "Vital signs and trends",
+          "Relevant clinical symptoms"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Escalation",
+        "fields": [
+          "Reviewer",
+          "Urgent action and time",
+          "Follow-up reassessment"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-EMR-006",
+    "en": "Emergency observation chart",
+    "fr": "Feuille de surveillance d'urgence",
+    "domain": "EMR",
+    "domainEn": "Emergency department and triage",
+    "domainFr": "Urgences et triage",
+    "module": "M03",
+    "kind": "observation",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Time series",
+        "fields": [
+          "Observation time",
+          "Blood pressure and unit",
+          "Pulse",
+          "Respiratory rate",
+          "Temperature",
+          "Oxygen saturation"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Escalation",
+        "fields": [
+          "Change noted",
+          "Clinician notified",
+          "Intervention and response"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-EMR-007",
+    "en": "Emergency resuscitation record",
+    "fr": "Fiche de réanimation",
+    "domain": "EMR",
+    "domainEn": "Emergency department and triage",
+    "domainFr": "Urgences et triage",
+    "module": "M03",
+    "kind": "resuscitation",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Event",
+        "fields": [
+          "Time of collapse",
+          "Patient verification",
+          "Response team"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Timeline",
+        "fields": [
+          "Interventions and timestamp",
+          "Medication and dose source",
+          "Defibrillation event"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Outcome",
+        "fields": [
+          "Return of circulation status",
+          "Disposition",
+          "Team sign-off"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-EMR-008",
+    "en": "Emergency medication administration sheet",
+    "fr": "Feuille d'administration des médicaments d’urgence",
+    "domain": "EMR",
+    "domainEn": "Emergency department and triage",
+    "domainFr": "Urgences et triage",
+    "module": "M03",
+    "kind": "medication",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Orders",
+        "fields": [
+          "Ordering clinician",
+          "Medication code",
+          "Dose and unit",
+          "Route"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Administration",
+        "fields": [
+          "Actual time",
+          "Nurse witness",
+          "Response and adverse events"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-EMR-009",
+    "en": "Emergency reassessment note",
+    "fr": "Note de réévaluation aux urgences",
+    "domain": "EMR",
+    "domainEn": "Emergency department and triage",
+    "domainFr": "Urgences et triage",
+    "module": "M03",
+    "kind": "clinical-note",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Review",
+        "fields": [
+          "Previous priority and timestamp",
+          "Changed symptoms",
+          "Updated observations"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Decision",
+        "fields": [
+          "Approved priority reassessment",
+          "Escalation",
+          "Disposition"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-EMR-010",
+    "en": "Emergency transfer and escalation",
+    "fr": "Fiche de transfert et d'alerte urgente",
+    "domain": "EMR",
+    "domainEn": "Emergency department and triage",
+    "domainFr": "Urgences et triage",
+    "module": "M03",
+    "kind": "handover",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Transfer",
+        "fields": [
+          "Sending and receiving team",
+          "Reason",
+          "Severity and precautions"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Continuity",
+        "fields": [
+          "Current observations",
+          "Treatment in progress",
+          "Accepted handover time"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-EMR-011",
+    "en": "Emergency refusal of care record",
+    "fr": "Refus de soins aux urgences",
+    "domain": "EMR",
+    "domainEn": "Emergency department and triage",
+    "domainFr": "Urgences et triage",
+    "module": "M03",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Decision",
+        "fields": [
+          "Proposed care",
+          "Benefits and material risks communicated",
+          "Alternative routes"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Capacity",
+        "fields": [
+          "Decision-making assessment and interpreter",
+          "Refusal statement"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Signatures",
+        "fields": [
+          "Patient or representative",
+          "Clinician and witness"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-EMR-012",
+    "en": "Emergency department discharge instructions",
+    "fr": "Instructions de sortie des urgences",
+    "domain": "EMR",
+    "domainEn": "Emergency department and triage",
+    "domainFr": "Urgences et triage",
+    "module": "M03",
+    "kind": "instructions",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Visit",
+        "fields": [
+          "Presenting complaint",
+          "Evaluation and results"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Home",
+        "fields": [
+          "Approved self-care instructions",
+          "Medicines",
+          "Red flags",
+          "Review destination and date"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-EMR-013",
+    "en": "Clinical deterioration escalation log",
+    "fr": "Registre d'escalade de détérioration",
+    "domain": "EMR",
+    "domainEn": "Emergency department and triage",
+    "domainFr": "Urgences et triage",
+    "module": "M03",
+    "kind": "log",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Trigger",
+        "fields": [
+          "Observation source and time",
+          "Escalation criterion"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Contacts",
+        "fields": [
+          "Responsible clinician",
+          "Contact time",
+          "Acknowledgement"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Outcome",
+        "fields": [
+          "Response",
+          "Reassessment",
+          "Handover"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-EMR-014",
+    "en": "Emergency capacity and occupancy board print",
+    "fr": "Tableau des capacités des urgences",
+    "domain": "EMR",
+    "domainEn": "Emergency department and triage",
+    "domainFr": "Urgences et triage",
+    "module": "M03",
+    "kind": "table",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Shift",
+        "fields": [
+          "Unit",
+          "Shift and time"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Capacity",
+        "fields": [
+          "Treatment bays",
+          "Occupied and available counts",
+          "Staffing"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Exceptions",
+        "fields": [
+          "Overcapacity measures",
+          "Review owner"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-EMR-015",
+    "en": "Ambulance-to-emergency clinical transfer",
+    "fr": "Transfert clinique ambulance-urgences",
+    "domain": "EMR",
+    "domainEn": "Emergency department and triage",
+    "domainFr": "Urgences et triage",
+    "module": "M03",
+    "kind": "handover",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Dispatch",
+        "fields": [
+          "Origin and pickup time",
+          "Transport reference"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Care",
+        "fields": [
+          "Initial patient condition",
+          "Treatment and medication",
+          "Change en route"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Receipt",
+        "fields": [
+          "Handover officer",
+          "Time",
+          "Receiving nurse confirmation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-EMR-016",
+    "en": "Emergency investigation request",
+    "fr": "Demande d'examens urgents",
+    "domain": "EMR",
+    "domainEn": "Emergency department and triage",
+    "domainFr": "Urgences et triage",
+    "module": "M03",
+    "kind": "order",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Clinical question",
+        "fields": [
+          "Requested examination",
+          "Priority",
+          "Indication"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Safety",
+        "fields": [
+          "Patient and encounter",
+          "Allergies",
+          "Relevant precautions"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Order",
+        "fields": [
+          "Requesting clinician",
+          "Time and acceptance state"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]

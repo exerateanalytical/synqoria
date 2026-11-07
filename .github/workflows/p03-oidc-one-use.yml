@@ -1,0 +1,29 @@
+name: SYNQORIA P03 OIDC one-use callback replay
+on:
+  push:
+    branches:
+      - work/p03-oidc-one-time-replay-2026-11-05
+  pull_request:
+    paths:
+      - apps/web/lib/oidc-one-use.mjs
+      - tests/oidc_one_use.test.mjs
+      - .github/workflows/p03-oidc-one-use.yml
+permissions:
+  contents: read
+jobs:
+  one-use-security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate one-use OIDC reservations, expiry and replay resistance
+        run: node --test tests/oidc_one_use.test.mjs tests/oidc_replay_postgres.test.mjs
+      - name: Recheck inherited signed-token and callback guards
+        run: node --test tests/oidc_staff_verification.test.mjs tests/oidc_login_flow.test.mjs
+      - name: Recheck 240 locked screen integrity
+        run: node --test tests/operational_240_one_cycle_plan.test.mjs tests/operational_gap_registry.test.mjs
+      - name: No clinical authorization claim
+        run: echo "Atomically consumed state contract tested using in-memory test double; live durable store, clinical grants, session issuance and release not integrated."

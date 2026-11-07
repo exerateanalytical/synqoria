@@ -1,0 +1,720 @@
+[
+  {
+    "id": "P13",
+    "en": "Operative summary",
+    "fr": "Compte rendu opératoire",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "operative",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Operation",
+        "fields": [
+          "Procedure name and coded classification",
+          "Date and theatre",
+          "Indication"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Team and technique",
+        "fields": [
+          "Surgeon and assistants",
+          "Anesthesia and anesthetist",
+          "Approach",
+          "Key findings"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Outcome",
+        "fields": [
+          "Implants and lot",
+          "Blood loss/source",
+          "Complications",
+          "Postoperative plan"
+        ]
+      },
+      {
+        "id": "s04",
+        "heading": "Authentication",
+        "fields": [
+          "Author and approval revision"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUR-002",
+    "en": "Pre-operative surgical assessment",
+    "fr": "Évaluation préopératoire chirurgicale",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Case",
+        "fields": [
+          "Diagnosis and planned procedure",
+          "Laterality/site"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Risk",
+        "fields": [
+          "Allergies and anticoagulation",
+          "Comorbidities",
+          "Investigations"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Readiness",
+        "fields": [
+          "Required clearances",
+          "Surgical plan and clinical sign-off"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUR-003",
+    "en": "Surgical safety checklist",
+    "fr": "Liste de contrôle de sécurité opératoire",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "checklist",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Before anesthesia",
+        "fields": [
+          "Patient/site/procedure verification",
+          "Consent confirmed",
+          "Relevant risks and equipment"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Before incision",
+        "fields": [
+          "Team pause and roles",
+          "Anticipated events",
+          "Antibiotic policy check"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Before leaving",
+        "fields": [
+          "Counts and specimens",
+          "Procedure recorded",
+          "Recovery plan"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUR-004",
+    "en": "Anesthesia pre-assessment",
+    "fr": "Évaluation préanesthésique",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "History",
+        "fields": [
+          "Airway and aspiration assessment",
+          "Previous anesthesia history",
+          "Comorbidities and medicines"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Plan",
+        "fields": [
+          "Technique and risks discussed",
+          "Monitoring",
+          "Approved risk classification"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Decision",
+        "fields": [
+          "Anesthesia clinician clearance"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUR-005",
+    "en": "Anesthesia intraoperative record",
+    "fr": "Feuille d'anesthésie",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "anesthesia",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Timeline",
+        "fields": [
+          "Start and stop",
+          "Monitoring and vital measurements",
+          "Device source"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Agents",
+        "fields": [
+          "Drug name and concentration",
+          "Dose/rate/unit and administration time"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Events",
+        "fields": [
+          "Airway interventions",
+          "Fluids",
+          "Complications",
+          "Recovery handover"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUR-006",
+    "en": "Theatre instrument and swab count",
+    "fr": "Comptage instruments et compresses",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "checklist",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Start",
+        "fields": [
+          "Instrument and sponge count",
+          "Count team"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Closure",
+        "fields": [
+          "Interim and final counts",
+          "Discrepancy and search"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Verification",
+        "fields": [
+          "Surgeon notified and independent checker"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUR-007",
+    "en": "Operating room procedure register",
+    "fr": "Registre des interventions du bloc",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "log",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Schedule",
+        "fields": [
+          "Theatre",
+          "Date",
+          "Case reference",
+          "Surgical team"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Procedure",
+        "fields": [
+          "Start/end",
+          "Procedure status",
+          "Cancellation reason"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Theatre supervisor"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUR-008",
+    "en": "Post-anesthesia recovery chart",
+    "fr": "Fiche de surveillance post-anesthésie",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "observation",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Handover",
+        "fields": [
+          "Recovery arrival",
+          "Anesthesia details",
+          "Airway and analgesia"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Monitoring",
+        "fields": [
+          "Vital measures",
+          "Consciousness",
+          "Complications"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Disposition",
+        "fields": [
+          "Recovery criteria and authorizer"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUR-009",
+    "en": "Implant and device traceability sheet",
+    "fr": "Fiche de traçabilité des implants",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "inventory",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Implant",
+        "fields": [
+          "Device type",
+          "Manufacturer",
+          "Lot or serial",
+          "UDI if available"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Procedure",
+        "fields": [
+          "Implant site",
+          "Patient encounter",
+          "Surgeon"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Surveillance",
+        "fields": [
+          "Recall and follow-up pathway"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUR-010",
+    "en": "Intraoperative blood loss record",
+    "fr": "Suivi des pertes sanguines peropératoires",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "observation",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Measurement",
+        "fields": [
+          "Estimated or measured blood loss",
+          "Method and time"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Intervention",
+        "fields": [
+          "Fluids and blood products",
+          "Source documentation"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Anesthesia and surgeon"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUR-011",
+    "en": "Recovery unit clinical handover",
+    "fr": "Transmission en salle de réveil",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "handover",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Procedure",
+        "fields": [
+          "Operation and anesthesia summary",
+          "Airway status"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Risks",
+        "fields": [
+          "Allergies",
+          "Pain",
+          "Bleeding and monitoring"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Receipt",
+        "fields": [
+          "Nurse",
+          "Time",
+          "Escalation triggers"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUR-012",
+    "en": "Instrument sterilization cycle record",
+    "fr": "Fiche de stérilisation des instruments",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "log",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Cycle",
+        "fields": [
+          "Sterilizer and batch",
+          "Cycle ID",
+          "Process parameters and indicators"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Release",
+        "fields": [
+          "Load list and expiry policy",
+          "Quality review",
+          "Nonconformity"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUR-013",
+    "en": "Postoperative discharge guidance",
+    "fr": "Consignes postopératoires",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "instructions",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Procedure",
+        "fields": [
+          "Operation and date",
+          "Expected recovery course"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Home",
+        "fields": [
+          "Wound care",
+          "Medicines",
+          "Restrictions and red flags"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Follow-up",
+        "fields": [
+          "Appointment and emergency contact"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUR-014",
+    "en": "Tissue biopsy requisition",
+    "fr": "Demande d'examen anatomopathologique",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "order",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Specimen",
+        "fields": [
+          "Tissue site",
+          "Procedure source",
+          "Fixative and collection time"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Clinical",
+        "fields": [
+          "Relevant history",
+          "Question and urgency"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Chain",
+        "fields": [
+          "Label and transport",
+          "Requester"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUR-015",
+    "en": "Implant-specific informed consent",
+    "fr": "Consentement spécifique à un implant",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "consent",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Proposed implant",
+        "fields": [
+          "Device and purpose",
+          "Alternatives",
+          "Risks and longevity"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Patient choice",
+        "fields": [
+          "Information understood",
+          "Questions and interpreter"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Authorization",
+        "fields": [
+          "Patient/proxy",
+          "Surgeon and witness"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUR-016",
+    "en": "Surgical site marking and laterality",
+    "fr": "Fiche de marquage du site opératoire",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "checklist",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Identity",
+        "fields": [
+          "Two identifiers",
+          "Planned procedure and side",
+          "Patient participation"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Marking",
+        "fields": [
+          "Marked by",
+          "Site verified",
+          "Exception with reason"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Final check",
+        "fields": [
+          "Team pause and recorded time"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUR-017",
+    "en": "Operating room cancellation report",
+    "fr": "Compte rendu d'annulation opératoire",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "notice",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Case",
+        "fields": [
+          "Scheduled procedure and time",
+          "Stage of preparation"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Reason",
+        "fields": [
+          "Safety or resource cause",
+          "Clinical impact"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Follow-up",
+        "fields": [
+          "Patient notification",
+          "Reschedule and pending tasks"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUR-018",
+    "en": "Surgical specimen handover record",
+    "fr": "Remise des pièces opératoires",
+    "domain": "SUR",
+    "domainEn": "Surgery theatre and anesthesia",
+    "domainFr": "Chirurgie bloc opératoire et anesthésie",
+    "module": "M14",
+    "kind": "handover",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Specimen",
+        "fields": [
+          "Description and site",
+          "Container and accession"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Custody",
+        "fields": [
+          "Sending staff",
+          "Courier",
+          "Receiving lab",
+          "Time and discrepancy"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]

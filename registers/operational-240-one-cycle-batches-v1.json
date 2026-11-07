@@ -1,0 +1,4864 @@
+{
+  "schemaVersion": "synqoria.operational-240-single-cycle-plan.v1",
+  "createdOn": "2026-11-05",
+  "sourceRepository": "exerateanalytical/synqoria",
+  "baseline": {
+    "branch": "work/m04-m06-read-operations-consolidation-2026-11-05",
+    "commit": "31ddc403d92046ab94326e649c150c94ecc26a63",
+    "canonicalScreens": 261,
+    "partialScreens": 21,
+    "domainLockedScreens": 240,
+    "clinicallyAccepted": 0,
+    "plannedModules": 40,
+    "sharedScreens": 12
+  },
+  "summary": {
+    "plannedEngineeringBatches": 30,
+    "screensPerBatch": 8,
+    "assignedScreenIDs": 240,
+    "alreadyCompletedByThisPlan": 0,
+    "remainingToImplement": 240,
+    "clinicalCertification": "DENIED"
+  },
+  "executionPolicy": {
+    "scope": "one-coordinated-engineering-execution-with-30-independent-signed-checkpoints",
+    "interpretation": "The plan organizes all missing integrations in one orchestration; it does not assert feasibility or completion in one ChatGPT response.",
+    "noSkippedDependencies": true,
+    "noUnverifiedScreenCompletion": true,
+    "noMockRecordsInClinicalWorkflows": true,
+    "preserveAndReconcileParallelBranches": true,
+    "writeOnlyAfterBackendAuthorizes": true,
+    "stopPerScreenIfUnverifiable": true,
+    "repeatTestsAfterCrossModuleMerge": true
+  },
+  "sharedGates": {
+    "GATE-00-reconcile-clinical-backend-and-UI": "Reconcile stacked PRs #11–#20 with P06/P07 (#1–#10) without replacing parallel implementation; create tagged baseline and contract-diff report",
+    "GATE-01-verified-identity-and-tenant-cell": "Production-capable OIDC MFA, session/revocation, tenant-cell mapping, patient/encounter authorization, scoped server credentials; no testing identity issuer in release",
+    "GATE-02-review-typed-domain-contracts": "Canonical field dictionary and all read/write API contracts with exact roles, security, error states, events and migration ownership",
+    "GATE-03-db-and-outbox-concurrency": "PostgreSQL RLS, scoped transactions, durable audit/outbox, idempotency and encrypted data; actual integration environment required",
+    "GATE-04-module-screen-evidence": "Each of 240 screens passes all 14 done checks; no fake records or disabled placeholders counted",
+    "GATE-05-integration-and-release": "Cross-module E2E, migration/failover/offline tests, rollback, security review; 21 existing partial screens and clinical certification separately reviewed"
+  },
+  "definitionOfDone": [
+    "Canonical field dictionary (EN/FR, type, constraints, requiredness, code systems) approved",
+    "Typed OpenAPI request/response and error schemas reviewed with contract tests",
+    "Hospital-cell, tenant, facility, patient, encounter and role scope verified server side where applicable",
+    "Actual data access: transactional PostgreSQL/RLS read or atomic, idempotent command persistence as required",
+    "Workflow finite-state transitions, optimistic revision checks, conflicts and reversals implemented",
+    "Patient safety, consent, privilege, segregation-of-duties and maker/checker rules enforced",
+    "Audit provenance + transactional outbox/inbox events and event replay handling tested",
+    "Every screen control, tab, search/filter, field, validation, button and linked action wired",
+    "No fake patients/financial balances, unsafe shortcuts, PHI in browser storage, or unqualified clinical automation",
+    "Mobile 320/375/768 and desktop 1024/1440/1920 width, keyboard, focus, WCAG 2.2 AA audited; no glow/color collision/cramp",
+    "English/French translations, local formatting, loading/empty/error/offline/recovery states verified",
+    "Print/export/report/template issuance verified with authorization and integrity when in scope",
+    "Unit + integration + contract + adversarial security + Playwright E2E tests green against an actual test DB",
+    "Screen accepted by authorized business/clinical reviewer with evidence hash; otherwise stay blocked"
+  ],
+  "batches": [
+    {
+      "id": "SYNQ-OPS-001",
+      "number": 1,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "clinical-and-patient"
+      ],
+      "screens": [
+        {
+          "id": "G-S01",
+          "module": "SHARED",
+          "title": "Sign in",
+          "layout": "F",
+          "dataGroups": [
+            "Organization",
+            "identity",
+            "authentication method",
+            "local service availability"
+          ],
+          "primaryAction": "Authenticate",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "G-S02",
+          "module": "SHARED",
+          "title": "MFA and account recovery",
+          "layout": "F",
+          "dataGroups": [
+            "Challenge",
+            "approved recovery method",
+            "expiry and safe retry"
+          ],
+          "primaryAction": "Verify challenge",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "G-S04",
+          "module": "SHARED",
+          "title": "Role home and task hub",
+          "layout": "H",
+          "dataGroups": [
+            "Assigned work",
+            "urgent exceptions",
+            "quick actions",
+            "service status and secondary statistics"
+          ],
+          "primaryAction": "Open assigned task",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "G-S05",
+          "module": "SHARED",
+          "title": "Global patient search",
+          "layout": "L",
+          "dataGroups": [
+            "Identifiers",
+            "demographics",
+            "scope and permitted matching results"
+          ],
+          "primaryAction": "Open verified patient context",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "G-S07",
+          "module": "SHARED",
+          "title": "Session lock and reauthentication",
+          "layout": "F",
+          "dataGroups": [
+            "Named account",
+            "safe draft status",
+            "reason and reauthentication"
+          ],
+          "primaryAction": "Resume session",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "G-S08",
+          "module": "SHARED",
+          "title": "Access denied and access request",
+          "layout": "D",
+          "dataGroups": [
+            "Safe reason",
+            "request reference",
+            "support route and permitted access request"
+          ],
+          "primaryAction": "Request authorized review",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "G-S09",
+          "module": "SHARED",
+          "title": "Emergency access request",
+          "layout": "X",
+          "dataGroups": [
+            "Named actor",
+            "patient scope",
+            "permitted reason",
+            "duration and acknowledgement"
+          ],
+          "primaryAction": "Activate policy-approved access",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M01-S02",
+          "module": "M01",
+          "title": "New patient registration",
+          "layout": "F",
+          "dataGroups": [
+            "Names",
+            "identifiers and issuer",
+            "birth date or estimated flag",
+            "relevant demographic fields",
+            "contacts",
+            "address",
+            "language"
+          ],
+          "primaryAction": "Register patient",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-002",
+      "number": 2,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "clinical-and-patient"
+      ],
+      "screens": [
+        {
+          "id": "M01-S04",
+          "module": "M01",
+          "title": "Demographic correction",
+          "layout": "F",
+          "dataGroups": [
+            "Current and proposed values",
+            "source",
+            "reason",
+            "effective time"
+          ],
+          "primaryAction": "Submit correction",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M01-S05",
+          "module": "M01",
+          "title": "Duplicate identity review",
+          "layout": "X",
+          "dataGroups": [
+            "Candidate records",
+            "distinguishing identifiers",
+            "encounters",
+            "merge impact"
+          ],
+          "primaryAction": "Propose merge",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M01-S06",
+          "module": "M01",
+          "title": "Merge approval and lineage",
+          "layout": "X",
+          "dataGroups": [
+            "Survivor",
+            "absorbed record",
+            "reference changes",
+            "approvals",
+            "reversal history"
+          ],
+          "primaryAction": "Approve reviewed merge",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M02-S01",
+          "module": "M02",
+          "title": "Appointment calendar",
+          "layout": "B",
+          "dataGroups": [
+            "Date",
+            "clinician",
+            "room",
+            "service",
+            "occupancy and status"
+          ],
+          "primaryAction": "Select available slot",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M02-S02",
+          "module": "M02",
+          "title": "Appointment booking",
+          "layout": "F",
+          "dataGroups": [
+            "Patient",
+            "service",
+            "resource",
+            "time zone",
+            "duration",
+            "referral",
+            "contact preference"
+          ],
+          "primaryAction": "Book appointment",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M02-S03",
+          "module": "M02",
+          "title": "Appointment detail",
+          "layout": "D",
+          "dataGroups": [
+            "Booking",
+            "reminders",
+            "arrival",
+            "resource changes and history"
+          ],
+          "primaryAction": "Confirm arrival",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M02-S04",
+          "module": "M02",
+          "title": "Waitlist and rescheduling",
+          "layout": "L",
+          "dataGroups": [
+            "Priority",
+            "preferred dates",
+            "offers",
+            "expiry",
+            "accepted offer"
+          ],
+          "primaryAction": "Offer replacement slot",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M02-S05",
+          "module": "M02",
+          "title": "Resource availability",
+          "layout": "F",
+          "dataGroups": [
+            "Working hours",
+            "exceptions",
+            "capacity",
+            "approved overbooking policy"
+          ],
+          "primaryAction": "Publish availability",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-003",
+      "number": 3,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "clinical-and-patient"
+      ],
+      "screens": [
+        {
+          "id": "M03-S02",
+          "module": "M03",
+          "title": "Emergency intake",
+          "layout": "F",
+          "dataGroups": [
+            "Provisional identity",
+            "arrival mode",
+            "presenting concern",
+            "immediate disposition"
+          ],
+          "primaryAction": "Open emergency encounter",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M04-S01",
+          "module": "M04",
+          "title": "Encounter worklist",
+          "layout": "L",
+          "dataGroups": [
+            "Patient",
+            "type",
+            "department",
+            "clinician",
+            "status and start time"
+          ],
+          "primaryAction": "Open encounter",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M04-S03",
+          "module": "M04",
+          "title": "Admission assessment",
+          "layout": "F",
+          "dataGroups": [
+            "Admission reason",
+            "clinician",
+            "ward",
+            "infection precautions",
+            "payer reference"
+          ],
+          "primaryAction": "Request admission",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M04-S04",
+          "module": "M04",
+          "title": "Bed board",
+          "layout": "B",
+          "dataGroups": [
+            "Ward",
+            "bed",
+            "availability",
+            "cleaning",
+            "isolation constraints",
+            "reservation"
+          ],
+          "primaryAction": "Reserve eligible bed",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M04-S05",
+          "module": "M04",
+          "title": "Transfer coordination",
+          "layout": "X",
+          "dataGroups": [
+            "Current and destination location",
+            "handover",
+            "outstanding tasks",
+            "receiving acceptance"
+          ],
+          "primaryAction": "Confirm accepted transfer",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M04-S06",
+          "module": "M04",
+          "title": "Discharge planning",
+          "layout": "F",
+          "dataGroups": [
+            "Readiness",
+            "medications",
+            "pending results",
+            "follow-up",
+            "instructions and responsible clinician"
+          ],
+          "primaryAction": "Submit discharge plan",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M04-S07",
+          "module": "M04",
+          "title": "Discharge authorization",
+          "layout": "X",
+          "dataGroups": [
+            "Approved plan",
+            "unresolved risks",
+            "discharge time",
+            "signature"
+          ],
+          "primaryAction": "Authorize discharge",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M05-S02",
+          "module": "M05",
+          "title": "Note editor",
+          "layout": "F",
+          "dataGroups": [
+            "Template version",
+            "history",
+            "examination",
+            "assessment",
+            "plan",
+            "author and draft status"
+          ],
+          "primaryAction": "Save draft",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-004",
+      "number": 4,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "clinical-and-patient"
+      ],
+      "screens": [
+        {
+          "id": "M05-S03",
+          "module": "M05",
+          "title": "Diagnosis and problem list",
+          "layout": "L",
+          "dataGroups": [
+            "Code system",
+            "code",
+            "description",
+            "status",
+            "onset",
+            "certainty and author"
+          ],
+          "primaryAction": "Add diagnosis",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M06-S01",
+          "module": "M06",
+          "title": "Observation capture",
+          "layout": "F",
+          "dataGroups": [
+            "Type",
+            "value",
+            "unit",
+            "measurement time",
+            "method",
+            "source",
+            "patient and encounter"
+          ],
+          "primaryAction": "Record observation",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M07-S01",
+          "module": "M07",
+          "title": "Allergy summary",
+          "layout": "D",
+          "dataGroups": [
+            "Assessment status",
+            "substances",
+            "reactions",
+            "severity",
+            "verification",
+            "source and latest review"
+          ],
+          "primaryAction": "Start reconciliation",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M07-S02",
+          "module": "M07",
+          "title": "Allergy entry",
+          "layout": "F",
+          "dataGroups": [
+            "Terminology system and code",
+            "substance",
+            "reaction",
+            "severity",
+            "onset",
+            "source and verification"
+          ],
+          "primaryAction": "Record allergy",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M07-S03",
+          "module": "M07",
+          "title": "Allergy reconciliation",
+          "layout": "X",
+          "dataGroups": [
+            "Existing and incoming entries",
+            "duplicates",
+            "discrepancies",
+            "reviewed source"
+          ],
+          "primaryAction": "Confirm reconciliation",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M07-S04",
+          "module": "M07",
+          "title": "Allergy detail and history",
+          "layout": "D",
+          "dataGroups": [
+            "Clinical and verification status",
+            "prior revisions",
+            "author and reason"
+          ],
+          "primaryAction": "Request status correction",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M07-S05",
+          "module": "M07",
+          "title": "Allergy status correction",
+          "layout": "F",
+          "dataGroups": [
+            "Existing status",
+            "proposed status",
+            "entered-in-error reason and source"
+          ],
+          "primaryAction": "Submit correction",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M08-S01",
+          "module": "M08",
+          "title": "Medication worklist",
+          "layout": "L",
+          "dataGroups": [
+            "Active orders",
+            "review-required flags",
+            "status",
+            "prescriber and fulfilment"
+          ],
+          "primaryAction": "Open medication order",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-005",
+      "number": 5,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "clinical-and-patient"
+      ],
+      "screens": [
+        {
+          "id": "M08-S02",
+          "module": "M08",
+          "title": "Medication reconciliation",
+          "layout": "X",
+          "dataGroups": [
+            "Reported",
+            "prescribed and external medications",
+            "source",
+            "last dose",
+            "discrepancies"
+          ],
+          "primaryAction": "Confirm reconciliation",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M08-S03",
+          "module": "M08",
+          "title": "Prescription editor",
+          "layout": "F",
+          "dataGroups": [
+            "Drug and formulation",
+            "dose and unit",
+            "route",
+            "frequency",
+            "duration",
+            "indication",
+            "weight when required"
+          ],
+          "primaryAction": "Request safety assessment",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M08-S04",
+          "module": "M08",
+          "title": "Medication safety review",
+          "layout": "X",
+          "dataGroups": [
+            "Input freshness",
+            "allergy and interaction findings",
+            "missing facts",
+            "rule version",
+            "approved override fields"
+          ],
+          "primaryAction": "Authorize reviewed order",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M08-S05",
+          "module": "M08",
+          "title": "Medication order detail",
+          "layout": "D",
+          "dataGroups": [
+            "Signed prescription",
+            "safety revision",
+            "fulfilment",
+            "administrations",
+            "changes"
+          ],
+          "primaryAction": "Request order change",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M08-S06",
+          "module": "M08",
+          "title": "Medication hold and cancellation",
+          "layout": "F",
+          "dataGroups": [
+            "Reason",
+            "effective time",
+            "pending dispensing",
+            "already released doses"
+          ],
+          "primaryAction": "Submit hold or cancellation",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M08-S07",
+          "module": "M08",
+          "title": "Medication reassessment queue",
+          "layout": "L",
+          "dataGroups": [
+            "Changed inputs",
+            "affected active orders",
+            "priority and responsible prescriber"
+          ],
+          "primaryAction": "Reassess affected order",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M09-S01",
+          "module": "M09",
+          "title": "Medication administration record",
+          "layout": "B",
+          "dataGroups": [
+            "Due doses",
+            "actual times",
+            "status text",
+            "route",
+            "late and held markers"
+          ],
+          "primaryAction": "Open due dose",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M09-S02",
+          "module": "M09",
+          "title": "Bedside dose verification",
+          "layout": "X",
+          "dataGroups": [
+            "Patient identifiers",
+            "dose ID",
+            "medication",
+            "barcode result",
+            "route",
+            "current order and safety status"
+          ],
+          "primaryAction": "Confirm required checks",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-006",
+      "number": 6,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "clinical-and-patient"
+      ],
+      "screens": [
+        {
+          "id": "M09-S03",
+          "module": "M09",
+          "title": "Administration recording",
+          "layout": "F",
+          "dataGroups": [
+            "Actual dose and unit",
+            "route",
+            "administration time",
+            "site",
+            "actor",
+            "witness when required"
+          ],
+          "primaryAction": "Record administration",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M09-S04",
+          "module": "M09",
+          "title": "Omitted refused or held dose",
+          "layout": "F",
+          "dataGroups": [
+            "Dose ID",
+            "outcome category",
+            "reason",
+            "clinical escalation and review time"
+          ],
+          "primaryAction": "Record non-administration",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M09-S05",
+          "module": "M09",
+          "title": "Administration correction",
+          "layout": "X",
+          "dataGroups": [
+            "Original record",
+            "proposed correction",
+            "reason",
+            "witness and audit history"
+          ],
+          "primaryAction": "Submit linked correction",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M10-S01",
+          "module": "M10",
+          "title": "Ward nursing worklist",
+          "layout": "L",
+          "dataGroups": [
+            "Patients",
+            "assigned nurse",
+            "acuity",
+            "tasks",
+            "overdue care and precautions"
+          ],
+          "primaryAction": "Open care plan",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M10-S02",
+          "module": "M10",
+          "title": "Nursing care plan",
+          "layout": "F",
+          "dataGroups": [
+            "Needs",
+            "goals",
+            "interventions",
+            "frequency",
+            "responsible staff and review date"
+          ],
+          "primaryAction": "Publish care plan",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M10-S03",
+          "module": "M10",
+          "title": "Nursing task execution",
+          "layout": "F",
+          "dataGroups": [
+            "Task",
+            "observations",
+            "completion or exception",
+            "time and escalation"
+          ],
+          "primaryAction": "Record task outcome",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M10-S04",
+          "module": "M10",
+          "title": "Shift handover",
+          "layout": "X",
+          "dataGroups": [
+            "Patient summary",
+            "outstanding risks",
+            "tasks",
+            "receiver and acknowledgement"
+          ],
+          "primaryAction": "Submit handover",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M10-S05",
+          "module": "M10",
+          "title": "Care plan review",
+          "layout": "X",
+          "dataGroups": [
+            "Progress",
+            "unmet goals",
+            "changes and approving nurse"
+          ],
+          "primaryAction": "Approve revised plan",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-007",
+      "number": 7,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "clinical-and-patient"
+      ],
+      "screens": [
+        {
+          "id": "M11-S01",
+          "module": "M11",
+          "title": "Laboratory orders",
+          "layout": "L",
+          "dataGroups": [
+            "Patient",
+            "tests",
+            "priority",
+            "specimen requirements and order status"
+          ],
+          "primaryAction": "Open laboratory request",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M11-S02",
+          "module": "M11",
+          "title": "Laboratory request",
+          "layout": "F",
+          "dataGroups": [
+            "Tests",
+            "indication",
+            "collection constraints",
+            "ordering clinician and priority"
+          ],
+          "primaryAction": "Submit laboratory request",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M11-S03",
+          "module": "M11",
+          "title": "Specimen collection",
+          "layout": "F",
+          "dataGroups": [
+            "Patient verification",
+            "specimen ID",
+            "type",
+            "container",
+            "collector and collection time"
+          ],
+          "primaryAction": "Confirm collection and print label",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M11-S04",
+          "module": "M11",
+          "title": "Specimen receipt and rejection",
+          "layout": "X",
+          "dataGroups": [
+            "Specimen ID",
+            "condition",
+            "transport time",
+            "acceptance or rejection reason"
+          ],
+          "primaryAction": "Record receipt decision",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M11-S05",
+          "module": "M11",
+          "title": "Laboratory bench worklist",
+          "layout": "L",
+          "dataGroups": [
+            "Accepted specimens",
+            "tests",
+            "analyzer",
+            "processing and quality flags"
+          ],
+          "primaryAction": "Open result entry",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M11-S06",
+          "module": "M11",
+          "title": "Result entry",
+          "layout": "F",
+          "dataGroups": [
+            "Analyte",
+            "value",
+            "unit",
+            "reference interval",
+            "method",
+            "flags and source"
+          ],
+          "primaryAction": "Submit for verification",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M11-S07",
+          "module": "M11",
+          "title": "Result verification and release",
+          "layout": "X",
+          "dataGroups": [
+            "Results",
+            "specimen provenance",
+            "quality checks",
+            "delta flags and verifier"
+          ],
+          "primaryAction": "Verify and release report",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M11-S08",
+          "module": "M11",
+          "title": "Critical result acknowledgement",
+          "layout": "L",
+          "dataGroups": [
+            "Critical finding",
+            "recipient",
+            "notification attempts",
+            "acknowledgement and escalation"
+          ],
+          "primaryAction": "Record clinical acknowledgement",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-008",
+      "number": 8,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "clinical-and-patient"
+      ],
+      "screens": [
+        {
+          "id": "M11-S09",
+          "module": "M11",
+          "title": "Laboratory report and amendment",
+          "layout": "D",
+          "dataGroups": [
+            "Released report",
+            "signature",
+            "corrected results and amendment lineage"
+          ],
+          "primaryAction": "Create report amendment",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M12-S01",
+          "module": "M12",
+          "title": "Imaging requests",
+          "layout": "L",
+          "dataGroups": [
+            "Patient",
+            "procedure",
+            "priority",
+            "screening and status"
+          ],
+          "primaryAction": "Open imaging request",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M12-S02",
+          "module": "M12",
+          "title": "Imaging request and screening",
+          "layout": "F",
+          "dataGroups": [
+            "Procedure",
+            "indication",
+            "approved contraindication questions",
+            "contrast requirements"
+          ],
+          "primaryAction": "Submit imaging request",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M12-S03",
+          "module": "M12",
+          "title": "Imaging schedule",
+          "layout": "B",
+          "dataGroups": [
+            "Modality",
+            "room",
+            "slot",
+            "preparation and patient arrival"
+          ],
+          "primaryAction": "Book examination",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M12-S04",
+          "module": "M12",
+          "title": "Acquisition worklist",
+          "layout": "L",
+          "dataGroups": [
+            "Verified patient",
+            "accession",
+            "procedure",
+            "modality and acquisition status"
+          ],
+          "primaryAction": "Confirm acquisition outcome",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M12-S05",
+          "module": "M12",
+          "title": "Study viewer launch",
+          "layout": "D",
+          "dataGroups": [
+            "Accession",
+            "patient identifiers",
+            "series metadata",
+            "PACS availability"
+          ],
+          "primaryAction": "Open authorized PACS viewer",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M12-S06",
+          "module": "M12",
+          "title": "Radiology report editor",
+          "layout": "F",
+          "dataGroups": [
+            "Findings",
+            "impression",
+            "comparison",
+            "author and report version"
+          ],
+          "primaryAction": "Submit report for verification",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M12-S07",
+          "module": "M12",
+          "title": "Radiology verification and amendment",
+          "layout": "X",
+          "dataGroups": [
+            "Report",
+            "study references",
+            "reviewer",
+            "signature and amendment reason"
+          ],
+          "primaryAction": "Verify report",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-009",
+      "number": 9,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "clinical-and-patient"
+      ],
+      "screens": [
+        {
+          "id": "M13-S01",
+          "module": "M13",
+          "title": "Dispensing queue",
+          "layout": "L",
+          "dataGroups": [
+            "Patient",
+            "authorized prescription",
+            "priority",
+            "reservation and release status"
+          ],
+          "primaryAction": "Open dispensing workbench",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M13-S02",
+          "module": "M13",
+          "title": "Dispensing workbench",
+          "layout": "F",
+          "dataGroups": [
+            "Order",
+            "quantity",
+            "batch",
+            "expiry",
+            "substitution approval",
+            "preparation checks"
+          ],
+          "primaryAction": "Reserve selected stock",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M13-S03",
+          "module": "M13",
+          "title": "Clinical release review",
+          "layout": "X",
+          "dataGroups": [
+            "Dispense ID",
+            "order version",
+            "safety review",
+            "ticket expiry and current decision"
+          ],
+          "primaryAction": "Consume release authorization",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M13-S04",
+          "module": "M13",
+          "title": "Dispensing handover",
+          "layout": "X",
+          "dataGroups": [
+            "Durable authorization",
+            "patient or recipient check",
+            "quantity and instructions"
+          ],
+          "primaryAction": "Confirm physical handover",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M13-S05",
+          "module": "M13",
+          "title": "Dispensing exceptions",
+          "layout": "X",
+          "dataGroups": [
+            "Unknown response",
+            "consumed ticket",
+            "actual handover evidence",
+            "stock discrepancy"
+          ],
+          "primaryAction": "Submit reconciled outcome",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M13-S06",
+          "module": "M13",
+          "title": "Medication stock and expiry",
+          "layout": "L",
+          "dataGroups": [
+            "Product",
+            "batch",
+            "location",
+            "available and reserved quantity",
+            "expiry"
+          ],
+          "primaryAction": "Open batch record",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M13-S07",
+          "module": "M13",
+          "title": "Medication receipt return and adjustment",
+          "layout": "F",
+          "dataGroups": [
+            "Movement type",
+            "batch",
+            "quantity",
+            "source",
+            "reason and approval"
+          ],
+          "primaryAction": "Submit stock movement",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M14-S01",
+          "module": "M14",
+          "title": "Theatre schedule",
+          "layout": "B",
+          "dataGroups": [
+            "Procedure",
+            "patient",
+            "team",
+            "room",
+            "readiness and time"
+          ],
+          "primaryAction": "Open theatre case",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-010",
+      "number": 10,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "clinical-and-patient"
+      ],
+      "screens": [
+        {
+          "id": "M14-S02",
+          "module": "M14",
+          "title": "Surgical booking",
+          "layout": "F",
+          "dataGroups": [
+            "Procedure",
+            "laterality",
+            "surgeon",
+            "resource needs and priority"
+          ],
+          "primaryAction": "Submit booking",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M14-S03",
+          "module": "M14",
+          "title": "Preoperative readiness",
+          "layout": "X",
+          "dataGroups": [
+            "Identity",
+            "procedure",
+            "site",
+            "consent",
+            "investigations",
+            "equipment and required checklist"
+          ],
+          "primaryAction": "Confirm readiness review",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M14-S04",
+          "module": "M14",
+          "title": "Anesthesia assessment and record",
+          "layout": "F",
+          "dataGroups": [
+            "Assessment",
+            "approved monitoring fields",
+            "medications",
+            "times and clinician"
+          ],
+          "primaryAction": "Record anesthesia entry",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M14-S05",
+          "module": "M14",
+          "title": "Intraoperative record",
+          "layout": "F",
+          "dataGroups": [
+            "Procedure",
+            "team",
+            "counts",
+            "specimens",
+            "events and completion time"
+          ],
+          "primaryAction": "Record operative outcome",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M14-S06",
+          "module": "M14",
+          "title": "Recovery and handover",
+          "layout": "X",
+          "dataGroups": [
+            "Recovery observations",
+            "approved discharge criteria",
+            "destination and receiver"
+          ],
+          "primaryAction": "Complete recovery handover",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M15-S01",
+          "module": "M15",
+          "title": "Blood unit inventory",
+          "layout": "L",
+          "dataGroups": [
+            "Unit identifier",
+            "product",
+            "group",
+            "status",
+            "expiry and storage"
+          ],
+          "primaryAction": "Open blood unit",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M15-S02",
+          "module": "M15",
+          "title": "Blood unit intake and screening",
+          "layout": "F",
+          "dataGroups": [
+            "Origin",
+            "collection",
+            "component",
+            "screening results",
+            "quarantine and reviewer"
+          ],
+          "primaryAction": "Submit screening review",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M15-S03",
+          "module": "M15",
+          "title": "Compatibility and reservation",
+          "layout": "X",
+          "dataGroups": [
+            "Patient",
+            "request",
+            "samples",
+            "compatibility results",
+            "selected unit and expiry"
+          ],
+          "primaryAction": "Reserve compatible unit",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-011",
+      "number": 11,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "clinical-and-patient"
+      ],
+      "screens": [
+        {
+          "id": "M15-S04",
+          "module": "M15",
+          "title": "Blood unit issue and return",
+          "layout": "F",
+          "dataGroups": [
+            "Unit",
+            "patient",
+            "issue time",
+            "custody",
+            "transport and return condition"
+          ],
+          "primaryAction": "Record unit movement",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M15-S05",
+          "module": "M15",
+          "title": "Bedside transfusion verification",
+          "layout": "X",
+          "dataGroups": [
+            "Patient identifiers",
+            "unit ID",
+            "product",
+            "prescription",
+            "compatibility and witness"
+          ],
+          "primaryAction": "Confirm transfusion checks",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M15-S06",
+          "module": "M15",
+          "title": "Transfusion monitoring and reaction",
+          "layout": "F",
+          "dataGroups": [
+            "Start and finish",
+            "observations",
+            "volume",
+            "suspected reaction and escalation"
+          ],
+          "primaryAction": "Record transfusion outcome",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M16-S01",
+          "module": "M16",
+          "title": "Referral worklist",
+          "layout": "L",
+          "dataGroups": [
+            "Patient",
+            "destination",
+            "urgency",
+            "sender",
+            "status and response deadline"
+          ],
+          "primaryAction": "Open referral",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M16-S02",
+          "module": "M16",
+          "title": "Referral preparation",
+          "layout": "F",
+          "dataGroups": [
+            "Reason",
+            "summary",
+            "current treatment",
+            "attachments",
+            "recipient and disclosure basis"
+          ],
+          "primaryAction": "Send authorized referral",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M16-S03",
+          "module": "M16",
+          "title": "Referral acceptance review",
+          "layout": "X",
+          "dataGroups": [
+            "Clinical request",
+            "capacity",
+            "responsible receiver",
+            "acceptance or rejection reason"
+          ],
+          "primaryAction": "Record receiving decision",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M16-S04",
+          "module": "M16",
+          "title": "Transition handover",
+          "layout": "X",
+          "dataGroups": [
+            "Transport",
+            "clinical risks",
+            "outstanding results",
+            "receiver and acknowledgement"
+          ],
+          "primaryAction": "Confirm handover",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M16-S05",
+          "module": "M16",
+          "title": "Referral follow-up and closure",
+          "layout": "F",
+          "dataGroups": [
+            "Attendance",
+            "returned advice",
+            "unresolved tasks and closure reason"
+          ],
+          "primaryAction": "Close reviewed referral",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-012",
+      "number": 12,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "clinical-and-patient"
+      ],
+      "screens": [
+        {
+          "id": "M17-S01",
+          "module": "M17",
+          "title": "Specialty service worklist",
+          "layout": "L",
+          "dataGroups": [
+            "Service",
+            "patients",
+            "visit type",
+            "due follow-up and responsible clinician"
+          ],
+          "primaryAction": "Open specialty episode",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-S02",
+          "module": "M17",
+          "title": "Specialty episode enrolment",
+          "layout": "F",
+          "dataGroups": [
+            "Specialty",
+            "referral",
+            "episode dates",
+            "team and approved pathway"
+          ],
+          "primaryAction": "Enrol patient",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-S03",
+          "module": "M17",
+          "title": "Specialty longitudinal overview",
+          "layout": "D",
+          "dataGroups": [
+            "Episode",
+            "assessments",
+            "shared orders",
+            "outcomes and follow-up"
+          ],
+          "primaryAction": "Open specialty assessment",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-S04",
+          "module": "M17",
+          "title": "Specialty outcome and closure",
+          "layout": "F",
+          "dataGroups": [
+            "Outcome measures",
+            "transfer",
+            "follow-up and closure reason"
+          ],
+          "primaryAction": "Close specialty episode",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P01-S01",
+          "module": "M17",
+          "title": "Obstetrics and gynecology assessment",
+          "layout": "F",
+          "dataGroups": [
+            "pregnancy episode",
+            "dating source",
+            "obstetric history",
+            "antenatal observations and approved care pathway"
+          ],
+          "primaryAction": "Save specialty assessment",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P01-S02",
+          "module": "M17",
+          "title": "Obstetrics and gynecology treatment record",
+          "layout": "F",
+          "dataGroups": [
+            "maternal and fetal observations",
+            "labour events or gynecologic procedure",
+            "team and timing"
+          ],
+          "primaryAction": "Submit reviewed specialty record",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P01-S03",
+          "module": "M17",
+          "title": "Obstetrics and gynecology follow-up",
+          "layout": "F",
+          "dataGroups": [
+            "postnatal or gynecologic outcomes",
+            "newborn link where applicable",
+            "follow-up and escalation"
+          ],
+          "primaryAction": "Record specialty follow-up",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P02-S01",
+          "module": "M17",
+          "title": "Pediatrics and neonatology assessment",
+          "layout": "F",
+          "dataGroups": [
+            "guardian authority",
+            "birth history",
+            "age calculation",
+            "growth measurements and approved charts"
+          ],
+          "primaryAction": "Save specialty assessment",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-013",
+      "number": 13,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "clinical-and-patient"
+      ],
+      "screens": [
+        {
+          "id": "M17-P02-S02",
+          "module": "M17",
+          "title": "Pediatrics and neonatology treatment record",
+          "layout": "F",
+          "dataGroups": [
+            "weight source and time",
+            "feeding",
+            "development",
+            "neonatal observations and shared treatment orders"
+          ],
+          "primaryAction": "Submit reviewed specialty record",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P02-S03",
+          "module": "M17",
+          "title": "Pediatrics and neonatology follow-up",
+          "layout": "F",
+          "dataGroups": [
+            "growth trend",
+            "immunization record sources",
+            "developmental follow-up and guardian instructions"
+          ],
+          "primaryAction": "Record specialty follow-up",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P03-S01",
+          "module": "M17",
+          "title": "Cardiology assessment",
+          "layout": "F",
+          "dataGroups": [
+            "cardiac history",
+            "symptoms",
+            "observations",
+            "investigations and approved assessments"
+          ],
+          "primaryAction": "Save specialty assessment",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P03-S02",
+          "module": "M17",
+          "title": "Cardiology treatment record",
+          "layout": "F",
+          "dataGroups": [
+            "ECG or study references",
+            "procedure details",
+            "shared orders and monitoring"
+          ],
+          "primaryAction": "Submit reviewed specialty record",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P03-S03",
+          "module": "M17",
+          "title": "Cardiology follow-up",
+          "layout": "F",
+          "dataGroups": [
+            "symptoms",
+            "outcomes",
+            "monitoring plan and follow-up"
+          ],
+          "primaryAction": "Record specialty follow-up",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P04-S01",
+          "module": "M17",
+          "title": "Dentistry assessment",
+          "layout": "F",
+          "dataGroups": [
+            "tooth notation system",
+            "odontogram",
+            "history",
+            "findings and consent"
+          ],
+          "primaryAction": "Save specialty assessment",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P04-S02",
+          "module": "M17",
+          "title": "Dentistry treatment record",
+          "layout": "F",
+          "dataGroups": [
+            "tooth or surface",
+            "procedure",
+            "materials",
+            "local anesthesia reference and team"
+          ],
+          "primaryAction": "Submit reviewed specialty record",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P04-S03",
+          "module": "M17",
+          "title": "Dentistry follow-up",
+          "layout": "F",
+          "dataGroups": [
+            "healing",
+            "complications",
+            "hygiene advice and recall"
+          ],
+          "primaryAction": "Record specialty follow-up",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-014",
+      "number": 14,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "clinical-and-patient"
+      ],
+      "screens": [
+        {
+          "id": "M17-P05-S01",
+          "module": "M17",
+          "title": "Dermatology assessment",
+          "layout": "F",
+          "dataGroups": [
+            "lesion location",
+            "findings",
+            "image consent",
+            "history and diagnosis"
+          ],
+          "primaryAction": "Save specialty assessment",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P05-S02",
+          "module": "M17",
+          "title": "Dermatology treatment record",
+          "layout": "F",
+          "dataGroups": [
+            "procedure",
+            "specimen link",
+            "shared orders and treatment record"
+          ],
+          "primaryAction": "Submit reviewed specialty record",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P05-S03",
+          "module": "M17",
+          "title": "Dermatology follow-up",
+          "layout": "F",
+          "dataGroups": [
+            "lesion changes",
+            "treatment response",
+            "images with consent and follow-up"
+          ],
+          "primaryAction": "Record specialty follow-up",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P06-S01",
+          "module": "M17",
+          "title": "Endocrinology and chronic disease assessment",
+          "layout": "F",
+          "dataGroups": [
+            "condition",
+            "longitudinal markers",
+            "relevant observations and risk assessment"
+          ],
+          "primaryAction": "Save specialty assessment",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P06-S02",
+          "module": "M17",
+          "title": "Endocrinology and chronic disease treatment record",
+          "layout": "F",
+          "dataGroups": [
+            "agreed goals",
+            "shared medication orders",
+            "education and monitoring"
+          ],
+          "primaryAction": "Submit reviewed specialty record",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P06-S03",
+          "module": "M17",
+          "title": "Endocrinology and chronic disease follow-up",
+          "layout": "F",
+          "dataGroups": [
+            "trends",
+            "adherence discussion",
+            "complications and follow-up"
+          ],
+          "primaryAction": "Record specialty follow-up",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P07-S01",
+          "module": "M17",
+          "title": "Oncology assessment",
+          "layout": "F",
+          "dataGroups": [
+            "diagnostic evidence",
+            "pathology",
+            "stage source",
+            "multidisciplinary decision and protocol"
+          ],
+          "primaryAction": "Save specialty assessment",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P07-S02",
+          "module": "M17",
+          "title": "Oncology treatment record",
+          "layout": "F",
+          "dataGroups": [
+            "approved regimen reference",
+            "cycle",
+            "prerequisites",
+            "independent checks and shared orders"
+          ],
+          "primaryAction": "Submit reviewed specialty record",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-015",
+      "number": 15,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "clinical-and-patient"
+      ],
+      "screens": [
+        {
+          "id": "M17-P07-S03",
+          "module": "M17",
+          "title": "Oncology follow-up",
+          "layout": "F",
+          "dataGroups": [
+            "response criteria",
+            "toxicity assessment",
+            "supportive care and follow-up"
+          ],
+          "primaryAction": "Record specialty follow-up",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P08-S01",
+          "module": "M17",
+          "title": "Rehabilitation assessment",
+          "layout": "F",
+          "dataGroups": [
+            "functional status",
+            "approved assessment scales",
+            "goals and precautions"
+          ],
+          "primaryAction": "Save specialty assessment",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P08-S02",
+          "module": "M17",
+          "title": "Rehabilitation treatment record",
+          "layout": "F",
+          "dataGroups": [
+            "session plan",
+            "intervention",
+            "assistance",
+            "tolerance and therapist"
+          ],
+          "primaryAction": "Submit reviewed specialty record",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M17-P08-S03",
+          "module": "M17",
+          "title": "Rehabilitation follow-up",
+          "layout": "F",
+          "dataGroups": [
+            "functional change",
+            "goals",
+            "aids",
+            "home plan and discharge readiness"
+          ],
+          "primaryAction": "Record specialty follow-up",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M18-S01",
+          "module": "M18",
+          "title": "Patient home",
+          "layout": "H",
+          "dataGroups": [
+            "Upcoming care",
+            "pending tasks",
+            "released results and communication preferences"
+          ],
+          "primaryAction": "Open next care task",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M18-S02",
+          "module": "M18",
+          "title": "My health record",
+          "layout": "D",
+          "dataGroups": [
+            "Released notes",
+            "allergies",
+            "medications",
+            "reports",
+            "provenance and access limits"
+          ],
+          "primaryAction": "Open released document",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M18-S03",
+          "module": "M18",
+          "title": "Patient appointment booking",
+          "layout": "F",
+          "dataGroups": [
+            "Service",
+            "location",
+            "available slots",
+            "contact and preparation information"
+          ],
+          "primaryAction": "Request appointment",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M18-S04",
+          "module": "M18",
+          "title": "Patient appointment detail",
+          "layout": "D",
+          "dataGroups": [
+            "Status",
+            "location",
+            "preparation",
+            "cancellation policy and check-in eligibility"
+          ],
+          "primaryAction": "Check in when eligible",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-016",
+      "number": 16,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "clinical-and-patient",
+        "finance-and-supply"
+      ],
+      "screens": [
+        {
+          "id": "M18-S05",
+          "module": "M18",
+          "title": "Patient messages",
+          "layout": "L",
+          "dataGroups": [
+            "Care-team threads",
+            "response expectations",
+            "unread status and attachments"
+          ],
+          "primaryAction": "Open secure conversation",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M18-S06",
+          "module": "M18",
+          "title": "Patient message composer",
+          "layout": "F",
+          "dataGroups": [
+            "Recipient team",
+            "subject",
+            "text",
+            "attachments and emergency-use notice"
+          ],
+          "primaryAction": "Send message",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M18-S07",
+          "module": "M18",
+          "title": "Proxy access management",
+          "layout": "X",
+          "dataGroups": [
+            "Dependent",
+            "relationship evidence",
+            "permitted scope",
+            "expiry and revocation"
+          ],
+          "primaryAction": "Request or revoke proxy grant",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M18-S08",
+          "module": "M18",
+          "title": "Patient bills and payments",
+          "layout": "D",
+          "dataGroups": [
+            "Invoices",
+            "payments",
+            "outstanding balance",
+            "currency and receipt"
+          ],
+          "primaryAction": "Start payment",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M18-S09",
+          "module": "M18",
+          "title": "Patient preferences and correction requests",
+          "layout": "F",
+          "dataGroups": [
+            "Language",
+            "contact channels",
+            "privacy preferences and requested correction"
+          ],
+          "primaryAction": "Submit preference or correction",
+          "domainLane": "clinical-and-patient",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M19-S01",
+          "module": "M19",
+          "title": "Billing account",
+          "layout": "D",
+          "dataGroups": [
+            "Patient",
+            "encounter",
+            "itemized charges",
+            "payer shares",
+            "balances and currency"
+          ],
+          "primaryAction": "Review draft invoice",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M19-S02",
+          "module": "M19",
+          "title": "Charge capture",
+          "layout": "F",
+          "dataGroups": [
+            "Service",
+            "quantity",
+            "approved tariff",
+            "discount basis",
+            "encounter and source"
+          ],
+          "primaryAction": "Post charge",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M19-S03",
+          "module": "M19",
+          "title": "Invoice review and issue",
+          "layout": "X",
+          "dataGroups": [
+            "Line items",
+            "totals",
+            "tax configuration",
+            "payer allocation and approvals"
+          ],
+          "primaryAction": "Issue invoice",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-017",
+      "number": 17,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "finance-and-supply"
+      ],
+      "screens": [
+        {
+          "id": "M19-S04",
+          "module": "M19",
+          "title": "Cashier payment",
+          "layout": "F",
+          "dataGroups": [
+            "Invoice",
+            "amount",
+            "currency",
+            "tender",
+            "payment reference and received amount"
+          ],
+          "primaryAction": "Submit payment",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M19-S05",
+          "module": "M19",
+          "title": "Payment receipt",
+          "layout": "D",
+          "dataGroups": [
+            "Confirmed payment",
+            "allocated invoices",
+            "balance",
+            "receipt number and issuer"
+          ],
+          "primaryAction": "Print receipt",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M19-S06",
+          "module": "M19",
+          "title": "Refund and reversal",
+          "layout": "X",
+          "dataGroups": [
+            "Original transaction",
+            "amount",
+            "reason",
+            "approvals and settlement status"
+          ],
+          "primaryAction": "Submit authorized reversal",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M19-S07",
+          "module": "M19",
+          "title": "Cashier shift reconciliation",
+          "layout": "X",
+          "dataGroups": [
+            "Opening balance",
+            "tenders",
+            "receipts",
+            "counted cash",
+            "variance and approver"
+          ],
+          "primaryAction": "Close reconciled shift",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M20-S01",
+          "module": "M20",
+          "title": "Payer eligibility review",
+          "layout": "X",
+          "dataGroups": [
+            "Policy",
+            "beneficiary",
+            "coverage dates",
+            "source response and exclusions"
+          ],
+          "primaryAction": "Record eligibility decision",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M20-S02",
+          "module": "M20",
+          "title": "Payer authorization request",
+          "layout": "F",
+          "dataGroups": [
+            "Services",
+            "clinical support",
+            "estimate",
+            "payer and requested dates"
+          ],
+          "primaryAction": "Submit authorization request",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M20-S03",
+          "module": "M20",
+          "title": "Authorization tracking",
+          "layout": "L",
+          "dataGroups": [
+            "Requests",
+            "response deadlines",
+            "approvals",
+            "denials and limits"
+          ],
+          "primaryAction": "Open authorization",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M20-S04",
+          "module": "M20",
+          "title": "Claim preparation",
+          "layout": "F",
+          "dataGroups": [
+            "Encounter",
+            "codes",
+            "itemized charges",
+            "evidence and authorization references"
+          ],
+          "primaryAction": "Validate claim",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-018",
+      "number": 18,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "finance-and-supply"
+      ],
+      "screens": [
+        {
+          "id": "M20-S05",
+          "module": "M20",
+          "title": "Claim submission and adjudication",
+          "layout": "D",
+          "dataGroups": [
+            "Submitted version",
+            "payer responses",
+            "remittance",
+            "denials and status"
+          ],
+          "primaryAction": "Record adjudication",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M20-S06",
+          "module": "M20",
+          "title": "Claim appeal and settlement",
+          "layout": "X",
+          "dataGroups": [
+            "Denied items",
+            "grounds",
+            "supporting evidence",
+            "approved amounts and payments"
+          ],
+          "primaryAction": "Submit appeal or reconciliation",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M21-S01",
+          "module": "M21",
+          "title": "Procurement requisitions",
+          "layout": "L",
+          "dataGroups": [
+            "Requester",
+            "department",
+            "items",
+            "value",
+            "urgency and approval status"
+          ],
+          "primaryAction": "Open requisition",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M21-S02",
+          "module": "M21",
+          "title": "Requisition editor",
+          "layout": "F",
+          "dataGroups": [
+            "Items",
+            "quantities",
+            "justification",
+            "budget reference and delivery need"
+          ],
+          "primaryAction": "Submit requisition",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M21-S03",
+          "module": "M21",
+          "title": "Purchase approval",
+          "layout": "X",
+          "dataGroups": [
+            "Request",
+            "budget",
+            "quotations",
+            "conflicts of interest and approver"
+          ],
+          "primaryAction": "Approve requisition",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M21-S04",
+          "module": "M21",
+          "title": "Purchase order",
+          "layout": "F",
+          "dataGroups": [
+            "Supplier",
+            "items",
+            "price",
+            "terms",
+            "delivery dates and approval"
+          ],
+          "primaryAction": "Issue purchase order",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M21-S05",
+          "module": "M21",
+          "title": "Goods receipt and invoice matching",
+          "layout": "X",
+          "dataGroups": [
+            "Order",
+            "delivered quantities",
+            "condition",
+            "receipt and supplier invoice"
+          ],
+          "primaryAction": "Record matched receipt",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M21-S06",
+          "module": "M21",
+          "title": "Supplier directory and qualification",
+          "layout": "D",
+          "dataGroups": [
+            "Supplier identity",
+            "contacts",
+            "terms",
+            "qualification documents and status"
+          ],
+          "primaryAction": "Update supplier qualification",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-019",
+      "number": 19,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "finance-and-supply",
+        "hospital-operations"
+      ],
+      "screens": [
+        {
+          "id": "M22-S01",
+          "module": "M22",
+          "title": "Stores inventory",
+          "layout": "L",
+          "dataGroups": [
+            "Item",
+            "location",
+            "available",
+            "reserved",
+            "reorder and unit"
+          ],
+          "primaryAction": "Open stock item",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M22-S02",
+          "module": "M22",
+          "title": "Stores receipt",
+          "layout": "F",
+          "dataGroups": [
+            "Item",
+            "quantity",
+            "unit",
+            "supplier",
+            "document",
+            "location and inspection"
+          ],
+          "primaryAction": "Receive goods",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M22-S03",
+          "module": "M22",
+          "title": "Stock request and issue",
+          "layout": "F",
+          "dataGroups": [
+            "Requesting unit",
+            "items",
+            "quantities",
+            "destination and approval"
+          ],
+          "primaryAction": "Issue approved stock",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M22-S04",
+          "module": "M22",
+          "title": "Stock transfer and return",
+          "layout": "F",
+          "dataGroups": [
+            "Source",
+            "destination",
+            "custody",
+            "condition and quantity"
+          ],
+          "primaryAction": "Record movement",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M22-S05",
+          "module": "M22",
+          "title": "Stock count and adjustment",
+          "layout": "X",
+          "dataGroups": [
+            "Expected quantity",
+            "counted quantity",
+            "variance",
+            "reason and approver"
+          ],
+          "primaryAction": "Approve adjustment",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M23-S01",
+          "module": "M23",
+          "title": "Asset register",
+          "layout": "L",
+          "dataGroups": [
+            "Asset ID",
+            "type",
+            "location",
+            "operational status and next maintenance"
+          ],
+          "primaryAction": "Open asset",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M23-S02",
+          "module": "M23",
+          "title": "Asset detail and commissioning",
+          "layout": "D",
+          "dataGroups": [
+            "Serial",
+            "supplier",
+            "warranty",
+            "installation",
+            "commissioning evidence and safety status"
+          ],
+          "primaryAction": "Record commissioning decision",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M23-S03",
+          "module": "M23",
+          "title": "Maintenance work orders",
+          "layout": "L",
+          "dataGroups": [
+            "Asset",
+            "fault",
+            "severity",
+            "technician",
+            "due time and downtime"
+          ],
+          "primaryAction": "Open work order",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-020",
+      "number": 20,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "hospital-operations",
+        "finance-and-supply"
+      ],
+      "screens": [
+        {
+          "id": "M23-S04",
+          "module": "M23",
+          "title": "Maintenance execution",
+          "layout": "F",
+          "dataGroups": [
+            "Findings",
+            "work",
+            "parts",
+            "calibration",
+            "tests and technician"
+          ],
+          "primaryAction": "Submit maintenance record",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M23-S05",
+          "module": "M23",
+          "title": "Asset return to service or retirement",
+          "layout": "X",
+          "dataGroups": [
+            "Safety tests",
+            "reviewer",
+            "restrictions",
+            "disposal evidence and status"
+          ],
+          "primaryAction": "Approve asset disposition",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M24-S01",
+          "module": "M24",
+          "title": "Staff directory",
+          "layout": "L",
+          "dataGroups": [
+            "Staff ID",
+            "department",
+            "role",
+            "employment status and contacts"
+          ],
+          "primaryAction": "Open staff profile",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M24-S02",
+          "module": "M24",
+          "title": "Employment record",
+          "layout": "F",
+          "dataGroups": [
+            "Contract",
+            "assignment",
+            "dates",
+            "confidential documents and HR access scope"
+          ],
+          "primaryAction": "Save employment change",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M24-S03",
+          "module": "M24",
+          "title": "Staff roster",
+          "layout": "B",
+          "dataGroups": [
+            "Shift",
+            "staff",
+            "coverage",
+            "leave and conflicts"
+          ],
+          "primaryAction": "Publish reviewed roster",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M24-S04",
+          "module": "M24",
+          "title": "Attendance and leave review",
+          "layout": "X",
+          "dataGroups": [
+            "Recorded time",
+            "leave",
+            "exceptions",
+            "corrections and approver"
+          ],
+          "primaryAction": "Approve attendance",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M24-S05",
+          "module": "M24",
+          "title": "Payroll preparation",
+          "layout": "F",
+          "dataGroups": [
+            "Period",
+            "approved inputs",
+            "earnings",
+            "deductions",
+            "currency and exceptions"
+          ],
+          "primaryAction": "Submit payroll batch",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M24-S06",
+          "module": "M24",
+          "title": "Payroll approval and payment reconciliation",
+          "layout": "X",
+          "dataGroups": [
+            "Totals",
+            "variances",
+            "authorizations",
+            "payment references and failures"
+          ],
+          "primaryAction": "Approve payroll release",
+          "domainLane": "finance-and-supply",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-021",
+      "number": 21,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "hospital-operations"
+      ],
+      "screens": [
+        {
+          "id": "M25-S01",
+          "module": "M25",
+          "title": "Transport dispatch board",
+          "layout": "B",
+          "dataGroups": [
+            "Requests",
+            "urgency",
+            "vehicles",
+            "crew",
+            "availability and position timestamp"
+          ],
+          "primaryAction": "Assign transport",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M25-S02",
+          "module": "M25",
+          "title": "Transport request",
+          "layout": "F",
+          "dataGroups": [
+            "Patient",
+            "pickup",
+            "destination",
+            "clinical needs",
+            "time and requester"
+          ],
+          "primaryAction": "Submit transport request",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M25-S03",
+          "module": "M25",
+          "title": "Dispatch assignment",
+          "layout": "F",
+          "dataGroups": [
+            "Vehicle",
+            "crew",
+            "route",
+            "equipment checks and receiving site"
+          ],
+          "primaryAction": "Dispatch assigned vehicle",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M25-S04",
+          "module": "M25",
+          "title": "Transport execution and handover",
+          "layout": "F",
+          "dataGroups": [
+            "Departure",
+            "arrival",
+            "events",
+            "care notes",
+            "receiver and acknowledgement"
+          ],
+          "primaryAction": "Complete handover",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M25-S05",
+          "module": "M25",
+          "title": "Transport history and exceptions",
+          "layout": "D",
+          "dataGroups": [
+            "Trip timeline",
+            "delays",
+            "cancellations",
+            "vehicle issues and escalations"
+          ],
+          "primaryAction": "Record exception resolution",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M26-S01",
+          "module": "M26",
+          "title": "Dietary patient worklist",
+          "layout": "L",
+          "dataGroups": [
+            "Patient",
+            "location",
+            "diet",
+            "restrictions",
+            "fasting and last update"
+          ],
+          "primaryAction": "Open dietary order",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M26-S02",
+          "module": "M26",
+          "title": "Dietary order",
+          "layout": "F",
+          "dataGroups": [
+            "Approved diet",
+            "restrictions",
+            "texture",
+            "effective times and prescriber"
+          ],
+          "primaryAction": "Submit dietary order",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M26-S03",
+          "module": "M26",
+          "title": "Meal production plan",
+          "layout": "B",
+          "dataGroups": [
+            "Meal",
+            "ward",
+            "portions",
+            "restrictions and reviewed cutoff"
+          ],
+          "primaryAction": "Release production plan",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-022",
+      "number": 22,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "hospital-operations"
+      ],
+      "screens": [
+        {
+          "id": "M26-S04",
+          "module": "M26",
+          "title": "Meal delivery and acknowledgement",
+          "layout": "F",
+          "dataGroups": [
+            "Patient identification",
+            "tray",
+            "current restrictions",
+            "delivery time and exception"
+          ],
+          "primaryAction": "Record delivery outcome",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M27-S01",
+          "module": "M27",
+          "title": "Mortuary register",
+          "layout": "L",
+          "dataGroups": [
+            "Decedent ID",
+            "received time",
+            "storage",
+            "identification and release status"
+          ],
+          "primaryAction": "Open custody record",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M27-S02",
+          "module": "M27",
+          "title": "Mortuary intake",
+          "layout": "F",
+          "dataGroups": [
+            "Identity evidence",
+            "originating unit",
+            "authorizing document",
+            "belongings and receiving staff"
+          ],
+          "primaryAction": "Record intake",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M27-S03",
+          "module": "M27",
+          "title": "Storage and custody transfer",
+          "layout": "F",
+          "dataGroups": [
+            "Current and destination storage",
+            "seals",
+            "actors",
+            "time and condition"
+          ],
+          "primaryAction": "Record custody transfer",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M27-S04",
+          "module": "M27",
+          "title": "Decedent release review",
+          "layout": "X",
+          "dataGroups": [
+            "Authority",
+            "recipient evidence",
+            "required documents",
+            "dual checks and approvals"
+          ],
+          "primaryAction": "Authorize release",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M27-S05",
+          "module": "M27",
+          "title": "Decedent handover record",
+          "layout": "F",
+          "dataGroups": [
+            "Recipient verification",
+            "authorization",
+            "belongings",
+            "witnesses and handover time"
+          ],
+          "primaryAction": "Confirm release",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M28-S01",
+          "module": "M28",
+          "title": "Hospital operations dashboard",
+          "layout": "H",
+          "dataGroups": [
+            "Service activity",
+            "capacity",
+            "finance summaries",
+            "definitions and freshness"
+          ],
+          "primaryAction": "Open operational worklist",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M28-S02",
+          "module": "M28",
+          "title": "Clinical service analytics",
+          "layout": "T",
+          "dataGroups": [
+            "Aggregated measures",
+            "filters",
+            "denominators",
+            "exclusions and reporting period"
+          ],
+          "primaryAction": "Inspect measure breakdown",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-023",
+      "number": 23,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "hospital-operations",
+        "platform-security-and-integration"
+      ],
+      "screens": [
+        {
+          "id": "M28-S03",
+          "module": "M28",
+          "title": "Financial analytics",
+          "layout": "T",
+          "dataGroups": [
+            "Revenue",
+            "receivables",
+            "payments",
+            "reconciliation and currency"
+          ],
+          "primaryAction": "Inspect financial breakdown",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M28-S04",
+          "module": "M28",
+          "title": "Report catalogue and execution",
+          "layout": "L",
+          "dataGroups": [
+            "Report definitions",
+            "allowed scope",
+            "parameters and refresh schedule"
+          ],
+          "primaryAction": "Run authorized report",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M28-S05",
+          "module": "M28",
+          "title": "Report export and history",
+          "layout": "D",
+          "dataGroups": [
+            "Requested scope",
+            "format",
+            "approval",
+            "expiry and completed exports"
+          ],
+          "primaryAction": "Download authorized export",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M29-S01",
+          "module": "M29",
+          "title": "Facility hierarchy",
+          "layout": "D",
+          "dataGroups": [
+            "Organization",
+            "sites",
+            "departments",
+            "locations and ownership"
+          ],
+          "primaryAction": "Open configuration node",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M29-S02",
+          "module": "M29",
+          "title": "Location and service editor",
+          "layout": "F",
+          "dataGroups": [
+            "Code",
+            "name",
+            "parent",
+            "service type",
+            "availability and effective dates"
+          ],
+          "primaryAction": "Submit configuration draft",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M29-S03",
+          "module": "M29",
+          "title": "Service catalogue",
+          "layout": "L",
+          "dataGroups": [
+            "Services",
+            "departments",
+            "eligible resources",
+            "status and effective version"
+          ],
+          "primaryAction": "Open service configuration",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M29-S04",
+          "module": "M29",
+          "title": "Configuration impact and publication",
+          "layout": "X",
+          "dataGroups": [
+            "Changed values",
+            "dependent workflows",
+            "effective time",
+            "approvals and rollback"
+          ],
+          "primaryAction": "Publish reviewed configuration",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M30-S01",
+          "module": "M30",
+          "title": "Terminology browser",
+          "layout": "L",
+          "dataGroups": [
+            "System",
+            "version",
+            "code",
+            "display",
+            "synonyms",
+            "mappings and licensing metadata"
+          ],
+          "primaryAction": "Inspect concept",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-024",
+      "number": 24,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "platform-security-and-integration"
+      ],
+      "screens": [
+        {
+          "id": "M30-S02",
+          "module": "M30",
+          "title": "Formulary editor",
+          "layout": "F",
+          "dataGroups": [
+            "Product",
+            "formulation",
+            "permitted routes",
+            "restrictions and effective version"
+          ],
+          "primaryAction": "Submit formulary change",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M30-S03",
+          "module": "M30",
+          "title": "Clinical rule package workbench",
+          "layout": "D",
+          "dataGroups": [
+            "Package version",
+            "rule inventory",
+            "dependencies",
+            "provenance and approval status"
+          ],
+          "primaryAction": "Open validation results",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M30-S04",
+          "module": "M30",
+          "title": "Content validation and approval",
+          "layout": "X",
+          "dataGroups": [
+            "Test cases",
+            "mappings",
+            "golden results",
+            "unresolved failures and clinical sign-off"
+          ],
+          "primaryAction": "Approve content package",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M30-S05",
+          "module": "M30",
+          "title": "Content activation and rollback",
+          "layout": "X",
+          "dataGroups": [
+            "Target cell",
+            "current and proposed versions",
+            "impact",
+            "schedule and rollback evidence"
+          ],
+          "primaryAction": "Activate approved package",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M31-S02",
+          "module": "M31",
+          "title": "Template editor",
+          "layout": "F",
+          "dataGroups": [
+            "Sections",
+            "fields",
+            "data bindings",
+            "validation",
+            "layout and language strings"
+          ],
+          "primaryAction": "Save template draft",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M31-S04",
+          "module": "M31",
+          "title": "Document workbench",
+          "layout": "F",
+          "dataGroups": [
+            "Template version",
+            "patient context",
+            "content",
+            "attachments and draft status"
+          ],
+          "primaryAction": "Save document draft",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M31-S05",
+          "module": "M31",
+          "title": "Document signature and amendment",
+          "layout": "X",
+          "dataGroups": [
+            "Final rendered content",
+            "signer authority",
+            "signature",
+            "prior versions and amendment reason"
+          ],
+          "primaryAction": "Sign reviewed document",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M31-S06",
+          "module": "M31",
+          "title": "Document archive and print",
+          "layout": "D",
+          "dataGroups": [
+            "Document version",
+            "status",
+            "access scope",
+            "retention and print metadata"
+          ],
+          "primaryAction": "Print authorized document",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-025",
+      "number": 25,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "platform-security-and-integration"
+      ],
+      "screens": [
+        {
+          "id": "M32-S01",
+          "module": "M32",
+          "title": "Consent and privacy overview",
+          "layout": "D",
+          "dataGroups": [
+            "Directives",
+            "legal basis metadata",
+            "purpose",
+            "recipients",
+            "proxies",
+            "expiry and restrictions"
+          ],
+          "primaryAction": "Open directive",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M32-S02",
+          "module": "M32",
+          "title": "Consent directive capture",
+          "layout": "F",
+          "dataGroups": [
+            "Subject",
+            "scope",
+            "purpose",
+            "recipient",
+            "dates",
+            "evidence",
+            "interpreter and withdrawal information"
+          ],
+          "primaryAction": "Submit directive",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M32-S03",
+          "module": "M32",
+          "title": "Consent verification and revocation",
+          "layout": "X",
+          "dataGroups": [
+            "Authority evidence",
+            "active scope",
+            "conflicts",
+            "proposed revocation and consequences"
+          ],
+          "primaryAction": "Record directive decision",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M32-S04",
+          "module": "M32",
+          "title": "Disclosure request review",
+          "layout": "X",
+          "dataGroups": [
+            "Requester",
+            "requested records",
+            "purpose",
+            "authority",
+            "redactions",
+            "approvals and expiry"
+          ],
+          "primaryAction": "Authorize scoped disclosure",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M32-S05",
+          "module": "M32",
+          "title": "Privacy requests and incidents",
+          "layout": "L",
+          "dataGroups": [
+            "Access or correction requests",
+            "complaints",
+            "deadlines",
+            "incidents and accountable owner"
+          ],
+          "primaryAction": "Open privacy case",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M33-S01",
+          "module": "M33",
+          "title": "Workforce accounts",
+          "layout": "L",
+          "dataGroups": [
+            "Identity",
+            "account status",
+            "organization",
+            "roles and expiry"
+          ],
+          "primaryAction": "Open workforce account",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M33-S02",
+          "module": "M33",
+          "title": "Account onboarding and verification",
+          "layout": "F",
+          "dataGroups": [
+            "Identity evidence",
+            "organization",
+            "contact",
+            "employment reference and verifier"
+          ],
+          "primaryAction": "Activate verified account",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M33-S03",
+          "module": "M33",
+          "title": "Role and permission policy",
+          "layout": "F",
+          "dataGroups": [
+            "Role",
+            "actions",
+            "tenant scope",
+            "department",
+            "purpose and restrictions"
+          ],
+          "primaryAction": "Submit policy change",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-026",
+      "number": 26,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "platform-security-and-integration"
+      ],
+      "screens": [
+        {
+          "id": "M33-S04",
+          "module": "M33",
+          "title": "Clinical privilege review",
+          "layout": "X",
+          "dataGroups": [
+            "Credentials",
+            "authorized procedures",
+            "dates",
+            "evidence and approver"
+          ],
+          "primaryAction": "Approve scoped privilege",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M33-S05",
+          "module": "M33",
+          "title": "Access reviews and revocation",
+          "layout": "X",
+          "dataGroups": [
+            "Current grants",
+            "usage",
+            "reviewer",
+            "revocation scope and effective time"
+          ],
+          "primaryAction": "Revoke selected access",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M33-S06",
+          "module": "M33",
+          "title": "Sessions and authentication security",
+          "layout": "D",
+          "dataGroups": [
+            "Active sessions",
+            "authenticators",
+            "last activity",
+            "local grants and revocation status"
+          ],
+          "primaryAction": "Revoke session",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M33-S07",
+          "module": "M33",
+          "title": "Emergency access review",
+          "layout": "X",
+          "dataGroups": [
+            "Named actor",
+            "patient scope",
+            "reason",
+            "duration",
+            "actions and retrospective reviewer"
+          ],
+          "primaryAction": "Record emergency access review",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M34-S01",
+          "module": "M34",
+          "title": "Audit search",
+          "layout": "L",
+          "dataGroups": [
+            "Actor",
+            "patient",
+            "action",
+            "outcome",
+            "time",
+            "cell and purpose filters"
+          ],
+          "primaryAction": "Search authorized evidence",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M34-S02",
+          "module": "M34",
+          "title": "Audit event detail",
+          "layout": "D",
+          "dataGroups": [
+            "Event ID",
+            "actor",
+            "subject",
+            "policy",
+            "timestamp",
+            "outcome",
+            "correlation and integrity status"
+          ],
+          "primaryAction": "Inspect related events",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M34-S03",
+          "module": "M34",
+          "title": "Clinical provenance timeline",
+          "layout": "T",
+          "dataGroups": [
+            "Record revisions",
+            "signatures",
+            "sources",
+            "amendments and linked evidence"
+          ],
+          "primaryAction": "Open original revision",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M34-S04",
+          "module": "M34",
+          "title": "Audit evidence export",
+          "layout": "X",
+          "dataGroups": [
+            "Case",
+            "scope",
+            "redaction",
+            "integrity manifest",
+            "recipient and approval"
+          ],
+          "primaryAction": "Create controlled evidence export",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-027",
+      "number": 27,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "platform-security-and-integration"
+      ],
+      "screens": [
+        {
+          "id": "M34-S05",
+          "module": "M34",
+          "title": "Retention hold and disposal review",
+          "layout": "X",
+          "dataGroups": [
+            "Policy",
+            "eligible records",
+            "legal hold",
+            "scope",
+            "approvals and disposal evidence"
+          ],
+          "primaryAction": "Approve eligible retention action",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M35-S01",
+          "module": "M35",
+          "title": "Partner integration directory",
+          "layout": "L",
+          "dataGroups": [
+            "Partner",
+            "contracts",
+            "scopes",
+            "environment",
+            "status and owner"
+          ],
+          "primaryAction": "Open partner integration",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M35-S02",
+          "module": "M35",
+          "title": "Developer API catalogue",
+          "layout": "D",
+          "dataGroups": [
+            "Versioned contracts",
+            "examples",
+            "authentication",
+            "quotas",
+            "changelog and deprecation"
+          ],
+          "primaryAction": "Open endpoint documentation",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M35-S03",
+          "module": "M35",
+          "title": "Developer application and credentials",
+          "layout": "F",
+          "dataGroups": [
+            "Application",
+            "environment",
+            "approved scopes",
+            "credential expiry and callback domains"
+          ],
+          "primaryAction": "Request scoped credentials",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M35-S04",
+          "module": "M35",
+          "title": "Integration message monitor",
+          "layout": "L",
+          "dataGroups": [
+            "Correlation ID",
+            "source",
+            "destination",
+            "contract",
+            "processing status and redacted error"
+          ],
+          "primaryAction": "Open message trace",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M35-S05",
+          "module": "M35",
+          "title": "Mapping and contract validation",
+          "layout": "X",
+          "dataGroups": [
+            "Source fields",
+            "target fields",
+            "terminology mappings",
+            "fixture results and version"
+          ],
+          "primaryAction": "Approve mapping version",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M35-S06",
+          "module": "M35",
+          "title": "Quarantine and replay review",
+          "layout": "X",
+          "dataGroups": [
+            "Failure",
+            "original event",
+            "deduplication",
+            "external effects",
+            "proposed replay scope"
+          ],
+          "primaryAction": "Authorize controlled replay",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M36-S01",
+          "module": "M36",
+          "title": "Device and gateway fleet",
+          "layout": "L",
+          "dataGroups": [
+            "Device ID",
+            "location",
+            "status",
+            "connectivity",
+            "firmware and last seen"
+          ],
+          "primaryAction": "Open device",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-028",
+      "number": 28,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "platform-security-and-integration",
+        "hospital-operations"
+      ],
+      "screens": [
+        {
+          "id": "M36-S02",
+          "module": "M36",
+          "title": "Device enrolment and mapping",
+          "layout": "F",
+          "dataGroups": [
+            "Identity",
+            "protocol",
+            "approved model",
+            "field mapping",
+            "units and credentials"
+          ],
+          "primaryAction": "Submit device enrolment",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M36-S03",
+          "module": "M36",
+          "title": "Patient device association",
+          "layout": "X",
+          "dataGroups": [
+            "Patient identifiers",
+            "device",
+            "location",
+            "association start and end",
+            "verifier"
+          ],
+          "primaryAction": "Confirm association",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M36-S04",
+          "module": "M36",
+          "title": "Device data review and quarantine",
+          "layout": "X",
+          "dataGroups": [
+            "Raw reference",
+            "normalized value",
+            "units",
+            "clock quality",
+            "association and errors"
+          ],
+          "primaryAction": "Release validated observation",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M36-S05",
+          "module": "M36",
+          "title": "Gateway diagnostics",
+          "layout": "D",
+          "dataGroups": [
+            "Connection",
+            "queue",
+            "last delivery",
+            "clock drift",
+            "retry and error history"
+          ],
+          "primaryAction": "Run authorized diagnostic",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M37-S01",
+          "module": "M37",
+          "title": "Notification inbox",
+          "layout": "L",
+          "dataGroups": [
+            "Priority label",
+            "patient context when authorized",
+            "sender",
+            "sent time and acknowledgement"
+          ],
+          "primaryAction": "Open notification",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M37-S02",
+          "module": "M37",
+          "title": "Notification detail and acknowledgement",
+          "layout": "D",
+          "dataGroups": [
+            "Message",
+            "source task",
+            "delivery history",
+            "acknowledgement and deadline"
+          ],
+          "primaryAction": "Acknowledge responsibility",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M37-S03",
+          "module": "M37",
+          "title": "Communication template and routing",
+          "layout": "F",
+          "dataGroups": [
+            "Purpose",
+            "language",
+            "approved message",
+            "channels",
+            "recipients and escalation"
+          ],
+          "primaryAction": "Submit routing change",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M37-S04",
+          "module": "M37",
+          "title": "Delivery failures and escalation",
+          "layout": "L",
+          "dataGroups": [
+            "Attempt history",
+            "channel errors",
+            "due escalation",
+            "accountable owner and next action"
+          ],
+          "primaryAction": "Resolve delivery failure",
+          "domainLane": "hospital-operations",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-029",
+      "number": 29,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "platform-security-and-integration"
+      ],
+      "screens": [
+        {
+          "id": "M38-S01",
+          "module": "M38",
+          "title": "Offline synchronization status",
+          "layout": "D",
+          "dataGroups": [
+            "Local availability",
+            "owner cell",
+            "last successful sync",
+            "queued items and limits"
+          ],
+          "primaryAction": "Inspect pending changes",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M38-S02",
+          "module": "M38",
+          "title": "Pending changes queue",
+          "layout": "L",
+          "dataGroups": [
+            "Record",
+            "action",
+            "local timestamp",
+            "idempotency key",
+            "status and reason"
+          ],
+          "primaryAction": "Open pending change",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M38-S03",
+          "module": "M38",
+          "title": "Synchronization conflict review",
+          "layout": "X",
+          "dataGroups": [
+            "Local and authoritative versions",
+            "ownership epoch",
+            "source",
+            "differing fields and permitted resolutions"
+          ],
+          "primaryAction": "Submit reviewed resolution",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M38-S04",
+          "module": "M38",
+          "title": "Ownership transfer review",
+          "layout": "X",
+          "dataGroups": [
+            "Source",
+            "destination",
+            "freeze state",
+            "positive fencing evidence",
+            "epoch and reconciliation"
+          ],
+          "primaryAction": "Authorize qualified transfer",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M38-S05",
+          "module": "M38",
+          "title": "Reconciliation history",
+          "layout": "T",
+          "dataGroups": [
+            "Applied changes",
+            "rejected changes",
+            "reviewer",
+            "evidence and final versions"
+          ],
+          "primaryAction": "Inspect reconciled record",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M39-S01",
+          "module": "M39",
+          "title": "Tenant and cell fleet",
+          "layout": "L",
+          "dataGroups": [
+            "Tenant",
+            "placement",
+            "tier",
+            "capacity",
+            "version and lifecycle"
+          ],
+          "primaryAction": "Open cell",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M39-S02",
+          "module": "M39",
+          "title": "Tenant provisioning",
+          "layout": "F",
+          "dataGroups": [
+            "Identity",
+            "region",
+            "tier",
+            "services",
+            "quotas",
+            "residency constraints and owner"
+          ],
+          "primaryAction": "Submit provisioning plan",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M39-S03",
+          "module": "M39",
+          "title": "Cell qualification",
+          "layout": "X",
+          "dataGroups": [
+            "Isolation",
+            "dependencies",
+            "capacity",
+            "identity continuity",
+            "backup and test evidence"
+          ],
+          "primaryAction": "Approve cell activation",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    },
+    {
+      "id": "SYNQ-OPS-030",
+      "number": 30,
+      "execution": "single-coordinated-cycle",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "screenCount": 8,
+      "workstreams": [
+        "platform-security-and-integration"
+      ],
+      "screens": [
+        {
+          "id": "M39-S04",
+          "module": "M39",
+          "title": "Fleet release rollout",
+          "layout": "B",
+          "dataGroups": [
+            "Artifact version",
+            "canaries",
+            "migration compatibility",
+            "health gates and rollout status"
+          ],
+          "primaryAction": "Start approved staged release",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M39-S05",
+          "module": "M39",
+          "title": "Cell migration and routing",
+          "layout": "X",
+          "dataGroups": [
+            "Copy",
+            "catchup",
+            "freeze",
+            "fencing",
+            "verify",
+            "switch",
+            "observe and retirement evidence"
+          ],
+          "primaryAction": "Advance permitted migration step",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M40-S01",
+          "module": "M40",
+          "title": "Service health and capacity",
+          "layout": "H",
+          "dataGroups": [
+            "Critical workflow SLIs",
+            "dependencies",
+            "saturation",
+            "backlog and cell scope"
+          ],
+          "primaryAction": "Open incident investigation",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M40-S02",
+          "module": "M40",
+          "title": "Incident workspace",
+          "layout": "D",
+          "dataGroups": [
+            "Timeline",
+            "impact",
+            "owner",
+            "actions",
+            "communication and recovery criteria"
+          ],
+          "primaryAction": "Record incident action",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M40-S03",
+          "module": "M40",
+          "title": "Backup catalogue and verification",
+          "layout": "L",
+          "dataGroups": [
+            "Backup time",
+            "WAL coverage",
+            "keys",
+            "objects",
+            "integrity and restore evidence"
+          ],
+          "primaryAction": "Open backup set",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M40-S04",
+          "module": "M40",
+          "title": "Recovery plan and execution",
+          "layout": "X",
+          "dataGroups": [
+            "Target point",
+            "fencing",
+            "database",
+            "objects",
+            "audit",
+            "external effects",
+            "checks and approvals"
+          ],
+          "primaryAction": "Advance verified recovery step",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M40-S05",
+          "module": "M40",
+          "title": "Recovery validation and reopening",
+          "layout": "X",
+          "dataGroups": [
+            "Reconciliation results",
+            "smoke tests",
+            "residual risks",
+            "egress status and approvals"
+          ],
+          "primaryAction": "Authorize scoped reopening",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        },
+        {
+          "id": "M40-S06",
+          "module": "M40",
+          "title": "Operational telemetry explorer",
+          "layout": "T",
+          "dataGroups": [
+            "Metrics",
+            "traces",
+            "redacted logs",
+            "correlation",
+            "time range and access scope"
+          ],
+          "primaryAction": "Inspect failure trace",
+          "domainLane": "platform-security-and-integration",
+          "status": "MISSING_DOMAIN_INTEGRATION",
+          "accepted": false
+        }
+      ],
+      "dependencies": [
+        "GATE-00-reconcile-clinical-backend-and-UI",
+        "GATE-01-verified-identity-and-tenant-cell",
+        "GATE-02-review-typed-domain-contracts",
+        "GATE-03-db-and-outbox-concurrency"
+      ],
+      "doneWhen": "All eight screens individually pass all 14 acceptance requirements; zero unknown fields/actions; no unsafe clinical writes; evidence archived",
+      "evidenceRequired": [
+        "one-per-screen acceptance manifest",
+        "migration and DB regression",
+        "scope/IDOR tests",
+        "workflow state and idempotency tests",
+        "responsive EN/FR browser evidence",
+        "print/report correctness where applicable",
+        "independent verification",
+        "CI run permalink and exact git SHA"
+      ]
+    }
+  ]
+}

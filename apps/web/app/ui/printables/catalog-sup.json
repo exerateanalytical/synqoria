@@ -1,0 +1,680 @@
+[
+  {
+    "id": "P15",
+    "en": "Purchase order",
+    "fr": "Bon de commande",
+    "domain": "SUP",
+    "domainEn": "Procurement suppliers and stores",
+    "domainFr": "Achats fournisseurs et magasin",
+    "module": "M21",
+    "kind": "purchase-order",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Buyer",
+        "fields": [
+          "Hospital legal entity and cost center",
+          "Purchase order number"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Supplier",
+        "fields": [
+          "Supplier and contract",
+          "Delivery address and dates"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Items",
+        "fields": [
+          "SKU and description",
+          "Quantity and unit",
+          "Unit cost and taxes",
+          "Amount"
+        ]
+      },
+      {
+        "id": "s04",
+        "heading": "Approval",
+        "fields": [
+          "Purchase authorizer",
+          "Budget and procurement reference"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "P16",
+    "en": "Goods receipt note",
+    "fr": "Bon de réception des marchandises",
+    "domain": "SUP",
+    "domainEn": "Procurement suppliers and stores",
+    "domainFr": "Achats fournisseurs et magasin",
+    "module": "M22",
+    "kind": "goods-receipt",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Purchase",
+        "fields": [
+          "Order/supplier and delivery reference",
+          "Receiving department"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Goods",
+        "fields": [
+          "Item and quantity ordered/delivered/accepted",
+          "Batch and expiry",
+          "Condition"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Quality",
+        "fields": [
+          "Discrepancies and quarantine",
+          "Receiver and checker"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUP-003",
+    "en": "Internal purchase requisition",
+    "fr": "Demande interne d'achat",
+    "domain": "SUP",
+    "domainEn": "Procurement suppliers and stores",
+    "domainFr": "Achats fournisseurs et magasin",
+    "module": "M21",
+    "kind": "order",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Request",
+        "fields": [
+          "Department and requester",
+          "Required date",
+          "Purpose"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Items",
+        "fields": [
+          "Product code",
+          "Quantity and unit",
+          "Estimate"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Cost center and managerial authorization"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUP-004",
+    "en": "Request for quotation",
+    "fr": "Demande de prix à fournisseur",
+    "domain": "SUP",
+    "domainEn": "Procurement suppliers and stores",
+    "domainFr": "Achats fournisseurs et magasin",
+    "module": "M21",
+    "kind": "procurement",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Request",
+        "fields": [
+          "Buyer and reference",
+          "Delivery and quotation deadline"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Specifications",
+        "fields": [
+          "Item description",
+          "Quantity and technical requirement"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Commercial",
+        "fields": [
+          "Tax and delivery terms",
+          "Contact"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUP-005",
+    "en": "Supplier bid comparison matrix",
+    "fr": "Tableau comparatif des offres",
+    "domain": "SUP",
+    "domainEn": "Procurement suppliers and stores",
+    "domainFr": "Achats fournisseurs et magasin",
+    "module": "M21",
+    "kind": "table",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Procurement",
+        "fields": [
+          "Reference and eligibility",
+          "Evaluation method"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Offers",
+        "fields": [
+          "Supplier",
+          "Price",
+          "Delivery",
+          "Compliance and scores"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Evaluation committee",
+          "Decision and conflict disclosures"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUP-006",
+    "en": "Supplier registration and due diligence",
+    "fr": "Enregistrement et vérification fournisseur",
+    "domain": "SUP",
+    "domainEn": "Procurement suppliers and stores",
+    "domainFr": "Achats fournisseurs et magasin",
+    "module": "M21",
+    "kind": "form",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Business",
+        "fields": [
+          "Registered name and identifier",
+          "Tax reference",
+          "Address and banking details"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Compliance",
+        "fields": [
+          "Beneficial ownership",
+          "Conflict and sanctions review"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Vendor owner and effective state"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUP-007",
+    "en": "Purchase return and rejection form",
+    "fr": "Bon de retour fournisseur",
+    "domain": "SUP",
+    "domainEn": "Procurement suppliers and stores",
+    "domainFr": "Achats fournisseurs et magasin",
+    "module": "M21",
+    "kind": "inventory",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Delivery",
+        "fields": [
+          "Goods receipt and order",
+          "Supplier"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Return",
+        "fields": [
+          "Defective items and batch",
+          "Quantity",
+          "Reason"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Disposition",
+        "fields": [
+          "Replacement/credit authorization",
+          "Shipping and acceptance"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUP-008",
+    "en": "Department store issue voucher",
+    "fr": "Bon de sortie magasin",
+    "domain": "SUP",
+    "domainEn": "Procurement suppliers and stores",
+    "domainFr": "Achats fournisseurs et magasin",
+    "module": "M21",
+    "kind": "inventory",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Request",
+        "fields": [
+          "Department and cost center",
+          "Authorized requisition"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Items",
+        "fields": [
+          "Product and lot",
+          "Issued quantity",
+          "Unit"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Handover",
+        "fields": [
+          "Storekeeper and recipient",
+          "Stock movement reference"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUP-009",
+    "en": "Inventory adjustment authorization",
+    "fr": "Autorisation de régularisation de stock",
+    "domain": "SUP",
+    "domainEn": "Procurement suppliers and stores",
+    "domainFr": "Achats fournisseurs et magasin",
+    "module": "M21",
+    "kind": "reconciliation",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Stock",
+        "fields": [
+          "Product",
+          "Location and batch",
+          "Recorded quantity"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Adjustment",
+        "fields": [
+          "Proposed quantity and discrepancy",
+          "Investigation"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Maker-checker and ledger origin"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUP-010",
+    "en": "Cycle count and inventory sheet",
+    "fr": "Feuille d'inventaire physique",
+    "domain": "SUP",
+    "domainEn": "Procurement suppliers and stores",
+    "domainFr": "Achats fournisseurs et magasin",
+    "module": "M21",
+    "kind": "inventory",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Count",
+        "fields": [
+          "Warehouse and date",
+          "Team and count method"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Items",
+        "fields": [
+          "SKU",
+          "Lot and expiry",
+          "Physical and system quantities"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Exceptions",
+        "fields": [
+          "Variance",
+          "Recount and sign-off"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUP-011",
+    "en": "Stock movement and balance register",
+    "fr": "Registre des mouvements de stock",
+    "domain": "SUP",
+    "domainEn": "Procurement suppliers and stores",
+    "domainFr": "Achats fournisseurs et magasin",
+    "module": "M21",
+    "kind": "log",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Product",
+        "fields": [
+          "Item code",
+          "Location and unit"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Entries",
+        "fields": [
+          "Receipt",
+          "Issue",
+          "Return",
+          "Transfer",
+          "Balance"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Controls",
+        "fields": [
+          "Source transactions",
+          "Authorization and audit"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUP-012",
+    "en": "Stock write-off and disposal report",
+    "fr": "Procès-verbal de sortie définitive de stock",
+    "domain": "SUP",
+    "domainEn": "Procurement suppliers and stores",
+    "domainFr": "Achats fournisseurs et magasin",
+    "module": "M21",
+    "kind": "inventory",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Disposal",
+        "fields": [
+          "Product/batch",
+          "Quantity",
+          "Reason and hazard class"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Process",
+        "fields": [
+          "Approved destruction route and witness",
+          "Date"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Ledger",
+        "fields": [
+          "Authorized adjustment and evidence"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUP-013",
+    "en": "Controlled stock transfer receipt",
+    "fr": "Accusé de transfert de stock sensible",
+    "domain": "SUP",
+    "domainEn": "Procurement suppliers and stores",
+    "domainFr": "Achats fournisseurs et magasin",
+    "module": "M21",
+    "kind": "handover",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Movement",
+        "fields": [
+          "Origin/destination",
+          "Product and lot",
+          "Quantity"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Custody",
+        "fields": [
+          "Sender/courier/receiver",
+          "Times and condition"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Security",
+        "fields": [
+          "Deviations and acceptance"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUP-014",
+    "en": "Medicine or supply expiry register",
+    "fr": "Registre des produits périmés",
+    "domain": "SUP",
+    "domainEn": "Procurement suppliers and stores",
+    "domainFr": "Achats fournisseurs et magasin",
+    "module": "M21",
+    "kind": "log",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Stock",
+        "fields": [
+          "Item and batch",
+          "Expiry",
+          "Location"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Action",
+        "fields": [
+          "Quarantine",
+          "Review and disposition",
+          "Staff"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUP-015",
+    "en": "Warehouse temperature and humidity log",
+    "fr": "Relevé de température et humidité magasin",
+    "domain": "SUP",
+    "domainEn": "Procurement suppliers and stores",
+    "domainFr": "Achats fournisseurs et magasin",
+    "module": "M21",
+    "kind": "log",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Environment",
+        "fields": [
+          "Location and instrument",
+          "Timestamp"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Measurements",
+        "fields": [
+          "Temperature and humidity values/units",
+          "Expected limits"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Response",
+        "fields": [
+          "Excursions and corrective action"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUP-016",
+    "en": "Purchase order amendment request",
+    "fr": "Demande de modification de bon de commande",
+    "domain": "SUP",
+    "domainEn": "Procurement suppliers and stores",
+    "domainFr": "Achats fournisseurs et magasin",
+    "module": "M21",
+    "kind": "form",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Original",
+        "fields": [
+          "Purchase order and supplier",
+          "Prior revision"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Proposed",
+        "fields": [
+          "Changed item",
+          "Quantity",
+          "Price or delivery"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Reason",
+          "Budget validation and new version"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SUP-017",
+    "en": "Vendor invoice matching worksheet",
+    "fr": "Fiche de rapprochement facture fournisseur",
+    "domain": "SUP",
+    "domainEn": "Procurement suppliers and stores",
+    "domainFr": "Achats fournisseurs et magasin",
+    "module": "M21",
+    "kind": "reconciliation",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Documents",
+        "fields": [
+          "Purchase order",
+          "Goods receipt",
+          "Supplier invoice"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Match",
+        "fields": [
+          "Quantities",
+          "Unit cost",
+          "Taxes and differences"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Release",
+        "fields": [
+          "Dispute or payable approval and reviewer"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]

@@ -1,0 +1,466 @@
+[
+  {
+    "id": "HT-FAC-001",
+    "en": "Biomedical equipment calibration certificate",
+    "fr": "Certificat d'étalonnage biomédical",
+    "domain": "FAC",
+    "domainEn": "Facilities biomedical engineering and maintenance",
+    "domainFr": "Installations équipements biomédicaux et maintenance",
+    "module": "M23",
+    "kind": "certificate",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Equipment",
+        "fields": [
+          "Asset and serial",
+          "Manufacturer/model",
+          "Location"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Calibration",
+        "fields": [
+          "Method and standard",
+          "As-found/as-left measures",
+          "Tolerance"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Qualified technician and next due date"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FAC-002",
+    "en": "Equipment preventive maintenance checklist",
+    "fr": "Liste d'entretien préventif des équipements",
+    "domain": "FAC",
+    "domainEn": "Facilities biomedical engineering and maintenance",
+    "domainFr": "Installations équipements biomédicaux et maintenance",
+    "module": "M23",
+    "kind": "checklist",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Asset",
+        "fields": [
+          "ID",
+          "Scheduled interval",
+          "Department"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Inspection",
+        "fields": [
+          "Safety checks and measurements",
+          "Replacement parts"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Outcome",
+        "fields": [
+          "Pass/fail",
+          "Technician and return to service"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FAC-003",
+    "en": "Biomedical equipment fault report",
+    "fr": "Fiche de panne d'équipement",
+    "domain": "FAC",
+    "domainEn": "Facilities biomedical engineering and maintenance",
+    "domainFr": "Installations équipements biomédicaux et maintenance",
+    "module": "M23",
+    "kind": "form",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Fault",
+        "fields": [
+          "Equipment serial",
+          "Department and symptoms",
+          "Start time"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Risk",
+        "fields": [
+          "Clinical service impact",
+          "Isolation status"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Resolution",
+        "fields": [
+          "Ticket and assigned engineer"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FAC-004",
+    "en": "Equipment return-to-service authorization",
+    "fr": "Autorisation de remise en service d'équipement",
+    "domain": "FAC",
+    "domainEn": "Facilities biomedical engineering and maintenance",
+    "domainFr": "Installations équipements biomédicaux et maintenance",
+    "module": "M23",
+    "kind": "review",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Asset",
+        "fields": [
+          "Equipment and defect ticket",
+          "Work performed"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Validation",
+        "fields": [
+          "Verification and tests",
+          "Safety officer"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Recommission date/time and restrictions"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FAC-005",
+    "en": "Facility maintenance work order",
+    "fr": "Ordre de travail de maintenance",
+    "domain": "FAC",
+    "domainEn": "Facilities biomedical engineering and maintenance",
+    "domainFr": "Installations équipements biomédicaux et maintenance",
+    "module": "M23",
+    "kind": "order",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Work",
+        "fields": [
+          "Site and issue",
+          "Requested intervention",
+          "Priority"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Execution",
+        "fields": [
+          "Assigned worker",
+          "Materials",
+          "Start/end"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Acceptance",
+        "fields": [
+          "Functional test and requester sign-off"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FAC-006",
+    "en": "Facilities shift handover log",
+    "fr": "Passation de service technique",
+    "domain": "FAC",
+    "domainEn": "Facilities biomedical engineering and maintenance",
+    "domainFr": "Installations équipements biomédicaux et maintenance",
+    "module": "M23",
+    "kind": "log",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Shift",
+        "fields": [
+          "Duty team and covered systems",
+          "Time"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Pending",
+        "fields": [
+          "Work orders",
+          "Unsafe equipment",
+          "Escalations"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Handover",
+        "fields": [
+          "Outgoing and incoming acknowledgment"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FAC-007",
+    "en": "Hospital infrastructure incident report",
+    "fr": "Rapport d'incident des installations",
+    "domain": "FAC",
+    "domainEn": "Facilities biomedical engineering and maintenance",
+    "domainFr": "Installations équipements biomédicaux et maintenance",
+    "module": "M23",
+    "kind": "quality",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Incident",
+        "fields": [
+          "Building or utility",
+          "Time and safety impact"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Response",
+        "fields": [
+          "Isolation or mitigation",
+          "Service disruption"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Closure",
+        "fields": [
+          "Root cause and prevention plan"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FAC-008",
+    "en": "Water and environmental quality record",
+    "fr": "Registre de contrôle environnemental",
+    "domain": "FAC",
+    "domainEn": "Facilities biomedical engineering and maintenance",
+    "domainFr": "Installations équipements biomédicaux et maintenance",
+    "module": "M23",
+    "kind": "log",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Sampling",
+        "fields": [
+          "Water/air or surface point",
+          "Date and method"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Results",
+        "fields": [
+          "Parameter",
+          "Unit and laboratory source"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Action",
+        "fields": [
+          "Threshold policy and corrective response"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FAC-009",
+    "en": "Cleaning and environmental disinfection log",
+    "fr": "Registre d'entretien et de désinfection",
+    "domain": "FAC",
+    "domainEn": "Facilities biomedical engineering and maintenance",
+    "domainFr": "Installations équipements biomédicaux et maintenance",
+    "module": "M23",
+    "kind": "checklist",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Location",
+        "fields": [
+          "Ward or room",
+          "Date/shift and cleaning protocol"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Verification",
+        "fields": [
+          "Surface or terminal cleaning",
+          "Supplies used"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Supervisor and nonconformity"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FAC-010",
+    "en": "Equipment outage and contingency notice",
+    "fr": "Avis de mise hors service d'équipement",
+    "domain": "FAC",
+    "domainEn": "Facilities biomedical engineering and maintenance",
+    "domainFr": "Installations équipements biomédicaux et maintenance",
+    "module": "M23",
+    "kind": "notice",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Outage",
+        "fields": [
+          "Service and equipment",
+          "Start and expected restoration"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Impact",
+        "fields": [
+          "Affected care and alternative resource"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Contact",
+        "fields": [
+          "Incident owner and updates"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FAC-011",
+    "en": "Medical gas supply inspection",
+    "fr": "Contrôle des gaz médicaux",
+    "domain": "FAC",
+    "domainEn": "Facilities biomedical engineering and maintenance",
+    "domainFr": "Installations équipements biomédicaux et maintenance",
+    "module": "M23",
+    "kind": "checklist",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Supply",
+        "fields": [
+          "Gas type and source",
+          "Pressure and alarm indicators"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Safety",
+        "fields": [
+          "Leak and cylinder condition",
+          "Authorized operator"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Issue",
+        "fields": [
+          "Corrective action and next check"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-FAC-012",
+    "en": "Power generator and UPS test log",
+    "fr": "Registre de test des groupes électrogènes et UPS",
+    "domain": "FAC",
+    "domainEn": "Facilities biomedical engineering and maintenance",
+    "domainFr": "Installations équipements biomédicaux et maintenance",
+    "module": "M23",
+    "kind": "log",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "System",
+        "fields": [
+          "Generator or UPS",
+          "Capacity and location"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Test",
+        "fields": [
+          "Date",
+          "Load and duration",
+          "Fuel/battery condition"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Result",
+        "fields": [
+          "Failures and remediation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]

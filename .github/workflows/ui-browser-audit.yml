@@ -1,0 +1,47 @@
+name: SYNQORIA UI browser specimen audit
+on:
+  push:
+    branches:
+      - work/ui-controls-coverage-2026-11-05
+permissions:
+  contents: read
+jobs:
+  ui-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install web workspace dependencies
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Compile UX core
+        run: npm run build --workspace packages/ux-core
+      - name: Build browser-test Next web app
+        run: npm run build --workspace apps/web
+      - name: Install pinned Playwright Chromium
+        run: |
+          npm install --no-save playwright@1.56.1 --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Start compiled Next server
+        run: |
+          (cd apps/web && ../../node_modules/.bin/next start --port 3000) > /tmp/synqoria-next.log 2>&1 &
+          for i in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:3000/ui/catalog >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/synqoria-next.log
+          exit 1
+      - name: Crawl all 261 screen routes and inspect 21 responsive layouts
+        run: node tests/ui_browser_audit.mjs
+      - name: Upload screenshots and browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synqoria-ui-browser-specimen-evidence
+          path: /tmp/synqoria-ui-browser-audit/
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Limitations
+        run: echo "Smoke checks cannot replace screen-specific clinical, accessibility, localization and security acceptance"

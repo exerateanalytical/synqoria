@@ -1,0 +1,31 @@
+name: SYNQORIA P03 staff grants and identity gate
+on:
+  push:
+    branches:
+      - work/p03-authoritative-staff-grants-2026-11-05
+  pull_request:
+    paths:
+      - apps/web/lib/oidc-workforce-grants.mjs
+      - tests/oidc_workforce_grants.test.mjs
+      - .github/workflows/p03-authoritative-staff.yml
+permissions:
+  contents: read
+jobs:
+  test-staff-authority:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Authoritative identity, shift, tenant, scope denial cases
+        run: node --test tests/oidc_workforce_grants.test.mjs tests/oidc_session_orchestrator.test.mjs tests/oidc_session_reauthorization.test.mjs tests/oidc_staff_service.test.mjs tests/clinical_opaque_session_admission.test.mjs tests/patient_disclosure_authorization.test.mjs tests/encounter_disclosure_authorization.test.mjs tests/identity_security_audit.test.mjs tests/real_clinical_screen_runtime.test.mjs tests/longitudinal_read_integration.test.mjs tests/opaque_staff_session.test.mjs
+      - name: Preserve prior OIDC cryptographic/one-use tests
+        run: node --test tests/oidc_staff_verification.test.mjs tests/oidc_login_flow.test.mjs tests/oidc_one_use.test.mjs tests/oidc_code_exchange.test.mjs tests/oidc_token_introspection.test.mjs
+      - name: Verify 261-screen integrity and no unapproved writes
+        run: |
+          node --test tests/operational_240_one_cycle_plan.test.mjs tests/operational_gap_registry.test.mjs tests/p03_identity_engineering_ledger.test.mjs
+          python3 tests/test_navigation_contract.py
+      - name: Gate statement
+        run: echo "Staff-source contract tests only, not deployed hospital IdP, staff issuer, tenant grants, or clinical release."

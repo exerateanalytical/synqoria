@@ -6,7 +6,7 @@ from verify_lock_integrity import audit as lock_audit
 from probe_application_builds import audit as installed_audit
 from attest_app_builds import attest
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-COMMANDS=[('next-build',['npm','run','build','--workspace','@synqoria/web'],'.'),('staff-expo-export',['npx','--no-install','expo','export','--platform','all'],'apps/staff-mobile'),('patient-expo-export',['npx','--no-install','expo','export','--platform','all'],'apps/patient-mobile')]
+COMMANDS=[('ux-core-build',['npm','run','build','--workspace','@synqoria/ux-core'],'.'),('next-build',['npm','run','build','--workspace','@synqoria/web'],'.'),('staff-expo-export',['npx','--no-install','expo','export','--platform','all'],'apps/staff-mobile'),('patient-expo-export',['npx','--no-install','expo','export','--platform','all'],'apps/patient-mobile')]
 def execute(root=ROOT,timeout=240,commands=COMMANDS):
  root=pathlib.Path(root); blockers=pin_audit(root)+lock_audit(root)+installed_audit(root)['issues'];checks=[]
  if blockers:return {'status':'BLOCKED','blockers':sorted(set(blockers)),'checks':[],'builds_passed':0,'clinical_release':False}
@@ -16,7 +16,7 @@ def execute(root=ROOT,timeout=240,commands=COMMANDS):
    checks.append({'name':name,'argv':cmd,'exit_code':p.returncode,'stdout':p.stdout[-12000:],'stderr':p.stderr[-12000:]})
   except subprocess.TimeoutExpired as e:checks.append({'name':name,'argv':cmd,'exit_code':124,'stdout':str(e.stdout or '')[-12000:],'stderr':'TIMEOUT'})
   except OSError as e:checks.append({'name':name,'argv':cmd,'exit_code':127,'stdout':'','stderr':type(e).__name__})
- result={'status':'PASSED' if all(c['exit_code']==0 for c in checks) else 'FAILED','blockers':[],'checks':checks,'builds_passed':sum(c['exit_code']==0 for c in checks),'clinical_release':False}
+ result={'status':'PASSED' if all(c['exit_code']==0 for c in checks) else 'FAILED','blockers':[],'checks':checks,'builds_passed':sum(c['exit_code']==0 for c in checks if c['name']!='ux-core-build'),'prerequisite_builds_passed':sum(c['exit_code']==0 for c in checks if c['name']=='ux-core-build'),'clinical_release':False}
  if result['status']=='PASSED':
   result['artifacts']=attest(root,checks)
   if result['artifacts']['status']!='ATTESTED':result['status']='FAILED';result['blockers'].extend(result['artifacts']['issues'])

@@ -1,0 +1,367 @@
+{
+  "version": "2026-11-05-m04-m06-read-integration",
+  "sourceBranch": "work/m04-m06-read-operations-consolidation-2026-11-05",
+  "authority": "registers/canonical-screens.json",
+  "canonicalScreenCount": 261,
+  "routeSlices": 21,
+  "liveApiReadSubsets": 16,
+  "nonclinicalFunctionalRoutes": 5,
+  "remainingWithoutOperationalRoute": 240,
+  "clinicallyAccepted": 0,
+  "clinicallyCertifiedModules": 0,
+  "clinicalRelease": "DENIED",
+  "blockers": [
+    "No production OIDC/MFA callback and verified session issuer",
+    "No production cell environment or end-to-end authenticated deployment evidence",
+    "Most 40 module APIs and exact clinical field dictionaries remain unimplemented/unapproved",
+    "No validated end-to-end mutations, clinical signatures, high-risk workflows, or regulator acceptance"
+  ],
+  "rows": [
+    {
+      "id": "G-S03",
+      "category": "verified-api-read-subset",
+      "endpoint": "/api/clinical/facility",
+      "functions": [
+        "Authenticated facility context read",
+        "Backend facility cross-check",
+        "Permission checked",
+        "EN/FR status"
+      ],
+      "missing": [
+        "OIDC/MFA issuer",
+        "Roster/shift selection",
+        "Role change transaction",
+        "Facility switch reauthorization"
+      ]
+    },
+    {
+      "id": "G-S06",
+      "category": "nonclinical-functional",
+      "endpoint": null,
+      "functions": [
+        "Non-PHI preferences persisted",
+        "EN/FR strings",
+        "Density, contrast, motion, time format",
+        "Cross-tab preferences update"
+      ],
+      "missing": [
+        "Remote preference syncing under approved staff identity",
+        "Manual accessibility acceptance"
+      ]
+    },
+    {
+      "id": "G-S10",
+      "category": "verified-api-read-subset",
+      "endpoint": "/api/clinical/health",
+      "functions": [
+        "Real cell process/readiness checks",
+        "Dependency failure handling",
+        "No false clinical readiness"
+      ],
+      "missing": [
+        "Deployed cell/observability integration",
+        "Approved downtime workflow",
+        "Offline local server acceptance"
+      ]
+    },
+    {
+      "id": "G-S11",
+      "category": "nonclinical-functional",
+      "endpoint": null,
+      "functions": [
+        "Searchable help topics",
+        "Real navigation",
+        "Bilingual guidance"
+      ],
+      "missing": [
+        "Approved helpdesk/ticket API integration",
+        "Institution-specific contacts and handbooks"
+      ]
+    },
+    {
+      "id": "G-S12",
+      "category": "nonclinical-functional",
+      "endpoint": null,
+      "functions": [
+        "Protected not-found navigation",
+        "Safe disclosure-free guidance",
+        "Bilingual content"
+      ],
+      "missing": [
+        "Retired-route policy by tenant",
+        "Actual replacement link authorizations"
+      ]
+    },
+    {
+      "id": "M01-S03",
+      "category": "verified-api-read-subset",
+      "endpoint": "/api/clinical/patients/{patientId}",
+      "functions": [
+        "Bounded patient metadata read",
+        "Backend scoped facility and patient verification",
+        "Identity status and source revision"
+      ],
+      "missing": [
+        "Full demographics",
+        "Contact/identifier history",
+        "Corrections workflow",
+        "Deployed OIDC/JDBC/RLS/audit integration"
+      ]
+    },
+    {
+      "id": "M03-S03",
+      "category": "verified-api-read-subset",
+      "endpoint": "/api/clinical/triage/{patientId}/{caseId}",
+      "functions": [
+        "Verified patient-scoped case metadata read",
+        "Triage stage, revision and assigned station",
+        "Deny-by-default service failures"
+      ],
+      "missing": [
+        "Observations and clinical vital signs",
+        "Authorized assessment commands",
+        "Clinical priority and scoring",
+        "Sign/handovers",
+        "Deployed triage HTTP + OIDC"
+      ]
+    },
+    {
+      "id": "M31-S01",
+      "category": "nonclinical-functional",
+      "endpoint": null,
+      "functions": [
+        "Browse/filter 662 document codes",
+        "View 376 structured + 304 PDF family",
+        "Print-safe preview navigation"
+      ],
+      "missing": [
+        "Template DB and role-based publishing",
+        "Real version/workflow approval",
+        "Institution-approved content"
+      ]
+    },
+    {
+      "id": "M31-S03",
+      "category": "nonclinical-functional",
+      "endpoint": null,
+      "functions": [
+        "Preview 376 structured templates",
+        "EN/FR sample heading",
+        "Browser print with sample watermark"
+      ],
+      "missing": [
+        "Authorized clinical template version approval",
+        "Accessibility/PDF standards certification",
+        "Real patient binding and issuance"
+      ]
+    },
+    {
+      "id": "M03-S01",
+      "category": "verified-api-read-subset",
+      "endpoint": "POST /api/clinical/triage/views/{patientId}",
+      "functions": [
+        "Patient-scoped explicit case ID worklist",
+        "All eight restricted worklist views with required filters",
+        "Server-verified tenant, facility, case and role boundaries",
+        "Safe local stage filter/sorting; no speculative patient data"
+      ],
+      "missing": [
+        "Production OIDC and durable clinical data service",
+        "Authorized facility-wide queue discovery outside the explicit ID subset",
+        "Clinical assessment and queue commands",
+        "Authoritative audit/role review and deployment tests"
+      ]
+    },
+    {
+      "id": "M01-S01",
+      "category": "verified-api-read-subset",
+      "endpoint": "GET /api/clinical/patients/{patientId}",
+      "functions": [
+        "Server-authorized exact-UUID lookup for already known patient ID",
+        "Trusted facility and patient scope checks",
+        "Unknown/denied patient indistinguishable 404",
+        "No name/contact search claims"
+      ],
+      "missing": [
+        "Indexed patient search across approved identification criteria",
+        "Name/DOB match confidence",
+        "Record merge and duplicate alerts",
+        "Production OIDC and clinical cell integration"
+      ]
+    },
+    {
+      "id": "M03-S04",
+      "category": "verified-api-read-subset",
+      "endpoint": "GET /api/clinical/triage/{patientId}/{caseId}/history?afterRevision={n}",
+      "functions": [
+        "Bounded strict triage audit page with 100-event maximum",
+        "Patient, facility and case reauthorization on each request",
+        "Controlled pagination with event revision/digest/timestamp",
+        "No reassessment write or medical priority inference"
+      ],
+      "missing": [
+        "Authorized reassessment command and clinician attestation",
+        "Verified observations and priority review",
+        "Production triage audit source deployment",
+        "Clinical approval and workflow certification"
+      ]
+    },
+    {
+      "id": "M03-S05",
+      "category": "verified-api-read-subset",
+      "endpoint": "POST /api/clinical/triage/views/{patientId}",
+      "functions": [
+        "Existing authoritative read-only PENDING_HANDOVERS view specialized for handover",
+        "Patient-scoped explicit case IDs, bounded 50 cases",
+        "Nurse/receiving clinician references from verified case projection only",
+        "No clinician assignment or handover signoff"
+      ],
+      "missing": [
+        "Handover transition command with idempotency and approval",
+        "Receiving clinician acknowledgement",
+        "Transfer acceptance and destination validation",
+        "Production OIDC/clinical cell integration"
+      ]
+    },
+    {
+      "id": "M04-S02",
+      "category": "verified-api-read-subset",
+      "endpoint": "GET /api/clinical/longitudinal/{patientId}/{encounterId}/summary",
+      "functions": [
+        "Source-validated read with patient/encounter scope and verified facility binding",
+        "Typed bounded JSON projection under specific backend capability",
+        "No browser token persistence, no mock records",
+        "Bilingual responsive screen; all clinical mutations disabled"
+      ],
+      "missing": [
+        "Production OIDC/MFA session issuance",
+        "Live PostgreSQL/RLS hospital cell and P07 source deployment",
+        "Complete screen workflow and approved field dictionary",
+        "Approved clinical commands, review/attestation and full acceptance tests"
+      ]
+    },
+    {
+      "id": "M05-S01",
+      "category": "verified-api-read-subset",
+      "endpoint": "GET /api/clinical/longitudinal/{patientId}/{encounterId}/summary",
+      "functions": [
+        "Source-validated read with patient/encounter scope and verified facility binding",
+        "Typed bounded JSON projection under specific backend capability",
+        "No browser token persistence, no mock records",
+        "Bilingual responsive screen; all clinical mutations disabled"
+      ],
+      "missing": [
+        "Production OIDC/MFA session issuance",
+        "Live PostgreSQL/RLS hospital cell and P07 source deployment",
+        "Complete screen workflow and approved field dictionary",
+        "Approved clinical commands, review/attestation and full acceptance tests"
+      ]
+    },
+    {
+      "id": "M05-S04",
+      "category": "verified-api-read-subset",
+      "endpoint": "GET /api/clinical/longitudinal/{patientId}/{encounterId}/notes/{noteId}",
+      "functions": [
+        "Source-validated read with patient/encounter scope and verified facility binding",
+        "Typed bounded JSON projection under specific backend capability",
+        "No browser token persistence, no mock records",
+        "Bilingual responsive screen; all clinical mutations disabled"
+      ],
+      "missing": [
+        "Production OIDC/MFA session issuance",
+        "Live PostgreSQL/RLS hospital cell and P07 source deployment",
+        "Complete screen workflow and approved field dictionary",
+        "Approved clinical commands, review/attestation and full acceptance tests"
+      ]
+    },
+    {
+      "id": "M05-S05",
+      "category": "verified-api-read-subset",
+      "endpoint": "GET /api/clinical/longitudinal/{patientId}/{encounterId}/notes/{noteId}",
+      "functions": [
+        "Source-validated read with patient/encounter scope and verified facility binding",
+        "Typed bounded JSON projection under specific backend capability",
+        "No browser token persistence, no mock records",
+        "Bilingual responsive screen; all clinical mutations disabled"
+      ],
+      "missing": [
+        "Production OIDC/MFA session issuance",
+        "Live PostgreSQL/RLS hospital cell and P07 source deployment",
+        "Complete screen workflow and approved field dictionary",
+        "Approved clinical commands, review/attestation and full acceptance tests"
+      ]
+    },
+    {
+      "id": "M06-S02",
+      "category": "verified-api-read-subset",
+      "endpoint": "GET /api/clinical/longitudinal/{patientId}/{encounterId}/observations?code={code}",
+      "functions": [
+        "Source-validated read with patient/encounter scope and verified facility binding",
+        "Typed bounded JSON projection under specific backend capability",
+        "No browser token persistence, no mock records",
+        "Bilingual responsive screen; all clinical mutations disabled"
+      ],
+      "missing": [
+        "Production OIDC/MFA session issuance",
+        "Live PostgreSQL/RLS hospital cell and P07 source deployment",
+        "Complete screen workflow and approved field dictionary",
+        "Approved clinical commands, review/attestation and full acceptance tests"
+      ]
+    },
+    {
+      "id": "M06-S03",
+      "category": "verified-api-read-subset",
+      "endpoint": "GET /api/clinical/longitudinal/{patientId}/{encounterId}/observations/{observationId}/lineage",
+      "functions": [
+        "Source-validated read with patient/encounter scope and verified facility binding",
+        "Typed bounded JSON projection under specific backend capability",
+        "No browser token persistence, no mock records",
+        "Bilingual responsive screen; all clinical mutations disabled"
+      ],
+      "missing": [
+        "Production OIDC/MFA session issuance",
+        "Live PostgreSQL/RLS hospital cell and P07 source deployment",
+        "Complete screen workflow and approved field dictionary",
+        "Approved clinical commands, review/attestation and full acceptance tests"
+      ]
+    },
+    {
+      "id": "M06-S04",
+      "category": "verified-api-read-subset",
+      "endpoint": "GET /api/clinical/longitudinal/{patientId}/{encounterId}/observations?code={code}",
+      "functions": [
+        "Source-validated read with patient/encounter scope and verified facility binding",
+        "Typed bounded JSON projection under specific backend capability",
+        "No browser token persistence, no mock records",
+        "Bilingual responsive screen; all clinical mutations disabled"
+      ],
+      "missing": [
+        "Production OIDC/MFA session issuance",
+        "Live PostgreSQL/RLS hospital cell and P07 source deployment",
+        "Complete screen workflow and approved field dictionary",
+        "Approved clinical commands, review/attestation and full acceptance tests"
+      ]
+    },
+    {
+      "id": "M06-S05",
+      "category": "verified-api-read-subset",
+      "endpoint": "GET /api/clinical/longitudinal/{patientId}/{encounterId}/observations/{observationId}/lineage",
+      "functions": [
+        "Source-validated read with patient/encounter scope and verified facility binding",
+        "Typed bounded JSON projection under specific backend capability",
+        "No browser token persistence, no mock records",
+        "Bilingual responsive screen; all clinical mutations disabled"
+      ],
+      "missing": [
+        "Production OIDC/MFA session issuance",
+        "Live PostgreSQL/RLS hospital cell and P07 source deployment",
+        "Complete screen workflow and approved field dictionary",
+        "Approved clinical commands, review/attestation and full acceptance tests"
+      ]
+    }
+  ],
+  "routedScreenUrls": 261,
+  "routeOnlyLocked": 240,
+  "routeOnlyDefinition": "HTTP route exists, but its authoritative clinical data service, command handling and patient-scope workflow are not implemented. Route-only must never be represented as operational software.",
+  "criticalClarification": "261/261 route URLs; 21/261 partial API/nonclinical read surfaces; 240/261 domain-locked routes; 0/261 clinically accepted; clinical write workflows not delivered."
+}

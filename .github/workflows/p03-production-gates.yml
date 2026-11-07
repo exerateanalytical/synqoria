@@ -1,0 +1,40 @@
+name: SYNQORIA P03 deployment checks
+on:
+  push:
+    branches:
+      - work/p03-b0054-b0063-deployment-guards-2026-11-06
+permissions:
+  contents: read
+jobs:
+  identity:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: test-only-never-use-production
+          POSTGRES_DB: synqoria_oidc_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d synqoria_oidc_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/clinical_identity_safety.test.mjs
+      - run: node --test tests/identity_db_schema_policies.test.mjs
+      - run: node --test tests/oidc_reauthorize_or_revoke.test.mjs tests/oidc_staff_service.test.mjs
+      - run: node --test tests/staff_auth_callback_cleanup.test.mjs tests/staff_auth_http_handlers.test.mjs
+      - run: node --test tests/clinical_request_provenance.test.mjs tests/clinical_opaque_session_admission.test.mjs
+      - run: node --test tests/clinical_upstream_no_store.test.mjs tests/patient_disclosure_authorization.test.mjs
+      - run: node --test tests/clinical_cell_affinity.test.mjs tests/real_clinical_screen_runtime.test.mjs
+      - run: node --test tests/staff_role_capability_policy.test.mjs tests/staff_role_workforce_binding.test.mjs
+      - run: node --test tests/verified_clinical_runtime_binding.test.mjs
+      - run: node --test tests/identity_db_schema_policies_postgres.test.mjs
+        env:
+          SYNQORIA_POSTGRES_INTEGRATION: '1'
+      - run: node --test tests/staff_identity_runtime.test.mjs tests/p03_identity_engineering_ledger.test.mjs
