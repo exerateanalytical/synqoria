@@ -44,6 +44,7 @@ class SchedulingPgIntegrationTest{
   try(Connection c=root.getConnection();Statement s=c.createStatement()){
    s.execute(Files.readString(Path.of("db","migration","V001__m02_resource_appointments.sql")));
    s.execute(Files.readString(Path.of("db","migration","V002__m02_rescheduling_transition.sql")));
+   s.execute(Files.readString(Path.of("db","migration","V003__m02_appointment_safety_and_audit.sql")));
   }
   var runtime=ds("synqoria_schedule_runtime","m02-ci-only");
   store=new SchedulingStore(new JdbcTemplate(runtime),JsonMapper.builder().build(),
@@ -135,4 +136,23 @@ class SchedulingPgIntegrationTest{
   assertThrows(DataAccessException.class,()->admin.update(
    "UPDATE synqoria_schedule.patient_proofs SET revoked_at=NULL WHERE proof_id=?",p));
  }
+
+ @Test void revokedProofPreventsArrivalAndForgedInsertCannotBypassAudit(){
+  UUID res=resource(),s=slot(res,3600),p=proof();
+  var appointment=store.book(actor("m02:book"),key(),new Booking(PATIENT,p,s));
+  store.appointmentAction(actor("m02:confirm"),key(),id(appointment),"confirm",new Version(1));
+  admin.update("UPDATE synqoria_schedule.patient_proofs SET revoked_at=clock_timestamp() WHERE proof_id=?",p);
+  assertEquals("evidence_unavailable",assertThrows(Denied.class,()->
+   store.appointmentAction(actor("m02:arrive"),key(),id(appointment),"arrive",new Version(2))).code);
+  assertThrows(DataAccessException.class,()->admin.update(
+   "UPDATE synqoria_schedule.appointments SET status='ARRIVED',version=3,last_actor=? WHERE id=?",
+   ACTOR,id(appointment)));
+  assertThrows(DataAccessException.class,()->admin.update(
+   "INSERT INTO synqoria_schedule.appointments(id,cell_id,facility_id,patient_ref,proof_id,"+
+   "slot_id,creator_id,last_actor,status) VALUES(?,?,?,?,?,?,?,?,'FULFILLED')",
+   key(),CELL,FAC,PATIENT,p,s,ACTOR,ACTOR));
+  assertThrows(DataAccessException.class,()->admin.update(
+   "TRUNCATE TABLE synqoria_schedule.audit_events CASCADE"));
+ }
+
 }

@@ -193,6 +193,8 @@ public class SchedulingStore {
        (previous.equals("CONFIRMED")&&Set.of("ARRIVED","CANCELLED","NO_SHOW").contains(next))||
        (previous.equals("ARRIVED")&&Set.of("FULFILLED","CANCELLED").contains(next))))
     throw new Denied("invalid_transition");
+   if(Set.of("CONFIRMED","ARRIVED","FULFILLED").contains(next))
+    patient(a,(UUID)row.get("proof_id"),(UUID)row.get("patient_ref"));
    jdbc.update("UPDATE synqoria_schedule.appointments SET status=?,version=version+1,"+
     "last_actor=?,updated_at=clock_timestamp() WHERE cell_id=? AND facility_id=? AND id=?",
     next,a.id(),a.cell(),a.facility(),id);
