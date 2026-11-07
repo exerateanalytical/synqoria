@@ -34,7 +34,7 @@ public final class OperationsStore {
    throw new IllegalStateException("operations_db_role_must_be_least_privileged");
   this.expectedRole=expectedRole;
  }
- private <T> T scoped(OperationWorkflow.Actor actor,Supplier<T> operation) {
+ <T> T scoped(OperationWorkflow.Actor actor,Supplier<T> operation) {
   return Objects.requireNonNull(tx.execute(t ->{
    Boolean safe=jdbc.queryForObject(
     "SELECT rolcanlogin AND NOT rolinherit AND NOT rolsuper AND NOT rolbypassrls " +
