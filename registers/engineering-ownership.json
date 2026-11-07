@@ -38,16 +38,16 @@
         61,
         62,
         63,
-        64
+        64,
+        66
       ],
       "futureOrder": [
-        "Wire the M39 route fence and signed routing admission into real Kong/Envoy gateway data plane using workload OIDC, mTLS and trusted cell registry; test two disposable hospital cells, switching/fencing, key rotation and outage behavior",
-        "Finish M39 infrastructure provisioning and execution adapter, ensuring actual infrastructure changes only after approval/qualifications, with idempotency, audit, rollback and least privilege",
-        "Build M40 independent backup collectors and real disposable PostgreSQL WAL/PITR rehearsal with evidence and safe recovery approvals",
-        "Review Claude M38 PR #56 after rebase and verified P03 offline-session replacement, browser/proxy E2E, SDK tests and no duplication",
-        "Complete Claude Issue #60 forensic reconciliation of M01-M37 and implement only independently proven missing capabilities"
+        "Implement independently authenticated external provider connectors and workforce approvals for M21 finance/suppliers, M22 barcode/stock correction, M25 GPS/dispatch scheduling, M29 reliable multi-cell propagation and M37 email/SMS/push delivery; do not mark these integrations complete merely because read APIs are present",
+        "Continue M39 real Kong/Envoy data plane and M40 WAL/PITR restore with live service discovery/mTLS and least privilege",
+        "Merge Claude M38 PR #56 only after verified session, browser/proxy E2E, SDK tests and no duplication",
+        "Complete Claude Issue #60 forensic M01–M37 inventory and implement only code-proven gaps"
       ],
-      "lastCompleted": "M39 authoritative route fence and trusted destination admission library (PR #64; merged b5f405a988b05556ac6c7dcc4e3693b4de1eacf6)"
+      "lastCompleted": "Single PR #66 Java25/PostgreSQL18.6 coordinated M21 procurement status, M22 cycle-count review, M25 vehicle availability, M29 publication feed and M37 due-delivery queue; merge 46c0e240cabd1735a3c0a5632091bb3b4c6d2e21; all five CI workflows passed"
     }
   },
   "verifiedClaims": {
@@ -62,6 +62,26 @@
     "M40": {
       "pr": 52,
       "scope": "M40 reliability source merged; later artifact integrity PRs #55,#57; actual WAL/PITR outstanding"
+    },
+    "M21": {
+      "pr": 66,
+      "scope": "existing real procurement workflow plus new read-side reconciliation state feed; external supplier finance/ERP integration unverified"
+    },
+    "M22": {
+      "pr": 66,
+      "scope": "existing audited stock ledger plus real V011 maker-checker physical count and variance; no stock-adjustment shortcut; barcode scanner integration unverified"
+    },
+    "M25": {
+      "pr": 66,
+      "scope": "existing real dispatch state machine plus actual available-vehicle RLS query; GPS, time-slot reservations and hospital transport integration unverified"
+    },
+    "M29": {
+      "pr": 66,
+      "scope": "existing versioned publication workflow plus scoped publication feed; real multi-cell propagation, durable cursor and acknowledged consumer pending"
+    },
+    "M37": {
+      "pr": 66,
+      "scope": "existing M37 notification workflow plus real due-delivery query; external SMS/email/push sender, lease worker and independently verified delivery receipts pending"
     }
   },
   "handoffRule": "Every push/merge must regenerate current-platform-reconciliation.json. A changed module must have evidence, owner, new/modified paths, contract compatibility, CI link, merge SHA, blockers, and next permitted work. Use PRs as work units and merge only independently verified source. Do not claim clinical release.",
