@@ -60,7 +60,7 @@ final class OperationsIntegrationsPgTest {
    cell,facility,stock,"LOT-1","BIN-01",40,7,5);
   UUID cmd=UUID.randomUUID();
   var request=new OperationsIntegrationService.CountRequest("LOT-1","BIN-01",38,cmd);
-  var counter=actor(maker,"m22:count"),approver=actor(reviewer,"m22:adjust");
+  var counter=actor(maker,"m22:count");var approver=actor(reviewer,"m22:adjust");
   var count=svc.captureCount(counter,stock,request);
   assertEquals(40,count.expectedOnHand());assertEquals(7,count.expectedReserved());
   assertEquals(-2,count.variance());
