@@ -19,8 +19,11 @@ test("M27 5 canonical screen IDs, labels and actions are unchanged",()=>{
 });
 test("M27 workstations use a separate five-screen layout with OIDC BFF, CSRF and no client bearer token",()=>{
  const dynamic=read("apps/web/app/workforce/operations/[module]/[screen]/page.tsx");
- assert.match(dynamic,/MortuaryWorkbench/);
+ assert.match(dynamic,/redirect\("\/workforce\/clinical\/"\+screen\)/);
  assert.match(dynamic,/mortuary\.screens\.map/);
+ const canonicalRoute=read("apps/web/app/workforce/clinical/[screenId]/page.tsx");
+ assert.match(canonicalRoute,/MortuaryWorkbench/);
+ assert.match(canonicalRoute,/screen\.module==="M27"/);
  const ui=read("apps/web/components/MortuaryWorkbench.tsx");
  for(const id of ids)assert.match(ui,new RegExp(id));
  for(const name of ["REVIEW_RELEASE","AUTHORIZE_RELEASE","HANDOVER","IDENTIFY","STORE","TRANSFER","RECEIVE"]){
