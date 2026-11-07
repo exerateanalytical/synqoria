@@ -46,16 +46,20 @@
         64,
         66,
         67,
-        72
+        72,
+        74,
+        75,
+        76
       ],
       "futureOrder": [
-        "Issue #70 production-source verification merged PR #72; Java25 M03 synthetic CI is NOT clinical PostgreSQL/OIDC acceptance and operations OpenAPI DTO contract is NOT external provider integration",
-        "Issue #71 human forensic review of 14 UNKNOWN modules: examine existing code/shared contexts and historical branches; never infer not built from missing path names",
-        "Continue M39 live Kong/Envoy data plane, M40 real WAL/PITR disaster recovery; configured workload mTLS and physical hospital pilots remain not completed",
-        "Review Claude's exclusive M23 Issue #68 preventive maintenance changes after latest main, no overlapping code generation",
-        "Retain external provider integrations M21 finance, M22 physical scanner, M25 GPS, M29 independent cross-cell apply/ack, M37 outbound SMS/email/push as unverified despite internal source handoffs"
+        "PRs #74-76 merged and CI independently green. M39 and M40 still NOT deployed to real cells; no clinical hospital acceptance or certification.",
+        "M39 NEXT: actually wire authenticated HTTPS/route fence admission and immutable cell registry into real Kong/Envoy proxy/data plane with workload OIDC, proven live mTLS and atomic per-stream placement epoch re-fencing; verify real two-disposable-cell switch/outages/key rotation.",
+        "M40 NEXT: provision immutable offsite backup/retention, independent constrained executor and verifier roles, database WAL continuity against real object storage, KMS unseal and timed restoration drills; disposable PG18.6 physical PITR CI now implemented, NOT a production RPO/RTO acceptance.",
+        "Issue #71: independently examine exact historical artifacts of 14 UNKNOWN modules, preserve unknown status until human reviewer signs proof; never recreate modules from filename searches.",
+        "Claude owns M23 Issue #68 PR #73, currently OPEN 28/30 engineering packets verified two partial as reported; after PR #74 browser/CI correction Claude must rebase latest main and rerun full checks; integration lead must not duplicate M23.",
+        "External handoffs M21 supplier ERP, M22 physical barcode, M25 GPS, M29 remote cell acknowledgements, M37 live SMS/email/push still unverified, even though internal source and flows are merged."
       ],
-      "lastCompleted": "Issue #70: PR #72 merged b37b516da6aa13fd6bba0140866116d617662499. New M03 Java25 CI 13 existing test entrypoints, 269 actual invocations / 263 parameterized synthetic scenarios passed; existing 21 operations controller route OpenAPI 3.1 and 16 Java record DTO source parity CI; pinned Claude forensic PR65 historical-only scope test repaired; all five checks passed."
+      "lastCompleted": "PR #76 M40 actual PostgreSQL 18.6 disposable basebackup + WAL archival + independent new-data-directory point-in-time recovery merged fd5994849a80f7e27a7b3fab6fb0f0cdf13c04ae; SQL verified both replay of post-backup before-target transaction and exclusion of later committed post-target transaction. 3/3 CI green. PR #75 M39 trusted HTTPS control-plane/mTLS source + immutable cell UUID registry merged e00361873a90f5edceea38e9f567cca38263d55a; 3/3 green. PR #74 canonical OPS001 Next16/React19 + real Chrome source/build gates merged 6710db9903af6bd690a9db427fc8720d5003a69b; 4/4 green."
     }
   },
   "verifiedClaims": {
@@ -64,12 +68,12 @@
       "scope": "Claude offline device-client source merged, signed P03 session route and Next proxy E2E CI passed. Partial 30-package claim; no live hospital issuer/deployment or clinical approval."
     },
     "M39": {
-      "pr": 51,
-      "scope": "M39 management plane PR #51, signed routing gate #54, health observer #58, and authoritative route-target/live directory fence plus gateway admission PR #64 merged; actual Kong/Envoy integration, provisioning executor and hospital deployment NOT completed."
+      "pr": 75,
+      "scope": "Management plane and cryptographic routing from merged PRs #51,#54,#58,#64 plus PR #75 Java25 bounded HTTPS control-plane signed-decision/live-fence client, mutual-TLS transport requiring workload-supplied SSLContext/OAuth2 token, trusted bootstrap UUID→HTTPS registry and 13 deterministic HTTP boundary tests. CI 3/3 passed. No real Kong/Envoy data-plane filter, deployed keys, epoch stream fencing or hospital deployment."
     },
     "M40": {
-      "pr": 52,
-      "scope": "M40 reliability source merged; later artifact integrity PRs #55,#57; actual WAL/PITR outstanding"
+      "pr": 76,
+      "scope": "Existing M40 reliability management source and independently checked backup digest PRs #52,#55,#57 plus PR #76 actual disposable PostgreSQL18.6 physical pg_basebackup/WAL archive/selected-time restore with SQL proof of post-basebackup inclusion and post-target exclusion, all three checks green. Offsite storage, real KMS/client roles, timed production restore and hospital RPO/RTO NOT verified."
     },
     "M21": {
       "pr": 67,
