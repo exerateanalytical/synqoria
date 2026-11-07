@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 TEST_ROOT=ROOT/"services/clinical-core/src/test/java/org/synqoria/triage"
 CLASSES=Path("/tmp/synqoria-m03-classes")
-BATCH_ID=re.compile(r'\bcase\s+"(P\d{2}-B\d{4})"\s*(?:->|:)')
+BATCH_ID=re.compile(r'\bcase\s+"(P\d{2}-B\d{4}|codec-[a-z0-9-]+|crypto-[a-z0-9-]+|jdbc-[a-z0-9-]+)"\s*(?:->|:)')
 
 
 def cases(source):
