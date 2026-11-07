@@ -93,8 +93,9 @@ final class MortuaryStorePgIntegrationTest {
  private CaseView store(MortuaryStore s,CaseView c){
   roster();
   evidence(c.decedentRef(),c.caseId(),"STORE",c.version(),"STORAGE_SAFE","SAFE-BAY-M27",ISSUER);
+  String assignedBay="BAY-"+c.caseId().toString().substring(0,8);
   return s.change(who(OFFICER,"m27:store"),c.caseId(),cmd("STORE",c.version(),
-   "SAFE-BAY-M27","BAY-01",RECEIVER,null,null));
+   "SAFE-BAY-M27",assignedBay,RECEIVER,null,null));
  }
  private Change cmd(String action,long v,String proof,String bay,UUID receive,
                     String recipient,String authority){
@@ -142,8 +143,8 @@ final class MortuaryStorePgIntegrationTest {
   assertEquals("IDENTIFIED",c.state());
   c=store(s,c);
   assertEquals("STORED",c.state());
-  assertEquals("BAY-01",c.currentStorage());
-  var invalidTransfer=cmd("TRANSFER",c.version(),"ACCEPT-M27","BAY-01",RECEIVER,null,null);
+  assertEquals("BAY-"+id.toString().substring(0,8),c.currentStorage());
+  var invalidTransfer=cmd("TRANSFER",c.version(),"ACCEPT-M27",c.currentStorage(),RECEIVER,null,null);
   assertThrows(WorkflowViolation.class,()->s.change(who(OFFICER,"m27:transfer"),id,invalidTransfer));
   evidence(subject,id,"TRANSFER",c.version(),"CUSTODY_ACCEPTED","ACCEPT-M27",ISSUER);
   c=s.change(who(OFFICER,"m27:transfer"),id,
@@ -225,7 +226,14 @@ final class MortuaryStorePgIntegrationTest {
   assertEquals("STORED",first.state());
   var second=identify(s,receive(s,UUID.randomUUID()));
   final var pending=second;
-  assertThrows(Exception.class,()->store(s,pending));
+  // Deliberately request the same occupied physical bay while all ordinary cases
+  // receive unique bay fixtures. The case write, custody and audit must roll back.
+  evidence(pending.decedentRef(),pending.caseId(),"STORE",pending.version(),
+   "STORAGE_SAFE","SAFE-BAY-M27",ISSUER);
+  final var sameBay=cmd("STORE",pending.version(),"SAFE-BAY-M27",
+   first.currentStorage(),RECEIVER,null,null);
+  assertThrows(Exception.class,()->s.change(who(OFFICER,"m27:store"),
+   pending.caseId(),sameBay));
   var after=s.one(who(OFFICER,"m27:read"),pending.caseId());
   assertEquals("IDENTIFIED",after.state());
   assertEquals(2,after.version());
