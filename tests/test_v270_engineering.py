@@ -15,7 +15,10 @@ class Engineering(unittest.TestCase):
    m=json.loads((r/'apps/web/package.json').read_text());m['dependencies']['next']='^15.5.6';(r/'apps/web/package.json').write_text(json.dumps(m))
    self.assertTrue(any('floating_pin' in x for x in pins(r)))
  def test_lock_integrity(self):
-  self.assertIn('missing_or_invalid_lockfile',lock(ROOT))
+  self.assertEqual(lock(ROOT),[], 'Source-integrated production lock must be pinned and verified')
+  with tempfile.TemporaryDirectory() as tmp:
+   fixture=pathlib.Path(tmp)
+   self.assertIn('missing_or_invalid_lockfile',lock(fixture))
   with tempfile.TemporaryDirectory() as tmp:
    r=pathlib.Path(tmp);shutil.copy(ROOT/'package.json',r/'package.json');packages={'':{'version':json.loads((ROOT/'package.json').read_text())['version']}}
    for w in ('apps/web','apps/staff-mobile','apps/patient-mobile','packages/ux-core'):
@@ -26,10 +29,18 @@ class Engineering(unittest.TestCase):
    packages['node_modules/synthetic']['resolved']='https://evil.example/synthetic.tgz';(r/'package-lock.json').write_text(json.dumps({'lockfileVersion':3,'packages':packages}))
    self.assertTrue(any('untrusted_resolution' in x for x in lock(r)))
  def test_build_attempt_fail_closed(self):
-  result=builds(ROOT)
-  self.assertEqual(result['status'],'BLOCKED');self.assertEqual(result['builds_passed'],0);self.assertEqual(result['checks'],[])
-  self.assertTrue(any('lock' in x for x in result['blockers']))
-  # Command runner itself tested separately; no mock application build is reported.
+  # Validate fail-closed behavior on a missing-dependency fixture, not the now
+  # production-locked checkout where real app builds must be allowed to run.
+  with tempfile.TemporaryDirectory() as tmp:
+   fixture=pathlib.Path(tmp);shutil.copy(ROOT/'package.json',fixture/'package.json')
+   for w in ('apps/web','apps/staff-mobile','apps/patient-mobile','packages/ux-core'):
+    (fixture/w).mkdir(parents=True);shutil.copy(ROOT/w/'package.json',fixture/w/'package.json')
+   result=builds(fixture)
+   self.assertEqual(result['status'],'BLOCKED')
+   self.assertEqual(result['builds_passed'],0)
+   self.assertEqual(result['checks'],[])
+   self.assertTrue(any('lock' in x for x in result['blockers']))
+  # Real application build evidence is tested in CI; fixture may not pretend to compile.
  def test_archive_integrity(self):
   with tempfile.TemporaryDirectory() as tmp:
    p=pathlib.Path(tmp)/'test.zip';body=b'synthetic content';m={'version':'test','files':{'a.txt':hashlib.sha256(body).hexdigest()}}
