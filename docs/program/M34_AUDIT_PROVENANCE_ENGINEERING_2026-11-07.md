@@ -29,3 +29,9 @@ No raw clinical documents or narrative are stored in the M34 evidence chain/outb
 - The audited browser BFF only supports searching/details, timeline, chain verify, export manifest request/review and retention request/review. Browser cannot access source ingest or independent proof/hold writes.
 - `.github/workflows/m34-audit-web.yml` builds actual Next16/React19 source in an isolated CI-only PR23/PR24 dependency overlay; source does not modify global dependency owners.
 - External clinical producer contracts, independent court/retention authority, signed archival service, real staff IdP and legal approval remain open.
+
+## Database forge-denial V003
+- A `BEFORE INSERT` proof-admission guard checks the exact external source-envelope fields and independent issuer revocation under a transaction-scoped proof lock.
+- Each event must immediately follow the locked authoritative stream head; PostgreSQL recomputes the SHA-256 linkage using the issuer-bound envelope digest, rejecting arbitrary or replayed direct SQL.
+- Disposable PostgreSQL integration regression covers forged event type, forged digest, invalid predecessor and the corresponding legitimate next append.
+- This remains synthetic unsigned institutional evidence and not a qualified external digital signature or certified archive.

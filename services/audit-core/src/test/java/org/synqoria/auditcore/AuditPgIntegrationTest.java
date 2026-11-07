@@ -50,6 +50,7 @@ class AuditPgIntegrationTest {
   try(Connection c=root.getConnection();Statement s=c.createStatement()){
    s.execute(Files.readString(Path.of("db","migration","V001__m34_audit_provenance_evidence.sql")));
    s.execute(Files.readString(Path.of("db","migration","V002__m34_attested_envelope_and_chain_guards.sql")));
+   s.execute(Files.readString(Path.of("db","migration","V003__m34_evidence_admission_integrity.sql")));
   }
   var runtime=ds("synqoria_audit_runtime","m34-ci-only");
   store=new AuditStore(new JdbcTemplate(runtime),JsonMapper.builder().build(),
@@ -173,4 +174,32 @@ class AuditPgIntegrationTest {
   assertEquals(admin.queryForObject("SELECT count(*) FROM synqoria_audit.audit_actions",Integer.class),
    admin.queryForObject("SELECT count(*) FROM synqoria_audit.outbox",Integer.class));
  }
+
+ @Test void directSqlCannotForgeAttestedAuditEventOrChainLink(){
+  UUID stream=key();
+  var first=event(stream,1);
+  accepted(first);
+  var second=event(stream,2);
+  proof(second);
+  String previous=(String)store.verify(timeline,stream).get("headHash");
+  String insert="INSERT INTO synqoria_audit.evidence_events(id,cell_id,facility_id,stream_id,"+
+   "source_id,source_event_id,source_actor,subject_ref,sequence,action,outcome,payload_sha256,"+
+   "previous_sha256,event_sha256,proof_id,occurred_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+  assertThrows(DataAccessException.class,()->admin.update(insert,
+   key(),CELL,FAC,stream,second.sourceId(),second.sourceEventId(),second.sourceActor(),
+   second.subjectRef(),2,"FORGED_EVENT",second.outcome(),second.payloadSha256(),
+   previous,"0".repeat(64),second.proofId(),Timestamp.from(second.occurredAt())));
+  assertThrows(DataAccessException.class,()->admin.update(insert,
+   key(),CELL,FAC,stream,second.sourceId(),second.sourceEventId(),second.sourceActor(),
+   second.subjectRef(),2,second.action(),second.outcome(),second.payloadSha256(),
+   previous,"f".repeat(64),second.proofId(),Timestamp.from(second.occurredAt())));
+  assertThrows(DataAccessException.class,()->admin.update(insert,
+   key(),CELL,FAC,stream,second.sourceId(),second.sourceEventId(),second.sourceActor(),
+   second.subjectRef(),2,second.action(),second.outcome(),second.payloadSha256(),
+   "f".repeat(64),"f".repeat(64),second.proofId(),Timestamp.from(second.occurredAt())));
+  var actual=store.ingest(ingest,key(),second);
+  assertEquals(2L,body(actual).get("sequence"));
+  assertEquals(Boolean.TRUE,store.verify(timeline,stream).get("verified"));
+ }
+
 }
