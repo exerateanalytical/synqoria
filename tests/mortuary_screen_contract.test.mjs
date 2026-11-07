@@ -47,7 +47,7 @@ test("Mortuary SQL schema denies external authority spoofing and enforces signed
  const sql=read("services/operations-core/db/migration/V005__mortuary_custody_release.sql");
  for(const table of ["mortuary_cases","mortuary_authority_evidence","mortuary_legal_holds",
   "mortuary_custody_events","mortuary_release_reviews","mortuary_commands","mortuary_audit_events","mortuary_outbox"])
-  assert.match(sql,new RegExp("CREATE TABLE synqoria_operations\\."+table+"\\("));
+  assert.match(sql,new RegExp("CREATE TABLE synqoria_operations\\."+table+"\\s*\\("));
  assert.match(sql,/FORCE ROW LEVEL SECURITY/);
  assert.match(sql,/GRANT SELECT ON synqoria_operations\.mortuary_authority_evidence/);
  assert.match(sql,/GRANT SELECT ON synqoria_operations\.mortuary_legal_holds/);
