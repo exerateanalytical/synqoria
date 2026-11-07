@@ -60,7 +60,7 @@ jobs:
         run: grep -h "Tests run" services/cell-lifecycle-core/target/surefire-reports/*.txt || true
       - name: Explicitly deny clinical use
         if: always()
-        run: echo "Synthetic fixtures only; no real hospital cell was provisioned, migrated or retired and no infrastructure credential was used.
+        run: echo "Synthetic fixtures only; no real hospital cell was provisioned, migrated or retired and no infrastructure credential was used."
   java-27-compat:
     name: Java 27 compatibility lane (informational, non-gating)
     runs-on: ubuntu-latest
