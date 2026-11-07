@@ -103,16 +103,17 @@ public class IntegrationStore{
    "payload) VALUES(?,?,?,?,?,?::jsonb)",event,a.cell(),a.facility(),id,"m35."+type+"."+op,
    encode(Map.of("id",id.toString(),"version",version,"action",op)));
  }
- private void proof(Actor a,UUID id,String kind,String code,UUID event,String payload){
+ private void proof(Actor a,UUID id,String kind,String code,UUID event,String payload,String eventType){
   if(id==null)throw new Problem("proof_unavailable");
   jdbc.queryForList("SELECT pg_advisory_xact_lock(hashtextextended(?::text,35))",id.toString());
   var matches=jdbc.queryForList("SELECT proof_id FROM synqoria_integration.partner_proofs "+
    "WHERE cell_id=? AND facility_id=? AND proof_id=? AND proof_type=? AND partner_code=? "+
    "AND source_event_id IS NOT DISTINCT FROM ?::uuid "+
    "AND source_payload_sha256 IS NOT DISTINCT FROM ?::char(64) "+
+   "AND source_event_type IS NOT DISTINCT FROM ?::varchar "+
    "AND external_actor<>? AND revoked_at IS NULL "+
    "AND valid_from<=clock_timestamp() AND valid_until>clock_timestamp()",
-   a.cell(),a.facility(),id,kind,code,event,payload,a.id());
+   a.cell(),a.facility(),id,kind,code,event,payload,eventType,a.id());
   if(matches.size()!=1)throw new Problem("proof_unavailable");
  }
  public List<Map<String,Object>> list(Actor a,String table,int limit){
@@ -159,12 +160,12 @@ public class IntegrationStore{
     throw new Problem("invalid_transition");
    if("VERIFIED".equals(next)){
     if(a.id().equals(p.get("created_by")))throw new Problem("independent_checker_required");
-    proof(a,req.proofId(),"PARTNER_KYB",(String)p.get("partner_code"),null,null);
+    proof(a,req.proofId(),"PARTNER_KYB",(String)p.get("partner_code"),null,null,null);
    }
    if("ENABLED".equals(next)){
     if(a.id().equals(p.get("created_by"))||a.id().equals(p.get("verified_by")))
      throw new Problem("independent_checker_required");
-    proof(a,(UUID)p.get("proof_id"),"PARTNER_KYB",(String)p.get("partner_code"),null,null);
+    proof(a,(UUID)p.get("proof_id"),"PARTNER_KYB",(String)p.get("partner_code"),null,null,null);
    }
    String actorField=switch(next){
     case "VERIFIED"->"verified_by";case "ENABLED"->"enabled_by";
@@ -296,7 +297,7 @@ public class IntegrationStore{
    var partner=row(a,"partners",req.partnerId());
    if(!"ENABLED".equals(partner.get("status")))throw new Problem("partner_not_enabled");
    proof(a,req.sourceProofId(),"SOURCE_MESSAGE",(String)partner.get("partner_code"),
-    req.externalEventId(),req.payloadSha256());
+    req.externalEventId(),req.payloadSha256(),req.eventType());
    UUID id=UUID.randomUUID();
    jdbc.update("INSERT INTO synqoria_integration.messages(id,cell_id,facility_id,partner_id,"+
     "external_event_id,event_type,payload_sha256,source_proof_id,received_by) "+
@@ -316,7 +317,7 @@ public class IntegrationStore{
    var partner=row(a,"partners",(UUID)m.get("partner_id"));
    if(!"ENABLED".equals(partner.get("status")))throw new Problem("partner_not_enabled");
    proof(a,(UUID)m.get("source_proof_id"),"SOURCE_MESSAGE",(String)partner.get("partner_code"),
-    (UUID)m.get("external_event_id"),(String)m.get("payload_sha256"));
+    (UUID)m.get("external_event_id"),(String)m.get("payload_sha256"),(String)m.get("event_type"));
    jdbc.update("UPDATE synqoria_integration.messages SET status='ACCEPTED',"+
     "version=version+1,reviewed_by=? WHERE cell_id=? AND facility_id=? AND id=?",
     a.id(),a.cell(),a.facility(),id);
@@ -348,6 +349,13 @@ public class IntegrationStore{
    if(a.id().equals(r.get("requested_by")))throw new Problem("independent_checker_required");
    var m=row(a,"messages",(UUID)r.get("message_id"));
    if(!"QUARANTINED".equals(m.get("status")))throw new Problem("message_not_quarantined");
+   if(req.approve()){
+    var partner=row(a,"partners",(UUID)m.get("partner_id"));
+    if(!"ENABLED".equals(partner.get("status")))throw new Problem("partner_not_enabled");
+    proof(a,(UUID)m.get("source_proof_id"),"SOURCE_MESSAGE",
+     (String)partner.get("partner_code"),(UUID)m.get("external_event_id"),
+     (String)m.get("payload_sha256"),(String)m.get("event_type"));
+   }
    String next=req.approve()?"APPROVED_PENDING_DELIVERY":"DENIED";
    jdbc.update("UPDATE synqoria_integration.replay_requests SET status=?,version=version+1,"+
     "reviewed_by=?,reviewed_at=clock_timestamp() WHERE cell_id=? AND facility_id=? AND id=?",

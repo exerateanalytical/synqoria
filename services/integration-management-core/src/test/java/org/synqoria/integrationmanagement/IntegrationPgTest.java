@@ -43,6 +43,7 @@ class IntegrationPgTest{
    s.execute(Files.readString(Path.of("db","migration","V001__m35_partner_integration_control.sql")));
    s.execute(Files.readString(Path.of("db","migration","V002__m35_immutable_control_transitions.sql")));
    s.execute(Files.readString(Path.of("db","migration","V003__m35_replay_status_width.sql")));
+   s.execute(Files.readString(Path.of("db","migration","V004__m35_source_event_type_integrity.sql")));
   }
   var runtime=ds("synqoria_integration_runtime","m35-ci-only");
   store=new IntegrationStore(new JdbcTemplate(runtime),JsonMapper.builder().build(),
@@ -51,10 +52,11 @@ class IntegrationPgTest{
  private UUID proof(String partner,String type,UUID externalEvent,String hash){
   UUID p=key();
   admin.update("INSERT INTO synqoria_integration.partner_proofs(proof_id,cell_id,facility_id,"+
-   "partner_code,proof_type,source_event_id,source_payload_sha256,external_actor,issuer,"+
-   "valid_from,valid_until) VALUES(?,?,?,?,?,?,?,?,?,"+
+   "partner_code,proof_type,source_event_id,source_payload_sha256,source_event_type,"+
+   "external_actor,issuer,valid_from,valid_until) VALUES(?,?,?,?,?,?,?,?,?,?,"+
    "clock_timestamp()-interval '2 minutes',clock_timestamp()+interval '2 hours')",
-   p,CELL,FAC,partner,type,externalEvent,hash,ISSUER,"synthetic-kyb-authority");
+   p,CELL,FAC,partner,type,externalEvent,hash,
+   "SOURCE_MESSAGE".equals(type)?"LAB_RESULT":null,ISSUER,"synthetic-kyb-authority");
   return p;
  }
  private UUID enabledPartner(String code){
@@ -125,6 +127,9 @@ class IntegrationPgTest{
   UUID partner=enabledPartner("LAB_X");
   UUID source=key();String digest="a".repeat(64);
   UUID att=proof("LAB_X","SOURCE_MESSAGE",source,digest);
+  assertEquals("proof_unavailable",assertThrows(Problem.class,()->
+   store.ingest(actor(CREATOR,"m35:message_ingest"),key(),
+    new Ingest(partner,source,"FORGED_EVENT",digest,att))).code);
   var created=store.ingest(actor(CREATOR,"m35:message_ingest"),key(),
    new Ingest(partner,source,"LAB_RESULT",digest,att));
   UUID message=id(created);
