@@ -1,0 +1,23 @@
+server:
+  port: ${SYNQORIA_SCHEDULING_PORT:8102}
+  error:
+    include-message: never
+    include-stacktrace: never
+spring:
+  application:
+    name: synqoria-scheduling-core
+  datasource:
+    url: ${SYNQORIA_SCHEDULING_JDBC_URL}
+    username: ${SYNQORIA_SCHEDULING_DB_USERNAME}
+    password: ${SYNQORIA_SCHEDULING_DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 0
+  sql:
+    init:
+      mode: never
+synqoria:
+  scheduling:
+    issuer: ${SYNQORIA_SCHEDULING_OIDC_ISSUER}
+    audience: ${SYNQORIA_SCHEDULING_OIDC_AUDIENCE}
+    db-role: ${SYNQORIA_SCHEDULING_DB_ROLE:synqoria_schedule_runtime}
