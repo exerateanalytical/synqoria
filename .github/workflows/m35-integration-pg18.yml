@@ -1,0 +1,59 @@
+name: M35 integration governance Java25/27 PostgreSQL18.6
+on:
+  push:
+    branches: [work/chatgpt-m35-integration-management-2026-11-07]
+  pull_request:
+    paths:
+      - 'services/integration-management-core/**'
+      - '.github/workflows/m35-integration-pg18.yml'
+permissions:
+  contents: read
+jobs:
+  java:
+    strategy:
+      matrix:
+        java: ['25','27']
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: maven
+          cache-dependency-path: services/integration-management-core/pom.xml
+      - name: Compile M35 control-plane service
+        working-directory: services/integration-management-core
+        run: mvn -B -ntp test
+  real-postgres:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+          cache-dependency-path: services/integration-management-core/pom.xml
+      - name: Start disposable PostgreSQL 18.6
+        run: |
+          set -euo pipefail
+          docker run -d --name m35-pg -e POSTGRES_PASSWORD=m35-admin-ci -e POSTGRES_DB=m35_ci -p 127.0.0.1:5432:5432 postgres:18.6
+          for i in $(seq 1 60); do
+            docker exec m35-pg psql -U postgres -d m35_ci -Atc 'SELECT 1' 2>/dev/null | grep -qx 1 && break
+            sleep 1
+          done
+          docker exec m35-pg psql -U postgres -d m35_ci -Atc 'SHOW server_version'
+      - name: Real partner proof mapping app quarantine and replay PostgreSQL tests
+        working-directory: services/integration-management-core
+        env:
+          SYNQORIA_M35_PG_TEST: '1'
+          SYNQORIA_M35_TEST_JDBC_URL: jdbc:postgresql://127.0.0.1:5432/m35_ci
+          SYNQORIA_M35_TEST_ADMIN_USER: postgres
+          SYNQORIA_M35_TEST_ADMIN_PASSWORD: m35-admin-ci
+        run: mvn -B -ntp -Dtest=IntegrationPgTest test
+      - name: Release denied until external credential and delivery providers
+        if: always()
+        run: echo 'Synthetic KYB/message proof only. No real secrets issued or network replay dispatched.'
