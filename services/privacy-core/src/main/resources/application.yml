@@ -1,0 +1,25 @@
+server:
+  port: ${SYNQORIA_PRIVACY_PORT:8096}
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+spring:
+  application:
+    name: synqoria-privacy-core
+  datasource:
+    url: ${SYNQORIA_PRIVACY_JDBC_URL}
+    username: ${SYNQORIA_PRIVACY_DB_USERNAME}
+    password: ${SYNQORIA_PRIVACY_DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 0
+      connection-timeout: 5000
+  sql:
+    init:
+      mode: never
+synqoria:
+  privacy:
+    issuer: ${SYNQORIA_PRIVACY_OIDC_ISSUER}
+    audience: ${SYNQORIA_PRIVACY_OIDC_AUDIENCE}
+    db-runtime-role: ${SYNQORIA_PRIVACY_DB_RUNTIME_ROLE:synqoria_privacy_runtime}

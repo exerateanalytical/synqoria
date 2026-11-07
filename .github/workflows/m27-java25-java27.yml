@@ -1,0 +1,33 @@
+name: M27 mortuary domain Java25 LTS and Java27 verification
+on:
+  push:
+    branches:
+      - work/chatgpt-m27-mortuary-2026-11-07
+  pull_request:
+    paths:
+      - 'services/operations-core/**'
+      - '.github/workflows/m27-java25-java27.yml'
+permissions:
+  contents: read
+jobs:
+  mortuary-junit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        java: ['25', '27']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: maven
+          cache-dependency-path: services/operations-core/pom.xml
+      - name: Compile Java backend and execute all source domain unit tests
+        working-directory: services/operations-core
+        run: mvn -B -ntp test
+      - name: Exact M27 code is not clinically released
+        if: always()
+        run: echo "No live mortuary authority, acceptance, or deployment inferred."

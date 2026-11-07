@@ -1,0 +1,45 @@
+{
+  "schema": "synqoria.m27.mortuary.screen-contract.v1",
+  "canonicalSource": "registers/canonical-screens.json",
+  "acceptance": "source_candidate_not_institutionally_accepted",
+  "module": "M27",
+  "name": "Mortuary and Decedent Release",
+  "nameFr": "Gestion mortuaire et remise des défunts",
+  "screens": [
+    {
+      "id": "M27-S01",
+      "name": "Mortuary register",
+      "nameFr": "Registre mortuaire",
+      "primaryAction": "Open custody record",
+      "kind": "worklist"
+    },
+    {
+      "id": "M27-S02",
+      "name": "Mortuary intake",
+      "nameFr": "Admission au service mortuaire",
+      "primaryAction": "Record intake",
+      "kind": "intake"
+    },
+    {
+      "id": "M27-S03",
+      "name": "Storage and custody transfer",
+      "nameFr": "Conservation et transferts de garde",
+      "primaryAction": "Record custody transfer",
+      "kind": "custody"
+    },
+    {
+      "id": "M27-S04",
+      "name": "Decedent release review",
+      "nameFr": "Examen de l'autorisation de remise",
+      "primaryAction": "Authorize release",
+      "kind": "approval"
+    },
+    {
+      "id": "M27-S05",
+      "name": "Decedent handover record",
+      "nameFr": "Procès-verbal de remise du défunt",
+      "primaryAction": "Confirm release",
+      "kind": "handover"
+    }
+  ]
+}

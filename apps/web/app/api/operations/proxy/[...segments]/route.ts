@@ -11,9 +11,16 @@ const stockBalances=new RegExp("^M22/items/"+uuid+"/balances$");
 const domainDetails=new RegExp("^"+moduleIds+"/items/"+uuid+"/details$");
 const transitions=new RegExp("^"+moduleIds+"/items/"+uuid+"/transitions$");
 const stockMovement=new RegExp("^M22/items/"+uuid+"/movements$");
+const mortuaryList=/^M27\/cases$/;
+const mortuaryCase=new RegExp("^M27/cases/"+uuid+"$");
+const mortuaryActions=new RegExp("^M27/cases/"+uuid+"/actions$");
+const mortuaryCustody=new RegExp("^M27/cases/"+uuid+"/custody$");
+const mortuaryApprovals=new RegExp("^M27/cases/"+uuid+"/approvals$");
+const mortuaryHolds=new RegExp("^M27/cases/"+uuid+"/holds$");
+const mortuaryAudit=new RegExp("^M27/cases/"+uuid+"/audit$");
 function allow(path:string,method:"GET"|"POST"){
- if(method==="GET")return path==="catalog"||listing.test(path)||record.test(path)||stockBalances.test(path)||domainDetails.test(path);
- return listing.test(path)||transitions.test(path)||stockMovement.test(path);
+ if(method==="GET")return path==="catalog"||listing.test(path)||record.test(path)||stockBalances.test(path)||domainDetails.test(path)||mortuaryList.test(path)||mortuaryCase.test(path)||mortuaryCustody.test(path)||mortuaryApprovals.test(path)||mortuaryHolds.test(path)||mortuaryAudit.test(path);
+ return listing.test(path)||transitions.test(path)||stockMovement.test(path)||mortuaryList.test(path)||mortuaryActions.test(path);
 }
 function send(error:string,status:number){return NextResponse.json({error},{status,headers:{"Cache-Control":"no-store"}});}
 async function proxy(request:NextRequest,context:RouteContext,method:"GET"|"POST"){
@@ -32,7 +39,7 @@ async function proxy(request:NextRequest,context:RouteContext,method:"GET"|"POST
  if(method==="GET"){
   const limit=request.nextUrl.searchParams.get("limit");
   if(limit!==null){
-   if(!listing.test(path)||!/^\d{1,3}$/.test(limit)||Number(limit)>100||Number(limit)<1)
+   if((!listing.test(path)&&!mortuaryList.test(path))||!/^\d{1,3}$/.test(limit)||Number(limit)>100||Number(limit)<1)
     return send("invalid_limit",400);
    url.searchParams.set("limit",limit);
   }

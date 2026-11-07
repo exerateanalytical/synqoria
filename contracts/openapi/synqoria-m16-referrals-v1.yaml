@@ -1,0 +1,118 @@
+openapi: 3.1.0
+info:
+  title: SYNQORIA M16 referrals API
+  version: 1.0.0
+  description: >
+    Authenticated hospital-cell scoped management contracts. All authority evidence
+    is independently issued. No institutional clinical or legal certification is
+    claimed by this engineering contract.
+servers:
+  - url: https://referrals.example.invalid
+security:
+  - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth: {type: http, scheme: bearer, bearerFormat: JWT}
+  parameters:
+    Idempotency:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema: {type: string, format: uuid}
+  schemas:
+    CommandReply:
+      type: object
+      required: [id, status, version]
+      properties:
+        id: {type: string, format: uuid}
+        status: {type: string}
+        version: {type: integer, minimum: 1}
+    Referral:
+      type: object
+      required: [patientRef, recipientFacility, reasonCode, summarySha256, consentProofId]
+      properties:
+        patientRef: {type: string, format: uuid}
+        recipientFacility: {type: string, format: uuid}
+        reasonCode: {type: string, pattern: '^[A-Z][A-Z0-9_]{1,63}$'}
+        summarySha256: {type: string, pattern: '^[0-9a-f]{64}$'}
+        consentProofId: {type: string, format: uuid}
+    Action:
+      type: object
+      required: [expectedVersion]
+      properties:
+        expectedVersion: {type: integer, minimum: 1}
+        proofId: {type: [string, 'null'], format: uuid}
+paths:
+  /api/v1/referrals:
+    get:
+      operationId: listScopedReferrals
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema: {type: integer, minimum: 1, maximum: 100, default: 25}
+      responses:
+        '200':
+          description: Authorized scoped records
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+    post:
+      operationId: createReferral
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Referral'
+      responses:
+        '201':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/referrals/{id}/history:
+    get:
+      operationId: getImmutableReferralHistory
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+        - name: limit
+          in: query
+          required: false
+          schema: {type: integer, minimum: 1, maximum: 100, default: 25}
+      responses:
+        '200':
+          description: Authorized scoped records
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/referrals/{id}/{action}:
+    post:
+      operationId: transitionReferral
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+        - name: id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+        - name: action
+          in: path
+          required: true
+          schema: {type: string, pattern: '^[a-z-]+$'}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Action'
+      responses:
+        '200':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}

@@ -1,0 +1,371 @@
+openapi: 3.1.0
+info:
+  title: SYNQORIA M27 Mortuary and Decedent Release API
+  version: 1.0.0-draft
+  description: |
+    Authenticated, facility-scoped clinical administration of decedent intake, custody
+    and dual-authorized release. No death may be inferred from a caller's declaration.
+    The trusted hospital identity/medical-death/custody/legal authorities provision proof
+    records OUTSIDE the runtime API. This contract is for source integration review;
+    it does not certify national legal compliance or activate any hospital deployment.
+  contact:
+    name: OPES Health Systems
+servers:
+  - url: /api/v1/operations
+security:
+  - facilityStaffJwt: []
+tags:
+  - name: Mortuary cases
+    description: PHI-minimized case read and intake
+  - name: Custody and release
+    description: Append-only custody and independent release approvals
+paths:
+  /M27/cases:
+    get:
+      tags: [Mortuary cases]
+      operationId: listMortuaryCases
+      summary: List facility-scoped mortuary records
+      description: Requires m27:read and a verified, unexpired independent workforce grant/shift.
+      x-synqoria-permission: m27:read
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema: {type: integer, minimum: 1, maximum: 100, default: 50}
+      responses:
+        '200':
+          description: Only records in the currently verified hospital cell/facility
+          content:
+            application/json:
+              schema: {type: array, items: {$ref: '#/components/schemas/CaseView'}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Denied'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+    post:
+      tags: [Mortuary cases]
+      operationId: receiveMortuaryCase
+      summary: Register verified decedent intake and sealed belongings
+      description: |
+        Requires m27:intake; intake and receiving staff must differ. Evidence of
+        death, identity, institutional intake authorization and sealed belongings
+        must be preissued by independent authorities and valid for this
+        decedent, facility and intake action. Case/custody/audit/outbox and
+        idempotency are recorded in a single database transaction.
+      x-synqoria-permission: m27:intake
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/Intake'}
+      responses:
+        '201':
+          description: New received case
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/CaseView'}
+        '400': {$ref: '#/components/responses/Invalid'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Denied'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /M27/cases/{id}:
+    parameters:
+      - $ref: '#/components/parameters/CaseId'
+    get:
+      tags: [Mortuary cases]
+      operationId: getMortuaryCase
+      summary: Read a single facility-scoped case without free-text death narratives
+      x-synqoria-permission: m27:read
+      responses:
+        '200':
+          description: Authorized case detail
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/CaseView'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Denied'}
+        '404': {$ref: '#/components/responses/Missing'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /M27/cases/{id}/actions:
+    parameters:
+      - $ref: '#/components/parameters/CaseId'
+    post:
+      tags: [Custody and release]
+      operationId: transitionMortuaryCase
+      summary: Apply an authorized, version-checked custody or release transition
+      description: |
+        IDENTIFY: RECEIVED -> IDENTIFIED with independent identity proof.
+        STORE: IDENTIFIED -> STORED with verified location, seal, condition
+        and on-shift receiving officer.
+        TRANSFER: STORED -> STORED with a different bay and different on-shift
+        receiving officer; immutable custody event appended.
+        REVIEW_RELEASE: STORED -> RELEASE_REVIEWED with checked legal authority
+        and recipient identity; cannot be performed by intake officer.
+        AUTHORIZE_RELEASE: RELEASE_REVIEWED -> RELEASE_AUTHORIZED, requiring
+        second reviewer distinct from first and intake officer and renewed evidence.
+        HANDOVER: RELEASE_AUTHORIZED -> RELEASED with verified recipient and
+        legal authority, independently witnessed sealed-belongings return and
+        verified handover receipt.
+        All release actions deny active legal holds. Retried commands carry the
+        SAME commandId and may fail closed if the result has been superseded.
+      x-synqoria-permissions:
+        IDENTIFY: m27:identify
+        STORE: m27:store
+        TRANSFER: m27:transfer
+        REVIEW_RELEASE: m27:review
+        AUTHORIZE_RELEASE: m27:authorize
+        HANDOVER: m27:handover
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/Change'}
+      responses:
+        '200':
+          description: Atomic transition applied and append-only evidence recorded
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/CaseView'}
+        '400': {$ref: '#/components/responses/Invalid'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Denied'}
+        '404': {$ref: '#/components/responses/Missing'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /M27/cases/{id}/custody:
+    parameters:
+      - $ref: '#/components/parameters/CaseId'
+    get:
+      tags: [Custody and release]
+      operationId: readMortuaryCustody
+      summary: Read immutable intake, storage, transfer and handover chain
+      x-synqoria-permission: m27:read
+      responses:
+        '200':
+          description: Chronological custody events
+          content:
+            application/json:
+              schema: {type: array, items: {$ref: '#/components/schemas/CustodyView'}}
+        '403': {$ref: '#/components/responses/Denied'}
+        '404': {$ref: '#/components/responses/Missing'}
+  /M27/cases/{id}/holds:
+    parameters:
+      - $ref: '#/components/parameters/CaseId'
+    get:
+      tags: [Custody and release]
+      operationId: readMortuaryLegalHolds
+      summary: Read authorized legal/administrative release holds and historical rescissions
+      description: |
+        Only authorized release reviewers with a valid shift can read court or
+        administrative hold metadata. Runtime staff cannot insert/revoke a hold.
+        An active hold always denies review, authorization and physical release.
+      x-synqoria-permission: m27:review
+      responses:
+        '200':
+          description: Scoped legal holds, including rescinded historical records
+          content:
+            application/json:
+              schema: {type: array, items: {$ref: '#/components/schemas/HoldView'}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Denied'}
+        '404': {$ref: '#/components/responses/Missing'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /M27/cases/{id}/approvals:
+    parameters:
+      - $ref: '#/components/parameters/CaseId'
+    get:
+      tags: [Custody and release]
+      operationId: readMortuaryReleaseApprovals
+      summary: Inspect two independent release reviewer decisions
+      x-synqoria-permission: m27:review
+      responses:
+        '200':
+          description: Release approvals with reviewer ID and case version
+          content:
+            application/json:
+              schema: {type: array, items: {$ref: '#/components/schemas/ApprovalView'}}
+        '403': {$ref: '#/components/responses/Denied'}
+        '404': {$ref: '#/components/responses/Missing'}
+  /M27/cases/{id}/audit:
+    parameters:
+      - $ref: '#/components/parameters/CaseId'
+    get:
+      tags: [Custody and release]
+      operationId: auditMortuaryCase
+      summary: Inspect append-only case action/version audit history
+      x-synqoria-permission: m27:audit
+      responses:
+        '200':
+          description: Scoped audit events
+          content:
+            application/json:
+              schema: {type: array, items: {$ref: '#/components/schemas/AuditView'}}
+        '403': {$ref: '#/components/responses/Denied'}
+        '404': {$ref: '#/components/responses/Missing'}
+components:
+  securitySchemes:
+    facilityStaffJwt:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        Signature/issuer/audience validated by Spring Security. JWT includes
+        synqoria_cell, synqoria_facility, synqoria_grant_revision, expiry
+        and permission subset. Exact revision and active shift are validated
+        in independently managed, FORCE-RLS PostgreSQL workforce grants.
+  parameters:
+    CaseId:
+      name: id
+      in: path
+      required: true
+      schema: {type: string, format: uuid}
+  schemas:
+    Reference:
+      type: string
+      minLength: 1
+      maxLength: 160
+      pattern: '^[A-Za-z0-9_.:/-]{1,160}$'
+    CaseView:
+      type: object
+      required:
+        - caseId
+        - decedentRef
+        - originatingUnitRef
+        - belongingsSealRef
+        - intakeReceivingStaff
+        - state
+        - version
+        - receivedAt
+      properties:
+        caseId: {type: string, format: uuid}
+        decedentRef: {type: string, format: uuid}
+        originatingUnitRef: {$ref: '#/components/schemas/Reference'}
+        belongingsSealRef: {$ref: '#/components/schemas/Reference'}
+        intakeReceivingStaff: {type: string, format: uuid}
+        state:
+          type: string
+          enum: [RECEIVED, IDENTIFIED, STORED, RELEASE_REVIEWED, RELEASE_AUTHORIZED, RELEASED]
+        version: {type: integer, minimum: 1, format: int64}
+        currentStorage: {type: [string, 'null'], maxLength: 160}
+        receivedAt: {type: string, format: date-time}
+        releasedAt: {type: [string, 'null'], format: date-time}
+    Intake:
+      type: object
+      additionalProperties: false
+      required:
+        - decedentRef
+        - intakeRef
+        - deathRef
+        - originatingUnitRef
+        - authorizationRef
+        - belongingsSealRef
+        - receivingStaffId
+        - commandId
+      properties:
+        decedentRef: {type: string, format: uuid}
+        intakeRef: {$ref: '#/components/schemas/Reference'}
+        deathRef: {$ref: '#/components/schemas/Reference'}
+        originatingUnitRef: {$ref: '#/components/schemas/Reference'}
+        authorizationRef: {$ref: '#/components/schemas/Reference'}
+        belongingsSealRef: {$ref: '#/components/schemas/Reference'}
+        receivingStaffId: {type: string, format: uuid}
+        commandId: {type: string, format: uuid}
+    Change:
+      type: object
+      additionalProperties: false
+      required: [action, expectedVersion, commandId]
+      properties:
+        action:
+          type: string
+          enum: [IDENTIFY, STORE, TRANSFER, REVIEW_RELEASE, AUTHORIZE_RELEASE, HANDOVER]
+        expectedVersion: {type: integer, minimum: 1, format: int64}
+        commandId: {type: string, format: uuid}
+        evidenceRef: {$ref: '#/components/schemas/Reference'}
+        storageCode: {$ref: '#/components/schemas/Reference'}
+        receivingStaffId: {type: string, format: uuid}
+        recipientRef: {$ref: '#/components/schemas/Reference'}
+        authorityRef: {$ref: '#/components/schemas/Reference'}
+        sealRef: {$ref: '#/components/schemas/Reference'}
+        conditionCode: {$ref: '#/components/schemas/Reference'}
+        witnessStaffId: {type: string, format: uuid}
+        belongingsReleaseRef: {$ref: '#/components/schemas/Reference'}
+    CustodyView:
+      type: object
+      required: [version, eventType, actorId, evidenceRef, occurredAt]
+      properties:
+        version: {type: integer, minimum: 1}
+        eventType: {type: string, enum: [INTAKE, STORE, TRANSFER, HANDOVER]}
+        fromStorage: {type: [string, 'null']}
+        toStorage: {type: [string, 'null']}
+        actorId: {type: string, format: uuid}
+        receivingStaffId: {type: [string, 'null'], format: uuid}
+        evidenceRef: {$ref: '#/components/schemas/Reference'}
+        sealRef: {type: [string, 'null']}
+        conditionCode: {type: [string, 'null']}
+        witnessStaffId: {type: [string, 'null'], format: uuid}
+        belongingsRef: {type: [string, 'null']}
+        occurredAt: {type: string, format: date-time}
+    ApprovalView:
+      type: object
+      required: [stage, actorId, caseVersion, createdAt]
+      properties:
+        stage: {type: string, enum: [REVIEW, AUTHORIZE]}
+        actorId: {type: string, format: uuid}
+        caseVersion: {type: integer, minimum: 1}
+        createdAt: {type: string, format: date-time}
+    HoldView:
+      type: object
+      required: [holdId, authorityRef, reasonCode, active, orderedAt]
+      properties:
+        holdId: {type: string, format: uuid}
+        authorityRef: {$ref: '#/components/schemas/Reference'}
+        reasonCode: {type: string, maxLength: 40}
+        active: {type: boolean}
+        orderedAt: {type: string, format: date-time}
+        rescindedAt: {type: [string, 'null'], format: date-time}
+    AuditView:
+      type: object
+      required: [version, action, toState, actorId, occurredAt]
+      properties:
+        version: {type: integer, minimum: 1}
+        action: {type: string}
+        fromState: {type: [string, 'null']}
+        toState: {type: string}
+        actorId: {type: string, format: uuid}
+        occurredAt: {type: string, format: date-time}
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error: {type: string, pattern: '^[a-z_]{3,120}$'}
+  responses:
+    Invalid:
+      description: Invalid structured input or missing required identifier
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    Unauthorized:
+      description: Missing or unverifiable OIDC access token
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    Denied:
+      description: Scope, role, shift, proof, legal hold or maker-checker denial
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    Missing:
+      description: Case not visible or not found in current facility
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    Conflict:
+      description: Optimistic concurrency, duplicate identity or custody bay conflict
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    Unavailable:
+      description: Authority, database or integration is unavailable; no unsafe fallback
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
