@@ -1,0 +1,33 @@
+name: SYNQORIA M40 actual disposable PostgreSQL 18 WAL point-in-time restore (synthetic)
+on:
+  pull_request:
+    paths:
+      - 'tools/m40_disposable_postgres18_pitr.sh'
+      - '.github/workflows/m40-disposable-pitr-ci.yml'
+      - 'docs/runbooks/M40_BACKUP_ARTIFACT_VERIFICATION_2026-11-07.md'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/m40_disposable_postgres18_pitr.sh'
+      - '.github/workflows/m40-disposable-pitr-ci.yml'
+permissions:
+  contents: read
+jobs:
+  postgres18-physical-pitr:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify Docker and shell syntax before touching ephemeral containers
+        run: |
+          set -euo pipefail
+          bash -n tools/m40_disposable_postgres18_pitr.sh
+          docker version
+      - name: Actual physical basebackup, WAL archive and selected-time recovery in disposable PG18.6
+        shell: bash
+        run: bash tools/m40_disposable_postgres18_pitr.sh
+      - name: Explicit recovery-evidence boundary
+        if: always()
+        run: |
+          echo 'Real PG18.6 physical restore against synthetic transaction markers only.'
+          echo 'This is NOT a hospital RPO/RTO test, production WAL continuity audit, offsite object store check, key usability test or patient data recovery approval.'

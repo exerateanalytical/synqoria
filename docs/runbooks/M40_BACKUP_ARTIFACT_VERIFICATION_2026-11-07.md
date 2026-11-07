@@ -26,3 +26,18 @@ Exit status 0 means the observed local file matches both recorded attributes; st
 
 Run `python -m unittest discover -s tests -p 'test_m40_backup_artifact.py' -v`.
 Tests use synthetic file content and validate good digests, corrupt digests, wrong sizes, symlink and directory denial, invalid arguments and privacy-safe failure output.
+
+
+## Actual PostgreSQL 18.6 physical WAL/PITR rehearsal — disposable synthetic data
+
+The additional script \`tools/m40_disposable_postgres18_pitr.sh\` is not a simulated restore or backup digest inspection. It executes a complete, isolated **PostgreSQL 18.6** restore flow against three disposable Docker volumes:
+
+1. Start a new PG18 primary with \`wal_level=replica\`, \`archive_mode=on\`, a separately mounted archive, and \`full_page_writes=on\`. There are **no host-published ports**.
+2. Create synthetic marker records and take a physical \`pg_basebackup\` with streamed WAL.
+3. Commit two separate transactions *after* backup. Switch and verify real archive segments; place a trusted UTC recovery target **between** the transactions.
+4. Stop the primary. Populate an entirely new PostgreSQL 18 data directory from the base backup, mount the archived WAL read-only, create \`recovery.signal\`, and configure \`restore_command\`, \`recovery_target_time\`, and \`recovery_target_action=pause\`.
+5. Start a separate recovered PostgreSQL 18 server and run authoritative SQL queries to prove that the initial row and first post-backup transaction exist, while the later committed transaction does **not**. Require \`pg_is_in_recovery() = true\`; a full SQL proof is required for success. All disposable data, containers and volumes are removed when the test exits.
+
+\`bash tools/m40_disposable_postgres18_pitr.sh\` is the direct runner command; GitHub Actions \`.github/workflows/m40-disposable-pitr-ci.yml\` executes it for each relevant PR and push to main.
+
+**Acceptance limits:** CI uses an empty synthetic database, a disposable administrator and ephemeral local Docker volumes. It does **not** test hospital-scale RPO/RTO, immutable remote offsite storage, production multi-region replicas, real backup catalogue identity, provider secrets, HSM/KMS recovery keys, clinical payloads, data residency, signed operator approvals, network failure, or actual hospital cutover. The M40 backup/restore module must remain *production-integration unverified* until all relevant provider deployment and independent recovery gates are satisfied.
