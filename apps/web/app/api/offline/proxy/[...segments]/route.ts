@@ -39,7 +39,7 @@ async function proxy(request:NextRequest,context:RouteContext,method:"GET"|"POST
   if(!/^[0-9a-fA-F-]{36}$/.test(key))return send("idempotency_key_required",422);
   headers["Idempotency-Key"]=key;headers["Content-Type"]="application/json";
   body=await request.text();
-  if(body.length>32768)return send("payload_too_large",413);
+  if(body.length>(path==="sync/batches"?1048576:32768))return send("payload_too_large",413);   // a full device batch (50 commands) is larger than any screen action
   try{const parsed=JSON.parse(body);if(!parsed||Array.isArray(parsed)||typeof parsed!=="object")throw Error();}
   catch{return send("malformed_request",400);}
  }

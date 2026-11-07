@@ -55,13 +55,15 @@ test("server error and outcome codes users can hit have translated messages", ()
  assert.equal(i18n.detectLang(null, "fr-CM"), "fr");
 });
 
-test("proxy allow-list admits only documented browser routes and never device uploads or authoring", () => {
+test("proxy allow-list admits only documented browser routes: the installed device may upload its own queue, nothing authors heads, contracts or devices", () => {
  for (const p of ["status", "devices", "heads", "contracts", "commands", `commands/${U}`, "conflicts", `conflicts/${U}`, "transfers", "reconciliations"]) assert.ok(policy.isAllowed("GET", p), p);
  for (const p of [`devices/${U}/revocation`, `conflicts/${U}/resolution`, "transfers", `transfers/${U}/freeze`, `transfers/${U}/fence`, `transfers/${U}/decision`, `transfers/${U}/completion`, `transfers/${U}/abort`])
   assert.ok(policy.isAllowed("POST", p), p);
- for (const p of ["sync/batches", "heads", `heads/${U}/revisions`, "contracts", `contracts/${U}/decision`, "devices", `devices/${U}/cursor`, "../x", "actuator/health", `conflicts/${U}/delete`, "conflicts/not-a-uuid/resolution"])
+ for (const p of ["heads", `heads/${U}/revisions`, "contracts", `contracts/${U}/decision`, "devices", "../x", "actuator/health", `conflicts/${U}/delete`, "conflicts/not-a-uuid/resolution"])
   assert.ok(!policy.isAllowed("POST", p), p);
- assert.ok(!policy.isAllowed("GET", `devices/${U}/cursor`) && !policy.isAllowed("GET", `transfers/${U}/freeze`), "mutations are not readable");
+ assert.ok(policy.isAllowed("POST", "sync/batches") && policy.isAllowed("GET", `devices/${U}/cursor`), "the installed device uploads its own queue and reads its cursor");
+ assert.ok(!policy.isAllowed("GET", "sync/batches") && !policy.isAllowed("GET", `transfers/${U}/freeze`), "mutations are not readable");
+ assert.ok(read("app/api/offline/proxy/[...segments]/route.ts").includes("1048576"), "a full 50-command batch must fit the proxy body bound");
  assert.ok(!policy.isAllowed("PUT", "transfers") && !policy.isAllowed("DELETE", `commands/${U}`));
  assert.ok(!policy.isSafeSegments(["a", ".."]) && !policy.isSafeSegments(["a%2fb"]) && !policy.isSafeSegments([]));
  assert.ok(policy.safeQuery(new URLSearchParams("status=OPEN&page=0&size=10&deviceId=" + U)));

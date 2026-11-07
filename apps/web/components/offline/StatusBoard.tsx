@@ -1,6 +1,7 @@
 "use client";
 import {useState} from "react";
 import {ActionButton,ActionError,Badge,Empty,Field,FailureView,Loading,Notice,OfFrame,fmtTime,styles,toneFor,useLoad,useOf} from "./ui";
+import DevicePanel from "./DevicePanel";
 import {call,newKey} from "../../lib/offline/client";
 import type {Failure} from "../../lib/offline/client";
 import {enumLabel} from "../../lib/offline/i18n";
@@ -64,6 +65,7 @@ function Body(){
    <ActionError failure={fail} onReload={s.reload}/>
    {msg&&<Notice>{msg}</Notice>}
   </section>
+  <DevicePanel/>
  </>;
 }
 export default function StatusBoard(){return <OfFrame active="status" title="st.title" intro="st.intro"><Body/></OfFrame>;}

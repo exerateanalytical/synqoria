@@ -68,7 +68,23 @@ const en = {
  "tr.frozenNow": "Writers frozen", "tr.noHeads": "No records are registered.", "tr.completedEpoch": "New epoch",
  // S05
  "hs.title": "Reconciliation history", "hs.intro": "What was applied, rejected, resolved or transferred, who reviewed it and where the record ended.", "hs.filter": "Outcome", "hs.none": "No history yet.",
- "hs.reviewer": "Reviewer", "hs.automatic": "Automatic", "hs.final": "Final version", "hs.finalEpoch": "Epoch", "hs.evidence": "Evidence"
+ "hs.reviewer": "Reviewer", "hs.automatic": "Automatic", "hs.final": "Final version", "hs.finalEpoch": "Epoch", "hs.evidence": "Evidence",
+ // This device (packages 04, 14-16, 20-22)
+ "nav.device": "This device",
+ "dv.title": "This device", "dv.intro": "The offline queue on this device: what is waiting, what the server decided, and the controls to sync, lock or wipe. Clinical actions are never decided here; the server is the authority.",
+ "dv.session": "Signed-in session", "dv.noSession": "No valid session. Sign in to use this device.", "dv.scope": "Hospital scope", "dv.user": "User", "dv.expires": "Session ends",
+ "dv.binding": "Device binding", "dv.deviceId": "Device id (registered by an administrator)", "dv.verify": "Verify with the server and bind", "dv.bound": "Bound to this user and hospital scope.", "dv.notBound": "This browser is not bound to a registered device.",
+ "dv.forget": "Forget binding", "dv.unlock": "Unlock local storage", "dv.locked": "Local storage is locked.", "dv.unlocked": "Local storage is unlocked.", "dv.suspended": "Synchronization is suspended: {reason}",
+ "dv.queue": "Local queue", "dv.entries": "Entries", "dv.empty": "Nothing queued on this device.", "dv.operation": "Operation", "dv.syncNow": "Sync now", "dv.refresh": "Refresh approved operations", "dv.refreshed": "Approved operations and record versions refreshed.",
+ "dv.lock": "Lock device", "dv.wipe": "Wipe device (destroys the key)", "dv.wipeWarn": "Unsent changes are lost and cannot be recovered.", "dv.export": "Export queue metadata (no clinical content)", "dv.exported": "Metadata exported.",
+ "dv.report": "Last sync: sent {sent}, applied {applied}, duplicate {duplicate}, conflicts {conflicted}, denied {denied}, expired {expired}, requeued {requeued}.", "dv.offline": "Offline: nothing is lost, sync resumes when the connection returns.",
+ "dv.retry": "Will retry in {s} s.", "dv.wiped": "Device wiped.", "dv.locknote": "Locked.",
+ "enum.local.QUEUED": "Waiting to send", "enum.local.SUBMITTED": "Sent, awaiting answer", "enum.local.APPLIED": "Applied", "enum.local.DUPLICATE": "Already applied (duplicate)", "enum.local.CONFLICTED": "Conflict: needs review",
+ "enum.local.DENIED": "Denied by the server", "enum.local.EXPIRED": "Expired",
+ "err.device_not_found": "The server does not know this device in your hospital scope.", "err.device_not_active": "This device is not active (revoked devices cannot be used).", "err.storage_unavailable": "This browser cannot store the binding.",
+ "err.session_expired": "Your session ended. Sign in again; queued changes are kept.", "err.store_locked": "Local storage is locked.", "err.cross_scope_denied": "This session belongs to a different hospital scope than the device.",
+ "err.retry_budget_spent": "Too many failed attempts; synchronization stopped. Check the connection, then resume.", "err.protocol_error": "The server answered in an unexpected way; synchronization stopped.", "err.device_user_mismatch": "This device is bound to a different user.",
+ "err.no_session": "No valid session.", "err.contracts_not_loaded": "Approved operations have not been loaded yet.", "err.session_not_valid": "Sign in again before resuming."
 } as const;
 
 export type Key = keyof typeof en;
@@ -135,7 +151,22 @@ const fr: Record<Key, string> = {
  "tr.step.PROPOSED": "Geler les écritures ensuite", "tr.step.FROZEN": "En attente de la preuve de blocage", "tr.step.FENCED": "En attente d’approbation indépendante", "tr.step.APPROVED": "Prêt à terminer", "tr.step.COMPLETED": "Propriété déplacée", "tr.step.ABORTED": "Arrêté",
  "tr.frozenNow": "Écritures gelées", "tr.noHeads": "Aucun dossier n’est enregistré.", "tr.completedEpoch": "Nouvelle époque",
  "hs.title": "Historique de réconciliation", "hs.intro": "Ce qui a été appliqué, refusé, résolu ou transféré, qui l’a examiné et où le dossier s’est arrêté.", "hs.filter": "Résultat", "hs.none": "Aucun historique pour le moment.",
- "hs.reviewer": "Réviseur", "hs.automatic": "Automatique", "hs.final": "Version finale", "hs.finalEpoch": "Époque", "hs.evidence": "Preuve"
+ "hs.reviewer": "Réviseur", "hs.automatic": "Automatique", "hs.final": "Version finale", "hs.finalEpoch": "Époque", "hs.evidence": "Preuve",
+ "nav.device": "Cet appareil",
+ "dv.title": "Cet appareil", "dv.intro": "La file hors ligne de cet appareil : ce qui attend, ce que le serveur a décidé et les commandes pour synchroniser, verrouiller ou effacer. Aucune action clinique n’est décidée ici ; le serveur fait autorité.",
+ "dv.session": "Session ouverte", "dv.noSession": "Aucune session valide. Connectez-vous pour utiliser cet appareil.", "dv.scope": "Périmètre hospitalier", "dv.user": "Utilisateur", "dv.expires": "Fin de session",
+ "dv.binding": "Liaison de l’appareil", "dv.deviceId": "Identifiant de l’appareil (enregistré par un administrateur)", "dv.verify": "Vérifier auprès du serveur et lier", "dv.bound": "Lié à cet utilisateur et à ce périmètre hospitalier.", "dv.notBound": "Ce navigateur n’est lié à aucun appareil enregistré.",
+ "dv.forget": "Oublier la liaison", "dv.unlock": "Déverrouiller le stockage local", "dv.locked": "Le stockage local est verrouillé.", "dv.unlocked": "Le stockage local est déverrouillé.", "dv.suspended": "La synchronisation est suspendue : {reason}",
+ "dv.queue": "File locale", "dv.entries": "Entrées", "dv.empty": "Rien en file sur cet appareil.", "dv.operation": "Opération", "dv.syncNow": "Synchroniser maintenant", "dv.refresh": "Actualiser les opérations approuvées", "dv.refreshed": "Opérations approuvées et versions des dossiers actualisées.",
+ "dv.lock": "Verrouiller l’appareil", "dv.wipe": "Effacer l’appareil (détruit la clé)", "dv.wipeWarn": "Les changements non envoyés sont perdus et irrécupérables.", "dv.export": "Exporter les métadonnées de la file (sans contenu clinique)", "dv.exported": "Métadonnées exportées.",
+ "dv.report": "Dernière synchro : envoyés {sent}, appliqués {applied}, doublons {duplicate}, conflits {conflicted}, refusés {denied}, expirés {expired}, remis en file {requeued}.", "dv.offline": "Hors ligne : rien n’est perdu, la synchro reprend au retour de la connexion.",
+ "dv.retry": "Nouvel essai dans {s} s.", "dv.wiped": "Appareil effacé.", "dv.locknote": "Verrouillé.",
+ "enum.local.QUEUED": "En attente d’envoi", "enum.local.SUBMITTED": "Envoyé, en attente de réponse", "enum.local.APPLIED": "Appliqué", "enum.local.DUPLICATE": "Déjà appliqué (doublon)", "enum.local.CONFLICTED": "Conflit : à examiner",
+ "enum.local.DENIED": "Refusé par le serveur", "enum.local.EXPIRED": "Expiré",
+ "err.device_not_found": "Le serveur ne connaît pas cet appareil dans votre périmètre hospitalier.", "err.device_not_active": "Cet appareil n’est pas actif (un appareil révoqué est inutilisable).", "err.storage_unavailable": "Ce navigateur ne peut pas enregistrer la liaison.",
+ "err.session_expired": "Votre session est terminée. Reconnectez-vous ; les changements en file sont conservés.", "err.store_locked": "Le stockage local est verrouillé.", "err.cross_scope_denied": "Cette session appartient à un autre périmètre hospitalier que l’appareil.",
+ "err.retry_budget_spent": "Trop d’échecs ; la synchronisation est arrêtée. Vérifiez la connexion puis reprenez.", "err.protocol_error": "Le serveur a répondu de façon inattendue ; la synchronisation est arrêtée.", "err.device_user_mismatch": "Cet appareil est lié à un autre utilisateur.",
+ "err.no_session": "Aucune session valide.", "err.contracts_not_loaded": "Les opérations approuvées ne sont pas encore chargées.", "err.session_not_valid": "Reconnectez-vous avant de reprendre."
 };
 
 export const dictionaries: Record<Lang, Record<Key, string>> = { en, fr };

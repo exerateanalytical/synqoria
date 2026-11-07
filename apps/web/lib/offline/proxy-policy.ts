@@ -1,11 +1,12 @@
 // Allow-list for the M38 browser-to-service proxy. Pure functions (no Next imports) so they are unit-tested.
-// Device uploads (sync/batches), authoritative head publication, contract authoring and device registration are
-// service-to-service or administrative and are NOT reachable from a browser.
+// The installed PWA is the device: it may upload its own queue (sync/batches) and read its own cursor, always as the signed-in user whose
+// token the server binds to the device (device_user_mismatch otherwise). Authoritative head publication, contract authoring and device
+// registration remain service-to-service / administrative and are NOT reachable from a browser.
 const uuid = "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[1-8][a-fA-F0-9]{3}-[89aAbB][a-fA-F0-9]{3}-[a-fA-F0-9]{12}";
 const re = (p: string) => new RegExp("^" + p + "$");
-const GET_ROUTES = ["status", "devices", "heads", "contracts", "commands", `commands/${uuid}`, "conflicts", `conflicts/${uuid}`, "transfers", "reconciliations"].map(re);
+const GET_ROUTES = [`devices/${uuid}/cursor`, "status", "devices", "heads", "contracts", "commands", `commands/${uuid}`, "conflicts", `conflicts/${uuid}`, "transfers", "reconciliations"].map(re);
 const POST_ROUTES = [
- `devices/${uuid}/revocation`, `conflicts/${uuid}/resolution`, "transfers", `transfers/${uuid}/freeze`, `transfers/${uuid}/fence`,
+ "sync/batches", `devices/${uuid}/revocation`, `conflicts/${uuid}/resolution`, "transfers", `transfers/${uuid}/freeze`, `transfers/${uuid}/fence`,
  `transfers/${uuid}/decision`, `transfers/${uuid}/completion`, `transfers/${uuid}/abort`
 ].map(re);
 export function isAllowed(method: string, path: string): boolean {
