@@ -107,7 +107,7 @@ public class StaffService {
    s.put("changes",db.rows("SELECT id,kind,effective_date,status,reason,requested_by,decided_by,applied_at FROM synqoria_hr.staff_changes WHERE staff_id=? ORDER BY created_at DESC LIMIT 50",id));
    s.put("history",db.rows("SELECT event_id,action,from_status,to_status,aggregate_version,actor_id,occurred_at FROM synqoria_hr.audit_events WHERE aggregate_type='STAFF' AND aggregate_id=? ORDER BY occurred_at,event_id",id));
    if(a.has(Perm.COMP_READ))
-    s.put("contracts",db.rows("SELECT id,contract_version,employer_code,country_code,currency,pay_basis,base_amount,effective_from,effective_to,status,created_by,approved_by FROM synqoria_hr.contracts WHERE staff_id=? ORDER BY contract_version DESC",id));
+    s.put("contracts",db.rows("SELECT id,contract_version,employer_code,country_code,currency,pay_basis,base_amount,effective_from,effective_to,status,created_by,approved_by,version FROM synqoria_hr.contracts WHERE staff_id=? ORDER BY contract_version DESC",id));
    return s;
   });
  }

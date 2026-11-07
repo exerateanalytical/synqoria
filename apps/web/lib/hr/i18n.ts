@@ -1,0 +1,241 @@
+// M24 English / French dictionary. Both languages must define exactly the same keys (tested).
+export type Lang = "en" | "fr";
+
+const en = {
+ "app.title": "Human resources and payroll", "app.subtitle": "M24 · Staffing and payroll",
+ "nav.label": "HR and payroll workstations", "nav.directory": "Staff directory", "nav.employment": "Employment record", "nav.roster": "Staff roster",
+ "nav.attendance": "Attendance and leave", "nav.preparation": "Payroll preparation", "nav.approval": "Payroll approval and payments",
+ "lang.label": "Language", "skip": "Skip to content",
+ "hub.title": "Human resources and payroll",
+ "hub.intro": "Staff records, rosters, attendance and leave, and payroll. Every change is checked by a second person, and compensation is shown only to people authorised to see it.",
+ "hub.open": "Open",
+ "common.refresh": "Refresh", "common.retry": "Try again", "common.reload": "Reload latest version", "common.cancel": "Cancel", "common.submit": "Submit",
+ "common.previous": "Previous page", "common.next": "Next page", "common.page": "Page {page} of {pages}", "common.total": "{total} records",
+ "common.none": "None", "common.any": "Any", "common.version": "Version", "common.updated": "Updated", "common.reason": "Reason", "common.note": "Note",
+ "common.actions": "Actions", "common.details": "Details", "common.status": "Status", "common.search": "Search", "common.from": "From", "common.to": "To",
+ "common.approve": "Approve", "common.reject": "Reject", "common.history": "History", "common.department": "Department", "common.position": "Position",
+ "common.staff": "Staff member", "common.date": "Date", "common.hidden": "Not shown for your role",
+ "state.loading": "Loading records…", "state.empty": "No records match the current filters.", "state.emptyHint": "Change the filters or refresh once new records arrive.",
+ "state.error": "The service could not be reached or returned an error.", "state.errorHint": "No data is shown as current. Check the connection, then try again.",
+ "state.offline": "You are offline. Displayed data may be out of date and actions are disabled until the connection returns.",
+ "state.unauthorized": "Sign in is required.", "state.unauthorizedHint": "Your session is missing or has expired. Sign in with your hospital identity to continue.",
+ "state.signIn": "Sign in with hospital identity", "state.forbidden": "You are not authorized for this action or record.",
+ "state.forbiddenHint": "Your role does not include this permission. Ask your supervisor if you need access.",
+ "state.notFound": "This record does not exist or is outside your hospital and facility.", "state.notConfigured": "The HR service is not configured for this environment.",
+ "disabled.status": "Not available in the current status ({status}).", "disabled.select": "Select a record first.", "disabled.offline": "Unavailable while offline.",
+ "disabled.input": "Complete the required fields first.",
+ "err.generic": "The action was refused ({code}).", "err.permission_denied": "You do not have permission for this action.",
+ "err.approver_must_be_independent": "A different person must approve this. You cannot approve what you prepared or requested.",
+ "err.reviewer_must_be_independent": "A different person must review this.", "err.decider_must_be_independent": "A different person must decide this.",
+ "err.confirmer_must_be_independent": "The person who instructed a payment cannot confirm it.",
+ "err.stale_version": "The record changed. Reload it and try again.", "err.idempotency_collision": "This submission was already used with different content. Review and submit again.",
+ "err.invalid_transition": "This action is not allowed in the record's current status.", "err.duplicate_record": "A matching record already exists, or a change is already pending.",
+ "err.effective_date_conflict": "The effective date is not allowed for this change.", "err.reason_required": "A reason is required.",
+ "err.period_locked": "This pay period is locked by an approved run. Reverse the run first.", "err.run_already_live": "A payroll run for this period is already in progress.",
+ "err.rules_not_approved": "No approved pay rules apply to this period. Approve the country and employer rules first.",
+ "err.contract_missing": "Some staff have no active contract or payment account.", "err.negative_net": "A net pay would be negative. Review deductions.",
+ "err.evidence_mismatch": "The run no longer matches its calculation fingerprint and cannot be approved.", "err.payment_exists": "Payments were already instructed for every payable employee.",
+ "err.double_payment": "This employee already has a live payment for this period.", "err.reversal_requires_correction": "Money has already been confirmed. Correct it with an adjustment in a new run.",
+ "err.roster_conflict": "The roster has conflicts that must be fixed first.", "err.rest_violation": "A staff member would not get the minimum rest between shifts.",
+ "err.coverage_gap": "Minimum coverage is not met for some shifts.", "err.insufficient_leave": "Not enough leave balance.", "err.currency_mismatch": "Contract and rule currencies differ.",
+ "err.invalid_rule_set": "The rule set is not valid. See the problems listed.", "err.invalid_account": "Only a vault token reference is accepted, never an account number.",
+ "err.invalid_confirmation": "The confirmation evidence is incomplete.", "err.reconciliation_incomplete": "Not every employee is confirmed with a matching amount yet.",
+ "err.invalid_pagination": "Invalid page request.", "err.malformed_request": "The request was not understood.", "err.hr_unavailable": "The HR service is temporarily unavailable.",
+ "code.REST": "Not enough rest between shifts", "code.OVERLAP": "Overlapping shifts", "code.GAP": "Coverage below minimum", "code.OVERTIME_NOT_AUTHORIZED": "Overtime not authorised",
+ "code.NO_ACCOUNT": "No payment account", "code.NO_PAYABLE_STAFF": "No payable staff", "code.AWAITING_CONFIRMATION": "Waiting for external confirmation",
+ "code.AMOUNT_MISMATCH": "Confirmed amount differs", "code.PAYMENT_FAILED": "Payment failed", "code.NO_INSTRUCTION": "No payment instructed",
+ "code.STAFF": "Staff", "code.BEFORE_LAST_CHANGE": "Before the last change", "code.BEFORE_HIRE": "Before the hire date", "code.REHIRE_NOT_AFTER_TERMINATION": "Rehire must be after termination",
+ "code.TOO_FAR_AHEAD": "Too far in the future", "code.OUTSIDE_PERIOD": "Outside the roster period", "code.ON_APPROVED_LEAVE": "On approved leave", "code.STAFF_NOT_ACTIVE": "Staff member is not active",
+ "enum.staff.ONBOARDING": "Onboarding", "enum.staff.ACTIVE": "Active", "enum.staff.SUSPENDED": "Suspended", "enum.staff.TERMINATED": "Terminated",
+ "enum.kind.ACTIVATE": "Activate", "enum.kind.SUSPEND": "Suspend", "enum.kind.REINSTATE": "Reinstate", "enum.kind.TRANSFER": "Transfer", "enum.kind.TERMINATE": "Terminate", "enum.kind.REHIRE": "Rehire",
+ "enum.change.REQUESTED": "Awaiting approval", "enum.change.SCHEDULED": "Scheduled", "enum.change.APPLIED": "Applied", "enum.change.REJECTED": "Rejected",
+ "enum.contract.DRAFT": "Draft", "enum.contract.ACTIVE": "Active", "enum.contract.SUPERSEDED": "Superseded", "enum.contract.ENDED": "Ended", "enum.contract.REJECTED": "Rejected",
+ "enum.roster.DRAFT": "Draft", "enum.roster.SUBMITTED": "Awaiting review", "enum.roster.PUBLISHED": "Published", "enum.roster.SUPERSEDED": "Superseded", "enum.roster.REJECTED": "Rejected",
+ "enum.att.CAPTURED": "Captured", "enum.att.DISPUTED": "Disputed", "enum.att.CORRECTED": "Corrected", "enum.att.APPROVED": "Approved",
+ "enum.leave.SUBMITTED": "Awaiting decision", "enum.leave.APPROVED": "Approved", "enum.leave.REJECTED": "Rejected", "enum.leave.CANCELLED": "Cancelled",
+ "enum.rules.DRAFT": "Draft", "enum.rules.APPROVED": "Approved", "enum.rules.RETIRED": "Retired", "enum.rules.REJECTED": "Rejected",
+ "enum.run.CALCULATED": "Calculated", "enum.run.SUBMITTED": "Awaiting approval", "enum.run.APPROVED": "Approved", "enum.run.REJECTED": "Rejected", "enum.run.REVERSED": "Reversed", "enum.run.RECONCILED": "Reconciled",
+ "enum.period.OPEN": "Open", "enum.period.LOCKED": "Locked",
+ "enum.pay.INSTRUCTED": "Instructed, not paid", "enum.pay.CONFIRMED": "Confirmed by provider", "enum.pay.FAILED": "Failed", "enum.pay.MISMATCH": "Amount mismatch", "enum.pay.CANCELLED": "Cancelled",
+ "enum.basis.MONTHLY": "Monthly", "enum.basis.HOURLY": "Hourly", "enum.class.STANDARD": "Standard", "enum.class.CONFIDENTIAL": "Confidential",
+ "enum.adj.ARREARS": "Arrears", "enum.adj.BONUS": "Bonus", "enum.adj.CORRECTION": "Correction", "enum.adj.ALLOWANCE": "Allowance", "enum.adj.BENEFIT": "Benefit", "enum.adj.DEDUCTION": "Deduction",
+ "enum.recon.NOT_DUE": "Nothing due", "enum.recon.MISSING": "Missing", "enum.recon.INSTRUCTED": "Waiting", "enum.recon.CONFIRMED": "Confirmed", "enum.recon.FAILED": "Failed", "enum.recon.MISMATCH": "Mismatch",
+ // S01
+ "dir.title": "Staff directory", "dir.intro": "Find staff by name, number, department or status. Pay and contract terms are never shown here.",
+ "dir.search": "Search name or staff number", "dir.col.name": "Name", "dir.col.number": "Number", "dir.col.dept": "Department and position", "dir.col.status": "Status", "dir.col.hire": "Hire date",
+ "dir.open": "Open employment record", "dir.onboard": "Onboard a staff member", "dir.number": "Staff number", "dir.given": "Given name", "dir.family": "Family name", "dir.hire": "Hire date",
+ "dir.classification": "Classification", "dir.create": "Create record", "dir.newDept": "New department", "dir.newPos": "New position", "dir.code": "Code", "dir.name": "Name", "dir.posTitle": "Title",
+ "dir.addDept": "Add department", "dir.addPos": "Add position", "dir.confidentialNote": "Confidential records are visible only with the confidential-records permission.",
+ // S02
+ "emp.title": "Employment record", "emp.intro": "Dated status changes and contract versions. Each change is requested by one person and approved by another.",
+ "emp.pick": "Staff record", "emp.select": "Open a staff record from the directory or search above.", "emp.status": "Employment status", "emp.hire": "Hire date",
+ "emp.last": "Last effective change", "emp.changes": "Status changes", "emp.requestChange": "Request a change", "emp.kind": "Change", "emp.effective": "Effective date", "emp.toDept": "New department",
+ "emp.toPos": "New position", "emp.requestAction": "Request change", "emp.applyDue": "Apply changes that are due", "emp.contracts": "Contracts", "emp.noContracts": "No contracts.",
+ "emp.draftContract": "Draft a contract version", "emp.employer": "Employer code", "emp.country": "Country (2 letters)", "emp.currency": "Currency (3 letters)", "emp.basis": "Pay basis",
+ "emp.base": "Base amount (decimal)", "emp.contractFrom": "Effective from", "emp.contractTo": "Effective until (optional)", "emp.draftAction": "Create draft", "emp.account": "Payment account",
+ "emp.accountToken": "Vault token reference", "emp.accountMask": "Display mask (for example ****1234)", "emp.accountAction": "Save account reference",
+ "emp.accountHint": "Never type a bank account number. Enter the token issued by the payment vault.", "emp.compHidden": "Compensation is not shown for your role.",
+ "emp.pending": "Awaiting approval", "emp.contractVersion": "Version {v}",
+ // S03
+ "ro.title": "Staff roster", "ro.intro": "Build a roster, check rest, overlaps and coverage, then publish it after independent review.", "ro.list": "Rosters", "ro.new": "New roster",
+ "ro.periodStart": "Period start", "ro.periodEnd": "Period end", "ro.create": "Create draft", "ro.select": "Select a roster.", "ro.shifts": "Shifts", "ro.vacancy": "Vacancy", "ro.overtime": "Overtime",
+ "ro.addShift": "Add a shift", "ro.template": "Shift template", "ro.staffOpt": "Staff member (leave empty for a vacancy)", "ro.isOvertime": "This is overtime", "ro.add": "Add shift",
+ "ro.remove": "Remove", "ro.check": "Check conflicts", "ro.ok": "No conflicts", "ro.problems": "Problems", "ro.vacancies": "{n} vacancies", "ro.submit": "Submit for review", "ro.publish": "Publish",
+ "ro.revise": "Create revision", "ro.authorize": "Authorise overtime", "ro.templates": "Shift templates", "ro.templateCode": "Template code", "ro.start": "Start time (HH:MM)", "ro.minutes": "Minutes",
+ "ro.addTemplate": "Add template", "ro.coverage": "Minimum coverage", "ro.minStaff": "Minimum staff", "ro.setCoverage": "Set coverage", "ro.revision": "Revision {n}", "ro.reviewNote": "Reason for rejection",
+ // S04
+ "at.title": "Attendance and leave review", "at.intro": "Review attendance, corrections and disputes, and decide leave requests. Approved records cannot be changed.",
+ "at.tab.attendance": "Attendance", "at.tab.leave": "Leave", "at.tab.balances": "Balances and policy", "at.capture": "Record attendance", "at.in": "Clock in", "at.out": "Clock out",
+ "at.dispute": "Dispute", "at.correct": "Correct", "at.approveRec": "Approve record", "at.noteReq": "Explain the dispute or correction", "at.original": "Corrects an earlier record",
+ "at.leaveNew": "New leave request", "at.leaveType": "Leave type", "at.leaveFrom": "First day", "at.leaveTo": "Last day", "at.leaveRequest": "Request leave", "at.days": "{n} working days",
+ "at.balance": "Balance (days)", "at.lookup": "Look up balances", "at.types": "Leave types", "at.code": "Code", "at.paid": "Paid", "at.accrual": "Accrual per month", "at.max": "Maximum balance",
+ "at.addType": "Add leave type", "at.holidays": "Public holidays", "at.addHoliday": "Add holiday", "at.holidayName": "Holiday name",
+ // S05
+ "pp.title": "Payroll preparation", "pp.intro": "Approve the country and employer pay rules, open a period, record adjustments and calculate. Amounts are exact decimals.",
+ "pp.rules": "Pay rules", "pp.ruleNew": "New rule set version", "pp.country": "Country", "pp.employer": "Employer", "pp.currency": "Currency", "pp.effective": "Effective from",
+ "pp.source": "Source document the rules were transcribed from", "pp.json": "Rules (JSON; amounts and rates as strings)", "pp.ruleCreate": "Create draft rules", "pp.ruleNote": "Rules are data approved by a second person; nothing is built in.",
+ "pp.ruleProblems": "Rule problems", "pp.periods": "Pay periods", "pp.periodNew": "Open a pay period", "pp.periodStart": "Period start", "pp.periodEnd": "Period end", "pp.periodCreate": "Open period",
+ "pp.calculate": "Calculate", "pp.adjust": "Adjustments", "pp.adjustNew": "Request an adjustment", "pp.adjustKind": "Kind", "pp.amount": "Amount (decimal)", "pp.adjustRequest": "Request adjustment",
+ "pp.runs": "Payroll runs", "pp.submit": "Submit for approval", "pp.lines": "Pay lines", "pp.gross": "Gross", "pp.deductions": "Deductions", "pp.net": "Net", "pp.totalNet": "Total net", "pp.hash": "Calculation fingerprint",
+ "pp.template": "Insert example", "pp.badJson": "This is not valid JSON.", "pp.select": "Select a run or a period.", "pp.runNo": "Run {n}", "pp.staffCount": "{n} staff", "pp.breakdown": "Breakdown",
+ // S06
+ "pa.title": "Payroll approval and payment reconciliation", "pa.intro": "Approve a prepared run, instruct payments, record external confirmations and reconcile employee by employee. An instruction is not a payment.",
+ "pa.runs": "Runs", "pa.approve": "Approve run", "pa.reject": "Reject run", "pa.reverse": "Reverse run", "pa.reverseReason": "Reason for reversal", "pa.export": "Export CSV",
+ "pa.instruct": "Instruct payments", "pa.payments": "Payment instructions", "pa.notPaid": "Instructed means requested, not paid. Money has moved only when a second person records the provider's confirmation.",
+ "pa.confirm": "Record provider confirmation", "pa.providerRef": "Provider reference", "pa.confirmedAmount": "Confirmed amount (decimal)", "pa.confirmCurrency": "Currency", "pa.confirmAt": "Confirmed at",
+ "pa.fail": "Record failure", "pa.failReason": "Failure reason", "pa.reconcile": "Reconcile run", "pa.reconciliation": "Reconciliation", "pa.expected": "Expected", "pa.confirmedTotal": "Confirmed",
+ "pa.discrepancies": "Discrepancies", "pa.clean": "Every employee is confirmed with an exact match.", "pa.select": "Select a run.", "pa.reference": "Reference", "pa.mask": "Account",
+ "pa.exportDone": "Export ready", "pa.download": "Download", "pa.mustDiffer": "You cannot approve a run you prepared."
+} as const;
+
+export type Key = keyof typeof en;
+
+const fr: Record<Key, string> = {
+ "app.title": "Ressources humaines et paie", "app.subtitle": "M24 · Personnel et paie",
+ "nav.label": "Postes RH et paie", "nav.directory": "Annuaire du personnel", "nav.employment": "Dossier d’emploi", "nav.roster": "Planning du personnel",
+ "nav.attendance": "Présence et congés", "nav.preparation": "Préparation de la paie", "nav.approval": "Approbation de la paie et paiements",
+ "lang.label": "Langue", "skip": "Passer au contenu",
+ "hub.title": "Ressources humaines et paie",
+ "hub.intro": "Dossiers du personnel, plannings, présence et congés, et paie. Chaque changement est vérifié par une seconde personne, et la rémunération n’est montrée qu’aux personnes autorisées.",
+ "hub.open": "Ouvrir",
+ "common.refresh": "Actualiser", "common.retry": "Réessayer", "common.reload": "Recharger la dernière version", "common.cancel": "Annuler", "common.submit": "Envoyer",
+ "common.previous": "Page précédente", "common.next": "Page suivante", "common.page": "Page {page} sur {pages}", "common.total": "{total} enregistrements",
+ "common.none": "Aucun", "common.any": "Tous", "common.version": "Version", "common.updated": "Mis à jour", "common.reason": "Motif", "common.note": "Note",
+ "common.actions": "Actions", "common.details": "Détails", "common.status": "État", "common.search": "Rechercher", "common.from": "Du", "common.to": "Au",
+ "common.approve": "Approuver", "common.reject": "Refuser", "common.history": "Historique", "common.department": "Service", "common.position": "Poste",
+ "common.staff": "Membre du personnel", "common.date": "Date", "common.hidden": "Non affiché pour votre rôle",
+ "state.loading": "Chargement des enregistrements…", "state.empty": "Aucun enregistrement ne correspond aux filtres.", "state.emptyHint": "Modifiez les filtres ou actualisez à l’arrivée de nouveaux enregistrements.",
+ "state.error": "Le service est injoignable ou a renvoyé une erreur.", "state.errorHint": "Aucune donnée n’est présentée comme à jour. Vérifiez la connexion puis réessayez.",
+ "state.offline": "Vous êtes hors ligne. Les données affichées peuvent être périmées et les actions sont désactivées jusqu’au retour de la connexion.",
+ "state.unauthorized": "Une connexion est requise.", "state.unauthorizedHint": "Votre session est absente ou expirée. Connectez-vous avec votre identité hospitalière pour continuer.",
+ "state.signIn": "Se connecter avec l’identité hospitalière", "state.forbidden": "Vous n’êtes pas autorisé pour cette action ou cet enregistrement.",
+ "state.forbiddenHint": "Votre rôle n’inclut pas cette autorisation. Demandez l’accès à votre responsable.",
+ "state.notFound": "Cet enregistrement n’existe pas ou est hors de votre hôpital et de votre établissement.", "state.notConfigured": "Le service RH n’est pas configuré pour cet environnement.",
+ "disabled.status": "Indisponible dans l’état actuel ({status}).", "disabled.select": "Sélectionnez d’abord un enregistrement.", "disabled.offline": "Indisponible hors ligne.",
+ "disabled.input": "Renseignez d’abord les champs obligatoires.",
+ "err.generic": "L’action a été refusée ({code}).", "err.permission_denied": "Vous n’avez pas l’autorisation pour cette action.",
+ "err.approver_must_be_independent": "Une autre personne doit approuver. Vous ne pouvez pas approuver ce que vous avez préparé ou demandé.",
+ "err.reviewer_must_be_independent": "Une autre personne doit effectuer cette revue.", "err.decider_must_be_independent": "Une autre personne doit trancher.",
+ "err.confirmer_must_be_independent": "La personne qui a ordonné un paiement ne peut pas le confirmer.",
+ "err.stale_version": "L’enregistrement a changé. Rechargez-le et réessayez.", "err.idempotency_collision": "Cet envoi a déjà été utilisé avec un contenu différent. Vérifiez puis renvoyez.",
+ "err.invalid_transition": "Cette action n’est pas permise dans l’état actuel de l’enregistrement.", "err.duplicate_record": "Un enregistrement correspondant existe déjà, ou un changement est déjà en attente.",
+ "err.effective_date_conflict": "La date d’effet n’est pas permise pour ce changement.", "err.reason_required": "Un motif est requis.",
+ "err.period_locked": "Cette période de paie est verrouillée par un lot approuvé. Annulez d’abord le lot.", "err.run_already_live": "Un lot de paie est déjà en cours pour cette période.",
+ "err.rules_not_approved": "Aucune règle de paie approuvée ne s’applique à cette période. Approuvez d’abord les règles du pays et de l’employeur.",
+ "err.contract_missing": "Certains agents n’ont ni contrat actif ni compte de paiement.", "err.negative_net": "Un net à payer serait négatif. Vérifiez les retenues.",
+ "err.evidence_mismatch": "Le lot ne correspond plus à son empreinte de calcul et ne peut pas être approuvé.", "err.payment_exists": "Les paiements ont déjà été ordonnés pour chaque employé à payer.",
+ "err.double_payment": "Cet employé a déjà un paiement en cours pour cette période.", "err.reversal_requires_correction": "Des fonds ont déjà été confirmés. Corrigez par un ajustement dans un nouveau lot.",
+ "err.roster_conflict": "Le planning comporte des conflits à corriger d’abord.", "err.rest_violation": "Un agent n’aurait pas le repos minimal entre deux vacations.",
+ "err.coverage_gap": "La couverture minimale n’est pas atteinte pour certaines vacations.", "err.insufficient_leave": "Solde de congés insuffisant.", "err.currency_mismatch": "Les devises du contrat et des règles diffèrent.",
+ "err.invalid_rule_set": "Le jeu de règles n’est pas valide. Voir les problèmes listés.", "err.invalid_account": "Seule une référence de jeton du coffre est acceptée, jamais un numéro de compte.",
+ "err.invalid_confirmation": "La preuve de confirmation est incomplète.", "err.reconciliation_incomplete": "Tous les employés ne sont pas encore confirmés avec un montant exact.",
+ "err.invalid_pagination": "Demande de page invalide.", "err.malformed_request": "La requête n’a pas été comprise.", "err.hr_unavailable": "Le service RH est temporairement indisponible.",
+ "code.REST": "Repos insuffisant entre vacations", "code.OVERLAP": "Vacations qui se chevauchent", "code.GAP": "Couverture sous le minimum", "code.OVERTIME_NOT_AUTHORIZED": "Heures supplémentaires non autorisées",
+ "code.NO_ACCOUNT": "Aucun compte de paiement", "code.NO_PAYABLE_STAFF": "Aucun agent à payer", "code.AWAITING_CONFIRMATION": "En attente de confirmation externe",
+ "code.AMOUNT_MISMATCH": "Le montant confirmé diffère", "code.PAYMENT_FAILED": "Paiement échoué", "code.NO_INSTRUCTION": "Aucun paiement ordonné",
+ "code.STAFF": "Agent", "code.BEFORE_LAST_CHANGE": "Avant le dernier changement", "code.BEFORE_HIRE": "Avant la date d’embauche", "code.REHIRE_NOT_AFTER_TERMINATION": "La réembauche doit suivre la fin du contrat",
+ "code.TOO_FAR_AHEAD": "Trop lointain", "code.OUTSIDE_PERIOD": "Hors de la période du planning", "code.ON_APPROVED_LEAVE": "En congé approuvé", "code.STAFF_NOT_ACTIVE": "L’agent n’est pas actif",
+ "enum.staff.ONBOARDING": "Accueil", "enum.staff.ACTIVE": "Actif", "enum.staff.SUSPENDED": "Suspendu", "enum.staff.TERMINATED": "Terminé",
+ "enum.kind.ACTIVATE": "Activer", "enum.kind.SUSPEND": "Suspendre", "enum.kind.REINSTATE": "Réintégrer", "enum.kind.TRANSFER": "Muter", "enum.kind.TERMINATE": "Mettre fin", "enum.kind.REHIRE": "Réembaucher",
+ "enum.change.REQUESTED": "En attente d’approbation", "enum.change.SCHEDULED": "Programmé", "enum.change.APPLIED": "Appliqué", "enum.change.REJECTED": "Refusé",
+ "enum.contract.DRAFT": "Brouillon", "enum.contract.ACTIVE": "Actif", "enum.contract.SUPERSEDED": "Remplacé", "enum.contract.ENDED": "Terminé", "enum.contract.REJECTED": "Refusé",
+ "enum.roster.DRAFT": "Brouillon", "enum.roster.SUBMITTED": "En attente de revue", "enum.roster.PUBLISHED": "Publié", "enum.roster.SUPERSEDED": "Remplacé", "enum.roster.REJECTED": "Refusé",
+ "enum.att.CAPTURED": "Saisi", "enum.att.DISPUTED": "Contesté", "enum.att.CORRECTED": "Corrigé", "enum.att.APPROVED": "Approuvé",
+ "enum.leave.SUBMITTED": "En attente de décision", "enum.leave.APPROVED": "Approuvé", "enum.leave.REJECTED": "Refusé", "enum.leave.CANCELLED": "Annulé",
+ "enum.rules.DRAFT": "Brouillon", "enum.rules.APPROVED": "Approuvé", "enum.rules.RETIRED": "Retiré", "enum.rules.REJECTED": "Refusé",
+ "enum.run.CALCULATED": "Calculé", "enum.run.SUBMITTED": "En attente d’approbation", "enum.run.APPROVED": "Approuvé", "enum.run.REJECTED": "Refusé", "enum.run.REVERSED": "Annulé", "enum.run.RECONCILED": "Rapproché",
+ "enum.period.OPEN": "Ouverte", "enum.period.LOCKED": "Verrouillée",
+ "enum.pay.INSTRUCTED": "Ordonné, non payé", "enum.pay.CONFIRMED": "Confirmé par le prestataire", "enum.pay.FAILED": "Échoué", "enum.pay.MISMATCH": "Montant différent", "enum.pay.CANCELLED": "Annulé",
+ "enum.basis.MONTHLY": "Mensuel", "enum.basis.HOURLY": "Horaire", "enum.class.STANDARD": "Standard", "enum.class.CONFIDENTIAL": "Confidentiel",
+ "enum.adj.ARREARS": "Rappel", "enum.adj.BONUS": "Prime", "enum.adj.CORRECTION": "Correction", "enum.adj.ALLOWANCE": "Indemnité", "enum.adj.BENEFIT": "Avantage", "enum.adj.DEDUCTION": "Retenue",
+ "enum.recon.NOT_DUE": "Rien à payer", "enum.recon.MISSING": "Manquant", "enum.recon.INSTRUCTED": "En attente", "enum.recon.CONFIRMED": "Confirmé", "enum.recon.FAILED": "Échoué", "enum.recon.MISMATCH": "Écart",
+ "dir.title": "Annuaire du personnel", "dir.intro": "Trouvez le personnel par nom, numéro, service ou état. Le salaire et les conditions du contrat ne sont jamais affichés ici.",
+ "dir.search": "Rechercher un nom ou un numéro", "dir.col.name": "Nom", "dir.col.number": "Numéro", "dir.col.dept": "Service et poste", "dir.col.status": "État", "dir.col.hire": "Date d’embauche",
+ "dir.open": "Ouvrir le dossier d’emploi", "dir.onboard": "Accueillir un agent", "dir.number": "Numéro d’agent", "dir.given": "Prénom", "dir.family": "Nom de famille", "dir.hire": "Date d’embauche",
+ "dir.classification": "Classification", "dir.create": "Créer le dossier", "dir.newDept": "Nouveau service", "dir.newPos": "Nouveau poste", "dir.code": "Code", "dir.name": "Nom", "dir.posTitle": "Intitulé",
+ "dir.addDept": "Ajouter le service", "dir.addPos": "Ajouter le poste", "dir.confidentialNote": "Les dossiers confidentiels ne sont visibles qu’avec l’autorisation correspondante.",
+ "emp.title": "Dossier d’emploi", "emp.intro": "Changements d’état datés et versions de contrat. Chaque changement est demandé par une personne et approuvé par une autre.",
+ "emp.pick": "Dossier du personnel", "emp.select": "Ouvrez un dossier depuis l’annuaire.", "emp.status": "État d’emploi", "emp.hire": "Date d’embauche",
+ "emp.last": "Dernier changement effectif", "emp.changes": "Changements d’état", "emp.requestChange": "Demander un changement", "emp.kind": "Changement", "emp.effective": "Date d’effet", "emp.toDept": "Nouveau service",
+ "emp.toPos": "Nouveau poste", "emp.requestAction": "Demander le changement", "emp.applyDue": "Appliquer les changements échus", "emp.contracts": "Contrats", "emp.noContracts": "Aucun contrat.",
+ "emp.draftContract": "Rédiger une version de contrat", "emp.employer": "Code employeur", "emp.country": "Pays (2 lettres)", "emp.currency": "Devise (3 lettres)", "emp.basis": "Base de rémunération",
+ "emp.base": "Montant de base (décimal)", "emp.contractFrom": "En vigueur à partir du", "emp.contractTo": "En vigueur jusqu’au (facultatif)", "emp.draftAction": "Créer le brouillon", "emp.account": "Compte de paiement",
+ "emp.accountToken": "Référence du jeton du coffre", "emp.accountMask": "Masque d’affichage (par exemple ****1234)", "emp.accountAction": "Enregistrer la référence du compte",
+ "emp.accountHint": "Ne saisissez jamais un numéro de compte bancaire. Saisissez le jeton émis par le coffre de paiement.", "emp.compHidden": "La rémunération n’est pas affichée pour votre rôle.",
+ "emp.pending": "En attente d’approbation", "emp.contractVersion": "Version {v}",
+ "ro.title": "Planning du personnel", "ro.intro": "Construisez un planning, vérifiez repos, chevauchements et couverture, puis publiez-le après une revue indépendante.", "ro.list": "Plannings", "ro.new": "Nouveau planning",
+ "ro.periodStart": "Début de période", "ro.periodEnd": "Fin de période", "ro.create": "Créer le brouillon", "ro.select": "Sélectionnez un planning.", "ro.shifts": "Vacations", "ro.vacancy": "Poste vacant", "ro.overtime": "Heures supplémentaires",
+ "ro.addShift": "Ajouter une vacation", "ro.template": "Modèle de vacation", "ro.staffOpt": "Agent (vide pour un poste vacant)", "ro.isOvertime": "Heures supplémentaires", "ro.add": "Ajouter la vacation",
+ "ro.remove": "Retirer", "ro.check": "Vérifier les conflits", "ro.ok": "Aucun conflit", "ro.problems": "Problèmes", "ro.vacancies": "{n} postes vacants", "ro.submit": "Soumettre à la revue", "ro.publish": "Publier",
+ "ro.revise": "Créer une révision", "ro.authorize": "Autoriser les heures supplémentaires", "ro.templates": "Modèles de vacation", "ro.templateCode": "Code du modèle", "ro.start": "Heure de début (HH:MM)", "ro.minutes": "Minutes",
+ "ro.addTemplate": "Ajouter le modèle", "ro.coverage": "Couverture minimale", "ro.minStaff": "Effectif minimal", "ro.setCoverage": "Définir la couverture", "ro.revision": "Révision {n}", "ro.reviewNote": "Motif du refus",
+ "at.title": "Présence et revue des congés", "at.intro": "Examinez la présence, les corrections et les contestations, et tranchez les demandes de congé. Les enregistrements approuvés ne peuvent plus être modifiés.",
+ "at.tab.attendance": "Présence", "at.tab.leave": "Congés", "at.tab.balances": "Soldes et politique", "at.capture": "Enregistrer une présence", "at.in": "Arrivée", "at.out": "Départ",
+ "at.dispute": "Contester", "at.correct": "Corriger", "at.approveRec": "Approuver l’enregistrement", "at.noteReq": "Expliquez la contestation ou la correction", "at.original": "Corrige un enregistrement antérieur",
+ "at.leaveNew": "Nouvelle demande de congé", "at.leaveType": "Type de congé", "at.leaveFrom": "Premier jour", "at.leaveTo": "Dernier jour", "at.leaveRequest": "Demander le congé", "at.days": "{n} jours ouvrés",
+ "at.balance": "Solde (jours)", "at.lookup": "Consulter les soldes", "at.types": "Types de congé", "at.code": "Code", "at.paid": "Payé", "at.accrual": "Acquisition par mois", "at.max": "Solde maximal",
+ "at.addType": "Ajouter un type de congé", "at.holidays": "Jours fériés", "at.addHoliday": "Ajouter un jour férié", "at.holidayName": "Nom du jour férié",
+ "pp.title": "Préparation de la paie", "pp.intro": "Approuvez les règles de paie du pays et de l’employeur, ouvrez une période, saisissez les ajustements et calculez. Les montants sont des décimaux exacts.",
+ "pp.rules": "Règles de paie", "pp.ruleNew": "Nouvelle version de règles", "pp.country": "Pays", "pp.employer": "Employeur", "pp.currency": "Devise", "pp.effective": "En vigueur à partir du",
+ "pp.source": "Document source dont les règles sont transcrites", "pp.json": "Règles (JSON ; montants et taux sous forme de chaînes)", "pp.ruleCreate": "Créer le brouillon de règles", "pp.ruleNote": "Les règles sont des données approuvées par une seconde personne ; rien n’est intégré au code.",
+ "pp.ruleProblems": "Problèmes des règles", "pp.periods": "Périodes de paie", "pp.periodNew": "Ouvrir une période de paie", "pp.periodStart": "Début de période", "pp.periodEnd": "Fin de période", "pp.periodCreate": "Ouvrir la période",
+ "pp.calculate": "Calculer", "pp.adjust": "Ajustements", "pp.adjustNew": "Demander un ajustement", "pp.adjustKind": "Nature", "pp.amount": "Montant (décimal)", "pp.adjustRequest": "Demander l’ajustement",
+ "pp.runs": "Lots de paie", "pp.submit": "Soumettre à l’approbation", "pp.lines": "Lignes de paie", "pp.gross": "Brut", "pp.deductions": "Retenues", "pp.net": "Net", "pp.totalNet": "Total net", "pp.hash": "Empreinte du calcul",
+ "pp.template": "Insérer un exemple", "pp.badJson": "Ce JSON n’est pas valide.", "pp.select": "Sélectionnez un lot ou une période.", "pp.runNo": "Lot {n}", "pp.staffCount": "{n} agents", "pp.breakdown": "Détail",
+ "pa.title": "Approbation de la paie et rapprochement des paiements", "pa.intro": "Approuvez un lot préparé, ordonnez les paiements, enregistrez les confirmations externes et rapprochez employé par employé. Un ordre n’est pas un paiement.",
+ "pa.runs": "Lots", "pa.approve": "Approuver le lot", "pa.reject": "Refuser le lot", "pa.reverse": "Annuler le lot", "pa.reverseReason": "Motif de l’annulation", "pa.export": "Exporter en CSV",
+ "pa.instruct": "Ordonner les paiements", "pa.payments": "Ordres de paiement", "pa.notPaid": "Ordonné signifie demandé, pas payé. Les fonds n’ont circulé que lorsqu’une seconde personne enregistre la confirmation du prestataire.",
+ "pa.confirm": "Enregistrer la confirmation du prestataire", "pa.providerRef": "Référence du prestataire", "pa.confirmedAmount": "Montant confirmé (décimal)", "pa.confirmCurrency": "Devise", "pa.confirmAt": "Confirmé le",
+ "pa.fail": "Enregistrer un échec", "pa.failReason": "Motif de l’échec", "pa.reconcile": "Rapprocher le lot", "pa.reconciliation": "Rapprochement", "pa.expected": "Attendu", "pa.confirmedTotal": "Confirmé",
+ "pa.discrepancies": "Écarts", "pa.clean": "Chaque employé est confirmé avec un montant exact.", "pa.select": "Sélectionnez un lot.", "pa.reference": "Référence", "pa.mask": "Compte",
+ "pa.exportDone": "Export prêt", "pa.download": "Télécharger", "pa.mustDiffer": "Vous ne pouvez pas approuver un lot que vous avez préparé."
+};
+
+export const dictionaries: Record<Lang, Record<Key, string>> = { en, fr };
+export function format(template: string, values?: Record<string, string | number>): string {
+ if (!values) return template;
+ return template.replace(/\{(\w+)\}/g, (_, k: string) => (k in values ? String(values[k]) : `{${k}}`));
+}
+export function translate(lang: Lang, key: Key, values?: Record<string, string | number>): string {
+ return format(dictionaries[lang][key] ?? dictionaries.en[key] ?? key, values);
+}
+export function detectLang(stored: string | null | undefined, navigatorLang: string | undefined): Lang {
+ if (stored === "en" || stored === "fr") return stored;
+ return navigatorLang?.toLowerCase().startsWith("fr") ? "fr" : "en";
+}
+export function errorKey(code: string): Key {
+ const key = `err.${code}` as Key;
+ return key in en ? key : "err.generic";
+}
+/** Label for a problem code such as "REST:<uuid>" or "NO_ACCOUNT:S1" (suffix kept as detail). */
+export function safetyLabel(lang: Lang, code: string): string {
+ const [base, ...rest] = code.split(":");
+ const key = `code.${base}` as Key;
+ const label = key in en ? translate(lang, key) : base;
+ return rest.length ? `${label} (${rest.join(":")})` : label;
+}
+export function enumLabel(lang: Lang, group: string, value: string | null | undefined): string {
+ if (!value) return translate(lang, "common.none");
+ const key = `enum.${group}.${value}` as Key;
+ return key in en ? translate(lang, key) : value;
+}

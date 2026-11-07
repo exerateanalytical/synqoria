@@ -277,7 +277,7 @@ public class PayrollService {
   a.require(Perm.PAYROLL_READ);
   return db.scoped(a,()->{
    Map<String,Object> r=runView(id,true);
-   r.put("adjustments",db.rows("SELECT id,staff_id,kind,amount,reason,status,requested_by,approved_by FROM synqoria_hr.pay_adjustments WHERE period_id=? ORDER BY created_at",r.get("periodId")));
+   r.put("adjustments",db.rows("SELECT id,staff_id,kind,amount,reason,status,requested_by,approved_by,version FROM synqoria_hr.pay_adjustments WHERE period_id=? ORDER BY created_at",r.get("periodId")));
    r.put("history",db.rows("SELECT event_id,action,from_status,to_status,aggregate_version,actor_id,occurred_at FROM synqoria_hr.audit_events WHERE aggregate_type='PAYROLLRUN' AND aggregate_id=? ORDER BY occurred_at,event_id",id));
    return r;
   });
