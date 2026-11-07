@@ -39,15 +39,19 @@
     ]
    },
    "confidence": "medium",
-   "docCount": 8,
+   "docCount": 12,
    "docs": [
+    "docs/program/CONTINUOUS_RECONCILIATION_AND_NEXT_EXECUTION_2026-11-07.md",
     "docs/program/OPERATIONAL_240_ONE_CYCLE_EXECUTION_PLAN_2026-11-05.md",
     "docs/program/PHASES.md",
+    "docs/program/SYNQORIA_MULTI_CHAT_HANDOFF.md",
     "docs/program/SYNQORIA_PROJECT_MEMORY_AND_VISION.md",
+    "docs/program/SYNQORIA_SPECIFICATIONS_PUSH_REGISTER.md",
     "docs/program/V012_REGISTRATION_IMPLEMENTATION_REVIEW.md",
     "docs/program/V014_REVIEW_AND_INTAKE_BOUNDARY.md",
     "docs/program/V015_REVIEW_AND_MOBILE_GUARDS.md",
     "docs/program/V016_REVIEW_EVENT_AND_LOCKED_INTAKE.md",
+    "docs/program/handoffs/P06_B0372_B0391_v059_PR2.md",
     "docs/program/hospital-documents/README.md"
    ],
    "formsAndTemplates": {
@@ -753,17 +757,22 @@
     ]
    },
    "confidence": "medium",
-   "docCount": 10,
+   "docCount": 15,
    "docs": [
     "docs/engineering/P07_LONGITUDINAL_CORE_v0.60.0.md",
     "docs/engineering/P07_LONGITUDINAL_HTTP_v0.61.0.md",
     "docs/engineering/P07_LONGITUDINAL_OUTBOX_v0.63.0.md",
+    "docs/engineering/P07_LONGITUDINAL_SECURE_PERSISTENCE_v0.62.0.md",
     "docs/program/OPERATIONAL_240_ONE_CYCLE_EXECUTION_PLAN_2026-11-05.md",
     "docs/program/PHASES.md",
+    "docs/program/SYNQORIA_EXECUTION_POLICY_30_BATCHES_2026-11-04.md",
     "docs/program/SYNQORIA_MULTI_CHAT_HANDOFF.md",
     "docs/program/SYNQORIA_PROJECT_MEMORY_AND_VISION.md",
     "docs/program/SYNQORIA_SPECIFICATIONS_PUSH_REGISTER.md",
     "docs/program/handoffs/P07_B0001_B0060_v060.md",
+    "docs/program/handoffs/P07_B0061_B0070_v061_PR4.md",
+    "docs/program/handoffs/P07_B0130_B0159_v067.md",
+    "docs/program/handoffs/SYNQORIA_CROSS_CHAT_RECONCILIATION_2026-11-04.md",
     "docs/program/hospital-documents/README.md"
    ],
    "formsAndTemplates": {
@@ -774,15 +783,17 @@
    "mentions": {
     "byCategory": {
      "test": 1,
-     "tool": 5,
-     "ux-core": 1,
+     "tool": 6,
+     "ux-core": 2,
+     "web-api": 1,
      "web-catalog-preview": 2,
-     "web-route": 1
+     "web-route": 1,
+     "workflow": 1
     },
     "indirectTests": [
      "tests/real_clinical_screen_browser.mjs"
     ],
-    "pathCount": 10
+    "pathCount": 14
    },
    "missingFacets": [],
    "name": "Encounters, admission, transfers, discharge and beds",

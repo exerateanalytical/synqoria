@@ -49,16 +49,44 @@ class Repo:
     def show(self, path):
         return subprocess.check_output(["git", "-C", self.root, "show", "%s:%s" % (self.sha, path)]).decode("utf-8", "replace")
 
+    def contents(self):
+        """path -> text for tracked text blobs (< 1 MB, no NUL byte), read through one `git cat-file --batch`; platform independent."""
+        if getattr(self, "_contents", None) is None:
+            files = self.files()
+            want = [p for p, (_, sz) in sorted(files.items()) if sz < 1000000]
+            proc = subprocess.Popen(["git", "-C", self.root, "cat-file", "--batch"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+            out = {}
+            def feed():
+                for p in want:
+                    proc.stdin.write((files[p][0] + "\n").encode())
+                proc.stdin.close()
+            import threading
+            t = threading.Thread(target=feed)
+            t.start()
+            for p in want:
+                head = proc.stdout.readline().split()
+                size = int(head[2])
+                data = proc.stdout.read(size)
+                proc.stdout.read(1)
+                if b"\x00" not in data:
+                    out[p] = data.decode("utf-8", "replace")
+            t.join()
+            proc.wait()
+            self._contents = out
+        return self._contents
+
     def grep(self, pattern, scopes, files_only=True, word=False):
-        # -w (git's own word matching) instead of \b: Windows and Linux git regex libraries disagree on \b
-        args = ["grep", "-I", "-w", "-E", "-l"] if files_only else ["grep", "-I", "-w", "-E", "-o", "-n"]
-        args += [pattern, self.sha, "--"] + scopes
-        out = self.git(*args, check=False)
-        pre = self.sha + ":"
-        res = []
-        for line in out.splitlines():
-            if line.startswith(pre):
-                res.append(line[len(pre):])
+        """Paths whose text contains `pattern` as a whole token (ASCII word boundaries, identical on every platform)."""
+        rx = re.compile(r"(?<![A-Za-z0-9_])(?:%s)(?![A-Za-z0-9_])" % pattern)
+        return sorted(p for p, t in self.contents().items() if any(under(p, sc) for sc in scopes) and rx.search(t))
+
+    def grep_matches(self, pattern, scopes):
+        rx = re.compile(r"(?<![A-Za-z0-9_])(?:%s)(?![A-Za-z0-9_])" % pattern)
+        res = collections.defaultdict(set)
+        for p, t in self.contents().items():
+            if any(under(p, sc) for sc in scopes):
+                for m in rx.finditer(t):
+                    res[m.group(0)].add(p)
         return res
 
 
@@ -369,15 +397,8 @@ def module_evidence(R, inputs, canon, prov):
     sr = {s["id"]: s for s in canon["screens"]}
     screen_refs = collections.defaultdict(set)
     # screen references: file -> ids
-    out = R.git("grep", "-I", "-w", "-E", "-o", SCREEN_RE, R.sha, "--", "services", "apps", "packages", "tests", "tools", "contracts", check=False)
-    pre = R.sha + ":"
-    for line in out.splitlines():
-        if not line.startswith(pre):
-            continue
-        rest = line[len(pre):]
-        path, _, sid = rest.rpartition(":")
-        # git grep -o prints path:line? without -n it prints path:match
-        screen_refs[sid].add(path)
+    for sid, paths in R.grep_matches(SCREEN_RE, ["services", "apps", "packages", "tests", "tools", "contracts"]).items():
+        screen_refs[sid] |= paths
     commits = R.git("log", "--format=%H%x09%s", R.sha).splitlines()
     ci_rows = inputs["ci"]["runs"]
     cm_prev = json.loads(R.show("registers/current-platform-reconciliation.json"))
