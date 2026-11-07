@@ -23,3 +23,9 @@ No raw clinical documents or narrative are stored in the M34 evidence chain/outb
 - No real upstream P03 identity source, hospital audit producer, signed evidence issuer, M32 consent
   disclosure check, encrypted object/archive provider or retention schedule has been connected.
 - Security, backup, load, accessibility and actual hospital acceptance remain DENIED.
+
+## Workstations and isolated build
+- Added five bilingual screen workstations: `/workforce/audit/M34-S01` through `M34-S05`, from canonical route `apps/web/app/workforce/audit/[screen]`.
+- The audited browser BFF only supports searching/details, timeline, chain verify, export manifest request/review and retention request/review. Browser cannot access source ingest or independent proof/hold writes.
+- `.github/workflows/m34-audit-web.yml` builds actual Next16/React19 source in an isolated CI-only PR23/PR24 dependency overlay; source does not modify global dependency owners.
+- External clinical producer contracts, independent court/retention authority, signed archival service, real staff IdP and legal approval remain open.
