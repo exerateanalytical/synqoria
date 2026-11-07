@@ -1,0 +1,35 @@
+server:
+  port: ${SYNQORIA_OFFLINE_PORT:8099}
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+  max-http-request-header-size: 16KB
+  tomcat:
+    max-swallow-size: 8MB
+spring:
+  application:
+    name: synqoria-offline-sync-core
+  servlet:
+    multipart:
+      enabled: false
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+  datasource:
+    url: ${SYNQORIA_OFFLINE_JDBC_URL}
+    username: ${SYNQORIA_OFFLINE_DB_USERNAME}
+    password: ${SYNQORIA_OFFLINE_DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 0
+      connection-timeout: 5000
+  sql:
+    init:
+      mode: never
+synqoria:
+  offline:
+    issuer: ${SYNQORIA_OFFLINE_OIDC_ISSUER}
+    audience: ${SYNQORIA_OFFLINE_OIDC_AUDIENCE}
+    db-runtime-role: ${SYNQORIA_OFFLINE_DB_RUNTIME_ROLE:synqoria_offline_runtime}
+    facility-zone: ${SYNQORIA_OFFLINE_FACILITY_ZONE:UTC}
