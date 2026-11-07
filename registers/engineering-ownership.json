@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "synqoria.ownership.v1",
+  "updatedOn": "2026-11-07",
+  "policy": "Ownership is exclusive per path/workstream; every job must query main, open PRs and the reconciliation report before writing. Do not convert code, screens or test counts into module completion or clinical acceptance.",
+  "activeWork": {
+    "claude": {
+      "pr": 56,
+      "issue": 53,
+      "branch": "work/claude-m38-device-client-integration-2026-11-07",
+      "exclusiveScope": [
+        "packages/offline-device-sdk",
+        "apps/web/components/offline",
+        "apps/web/lib/offline",
+        "apps/web/app/api/offline"
+      ],
+      "reportedProgress": {
+        "verifiedPackages": 17,
+        "totalPackages": 30,
+        "partialPackages": 12,
+        "designOnlyPackages": 1
+      },
+      "mergeGate": "verified server-side session, browser end-to-end and shared builds; no automatic merge"
+    },
+    "integrationLead": {
+      "exclusiveScope": [
+        "M39 fleet/gateway/platform integration",
+        "M40 backup/recovery/observability integration",
+        "P03 verified identity",
+        "shared dependency/React build repair",
+        "source consolidation and reconciliation"
+      ],
+      "lastMergedPrs": [
+        54,
+        55,
+        57,
+        58
+      ],
+      "futureOrder": [
+        "fix shared M27 @synqoria/ux-core package resolution",
+        "verify P03 OIDC session endpoint / signature and scope",
+        "rebase and accept M38 PR #56 when required evidence passes",
+        "finish M39 gateway routing with real service discovery and auth",
+        "finish M40 agents and disposable PITR test",
+        "40-module evidence-to-code reconciliation and backlog prioritization"
+      ]
+    }
+  },
+  "verifiedClaims": {
+    "M38": {
+      "pr": 50,
+      "scope": "M38 backend source merged on main; not a complete device-client or accepted module"
+    },
+    "M39": {
+      "pr": 51,
+      "scope": "M39 management-plane source merged; later routing gate/health observer integration PRs #54,#58; real provisioner outstanding"
+    },
+    "M40": {
+      "pr": 52,
+      "scope": "M40 reliability source merged; later artifact integrity PRs #55,#57; actual WAL/PITR outstanding"
+    }
+  },
+  "handoffRule": "Every push/merge must regenerate current-platform-reconciliation.json. A changed module must have evidence, owner, new/modified paths, contract compatibility, CI link, merge SHA, blockers, and next permitted work. Use PRs as work units and merge only independently verified source. Do not claim clinical release.",
+  "approvalScope": "Engineering source may be merged to main after functional gates; hospital deployment and clinical certification are separate."
+}
