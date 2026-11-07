@@ -53,7 +53,7 @@ def attest(root, checks):
                         version = lock['packages']['node_modules/pg']['version']
                         if info.get('name') != 'pg' or info.get('version') != version:
                             raise ValueError('unlocked_dependency_version')
-                        if not re.fullmatch(r'[0-9]+\\.[0-9]+\\.[0-9]+(?:-[A-Za-z0-9.-]+)?', version):
+                        if not re.fullmatch(r'[0-9]+[.][0-9]+[.][0-9]+(?:-[A-Za-z0-9.-]+)?', version):
                             raise ValueError('invalid_dependency_version')
                         count += 1
                         entries.append({'path': item.relative_to(root).as_posix(),
