@@ -4,8 +4,8 @@ Owner: ChatGPT, branch `work/chatgpt-m35-integration-management-2026-11-07`, [dr
 
 **Commit at API contract addition:** stacked on PR #36; no merge to main.
 **Implementation:** services/integration-management-core (Java25 LTS, Spring Boot 4.1.2, JDBC, OIDC JWT issuer/audience),
-PostgreSQL 18.6 (V001–V003; 10 FORCE RLS relations), browser CSRF/origin
-allowlist, five or six bilingual responsive screen workstations at `/workforce/integrations/Mxx-Sxx`.
+PostgreSQL 18.6 (V001–V004; 10 FORCE RLS relations), browser CSRF/origin
+allowlist, six bilingual responsive screen workstations at `/workforce/integrations/M35-S01..M35-S06`.
 **API contract:** `contracts/openapi/synqoria-m35-integrations-v1.yaml`.
 
 ## Business/technical authority notes
@@ -20,3 +20,7 @@ allowlist, five or six bilingual responsive screen workstations at `/workforce/i
 - All actual clinical/legal, identity and medical evidence integrations and hospital acceptance **DENIED until institutionally supplied and verified**.
 - No claim of production medical or API interoperability certification. Root engineering CI still fails separately due to PR23/24-owned dependency integration.
 - Separate Claude M24/M28/M30/M38/M39/M40 assignments and ChatGPT M27/M32/M34 PRs are not modified.
+
+## V004 attestation integrity
+- Source-message proof now binds exact event type in addition to partner, external event ID and digest. PostgreSQL admission checks the independently attested event fields before INSERT, so direct SQL cannot forge a different event classification.
+- A proposed replay's independent approval rechecks the current, non-revoked source attestation. No network replay is dispatched and no API credentials are generated.
