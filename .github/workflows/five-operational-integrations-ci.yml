@@ -36,6 +36,10 @@ jobs:
             echo "Applying $migration"
             docker exec -i synqoria-ops-five psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < "$migration"
           done
+      - name: Verify V001-V012 are deployed in exact order and new schemas use FORCE RLS
+        run: |
+          set -euo pipefail
+          docker exec synqoria-ops-five psql -U postgres -d ops_ci -Atc "SELECT count(*) FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='synqoria_operations' AND c.relkind='r' AND c.relrowsecurity AND c.relforcerowsecurity" | grep -qx 25
       - name: Full operations unit and five-module PostgreSQL integration tests
         working-directory: services/operations-core
         env:
