@@ -61,7 +61,7 @@ public class IntegrationApi{
  }
  @PostMapping("/mapping_versions")
  public ResponseEntity<Object> mapping(@AuthenticationPrincipal Jwt jwt,
-  @RequestHeader(value="Idempotency-Key",required=false)String key,@RequestBody Mapping req){
+  @RequestHeader(value="Idempotency-Key",required=false)String key,@RequestBody IntegrationStore.Mapping req){
   return reply(store.mapping(a(jwt),key(key),req));
  }
  @PostMapping("/mapping_versions/{id}/{action}")
