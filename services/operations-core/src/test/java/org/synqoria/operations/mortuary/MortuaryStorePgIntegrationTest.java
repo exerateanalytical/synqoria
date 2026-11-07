@@ -212,8 +212,20 @@ final class MortuaryStorePgIntegrationTest {
   evidence(c.decedentRef(),c.caseId(),"REVIEW_RELEASE",c.version(),"RECIPIENT_VERIFIED","RECIPIENT-M27",ISSUER);
   assertThrows(WorkflowViolation.class,()->s.change(who(REVIEWER,"m27:review"),heldCase,
    cmd("REVIEW_RELEASE",heldVersion,null,null,null,"RECIPIENT-M27","LEGAL-M27")));
+  // Court hold metadata is visible to an authorized release reviewer only.
+  var authorizedHolds=s.legalHolds(who(REVIEWER,"m27:review"),heldCase);
+  assertEquals(1,authorizedHolds.size());
+  assertEquals(hold,authorizedHolds.getFirst().holdId());
+  assertTrue(authorizedHolds.getFirst().active());
+  assertEquals("HOLD-M27",authorizedHolds.getFirst().authorityRef());
+  assertThrows(WorkflowViolation.class,()->s.legalHolds(who(OFFICER,"m27:read"),heldCase));
+  var otherFacility=new OperationWorkflow.Actor(REVIEWER,CELL,CROSS,Set.of("m27:review"));
+  assertThrows(WorkflowViolation.class,()->s.legalHolds(otherFacility,heldCase));
   admin().update("UPDATE synqoria_operations.mortuary_legal_holds SET active=false,"+
    "rescinded_at=clock_timestamp() WHERE hold_id=?",hold);
+  var rescindedHolds=s.legalHolds(who(REVIEWER,"m27:review"),heldCase);
+  assertFalse(rescindedHolds.getFirst().active());
+  assertNotNull(rescindedHolds.getFirst().rescindedAt());
   c=s.change(who(REVIEWER,"m27:review"),c.caseId(),
    cmd("REVIEW_RELEASE",c.version(),null,null,null,"RECIPIENT-M27","LEGAL-M27"));
   assertEquals("RELEASE_REVIEWED",c.state());
