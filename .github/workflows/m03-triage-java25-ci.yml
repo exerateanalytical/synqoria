@@ -1,0 +1,60 @@
+name: SYNQORIA M03 real triage Java 25 regression (synthetic; not clinical certification)
+on:
+  pull_request:
+    paths:
+      - 'services/clinical-core/src/main/java/org/synqoria/triage/**'
+      - 'services/clinical-core/src/main/java/org/synqoria/security/**'
+      - 'services/clinical-core/src/test/java/org/synqoria/triage/**'
+      - 'contracts/openapi/synqoria-m03-triage-restricted-v1.yaml'
+      - '.github/workflows/m03-triage-java25-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'services/clinical-core/src/main/java/org/synqoria/triage/**'
+      - 'services/clinical-core/src/main/java/org/synqoria/security/**'
+      - 'services/clinical-core/src/test/java/org/synqoria/triage/**'
+      - 'contracts/openapi/synqoria-m03-triage-restricted-v1.yaml'
+      - '.github/workflows/m03-triage-java25-ci.yml'
+permissions:
+  contents: read
+jobs:
+  triage-java25:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+      - name: Compile ACTUAL M03 Java sources and all existing triage synthetic integration tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/synqoria-m03-classes
+          find services/clinical-core/src/main/java/org/synqoria/triage services/clinical-core/src/main/java/org/synqoria/security services/clinical-core/src/test/java/org/synqoria/triage -type f -name '*.java' | sort > /tmp/synqoria-m03-sources.list
+          test "$(wc -l < /tmp/synqoria-m03-sources.list)" -ge 20
+          javac --release 25 -encoding UTF-8 -d /tmp/synqoria-m03-classes @/tmp/synqoria-m03-sources.list
+      - name: Run all M03 existing Java main-style regression and integration tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re, subprocess, sys
+          root=Path("services/clinical-core/src/test/java/org/synqoria/triage")
+          classes=[]
+          for path in sorted(root.glob("*Test.java")):
+              text=path.read_text(encoding="utf-8")
+              if re.search(r'public\s+static\s+void\s+main\s*\(',text):
+                  classes.append("org.synqoria.triage."+path.stem)
+          if len(classes)<8:
+              raise SystemExit(f"Missing triage test entrypoints: found {len(classes)}")
+          for name in classes:
+              print("RUN",name,flush=True)
+              subprocess.run(["java","-ea","-cp","/tmp/synqoria-m03-classes",name],check=True,timeout=40)
+          print(f"M03_Java25_synthetic_test_entrypoints_passed={len(classes)}")
+          PY
+      - name: M03 evidence boundary
+        run: |
+          echo 'Java25 synthetic triage domain/HTTP boundary tests; not real hospital OIDC, actual PostgreSQL restricted-role integration, or clinical acceptance'
