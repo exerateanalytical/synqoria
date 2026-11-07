@@ -1,0 +1,228 @@
+{
+  "checkpoint": "v0.61.0",
+  "base_zip_sha256": "c6b4e73cc4f0234ee175d9c87dc17850f0a65dba675c47040a4ec6146b71470a",
+  "changed": {
+    "SYNQORIA_STATUS_v0.61.0.md": {
+      "previous_sha256": null,
+      "new_sha256": "924ba08d99f0b2b4e5f073a59ea6bf28aeb405307127e3f94af79f48f85e0a54"
+    },
+    "package.json": {
+      "previous_sha256": "cef5974458f9c251b039612550976540510f5a2f16b5a1c1b67ce7a1c37651bd",
+      "new_sha256": "f51723fcb0612096116832b78fd5afc14fc503c8db9d0fbc058229809232c572"
+    },
+    "tests/test_longitudinal_contract.py": {
+      "previous_sha256": null,
+      "new_sha256": "aba929fc5ce76be1452a7f887f7b2ffc11a2ecc6a66f00844460219e2950c71a"
+    },
+    "tools/check_longitudinal.sh": {
+      "previous_sha256": "8b9ead4ef5cd012a00038bc06fff9bf2509716b1a9d7f5fdd2e12734e6199e89",
+      "new_sha256": "8f5860938febf8d6fa26a142f8a0fd5a8ab7f6da865b783826e7a825b2a1515d"
+    },
+    "tools/write_longitudinal_contract.py": {
+      "previous_sha256": null,
+      "new_sha256": "d3070679a750b386707b511d59be63c67f314a22afbb37914f614378d7808f2d"
+    },
+    "tools/run_v610_batches.py": {
+      "previous_sha256": null,
+      "new_sha256": "874dba1b7eccffd3496c1aa105b2b6c229872f85b0d3c9385576b3a59d864756"
+    },
+    "tools/finalize_v610_checkpoint.py": {
+      "previous_sha256": null,
+      "new_sha256": "3a91c17629a063782a5962f2f2f5f9222bf811473e1d1716681209ab4e956a0d"
+    },
+    "registers/phases.json": {
+      "previous_sha256": "90e7df8b22e1e827c050fe249b07a42616f639431830b3cbd1a66be081da67fa",
+      "new_sha256": "14394a612491932c47cf509bfe92f840c67c31d2dc75a72ecf6db75dad33d762"
+    },
+    "registers/v610-blockers.json": {
+      "previous_sha256": null,
+      "new_sha256": "69ccf0ce7ac12ae64ae78aac91e3160d559fa65263d3656bb657e728fc101347"
+    },
+    "registers/v610-implementation-batches.json": {
+      "previous_sha256": null,
+      "new_sha256": "e5000825b4b2c8eec6a5f4d1279f3f8c2b89bc79c7dae610e13d935e1788fca4"
+    },
+    "registers/module-status-matrix.json": {
+      "previous_sha256": "41eafd0d550a44a7fca6c45a602a3f64e9e9f5a8819835629c134f51ea7e697d",
+      "new_sha256": "ef0e19bc0eef4cc151ba38e637e17ef8c91ca685a2ea7bc962e78a729cf72b15"
+    },
+    "registers/batch-ledger.json": {
+      "previous_sha256": "eed4c88c0f3666cbb510bf1e02011ab9604839c5e0d22aa6feccaf91f00835b7",
+      "new_sha256": "f6e3dc487d55545a8a7031533f71cf06e673b891e20a24d5f4a3901e12a505d3"
+    },
+    "registers/screen-status-matrix.json": {
+      "previous_sha256": "1f4a63877f7543597de0a816b62b99d03fcc83406aeeecd945f803be9cf4e17c",
+      "new_sha256": "a0cde3d9fea7f4a4adda9f02e45cf802e38e3d748f32c3ac7ec3803c10b5555e"
+    },
+    "evidence/v610/registers-before-version.log": {
+      "previous_sha256": null,
+      "new_sha256": "381c487a5024adf4445755866840135d8e42f5ae504288355dabadcf91eb557c"
+    },
+    "evidence/v610/registers-final.log": {
+      "previous_sha256": null,
+      "new_sha256": "fccc72bec7c07a0c24740a4dc48c2586e6e061ee5c6ef30e03eaa63597923d7e"
+    },
+    "evidence/v610/P07-B0065.log": {
+      "previous_sha256": null,
+      "new_sha256": "48e8ef45e44d087ab034629bd07742e6e66c16c30c48eb0285aa26f472391a19"
+    },
+    "evidence/v610/verified-batches.json": {
+      "previous_sha256": null,
+      "new_sha256": "5d90ef37a29e3edfcfca7409ade2ab76d7cdf60ce287de9167d84a97112a8cd1"
+    },
+    "evidence/v610/P07-B0063.log": {
+      "previous_sha256": null,
+      "new_sha256": "8b33b70e9c0a96eb7a583ec6b3b9534cfa00bdbf8d88fd2f5d76080d12d24fd6"
+    },
+    "evidence/v610/compile-first.log": {
+      "previous_sha256": null,
+      "new_sha256": "f13e49ac866416a925994aabf9e3244c61e851b51f0991cf67d1816bc546a778"
+    },
+    "evidence/v610/ux-test.log": {
+      "previous_sha256": null,
+      "new_sha256": "b938118f1fcd4c8d1242bc55f0c7a0a81f908298d2ba945ffd4666792961192e"
+    },
+    "evidence/v610/source-regression.log": {
+      "previous_sha256": null,
+      "new_sha256": "35f21b0f4632bed73910bceef380c83f12b2b45f668c5b1601bba284f39ee727"
+    },
+    "evidence/v610/P07-B0067.log": {
+      "previous_sha256": null,
+      "new_sha256": "52b916e803a58002a5025cf641d161c071ae14ce04c3a1e2ab3fb3c481169e7f"
+    },
+    "evidence/v610/P07-B0069.log": {
+      "previous_sha256": null,
+      "new_sha256": "f1ebd01fc7fa258148f05e2b59151eecacddcdf73c023d2c8cb04a2d4ff45dc8"
+    },
+    "evidence/v610/P07-B0062.log": {
+      "previous_sha256": null,
+      "new_sha256": "24abb69cbe174aef02bc21631a382d96ce6fdd23a39675f65c1e7944e96967c5"
+    },
+    "evidence/v610/P07-B0070.log": {
+      "previous_sha256": null,
+      "new_sha256": "86849d18004db793a26a7273f058a91e6df391330954a9326547eb314ca21987"
+    },
+    "evidence/v610/P07-B0068.log": {
+      "previous_sha256": null,
+      "new_sha256": "0ae9cb67d3f7ff4f9e171c5972a3b15bce1af42943e232c4d132e18c014f7408"
+    },
+    "evidence/v610/status-before-version.log": {
+      "previous_sha256": null,
+      "new_sha256": "85518633805f7f476b2aeff345b15145496897503032be106639ce79ba949ec8"
+    },
+    "evidence/v610/ux-initial.log": {
+      "previous_sha256": null,
+      "new_sha256": "efebf09e916169c6b54c5666fc6541cd21816a6dcb702a0197fe8249e316348e"
+    },
+    "evidence/v610/ux-final.log": {
+      "previous_sha256": null,
+      "new_sha256": "eacb60f7b58004d44869a4e606d866052369b9fb922f48505dfd09598f0bb145"
+    },
+    "evidence/v610/clinical-status-final.log": {
+      "previous_sha256": null,
+      "new_sha256": "85518633805f7f476b2aeff345b15145496897503032be106639ce79ba949ec8"
+    },
+    "evidence/v610/source-final.log": {
+      "previous_sha256": null,
+      "new_sha256": "4ea9141f99b758400fc759ea04b95578c488f1b6f69a8a8d2b8b969ab8337ec7"
+    },
+    "evidence/v610/P07-B0064.log": {
+      "previous_sha256": null,
+      "new_sha256": "83b2bd8e35dd7a44bc27abf10def8e12344dccdbd3e3d48f74cf09eacc84bd44"
+    },
+    "evidence/v610/compile.log": {
+      "previous_sha256": null,
+      "new_sha256": "17caa9144038ecb48141689d31f4320e7d00d716c874869dfcc039df5ddf9ca4"
+    },
+    "evidence/v610/P07-B0061.log": {
+      "previous_sha256": null,
+      "new_sha256": "1beee68fd17458bd66c0058ec3151d690cb4cecd917f54318ac23b5e58f11497"
+    },
+    "evidence/v610/P07-B0066.log": {
+      "previous_sha256": null,
+      "new_sha256": "eaad84b0e8e175fe77e967b9d61b86a49a56a22fd4525fd608ffe4afcfaeba08"
+    },
+    "evidence/v610/longitudinal-regression.log": {
+      "previous_sha256": null,
+      "new_sha256": "9e0fbef09adbe6cb4bea0ea5a43264cc0b246ffc2c816f62171139ebc863e6db"
+    },
+    "evidence/v600/compile.log": {
+      "previous_sha256": "3a5645dbc25ff20b1abc220078fa18569da0d5c84c84bd6a3e52ef998b1ec357",
+      "new_sha256": "258bbc54ade529be7c67b80fd1190654a5357542729135a0ac1c72f6be647ca4"
+    },
+    "packages/ux-core/package.json": {
+      "previous_sha256": "53d751fa724309169196cc99aa35be68bf3b145eed1fdea40ada756d5f66220c",
+      "new_sha256": "f4a3156b8fdb94535caaf709c2f403db21b3c8f07a46e94299c571892ad7bc98"
+    },
+    "packages/ux-core/tests/longitudinal-client-v61.test.cjs": {
+      "previous_sha256": null,
+      "new_sha256": "dbe0a9b9fe81f4e6ea3623fad0641304c6d5c315f9f92cc1d92f5d7af6f10ba8"
+    },
+    "packages/ux-core/dist/longitudinal-client.js": {
+      "previous_sha256": null,
+      "new_sha256": "2e9f79904b5800bc2b88dd15629ba7198d7fb011f5cd9ba7e386a38c559df82c"
+    },
+    "packages/ux-core/dist/index.d.ts": {
+      "previous_sha256": "4233dc78508e17520c59531af92564caf1a1f64b9475c062d825c84497503247",
+      "new_sha256": "3fcd1abbb8a3a7f38fb8da82796d5f1d6a496853ffcf4c8f72b65aff9224733f"
+    },
+    "packages/ux-core/dist/longitudinal-client.d.ts": {
+      "previous_sha256": null,
+      "new_sha256": "60f27fda2c70f233705f30b5a5a9b5230b932bc1e3f1ad86ceeed0de395fecd9"
+    },
+    "packages/ux-core/dist/index.js": {
+      "previous_sha256": "2b3dd56d4daa6cf84ca028cd1ce2fc1d401b56f879096781c7b0399f2eb70506",
+      "new_sha256": "4e867ada0901f12997b93e4cd6de54d86043b89e16c730cd128b7e8f5260e969"
+    },
+    "packages/ux-core/src/longitudinal-client.ts": {
+      "previous_sha256": null,
+      "new_sha256": "4bc0a4b41382941b93b0c6b4e955193447f9d136f3b4fd3841d01f1857c88d16"
+    },
+    "packages/ux-core/src/index.ts": {
+      "previous_sha256": "b2c4c0e2d7f534511e43305cf1d4199c54305f9b674b48c79466bf6afd0c7b47",
+      "new_sha256": "86a33ef158d054e872bf93c7db709850cfc6f47647167f4e1a6df3ca1385cc79"
+    },
+    "contracts/openapi/synqoria-m040506-restricted-v1.json": {
+      "previous_sha256": null,
+      "new_sha256": "f5406c39102a1214caa7f13fb09143f7e63a6ee5b2984e5980d50e4933b3a6e2"
+    },
+    "apps/web/package.json": {
+      "previous_sha256": "51e210c56a0b55259784a60f4bf34bc67c661873981b69d0a941cfb848b3851e",
+      "new_sha256": "f4fcbf3098ce430242a9e2f468919d1ee5920fd3fdef717386b4e4aab2f75546"
+    },
+    "apps/patient-mobile/package.json": {
+      "previous_sha256": "a7d51984c0f2f02f7f34d6913df0c0d358c0f1bb16d6106e1f8479e2ce585570",
+      "new_sha256": "25db4bc35a41f129f9f05622d1638dcd5b4883c8899d86856ab441c0ab51641b"
+    },
+    "apps/staff-mobile/package.json": {
+      "previous_sha256": "29c3b61178773ddf280f494ec8645c377cd6a01e01c71cac856c5869293502d5",
+      "new_sha256": "4146bed47024eec910d36c4f541017a3350b145663e7867cdd9ffc7baf07747f"
+    },
+    "services/clinical-core/src/test/java/org/synqoria/longitudinal/LongitudinalHttpBoundaryTest.java": {
+      "previous_sha256": null,
+      "new_sha256": "c88b8a41b7caf11c5f48eb8c0d1294d376af074fefd89b8d5b1dc0442ea2423d"
+    },
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal/LongitudinalStrictJson.java": {
+      "previous_sha256": null,
+      "new_sha256": "daa73d16a75ef415361fc0e115f75cbe33cef8381f726f49826e8c732465cc0a"
+    },
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal/LongitudinalAuthenticatedGateway.java": {
+      "previous_sha256": null,
+      "new_sha256": "56f318be99609aaec4a00b58d95619bf69d54f94c70aba201560f3eea9872ff1"
+    },
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal/LongitudinalHttpHandler.java": {
+      "previous_sha256": null,
+      "new_sha256": "e08f93fd35e149ac3ef9f3c054d9d683e0203261a88f7de7c3b1711c48ec2247"
+    },
+    "docs/engineering/P07_LONGITUDINAL_HTTP_v0.61.0.md": {
+      "previous_sha256": null,
+      "new_sha256": "ce2733cae1e7dc233bf0cc7bbd4b1c94532bc85d81115d6c5af60bd7f537ab09"
+    },
+    "docs/program/handoffs/P07_B0061_B0070_v061_PR4.md": {
+      "previous_sha256": null,
+      "new_sha256": "29042fd53320948d95753fa5f04bcfe3a6900a95e9c7926d9697211bba56b9e1"
+    }
+  },
+  "deleted_source_paths": [],
+  "preserved_old_pycache": 92
+}

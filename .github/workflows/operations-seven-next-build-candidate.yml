@@ -1,0 +1,44 @@
+name: SYNQORIA seven modules actual Next build candidate
+on:
+  push:
+    branches:
+      - work/seven-operations-real-workflows-2026-11-06
+permissions:
+  contents: read
+jobs:
+  build-screen-previews:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - name: Use separately owned SHA-checked npm v3 lockfile CI overlay
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin refs/heads/work/reproducible-npm-lock-candidate-2026-11-05:refs/remotes/origin/ops-review-lock
+          git show refs/remotes/origin/ops-review-lock:package-lock.json > package-lock.json
+          echo "6fa90a4aa72db790d86b7782d45ced40389b5f8987da65138fae7548b5f9eb2b  package-lock.json" | sha256sum -c -
+      - name: Apply independently owned PR #24 reviewed Expo dependency corrections only on CI runner
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin refs/heads/work/real-next-expo-build-corrections-2026-11-05:refs/remotes/origin/operations-pr24
+          for path in apps/web/package.json apps/staff-mobile/app.json apps/staff-mobile/index.js apps/staff-mobile/package.json apps/patient-mobile/app.json apps/patient-mobile/index.js apps/patient-mobile/package.json; do
+            git show "refs/remotes/origin/operations-pr24:$path" > "$path"
+          done
+          node -e "const fs=require('fs');for(const w of ['staff-mobile','patient-mobile']){const p=JSON.parse(fs.readFileSync('apps/'+w+'/package.json'));if(p.devDependencies.typescript!=='5.8.3'||p.dependencies.react!=='19.1.2')process.exit(1)}const w=JSON.parse(fs.readFileSync('apps/web/package.json'));if(w.dependencies.react!=='19.1.2'||w.dependencies.next!=='15.5.9')process.exit(1)"
+      - name: Reconcile temporary npm dependency graph without changing separate PR #23 lockfile
+        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+      - name: Install reconciled workspace dependency graph
+        run: npm ci --no-audit --no-fund
+      - name: Compile actual UX core and Next.js operations screens
+        run: |
+          npm run build --workspace @synqoria/ux-core
+          npm run build --workspace @synqoria/web
+      - name: Check 35 unique screen IDs match canonical source
+        run: node --test tests/operations_screen_catalog.test.mjs
+      - name: Keep build candidate separate from release certification
+        if: always()
+        run: | 
+          echo "Next build does not authorize clinical or operational writes. The PR 23 dependency lock remains independently owned."

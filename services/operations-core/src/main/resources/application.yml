@@ -1,0 +1,28 @@
+server:
+  port: ${SYNQORIA_OPS_PORT:8094}
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+  max-http-request-header-size: 16KB
+spring:
+  application:
+    name: synqoria-operations-core
+  datasource:
+    url: ${SYNQORIA_OPS_JDBC_URL}
+    username: ${SYNQORIA_OPS_DB_USERNAME}
+    password: ${SYNQORIA_OPS_DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 0
+      connection-timeout: 5000
+  sql:
+    init:
+      mode: never
+  flyway:
+    enabled: false
+synqoria:
+  ops:
+    issuer: ${SYNQORIA_OPS_OIDC_ISSUER}
+    audience: ${SYNQORIA_OPS_OIDC_AUDIENCE}
+    db-runtime-role: ${SYNQORIA_OPS_DB_RUNTIME_ROLE:synqoria_operations_runtime}

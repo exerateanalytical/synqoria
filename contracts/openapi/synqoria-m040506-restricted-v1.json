@@ -1,0 +1,634 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "SYNQORIA M04–M06 restricted clinical HTTP",
+    "version": "0.62.0",
+    "description": "Implementation contract only; no live OIDC/PostgreSQL qualification or clinical certification"
+  },
+  "servers": [
+    {
+      "url": "https://hospital.example.invalid"
+    }
+  ],
+  "paths": {
+    "/api/v1/clinical/patients/{patientId}/encounters/{encounterId}/commands": {
+      "post": {
+        "summary": "Authenticated clinical command; no client actor/tenant/facility grants",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "encounterId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "commandId",
+                  "expectedRevision",
+                  "operation",
+                  "inputs"
+                ],
+                "properties": {
+                  "commandId": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "expectedRevision": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "operation": {
+                    "type": "string",
+                    "pattern": "^(encounter|note|observation)\\.[a-z_]{2,60}$"
+                  },
+                  "inputs": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string",
+                      "maxLength": 8192
+                    },
+                    "maxProperties": 32
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Idempotent command revision and audit digest"
+          },
+          "400": {
+            "description": "Invalid request envelope"
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "404": {
+            "description": "Unavailable or not disclosed"
+          },
+          "409": {
+            "description": "Stale revision or invalid clinical transition"
+          },
+          "422": {
+            "description": "Malformed or unsupported command"
+          },
+          "503": {
+            "description": "Service unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/clinical/patients/{patientId}/encounters/{encounterId}/summary": {
+      "get": {
+        "summary": "Authorized PHI-minimized encounter summary",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "encounterId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authorized PHI-minimized encounter summary"
+          },
+          "400": {
+            "description": "Invalid request envelope"
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "404": {
+            "description": "Unavailable or not disclosed"
+          },
+          "409": {
+            "description": "Stale revision or invalid clinical transition"
+          },
+          "422": {
+            "description": "Malformed or unsupported command"
+          },
+          "503": {
+            "description": "Service unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/clinical/patients/{patientId}/encounters/{encounterId}/audit": {
+      "get": {
+        "summary": "Bounded audit page without clinical note text",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "encounterId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "afterRevision",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Bounded audit page without clinical note text"
+          },
+          "400": {
+            "description": "Invalid request envelope"
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "404": {
+            "description": "Unavailable or not disclosed"
+          },
+          "409": {
+            "description": "Stale revision or invalid clinical transition"
+          },
+          "422": {
+            "description": "Malformed or unsupported command"
+          },
+          "503": {
+            "description": "Service unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/clinical/patients/{patientId}/encounters/{encounterId}/notes/{noteId}": {
+      "get": {
+        "summary": "Authorized clinical note content",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "encounterId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "noteId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authorized clinical note content"
+          },
+          "400": {
+            "description": "Invalid request envelope"
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "404": {
+            "description": "Unavailable or not disclosed"
+          },
+          "409": {
+            "description": "Stale revision or invalid clinical transition"
+          },
+          "422": {
+            "description": "Malformed or unsupported command"
+          },
+          "503": {
+            "description": "Service unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/clinical/patients/{patientId}/encounters/{encounterId}/observations": {
+      "get": {
+        "summary": "Authorized bounded observation timeline",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "encounterId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authorized bounded observation timeline"
+          },
+          "400": {
+            "description": "Invalid request envelope"
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "404": {
+            "description": "Unavailable or not disclosed"
+          },
+          "409": {
+            "description": "Stale revision or invalid clinical transition"
+          },
+          "422": {
+            "description": "Malformed or unsupported command"
+          },
+          "503": {
+            "description": "Service unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/clinical/patients/{patientId}/encounters/{encounterId}/note-index": {
+      "get": {
+        "summary": "Authenticated, bounded note metadata index; confidential notes omitted without separate capability",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "encounterId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "afterId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Private note metadata only, no clinical body or unavailable confidential notes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "notes",
+                    "nextId"
+                  ],
+                  "properties": {
+                    "notes": {
+                      "type": "array",
+                      "maxItems": 100,
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "id",
+                          "status",
+                          "title",
+                          "confidential"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "DRAFT",
+                              "REVIEW",
+                              "READY",
+                              "SIGNED",
+                              "AMENDED",
+                              "ENTERED_IN_ERROR"
+                            ]
+                          },
+                          "title": {
+                            "type": "string",
+                            "maxLength": 160
+                          },
+                          "confidential": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "nextId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "nullable": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request envelope"
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "404": {
+            "description": "Unavailable or not disclosed"
+          },
+          "409": {
+            "description": "Stale revision or invalid clinical transition"
+          },
+          "422": {
+            "description": "Malformed or unsupported command"
+          },
+          "503": {
+            "description": "Service unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/clinical/patients/{patientId}/encounters/{encounterId}/observations/{observationId}/lineage": {
+      "get": {
+        "summary": "Authenticated full observation correction lineage (predecessors and descendants)",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "encounterId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "observationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Private bounded correction lineage without narrative metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "lineage"
+                  ],
+                  "properties": {
+                    "lineage": {
+                      "type": "array",
+                      "minItems": 1,
+                      "maxItems": 100,
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "id",
+                          "code",
+                          "value",
+                          "unit",
+                          "measuredAt",
+                          "status",
+                          "replaces"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "code": {
+                            "type": "string",
+                            "maxLength": 128
+                          },
+                          "value": {
+                            "type": "string",
+                            "maxLength": 256
+                          },
+                          "unit": {
+                            "type": "string",
+                            "maxLength": 64
+                          },
+                          "measuredAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "CAPTURED",
+                              "PENDING",
+                              "VERIFIED",
+                              "CORRECTED",
+                              "INVALIDATED",
+                              "REJECTED"
+                            ]
+                          },
+                          "replaces": {
+                            "type": "string",
+                            "format": "uuid",
+                            "nullable": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request envelope"
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "404": {
+            "description": "Unavailable or not disclosed"
+          },
+          "409": {
+            "description": "Stale revision or invalid clinical transition"
+          },
+          "422": {
+            "description": "Malformed or unsupported command"
+          },
+          "503": {
+            "description": "Service unavailable"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "opaque"
+      }
+    }
+  }
+}

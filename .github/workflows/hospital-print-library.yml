@@ -1,0 +1,55 @@
+name: SYNQORIA hospital printable document library
+on:
+  push:
+    branches: [work/hospital-document-library-2026-11-05]
+  pull_request:
+    paths:
+      - 'apps/web/app/ui/printables/**'
+      - 'tests/print_*.test.mjs'
+      - 'tests/print_browser_audit.mjs'
+permissions:
+  contents: read
+jobs:
+  print-library-build-and-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prove all hospital document source contracts
+        run: node --test tests/print_catalog_contracts.test.mjs
+      - name: Install workspace dependencies
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Build UX-core shared types
+        run: npm run build --workspace packages/ux-core
+      - name: Strict Next UI TypeScript check
+        run: npm exec --workspace apps/web -- tsc --noEmit
+      - name: Compile every blank printable page
+        run: npm run build --workspace apps/web
+      - name: Install browser
+        run: |
+          npm install --no-save playwright@1.56.1 --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Start production web UI on loopback
+        run: |
+          (cd apps/web && ../../node_modules/.bin/next start --port 3000) > /tmp/synqoria-print-next.log 2>&1 &
+          for i in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:3000/ui/printables >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/synqoria-print-next.log
+          exit 1
+      - name: Exercise all 376 documents and inspect print media
+        run: node tests/print_browser_audit.mjs
+      - name: Upload source and browser print proof evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synqoria-hospital-print-blank-evidence
+          path: /tmp/synqoria-print-browser/
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Safety declaration
+        run: echo "These are blank, permanently watermarked design specimens; no patient/financial source data or legal issuance, no clinical acceptance or printer certification"

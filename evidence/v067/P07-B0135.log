@@ -1,0 +1,7 @@
+P07-B0135 | ProvenanceChain
+INDIVIDUAL_TEST_CMD: java -cp .classes/135 org.synqoria.longitudinal.inboxops.InboxProvenanceChainTest
+EXIT_CODE: 0
+PASS P07-B0135 ProvenanceChain assertions=6
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: a083b3ada3079117a2d9af011f545befb24692b66c626f1c6f3cc7a7c233d6d6
+TEST_SHA256: 63ab2e91cc854dd3f1ad49aecb22f20bacfb3b4089d6ab281bc34f084815b97f

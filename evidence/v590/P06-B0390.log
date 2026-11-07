@@ -1,0 +1,30 @@
+COMMAND: node --test --test-name-pattern=B0390: /mnt/data/synqoria_v59_work/packages/ux-core/tests/triage-v59-loopback-journey.test.cjs
+EXIT_CODE: 0
+TAP version 13
+# Subtest: B0390: action presentation is blank until verified session exists
+ok 1 - B0390: action presentation is blank until verified session exists
+  ---
+  duration_ms: 1.696315
+  type: 'test'
+  ...
+# Subtest: B0390: action presentation matches capability, input kind, confirmation requirements
+ok 2 - B0390: action presentation matches capability, input kind, confirmation requirements
+  ---
+  duration_ms: 0.390891
+  type: 'test'
+  ...
+# Subtest: B0390: bilingual critical action labels are descriptive and accessible
+ok 3 - B0390: bilingual critical action labels are descriptive and accessible
+  ---
+  duration_ms: 0.286038
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 123.453347

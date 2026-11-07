@@ -1,0 +1,21 @@
+{
+  "version": "v0.64.0",
+  "phase": "P07",
+  "batch_ids": [
+    "P07-B0105",
+    "P07-B0106",
+    "P07-B0107",
+    "P07-B0108",
+    "P07-B0109",
+    "P07-B0110",
+    "P07-B0111",
+    "P07-B0112",
+    "P07-B0113",
+    "P07-B0114"
+  ],
+  "evidence": "evidence/v640/individual-batch-results.json",
+  "certification": "not_certified",
+  "clinical_screens_accepted": 0,
+  "modules_certified": 0,
+  "next_candidate": "P07-B0115"
+}

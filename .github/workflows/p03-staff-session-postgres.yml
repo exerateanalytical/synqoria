@@ -1,0 +1,49 @@
+name: SYNQORIA P03 staff session PostgreSQL integration
+on:
+  push:
+    branches:
+      - work/p03-authoritative-staff-grants-2026-11-05
+  pull_request:
+    paths:
+      - services/identity/db/staff_sessions_v1.sql
+      - apps/web/lib/postgres-staff-session-store.mjs
+      - tests/postgres_staff_session_integration.test.mjs
+      - tests/postgres_staff_session_store.test.mjs
+      - .github/workflows/p03-staff-session-postgres.yml
+permissions:
+  contents: read
+jobs:
+  staff-session-rls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: test-only-never-use-production
+          POSTGRES_DB: synqoria_oidc_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d synqoria_oidc_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify crypto codec and fake-store defensive tests
+        run: node --test tests/opaque_staff_session.test.mjs tests/postgres_staff_session_store.test.mjs
+      - name: Execute forced-RLS session integration against disposable PostgreSQL 16
+        run: node --test tests/postgres_staff_session_integration.test.mjs
+        env:
+          SYNQORIA_POSTGRES_INTEGRATION: '1'
+      - name: Verify append-only identity audit RLS in real PostgreSQL
+        run: node --test tests/identity_security_audit_postgres.test.mjs
+        env:
+          SYNQORIA_POSTGRES_INTEGRATION: '1'
+      - name: Validate inherited PKCE and active workforce guards
+        run: node --test tests/oidc_workforce_grants.test.mjs tests/oidc_session_orchestrator.test.mjs tests/oidc_session_reauthorization.test.mjs tests/oidc_staff_service.test.mjs
+      - name: Release boundary
+        run: echo "PostgreSQL ephemeral integration only; no deployed hospital identity service, staff UI or clinical certification."

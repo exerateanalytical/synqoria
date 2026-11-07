@@ -1,0 +1,6 @@
+command=["java", "-ea", "-cp", "/mnt/data/synqoria_v62_work/.v620-classes", "org.synqoria.longitudinal.LongitudinalJdbcContractTest", "provision-denied"]
+exit_code=0
+stdout:
+PASS JDBC provision-denied (2 assertions, simulated PostgreSQL protocol only)
+
+stderr:

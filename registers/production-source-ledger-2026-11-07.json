@@ -1,0 +1,131 @@
+{
+  "version": "2026-11-07-production-source-reconciliation",
+  "repository": "exerateanalytical/synqoria",
+  "baselineMain": "96d45960e2b7ad0039818de259b2782d2cbca86f",
+  "integrationBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+  "canonical": {
+    "moduleCount": 40,
+    "screenCount": 261,
+    "integratedApiWorkstations": [
+      "M02",
+      "M16",
+      "M35"
+    ],
+    "redirectedLegacyRoutes": true
+  },
+  "sourceHeads": [
+    {
+      "component": "P06/P07 clinical",
+      "commit": "b0a1495462f76cc97c57201006bd58ee5e7a1600"
+    },
+    {
+      "component": "PR23/24 build candidate",
+      "commit": "45a158660e5473597654f89664e394cbf2ac1ab9"
+    },
+    {
+      "component": "261 UI/document/P03 security",
+      "commit": "c89b23a3826998fbf45cf79d93bf66d3229d3d2c"
+    },
+    {
+      "component": "OPS001 shared workstations",
+      "commit": "f2226ab48f941a88657664b2daa413d06001c54c"
+    },
+    {
+      "component": "7 operation modules",
+      "commit": "e14f589c449e6c65520db36dd1fe620ee71b3b0f"
+    },
+    {
+      "component": "Claude M24",
+      "commit": "c7fc72e6e0e3c1eec0986e40c03904f421aa5546"
+    },
+    {
+      "component": "Claude M26",
+      "commit": "ee0ecccf64d4aad5d2d69b2c0ed742037ae57d6a"
+    },
+    {
+      "component": "Claude M28",
+      "commit": "e7a9ff7d65d243eea6e4990bb44508f7fdcad602"
+    },
+    {
+      "component": "Claude M30",
+      "commit": "4ca663afa6d7174c889384652c380e0850502c9f"
+    },
+    {
+      "component": "ChatGPT M02",
+      "commit": "d133374e58f5f785013d4b29832495ad6dde02a1"
+    },
+    {
+      "component": "ChatGPT M16",
+      "commit": "aaf8a28fe05a06ea409346ca21b65c300aceb575"
+    },
+    {
+      "component": "ChatGPT M32",
+      "commit": "ec06adbc58c90bced7cb1b50b9967c0c6e9f37b1"
+    },
+    {
+      "component": "ChatGPT M34",
+      "commit": "99e69901c1febb75bc860a7864357f965814d157"
+    },
+    {
+      "component": "ChatGPT M35",
+      "commit": "7bedc1f6966a0c6316ca3d716a7cf2b28f6da040"
+    },
+    {
+      "component": "ChatGPT M27",
+      "commit": "4221eacd3398d708252316d2e1aa228f13749724"
+    }
+  ],
+  "collisions": [
+    {
+      "path": "apps/staff-mobile/package.json",
+      "chosen": "PR24 native compatibility"
+    },
+    {
+      "path": "apps/patient-mobile/package.json",
+      "chosen": "PR24 native compatibility"
+    },
+    {
+      "path": "apps/web/package.json",
+      "chosen": "P03 pg-backed browser runtime; lock reconciliation pending"
+    },
+    {
+      "path": "apps/web/app/api/auth/**",
+      "chosen": "latest P03 audited OIDC routes"
+    },
+    {
+      "path": "apps/web/app/workforce/clinical/[screenId]/page.tsx",
+      "chosen": "OPS001 authorized shared workstations + added M02/M16/M35 canonical routing"
+    },
+    {
+      "path": "apps/web/app/api/operations/**",
+      "chosen": "M27 enhanced shared custody guards"
+    },
+    {
+      "path": "services/operations-core/src/main/java/org/synqoria/operations/**",
+      "chosen": "M27 enhanced shared custody guards"
+    },
+    {
+      "path": "docs/program/SYNQORIA_MULTI_CHAT_HANDOFF.md",
+      "chosen": "historical original retained; this production ledger is cumulative"
+    }
+  ],
+  "release": {
+    "sourceMergedToIntegration": true,
+    "sourceMergedToMain": false,
+    "hospitalDeployed": false,
+    "clinicalCertified": false
+  },
+  "validation": {
+    "dedicatedWorkstreamChecks": "prior branch CI passed for M02/M16/M27/M32/M34/M35",
+    "integratedCanonicalRoutes": "passed in first integration CI",
+    "integratedWebBuild": "in progress",
+    "rootLegacyEngineering": "failing install/toolchain and lockfile"
+  },
+  "outstanding": [
+    "reconcile workspace package-lock to verified production manifest",
+    "integrated application build and test",
+    "review clinical identity and source authority provisioning",
+    "institutional operational/clinical acceptance",
+    "certification later"
+  ]
+}

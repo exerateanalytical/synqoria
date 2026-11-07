@@ -1,0 +1,22 @@
+{
+  "version": "0.67.0",
+  "branch_base": "work/longitudinal-inbox-operations-v066",
+  "base_sha": "002e1fa99b4efa5d867d9c090dfcd3f3b72f0b25",
+  "phase": "P07",
+  "batch_start": "P07-B0130",
+  "batch_end": "P07-B0159",
+  "implemented": 30,
+  "independently_tested": 30,
+  "independently_tested_assertions": 165,
+  "all_sources_compiled": true,
+  "scope": "30 distinct defensive clinical inbox admission and recovery policy components; pure Java 21, not live service wiring",
+  "limits": [
+    "No live PostgreSQL/RLS",
+    "No live Kafka",
+    "No OIDC/KMS",
+    "Not an integrated full branch build",
+    "Not certified",
+    "Clinical release denied"
+  ],
+  "next_candidate": "P07-B0160"
+}

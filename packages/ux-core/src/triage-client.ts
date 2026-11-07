@@ -142,35 +142,47 @@ export class TriageTransportError extends Error{
 export function triageClient(origin:string,transport:TriageClinicalTransport){
  const url=new URL(origin);
  if((url.protocol!=='https:' && !(url.protocol==='http:'&&url.hostname==='127.0.0.1'))||url.username||url.password||url.search||url.hash||url.pathname!=='/')throw new Error('trusted clinical API origin required');
+ const notAborted=(signal?:AbortSignal)=>{if(signal?.aborted)throw new TriageTransportError('unavailable',0);};
+ // Limits apply to BOTH mutation acknowledgements and scoped reads. No cache, redirects, or oversized PHI.
+ const clinicalResponse=async(r:Awaited<ReturnType<TriageClinicalTransport['fetch']>>,signal?:AbortSignal):Promise<unknown>=>{
+  notAborted(signal);
+  if(r.headers.get('Cache-Control')!=='no-store, private')throw new TriageTransportError('unavailable',0);
+  const type=r.headers.get('Content-Type');
+  if(type!==null&&!/^application\/json(?:;\s*charset=utf-8)?$/i.test(type))throw new TriageTransportError('unavailable',0);
+  const length=r.headers.get('Content-Length');
+  if(length!==null&&(!/^\d{1,6}$/.test(length)||Number(length)>65536))throw new TriageTransportError('unavailable',0);
+  let body:unknown;
+  try{body=await r.json();}catch{throw new TriageTransportError('unavailable',0);}
+  notAborted(signal);
+  let size=0;try{size=new TextEncoder().encode(JSON.stringify(body)).byteLength;}catch{throw new TriageTransportError('unavailable',0);}
+  if(size>65536||size===0)throw new TriageTransportError('unavailable',0);
+  return body;
+ };
  const post=async(path:string,body:object,signal?:AbortSignal,accepted:readonly number[]=[200]):Promise<unknown>=>{
+  notAborted(signal);
   if(!transport.isOnline())throw new TriageTransportError('unavailable',0);
-  const token=await transport.token();if(!/^[A-Za-z0-9_.~-]{16,8192}$/.test(token))throw new TriageTransportError('reauthenticate',0);
+  const token=await transport.token();notAborted(signal);
+  if(!/^[A-Za-z0-9_.~-]{16,8192}$/.test(token))throw new TriageTransportError('reauthenticate',0);
   const r=await transport.fetch(url.origin+path,{method:'POST',headers:{Authorization:'Bearer '+token,'Content-Type':'application/json','Accept':'application/json'},
-   body:JSON.stringify(body),credentials:'omit',redirect:'error',cache:'no-store',signal});
+   body:JSON.stringify(body),credentials:'omit',redirect:'error',cache:'no-store',signal});notAborted(signal);
   if(r.status===401)throw new TriageTransportError('reauthenticate',401);
   if(r.status===404||r.status===403)throw new TriageTransportError('denied',r.status);
   if(r.status===409||r.status===412)throw new TriageTransportError('conflict',r.status);
   if(r.status===422||r.status===400)throw new TriageTransportError('invalid',r.status);
   if(r.status>=500||!accepted.includes(r.status))throw new TriageTransportError('unavailable',r.status);
-  if(r.headers.get('Cache-Control')!=='no-store, private')throw new TriageTransportError('unavailable',0);
-  return r.json();
+  return clinicalResponse(r,signal);
  };
  const get=async(path:string,signal?:AbortSignal):Promise<unknown>=>{
+  notAborted(signal);
   if(!transport.isOnline())throw new TriageTransportError('unavailable',0);
-  const token=await transport.token();if(!/^[A-Za-z0-9_.~-]{16,8192}$/.test(token))throw new TriageTransportError('reauthenticate',0);
-  const r=await transport.fetch(url.origin+path,{method:'GET',headers:{Authorization:'Bearer '+token,Accept:'application/json'},credentials:'omit',redirect:'error',cache:'no-store',signal});
+  const token=await transport.token();notAborted(signal);
+  if(!/^[A-Za-z0-9_.~-]{16,8192}$/.test(token))throw new TriageTransportError('reauthenticate',0);
+  const r=await transport.fetch(url.origin+path,{method:'GET',headers:{Authorization:'Bearer '+token,Accept:'application/json'},credentials:'omit',redirect:'error',cache:'no-store',signal});notAborted(signal);
   if(r.status===401)throw new TriageTransportError('reauthenticate',401);
   if(r.status===403||r.status===404)throw new TriageTransportError('denied',r.status);
   if(r.status===400||r.status===422)throw new TriageTransportError('invalid',r.status);
-  if(r.status!==200||r.headers.get('Cache-Control')!=='no-store, private')throw new TriageTransportError('unavailable',r.status);
-  const contentType=r.headers.get('Content-Type');
-  if(contentType!==null&&!/^application\/json(?:;\s*charset=utf-8)?$/i.test(contentType))throw new TriageTransportError('unavailable',0);
-  const length=r.headers.get('Content-Length');
-  if(length!==null&&(!/^\d{1,6}$/.test(length)||Number(length)>65536))throw new TriageTransportError('unavailable',0);
-  const body=await r.json();
-  let size=0;try{size=JSON.stringify(body).length;}catch{throw new TriageTransportError('unavailable',0);}
-  if(size>65536)throw new TriageTransportError('unavailable',0);
-  return body;
+  if(r.status!==200)throw new TriageTransportError('unavailable',r.status);
+  return clinicalResponse(r,signal);
  };
  const path=(patient:string,caseId:string)=>'/api/v1/triage/patients/'+checkId(patient)+'/cases/'+checkId(caseId);
  const result=async(pending:Promise<unknown>):Promise<TriageWriteResult>=>{

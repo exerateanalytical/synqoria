@@ -1,0 +1,600 @@
+[
+  {
+    "id": "P18",
+    "en": "Audit export manifest",
+    "fr": "Manifeste d'exportation d'audit",
+    "domain": "GOV",
+    "domainEn": "Privacy audit governance and public health",
+    "domainFr": "Gouvernance audit et santé publique",
+    "module": "M34",
+    "kind": "audit",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Request",
+        "fields": [
+          "Authorized audit purpose",
+          "Scope and date range",
+          "Requester"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Export",
+        "fields": [
+          "Records count and types",
+          "Source versions",
+          "Hash/digest and packaging"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Disclosure",
+        "fields": [
+          "Recipient and permission",
+          "Encryption and retention",
+          "Independent approval"
+        ]
+      },
+      {
+        "id": "s04",
+        "heading": "Release",
+        "fields": [
+          "Artifact identity",
+          "Timestamp",
+          "Custody acknowledgement"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-GOV-002",
+    "en": "Access audit trail report",
+    "fr": "Rapport de traçabilité des accès",
+    "domain": "GOV",
+    "domainEn": "Privacy audit governance and public health",
+    "domainFr": "Gouvernance audit et santé publique",
+    "module": "M34",
+    "kind": "audit",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Scope",
+        "fields": [
+          "Tenant and facility",
+          "Service",
+          "Period"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Events",
+        "fields": [
+          "Actor role",
+          "Action",
+          "Resource category",
+          "Time and outcome"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Suspected inappropriate access and escalation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-GOV-003",
+    "en": "Emergency break-glass access review",
+    "fr": "Revue des accès d'urgence exceptionnels",
+    "domain": "GOV",
+    "domainEn": "Privacy audit governance and public health",
+    "domainFr": "Gouvernance audit et santé publique",
+    "module": "M34",
+    "kind": "review",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Access",
+        "fields": [
+          "Actor and justification",
+          "Patient scope and duration"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Audit",
+        "fields": [
+          "Actions and records accessed",
+          "Independent reviewer"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Resolution",
+        "fields": [
+          "Access closure and incident outcome"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-GOV-004",
+    "en": "Consent decision register",
+    "fr": "Registre des décisions de consentement",
+    "domain": "GOV",
+    "domainEn": "Privacy audit governance and public health",
+    "domainFr": "Gouvernance audit et santé publique",
+    "module": "M34",
+    "kind": "log",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Grants",
+        "fields": [
+          "Patient/proxy authority reference",
+          "Purpose and scope"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Events",
+        "fields": [
+          "Grant",
+          "Withdrawal",
+          "Expiry",
+          "Version and time"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Oversight",
+        "fields": [
+          "Reviewer and notification"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-GOV-005",
+    "en": "DHIS2 aggregate activity report",
+    "fr": "Rapport d'activités agrégé DHIS2",
+    "domain": "GOV",
+    "domainEn": "Privacy audit governance and public health",
+    "domainFr": "Gouvernance audit et santé publique",
+    "module": "M34",
+    "kind": "public-health",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Period",
+        "fields": [
+          "Facility",
+          "Reporting month and indicator set"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Totals",
+        "fields": [
+          "Encounter counts by verified categories",
+          "Services and outcomes"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Governance",
+        "fields": [
+          "Suppression policy",
+          "Provenance and approval"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-GOV-006",
+    "en": "Infectious disease surveillance summary",
+    "fr": "Rapport de surveillance épidémiologique",
+    "domain": "GOV",
+    "domainEn": "Privacy audit governance and public health",
+    "domainFr": "Gouvernance audit et santé publique",
+    "module": "M34",
+    "kind": "public-health",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Period",
+        "fields": [
+          "Reporting jurisdiction and dates",
+          "Syndrome/condition code"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Aggregate",
+        "fields": [
+          "Validated case totals",
+          "Temporal trend and methodology"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Public health official and disclosure authority"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-GOV-007",
+    "en": "Notifiable disease report to authority",
+    "fr": "Fiche de notification de maladie à déclaration obligatoire",
+    "domain": "GOV",
+    "domainEn": "Privacy audit governance and public health",
+    "domainFr": "Gouvernance audit et santé publique",
+    "module": "M34",
+    "kind": "public-health",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Case",
+        "fields": [
+          "Condition and legally required minimum details",
+          "Onset and report period"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Authority",
+        "fields": [
+          "Reporting destination and rule basis"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Transmission",
+        "fields": [
+          "Reported by",
+          "Date",
+          "Confirmation and follow-up"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-GOV-008",
+    "en": "Interoperability reconciliation log",
+    "fr": "Registre de rapprochement interopérabilité",
+    "domain": "GOV",
+    "domainEn": "Privacy audit governance and public health",
+    "domainFr": "Gouvernance audit et santé publique",
+    "module": "M34",
+    "kind": "reconciliation",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Interface",
+        "fields": [
+          "External system and API",
+          "Tenant and purpose"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Transactions",
+        "fields": [
+          "Message ID",
+          "Source version",
+          "Send and receipt statuses"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Errors",
+        "fields": [
+          "Replay control",
+          "Duplicate suppression and resolution"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-GOV-009",
+    "en": "API data export receipt",
+    "fr": "Accusé d’exportation API",
+    "domain": "GOV",
+    "domainEn": "Privacy audit governance and public health",
+    "domainFr": "Gouvernance audit et santé publique",
+    "module": "M34",
+    "kind": "audit",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Export",
+        "fields": [
+          "Consent/permission basis",
+          "Resource scope and count"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Delivery",
+        "fields": [
+          "Authorized recipient",
+          "Secure endpoint and checksum"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Traceability",
+        "fields": [
+          "Audit ID and expiry"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-GOV-010",
+    "en": "Disaster recovery drill report",
+    "fr": "Rapport de test de reprise d'activité",
+    "domain": "GOV",
+    "domainEn": "Privacy audit governance and public health",
+    "domainFr": "Gouvernance audit et santé publique",
+    "module": "M34",
+    "kind": "quality",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Test",
+        "fields": [
+          "Scope",
+          "Scenario and environment",
+          "Authorized tester"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Evidence",
+        "fields": [
+          "RPO/RTO measurements",
+          "Integrity and completeness checks"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Decision",
+        "fields": [
+          "Open blockers",
+          "Sign-off and remediation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-GOV-011",
+    "en": "Critical handover and incident chain-of-custody",
+    "fr": "Registre de traçabilité des preuves",
+    "domain": "GOV",
+    "domainEn": "Privacy audit governance and public health",
+    "domainFr": "Gouvernance audit et santé publique",
+    "module": "M34",
+    "kind": "custody",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Evidence",
+        "fields": [
+          "Item reference and classification",
+          "Collection method and seal"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Transfer",
+        "fields": [
+          "Custodian",
+          "Time and reason",
+          "Integrity checks"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Closure",
+        "fields": [
+          "Retention and authorized disposal"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-GOV-012",
+    "en": "Data retention and destruction approval",
+    "fr": "Autorisation de conservation et destruction de données",
+    "domain": "GOV",
+    "domainEn": "Privacy audit governance and public health",
+    "domainFr": "Gouvernance audit et santé publique",
+    "module": "M34",
+    "kind": "audit",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Records",
+        "fields": [
+          "Classification and data scope",
+          "Applicable retention schedule"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Review",
+        "fields": [
+          "Legal hold and exceptions",
+          "Approver"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Execution",
+        "fields": [
+          "Deletion proof and protected audit"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-GOV-013",
+    "en": "Hospital monthly performance dashboard print",
+    "fr": "Tableau de bord mensuel des performances",
+    "domain": "GOV",
+    "domainEn": "Privacy audit governance and public health",
+    "domainFr": "Gouvernance audit et santé publique",
+    "module": "M34",
+    "kind": "public-health",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Period",
+        "fields": [
+          "Hospital and reporting definition"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Metrics",
+        "fields": [
+          "Activity indicators",
+          "Outcome indicators",
+          "Source and completeness"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Responsible officer and version"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-GOV-014",
+    "en": "Cybersecurity incident record",
+    "fr": "Rapport d'incident de cybersécurité",
+    "domain": "GOV",
+    "domainEn": "Privacy audit governance and public health",
+    "domainFr": "Gouvernance audit et santé publique",
+    "module": "M34",
+    "kind": "quality",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Incident",
+        "fields": [
+          "Event time and affected service",
+          "Classification",
+          "Detection source"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Impact",
+        "fields": [
+          "Data categories and tenant scope",
+          "Containment"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Resolution",
+        "fields": [
+          "Response and legal notification assessment"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-GOV-015",
+    "en": "Clinical record release manifest",
+    "fr": "Bordereau de remise du dossier médical",
+    "domain": "GOV",
+    "domainEn": "Privacy audit governance and public health",
+    "domainFr": "Gouvernance audit et santé publique",
+    "module": "M34",
+    "kind": "audit",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Request",
+        "fields": [
+          "Authorization and patient or case reference",
+          "Minimum necessary scope"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Files",
+        "fields": [
+          "Document/version list",
+          "Count and source hash"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Handover",
+        "fields": [
+          "Recipient",
+          "Time",
+          "Integrity acknowledgement"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]

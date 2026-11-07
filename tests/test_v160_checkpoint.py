@@ -23,5 +23,6 @@ assert len(s['items'])==261 and len(m['items'])==40
 assert all(not x['implemented'] and not x['accepted'] and not x['clinically_reviewed'] for x in s['items'])
 assert all(not x['implemented'] and not x['accepted'] for x in m['items'])
 assert l['release_status']=='NOT_CERTIFIED'
-assert 'P05-B0027' in l['next_batch']
+# Historical v0.16.0 milestone may be completed; current next_batch advances independently.
+assert 'P05-B0027' in ids
 print('PASS v0.16.0 10 individually tested nonclinical increments, 40 modules, 261 locked screens, no release')

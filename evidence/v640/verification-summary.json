@@ -1,0 +1,26 @@
+{
+  "java_inbox_independent_tests": 10,
+  "java_inbox_assertions": 40,
+  "inherited_java_source_compile": {
+    "result": "passed",
+    "base": "v0.61.0",
+    "source_files": 238
+  },
+  "inherited_node_tests": {
+    "result": "passed",
+    "base": "v0.61.0",
+    "passed": 292
+  },
+  "screen_status": {
+    "result": "passed",
+    "screen_count": 261
+  },
+  "not_verified": [
+    "full v0.63 branch regression",
+    "real PostgreSQL RLS",
+    "Kafka publisher/consumer",
+    "production OIDC/KMS",
+    "Next.js/Expo production builds",
+    "clinical acceptance"
+  ]
+}

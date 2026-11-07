@@ -1,5 +1,5 @@
 {
-  "version": "0.57.0",
+  "version": "0.63.0",
   "batches": [
     {
       "id": "P00-B0001",
@@ -2537,7 +2537,7 @@
     {
       "id": "P02-B0059",
       "status": "implemented_unit_or_static_tested_NOT_production_integrated",
-      "scope": "Dynamic type safety for clinical text, 200–300% scaling, wrapping, four unique bottom destinations; unit tested and native source wired",
+      "scope": "Dynamic type safety for clinical text, 200\u2013300% scaling, wrapping, four unique bottom destinations; unit tested and native source wired",
       "evidence": [
         "evidence/batches/v200-P02-B0059.log"
       ],
@@ -10635,9 +10635,1791 @@
       ],
       "external_certification": false,
       "clinical_acceptance": false
+    },
+    {
+      "id": "P06-B0369",
+      "status": "implemented_and_tested_internal",
+      "scope": "M03 staff patient/case workflow coordinator: verified shift/facility context, scoped authorized worklist selection, cancellation/scrubbing on context changes, authoritative case revision refresh",
+      "code": [
+        "packages/ux-core/src/triage-staff-workflow.ts"
+      ],
+      "evidence": [
+        "packages/ux-core/tests/triage-v58-staff-workflow.test.cjs",
+        "evidence/v580/P06-B0369.log"
+      ],
+      "external_certification": false,
+      "clinical_acceptance": false
+    },
+    {
+      "id": "P06-B0370",
+      "status": "implemented_and_tested_internal",
+      "scope": "M03 clinical transport hardening: bounded response JSON, UTF-8 byte limit, no-store/content-type enforcement and identity-switch abort protection",
+      "code": [
+        "packages/ux-core/src/triage-client.ts"
+      ],
+      "evidence": [
+        "packages/ux-core/tests/triage-v58-transport-security.test.cjs",
+        "evidence/v580/P06-B0370.log"
+      ],
+      "external_certification": false,
+      "clinical_acceptance": false
+    },
+    {
+      "id": "P06-B0371",
+      "status": "implemented_and_tested_internal",
+      "scope": "M03 idempotent first-arrival workflow with uncertain acknowledgement handling, explicit same-command retry, and server-authoritative case reread",
+      "code": [
+        "packages/ux-core/src/triage-arrival-session.ts"
+      ],
+      "evidence": [
+        "packages/ux-core/tests/triage-v58-arrival-session.test.cjs",
+        "evidence/v580/P06-B0371.log"
+      ],
+      "external_certification": false,
+      "clinical_acceptance": false
+    },
+    {
+      "id": "P06-B0372",
+      "status": "implemented_and_tested_internal",
+      "scope": "Volatile uncertain clinical mutation recovery: original idempotency key, audit-digest check, explicit retry and patient-switch cancellation",
+      "evidence": [
+        "evidence/v590/P06-B0372.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0373",
+      "status": "implemented_and_tested_internal",
+      "scope": "Verified staff permission lease with scoped action-gate, expiry, offline lock, write reentrancy and reauthentication clearing",
+      "evidence": [
+        "evidence/v590/P06-B0373.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0374",
+      "status": "implemented_and_tested_internal",
+      "scope": "Typed M03 observation recording, correction provenance, measurement refusal and device-source evidence workflow",
+      "evidence": [
+        "evidence/v590/P06-B0374.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0375",
+      "status": "implemented_and_tested_internal",
+      "scope": "Staff queue operation workflow for explicit station moves, calls, pause/resume, unavailable patient with rationale",
+      "evidence": [
+        "evidence/v590/P06-B0375.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0376",
+      "status": "implemented_and_tested_internal",
+      "scope": "Clinician assignment and handover requests, receiving acceptance/rejection, notes and finalization workflow",
+      "evidence": [
+        "evidence/v590/P06-B0376.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0377",
+      "status": "implemented_and_tested_internal",
+      "scope": "Clinician-authored escalation and reassessment lifecycle without automatic clinical priority decisions",
+      "evidence": [
+        "evidence/v590/P06-B0377.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0378",
+      "status": "implemented_and_tested_internal",
+      "scope": "Safety hold placement/release, assessment narration, authorized signatures and addenda",
+      "evidence": [
+        "evidence/v590/P06-B0378.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0379",
+      "status": "implemented_and_tested_internal",
+      "scope": "Patient-scoped worklist paginator across max four bounded requests with duplicate and stale response rejection",
+      "evidence": [
+        "evidence/v590/P06-B0379.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0380",
+      "status": "implemented_and_tested_internal",
+      "scope": "Bounded immutable, contiguous audit revision navigator with patient switch abort and untrusted history purging",
+      "evidence": [
+        "evidence/v590/P06-B0380.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0381",
+      "status": "implemented_and_tested_internal",
+      "scope": "Clinician-entered priority setup/revision and evidence reference with explicit rationale and no decision support defaults",
+      "evidence": [
+        "evidence/v590/P06-B0381.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0382",
+      "status": "implemented_and_tested_internal",
+      "scope": "Human-entered triage arrival context, identity/consent provenance, accessibility/language and referral evidence",
+      "evidence": [
+        "evidence/v590/P06-B0382.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0383",
+      "status": "implemented_and_tested_internal",
+      "scope": "Role-sensitive bilingual staff triage workspace projection, hold/pause/closed safety presentation",
+      "evidence": [
+        "evidence/v590/P06-B0383.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0384",
+      "status": "implemented_and_tested_internal",
+      "scope": "Native staff foreground privacy session, mandatory re-verification and immediate PHI purge on background/facility switch",
+      "evidence": [
+        "evidence/v590/P06-B0384.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0385",
+      "status": "implemented_and_tested_internal",
+      "scope": "Cryptographic digest, operation and revision cross-check for mutation receipt against scoped audit evidence",
+      "evidence": [
+        "evidence/v590/P06-B0385.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0386",
+      "status": "implemented_and_tested_internal",
+      "scope": "One-time high-impact action confirmation fence tied to case, revision, lease, explicit act and short expiry",
+      "evidence": [
+        "evidence/v590/P06-B0386.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0387",
+      "status": "implemented_and_tested_internal",
+      "scope": "Bounded privacy-minimal audit metadata filtering without exposing recorded free-text clinical content",
+      "evidence": [
+        "evidence/v590/P06-B0387.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0388",
+      "status": "implemented_and_tested_internal",
+      "scope": "Explicit patient-case selection filters for eight M03 read views with trusted station and UTC constraints",
+      "evidence": [
+        "evidence/v590/P06-B0388.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0389",
+      "status": "implemented_and_tested_internal",
+      "scope": "Restricted HTTP command journey integrating bearer session, idempotency recovery and audit-backed status",
+      "evidence": [
+        "evidence/v590/P06-B0389.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0390",
+      "status": "implemented_and_tested_internal",
+      "scope": "Permission-filtered bilingual, accessible M03 action presentation with confirmation and input descriptors",
+      "evidence": [
+        "evidence/v590/P06-B0390.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P06-B0391",
+      "status": "implemented_and_tested_internal",
+      "scope": "Integrated staff session joining scoped worklists, selected case, authorized commands, authoritative reads and logout/shift purge",
+      "evidence": [
+        "evidence/v590/P06-B0391.log",
+        "evidence/v590/batch-results.json"
+      ],
+      "clinical_screen_implementation": false,
+      "integration_tested": false,
+      "independently_reviewed": false,
+      "clinically_reviewed": false,
+      "accepted": false,
+      "external_certification": false
+    },
+    {
+      "id": "P07-B0001",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.checkin: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0001.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0002",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.activate: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0002.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0003",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.assign_clinician: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0003.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0004",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.join_team: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0004.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0005",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.leave_team: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0005.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0006",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.change_responsible: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0006.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0007",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.request_admission: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0007.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0008",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.approve_admission: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0008.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0009",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.propose_bed: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0009.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0010",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.release_bed_proposal: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0010.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0011",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.record_room: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0011.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0012",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.record_location: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0012.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0013",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.request_transfer: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0013.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0014",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.accept_transfer: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0014.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0015",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.cancel_transfer: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0015.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0016",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.record_accepted_transfer: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0016.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0017",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.record_leave: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0017.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0018",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.record_return: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0018.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0019",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.submit_discharge_plan: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0019.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0020",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M04 encounter.authorize_discharge: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M04",
+      "evidence": [
+        "evidence/v600/P07-B0020.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0021",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.create_draft: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0021.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0022",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.title_draft: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0022.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0023",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.write_draft: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0023.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0024",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.set_section: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0024.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0025",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.remove_section: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0025.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0026",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.add_diagnosis: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0026.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0027",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.remove_diagnosis: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0027.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0028",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.add_problem: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0028.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0029",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.rename_problem: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0029.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0030",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.attach_reference: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0030.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0031",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.detach_reference: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0031.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0032",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.mark_confidential: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0032.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0033",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.request_review: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0033.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0034",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.reviewer_comment: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0034.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0035",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.request_revision: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0035.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0036",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.ready_to_sign: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0036.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0037",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.sign: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0037.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0038",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.start_amendment: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0038.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0039",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.sign_amendment: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0039.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0040",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M05 note.entered_in_error: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M05",
+      "evidence": [
+        "evidence/v600/P07-B0040.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0041",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.capture_numeric: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0041.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0042",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.capture_text: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0042.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0043",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.capture_categorical: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0043.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0044",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.attach_device: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0044.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0045",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.record_context: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0045.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0046",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.attach_source: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0046.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0047",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.add_metadata: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0047.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0048",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.remove_metadata: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0048.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0049",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.request_verification: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0049.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0050",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.verify: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0050.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0051",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.reject: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0051.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0052",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.request_recheck: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0052.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0053",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.capture_correction: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0053.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0054",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.verify_correction: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0054.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0055",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.invalidate: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0055.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0056",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.create_set: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0056.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0057",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.join_set: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0057.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0058",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.complete_set: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0058.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0059",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.timeline: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0059.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0060",
+      "status": "domain_operation_implemented_and_individually_tested",
+      "scope": "M06 observation.correction_lineage: distinct clinician-entered clinical workflow/authorized read projection with expected-revision and audit checks; internal domain only",
+      "module": "M06",
+      "evidence": [
+        "evidence/v600/P07-B0060.log",
+        "evidence/v600/adversarial.log"
+      ],
+      "external_certification": false,
+      "api_integrated": false,
+      "database_integration_qualified": false
+    },
+    {
+      "id": "P07-B0061",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "strict scoped clinical command JSON decoding",
+      "evidence": [
+        "evidence/v610/P07-B0061.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0062",
+      "module": "M04",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "authenticated encounter POST and case summary",
+      "evidence": [
+        "evidence/v610/P07-B0062.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0063",
+      "module": "M05",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "clinical note creation and confidential note GET",
+      "evidence": [
+        "evidence/v610/P07-B0063.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0064",
+      "module": "M06",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "observation recording/verification and filtered GET",
+      "evidence": [
+        "evidence/v610/P07-B0064.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0065",
+      "module": "M04",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "scope denial and verified admission",
+      "evidence": [
+        "evidence/v610/P07-B0065.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0066",
+      "module": "M04",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "audit evidence bounded cursor page",
+      "evidence": [
+        "evidence/v610/P07-B0066.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0067",
+      "module": "M04",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "idempotent replay and revision conflicts",
+      "evidence": [
+        "evidence/v610/P07-B0067.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0068",
+      "module": "M04",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "HTTP request-smuggling/header/IDOR rejection",
+      "evidence": [
+        "evidence/v610/P07-B0068.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0069",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "versioned OpenAPI parity and safety contract",
+      "evidence": [
+        "evidence/v610/P07-B0069.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0070",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_HTTP_or_contract_NOT_production_qualified",
+      "scope": "TypeScript staff client with context abort and privacy-minimal decoders",
+      "evidence": [
+        "evidence/v610/P07-B0070.log",
+        "evidence/v610/verified-batches.json"
+      ],
+      "integration_tested": "synthetic_loopback_or_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0071",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "bounded deterministic aggregate snapshot codec",
+      "evidence": [
+        "evidence/v620/P07-B0071.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0072",
+      "module": "M05",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "preservation of signed and immutable note state",
+      "evidence": [
+        "evidence/v620/P07-B0072.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0073",
+      "module": "M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "round-trip observation correction chain and status",
+      "evidence": [
+        "evidence/v620/P07-B0073.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0074",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "audit, outbox and idempotency receipt round-trip integrity",
+      "evidence": [
+        "evidence/v620/P07-B0074.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0075",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "encrypted AES-256-GCM clinical aggregate envelopes",
+      "evidence": [
+        "evidence/v620/P07-B0075.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0076",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "patient/facility/encounter/revision authentication via AAD",
+      "evidence": [
+        "evidence/v620/P07-B0076.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0077",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "snapshot tamper, bounds and malformed Unicode rejection",
+      "evidence": [
+        "evidence/v620/P07-B0077.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0078",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "transaction-local PostgreSQL scope echo fail-closed",
+      "evidence": [
+        "evidence/v620/P07-B0078.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0079",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "encrypted row-locked JDBC case read with local scope",
+      "evidence": [
+        "evidence/v620/P07-B0079.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0080",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "JDBC persisted audit/receipt/outbox correlation validation",
+      "evidence": [
+        "evidence/v620/P07-B0080.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0081",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "optimistic revision compare-and-swap write denial",
+      "evidence": [
+        "evidence/v620/P07-B0081.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0082",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "atomic aggregate audit receipt outbox JDBC insert contract",
+      "evidence": [
+        "evidence/v620/P07-B0082.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0083",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "replay-safe database-rehydrated idempotency",
+      "evidence": [
+        "evidence/v620/P07-B0083.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0084",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "transaction rollback on outbox write failure",
+      "evidence": [
+        "evidence/v620/P07-B0084.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0085",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "quarantined V020 restricted-row RLS/append-only DDL",
+      "evidence": [
+        "evidence/v620/P07-B0085.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0086",
+      "module": "M04",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "backend authorized planned encounter initialization",
+      "evidence": [
+        "evidence/v620/P07-B0086.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0087",
+      "module": "M04",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "fail-closed duplicate and revoked provisioning rejection",
+      "evidence": [
+        "evidence/v620/P07-B0087.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0088",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "restricted trust-to-JDBC-to-HTTP loopback wiring",
+      "evidence": [
+        "evidence/v620/P07-B0088.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0089",
+      "module": "M05",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "patient-scoped note index with confidential visibility and bounded pagination",
+      "evidence": [
+        "evidence/v620/P07-B0089.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0090",
+      "module": "M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "bidirectional observation correction lineage and bounded HTTP read",
+      "evidence": [
+        "evidence/v620/P07-B0090.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0091",
+      "module": "M05",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "TypeScript scoped note index response decoder and GET client",
+      "evidence": [
+        "evidence/v620/P07-B0091.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0092",
+      "module": "M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "TypeScript observation lineage privacy and stale-response guard",
+      "evidence": [
+        "evidence/v620/P07-B0092.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0093",
+      "module": "M04/M05/M06",
+      "status": "implemented_and_individually_tested_synthetic_protocol_or_contract_NOT_production_qualified",
+      "scope": "versioned private read OpenAPI contract and backend parity",
+      "evidence": [
+        "evidence/v620/P07-B0093.log",
+        "evidence/v620/individual-batch-results.json"
+      ],
+      "integration_tested": "synthetic_jvm_jdbc_protocol_node_or_python_contract_only",
+      "database_integration_qualified": false,
+      "independent_clinical_review": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0094",
+      "module": "M04/M05/M06",
+      "scope": "Privacy-minimal validated outbox event reference",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0094.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0095",
+      "module": "M04/M05/M06",
+      "scope": "Worker permit scope, expiry and fail-closed authorization gate",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0095.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0096",
+      "module": "M04/M05/M06",
+      "scope": "Per-encounter revision-ordered publication across multiple events",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0096.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0097",
+      "module": "M04/M05/M06",
+      "scope": "Concurrent worker single-lease ownership without later-event overtaking",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0097.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0098",
+      "module": "M04/M05/M06",
+      "scope": "Token-fenced acknowledgement rejecting expired or mismatched evidence",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0098.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0099",
+      "module": "M04/M05/M06",
+      "scope": "Broker failure release with bounded retry and delayed redelivery",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0099.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0100",
+      "module": "M04/M05/M06",
+      "scope": "Uncertain acknowledgement at-least-once redelivery and consumer dedupe contract",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0100.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0101",
+      "module": "M04/M05/M06",
+      "scope": "Terminal parking after bounded attempts, poisoning fence preserving event order",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0101.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0102",
+      "module": "M04/M05/M06",
+      "scope": "Scoped PostgreSQL JDBC lease and bounded progressive delivery projection",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0102.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0103",
+      "module": "M04/M05/M06",
+      "scope": "JDBC CAS acknowledgement, failed-delivery deferral, scope/RLS echo contract",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0103.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
+    },
+    {
+      "id": "P07-B0104",
+      "module": "M04/M05/M06",
+      "scope": "V021 forced-RLS no-grant delivery schema with immutable migration checksum",
+      "status": "implemented_and_individually_tested_synthetic_protocol_NOT_deployed",
+      "evidence": [
+        "evidence/v630/P07-B0104.log",
+        "evidence/v630/individual-batches.json"
+      ],
+      "integration_tested": "synthetic_JDBC_and_domain_only",
+      "real_postgresql_RLS": false,
+      "production_broker_connected": false,
+      "external_certification": false,
+      "clinical_screen_accepted": false
     }
   ],
-  "next_batch": "P06-B0303",
+  "next_batch": "P06-B0392",
   "release_status": "NOT_CERTIFIED",
   "merge_provenance": {
     "source": "SYNQORIA_v0.29.0_cumulative.zip",
@@ -10647,5 +12429,7 @@
     "new_v30_batches": 10,
     "clinical_release": "DENIED"
   },
-  "release_detail": "DENIED: 0/40 certified modules; 0/261 clinical screens accepted"
+  "release_detail": "DENIED: 0/40 certified modules; 0/261 clinical screens accepted",
+  "next_parallel_batch": "P07-B0094",
+  "concurrency_note": "P07-B0061\u2013B0070 on stacked draft PR4 only. P06-B0392 remains reserved for independent triage work. Do not overwrite main."
 }

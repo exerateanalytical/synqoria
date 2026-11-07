@@ -1,0 +1,4 @@
+command=["java", "-ea", "-cp", "/mnt/data/synqoria_v63_work/.v630-classes", "org.synqoria.longitudinal.LongitudinalOutboxDeliveryTest", "metadata"]
+exit_code=0
+PASS outbox metadata 6 assertions (synthetic store)
+

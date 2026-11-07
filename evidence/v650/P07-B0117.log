@@ -1,0 +1,4 @@
+$ java -cp /mnt/data/synqoria_v065_classes org.synqoria.longitudinal.LongitudinalInboxJdbcBoundaryTest
+PASS P07-B0117 JDBC boundary 19 assertions (synthetic JDBC)
+
+EXIT_CODE=0

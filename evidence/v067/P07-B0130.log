@@ -1,0 +1,7 @@
+P07-B0130 | ProducerBinding
+INDIVIDUAL_TEST_CMD: java -cp .classes/130 org.synqoria.longitudinal.inboxops.InboxProducerBindingTest
+EXIT_CODE: 0
+PASS P07-B0130 ProducerBinding assertions=6
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 51889a2764a2b2afe188d0f8eb48f5d74a22f32dc4e8595793713eb8b66ad939
+TEST_SHA256: 0b7083f91e36fcb2186e595c6d0521871f62a1d29f554e014e9de1ab5d403ba1

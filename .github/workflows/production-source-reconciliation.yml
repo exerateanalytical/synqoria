@@ -1,0 +1,61 @@
+name: SYNQORIA consolidated-source integration (not hospital release)
+on:
+  push:
+    branches:
+      - integration/synqoria-production-reconciliation-2026-11-07
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  canonical:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - name: Prohibit duplicate operational screens and missing source ownership
+        run: node --test tests/production_canonical_source_reconciliation.test.mjs
+      - name: Verify source tree includes critical engineering modules
+        run: |
+          set -euo pipefail
+          for service in operations-core scheduling-core referrals-core integration-management-core \
+            hr-payroll-core nutrition-core analytics-core clinical-content-core \
+            privacy-core audit-core; do test -f "services/$service/pom.xml" || exit 1; done
+          test -f apps/web/app/workforce/clinical/'[screenId]'/page.tsx
+          test -f registers/canonical-screens.json
+  web:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - name: Resolve exact production workspace lock and install
+        run: |
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          npm ci --no-audit --no-fund
+      - name: Compile all canonical workstations with consolidated dependencies
+        run: |
+          node --test tests/production_canonical_source_reconciliation.test.mjs
+          npm run build --workspace @synqoria/ux-core
+          npm run build --workspace @synqoria/web
+      - name: Commit reproducible lockfile only after complete consolidated web build
+        if: github.event_name == 'push' && github.ref == 'refs/heads/integration/synqoria-production-reconciliation-2026-11-07'
+        run: |
+          set -euo pipefail
+          if ! git diff --quiet -- package-lock.json; then
+            git config user.name "synqoria-lock-reconciler[bot]"
+            git config user.email "synqoria-lock-reconciler@users.noreply.github.com"
+            git add package-lock.json
+            git commit -m "build(integration): commit exact tested npm workspace lockfile"
+            git push origin HEAD:integration/synqoria-production-reconciliation-2026-11-07
+          fi
+      - name: Production release boundary
+        if: always()
+        run: echo 'Source application compilation only; no live hospital deployment or clinical acceptance.'

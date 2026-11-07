@@ -1,0 +1,30 @@
+COMMAND: node --test --test-name-pattern=B0391: /mnt/data/synqoria_v59_work/packages/ux-core/tests/triage-v59-clinical-staff-session.test.cjs
+EXIT_CODE: 0
+TAP version 13
+# Subtest: B0391: verified staff session loads only explicit patient worklist before opening case
+ok 1 - B0391: verified staff session loads only explicit patient worklist before opening case
+  ---
+  duration_ms: 23.023768
+  type: 'test'
+  ...
+# Subtest: B0391: command writes and refreshes the selected patient case without optimistic metadata
+ok 2 - B0391: command writes and refreshes the selected patient case without optimistic metadata
+  ---
+  duration_ms: 4.508862
+  type: 'test'
+  ...
+# Subtest: B0391: backgrounding and facility switch wipe all patient context, reauthentication required
+ok 3 - B0391: backgrounding and facility switch wipe all patient context, reauthentication required
+  ---
+  duration_ms: 1.053038
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 230.859066

@@ -1,0 +1,24 @@
+name: P03 login-to-NOLOGIN runtime integration tests
+on:
+  push:
+    branches:
+      - work/p03-b0094-b0123-runtime-build-2026-11-06
+permissions:
+  contents: read
+jobs:
+  identity-role-transition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Adversarial SQL identity and migration tests
+        run: node --test tests/identity_production_sql.test.mjs tests/identity_attested_db_query.test.mjs tests/identity_login_principals_migration.test.mjs
+      - name: Complete trusted staff session simulation
+        run: node --test tests/identity_production_integration.test.mjs tests/staff_route_bootstrap.test.mjs tests/identity_http_response_policy.test.mjs
+      - name: Assert next P03 evidence ledger and release lock
+        run: node --test tests/p03_runtime_build_ledger.test.mjs
+      - name: Release lock
+        run: echo "No live hospital cell identity or clinical authorization is accepted."

@@ -1,0 +1,673 @@
+{
+  "schema": "synqoria.ops.35.screen-workflows.v1",
+  "operationalUse": "requires_verified_opaque_session_and_authority",
+  "flows": {
+    "M21-S01": {
+      "module": "M21",
+      "recordTypes": [
+        "REQUISITION"
+      ],
+      "actions": [],
+      "fields": [
+        "title",
+        "supplierRef",
+        "amountMinor",
+        "currency",
+        "costCentre",
+        "description"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M21-S02": {
+      "module": "M21",
+      "recordTypes": [
+        "REQUISITION"
+      ],
+      "actions": [
+        "SUBMIT"
+      ],
+      "fields": [
+        "title",
+        "supplierRef",
+        "amountMinor",
+        "currency",
+        "costCentre",
+        "description"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M21-S03": {
+      "module": "M21",
+      "recordTypes": [
+        "REQUISITION"
+      ],
+      "actions": [
+        "APPROVE",
+        "REJECT"
+      ],
+      "fields": [
+        "supplierRef",
+        "costCentre",
+        "amountMinor",
+        "currency",
+        "description"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M21-S04": {
+      "module": "M21",
+      "recordTypes": [
+        "REQUISITION"
+      ],
+      "actions": [
+        "ORDER"
+      ],
+      "fields": [
+        "supplierRef",
+        "purchaseRef",
+        "amountMinor",
+        "currency"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M21-S05": {
+      "module": "M21",
+      "recordTypes": [
+        "REQUISITION"
+      ],
+      "actions": [
+        "RECEIVE",
+        "MATCH",
+        "CLOSE"
+      ],
+      "fields": [
+        "purchaseRef",
+        "receiptRef",
+        "invoiceRef",
+        "description"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M21-S06": {
+      "module": "M21",
+      "recordTypes": [
+        "SUPPLIER"
+      ],
+      "actions": [
+        "QUALIFY",
+        "SUSPEND",
+        "REQUALIFY"
+      ],
+      "fields": [
+        "title",
+        "registrationRef",
+        "taxRef",
+        "qualificationRef",
+        "phone",
+        "email",
+        "address"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M22-S01": {
+      "module": "M22",
+      "recordTypes": [
+        "STOCK_ITEM"
+      ],
+      "actions": [],
+      "fields": [
+        "title",
+        "sku",
+        "lot",
+        "bin",
+        "unit",
+        "quantity",
+        "warehouseRef"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M22-S02": {
+      "module": "M22",
+      "recordTypes": [
+        "STOCK_ITEM"
+      ],
+      "actions": [
+        "RELEASE"
+      ],
+      "fields": [
+        "title",
+        "sku",
+        "lot",
+        "bin",
+        "unit",
+        "quantity",
+        "receiptRef"
+      ],
+      "movements": [
+        "RECEIVE"
+      ],
+      "safety": "scoped_staff"
+    },
+    "M22-S03": {
+      "module": "M22",
+      "recordTypes": [
+        "STOCK_REQUEST",
+        "STOCK_ITEM"
+      ],
+      "actions": [
+        "APPROVE_REQUEST",
+        "FULFIL_REQUEST",
+        "RESERVE",
+        "ISSUE"
+      ],
+      "fields": [
+        "title",
+        "sku",
+        "quantity",
+        "requestedByRef",
+        "issueRef"
+      ],
+      "movements": [
+        "RESERVE",
+        "ISSUE"
+      ],
+      "safety": "scoped_staff"
+    },
+    "M22-S04": {
+      "module": "M22",
+      "recordTypes": [
+        "STOCK_ITEM"
+      ],
+      "actions": [
+        "RETURN"
+      ],
+      "fields": [
+        "title",
+        "lot",
+        "bin",
+        "quantity",
+        "receiptRef"
+      ],
+      "movements": [
+        "RETURN",
+        "RELEASE"
+      ],
+      "safety": "scoped_staff"
+    },
+    "M22-S05": {
+      "module": "M22",
+      "recordTypes": [
+        "STOCK_ITEM"
+      ],
+      "actions": [
+        "START_COUNT",
+        "APPROVE_ADJUSTMENT"
+      ],
+      "fields": [
+        "title",
+        "sku",
+        "lot",
+        "bin",
+        "adjustmentReason",
+        "quantity"
+      ],
+      "movements": [],
+      "safety": "verified_count_reconciliation_required"
+    },
+    "M23-S01": {
+      "module": "M23",
+      "recordTypes": [
+        "ASSET"
+      ],
+      "actions": [],
+      "fields": [
+        "title",
+        "serial",
+        "manufacturer",
+        "model",
+        "locationRef",
+        "safetyClass"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M23-S02": {
+      "module": "M23",
+      "recordTypes": [
+        "ASSET"
+      ],
+      "actions": [
+        "COMMISSION",
+        "ACTIVATE"
+      ],
+      "fields": [
+        "title",
+        "serial",
+        "manufacturer",
+        "model",
+        "locationRef",
+        "inspectionRef"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M23-S03": {
+      "module": "M23",
+      "recordTypes": [
+        "WORK_ORDER"
+      ],
+      "actions": [
+        "OPEN_WORK",
+        "ASSIGN_WORK"
+      ],
+      "fields": [
+        "title",
+        "assetRef",
+        "dueAt",
+        "technicianRef",
+        "description"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M23-S04": {
+      "module": "M23",
+      "recordTypes": [
+        "WORK_ORDER"
+      ],
+      "actions": [
+        "COMPLETE_WORK"
+      ],
+      "fields": [
+        "title",
+        "technicianRef",
+        "inspectionRef",
+        "workOrderRef",
+        "description"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M23-S05": {
+      "module": "M23",
+      "recordTypes": [
+        "ASSET",
+        "WORK_ORDER"
+      ],
+      "actions": [
+        "RETURN_TO_SERVICE",
+        "RETIRE",
+        "VERIFY_WORK"
+      ],
+      "fields": [
+        "title",
+        "workOrderRef",
+        "inspectionRef",
+        "conditionCode"
+      ],
+      "movements": [],
+      "safety": "biomedical_inspection_mandatory"
+    },
+    "M25-S01": {
+      "module": "M25",
+      "recordTypes": [
+        "TRIP"
+      ],
+      "actions": [
+        "ASSIGN"
+      ],
+      "fields": [
+        "title",
+        "vehicleRef",
+        "driverRef",
+        "originRef",
+        "destinationRef",
+        "requestPriority"
+      ],
+      "movements": [],
+      "safety": "approved_driver_roster_required"
+    },
+    "M25-S02": {
+      "module": "M25",
+      "recordTypes": [
+        "TRIP"
+      ],
+      "actions": [],
+      "fields": [
+        "title",
+        "vehicleRef",
+        "driverRef",
+        "originRef",
+        "destinationRef",
+        "requestPriority",
+        "description"
+      ],
+      "movements": [],
+      "safety": "clinical_handover_not_included"
+    },
+    "M25-S03": {
+      "module": "M25",
+      "recordTypes": [
+        "TRIP"
+      ],
+      "actions": [
+        "DISPATCH"
+      ],
+      "fields": [
+        "vehicleRef",
+        "driverRef",
+        "originRef",
+        "destinationRef",
+        "description"
+      ],
+      "movements": [],
+      "safety": "approved_driver_roster_required"
+    },
+    "M25-S04": {
+      "module": "M25",
+      "recordTypes": [
+        "TRIP"
+      ],
+      "actions": [
+        "ARRIVE",
+        "HANDOVER",
+        "COMPLETE"
+      ],
+      "fields": [
+        "originRef",
+        "destinationRef",
+        "handoverRef",
+        "description"
+      ],
+      "movements": [],
+      "safety": "verified_clinical_handover_required"
+    },
+    "M25-S05": {
+      "module": "M25",
+      "recordTypes": [
+        "TRIP"
+      ],
+      "actions": [
+        "CANCEL",
+        "ESCALATE"
+      ],
+      "fields": [
+        "title",
+        "requestPriority",
+        "description"
+      ],
+      "movements": [],
+      "safety": "transport_safety_review_required"
+    },
+    "M29-S01": {
+      "module": "M29",
+      "recordTypes": [
+        "CONFIGURATION"
+      ],
+      "actions": [],
+      "fields": [
+        "title",
+        "locationRef",
+        "departmentRef",
+        "parentRef",
+        "schemaVersion"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M29-S02": {
+      "module": "M29",
+      "recordTypes": [
+        "CONFIGURATION",
+        "SERVICE"
+      ],
+      "actions": [
+        "REVIEW",
+        "REVIEW_SERVICE"
+      ],
+      "fields": [
+        "title",
+        "locationRef",
+        "departmentRef",
+        "serviceCode",
+        "parentRef",
+        "schemaVersion",
+        "changeImpact",
+        "effectiveAt"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M29-S03": {
+      "module": "M29",
+      "recordTypes": [
+        "SERVICE"
+      ],
+      "actions": [],
+      "fields": [
+        "title",
+        "serviceCode",
+        "departmentRef",
+        "effectiveAt",
+        "description"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M29-S04": {
+      "module": "M29",
+      "recordTypes": [
+        "CONFIGURATION",
+        "SERVICE"
+      ],
+      "actions": [
+        "PUBLISH",
+        "PUBLISH_SERVICE",
+        "SUPERSEDE",
+        "DEPRECATE_SERVICE"
+      ],
+      "fields": [
+        "title",
+        "schemaVersion",
+        "changeImpact",
+        "serviceCode",
+        "effectiveAt",
+        "retiredReason"
+      ],
+      "movements": [],
+      "safety": "signed_impact_approval_required"
+    },
+    "M31-S01": {
+      "module": "M31",
+      "recordTypes": [
+        "TEMPLATE"
+      ],
+      "actions": [],
+      "fields": [
+        "title",
+        "schemaVersion",
+        "language",
+        "retentionCode"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M31-S02": {
+      "module": "M31",
+      "recordTypes": [
+        "TEMPLATE"
+      ],
+      "actions": [],
+      "fields": [
+        "title",
+        "schemaVersion",
+        "contentDigest",
+        "storageRef",
+        "language",
+        "description"
+      ],
+      "movements": [],
+      "safety": "template_storage_verification_required"
+    },
+    "M31-S03": {
+      "module": "M31",
+      "recordTypes": [
+        "TEMPLATE"
+      ],
+      "actions": [
+        "APPROVE",
+        "PUBLISH",
+        "RETIRE"
+      ],
+      "fields": [
+        "title",
+        "schemaVersion",
+        "contentDigest",
+        "storageRef",
+        "description"
+      ],
+      "movements": [],
+      "safety": "template_rendering_acceptance_required"
+    },
+    "M31-S04": {
+      "module": "M31",
+      "recordTypes": [
+        "DOCUMENT"
+      ],
+      "actions": [],
+      "fields": [
+        "title",
+        "templateRef",
+        "contentDigest",
+        "storageRef",
+        "retentionCode",
+        "description"
+      ],
+      "movements": [],
+      "safety": "consent_scoped_document_required"
+    },
+    "M31-S05": {
+      "module": "M31",
+      "recordTypes": [
+        "DOCUMENT"
+      ],
+      "actions": [
+        "SIGN",
+        "AMEND",
+        "RESIGN"
+      ],
+      "fields": [
+        "title",
+        "templateRef",
+        "contentDigest",
+        "signatureRef",
+        "storageRef",
+        "previousRef",
+        "amendmentReason"
+      ],
+      "movements": [],
+      "safety": "independent_signature_and_storage_required"
+    },
+    "M31-S06": {
+      "module": "M31",
+      "recordTypes": [
+        "DOCUMENT"
+      ],
+      "actions": [],
+      "fields": [
+        "title",
+        "documentRef",
+        "templateRef",
+        "contentDigest",
+        "storageRef",
+        "retentionCode"
+      ],
+      "movements": [],
+      "safety": "authorized_archive_print_required"
+    },
+    "M37-S01": {
+      "module": "M37",
+      "recordTypes": [
+        "MESSAGE"
+      ],
+      "actions": [],
+      "fields": [
+        "title",
+        "recipientRef",
+        "templateRef",
+        "channel",
+        "dueAt",
+        "severity"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M37-S02": {
+      "module": "M37",
+      "recordTypes": [
+        "MESSAGE"
+      ],
+      "actions": [
+        "ACKNOWLEDGE"
+      ],
+      "fields": [
+        "recipientRef",
+        "templateRef",
+        "deliveryRef",
+        "description"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M37-S03": {
+      "module": "M37",
+      "recordTypes": [
+        "ROUTE"
+      ],
+      "actions": [
+        "REVIEW_ROUTE",
+        "ACTIVATE_ROUTE",
+        "SUSPEND_ROUTE"
+      ],
+      "fields": [
+        "title",
+        "routingRef",
+        "retryPolicy",
+        "channel",
+        "escalationRef",
+        "templateRef"
+      ],
+      "movements": [],
+      "safety": "scoped_staff"
+    },
+    "M37-S04": {
+      "module": "M37",
+      "recordTypes": [
+        "MESSAGE"
+      ],
+      "actions": [
+        "FAIL",
+        "RETRY",
+        "ESCALATE",
+        "DELIVER"
+      ],
+      "fields": [
+        "title",
+        "recipientRef",
+        "deliveryRef",
+        "routingRef",
+        "escalationRef",
+        "dueAt"
+      ],
+      "movements": [],
+      "safety": "channel_delivery_proof_required"
+    }
+  }
+}

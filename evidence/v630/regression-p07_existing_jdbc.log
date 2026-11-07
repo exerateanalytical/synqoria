@@ -1,0 +1,4 @@
+command=["java", "-ea", "-cp", ".v630-classes", "org.synqoria.longitudinal.LongitudinalJdbcContractTest", "all"]
+exit_code=0
+PASS JDBC all (245 assertions, simulated PostgreSQL protocol only)
+

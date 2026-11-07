@@ -1,0 +1,344 @@
+openapi: 3.1.0
+info:
+  title: SYNQORIA M35 integrations API
+  version: 1.0.0
+  description: >
+    Authenticated hospital-cell scoped management contracts. All authority evidence
+    is independently issued. No institutional clinical or legal certification is
+    claimed by this engineering contract.
+servers:
+  - url: https://integrations.example.invalid
+security:
+  - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth: {type: http, scheme: bearer, bearerFormat: JWT}
+  parameters:
+    Idempotency:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema: {type: string, format: uuid}
+  schemas:
+    CommandReply:
+      type: object
+      required: [id, status, version]
+      properties:
+        id: {type: string, format: uuid}
+        status: {type: string}
+        version: {type: integer, minimum: 1}
+    Partner:
+      type: object
+      required: [partnerCode, partnerType]
+      properties:
+        partnerCode: {type: string, pattern: '^[A-Z][A-Z0-9_]{1,63}$'}
+        partnerType: {type: string, enum: [HOSPITAL, LABORATORY, PAYER, GOVERNMENT, VENDOR]}
+    ApiProduct:
+      type: object
+      required: [apiCode, apiVersion, contractSha256]
+      properties:
+        apiCode: {type: string}
+        apiVersion: {type: string}
+        contractSha256: {type: string, pattern: '^[0-9a-f]{64}$'}
+    DeveloperApp:
+      type: object
+      required: [partnerId, apiProductId, appCode]
+      properties:
+        partnerId: {type: string, format: uuid}
+        apiProductId: {type: string, format: uuid}
+        appCode: {type: string}
+    Mapping:
+      type: object
+      required: [mapCode, mapVersion, contractSha256, sourceSystem, targetSystem]
+      properties:
+        mapCode: {type: string}
+        mapVersion: {type: string}
+        contractSha256: {type: string, pattern: '^[0-9a-f]{64}$'}
+        sourceSystem: {type: string}
+        targetSystem: {type: string}
+    TrustedMessage:
+      type: object
+      required: [partnerId, externalEventId, eventType, payloadSha256, sourceProofId]
+      properties:
+        partnerId: {type: string, format: uuid}
+        externalEventId: {type: string, format: uuid}
+        eventType: {type: string}
+        payloadSha256: {type: string, pattern: '^[0-9a-f]{64}$'}
+        sourceProofId: {type: string, format: uuid}
+    Replay:
+      type: object
+      required: [messageId, reasonCode]
+      properties:
+        messageId: {type: string, format: uuid}
+        reasonCode: {type: string}
+    Version:
+      type: object
+      required: [expectedVersion]
+      properties:
+        expectedVersion: {type: integer, minimum: 1}
+        proofId: {type: [string, 'null'], format: uuid}
+    Decision:
+      type: object
+      required: [expectedVersion, approve]
+      properties:
+        expectedVersion: {type: integer, minimum: 1}
+        approve: {type: boolean}
+paths:
+  /api/v1/integrations/{collection}:
+    get:
+      operationId: listIntegrationGovernance
+      parameters:
+        - name: collection
+          in: path
+          required: true
+          schema: {type: string}
+        - name: limit
+          in: query
+          required: false
+          schema: {type: integer, minimum: 1, maximum: 100, default: 25}
+      responses:
+        '200':
+          description: Authorized scoped records
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/integrations/partners:
+    post:
+      operationId: createPartner
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Partner'
+      responses:
+        '201':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/integrations/partners/{id}/{action}:
+    post:
+      operationId: transitionPartner
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+        - name: id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+        - name: action
+          in: path
+          required: true
+          schema: {type: string, pattern: '^[a-z-]+$'}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Version'
+      responses:
+        '200':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/integrations/api_products:
+    post:
+      operationId: createApiProduct
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiProduct'
+      responses:
+        '201':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/integrations/api_products/{id}/publish:
+    post:
+      operationId: publishApiProduct
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+        - name: id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Version'
+      responses:
+        '200':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/integrations/developer_apps:
+    post:
+      operationId: requestDeveloperApplication
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeveloperApp'
+      responses:
+        '201':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/integrations/developer_apps/{id}/{action}:
+    post:
+      operationId: reviewDeveloperApplication
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+        - name: id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+        - name: action
+          in: path
+          required: true
+          schema: {type: string, pattern: '^[a-z-]+$'}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Version'
+      responses:
+        '200':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/integrations/mapping_versions:
+    post:
+      operationId: proposeMapping
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mapping'
+      responses:
+        '201':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/integrations/mapping_versions/{id}/{action}:
+    post:
+      operationId: reviewMapping
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+        - name: id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+        - name: action
+          in: path
+          required: true
+          schema: {type: string, pattern: '^[a-z-]+$'}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Version'
+      responses:
+        '200':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/integrations/messages/ingest:
+    post:
+      operationId: ingestTrustedSourceMetadata
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrustedMessage'
+      responses:
+        '201':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/integrations/messages/{id}/review:
+    post:
+      operationId: reviewQuarantinedMessage
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+        - name: id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Version'
+      responses:
+        '200':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/integrations/replay_requests:
+    post:
+      operationId: requestReplayReview
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Replay'
+      responses:
+        '201':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/integrations/replay_requests/{id}/review:
+    post:
+      operationId: reviewReplayWithoutDispatch
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+        - name: id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Decision'
+      responses:
+        '200':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}

@@ -1,0 +1,7 @@
+P07-B0142 | PayloadDigestProof
+INDIVIDUAL_TEST_CMD: java -cp .classes/142 org.synqoria.longitudinal.inboxops.InboxPayloadDigestProofTest
+EXIT_CODE: 0
+PASS P07-B0142 PayloadDigestProof assertions=6
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 80d983bcb3d39c48f3b95212471133e0f86328c7ca660b60a9adb4f945fd6727
+TEST_SHA256: a9c7041cdff95b00b660de3a35ce7dec0e48ab847388a542410b161c3d321412

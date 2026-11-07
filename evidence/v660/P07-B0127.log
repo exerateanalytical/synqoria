@@ -1,0 +1,4 @@
+javac --release 21 exit=0
+java -ea LongitudinalInboxQuarantineReceiptTest exit=0
+PASS P07-B0127 5 checks
+No live Kafka/PostgreSQL tested.

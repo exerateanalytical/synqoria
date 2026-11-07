@@ -1,6 +1,6 @@
 {
-  "version": "0.57.0",
-  "checkpoint": "v0.57.0",
+  "version": "0.63.0",
+  "checkpoint": "v0.63.0_P07_outbox_draft_unmerged",
   "phase_count": 20,
   "phases": [
     {
@@ -43,7 +43,7 @@
       "id": "P02",
       "title": "Cross-platform design system and navigation",
       "modules": [],
-      "deliverables": "Tokens; components; three web shells; staff/patient mobile shells; route ownership; menu eligibility; status states; EN/FR; visual snapshots at 320–1920px.",
+      "deliverables": "Tokens; components; three web shells; staff/patient mobile shells; route ownership; menu eligibility; status states; EN/FR; visual snapshots at 320\u20131920px.",
       "status": "in_progress",
       "batches_completed": 93,
       "certification": "not_certified",
@@ -148,8 +148,8 @@
         "M03"
       ],
       "deliverables": "Appointments, resource scheduling, triage prioritization and queues, staff mobile triage/vitals entry as permitted by authoritative APIs.",
-      "status": "in_progress__M03_scoped_read_workflow_implemented__live_integrations_not_tested",
-      "batches_completed": 368,
+      "status": "in_progress_M03_scope_sensitive_staff_workflows_internal_tested_release_denied",
+      "batches_completed": 391,
       "certification": "deferred_pending_separate_future_stage__not_waived",
       "evidence": [
         "evidence/batches/P01-P02-P06-v280-ten-batches.json",
@@ -169,7 +169,9 @@
         "registers/v550-implementation-batches.json",
         "registers/v560-implementation-batches.json",
         "evidence/v560/verification-summary.json",
-        "evidence/v570/batch-execution.json"
+        "evidence/v570/batch-execution.json",
+        "evidence/v580/batch-results.json",
+        "evidence/v590/batch-results.json"
       ]
     },
     {
@@ -181,10 +183,20 @@
         "M06"
       ],
       "deliverables": "Encounters, admission/transfer/discharge, beds, notes, diagnoses, observations, vitals, signing/amendment and mobile bedside views.",
-      "status": "not_started",
-      "batches_completed": 0,
-      "certification": "not_certified",
-      "evidence": []
+      "status": "clinical_domain_HTTP_and_outbox_synthetic_integration_NOT_production_qualified",
+      "batches_completed": 104,
+      "certification": "deferred__not_certified__do_not_advance_phase_gate",
+      "evidence": [
+        "evidence/v600/individual-batches.json",
+        "evidence/v600/adversarial.log",
+        "docs/engineering/P07_LONGITUDINAL_CORE_v0.60.0.md",
+        "evidence/v610/verified-batches.json",
+        "evidence/v620/individual-batch-results.json",
+        "tests/test_v620_quarantine.py",
+        "evidence/v630/individual-batches.json",
+        "evidence/v630/regression-matrix.json",
+        "tests/test_v630_outbox.py"
+      ]
     },
     {
       "id": "P08",

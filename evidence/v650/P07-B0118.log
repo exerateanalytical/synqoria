@@ -1,0 +1,4 @@
+$ java -cp /mnt/data/synqoria_v065_classes org.synqoria.longitudinal.LongitudinalInboxBrokerAckTest
+PASS P07-B0118 broker ACK barrier 18 assertions (fake broker)
+
+EXIT_CODE=0

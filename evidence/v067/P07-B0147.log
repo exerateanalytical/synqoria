@@ -1,0 +1,7 @@
+P07-B0147 | RecoveryOffsetWindow
+INDIVIDUAL_TEST_CMD: java -cp .classes/147 org.synqoria.longitudinal.inboxops.InboxRecoveryOffsetWindowTest
+EXIT_CODE: 0
+PASS P07-B0147 RecoveryOffsetWindow assertions=5
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 45482811d33ee26ed15e362c8d2639f0e4204969a4f3994b3a1c082ef21881fb
+TEST_SHA256: d19e44a16e8e7e38ebad9b8ad4a9fa119fd8904da3501988988a47e9ef892e89

@@ -1,0 +1,169 @@
+openapi: 3.1.0
+info:
+  title: SYNQORIA M32 Privacy and Consent API
+  version: 1.0.0
+  description: >
+    Hospital-cell scoped governance commands and Boolean policy evaluation.
+    This API does NOT issue patient identities, legal evidence, or clinical records.
+servers:
+  - url: https://privacy.example.invalid
+security:
+  - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth: {type: http, scheme: bearer, bearerFormat: JWT}
+  parameters:
+    Idempotency:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema: {type: string, format: uuid}
+    EntityId:
+      name: id
+      in: path
+      required: true
+      schema: {type: string, format: uuid}
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema: {type: integer, minimum: 1, maximum: 100, default: 25}
+  schemas:
+    Reply:
+      type: object
+      required: [id, status, version]
+      properties:
+        id: {type: string, format: uuid}
+        status: {type: string}
+        version: {type: integer, minimum: 1}
+    Directive:
+      type: object
+      required: [subjectRef, purpose, recipient, operation, effectiveAt, expiresAt]
+      properties:
+        subjectRef: {type: string, format: uuid}
+        purpose: {type: string, pattern: '^[A-Z][A-Z0-9_]{1,63}$'}
+        recipient: {type: string, pattern: '^[A-Z][A-Z0-9_]{1,63}$'}
+        operation: {type: string, pattern: '^[A-Z][A-Z0-9_]{1,63}$'}
+        effectiveAt: {type: string, format: date-time}
+        expiresAt: {type: string, format: date-time}
+    Version:
+      type: object
+      required: [expectedVersion]
+      properties:
+        expectedVersion: {type: integer, minimum: 1}
+    Verification:
+      type: object
+      required: [expectedVersion, evidenceId]
+      properties:
+        expectedVersion: {type: integer, minimum: 1}
+        evidenceId: {type: string, format: uuid}
+    Disclosure:
+      type: object
+      required: [subjectRef, directiveId, purpose, recipient, operation, recordClass]
+      properties:
+        subjectRef: {type: string, format: uuid}
+        directiveId: {type: string, format: uuid}
+        purpose: {type: string}
+        recipient: {type: string}
+        operation: {type: string}
+        recordClass: {type: string}
+    Decision:
+      type: object
+      required: [expectedVersion, approve, reason]
+      properties:
+        expectedVersion: {type: integer, minimum: 1}
+        approve: {type: boolean}
+        reason: {type: string}
+    PrivacyCase:
+      type: object
+      required: [subjectRef, category, reason]
+      properties:
+        subjectRef: {type: string, format: uuid}
+        category: {type: string, enum: [ACCESS, CORRECTION, COMPLAINT, INCIDENT]}
+        reason: {type: string}
+paths:
+  /api/v1/privacy/directives:
+    get:
+      operationId: listDirectives
+      parameters: [{$ref: '#/components/parameters/Limit'}]
+      responses: {'200': {description: Authorized scoped directives}}
+    post:
+      operationId: createDirective
+      parameters: [{$ref: '#/components/parameters/Idempotency'}]
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/Directive'}}}
+      responses: {'201': {description: Draft created}, '409': {description: Conflict}}
+  /api/v1/privacy/directives/{id}/verify:
+    post:
+      operationId: verifyDirective
+      parameters: [{$ref: '#/components/parameters/EntityId'}, {$ref: '#/components/parameters/Idempotency'}]
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/Verification'}}}
+      responses: {'200': {description: Verified by independent checker}}
+  /api/v1/privacy/directives/{id}/activate:
+    post:
+      operationId: activateDirective
+      parameters: [{$ref: '#/components/parameters/EntityId'}, {$ref: '#/components/parameters/Idempotency'}]
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/Version'}}}
+      responses: {'200': {description: Activated after proof and independent approval}}
+  /api/v1/privacy/directives/{id}/revoke:
+    post:
+      operationId: revokeDirective
+      parameters: [{$ref: '#/components/parameters/EntityId'}, {$ref: '#/components/parameters/Idempotency'}]
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/Version'}}}
+      responses: {'200': {description: Irrevocably revoked}}
+  /api/v1/privacy/authorization/evaluate:
+    get:
+      operationId: evaluateConsent
+      parameters:
+        - {name: subject, in: query, required: true, schema: {type: string, format: uuid}}
+        - {name: purpose, in: query, required: true, schema: {type: string}}
+        - {name: recipient, in: query, required: true, schema: {type: string}}
+        - {name: operation, in: query, required: true, schema: {type: string}}
+      responses: {'200': {description: Boolean eligibility evaluated at request time}}
+  /api/v1/privacy/disclosures:
+    get:
+      operationId: listDisclosures
+      parameters: [{$ref: '#/components/parameters/Limit'}]
+      responses: {'200': {description: Scoped requests}}
+    post:
+      operationId: requestDisclosure
+      parameters: [{$ref: '#/components/parameters/Idempotency'}]
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/Disclosure'}}}
+      responses: {'201': {description: Request only; no clinical data release}}
+  /api/v1/privacy/disclosures/{id}/review:
+    post:
+      operationId: reviewDisclosure
+      parameters: [{$ref: '#/components/parameters/EntityId'}, {$ref: '#/components/parameters/Idempotency'}]
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/Decision'}}}
+      responses: {'200': {description: Scope reviewed, no clinical export}}
+  /api/v1/privacy/cases:
+    get:
+      operationId: listPrivacyCases
+      parameters: [{$ref: '#/components/parameters/Limit'}]
+      responses: {'200': {description: Scoped privacy cases}}
+    post:
+      operationId: openPrivacyCase
+      parameters: [{$ref: '#/components/parameters/Idempotency'}]
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/PrivacyCase'}}}
+      responses: {'201': {description: Privacy case opened}}
+  /api/v1/privacy/cases/{id}/close:
+    post:
+      operationId: closePrivacyCase
+      parameters: [{$ref: '#/components/parameters/EntityId'}, {$ref: '#/components/parameters/Idempotency'}]
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/Decision'}}}
+      responses: {'200': {description: Independently closed privacy case}}

@@ -1,0 +1,102 @@
+/* SYNQORIA Warm Clinical v1.1. No glow, gradients, shadows, fixed-height clipping or scale hacks. */
+.syn-specific{--syn-sky:#1664d4;--syn-navy:#073656;--syn-text:#172b4d;--syn-muted:#475569;--syn-border:#d7dce1;--syn-bg:#f7f5f0;color:var(--syn-text);font-size:16px;line-height:1.5;max-width:100%;min-width:0}
+.syn-specific *{box-sizing:border-box;min-width:0;overflow-wrap:anywhere}
+.syn-specific h3{font-size:20px;line-height:1.4;margin:0 0 12px;color:#073656}
+.syn-specific h4{font-size:16px;line-height:1.4;margin:0 0 8px;color:#073656}
+.syn-specific p{line-height:1.5}
+.syn-specific-status{display:flex;align-items:start;gap:16px;justify-content:space-between;flex-wrap:wrap;margin-bottom:16px}
+.syn-specific-status strong{color:#073656;font-size:15px}
+.syn-specific-status p{font-size:13px;color:#475569;margin:4px 0}
+.syn-specific-banner{background:#fff5e9;border:1px solid #a85d12;color:#5a350e;border-radius:10px;padding:16px;margin:12px 0 20px}
+.syn-specific-banner p{color:#5a350e;font-size:14px;margin:5px 0 0}
+.syn-specific button,.syn-specific input,.syn-specific select,.syn-specific textarea{font-family:inherit;font-size:16px;line-height:1.4}
+.syn-specific input,.syn-specific select,.syn-specific textarea{border:1px solid #70829a;background:#fff;color:#172b4d;border-radius:8px;min-height:46px;padding:11px 12px;max-width:100%;width:100%}
+.syn-specific textarea{resize:vertical;min-height:112px}
+.syn-specific input:disabled,.syn-specific textarea:disabled{background:#f1f3f5;color:#475569;border-color:#b9c0c9}
+.syn-specific button,.syn-specific .syn-specific-secondary,.syn-specific .syn-specific-primary{border:1px solid #70829a;border-radius:8px;min-height:44px;padding:10px 14px;background:#fff;color:#073656;line-height:1.4;text-align:center;white-space:normal;max-width:100%;cursor:pointer}
+.syn-specific button:disabled{background:#f1f3f5;color:#475569;border-color:#b9c0c9;cursor:not-allowed}
+.syn-specific button:not(:disabled):hover{background:#edf3f8}
+.syn-specific button.syn-specific-primary{background:#1664d4;color:#fff;border-color:#1664d4;font-weight:650}
+.syn-specific button.syn-specific-primary:hover{background:#1253b1;border-color:#1253b1}
+.syn-specific-locked{display:inline-flex;align-items:flex-start;flex-direction:column;gap:4px;text-align:left!important}
+.syn-specific-locked small{font-size:12px;line-height:1.4;color:#475569}
+.syn-specific-quick{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0}
+.syn-specific-quick a{display:inline-flex;min-height:44px;align-items:center;border:1px solid #b9c0c9;border-radius:8px;padding:10px 12px;color:#174ea6;font-size:14px;font-weight:600;text-decoration:none;background:#fff}
+.syn-specific-help{border:1px solid #d7dce1;background:#f7f5f0;border-radius:10px;padding:16px;margin:16px 0}
+.syn-specific-help ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:8px;padding-left:22px}
+.syn-specific-help li{font-size:14px}
+.syn-specific-tabs{display:flex;flex-wrap:wrap;gap:8px;border-bottom:1px solid #d7dce1;margin-bottom:20px}
+.syn-specific-tabs button{border:0!important;border-bottom:3px solid transparent!important;border-radius:0!important;background:#fff!important;color:#475569!important;min-height:48px}
+.syn-specific-tabs button[aria-selected=true]{border-bottom-color:#1664d4!important;color:#174ea6!important;font-weight:700}
+.syn-specific-tabpanel{margin:4px 0 24px;min-height:110px}
+.syn-specific-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.syn-specific-field{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:650;color:#172b4d}
+.syn-specific-field span{line-height:1.45}
+.syn-specific-field small{font-size:12px;font-weight:400;line-height:1.45;color:#475569}
+.syn-specific-form-actions{grid-column:1/-1;display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+.syn-specific-attrs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0 20px}
+.syn-specific-attrs>div{border:1px solid #d7dce1;border-radius:8px;padding:12px;min-width:0}
+.syn-specific-attrs dt{font-size:13px;color:#475569;margin-bottom:4px}
+.syn-specific-attrs dd{font-size:15px;color:#172b4d;margin:0}
+.syn-specific-notice{background:#eaf2ff;color:#174ea6;border:1px solid #b8c9d8;border-radius:10px;padding:16px;margin:14px 0}
+.syn-specific-notice p{font-size:14px;color:#174ea6;margin:8px 0}
+.syn-specific-worklist .syn-specific-toolbar,.syn-specific-toolbar{display:flex;align-items:end;gap:12px;flex-wrap:wrap;margin:16px 0}
+.syn-specific-toolbar label{display:grid;flex:1 1 180px;max-width:380px;gap:6px;font-size:14px;font-weight:650;color:#172b4d}
+.syn-specific-toolbar button{flex:0 1 auto}
+.syn-specific-filter-grid{padding:16px;background:#f7f5f0;border:1px solid #d7dce1;border-radius:10px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.syn-specific-filter-grid label{display:grid;gap:6px;font-size:14px;font-weight:650}
+.syn-specific-filter-grid button{align-self:end}
+.syn-specific-column-chooser{border:1px solid #d7dce1;border-radius:10px;padding:12px 16px;margin:16px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px}
+.syn-specific-column-chooser legend{padding:0 8px;font-weight:700;font-size:14px;color:#073656}
+.syn-specific-column-chooser label{display:flex;gap:8px;align-items:center;font-size:14px;font-weight:500}
+.syn-specific-column-chooser input{min-height:22px;min-width:22px;width:22px;height:22px;flex:0 0 22px}
+.syn-specific-data-table{width:100%;max-width:100%;overflow-x:auto;border:1px solid #d7dce1;border-radius:10px}
+.syn-specific-data-table table{border-collapse:collapse;min-width:570px;width:100%;text-align:left}
+.syn-specific-data-table caption{caption-side:top;text-align:left;color:#475569;padding:12px;font-size:14px}
+.syn-specific-data-table th,.syn-specific-data-table td{border-bottom:1px solid #d7dce1;padding:12px;line-height:1.45;font-size:14px}
+.syn-specific-data-table th{background:#f7f5f0;color:#073656}
+.syn-specific-data-table td{color:#475569}
+.syn-specific-pager{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:16px 0}
+.syn-specific-pager span{font-size:14px;color:#475569}
+.syn-specific-empty{padding:24px;border:1px dashed #70829a;background:#fff;border-radius:10px;margin:12px 0}
+.syn-specific-empty p{margin:6px 0 0;color:#475569;font-size:14px}
+.syn-specific-compare{display:grid;gap:12px}
+.syn-specific-compare>section{padding:16px;border:1px solid #d7dce1;border-radius:10px}
+.syn-specific-compare dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0}
+.syn-specific-compare dt{font-size:13px;color:#475569;margin-bottom:6px}
+.syn-specific-compare dd{font-weight:650;color:#172b4d;margin:0}
+.syn-specific-review label{display:grid;gap:8px;font-size:14px;font-weight:650}
+.syn-specific-board{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px;margin:18px 0}
+.syn-specific-board.is-list{grid-template-columns:1fr}
+.syn-specific-lane{border:1px solid #d7dce1;border-radius:10px;padding:16px;background:#fff}
+.syn-specific-lane p{font-size:14px;color:#475569}
+.syn-specific-quick a:hover{border-color:#1664d4;background:#f4f9ff}
+.syn-specific-workflow,.syn-specific-states{border-top:1px solid #d7dce1;padding:18px 0;margin-top:18px}
+.syn-specific-workflow ol{padding-left:26px}
+.syn-specific-workflow li{padding:5px 0;line-height:1.5}
+.syn-specific-states label{display:grid;gap:6px;max-width:460px;font-size:14px;font-weight:650}
+.syn-specific-footer{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;border-top:1px solid #d7dce1;padding:16px 0;margin-top:18px}
+.syn-specific-footer p{flex:1 1 250px;color:#475569;font-size:13px}
+.syn-specific a:focus-visible,.syn-specific button:focus-visible,.syn-specific input:focus-visible,.syn-specific select:focus-visible,.syn-specific textarea:focus-visible{outline:3px solid #1664d4;outline-offset:2px}
+@media(max-width:1150px){.syn-specific-form,.syn-specific-attrs,.syn-specific-compare dl{grid-template-columns:1fr}}
+@media(max-width:767px){.syn-specific-toolbar label{max-width:none;flex:1 1 100%}.syn-specific-toolbar>button{flex:1 1 180px}.syn-specific-form-actions button{flex:1 1 160px}.syn-specific-filter-grid{grid-template-columns:1fr}.syn-specific-tabs button{flex:1 1 auto}.syn-specific-quick a{flex:1 1 auto}}
+@media(max-width:360px){.syn-specific-tabs button,.syn-specific-form-actions button,.syn-specific-toolbar>button,.syn-specific-footer button{flex:1 1 100%}.syn-specific-help{padding:12px}}
+@media(prefers-reduced-motion:reduce){.syn-specific *{transition:none!important;animation:none!important}}
+@media(forced-colors:active){.syn-specific-banner,.syn-specific-notice,.syn-specific-empty{border:2px solid CanvasText}}
+
+
+.syn-specific-filter-chips{display:flex;flex-wrap:wrap;gap:8px}
+.syn-specific-filter-chips span{display:inline-flex;align-items:center;border:1px solid #174ea6;border-radius:20px;padding:5px 10px;background:#fff;color:#174ea6;font-size:13px;max-width:100%;overflow-wrap:anywhere}
+.syn-specific-independent-check,.syn-specific-handover{display:flex;flex-direction:column;gap:8px;margin:14px 0;font-size:14px;font-weight:650}
+.syn-specific-independent-check{flex-direction:row;align-items:center}
+.syn-specific-independent-check input{width:22px;height:22px;min-height:22px;flex:0 0 22px}
+.syn-specific-handover textarea{background:#f1f3f5;color:#475569}
+
+
+.syn-specific-context{border:1px solid #d7dce1;border-radius:10px;background:#fff;padding:16px;margin:14px 0 20px}
+.syn-specific-context h3{font-size:16px;margin:0 0 12px}
+.syn-specific-context dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:12px;margin:0 0 10px}
+.syn-specific-context dl>div{border-left:3px solid #b8c9d8;padding-left:12px}
+.syn-specific-context dt{font-size:12px;font-weight:650;color:#475569}
+.syn-specific-context dd{font-size:14px;color:#172b4d;margin:4px 0}
+.syn-specific-context p{font-size:13px;color:#475569;margin:10px 0 0}

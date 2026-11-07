@@ -1,0 +1,11 @@
+{
+  "id": "P07-B0141",
+  "title": "Bounded metadata allowlist rejects PHI fields and unexpected keys",
+  "source": "services/clinical-core/src/main/java/org/synqoria/longitudinal/inboxops/InboxMetadataAllowlist.java",
+  "test": "services/clinical-core/src/test/java/org/synqoria/longitudinal/inboxops/InboxMetadataAllowlistTest.java",
+  "evidence": "evidence/v067/P07-B0141.log",
+  "exit_code": 0,
+  "focused_assertions": 5,
+  "verification": "Java21 pure policy tests only",
+  "clinical_release": "DENIED"
+}

@@ -1,0 +1,10 @@
+{
+  "batch": "P07-B0121",
+  "assertions": 5,
+  "status": "engineering_unit_only",
+  "javac21": true,
+  "javaMainExit": 0,
+  "realPostgresql": false,
+  "realKafka": false,
+  "clinicalRelease": "DENIED"
+}

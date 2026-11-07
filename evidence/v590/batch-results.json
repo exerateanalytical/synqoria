@@ -1,0 +1,188 @@
+{
+  "source": "v0.59.0",
+  "target": 60,
+  "new_individually_verified": 20,
+  "remaining_from_requested_target": 40,
+  "results": [
+    {
+      "batch": "P06-B0372",
+      "test_file": "packages/ux-core/tests/triage-v59-recovery.test.cjs",
+      "actual_matching_tests_passed": 7,
+      "test_runner_reported_pass": 7,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0372.log"
+    },
+    {
+      "batch": "P06-B0373",
+      "test_file": "packages/ux-core/tests/triage-v59-typed-tasks.test.cjs",
+      "actual_matching_tests_passed": 4,
+      "test_runner_reported_pass": 4,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0373.log"
+    },
+    {
+      "batch": "P06-B0374",
+      "test_file": "packages/ux-core/tests/triage-v59-typed-tasks.test.cjs",
+      "actual_matching_tests_passed": 3,
+      "test_runner_reported_pass": 3,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0374.log"
+    },
+    {
+      "batch": "P06-B0375",
+      "test_file": "packages/ux-core/tests/triage-v59-typed-tasks.test.cjs",
+      "actual_matching_tests_passed": 3,
+      "test_runner_reported_pass": 3,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0375.log"
+    },
+    {
+      "batch": "P06-B0376",
+      "test_file": "packages/ux-core/tests/triage-v59-typed-tasks.test.cjs",
+      "actual_matching_tests_passed": 3,
+      "test_runner_reported_pass": 3,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0376.log"
+    },
+    {
+      "batch": "P06-B0377",
+      "test_file": "packages/ux-core/tests/triage-v59-typed-tasks.test.cjs",
+      "actual_matching_tests_passed": 2,
+      "test_runner_reported_pass": 2,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0377.log"
+    },
+    {
+      "batch": "P06-B0378",
+      "test_file": "packages/ux-core/tests/triage-v59-typed-tasks.test.cjs",
+      "actual_matching_tests_passed": 3,
+      "test_runner_reported_pass": 3,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0378.log"
+    },
+    {
+      "batch": "P06-B0379",
+      "test_file": "packages/ux-core/tests/triage-v59-patient-scope-review.test.cjs",
+      "actual_matching_tests_passed": 4,
+      "test_runner_reported_pass": 4,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0379.log"
+    },
+    {
+      "batch": "P06-B0380",
+      "test_file": "packages/ux-core/tests/triage-v59-patient-scope-review.test.cjs",
+      "actual_matching_tests_passed": 3,
+      "test_runner_reported_pass": 3,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0380.log"
+    },
+    {
+      "batch": "P06-B0381",
+      "test_file": "packages/ux-core/tests/triage-v59-patient-scope-review.test.cjs",
+      "actual_matching_tests_passed": 2,
+      "test_runner_reported_pass": 2,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0381.log"
+    },
+    {
+      "batch": "P06-B0382",
+      "test_file": "packages/ux-core/tests/triage-v59-patient-scope-review.test.cjs",
+      "actual_matching_tests_passed": 2,
+      "test_runner_reported_pass": 2,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0382.log"
+    },
+    {
+      "batch": "P06-B0383",
+      "test_file": "packages/ux-core/tests/triage-v59-presentation-native.test.cjs",
+      "actual_matching_tests_passed": 4,
+      "test_runner_reported_pass": 4,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0383.log"
+    },
+    {
+      "batch": "P06-B0384",
+      "test_file": "packages/ux-core/tests/triage-v59-presentation-native.test.cjs",
+      "actual_matching_tests_passed": 3,
+      "test_runner_reported_pass": 3,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0384.log"
+    },
+    {
+      "batch": "P06-B0385",
+      "test_file": "packages/ux-core/tests/triage-v59-presentation-native.test.cjs",
+      "actual_matching_tests_passed": 2,
+      "test_runner_reported_pass": 2,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0385.log"
+    },
+    {
+      "batch": "P06-B0386",
+      "test_file": "packages/ux-core/tests/triage-v59-high-impact.test.cjs",
+      "actual_matching_tests_passed": 3,
+      "test_runner_reported_pass": 3,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0386.log"
+    },
+    {
+      "batch": "P06-B0387",
+      "test_file": "packages/ux-core/tests/triage-v59-high-impact.test.cjs",
+      "actual_matching_tests_passed": 2,
+      "test_runner_reported_pass": 2,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0387.log"
+    },
+    {
+      "batch": "P06-B0388",
+      "test_file": "packages/ux-core/tests/triage-v59-high-impact.test.cjs",
+      "actual_matching_tests_passed": 3,
+      "test_runner_reported_pass": 3,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0388.log"
+    },
+    {
+      "batch": "P06-B0389",
+      "test_file": "packages/ux-core/tests/triage-v59-loopback-journey.test.cjs",
+      "actual_matching_tests_passed": 3,
+      "test_runner_reported_pass": 3,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0389.log"
+    },
+    {
+      "batch": "P06-B0390",
+      "test_file": "packages/ux-core/tests/triage-v59-loopback-journey.test.cjs",
+      "actual_matching_tests_passed": 3,
+      "test_runner_reported_pass": 3,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0390.log"
+    },
+    {
+      "batch": "P06-B0391",
+      "test_file": "packages/ux-core/tests/triage-v59-clinical-staff-session.test.cjs",
+      "actual_matching_tests_passed": 3,
+      "test_runner_reported_pass": 3,
+      "exit_code": 0,
+      "verified": true,
+      "evidence_log": "evidence/v590/P06-B0391.log"
+    }
+  ]
+}

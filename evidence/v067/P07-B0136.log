@@ -1,0 +1,7 @@
+P07-B0136 | ProducerSequence
+INDIVIDUAL_TEST_CMD: java -cp .classes/136 org.synqoria.longitudinal.inboxops.InboxProducerSequenceTest
+EXIT_CODE: 0
+PASS P07-B0136 ProducerSequence assertions=6
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 4592af2daed76024866b7d732b3a5013376decb091f2313814b24989cd8e5c01
+TEST_SHA256: cec4d84e522b7e28cee12475c27fdf1864deb61b3dc25718ee088cce3b02183b

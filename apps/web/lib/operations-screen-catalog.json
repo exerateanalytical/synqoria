@@ -1,0 +1,373 @@
+{
+  "schema": "synqoria.admin.seven.screen-contract.v1",
+  "authoritativeSource": "registers/canonical-screens.json",
+  "status": "auth_required_workstation_candidate_not_accepted",
+  "moduleCount": 7,
+  "screenCount": 35,
+  "modules": [
+    {
+      "id": "M21",
+      "title": "Procurement",
+      "titleFr": "Achats",
+      "screens": [
+        {
+          "id": "M21-S01",
+          "name": "Procurement requisitions",
+          "nameFr": "Demandes d’achat",
+          "layout": "L",
+          "dataInputGroups": "Requester, department, items, value, urgency and approval status",
+          "primaryAction": "Open requisition",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M21-S02",
+          "name": "Requisition editor",
+          "nameFr": "Édition de la demande",
+          "layout": "F",
+          "dataInputGroups": "Items, quantities, justification, budget reference and delivery need",
+          "primaryAction": "Submit requisition",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M21-S03",
+          "name": "Purchase approval",
+          "nameFr": "Approbation d’achat",
+          "layout": "X",
+          "dataInputGroups": "Request, budget, quotations, conflicts of interest and approver",
+          "primaryAction": "Approve requisition",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M21-S04",
+          "name": "Purchase order",
+          "nameFr": "Bon de commande",
+          "layout": "F",
+          "dataInputGroups": "Supplier, items, price, terms, delivery dates and approval",
+          "primaryAction": "Issue purchase order",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M21-S05",
+          "name": "Goods receipt and invoice matching",
+          "nameFr": "Réception et rapprochement des factures",
+          "layout": "X",
+          "dataInputGroups": "Order, delivered quantities, condition, receipt and supplier invoice",
+          "primaryAction": "Record matched receipt",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M21-S06",
+          "name": "Supplier directory and qualification",
+          "nameFr": "Fournisseurs et qualification",
+          "layout": "D",
+          "dataInputGroups": "Supplier identity, contacts, terms, qualification documents and status",
+          "primaryAction": "Update supplier qualification",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        }
+      ]
+    },
+    {
+      "id": "M22",
+      "title": "Non-medication inventory",
+      "titleFr": "Stocks généraux",
+      "screens": [
+        {
+          "id": "M22-S01",
+          "name": "Stores inventory",
+          "nameFr": "Inventaire des stocks",
+          "layout": "L",
+          "dataInputGroups": "Item, location, available, reserved, reorder and unit",
+          "primaryAction": "Open stock item",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M22-S02",
+          "name": "Stores receipt",
+          "nameFr": "Réception en magasin",
+          "layout": "F",
+          "dataInputGroups": "Item, quantity, unit, supplier, document, location and inspection",
+          "primaryAction": "Receive goods",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M22-S03",
+          "name": "Stock request and issue",
+          "nameFr": "Demande et sortie de stock",
+          "layout": "F",
+          "dataInputGroups": "Requesting unit, items, quantities, destination and approval",
+          "primaryAction": "Issue approved stock",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M22-S04",
+          "name": "Stock transfer and return",
+          "nameFr": "Transfert et retour de stock",
+          "layout": "F",
+          "dataInputGroups": "Source, destination, custody, condition and quantity",
+          "primaryAction": "Record movement",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M22-S05",
+          "name": "Stock count and adjustment",
+          "nameFr": "Comptage et ajustement",
+          "layout": "X",
+          "dataInputGroups": "Expected quantity, counted quantity, variance, reason and approver",
+          "primaryAction": "Approve adjustment",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        }
+      ]
+    },
+    {
+      "id": "M23",
+      "title": "Assets and maintenance",
+      "titleFr": "Équipements et maintenance",
+      "screens": [
+        {
+          "id": "M23-S01",
+          "name": "Asset register",
+          "nameFr": "Registre des équipements",
+          "layout": "L",
+          "dataInputGroups": "Asset ID, type, location, operational status and next maintenance",
+          "primaryAction": "Open asset",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M23-S02",
+          "name": "Asset detail and commissioning",
+          "nameFr": "Détails et mise en service",
+          "layout": "D",
+          "dataInputGroups": "Serial, supplier, warranty, installation, commissioning evidence and safety status",
+          "primaryAction": "Record commissioning decision",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M23-S03",
+          "name": "Maintenance work orders",
+          "nameFr": "Ordres de maintenance",
+          "layout": "L",
+          "dataInputGroups": "Asset, fault, severity, technician, due time and downtime",
+          "primaryAction": "Open work order",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M23-S04",
+          "name": "Maintenance execution",
+          "nameFr": "Exécution de la maintenance",
+          "layout": "F",
+          "dataInputGroups": "Findings, work, parts, calibration, tests and technician",
+          "primaryAction": "Submit maintenance record",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M23-S05",
+          "name": "Asset return to service or retirement",
+          "nameFr": "Remise en service ou retrait",
+          "layout": "X",
+          "dataInputGroups": "Safety tests, reviewer, restrictions, disposal evidence and status",
+          "primaryAction": "Approve asset disposition",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        }
+      ]
+    },
+    {
+      "id": "M25",
+      "title": "Transport and ambulances",
+      "titleFr": "Transport et ambulances",
+      "screens": [
+        {
+          "id": "M25-S01",
+          "name": "Transport dispatch board",
+          "nameFr": "Tableau de répartition",
+          "layout": "B",
+          "dataInputGroups": "Requests, urgency, vehicles, crew, availability and position timestamp",
+          "primaryAction": "Assign transport",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M25-S02",
+          "name": "Transport request",
+          "nameFr": "Demande de transport",
+          "layout": "F",
+          "dataInputGroups": "Patient, pickup, destination, clinical needs, time and requester",
+          "primaryAction": "Submit transport request",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M25-S03",
+          "name": "Dispatch assignment",
+          "nameFr": "Affectation et départ",
+          "layout": "F",
+          "dataInputGroups": "Vehicle, crew, route, equipment checks and receiving site",
+          "primaryAction": "Dispatch assigned vehicle",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M25-S04",
+          "name": "Transport execution and handover",
+          "nameFr": "Exécution et transfert de responsabilité",
+          "layout": "F",
+          "dataInputGroups": "Departure, arrival, events, care notes, receiver and acknowledgement",
+          "primaryAction": "Complete handover",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M25-S05",
+          "name": "Transport history and exceptions",
+          "nameFr": "Historique et incidents",
+          "layout": "D",
+          "dataInputGroups": "Trip timeline, delays, cancellations, vehicle issues and escalations",
+          "primaryAction": "Record exception resolution",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        }
+      ]
+    },
+    {
+      "id": "M29",
+      "title": "Facility configuration",
+      "titleFr": "Configuration de l’établissement",
+      "screens": [
+        {
+          "id": "M29-S01",
+          "name": "Facility hierarchy",
+          "nameFr": "Hiérarchie de l’établissement",
+          "layout": "D",
+          "dataInputGroups": "Organization, sites, departments, locations and ownership",
+          "primaryAction": "Open configuration node",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M29-S02",
+          "name": "Location and service editor",
+          "nameFr": "Éditeur des lieux et services",
+          "layout": "F",
+          "dataInputGroups": "Code, name, parent, service type, availability and effective dates",
+          "primaryAction": "Submit configuration draft",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M29-S03",
+          "name": "Service catalogue",
+          "nameFr": "Catalogue des prestations",
+          "layout": "L",
+          "dataInputGroups": "Services, departments, eligible resources, status and effective version",
+          "primaryAction": "Open service configuration",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M29-S04",
+          "name": "Configuration impact and publication",
+          "nameFr": "Publication et analyse d’impact",
+          "layout": "X",
+          "dataInputGroups": "Changed values, dependent workflows, effective time, approvals and rollback",
+          "primaryAction": "Publish reviewed configuration",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        }
+      ]
+    },
+    {
+      "id": "M31",
+      "title": "Templates and documents",
+      "titleFr": "Modèles et documents",
+      "screens": [
+        {
+          "id": "M31-S01",
+          "name": "Template catalogue",
+          "nameFr": "Catalogue des modèles",
+          "layout": "L",
+          "dataInputGroups": "Template, module, locale, version, status and owner",
+          "primaryAction": "Open template",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M31-S02",
+          "name": "Template editor",
+          "nameFr": "Éditeur de modèles",
+          "layout": "F",
+          "dataInputGroups": "Sections, fields, data bindings, validation, layout and language strings",
+          "primaryAction": "Save template draft",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M31-S03",
+          "name": "Template preview and approval",
+          "nameFr": "Aperçu et approbation",
+          "layout": "X",
+          "dataInputGroups": "Desktop mobile print previews, sample data, accessibility and approval",
+          "primaryAction": "Approve template version",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M31-S04",
+          "name": "Document workbench",
+          "nameFr": "Espace de travail documentaire",
+          "layout": "F",
+          "dataInputGroups": "Template version, patient context, content, attachments and draft status",
+          "primaryAction": "Save document draft",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M31-S05",
+          "name": "Document signature and amendment",
+          "nameFr": "Signature et modification",
+          "layout": "X",
+          "dataInputGroups": "Final rendered content, signer authority, signature, prior versions and amendment reason",
+          "primaryAction": "Sign reviewed document",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M31-S06",
+          "name": "Document archive and print",
+          "nameFr": "Archives et impression",
+          "layout": "D",
+          "dataInputGroups": "Document version, status, access scope, retention and print metadata",
+          "primaryAction": "Print authorized document",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        }
+      ]
+    },
+    {
+      "id": "M37",
+      "title": "Notifications and escalation",
+      "titleFr": "Notifications et escalade",
+      "screens": [
+        {
+          "id": "M37-S01",
+          "name": "Notification inbox",
+          "nameFr": "Boîte de notifications",
+          "layout": "L",
+          "dataInputGroups": "Priority label, patient context when authorized, sender, sent time and acknowledgement",
+          "primaryAction": "Open notification",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M37-S02",
+          "name": "Notification detail and acknowledgement",
+          "nameFr": "Détails et accusé de réception",
+          "layout": "D",
+          "dataInputGroups": "Message, source task, delivery history, acknowledgement and deadline",
+          "primaryAction": "Acknowledge responsibility",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M37-S03",
+          "name": "Communication template and routing",
+          "nameFr": "Modèles de communication et acheminement",
+          "layout": "F",
+          "dataInputGroups": "Purpose, language, approved message, channels, recipients and escalation",
+          "primaryAction": "Submit routing change",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        },
+        {
+          "id": "M37-S04",
+          "name": "Delivery failures and escalation",
+          "nameFr": "Échecs et escalade",
+          "layout": "L",
+          "dataInputGroups": "Attempt history, channel errors, due escalation, accountable owner and next action",
+          "primaryAction": "Resolve delivery failure",
+          "status": "AUTH_REQUIRED_UNACCEPTED"
+        }
+      ]
+    }
+  ]
+}

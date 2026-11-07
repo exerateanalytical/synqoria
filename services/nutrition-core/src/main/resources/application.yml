@@ -1,0 +1,31 @@
+server:
+  port: ${SYNQORIA_NUTRITION_PORT:8095}
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+  max-http-request-header-size: 16KB
+spring:
+  application:
+    name: synqoria-nutrition-core
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+  datasource:
+    url: ${SYNQORIA_NUTRITION_JDBC_URL}
+    username: ${SYNQORIA_NUTRITION_DB_USERNAME}
+    password: ${SYNQORIA_NUTRITION_DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 0
+      connection-timeout: 5000
+  sql:
+    init:
+      mode: never
+synqoria:
+  nutrition:
+    issuer: ${SYNQORIA_NUTRITION_OIDC_ISSUER}
+    audience: ${SYNQORIA_NUTRITION_OIDC_AUDIENCE}
+    db-runtime-role: ${SYNQORIA_NUTRITION_DB_RUNTIME_ROLE:synqoria_nutrition_runtime}
+    allergy-max-age-hours: ${SYNQORIA_NUTRITION_ALLERGY_MAX_AGE_HOURS:24}
+    facility-zone: ${SYNQORIA_NUTRITION_FACILITY_ZONE:UTC}

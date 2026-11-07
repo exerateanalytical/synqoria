@@ -1,0 +1,55 @@
+name: M27 canonical 5-screen React/Next latest-stable build
+on:
+  push:
+    branches:
+      - work/chatgpt-m27-mortuary-2026-11-07
+  pull_request:
+    paths:
+      - 'apps/web/**'
+      - 'tests/mortuary_screen_contract.test.mjs'
+      - '.github/workflows/m27-web-build.yml'
+permissions:
+  contents: read
+jobs:
+  m27-react-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - name: Borrow separately owned PR23 SHA-pinned lockfile in runner only
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin refs/heads/work/reproducible-npm-lock-candidate-2026-11-05:refs/remotes/origin/m27-pr23
+          git show refs/remotes/origin/m27-pr23:package-lock.json > package-lock.json
+          echo "6fa90a4aa72db790d86b7782d45ced40389b5f8987da65138fae7548b5f9eb2b  package-lock.json" | sha256sum -c -
+      - name: Review compatible PR24 Expo packages and latest stable Next 16.4/React 19.3 candidate
+        run: |
+          git fetch --no-tags origin refs/heads/work/real-next-expo-build-corrections-2026-11-05:refs/remotes/origin/m27-pr24
+          for path in apps/staff-mobile/package.json apps/patient-mobile/package.json; do
+            git show "refs/remotes/origin/m27-pr24:$path" > "$path"
+          done
+          node - <<'NODE'
+          const fs=require('node:fs'),path='apps/web/package.json';
+          const web=JSON.parse(fs.readFileSync(path,'utf8'));
+          web.dependencies.next='16.4.5';
+          web.dependencies.react='19.3.1';
+          web.dependencies['react-dom']='19.3.1';
+          web.devDependencies['@types/react']='19.3.0';
+          fs.writeFileSync(path,JSON.stringify(web,null,2)+'\n');
+          NODE
+      - name: Resolve lock and install exact workspaces in CI only
+        run: |
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          npm ci --no-audit --no-fund
+      - name: Verify all five M27 canonical screen contracts and safe backend routes
+        run: node --test tests/mortuary_screen_contract.test.mjs tests/operations_screen_catalog.test.mjs
+      - name: Build UX core and actual Next.js 16.4 hospital workstations
+        run: |
+          npm run build --workspace @synqoria/ux-core
+          npm run build --workspace @synqoria/web
+      - name: Build evidence is not mortuary legal or clinical acceptance
+        if: always()
+        run: echo "No hospital identity or legal release signer has been connected; never claim production."

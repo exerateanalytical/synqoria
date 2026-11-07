@@ -1,0 +1,238 @@
+{
+  "total": 17,
+  "passed": 17,
+  "checks": [
+    {
+      "group": "ux_core",
+      "command": [
+        "npm",
+        "run",
+        "check:ux"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/regression-ux_core.log",
+      "log_sha256": "076ddfcabc1fc50aa3525e265db5fbeb006c82217ae1e212c923df7a6283a8c4"
+    },
+    {
+      "group": "canonical_registers",
+      "command": [
+        "npm",
+        "run",
+        "check:registers"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/regression-canonical_registers.log",
+      "log_sha256": "f24a5df516f3a7a8717515656cd0f7b4511ce1f91e9e4ec2bb38c40bf0cc7ecb"
+    },
+    {
+      "group": "source_safety",
+      "command": [
+        "npm",
+        "run",
+        "check:source"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/regression-source_safety.log",
+      "log_sha256": "6f812bde1a2a26cdf9e86681c2766a065613aeffedf577f90b1c8faf125e83d1"
+    },
+    {
+      "group": "status_matrix",
+      "command": [
+        "python",
+        "tools/verify_status_matrix.py"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/regression-status_matrix.log",
+      "log_sha256": "8061f04f732ca093bce76b51d1a48dc1d6518f18a266f919ed9354288708ccfd"
+    },
+    {
+      "group": "migration_inventory",
+      "command": [
+        "python",
+        "tools/migration_inventory_gate.py",
+        "services/clinical-core/db/migration"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/regression-migration_inventory.log",
+      "log_sha256": "578c32b6c103a478053065739a3ffd527a64ee08f50ac6ea078f830901d66ec6"
+    },
+    {
+      "group": "migration_checksum",
+      "command": [
+        "python",
+        "tools/migration_checksum_gate.py",
+        "services/clinical-core/db/migration",
+        "registers/migration-sha256-lock.json"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/regression-migration_checksum.log",
+      "log_sha256": "f1ba91ad87f118fc73dc4dce83156ce85a46417400b6c0775d5b194faa64f135"
+    },
+    {
+      "group": "outbox_schema_quarantine",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "tests.test_v630_outbox",
+        "-v"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/regression-outbox_schema_quarantine.log",
+      "log_sha256": "c13589fd87b9eba541db72f4d005843519c3902f4e1cc8305e0df0bc89174b1a"
+    },
+    {
+      "group": "p07_existing_domain",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        ".v630-classes",
+        "org.synqoria.longitudinal.ClinicalVerticalBatchTest",
+        "all"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/regression-p07_existing_domain.log",
+      "log_sha256": "4fc2cb31bc23883f305eaf0faf5f2bc383abd73b7c380c1f566e754f06d3a5b6"
+    },
+    {
+      "group": "p07_existing_adversarial",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        ".v630-classes",
+        "org.synqoria.longitudinal.ClinicalBoundaryAdversarialTest"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/regression-p07_existing_adversarial.log",
+      "log_sha256": "e645f85895c151a61ba24422273fc0d8f28bf09798e3b7b11302999f8b3b65be"
+    },
+    {
+      "group": "p07_existing_snapshot_crypto",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        ".v630-classes",
+        "org.synqoria.longitudinal.LongitudinalDurabilityTest",
+        "all"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/regression-p07_existing_snapshot_crypto.log",
+      "log_sha256": "7404231d4558b7b89011d3f6cca38ad9d01572c14aa5a994b5717e442310e412"
+    },
+    {
+      "group": "p07_existing_jdbc",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        ".v630-classes",
+        "org.synqoria.longitudinal.LongitudinalJdbcContractTest",
+        "all"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/regression-p07_existing_jdbc.log",
+      "log_sha256": "197b87fa4530ba2a310bc4e403f53278d9bc09f84eb3cfe7afd858082cf77978"
+    },
+    {
+      "group": "p07_existing_http",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        ".v630-classes",
+        "org.synqoria.longitudinal.LongitudinalJDBCWireLoopbackTest"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/regression-p07_existing_http.log",
+      "log_sha256": "9bd8c427bf238d6525c1d67465c93f85805da1d87c5d931b48b2c77476308789"
+    },
+    {
+      "group": "p07_existing_reads",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        ".v630-classes",
+        "org.synqoria.longitudinal.LongitudinalSupplementalReadsTest",
+        "all"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/regression-p07_existing_reads.log",
+      "log_sha256": "3a91ed8afaf0cca8447a9823765d98ac03d592b6d9d664ba090027854bb78aa1"
+    },
+    {
+      "group": "p07_old_schema",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "tests.test_v620_quarantine",
+        "-v"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/regression-p07_old_schema.log",
+      "log_sha256": "71f6e38465001afc664348b518b873238292a151fea95d618403b8e6542adf65"
+    },
+    {
+      "group": "p07_openapi",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "tests.test_longitudinal_contract",
+        "-v"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/regression-p07_openapi.log",
+      "log_sha256": "59f92af83903d16ebb11ee31e091079743f537d83c2f8b11d615199e9e461692"
+    },
+    {
+      "group": "new_dispatcher",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        ".v630-classes",
+        "org.synqoria.longitudinal.LongitudinalOutboxDeliveryTest",
+        "all"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/regression-new_dispatcher.log",
+      "log_sha256": "6b55b74090fb54c06ee1155876f8ab9815d182808be4ac6dea722731b940b810"
+    },
+    {
+      "group": "new_jdbc_dispatcher",
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        ".v630-classes",
+        "org.synqoria.longitudinal.LongitudinalOutboxJdbcContractTest",
+        "all"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/regression-new_jdbc_dispatcher.log",
+      "log_sha256": "812af7a1545e8d6aaef892f9284cdad6cfdd85f55fff298db3aa3f57cda8a0bf"
+    }
+  ]
+}

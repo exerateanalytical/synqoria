@@ -1,0 +1,4 @@
+command=["java", "-ea", "-cp", ".v630-classes", "org.synqoria.longitudinal.LongitudinalDurabilityTest", "all"]
+exit_code=0
+PASS all 41 assertions
+

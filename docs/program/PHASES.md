@@ -1,6 +1,6 @@
 # SYNQORIA — Canonical Engineering Phases
 
-**Canonical phase definitions:** 20 planned programme phases P00–P19. The overall phase-status register on `main` is not automatically current while parallel PRs remain unmerged. **Owner-approved execution cadence (2026-11-04):** 30 substantive and individually tested engineering batches within each requested execution, with immediate verified GitHub publication per batch; a run that cannot meet 30 is expressly **incomplete**, not a new 1/5/10-batch target. **Stage sequence:** complete engineering backlog → implement all 261 screens → integrate/complete all 40 modules → full audit and formal certification. See [Mandatory 30-batch execution policy](SYNQORIA_EXECUTION_POLICY_30_BATCHES_2026-11-04.md). These four delivery stages do not replace the twenty phase definitions. Essential security/clinical safety checks remain required during implementation. Multiple phases may contribute work to a 30-batch session after cross-workstream reconciliation.
+**Status:** planned, not built or certified. **Cadence:** hourly attempts; not one phase guaranteed per hour. Target up to sixty meaningful, independently verified implementation batches per run, reporting fewer when limits or gates prevent them. Multiple phases per run only when their exit gates pass.
 
 ## P00 — Recovery and authoritative inventory
 

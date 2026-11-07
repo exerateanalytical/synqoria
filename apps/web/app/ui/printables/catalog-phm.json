@@ -1,0 +1,588 @@
+[
+  {
+    "id": "P06",
+    "en": "Medication prescription",
+    "fr": "Ordonnance médicale",
+    "domain": "PHM",
+    "domainEn": "Pharmacy and medication safety",
+    "domainFr": "Pharmacie et sécurité médicamenteuse",
+    "module": "M08",
+    "kind": "prescription",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Prescribing",
+        "fields": [
+          "Encounter and prescriber",
+          "Prescription date",
+          "Diagnosis or reason and confidentiality"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Medicines",
+        "fields": [
+          "Medication name and coded form",
+          "Strength and unit",
+          "Dose and unit",
+          "Route",
+          "Frequency and timing",
+          "Duration",
+          "Quantity and repeats"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Safety",
+        "fields": [
+          "Allergy assessment and source",
+          "Substitution decision",
+          "Counseling",
+          "Signed authorization/version"
+        ]
+      }
+    ],
+    "canonical": true,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PHM-002",
+    "en": "Pharmacy dispensing label",
+    "fr": "Étiquette de dispensation",
+    "domain": "PHM",
+    "domainEn": "Pharmacy and medication safety",
+    "domainFr": "Pharmacie et sécurité médicamenteuse",
+    "module": "M13",
+    "kind": "label",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Patient and prescription",
+        "fields": [
+          "Approved patient identifier",
+          "Prescription ID and issued time"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Medicine",
+        "fields": [
+          "Name and strength",
+          "Instructions from authorized order",
+          "Quantity",
+          "Lot and expiry"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Handover",
+        "fields": [
+          "Pharmacy identity and dispensing reference",
+          "Important alerts"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PHM-003",
+    "en": "Pharmacy dispensing record",
+    "fr": "Fiche de dispensation",
+    "domain": "PHM",
+    "domainEn": "Pharmacy and medication safety",
+    "domainFr": "Pharmacie et sécurité médicamenteuse",
+    "module": "M13",
+    "kind": "dispense",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Order",
+        "fields": [
+          "Prescription and medicine reference",
+          "Clinical safety checks",
+          "Stock lot"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Release",
+        "fields": [
+          "Dispensed quantity",
+          "Pharmacist",
+          "Ticket and authorizing status"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Handover",
+        "fields": [
+          "Recipient verification",
+          "Actual time and reconciliation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PHM-004",
+    "en": "Medication reconciliation report",
+    "fr": "Bilan de conciliation médicamenteuse",
+    "domain": "PHM",
+    "domainEn": "Pharmacy and medication safety",
+    "domainFr": "Pharmacie et sécurité médicamenteuse",
+    "module": "M13",
+    "kind": "medication",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "History",
+        "fields": [
+          "Home medicines and evidence",
+          "Previous orders and allergies"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Changes",
+        "fields": [
+          "Continue/stop/start decisions",
+          "Discrepancies and reasons"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Responsible clinician",
+          "Review time and linked source versions"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PHM-005",
+    "en": "Controlled medicine transaction register",
+    "fr": "Registre des médicaments contrôlés",
+    "domain": "PHM",
+    "domainEn": "Pharmacy and medication safety",
+    "domainFr": "Pharmacie et sécurité médicamenteuse",
+    "module": "M13",
+    "kind": "log",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Stock",
+        "fields": [
+          "Controlled medicine and schedule",
+          "Batch and location"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Movement",
+        "fields": [
+          "Authorized receipt/issue/return",
+          "Quantity",
+          "Balance",
+          "Two-person checks"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Audit",
+        "fields": [
+          "Licence scope",
+          "Staff and source transaction"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PHM-006",
+    "en": "Medicine batch expiry and recall report",
+    "fr": "Rapport des lots et rappels",
+    "domain": "PHM",
+    "domainEn": "Pharmacy and medication safety",
+    "domainFr": "Pharmacie et sécurité médicamenteuse",
+    "module": "M13",
+    "kind": "inventory",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Stock",
+        "fields": [
+          "Product and code",
+          "Batch",
+          "Expiry",
+          "Storage"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Recall",
+        "fields": [
+          "Notice reference",
+          "Quarantined stock",
+          "Affected dispensing records",
+          "Disposition approval"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PHM-007",
+    "en": "Pharmacy stock issue voucher",
+    "fr": "Bon de sortie de stock pharmacie",
+    "domain": "PHM",
+    "domainEn": "Pharmacy and medication safety",
+    "domainFr": "Pharmacie et sécurité médicamenteuse",
+    "module": "M13",
+    "kind": "inventory",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Requisition",
+        "fields": [
+          "Department and authorizer",
+          "Product and batch"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Distribution",
+        "fields": [
+          "Quantity and units",
+          "Issuer",
+          "Receiver",
+          "Date"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Reconciliation",
+        "fields": [
+          "Stock movement and receipt"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PHM-008",
+    "en": "Suspected adverse drug reaction report",
+    "fr": "Fiche de pharmacovigilance",
+    "domain": "PHM",
+    "domainEn": "Pharmacy and medication safety",
+    "domainFr": "Pharmacie et sécurité médicamenteuse",
+    "module": "M13",
+    "kind": "adverse",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Patient safety",
+        "fields": [
+          "Reaction description and onset",
+          "Suspected medicine and lot",
+          "Other medicines"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Assessment",
+        "fields": [
+          "Severity and outcome",
+          "Reporter",
+          "Referral to pharmacovigilance authority"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PHM-009",
+    "en": "Medication counseling acknowledgment",
+    "fr": "Attestation de conseil pharmaceutique",
+    "domain": "PHM",
+    "domainEn": "Pharmacy and medication safety",
+    "domainFr": "Pharmacie et sécurité médicamenteuse",
+    "module": "M13",
+    "kind": "acknowledgment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Counseling",
+        "fields": [
+          "Medicine regimen and language",
+          "Interactions and warning advice",
+          "Storage"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Receipt",
+        "fields": [
+          "Patient/proxy understanding and pharmacist"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PHM-010",
+    "en": "Returned medicine disposition record",
+    "fr": "Fiche de retour et destruction de médicament",
+    "domain": "PHM",
+    "domainEn": "Pharmacy and medication safety",
+    "domainFr": "Pharmacie et sécurité médicamenteuse",
+    "module": "M13",
+    "kind": "inventory",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Return",
+        "fields": [
+          "Original dispense and batch",
+          "Returned units",
+          "Condition"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Decision",
+        "fields": [
+          "Reshelving eligibility or destruction",
+          "Authorization",
+          "Evidence"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PHM-011",
+    "en": "Inpatient medication order",
+    "fr": "Prescription de traitement hospitalier",
+    "domain": "PHM",
+    "domainEn": "Pharmacy and medication safety",
+    "domainFr": "Pharmacie et sécurité médicamenteuse",
+    "module": "M13",
+    "kind": "prescription",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Order",
+        "fields": [
+          "Patient and encounter",
+          "Prescriber",
+          "Diagnosis or indication"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Medication",
+        "fields": [
+          "Dose and unit",
+          "Route",
+          "Start/stop",
+          "Frequency",
+          "Rate if applicable"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Verification",
+        "fields": [
+          "Allergy status",
+          "Order revision",
+          "Nursing acknowledgment"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PHM-012",
+    "en": "Intravenous admixture worksheet",
+    "fr": "Fiche de préparation injectable",
+    "domain": "PHM",
+    "domainEn": "Pharmacy and medication safety",
+    "domainFr": "Pharmacie et sécurité médicamenteuse",
+    "module": "M13",
+    "kind": "compounding",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Formula",
+        "fields": [
+          "Drug and concentration",
+          "Diluent and volume",
+          "Compatibility evidence"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Preparation",
+        "fields": [
+          "Aseptic process record",
+          "Calculations and independent check"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Label",
+        "fields": [
+          "Beyond-use date/time from verified source",
+          "Batch and reviewer"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PHM-013",
+    "en": "Compounded preparation record",
+    "fr": "Fiche de préparation magistrale",
+    "domain": "PHM",
+    "domainEn": "Pharmacy and medication safety",
+    "domainFr": "Pharmacie et sécurité médicamenteuse",
+    "module": "M13",
+    "kind": "compounding",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Formula",
+        "fields": [
+          "Ingredient identity",
+          "Quantity and unit",
+          "Master formulation reference"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Process",
+        "fields": [
+          "Preparation steps and equipment",
+          "Lot traceability"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Release",
+        "fields": [
+          "Quality check",
+          "Pharmacist and label"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PHM-014",
+    "en": "Controlled medicine destruction certificate",
+    "fr": "Procès-verbal de destruction des stupéfiants",
+    "domain": "PHM",
+    "domainEn": "Pharmacy and medication safety",
+    "domainFr": "Pharmacie et sécurité médicamenteuse",
+    "module": "M13",
+    "kind": "certificate",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Stock",
+        "fields": [
+          "Medicine",
+          "Batch",
+          "Controlled quantity",
+          "Licence and authorization"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Destruction",
+        "fields": [
+          "Method and site",
+          "Date",
+          "Witnesses"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Closure",
+        "fields": [
+          "Inventory adjustment and archival reference"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-PHM-015",
+    "en": "Medication administration exception report",
+    "fr": "Fiche d'incident d'administration",
+    "domain": "PHM",
+    "domainEn": "Pharmacy and medication safety",
+    "domainFr": "Pharmacie et sécurité médicamenteuse",
+    "module": "M13",
+    "kind": "adverse",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Event",
+        "fields": [
+          "Medication",
+          "Scheduled and actual time",
+          "Omitted/held/refused/wrong event"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Safety",
+        "fields": [
+          "Patient assessment and escalation",
+          "Corrective action"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Audit",
+        "fields": [
+          "Nurse",
+          "Reviewer and time"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]

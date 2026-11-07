@@ -1,0 +1,693 @@
+[
+  {
+    "id": "HT-SYS-001",
+    "en": "Clinical form-template approval record",
+    "fr": "Fiche d'approbation de modèle clinique",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M31",
+    "kind": "quality",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Template",
+        "fields": [
+          "Name and version",
+          "Owner and department"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Review",
+        "fields": [
+          "Required fields and clinical rule sources",
+          "Security and UX signoff"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Release",
+        "fields": [
+          "Test evidence and authorized activation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SYS-002",
+    "en": "Medical document correction register",
+    "fr": "Registre des rectifications documentaires",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M31",
+    "kind": "log",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Document",
+        "fields": [
+          "Original issued reference",
+          "Version and source"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Correction",
+        "fields": [
+          "Reason and changed content",
+          "Author"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Notification",
+        "fields": [
+          "Recipient and audit linkage"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SYS-003",
+    "en": "Digital signature review record",
+    "fr": "Registre de validation des signatures électroniques",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M31",
+    "kind": "audit",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Signer",
+        "fields": [
+          "Verified account and signature capacity",
+          "Document digest"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Signing",
+        "fields": [
+          "Event ID and timestamp",
+          "Trust and certificate policy"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Audit status and revocation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SYS-004",
+    "en": "Identity access request form",
+    "fr": "Demande d’accès utilisateur",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M33",
+    "kind": "form",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Request",
+        "fields": [
+          "Staff identity and organization",
+          "Reason and requested resource"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Permissions",
+        "fields": [
+          "Role and scope",
+          "Duration"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Manager and independent approver",
+          "Expiry"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SYS-005",
+    "en": "User role and privilege change authorization",
+    "fr": "Autorisation de modification des privilèges",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M33",
+    "kind": "review",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Existing",
+        "fields": [
+          "Account and current privilege",
+          "Facility"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Change",
+        "fields": [
+          "Requested role and resource",
+          "Reason"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Control",
+        "fields": [
+          "Maker-checker",
+          "Validity and audit"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SYS-006",
+    "en": "User access termination checklist",
+    "fr": "Liste de clôture des accès utilisateur",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M33",
+    "kind": "checklist",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Termination",
+        "fields": [
+          "Staff and effective time",
+          "Identity provider"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Revocation",
+        "fields": [
+          "Sessions and tokens",
+          "Facility scopes",
+          "Equipment access"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Audit",
+        "fields": [
+          "Reviewer and confirmation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SYS-007",
+    "en": "Terminology catalog change approval",
+    "fr": "Autorisation de modification de terminologie",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M30",
+    "kind": "review",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Term",
+        "fields": [
+          "Code system and version",
+          "Candidate concept"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Impact",
+        "fields": [
+          "Affected rules and forms",
+          "Mapping risk"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Terminology steward and deploy version"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SYS-008",
+    "en": "Clinical ruleset release review",
+    "fr": "Revue de mise en production des règles cliniques",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M30",
+    "kind": "quality",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Rules",
+        "fields": [
+          "Version and source evidence",
+          "Intended population"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Validation",
+        "fields": [
+          "Clinical review",
+          "Safety tests",
+          "Rollback"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Release",
+        "fields": [
+          "Approval and monitoring"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SYS-009",
+    "en": "FHIR/API interface onboarding",
+    "fr": "Enregistrement d'interface FHIR/API",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M35",
+    "kind": "form",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Integration",
+        "fields": [
+          "Client and purpose",
+          "Tenant and data categories"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Security",
+        "fields": [
+          "Authentication",
+          "Consent and access scope",
+          "Rate limits"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Release",
+        "fields": [
+          "Testing and owner"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SYS-010",
+    "en": "Interoperability message exception log",
+    "fr": "Journal des exceptions d'interopérabilité",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M35",
+    "kind": "log",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Message",
+        "fields": [
+          "ID",
+          "Source and destination",
+          "Schema/version"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Outcome",
+        "fields": [
+          "Validation and delivery failure",
+          "Retry control"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Reconciliation",
+        "fields": [
+          "Responsible staff and final status"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SYS-011",
+    "en": "Bedside medical device registration",
+    "fr": "Enregistrement de dispositif médical connecté",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M36",
+    "kind": "form",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Device",
+        "fields": [
+          "Serial and model",
+          "Location and patient connection policy"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Security",
+        "fields": [
+          "Certificate and trust",
+          "Calibration status"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Authorization",
+        "fields": [
+          "Biomedical engineer and integration owner"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SYS-012",
+    "en": "Device data quality and calibration review",
+    "fr": "Contrôle des données et étalonnage des dispositifs",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M36",
+    "kind": "quality",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Measurement",
+        "fields": [
+          "Device source and unit",
+          "Calibration trace"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Validation",
+        "fields": [
+          "Plausibility and timestamp",
+          "Alert limits"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Sign-off",
+        "fields": [
+          "Clinical and biomedical review"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SYS-013",
+    "en": "Critical alert escalation acknowledgment",
+    "fr": "Accusé de prise en charge d'alerte critique",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M37",
+    "kind": "handover",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Alert",
+        "fields": [
+          "Event reference",
+          "Severity and trigger",
+          "Source time"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Communication",
+        "fields": [
+          "Assigned receiver and delivery",
+          "Readback"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Closure",
+        "fields": [
+          "Action and escalation evidence"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SYS-014",
+    "en": "Offline care continuity incident record",
+    "fr": "Registre de continuité des soins hors connexion",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M38",
+    "kind": "quality",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Outage",
+        "fields": [
+          "Authoritative local service status",
+          "Affected facility"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Work",
+        "fields": [
+          "Device-only draft queue",
+          "Ownership and conflicts"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Recovery",
+        "fields": [
+          "Reconciliation evidence and clinical reopening"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SYS-015",
+    "en": "Hospital cell release acceptance report",
+    "fr": "Procès-verbal de mise en production cellule hospitalière",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M39",
+    "kind": "quality",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Cell",
+        "fields": [
+          "Tenant and release version",
+          "Migration and backfill"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Validation",
+        "fields": [
+          "Routing and isolation",
+          "Recovery checks",
+          "Safety gates"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Approval",
+        "fields": [
+          "Release manager and operator"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SYS-016",
+    "en": "Hospital backup and restoration verification",
+    "fr": "Validation de restauration de sauvegarde hospitalière",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M40",
+    "kind": "quality",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Backup",
+        "fields": [
+          "Snapshot and data scopes",
+          "Encryption and storage"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Restoration",
+        "fields": [
+          "Integrity and patient linkage",
+          "RPO/RTO"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Closure",
+        "fields": [
+          "Blockers and independent sign-off"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SYS-017",
+    "en": "Service downtime procedure acknowledgment",
+    "fr": "Accusé de procédure de continuité",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M40",
+    "kind": "acknowledgment",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Service",
+        "fields": [
+          "Downtime and affected functions",
+          "Authorized local alternatives"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Staff",
+        "fields": [
+          "Communication and accepted restrictions"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Return",
+        "fields": [
+          "Reconciliation and reopening approval"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-SYS-018",
+    "en": "Clinic notification and patient message release",
+    "fr": "Validation de notification au patient",
+    "domain": "SYS",
+    "domainEn": "Technology interoperability and records governance",
+    "domainFr": "Interopérabilité systèmes et gouvernance",
+    "module": "M37",
+    "kind": "review",
+    "context": "administrative",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Message",
+        "fields": [
+          "Content and channel",
+          "Intended recipient and language"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Privacy",
+        "fields": [
+          "Minimum necessary content",
+          "Consent and preferences"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Dispatch",
+        "fields": [
+          "Authorization and deliverability audit"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]

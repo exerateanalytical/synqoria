@@ -1,0 +1,4 @@
+$ java -cp /mnt/data/synqoria_v065_classes org.synqoria.longitudinal.LongitudinalInboxWireTest
+PASS P07-B0116 wire 10 assertions
+
+EXIT_CODE=0

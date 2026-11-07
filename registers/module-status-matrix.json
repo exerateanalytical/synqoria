@@ -1,6 +1,6 @@
 {
-  "version": "0.57.0",
-  "status": "specified only; no clinical screens/modules implemented",
+  "version": "0.63.0",
+  "status": "partial implementation evidence exists; no complete clinical module accepted",
   "items": [
     {
       "id": "M01",
@@ -44,7 +44,8 @@
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
-      "accepted": false
+      "accepted": false,
+      "component_progress_note": "v0.60.0: independently tested 20 domain operations for this module; not integrated into deployed HTTP, live PostgreSQL, mobile UI or clinical review. No module completion or acceptance."
     },
     {
       "id": "M05",
@@ -54,7 +55,8 @@
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
-      "accepted": false
+      "accepted": false,
+      "component_progress_note": "v0.60.0: independently tested 20 domain operations for this module; not integrated into deployed HTTP, live PostgreSQL, mobile UI or clinical review. No module completion or acceptance."
     },
     {
       "id": "M06",
@@ -64,7 +66,8 @@
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
-      "accepted": false
+      "accepted": false,
+      "component_progress_note": "v0.60.0: independently tested 20 domain operations for this module; not integrated into deployed HTTP, live PostgreSQL, mobile UI or clinical review. No module completion or acceptance."
     },
     {
       "id": "M07",
@@ -407,5 +410,5 @@
       "accepted": false
     }
   ],
-  "checkpoint": "v0.57.0"
+  "checkpoint": "v0.62.0_unmerged_P07_PR5_candidate"
 }

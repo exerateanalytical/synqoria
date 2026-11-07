@@ -1,0 +1,4 @@
+command=["java", "-ea", "-cp", "/mnt/data/synqoria_v63_work/.v630-classes", "org.synqoria.longitudinal.LongitudinalOutboxDeliveryTest", "ack-uncertain"]
+exit_code=0
+PASS outbox ack-uncertain 4 assertions (synthetic store)
+

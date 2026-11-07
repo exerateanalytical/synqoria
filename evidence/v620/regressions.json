@@ -1,0 +1,297 @@
+{
+  "version": "0.62.0",
+  "run_at_utc": "2026-10-31T17:48:18.609441+00:00",
+  "total_groups": 22,
+  "passed_groups": 22,
+  "failed_groups": 0,
+  "tests": {
+    "java_all_domain_operations": {
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.ClinicalVerticalBatchTest",
+        "all"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-java_all_domain_operations.log",
+      "sha256": "fb84127b8f8b949ae487d8892bfe08cfb5c0d5636260c9de027d433d36adb8ca"
+    },
+    "java_adversarial": {
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.ClinicalBoundaryAdversarialTest"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-java_adversarial.log",
+      "sha256": "5c2c9c6e65f8ea27bb8a9a0c8b47f46e192631399d59b41109f635f736265ccb"
+    },
+    "java_jdbc_protocol": {
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalJdbcContractTest",
+        "all"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-java_jdbc_protocol.log",
+      "sha256": "9aa09996a12d742e179f727c413919a1a9dc588df2feb8ab67c76be42d7ab619"
+    },
+    "java_snapshot_crypto": {
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalDurabilityTest",
+        "all"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-java_snapshot_crypto.log",
+      "sha256": "c918b06194fe090d5a969dc69ad905ed2feb1a75ba1984c1287e3db16a77c213"
+    },
+    "java_jdbc_http": {
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalJDBCWireLoopbackTest"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-java_jdbc_http.log",
+      "sha256": "43901e349a3e9a442e85ffc22e0c0c7510055979eba01a0f3e6f969e03a8e099"
+    },
+    "java_supplemental_http": {
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalSupplementalReadsTest",
+        "all"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-java_supplemental_http.log",
+      "sha256": "e83a3a7420b4aea9fa9a73c6a714cae319e6d51fad0a9aa46af9480227137c71"
+    },
+    "ux_core": {
+      "command": [
+        "npm",
+        "run",
+        "check:ux"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-ux_core.log",
+      "sha256": "62cf4875dc3fa768a0d9d8e0f8dc2b75faf036071a5853f6eac94f5889608bb1"
+    },
+    "source_safety": {
+      "command": [
+        "npm",
+        "run",
+        "check:source"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-source_safety.log",
+      "sha256": "c6e4624f4362ac802b0ad375e7a23705c897a1ff7d153b1bbae087658ee8bf8f"
+    },
+    "canonical_registers": {
+      "command": [
+        "npm",
+        "run",
+        "check:registers"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-canonical_registers.log",
+      "sha256": "6136afd6b4f6c366266a29b792cfd9d2aee7471ba9f3f894d78e55f465523a06"
+    },
+    "status_matrix": {
+      "command": [
+        "python",
+        "tools/verify_status_matrix.py"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-status_matrix.log",
+      "sha256": "6e56c1bdb2a321a90c1c7f82d56a85a4d4a3ba73b031ceac1865198a15ef582f"
+    },
+    "migration_inventory": {
+      "command": [
+        "python",
+        "tools/migration_inventory_gate.py",
+        "services/clinical-core/db/migration"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-migration_inventory.log",
+      "sha256": "466d2472202a517297ecbadfbd545666d71d191b527a79d1db2e88a708c4d197"
+    },
+    "migration_checksum": {
+      "command": [
+        "python",
+        "tools/migration_checksum_gate.py",
+        "services/clinical-core/db/migration",
+        "registers/migration-sha256-lock.json"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-migration_checksum.log",
+      "sha256": "fc8b646653e6e86ed428f5343f55764cf2160f791729fb3ab460b9696fb41792"
+    },
+    "quarantined_schema": {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "tests.test_v620_quarantine",
+        "-v"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-quarantined_schema.log",
+      "sha256": "51cf1b9da454fd8b496f5d447b056a9a83ea4146d1640ff74fa1173689959155"
+    },
+    "openapi_contract": {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "tests.test_longitudinal_contract",
+        "-v"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-openapi_contract.log",
+      "sha256": "f8c08118ac607d1ec75b211ac148e05f0e78e432ad0cf68ad39227e43dd09f9f"
+    },
+    "legacy_longitudinal_HTTP_61": {
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalHttpBoundaryTest",
+        "P07-B0061"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-legacy_longitudinal_HTTP_61.log",
+      "sha256": "0bce7b917437fd9d45e754a30bb5971fbe80530f3b21e997edc023630d44c656"
+    },
+    "legacy_longitudinal_HTTP_62": {
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalHttpBoundaryTest",
+        "P07-B0062"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-legacy_longitudinal_HTTP_62.log",
+      "sha256": "1750dfad443c095389bdd40ee1fd9caae948770f87d985f94f0dae1ebcce8287"
+    },
+    "legacy_longitudinal_HTTP_63": {
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalHttpBoundaryTest",
+        "P07-B0063"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-legacy_longitudinal_HTTP_63.log",
+      "sha256": "577605c0e05bc95432ed199c3cba564c2d66b6119a8252fb84c027a015dd9302"
+    },
+    "legacy_longitudinal_HTTP_64": {
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalHttpBoundaryTest",
+        "P07-B0064"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-legacy_longitudinal_HTTP_64.log",
+      "sha256": "5f73fef7d845ad457bdaf129bfea14889168a767ef4593262fd7b5535dac3e81"
+    },
+    "legacy_longitudinal_HTTP_65": {
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalHttpBoundaryTest",
+        "P07-B0065"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-legacy_longitudinal_HTTP_65.log",
+      "sha256": "863548387439ee637cb35d543d6d674a550c20a79df5b3f5673e90ad1d9546ed"
+    },
+    "legacy_longitudinal_HTTP_66": {
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalHttpBoundaryTest",
+        "P07-B0066"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-legacy_longitudinal_HTTP_66.log",
+      "sha256": "ddcef380bd7005ea94dfe9d56d1c5644ee69a9a310e5300d6f4014ce15f0cb17"
+    },
+    "legacy_longitudinal_HTTP_67": {
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalHttpBoundaryTest",
+        "P07-B0067"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-legacy_longitudinal_HTTP_67.log",
+      "sha256": "109e609a03c34ab9f91aa194255b47f9b982084cf9fec7639d85c4789c448914"
+    },
+    "legacy_longitudinal_HTTP_68": {
+      "command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalHttpBoundaryTest",
+        "P07-B0068"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v620/regression-legacy_longitudinal_HTTP_68.log",
+      "sha256": "12038462dbe2a386f124adbe48d026032ed509d580b68a6e3060ba6476099c44"
+    }
+  },
+  "real_database_tests": 0,
+  "clinical_qualification": "NOT_RUN"
+}

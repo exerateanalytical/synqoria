@@ -1,0 +1,421 @@
+[
+  {
+    "id": "HT-REH-001",
+    "en": "Therapeutic diet order",
+    "fr": "Prescription de régime thérapeutique",
+    "domain": "REH",
+    "domainEn": "Dietary rehabilitation and social services",
+    "domainFr": "Nutrition rééducation et accompagnement social",
+    "module": "M26",
+    "kind": "order",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Diet",
+        "fields": [
+          "Approved diet code",
+          "Indication and duration"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Safety",
+        "fields": [
+          "Allergy and swallowing assessment",
+          "Religious/cultural preferences"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Delivery",
+        "fields": [
+          "Kitchen notification and clinician"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-REH-002",
+    "en": "Meal distribution and tray verification",
+    "fr": "Traçabilité de distribution des repas",
+    "domain": "REH",
+    "domainEn": "Dietary rehabilitation and social services",
+    "domainFr": "Nutrition rééducation et accompagnement social",
+    "module": "M26",
+    "kind": "checklist",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Meal",
+        "fields": [
+          "Date and ward",
+          "Prescribed diet"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Verification",
+        "fields": [
+          "Patient and tray matching",
+          "Restrictions"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Delivery",
+        "fields": [
+          "Time",
+          "Staff and unserved tray"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-REH-003",
+    "en": "Dietitian nutritional assessment",
+    "fr": "Évaluation diététique",
+    "domain": "REH",
+    "domainEn": "Dietary rehabilitation and social services",
+    "domainFr": "Nutrition rééducation et accompagnement social",
+    "module": "M26",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "History",
+        "fields": [
+          "Intake and weight trend",
+          "Diet recall"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Measures",
+        "fields": [
+          "Relevant laboratory and anthropometric source"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Care",
+        "fields": [
+          "Nutrition diagnosis",
+          "Intervention and follow-up"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-REH-004",
+    "en": "Physiotherapy referral request",
+    "fr": "Demande de kinésithérapie",
+    "domain": "REH",
+    "domainEn": "Dietary rehabilitation and social services",
+    "domainFr": "Nutrition rééducation et accompagnement social",
+    "module": "M26",
+    "kind": "referral",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Clinical",
+        "fields": [
+          "Reason and diagnosis",
+          "Functional concerns"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Safety",
+        "fields": [
+          "Restrictions",
+          "Mobility precautions"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Plan",
+        "fields": [
+          "Requested intervention and clinician"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-REH-005",
+    "en": "Physiotherapy session note",
+    "fr": "Compte rendu de séance de kinésithérapie",
+    "domain": "REH",
+    "domainEn": "Dietary rehabilitation and social services",
+    "domainFr": "Nutrition rééducation et accompagnement social",
+    "module": "M26",
+    "kind": "clinical-note",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Session",
+        "fields": [
+          "Goals and date",
+          "Baseline function"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Treatment",
+        "fields": [
+          "Approved exercises and interventions",
+          "Response"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Follow-up",
+        "fields": [
+          "Progress and precautions"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-REH-006",
+    "en": "Rehabilitation multidisciplinary plan",
+    "fr": "Plan de rééducation pluridisciplinaire",
+    "domain": "REH",
+    "domainEn": "Dietary rehabilitation and social services",
+    "domainFr": "Nutrition rééducation et accompagnement social",
+    "module": "M26",
+    "kind": "care-plan",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Assessment",
+        "fields": [
+          "Functional limitation and validated measures",
+          "Patient goals"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Plan",
+        "fields": [
+          "Therapy activities and roles",
+          "Frequency"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Outcomes and discharge readiness"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-REH-007",
+    "en": "Occupational therapy evaluation",
+    "fr": "Bilan d'ergothérapie",
+    "domain": "REH",
+    "domainEn": "Dietary rehabilitation and social services",
+    "domainFr": "Nutrition rééducation et accompagnement social",
+    "module": "M26",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Assessment",
+        "fields": [
+          "Activities of daily living",
+          "Home/work environment"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Needs",
+        "fields": [
+          "Assistive device and adaptations",
+          "Training"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Recommendation",
+        "fields": [
+          "Therapy plan and reassessment"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-REH-008",
+    "en": "Social work case assessment",
+    "fr": "Évaluation sociale du patient",
+    "domain": "REH",
+    "domainEn": "Dietary rehabilitation and social services",
+    "domainFr": "Nutrition rééducation et accompagnement social",
+    "module": "M26",
+    "kind": "assessment",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Context",
+        "fields": [
+          "Social support and financial needs",
+          "Safeguarding concerns"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Intervention",
+        "fields": [
+          "Community referrals",
+          "Discharge barriers"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Review",
+        "fields": [
+          "Consent and follow-up"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-REH-009",
+    "en": "Community nursing discharge plan",
+    "fr": "Plan de soins à domicile",
+    "domain": "REH",
+    "domainEn": "Dietary rehabilitation and social services",
+    "domainFr": "Nutrition rééducation et accompagnement social",
+    "module": "M26",
+    "kind": "care-plan",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Needs",
+        "fields": [
+          "Home care tasks",
+          "Approved equipment and medication"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Services",
+        "fields": [
+          "Responsible community provider",
+          "Appointment and contacts"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Continuity",
+        "fields": [
+          "Alerts and escalation"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-REH-010",
+    "en": "Home follow-up appointment plan",
+    "fr": "Plan de visite et suivi à domicile",
+    "domain": "REH",
+    "domainEn": "Dietary rehabilitation and social services",
+    "domainFr": "Nutrition rééducation et accompagnement social",
+    "module": "M26",
+    "kind": "instructions",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Plan",
+        "fields": [
+          "Visit date/time and provider",
+          "Contact route"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Preparation",
+        "fields": [
+          "Wound/medicine or equipment instructions",
+          "Approved warning signs"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Confirmation",
+        "fields": [
+          "Patient/proxy and service acceptance"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  },
+  {
+    "id": "HT-REH-011",
+    "en": "Hospital catering stock and dietary reconciliation",
+    "fr": "Suivi des denrées alimentaires et régimes",
+    "domain": "REH",
+    "domainEn": "Dietary rehabilitation and social services",
+    "domainFr": "Nutrition rééducation et accompagnement social",
+    "module": "M26",
+    "kind": "inventory",
+    "context": "patient",
+    "sections": [
+      {
+        "id": "s01",
+        "heading": "Production",
+        "fields": [
+          "Meal count and diet classes",
+          "Ingredient lots"
+        ]
+      },
+      {
+        "id": "s02",
+        "heading": "Safety",
+        "fields": [
+          "Allergens and restrictions",
+          "Temperatures"
+        ]
+      },
+      {
+        "id": "s03",
+        "heading": "Distribution",
+        "fields": [
+          "Ward receipt and exceptions"
+        ]
+      }
+    ],
+    "canonical": false,
+    "status": "BLANK_SPECIMEN_UNAPPROVED"
+  }
+]

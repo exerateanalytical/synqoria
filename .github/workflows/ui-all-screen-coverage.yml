@@ -1,0 +1,34 @@
+name: SYNQORIA all-screen source and Next build gate
+on:
+  push:
+    branches: [work/ui-all-261-specific-2026-11-05]
+  pull_request:
+    paths:
+      - 'apps/web/app/ui/catalog/**'
+      - 'registers/ui-specific-252-prototype-contracts.json'
+      - 'tests/ui_all_specific_contracts.test.mjs'
+permissions:
+  contents: read
+jobs:
+  ui-source-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Source-traceable contracts for 252 specialist screens
+        run: node --test tests/ui_all_specific_contracts.test.mjs
+      - name: All 261 canonical route and shared-component checks
+        run: node --test tests/ui_catalog_coverage.test.mjs
+      - name: Install web workspace dependencies
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Build internal UX-core
+        run: npm run build --workspace packages/ux-core
+      - name: Strict web TypeScript
+        run: npm exec --workspace apps/web -- tsc --noEmit
+      - name: Compile and prerender production Next UI
+        run: npm run build --workspace apps/web
+      - name: Explicit safety exclusions
+        run: echo "Source and build gates are not clinical, permission, browser visual or screen-reader certification"

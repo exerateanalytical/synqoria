@@ -1,0 +1,44 @@
+/* SYNQORIA document-workstream reconciliation index: clean Warm Clinical, no effects. */
+.syn-unified-docs{--navy:#073656;--ink:#172b4d;--muted:#475569;--blue:#1664d4;--line:#d7dce1;font:400 16px/1.5 Inter,system-ui,"Segoe UI",sans-serif;color:var(--ink);background:#f7f5f0;min-height:100dvh;padding:clamp(14px,3vw,34px)}
+.syn-unified-docs *{box-sizing:border-box;min-width:0;overflow-wrap:anywhere}
+.syn-unified-hero{background:#fff;padding:clamp(16px,3vw,30px);border:1px solid var(--line);border-radius:12px}
+.syn-unified-kicker{font-size:13px;font-weight:750;text-transform:uppercase;color:#174ea6;letter-spacing:.05em}
+.syn-unified-hero h1{font-size:clamp(26px,3vw,36px);line-height:1.2;margin:8px 0 14px;color:var(--navy)}
+.syn-unified-hero>p{max-width:83ch;color:var(--muted)}
+.syn-unified-stats{display:flex;gap:16px;flex-wrap:wrap;margin:20px 0 0}
+.syn-unified-stats>div{display:flex;flex-direction:column;gap:4px;min-width:130px;flex:1 1 140px;border:1px solid #b8c9d8;background:#edf3f8;padding:14px;border-radius:8px}
+.syn-unified-stats strong{font-size:26px;color:#073656;font-variant-numeric:tabular-nums}
+.syn-unified-stats span{font-size:13px;color:#475569}
+.syn-unified-links{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.syn-unified-links a{display:inline-flex;align-items:center;min-height:44px;padding:10px 13px;background:#fff;border:1px solid #b8c9d8;border-radius:8px;color:#174ea6;font-size:14px;font-weight:650;text-decoration:none}
+.syn-unified-warning{padding:16px;border:1px solid #a85d12;color:#663c0c;background:#fff5e9;border-radius:10px}
+.syn-unified-warning p{margin:6px 0 0;color:#663c0c;font-size:14px}
+.syn-unified-filters{display:flex;gap:12px;align-items:end;flex-wrap:wrap;border:1px solid var(--line);border-radius:10px;padding:16px;background:#fff;margin-top:20px}
+.syn-unified-filters label{display:flex;flex-direction:column;gap:8px;flex:1 1 190px;color:var(--ink);font-size:14px;font-weight:650}
+.syn-unified-filters input,.syn-unified-filters select{font:inherit;font-size:16px;min-height:46px;padding:10px;border:1px solid #70829a;border-radius:8px;background:#fff;color:var(--ink);width:100%}
+.syn-unified-filters button,.syn-unified-pages button,.syn-unified-empty button{font:inherit;font-size:14px;font-weight:700;min-height:44px;padding:9px 14px;border:1px solid #70829a;border-radius:8px;background:#fff;color:var(--navy);cursor:pointer}
+.syn-unified-filters button:disabled,.syn-unified-pages button:disabled{background:#f1f3f5;color:#475569;border-color:#b9c0c9;cursor:not-allowed}
+.syn-unified-results{padding:16px 2px;color:var(--muted);font-size:14px}
+.syn-unified-results strong{color:var(--navy);font-size:19px}
+.syn-unified-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,275px),1fr));gap:14px}
+.syn-unified-card{display:flex;flex-direction:column;gap:8px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px}
+.syn-unified-card:focus-within{border-color:var(--blue)}
+.syn-unified-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}
+.syn-unified-card-head code{font-weight:700;color:var(--navy)}
+.syn-unified-card h2{font-size:17px;line-height:1.35;margin:0}
+.syn-unified-card h2 a{color:var(--navy);text-decoration:none}
+.syn-unified-card h2 a:hover{text-decoration:underline}
+.syn-unified-card p{font-size:13px;color:var(--muted);margin:0}
+.syn-unified-fr{font-style:italic}
+.syn-unified-card .syn-unified-kind{font-size:12px;color:#174ea6}
+.syn-unified-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}
+.syn-unified-actions a{display:inline-flex;align-items:center;min-height:44px;font-size:13px;font-weight:750;color:#174ea6;text-decoration:underline;text-underline-offset:2px}
+.syn-unified-pages{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:18px;margin:24px 0}
+.syn-unified-empty{padding:26px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.syn-unified-empty h2{font-size:21px;color:var(--navy)}
+.syn-unified-docs footer{border-top:1px solid var(--line);font-size:13px;color:var(--muted);padding:16px 0}
+.syn-unified-docs a:focus-visible,.syn-unified-docs button:focus-visible,.syn-unified-docs input:focus-visible,.syn-unified-docs select:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+@media(max-width:700px){.syn-unified-docs{padding:14px}.syn-unified-filters label{flex:1 1 100%}.syn-unified-stats>div{flex:1 1 130px}.syn-unified-card{padding:15px}}
+@media(max-width:350px){.syn-unified-docs{padding:10px}.syn-unified-pages button{flex:1 1 100%}}
+@media(prefers-reduced-motion:reduce){.syn-unified-docs *{transition:none!important;animation:none!important}}
+@media print{.syn-unified-docs{display:none!important}}

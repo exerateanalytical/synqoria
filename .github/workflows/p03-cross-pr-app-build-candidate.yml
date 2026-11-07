@@ -1,0 +1,53 @@
+name: P03 + build-owner isolated full app-stack candidate (not release)
+on:
+  push:
+    branches:
+      - work/p03-b0094-b0123-runtime-build-2026-11-06
+permissions:
+  contents: read
+jobs:
+  full-app-candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Overlay reviewed lockfile candidate from PR23
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin refs/heads/work/reproducible-npm-lock-candidate-2026-11-05:refs/remotes/origin/p03-pr23-lock
+          git show refs/remotes/origin/p03-pr23-lock:package-lock.json > package-lock.json
+          echo "6fa90a4aa72db790d86b7782d45ced40389b5f8987da65138fae7548b5f9eb2b  package-lock.json" | sha256sum -c -
+      - name: Overlay build-owner PR24 Expo-only corrections into temporary runner
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin refs/heads/work/real-next-expo-build-corrections-2026-11-05:refs/remotes/origin/p03-pr24-build
+          for path in apps/staff-mobile/app.json apps/staff-mobile/index.js apps/staff-mobile/package.json apps/patient-mobile/app.json apps/patient-mobile/index.js apps/patient-mobile/package.json tools/run_app_builds.py; do
+            git show "refs/remotes/origin/p03-pr24-build:$path" > "$path"
+          done
+          node -e "const fs=require('fs');for(const w of ['staff-mobile','patient-mobile']){const m=JSON.parse(fs.readFileSync('apps/'+w+'/package.json'));const c=JSON.parse(fs.readFileSync('apps/'+w+'/app.json'));if(m.main!=='index.js'||c.expo.platforms.join(',')!=='ios,android')process.exit(1)}"
+      - name: Reconcile exact pg runtime pin in temporary lockfile
+        run: |
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          node tools/p03_verify_runtime_lock.cjs
+      - name: Install all pinned workspaces
+        run: npm ci --no-audit --no-fund
+      - name: Execute real UX, Next and both Expo production build candidate checks
+        run: python tools/run_app_builds.py
+      - name: Preserve real build attempts and generated artifact manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p03-cross-pr-app-build-evidence
+          path: |
+            evidence/batches/v280-actual-build-attempt.json
+            package-lock.json
+          if-no-files-found: warn
+      - name: Release boundary
+        if: always()
+        run: echo "TEMPORARY CROSS-PR BUILD OVERLAY. No merged lock, live clinical cell, production or certification."

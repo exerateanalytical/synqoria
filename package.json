@@ -1,7 +1,7 @@
 {
   "name": "synqoria",
   "private": true,
-  "version": "0.57.0",
+  "version": "0.63.0",
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/web",

@@ -1,0 +1,11 @@
+{
+  "id": "P07-B0142",
+  "title": "Bounded payload SHA-256 comparison and no content exposure in exceptions",
+  "source": "services/clinical-core/src/main/java/org/synqoria/longitudinal/inboxops/InboxPayloadDigestProof.java",
+  "test": "services/clinical-core/src/test/java/org/synqoria/longitudinal/inboxops/InboxPayloadDigestProofTest.java",
+  "evidence": "evidence/v067/P07-B0142.log",
+  "exit_code": 0,
+  "focused_assertions": 6,
+  "verification": "Java21 pure policy tests only",
+  "clinical_release": "DENIED"
+}

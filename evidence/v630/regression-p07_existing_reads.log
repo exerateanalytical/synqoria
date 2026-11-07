@@ -1,0 +1,4 @@
+command=["java", "-ea", "-cp", ".v630-classes", "org.synqoria.longitudinal.LongitudinalSupplementalReadsTest", "all"]
+exit_code=0
+PASS supplemental reads all (8 focused assertions)
+

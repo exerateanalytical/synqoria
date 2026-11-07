@@ -1,6 +1,6 @@
 {
-  "version": "0.57.0",
-  "status": "specified only; no clinical screens/modules implemented",
+  "version": "2026-11-07-progressive-source-integration",
+  "status": "86 workstations source-integrated, acceptance unverified; no module clinically certified",
   "items": [
     {
       "id": "G-S01",
@@ -185,9 +185,9 @@
     {
       "id": "M02-S01",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
-      "tested": false,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
       "independently_reviewed": false,
       "clinically_reviewed": false,
       "accepted": false
@@ -195,9 +195,9 @@
     {
       "id": "M02-S02",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
-      "tested": false,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
       "independently_reviewed": false,
       "clinically_reviewed": false,
       "accepted": false
@@ -205,9 +205,9 @@
     {
       "id": "M02-S03",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
-      "tested": false,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
       "independently_reviewed": false,
       "clinically_reviewed": false,
       "accepted": false
@@ -215,9 +215,9 @@
     {
       "id": "M02-S04",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
-      "tested": false,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
       "independently_reviewed": false,
       "clinically_reviewed": false,
       "accepted": false
@@ -225,9 +225,9 @@
     {
       "id": "M02-S05",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
-      "tested": false,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
       "independently_reviewed": false,
       "clinically_reviewed": false,
       "accepted": false
@@ -1025,9 +1025,9 @@
     {
       "id": "M16-S01",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
-      "tested": false,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
       "independently_reviewed": false,
       "clinically_reviewed": false,
       "accepted": false
@@ -1035,9 +1035,9 @@
     {
       "id": "M16-S02",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
-      "tested": false,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
       "independently_reviewed": false,
       "clinically_reviewed": false,
       "accepted": false
@@ -1045,9 +1045,9 @@
     {
       "id": "M16-S03",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
-      "tested": false,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
       "independently_reviewed": false,
       "clinically_reviewed": false,
       "accepted": false
@@ -1055,9 +1055,9 @@
     {
       "id": "M16-S04",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
-      "tested": false,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
       "independently_reviewed": false,
       "clinically_reviewed": false,
       "accepted": false
@@ -1065,9 +1065,9 @@
     {
       "id": "M16-S05",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
-      "tested": false,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
       "independently_reviewed": false,
       "clinically_reviewed": false,
       "accepted": false
@@ -1575,8 +1575,8 @@
     {
       "id": "M21-S01",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1585,8 +1585,8 @@
     {
       "id": "M21-S02",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1595,8 +1595,8 @@
     {
       "id": "M21-S03",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1605,8 +1605,8 @@
     {
       "id": "M21-S04",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1615,8 +1615,8 @@
     {
       "id": "M21-S05",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1625,8 +1625,8 @@
     {
       "id": "M21-S06",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1635,8 +1635,8 @@
     {
       "id": "M22-S01",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1645,8 +1645,8 @@
     {
       "id": "M22-S02",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1655,8 +1655,8 @@
     {
       "id": "M22-S03",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1665,8 +1665,8 @@
     {
       "id": "M22-S04",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1675,8 +1675,8 @@
     {
       "id": "M22-S05",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1685,8 +1685,8 @@
     {
       "id": "M23-S01",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1695,8 +1695,8 @@
     {
       "id": "M23-S02",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1705,8 +1705,8 @@
     {
       "id": "M23-S03",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1715,8 +1715,8 @@
     {
       "id": "M23-S04",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1725,8 +1725,8 @@
     {
       "id": "M23-S05",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1735,8 +1735,8 @@
     {
       "id": "M24-S01",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1745,8 +1745,8 @@
     {
       "id": "M24-S02",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1755,8 +1755,8 @@
     {
       "id": "M24-S03",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1765,8 +1765,8 @@
     {
       "id": "M24-S04",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1775,8 +1775,8 @@
     {
       "id": "M24-S05",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1785,8 +1785,8 @@
     {
       "id": "M24-S06",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1795,8 +1795,8 @@
     {
       "id": "M25-S01",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1805,8 +1805,8 @@
     {
       "id": "M25-S02",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1815,8 +1815,8 @@
     {
       "id": "M25-S03",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1825,8 +1825,8 @@
     {
       "id": "M25-S04",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1835,8 +1835,8 @@
     {
       "id": "M25-S05",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1845,8 +1845,8 @@
     {
       "id": "M26-S01",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1855,8 +1855,8 @@
     {
       "id": "M26-S02",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1865,8 +1865,8 @@
     {
       "id": "M26-S03",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1875,8 +1875,8 @@
     {
       "id": "M26-S04",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1885,8 +1885,8 @@
     {
       "id": "M27-S01",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1895,8 +1895,8 @@
     {
       "id": "M27-S02",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1905,8 +1905,8 @@
     {
       "id": "M27-S03",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1915,8 +1915,8 @@
     {
       "id": "M27-S04",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1925,8 +1925,8 @@
     {
       "id": "M27-S05",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1935,8 +1935,8 @@
     {
       "id": "M28-S01",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1945,8 +1945,8 @@
     {
       "id": "M28-S02",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1955,8 +1955,8 @@
     {
       "id": "M28-S03",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1965,8 +1965,8 @@
     {
       "id": "M28-S04",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1975,8 +1975,8 @@
     {
       "id": "M28-S05",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1985,8 +1985,8 @@
     {
       "id": "M29-S01",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -1995,8 +1995,8 @@
     {
       "id": "M29-S02",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2005,8 +2005,8 @@
     {
       "id": "M29-S03",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2015,8 +2015,8 @@
     {
       "id": "M29-S04",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2025,8 +2025,8 @@
     {
       "id": "M30-S01",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2035,8 +2035,8 @@
     {
       "id": "M30-S02",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2045,8 +2045,8 @@
     {
       "id": "M30-S03",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2055,8 +2055,8 @@
     {
       "id": "M30-S04",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2065,8 +2065,8 @@
     {
       "id": "M30-S05",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2075,8 +2075,8 @@
     {
       "id": "M31-S01",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2085,8 +2085,8 @@
     {
       "id": "M31-S02",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2095,8 +2095,8 @@
     {
       "id": "M31-S03",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2105,8 +2105,8 @@
     {
       "id": "M31-S04",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2115,8 +2115,8 @@
     {
       "id": "M31-S05",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2125,8 +2125,8 @@
     {
       "id": "M31-S06",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2135,8 +2135,8 @@
     {
       "id": "M32-S01",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2145,8 +2145,8 @@
     {
       "id": "M32-S02",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2155,8 +2155,8 @@
     {
       "id": "M32-S03",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2165,8 +2165,8 @@
     {
       "id": "M32-S04",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2175,8 +2175,8 @@
     {
       "id": "M32-S05",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2255,8 +2255,8 @@
     {
       "id": "M34-S01",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2265,8 +2265,8 @@
     {
       "id": "M34-S02",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2275,8 +2275,8 @@
     {
       "id": "M34-S03",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2285,8 +2285,8 @@
     {
       "id": "M34-S04",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2295,8 +2295,8 @@
     {
       "id": "M34-S05",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2305,9 +2305,9 @@
     {
       "id": "M35-S01",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
-      "tested": false,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
       "independently_reviewed": false,
       "clinically_reviewed": false,
       "accepted": false
@@ -2315,9 +2315,9 @@
     {
       "id": "M35-S02",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
-      "tested": false,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
       "independently_reviewed": false,
       "clinically_reviewed": false,
       "accepted": false
@@ -2325,9 +2325,9 @@
     {
       "id": "M35-S03",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
-      "tested": false,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
       "independently_reviewed": false,
       "clinically_reviewed": false,
       "accepted": false
@@ -2335,9 +2335,9 @@
     {
       "id": "M35-S04",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
-      "tested": false,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
       "independently_reviewed": false,
       "clinically_reviewed": false,
       "accepted": false
@@ -2345,9 +2345,9 @@
     {
       "id": "M35-S05",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
-      "tested": false,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
       "independently_reviewed": false,
       "clinically_reviewed": false,
       "accepted": false
@@ -2355,9 +2355,9 @@
     {
       "id": "M35-S06",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
-      "tested": false,
+      "designed": true,
+      "implemented": true,
+      "tested": true,
       "independently_reviewed": false,
       "clinically_reviewed": false,
       "accepted": false
@@ -2415,8 +2415,8 @@
     {
       "id": "M37-S01",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2425,8 +2425,8 @@
     {
       "id": "M37-S02",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2435,8 +2435,8 @@
     {
       "id": "M37-S03",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2445,8 +2445,8 @@
     {
       "id": "M37-S04",
       "specified": "baseline",
-      "designed": false,
-      "implemented": false,
+      "designed": true,
+      "implemented": true,
       "tested": false,
       "independently_reviewed": false,
       "clinically_reviewed": false,
@@ -2613,5 +2613,5 @@
       "accepted": false
     }
   ],
-  "checkpoint": "v0.57.0"
+  "checkpoint": "v0.62.0_unmerged_P07_PR5_candidate"
 }

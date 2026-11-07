@@ -1,0 +1,46 @@
+name: SYNQORIA P03 identity replay PostgreSQL integration
+on:
+  push:
+    branches:
+      - work/p03-oidc-replay-postgres-integration-2026-11-05
+  pull_request:
+    paths:
+      - services/identity/db/**
+      - apps/web/lib/oidc-replay-postgres.mjs
+      - tests/oidc_replay_postgres_integration.test.mjs
+      - .github/workflows/p03-replay-postgres-integration.yml
+permissions:
+  contents: read
+jobs:
+  postgres-replay-security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: test-only-never-use-production
+          POSTGRES_DB: synqoria_oidc_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d synqoria_oidc_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verify source-level unit tests
+        run: node --test tests/oidc_replay_postgres.test.mjs tests/oidc_one_use.test.mjs tests/oidc_code_exchange.test.mjs tests/oidc_token_introspection.test.mjs tests/oidc_staff_verification.test.mjs tests/oidc_login_flow.test.mjs
+      - name: Execute PostgreSQL migrations, permission and concurrency integration
+        run: node --test tests/oidc_replay_postgres_integration.test.mjs
+        env:
+          SYNQORIA_POSTGRES_INTEGRATION: "1"
+      - name: Verify canonical operational screen planning remains fail-closed
+        run: node --test tests/operational_240_one_cycle_plan.test.mjs tests/operational_gap_registry.test.mjs
+      - name: Scope statement
+        run: |
+          echo "Ephemeral PostgreSQL identity replay/RLS integration only."
+          echo "No production migration, IdP exchange, tenant clinical isolation, patient permission, 240-screen acceptance or certification verified."

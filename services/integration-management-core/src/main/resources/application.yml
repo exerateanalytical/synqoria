@@ -1,0 +1,22 @@
+server:
+  port: ${SYNQORIA_INTEGRATION_MANAGEMENT_PORT:8135}
+  error:
+    include-message: never
+spring:
+  application:
+    name: synqoria-integration-management-core
+  datasource:
+    url: ${SYNQORIA_INTEGRATION_MANAGEMENT_JDBC_URL}
+    username: ${SYNQORIA_INTEGRATION_MANAGEMENT_DB_USERNAME}
+    password: ${SYNQORIA_INTEGRATION_MANAGEMENT_DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 0
+  sql:
+    init:
+      mode: never
+synqoria:
+  integrations:
+    issuer: ${SYNQORIA_INTEGRATION_MANAGEMENT_OIDC_ISSUER}
+    audience: ${SYNQORIA_INTEGRATION_MANAGEMENT_OIDC_AUDIENCE}
+    role: ${SYNQORIA_INTEGRATION_MANAGEMENT_DB_ROLE:synqoria_integration_runtime}

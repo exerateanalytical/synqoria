@@ -1,0 +1,11 @@
+{
+  "id": "P07-B0148",
+  "title": "Ack must observe durable multi-stream causal receipts and audit/outbox parity",
+  "source": "services/clinical-core/src/main/java/org/synqoria/longitudinal/inboxops/InboxCausalAckBarrier.java",
+  "test": "services/clinical-core/src/test/java/org/synqoria/longitudinal/inboxops/InboxCausalAckBarrierTest.java",
+  "evidence": "evidence/v067/P07-B0148.log",
+  "exit_code": 0,
+  "focused_assertions": 5,
+  "verification": "Java21 pure policy tests only",
+  "clinical_release": "DENIED"
+}

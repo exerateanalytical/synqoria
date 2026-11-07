@@ -1,0 +1,22 @@
+name: P03 bounded OIDC/roster upstream HTTP transport
+on:
+  push:
+    branches:
+      - work/p03-b0094-b0123-runtime-build-2026-11-06
+permissions:
+  contents: read
+jobs:
+  bounded-identity-transport:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify HTTP B0112-B0116 adversarial body and response gates
+        run: node --test tests/identity_bounded_transport_response.test.mjs tests/identity_restricted_transport.test.mjs tests/identity_provider_preflight.test.mjs
+      - name: Regression verify full staff bootstrap and signed login composition
+        run: node --test tests/identity_production_integration.test.mjs
+      - name: Explicit clinical release lockdown
+        run: echo "Identity transport source-test only; no production IdP or clinical release."

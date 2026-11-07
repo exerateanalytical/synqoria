@@ -1,0 +1,24 @@
+name: P07 v0.67.0 Inbox admission and recovery checks (not certification)
+on:
+  push:
+    branches:
+      - work/longitudinal-inbox-admission-v067
+  pull_request:
+    paths:
+      - 'services/clinical-core/src/main/java/org/synqoria/longitudinal/inboxops/**'
+      - 'services/clinical-core/src/test/java/org/synqoria/longitudinal/inboxops/**'
+      - 'tools/check_v067_inboxops.sh'
+jobs:
+  inbox-policy-unit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Compile and individually execute all thirty policy test classes
+        run: bash tools/check_v067_inboxops.sh

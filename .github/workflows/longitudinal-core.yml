@@ -1,0 +1,36 @@
+name: P07 M04-M06 internal domain regression (not certification)
+on:
+  push:
+    branches: ["work/clinical-encounter-documentation-v060"]
+  pull_request:
+    paths:
+      - 'services/clinical-core/src/**'
+      - 'tools/check_longitudinal.sh'
+      - 'tools/run_v600_batches.py'
+      - 'registers/**'
+      - 'tests/test_baseline.py'
+      - 'tests/test_v240_checkpoint.py'
+jobs:
+  longitudinal-domain-tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile and test individual M04-M06 domain operations
+        run: bash tools/check_longitudinal.sh
+      - name: Upload synthetic test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: longitudinal-domain-test-evidence
+          path: evidence/v600/
+          retention-days: 14

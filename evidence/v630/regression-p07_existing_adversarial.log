@@ -1,0 +1,4 @@
+command=["java", "-ea", "-cp", ".v630-classes", "org.synqoria.longitudinal.ClinicalBoundaryAdversarialTest"]
+exit_code=0
+PASS 35 adversarial assertions for longitudinal clinical core
+

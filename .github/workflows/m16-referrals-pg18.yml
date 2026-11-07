@@ -1,0 +1,57 @@
+name: M16 referral Java25/27 PostgreSQL18.6 evidence lifecycle
+on:
+  push:
+    branches: [work/chatgpt-m16-referrals-2026-11-07]
+  pull_request:
+    paths: ['services/referrals-core/**','.github/workflows/m16-referrals-pg18.yml']
+permissions:
+  contents: read
+jobs:
+  java:
+    strategy:
+      matrix:
+        java: ['25','27']
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: maven
+          cache-dependency-path: services/referrals-core/pom.xml
+      - name: Compile and run M16 refusal/transition tests
+        working-directory: services/referrals-core
+        run: mvn -B -ntp test
+  real-postgres:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+          cache-dependency-path: services/referrals-core/pom.xml
+      - name: Start disposable PostgreSQL18.6
+        run: |
+          set -euo pipefail
+          docker run -d --name m16-pg -e POSTGRES_PASSWORD=m16-admin-ci -e POSTGRES_DB=m16_ci -p 127.0.0.1:5432:5432 postgres:18.6
+          for i in $(seq 1 60); do
+            docker exec m16-pg psql -U postgres -d m16_ci -Atc 'SELECT 1' 2>/dev/null | grep -qx 1 && break
+            sleep 1
+          done
+          docker exec m16-pg psql -U postgres -d m16_ci -Atc 'SHOW server_version'
+      - name: Real JDBC referral consent receiving evidence and FORCE RLS
+        working-directory: services/referrals-core
+        env:
+          SYNQORIA_M16_PG_TEST: '1'
+          SYNQORIA_M16_TEST_JDBC_URL: jdbc:postgresql://127.0.0.1:5432/m16_ci
+          SYNQORIA_M16_TEST_ADMIN_USER: postgres
+          SYNQORIA_M16_TEST_ADMIN_PASSWORD: m16-admin-ci
+        run: mvn -B -ntp -Dtest=ReferralPgIntegrationTest test
+      - name: Clinical acceptance explicitly withheld
+        if: always()
+        run: echo 'External test evidence is synthetic. Patient referral/transfer institutional release denied.'

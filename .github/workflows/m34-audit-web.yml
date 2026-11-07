@@ -1,0 +1,58 @@
+name: M34 audit five-screen Next16 React19 build
+on:
+  push:
+    branches:
+      - work/chatgpt-m34-audit-provenance-2026-11-07
+  pull_request:
+    paths:
+      - 'apps/web/components/audit/**'
+      - 'apps/web/lib/audit/**'
+      - 'apps/web/app/workforce/audit/**'
+      - 'apps/web/app/api/audit/**'
+      - 'tests/m34_audit_frontend.test.mjs'
+      - '.github/workflows/m34-audit-web.yml'
+permissions:
+  contents: read
+jobs:
+  audit-next:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - name: Fetch PR23 exact SHA-pinned lockfile in isolated runner
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin refs/heads/work/reproducible-npm-lock-candidate-2026-11-05:refs/remotes/origin/m34-pr23
+          git show refs/remotes/origin/m34-pr23:package-lock.json > package-lock.json
+          echo "6fa90a4aa72db790d86b7782d45ced40389b5f8987da65138fae7548b5f9eb2b  package-lock.json" | sha256sum -c -
+      - name: Review PR24 native package compatibility and latest GA Next React overlay only in runner
+        run: |
+          git fetch --no-tags origin refs/heads/work/real-next-expo-build-corrections-2026-11-05:refs/remotes/origin/m34-pr24
+          for path in apps/staff-mobile/package.json apps/patient-mobile/package.json; do
+            git show "refs/remotes/origin/m34-pr24:$path" > "$path"
+          done
+          node - <<'NODE'
+          const fs=require('node:fs'),path='apps/web/package.json';
+          const web=JSON.parse(fs.readFileSync(path,'utf8'));
+          web.dependencies.next='16.4.5';
+          web.dependencies.react='19.3.1';
+          web.dependencies['react-dom']='19.3.1';
+          web.devDependencies['@types/react']='19.3.0';
+          fs.writeFileSync(path,JSON.stringify(web,null,2)+'\n');
+          NODE
+      - name: Recompute compatible lock and install dependencies only in CI
+        run: |
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          npm ci --no-audit --no-fund
+      - name: Verify real five M34 workstations and browser API route safety
+        run: node --test tests/m34_audit_frontend.test.mjs
+      - name: Build UX core and M34 canonical workstations
+        run: |
+          npm run build --workspace @synqoria/ux-core
+          npm run build --workspace @synqoria/web
+      - name: Preserve hospital acceptance boundary
+        if: always()
+        run: echo "M34 SHA256 metadata-only source and synthetic builds. No legal, hospital or clinical certification."

@@ -1,0 +1,45 @@
+name: SYNQORIA P03 restricted staff-session janitor
+on:
+  push:
+    branches:
+      - work/p03-audited-authorization-hardening-2026-11-05
+  pull_request:
+    paths:
+      - apps/web/lib/expired-staff-session-janitor.mjs
+      - tests/expired_staff_session_janitor.test.mjs
+      - tests/expired_staff_session_janitor_postgres.test.mjs
+      - services/identity/db/staff_session_janitor_v1.sql
+      - .github/workflows/p03-session-janitor.yml
+permissions:
+  contents: read
+jobs:
+  janitor-rls-postgres:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: test-only-never-use-production
+          POSTGRES_DB: synqoria_oidc_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d synqoria_oidc_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: B0046 janitor parameterization, bounds and error handling
+        run: node --test tests/expired_staff_session_janitor.test.mjs
+      - name: B0046 identity DB roles, six-session concurrency and active ticket protection
+        run: node --test tests/expired_staff_session_janitor_postgres.test.mjs
+        env:
+          SYNQORIA_POSTGRES_INTEGRATION: "1"
+      - name: Preserve earlier staff-session regressions
+        run: node --test tests/opaque_staff_session.test.mjs tests/postgres_staff_session_store.test.mjs
+      - name: Scope
+        run: echo "Disposable PostgreSQL only; production role deployment and clinical certification not tested."

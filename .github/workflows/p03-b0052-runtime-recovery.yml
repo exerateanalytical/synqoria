@@ -1,0 +1,18 @@
+name: P03 B0052 runtime recovery proof
+on:
+  push:
+    branches:
+      - work/p03-b0052-runtime-recovery-2026-11-06
+permissions:
+  contents: read
+jobs:
+  runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node --test tests/staff_identity_runtime.test.mjs
+      - run: node --test tests/audited_staff_login.test.mjs tests/oidc_staff_service.test.mjs

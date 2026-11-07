@@ -1,0 +1,7 @@
+P07-B0144 | ProjectionCompareSwap
+INDIVIDUAL_TEST_CMD: java -cp .classes/144 org.synqoria.longitudinal.inboxops.InboxProjectionCompareSwapTest
+EXIT_CODE: 0
+PASS P07-B0144 ProjectionCompareSwap assertions=6
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 56262e14bd8915aa9b6f18a11815c882d22d817973c7991446b7ab7d2ab98a70
+TEST_SHA256: c68328181ed2ebbe44fc969aaa2ecc12eceb90f3c51a167dbb9042835285ff0e

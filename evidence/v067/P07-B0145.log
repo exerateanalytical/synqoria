@@ -1,0 +1,7 @@
+P07-B0145 | ConsumerCheckpointLease
+INDIVIDUAL_TEST_CMD: java -cp .classes/145 org.synqoria.longitudinal.inboxops.InboxConsumerCheckpointLeaseTest
+EXIT_CODE: 0
+PASS P07-B0145 ConsumerCheckpointLease assertions=5
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 0ce642be98de0217a716907d9e0fc53e0a335f9d36c6adcec469fb9b60acca70
+TEST_SHA256: 48ed18818b1d05370402a940e9a4cb0ce892477e4e62c9a444b0803fd551e894

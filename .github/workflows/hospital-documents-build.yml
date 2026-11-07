@@ -1,0 +1,32 @@
+name: SYNQORIA hospital document template contracts and Next build
+on:
+  push:
+    branches: [work/hospital-document-templates-2026-11-05]
+  pull_request:
+    paths:
+      - "apps/web/app/documents/**"
+      - "registers/hospital-document-*.json"
+      - "tests/hospital_documents_*.mjs"
+permissions:
+  contents: read
+jobs:
+  documents-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check template completeness and safety invariants
+        run: node --test tests/hospital_documents_contract.test.mjs
+      - name: Install workspaces without lifecycle scripts
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Compile UX-core
+        run: npm run build --workspace packages/ux-core
+      - name: Strict web TypeScript check
+        run: npm exec --workspace apps/web -- tsc --noEmit
+      - name: Production build of all document and UI routes
+        run: npm run build --workspace apps/web
+      - name: Explain scope limitation
+        run: echo "Passed build is only a sample print template milestone, not a legal/clinical document certification"

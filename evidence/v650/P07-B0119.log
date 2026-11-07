@@ -1,0 +1,5 @@
+$ javac ... LongitudinalInboxOutboxParity.java LongitudinalInboxOutboxParityTest.java (with API-compatible local EventRef stub)
+$ java -cp /mnt/data/synqoria_v065_classes org.synqoria.longitudinal.LongitudinalInboxOutboxParityTest
+PASS P07-B0119 outbox/inbox parity 7 assertions
+EXIT_CODE=0
+NOTE: Full upstream v0.63 branch compilation NOT run.

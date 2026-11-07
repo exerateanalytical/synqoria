@@ -1,0 +1,402 @@
+{
+  "version": "0.62.0",
+  "base": "v0.61.0 P07-B0070 PR4 worktree",
+  "requested_batched_features": 100,
+  "attempted": 23,
+  "completed": 23,
+  "remaining_requested": 77,
+  "compile_source_files": 243,
+  "compile_test_files": 142,
+  "java_compile_exit": 0,
+  "checks": [
+    {
+      "batch": "P07-B0071",
+      "module": "M04/M05/M06",
+      "implementation": "bounded deterministic aggregate snapshot codec",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalDurabilityTest",
+        "snapshot"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0071.log",
+      "log_sha256": "14bdc7b6ce3d5c13bc7e8431c8626e62b15af6743ba323fc4152f922cd51dc76"
+    },
+    {
+      "batch": "P07-B0072",
+      "module": "M05",
+      "implementation": "preservation of signed and immutable note state",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalDurabilityTest",
+        "signed-note"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0072.log",
+      "log_sha256": "d9943a19443fca1632da4949c1ddec7c07e6f60a8f50d0afb7cef3bb5fd4ddf7"
+    },
+    {
+      "batch": "P07-B0073",
+      "module": "M06",
+      "implementation": "round-trip observation correction chain and status",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalDurabilityTest",
+        "observation-corrections"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0073.log",
+      "log_sha256": "6942c5d665414bb96748ac1882c9854c89aa9d030645ab8864385bb66be0d2b7"
+    },
+    {
+      "batch": "P07-B0074",
+      "module": "M04/M05/M06",
+      "implementation": "audit, outbox and idempotency receipt round-trip integrity",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalDurabilityTest",
+        "audit-receipts"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0074.log",
+      "log_sha256": "bbc7e2c01a67c2d530af0bf4e0774a17d414bd1b5f75779abd2f60b100902592"
+    },
+    {
+      "batch": "P07-B0075",
+      "module": "M04/M05/M06",
+      "implementation": "encrypted AES-256-GCM clinical aggregate envelopes",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalDurabilityTest",
+        "envelope-aad"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0075.log",
+      "log_sha256": "85426c8d8b54fbd69fb5041d0043ef871174d24f7d3f0b6310275f979a76b7fb"
+    },
+    {
+      "batch": "P07-B0076",
+      "module": "M04/M05/M06",
+      "implementation": "patient/facility/encounter/revision authentication via AAD",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalDurabilityTest",
+        "scope-integrity"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0076.log",
+      "log_sha256": "38529d25007a1b5c8f35e5ff8282b5c49b1078ad591d7d9e28e0e197abe82c91"
+    },
+    {
+      "batch": "P07-B0077",
+      "module": "M04/M05/M06",
+      "implementation": "snapshot tamper, bounds and malformed Unicode rejection",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalDurabilityTest",
+        "snapshot-tampering"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0077.log",
+      "log_sha256": "c1ac01d1a0ddf27522f9c54aab30ed7cb4c2f3b5bd4d2dd3d6a8109c5993070b"
+    },
+    {
+      "batch": "P07-B0078",
+      "module": "M04/M05/M06",
+      "implementation": "transaction-local PostgreSQL scope echo fail-closed",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalJdbcContractTest",
+        "scope-echo"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0078.log",
+      "log_sha256": "f724713ec2ec48296ecde2541cb5a74cad78bdf1161afece638e74338071499a"
+    },
+    {
+      "batch": "P07-B0079",
+      "module": "M04/M05/M06",
+      "implementation": "encrypted row-locked JDBC case read with local scope",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalJdbcContractTest",
+        "read"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0079.log",
+      "log_sha256": "4a31f5053323ba1ea7b6c090e858ba4f5eb52d3a7a8ae2babceeea2f4cfe2566"
+    },
+    {
+      "batch": "P07-B0080",
+      "module": "M04/M05/M06",
+      "implementation": "JDBC persisted audit/receipt/outbox correlation validation",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalJdbcContractTest",
+        "missing-receipt"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0080.log",
+      "log_sha256": "1cbe7f1a0985cbfa2eb53ac7e5ea551ce4bb3e7c1c3e87afe9c498602b74783c"
+    },
+    {
+      "batch": "P07-B0081",
+      "module": "M04/M05/M06",
+      "implementation": "optimistic revision compare-and-swap write denial",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalJdbcContractTest",
+        "cas-conflict"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0081.log",
+      "log_sha256": "69d462c4f4481da15f6f9c09ffaa53d9d4d22fcfaeae89335b48cb53e0a9ff5d"
+    },
+    {
+      "batch": "P07-B0082",
+      "module": "M04/M05/M06",
+      "implementation": "atomic aggregate audit receipt outbox JDBC insert contract",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalJdbcContractTest",
+        "write"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0082.log",
+      "log_sha256": "e083633d15784aabac83cb2762d7c9cf073e5a5e04a82d18a561359712c5bd27"
+    },
+    {
+      "batch": "P07-B0083",
+      "module": "M04/M05/M06",
+      "implementation": "replay-safe database-rehydrated idempotency",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalJdbcContractTest",
+        "replay"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0083.log",
+      "log_sha256": "5bfb3d95368a9865205d6966a1543bb2a72c05d9f7ca0e6799063caecbb06138"
+    },
+    {
+      "batch": "P07-B0084",
+      "module": "M04/M05/M06",
+      "implementation": "transaction rollback on outbox write failure",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalJdbcContractTest",
+        "atomic-rollback"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0084.log",
+      "log_sha256": "804bd6be956d3ba6b00910c92e75c7dc7093861ab96a6286f09d49dcc820d869"
+    },
+    {
+      "batch": "P07-B0085",
+      "module": "M04/M05/M06",
+      "implementation": "quarantined V020 restricted-row RLS/append-only DDL",
+      "test_command": [
+        "python",
+        "-m",
+        "unittest",
+        "tests.test_v620_quarantine",
+        "-v"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0085.log",
+      "log_sha256": "add1c70019864230d2126897ecc5926810d5935c72d49358c18d9c7932600e4b"
+    },
+    {
+      "batch": "P07-B0086",
+      "module": "M04",
+      "implementation": "backend authorized planned encounter initialization",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalJdbcContractTest",
+        "provision"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0086.log",
+      "log_sha256": "d3b982c296d1836a67eb6951b6bdc2a758ca51a1c80f073711f40ca5a4106dd1"
+    },
+    {
+      "batch": "P07-B0087",
+      "module": "M04",
+      "implementation": "fail-closed duplicate and revoked provisioning rejection",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalJdbcContractTest",
+        "provision-denied"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0087.log",
+      "log_sha256": "838d75c6c7d5102fa32875464cefee76ffba91ef89ebe69c5c8945d0e17eeb3e"
+    },
+    {
+      "batch": "P07-B0088",
+      "module": "M04/M05/M06",
+      "implementation": "restricted trust-to-JDBC-to-HTTP loopback wiring",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalJDBCWireLoopbackTest"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0088.log",
+      "log_sha256": "abdf3d8d33f3c553a2a005b97516ff84b5b6dec8e64bff6dcf9a1c52a2872199"
+    },
+    {
+      "batch": "P07-B0089",
+      "module": "M05",
+      "implementation": "patient-scoped note index with confidential visibility and bounded pagination",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalSupplementalReadsTest",
+        "note-index"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0089.log",
+      "log_sha256": "6856175842f6e4f1cfa01366d0b76c0c62e86e31e434727b94bc5abf8bd0be3c"
+    },
+    {
+      "batch": "P07-B0090",
+      "module": "M06",
+      "implementation": "bidirectional observation correction lineage and bounded HTTP read",
+      "test_command": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v62_work/.v620-classes",
+        "org.synqoria.longitudinal.LongitudinalSupplementalReadsTest",
+        "lineage"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0090.log",
+      "log_sha256": "5f671c9efac207e2bea64798a6390c8214ce693af1a8e764f9ca6006da67a373"
+    },
+    {
+      "batch": "P07-B0091",
+      "module": "M05",
+      "implementation": "TypeScript scoped note index response decoder and GET client",
+      "test_command": [
+        "node",
+        "--test",
+        "--test-name-pattern=B0091",
+        "packages/ux-core/tests/longitudinal-client-v62.test.cjs"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0091.log",
+      "log_sha256": "874cc60f3f28e3972274be7f38a91182c7e069752232fa133fc4a53fba6a299a"
+    },
+    {
+      "batch": "P07-B0092",
+      "module": "M06",
+      "implementation": "TypeScript observation lineage privacy and stale-response guard",
+      "test_command": [
+        "node",
+        "--test",
+        "--test-name-pattern=B0092",
+        "packages/ux-core/tests/longitudinal-client-v62.test.cjs"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0092.log",
+      "log_sha256": "aa23c51d1f5be602cf3ee58909f8c3d21ccf80a6175211925fa4284949208c98"
+    },
+    {
+      "batch": "P07-B0093",
+      "module": "M04/M05/M06",
+      "implementation": "versioned private read OpenAPI contract and backend parity",
+      "test_command": [
+        "python",
+        "-m",
+        "unittest",
+        "tests.test_longitudinal_contract",
+        "-v"
+      ],
+      "test_exit": 0,
+      "passed": true,
+      "log": "evidence/v620/P07-B0093.log",
+      "log_sha256": "2c954e8115da967c3feeee18066dfc18da0720785a2e0797e0aba45e9a260ec0"
+    }
+  ],
+  "run_at_utc": "2026-10-31T17:46:35.741013+00:00",
+  "real_postgresql_integration": false,
+  "production_oidc_and_mfa": false,
+  "clinical_certification": "DEFERRED_NOT_PASSED",
+  "note": "Test cases are synthetic Java/JDBC protocol and privacy/source contracts; no live PostgreSQL or device test."
+}
