@@ -1,7 +1,7 @@
 {
   "schemaVersion": "synqoria.reconciliation.v1",
-  "generatedAtUtc": "2026-11-07T12:52:56+00:00",
-  "mainShaInspected": "8ce6f891827080b9fee270cbd896c171a5037167",
+  "generatedAtUtc": "2026-11-07T13:55:51+00:00",
+  "mainShaInspected": "46c0e240cabd1735a3c0a5632091bb3b4c6d2e21",
   "canonical": {
     "plannedModules": 40,
     "canonicalScreens": 261
@@ -16,12 +16,12 @@
   },
   "summary": {
     "moduleEntries": 40,
-    "modulesWithPathSignals": 12,
-    "modulesWithoutPathSignals": 28,
+    "modulesWithPathSignals": 13,
+    "modulesWithoutPathSignals": 27,
     "confirmedUnbuiltModules": null,
     "confirmedFullyBuiltModules": null,
     "clinicallyAcceptedModules": 0,
-    "openPrs": 1
+    "openPrs": 2
   },
   "activeWork": {
     "claude": {
@@ -75,8 +75,16 @@
     {
       "number": 56,
       "title": "M38 offline device client + sync integration (SDK, PWA device panel, interop) - partial per #53",
-      "head": "41751410bb5e353ab8a0d61ab6841c9a573e48b7",
+      "head": "909fd8ec7986f659306400d029b4ae0c12c95f7c",
       "branch": "work/claude-m38-device-client-integration-2026-11-07",
+      "base": "main",
+      "draft": false
+    },
+    {
+      "number": 65,
+      "title": "M01-M37 forensic reconciliation: evidence registers, validator, ranked backlog (Issue #60) - partial, inventory only",
+      "head": "f15932b70fd127c91bcfd8dd0156a55a530385b6",
+      "branch": "work/claude-m01-m37-forensic-reconciliation-2026-11-07",
       "base": "main",
       "draft": false
     }
@@ -301,9 +309,11 @@
     },
     {
       "id": "M22",
-      "codeSignals": 0,
-      "exampleSourcePaths": [],
-      "sourceEvidence": "not_located_by_path_heuristic",
+      "codeSignals": 1,
+      "exampleSourcePaths": [
+        "services/operations-core/db/migration/V011__m22_scoped_stock_count_review.sql"
+      ],
+      "sourceEvidence": "located",
       "implementation": "evidence_review_required",
       "productionIntegrated": "not_verified",
       "clinicalAccepted": false,
