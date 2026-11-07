@@ -1,7 +1,7 @@
 // Privacy and threat checks that can be proven statically or by direct execution (package 28). They do not replace a penetration test.
 import test from "node:test";
 import assert from "node:assert/strict";
-import {readFileSync, readdirSync} from "node:fs";
+import {readFileSync, readdirSync, existsSync} from "node:fs";
 import {join, dirname} from "node:path";
 import {fileURLToPath} from "node:url";
 import {Transport} from "../src/index.ts";
@@ -31,8 +31,10 @@ test("the CSRF value is read only in device.ts, sent only on writes, and tokens 
  const t = readFileSync(join(src, "transport.ts"), "utf8");
  assert.ok(/credentials: "same-origin"/.test(t) && /cache: "no-store"/.test(t));
  assert.ok(!/Authorization/.test(t), "the SDK never sets Authorization; the HttpOnly cookie plus the server-side proxy do");
- const session = readFileSync(join(web, "app", "api", "offline", "session", "route.ts"), "utf8");
- assert.ok(session.includes("NextResponse.json(r.session,") && !/NextResponse\.json\([^)]*token/.test(session) && session.includes("Cache-Control"), "the session route returns only the verified identifiers and expiry");
+ assert.ok(device.includes("/api/operations/auth/verified-session"), "identity comes from the P03 verified-session endpoint");
+ assert.ok(!existsSync(join(web, "app", "api", "offline", "session")) && !existsSync(join(web, "lib", "offline", "identity.ts")), "the local unverified/adapter session decoder is gone");
+ const p03 = readFileSync(join(web, "app", "api", "operations", "auth", "verified-session", "route.ts"), "utf8");
+ assert.ok(p03.includes("verifiedOperationsSession") && p03.includes("no-store") && !/jwt-decode|atob\(|split\("\."\)/.test(p03), "P03 route verifies cryptographically and never decodes unverified payloads");
 });
 
 test("GET requests carry no CSRF header or idempotency key; every write carries both", async () => {

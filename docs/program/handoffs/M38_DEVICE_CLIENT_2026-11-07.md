@@ -140,8 +140,8 @@ Re-run with `node packages/offline-device-sdk/browser-check/serve.mjs` and open 
 * A wiped device loses unsent changes by design; the UI warns before wiping.
 
 ## 7. Verification evidence
-* `node --test packages/offline-device-sdk/tests/` -> **48 pass, 0 fail, 16 skipped** (core 13, sync 19, interop 7, security 4, scheduler 3, idb 3; the 16 skipped are the 11 live-rig and 5 proxy-e2e tests, which run only with the rig).
-* **Proxy end-to-end** (`tests/e2e/launch.mjs`, real Next route handlers + real service + PostgreSQL 18): **6 pass**. `node --test tests/m38_identity.test.mjs` -> **4 pass**.
+* `node --test packages/offline-device-sdk/tests/` -> **49 pass, 0 fail, 18 skipped** (core 13, sync 19, interop 7, security 5, scheduler 3, idb 3; the 18 skipped are the 11 live-rig and 7 proxy-e2e tests, which run only with the rig).
+* **Proxy end-to-end** (`tests/e2e/launch.mjs`, real Next route handlers incl. P03's verified-session route + real service + PostgreSQL 18): **7 pass**. P03's own `verified_oidc_session` + `operations_verified_session` tests run in the same CI job (13 frontend + 11 P03 = 24 pass).
 * **Live rig** (`SYNQORIA_LIVE_RIG=1`, real service jar + PostgreSQL 18 + HTTPS OIDC issuer + openssl/keytool): **11 pass, 0 fail**; the CI jobs `live-rig` and `proxy-e2e` run them on every push.
 * `tsc -p packages/offline-device-sdk/tsconfig.json` (TypeScript 5.8.3, strict, `erasableSyntaxOnly`) -> no errors. Web DevicePanel/device.ts/session route type-check under the web tsconfig flags (css-module declaration supplied by Next).
 * `python tests/test_m38_device_sdk_contract.py` -> 9 routes, contract 1.0.0; negative run (renamed route and field) fails as intended.
