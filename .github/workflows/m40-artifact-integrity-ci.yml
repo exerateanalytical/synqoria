@@ -1,0 +1,27 @@
+name: SYNQORIA M40 artifact integrity utility (synthetic only)
+on:
+  pull_request:
+    paths:
+      - 'tools/m40_verify_backup_artifact.py'
+      - 'tests/test_m40_backup_artifact.py'
+      - '.github/workflows/m40-artifact-integrity-ci.yml'
+  push:
+    paths:
+      - 'tools/m40_verify_backup_artifact.py'
+      - 'tests/test_m40_backup_artifact.py'
+      - '.github/workflows/m40-artifact-integrity-ci.yml'
+permissions:
+  contents: read
+jobs:
+  synthetic-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Test real local file reads using synthetic fixtures
+        run: python -m unittest discover -s tests -p 'test_m40_backup_artifact.py' -v
+      - name: Scope disclaimer
+        run: echo 'Digest and size checking only; not a restore/PITR test or hospital recovery acceptance.'
