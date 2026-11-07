@@ -137,7 +137,7 @@ public final class MortuaryStore {
    "WHERE cell_id=? AND facility_id=? AND decedent_ref=? " +
    "AND case_id IS NOT DISTINCT FROM ?::uuid AND for_action=? AND expected_version=? " +
    "AND proof_kind=? AND external_ref=? AND approved_by<>? AND revoked_at IS NULL " +
-   "AND valid_from<=clock_timestamp() AND valid_until>clock_timestamp() FOR SHARE",
+   "AND valid_from<=clock_timestamp() AND valid_until>clock_timestamp()",
    (rs,i)->rs.getObject("proof_id",UUID.class),
    actor.cell(),actor.facility(),decedent,id,action,version,kind,ref,actor.actor());
   if(found.isEmpty())throw new WorkflowViolation("independent_mortuary_evidence_required");
@@ -155,7 +155,7 @@ public final class MortuaryStore {
    "SELECT actor_id FROM synqoria_operations.workforce_grants "+
    "WHERE cell_id=? AND facility_id=? AND actor_id=? AND active "+
    "AND shift_from<=clock_timestamp() AND shift_until>clock_timestamp() "+
-   "AND valid_until>clock_timestamp() AND 'm27:custody_receive'=ANY(permissions) FOR SHARE",
+   "AND valid_until>clock_timestamp() AND 'm27:custody_receive'=ANY(permissions)",
    (rs,i)->rs.getObject("actor_id",UUID.class),actor.cell(),actor.facility(),id);
   if(accepted.size()!=1)throw new WorkflowViolation("custody_receiver_not_on_shift");
  }
@@ -191,6 +191,9 @@ public final class MortuaryStore {
   return scoped(actor,()->{
    UUID prior=start(actor,cmd,hash);
    if(prior!=null)return replay(actor,prior,1);
+   // Synchronize intake against independent proof issuance/revocation.
+   jdbc.queryForList("SELECT pg_advisory_xact_lock(hashtextextended(?::text,27))",
+    deceased.toString());
    // Never create a death record from an unverified/administrative claim.
    proof(actor,deceased,null,"RECEIVE",0,"DEATH_CONFIRMED",death);
    proof(actor,deceased,null,"RECEIVE",0,"IDENTITY_ATTESTED",intake);
