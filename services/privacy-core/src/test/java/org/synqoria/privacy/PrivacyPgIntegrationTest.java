@@ -50,6 +50,7 @@ class PrivacyPgIntegrationTest {
   admin.execute("DROP SCHEMA IF EXISTS synqoria_privacy CASCADE");
   try(Connection c=administrator.getConnection();Statement s=c.createStatement()){
    s.execute(Files.readString(Path.of("db","migration","V001__m32_consent_privacy_governance.sql")));
+   s.execute(Files.readString(Path.of("db","migration","V002__m32_evidence_revocation_advisory_fence.sql")));
   }
   var runtime=ds("synqoria_privacy_runtime","m32-ci-only");
   store=new PrivacyStore(new JdbcTemplate(runtime),JsonMapper.builder().build(),

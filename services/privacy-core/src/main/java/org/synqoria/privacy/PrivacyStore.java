@@ -99,12 +99,14 @@ public class PrivacyStore {
   * FOR SHARE prevents a concurrent independent issuer revocation from racing this check.
   */
  private void attested(Actor actor,Map<String,Object> directive,UUID proof){
+  jdbc.queryForObject("SELECT pg_advisory_xact_lock(hashtextextended(?::text,32))",
+   Long.class,proof.toString());
   var matches=jdbc.queryForList(
    "SELECT proof_id FROM synqoria_privacy.authority_evidence "+
    "WHERE cell_id=? AND facility_id=? AND proof_id=? AND subject_ref=? "+
    "AND purpose=? AND recipient=? AND operation=? AND approved_by<>? "+
    "AND revoked_at IS NULL AND valid_from<=clock_timestamp() AND valid_until>clock_timestamp() "+
-   "FOR SHARE",actor.cell(),actor.facility(),proof,directive.get("subject_ref"),
+   "",actor.cell(),actor.facility(),proof,directive.get("subject_ref"),
    directive.get("purpose"),directive.get("recipient"),directive.get("operation"),actor.id());
   if(matches.size()!=1)throw new Problem("authority_evidence_required");
  }
@@ -116,6 +118,8 @@ public class PrivacyStore {
   if(!allowed("ACTIVE",start,until,now,true))return false;
   UUID proof=(UUID)d.get("proof_id");
   if(proof==null)return false;
+  jdbc.queryForObject("SELECT pg_advisory_xact_lock(hashtextextended(?::text,32))",
+    Long.class,proof.toString());
   // Validated for the actual subject/scope, but do not require a different checker here:
   // the original checker and the reader may be the same person at a later time.
   Long n=jdbc.queryForObject(

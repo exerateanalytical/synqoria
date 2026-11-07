@@ -18,3 +18,8 @@ No merge into main; clinical, institutional and jurisdiction-specific legal sign
 ## Hard acceptance gates
 Current unit + synthetic PG tests are engineering checks, **not** proof of compliance, real legal authority or deployment. Real consent signer identity/proxy authority, clinical policy and time-of-use downstream enforcement, signed objects, certificate/retention jurisdiction profiles, staff OIDC grant issuance, external source revocation, clinical risk review, penetration and accessibility testing remain open.
 Other workstreams: Claude M26/M24/M28/M30/M38/M39/M40; ChatGPT M27 and planned M34; identity P03 and clinical P06/P07 own their domains.
+
+## V002 — independent evidence read-only and revocation serializing fence
+- PostgreSQL row locking on evidence would require stronger runtime table privileges; the initial PG18 integration caught this mismatch.
+- Runtime retains SELECT-only access; a transaction-scoped proof-ID advisory fence coordinates current proof validation with independent issuer revocation, and neither side may rewrite proof scope or undo revocation.
+- PostgreSQL18.6 tests must pass at the exact pushed SHA before checkpoint is counted. No real issuer is connected yet.
