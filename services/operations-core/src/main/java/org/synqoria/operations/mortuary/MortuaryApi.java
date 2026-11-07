@@ -44,6 +44,10 @@ public final class MortuaryApi {
  public List<CustodyView> custody(@PathVariable UUID id,@AuthenticationPrincipal Jwt jwt){
   return store.custodyHistory(admission.requireAuthoritativeGrant(jwt),id);
  }
+ @GetMapping("/cases/{id}/holds")
+ public List<HoldView> holds(@PathVariable UUID id,@AuthenticationPrincipal Jwt jwt){
+  return store.legalHolds(admission.requireAuthoritativeGrant(jwt),id);
+ }
  @GetMapping("/cases/{id}/approvals")
  public List<ApprovalView> approvals(@PathVariable UUID id,@AuthenticationPrincipal Jwt jwt){
   return store.approvals(admission.requireAuthoritativeGrant(jwt),id);

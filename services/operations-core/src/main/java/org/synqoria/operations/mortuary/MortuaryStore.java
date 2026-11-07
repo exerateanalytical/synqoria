@@ -423,6 +423,24 @@ public final class MortuaryStore {
     actor.cell(),actor.facility(),id);
   });
  }
+
+ /** Only independently approved release reviewers can inspect administrative/court holds. */
+ public List<HoldView> legalHolds(OperationWorkflow.Actor actor,UUID id){
+  actor.require("m27:review");
+  return scoped(actor,()->{
+   load(actor,nonNull(id),false);
+   return jdbc.query("SELECT hold_id,authority_ref,reason_code,active,ordered_at,rescinded_at "+
+    "FROM synqoria_operations.mortuary_legal_holds "+
+    "WHERE cell_id=? AND facility_id=? AND case_id=? ORDER BY ordered_at DESC LIMIT 100",
+    (rs,i)->{
+     var rescinded=rs.getTimestamp("rescinded_at");
+     return new HoldView(rs.getObject("hold_id",UUID.class),
+      rs.getString("authority_ref"),rs.getString("reason_code"),rs.getBoolean("active"),
+      rs.getTimestamp("ordered_at").toInstant(),
+      rescinded==null?null:rescinded.toInstant());
+    },actor.cell(),actor.facility(),id);
+  });
+ }
  public List<ApprovalView> approvals(OperationWorkflow.Actor actor,UUID id){
   actor.require("m27:review");
   return scoped(actor,()->{

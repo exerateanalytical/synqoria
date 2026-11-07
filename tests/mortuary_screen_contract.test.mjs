@@ -32,7 +32,7 @@ test("M27 workstations use a separate five-screen layout with OIDC BFF, CSRF and
  assert.match(ui,/role="alert"/);
  assert.match(ui,/screenId/);
  const proxy=read("apps/web/app/api/operations/proxy/[...segments]/route.ts");
- for(const token of ["mortuaryActions","mortuaryCustody","mortuaryApprovals","mortuaryAudit","mortuaryList"]){
+ for(const token of ["mortuaryActions","mortuaryCustody","mortuaryApprovals","mortuaryHolds","mortuaryAudit","mortuaryList"]){
   assert.match(proxy,new RegExp(token));
  }
  assert.match(proxy,/opsCheckCsrf/);
@@ -53,4 +53,15 @@ test("Mortuary SQL schema denies external authority spoofing and enforces signed
  assert.match(sql,/GRANT SELECT ON synqoria_operations\.mortuary_legal_holds/);
  assert.match(sql,/UNIQUE\(cell_id,facility_id,case_id,stage\)/);
  assert.match(sql,/UNIQUE\(cell_id,facility_id,case_id,actor_id\)/);
+});
+
+test("Legal holds are viewed only through the role-scoped staff gateway",()=>{
+ const api=read("services/operations-core/src/main/java/org/synqoria/operations/mortuary/MortuaryApi.java");
+ const store=read("services/operations-core/src/main/java/org/synqoria/operations/mortuary/MortuaryStore.java");
+ const ui=read("apps/web/components/MortuaryWorkbench.tsx");
+ const contract=read("contracts/openapi/synqoria-m27-mortuary-v1.yaml");
+ assert.match(api,/cases\/\{id\}\/holds/);
+ assert.match(store,/actor.require\("m27:review"\)/);
+ assert.match(ui,/Legal release holds/);
+ assert.match(contract,/readMortuaryLegalHolds/);
 });

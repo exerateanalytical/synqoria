@@ -148,6 +148,28 @@ paths:
               schema: {type: array, items: {$ref: '#/components/schemas/CustodyView'}}
         '403': {$ref: '#/components/responses/Denied'}
         '404': {$ref: '#/components/responses/Missing'}
+  /M27/cases/{id}/holds:
+    parameters:
+      - $ref: '#/components/parameters/CaseId'
+    get:
+      tags: [Custody and release]
+      operationId: readMortuaryLegalHolds
+      summary: Read authorized legal/administrative release holds and historical rescissions
+      description: |
+        Only authorized release reviewers with a valid shift can read court or
+        administrative hold metadata. Runtime staff cannot insert/revoke a hold.
+        An active hold always denies review, authorization and physical release.
+      x-synqoria-permission: m27:review
+      responses:
+        '200':
+          description: Scoped legal holds, including rescinded historical records
+          content:
+            application/json:
+              schema: {type: array, items: {$ref: '#/components/schemas/HoldView'}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Denied'}
+        '404': {$ref: '#/components/responses/Missing'}
+        '503': {$ref: '#/components/responses/Unavailable'}
   /M27/cases/{id}/approvals:
     parameters:
       - $ref: '#/components/parameters/CaseId'
@@ -291,6 +313,16 @@ components:
         actorId: {type: string, format: uuid}
         caseVersion: {type: integer, minimum: 1}
         createdAt: {type: string, format: date-time}
+    HoldView:
+      type: object
+      required: [holdId, authorityRef, reasonCode, active, orderedAt]
+      properties:
+        holdId: {type: string, format: uuid}
+        authorityRef: {$ref: '#/components/schemas/Reference'}
+        reasonCode: {type: string, maxLength: 40}
+        active: {type: boolean}
+        orderedAt: {type: string, format: date-time}
+        rescindedAt: {type: [string, 'null'], format: date-time}
     AuditView:
       type: object
       required: [version, action, toState, actorId, occurredAt]

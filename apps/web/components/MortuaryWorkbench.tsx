@@ -14,6 +14,8 @@ type Custody={version:number;eventType:string;fromStorage:string|null;toStorage:
  sealRef:string|null;conditionCode:string|null;witnessStaffId:string|null;belongingsRef:string|null};
 type Approval={stage:string;actorId:string;caseVersion:number;createdAt:string};
 type Audit={version:number;action:string;fromState:string|null;toState:string;actorId:string;occurredAt:string};
+type Hold={holdId:string;authorityRef:string;reasonCode:string;active:boolean;
+ orderedAt:string;rescindedAt:string|null};
 type Screen="M27-S01"|"M27-S02"|"M27-S03"|"M27-S04"|"M27-S05";
 type Action="IDENTIFY"|"STORE"|"TRANSFER"|"REVIEW_RELEASE"|"AUTHORIZE_RELEASE"|"HANDOVER";
 type FieldKey="evidenceRef"|"storageCode"|"receivingStaffId"|"recipientRef"|"authorityRef"
@@ -114,6 +116,7 @@ export function MortuaryWorkbench({screenId,name,nameFr,primaryAction}:{
  const [selectedId,setSelectedId]=useState("");
  const [custody,setCustody]=useState<Custody[]>([]);
  const [approvals,setApprovals]=useState<Approval[]>([]);
+ const [holds,setHolds]=useState<Hold[]|null>(null);
  const [audits,setAudits]=useState<Audit[]>([]);
  const [query,setQuery]=useState("");
  const [form,setForm]=useState<Record<string,string>>({});
@@ -139,12 +142,16 @@ export function MortuaryWorkbench({screenId,name,nameFr,primaryAction}:{
   return ()=>{alive=false;};
  },[]);
  useEffect(()=>{
-  if(!selectedId){setCustody([]);setApprovals([]);setAudits([]);return;}
+  if(!selectedId){setCustody([]);setApprovals([]);setHolds(null);setAudits([]);return;}
   let active=true;
   request<Custody[]>(`cases/${selectedId}/custody`)
    .then(rows=>{if(active)setCustody(rows);})
    .catch(()=>{if(active)setCustody([]);});
   if(screen==="M27-S04"||screen==="M27-S05"){
+   setHolds(null);
+   request<Hold[]>(`cases/${selectedId}/holds`)
+    .then(rows=>{if(active)setHolds(rows);})
+    .catch(()=>{if(active)setHolds(null);});
    request<Approval[]>(`cases/${selectedId}/approvals`)
     .then(rows=>{if(active)setApprovals(rows);})
     .catch(()=>{if(active)setApprovals([]);});
@@ -339,6 +346,16 @@ export function MortuaryWorkbench({screenId,name,nameFr,primaryAction}:{
          <td>{e.conditionCode||"—"}</td>
          <td>{readableDate(e.occurredAt)}</td></tr>)}</tbody></table></div>}
       {(screen==="M27-S04"||screen==="M27-S05")&&<>
+       <h3>{say("Legal release holds","Oppositions légales à la remise")}</h3>
+       {holds===null?<p className={styles.hint}>
+         {say("Legal hold information unavailable for this role. Release remains subject to independent backend checks.",
+          "Informations indisponibles pour ce rôle. La remise reste soumise aux contrôles indépendants.")}</p>:
+        holds.length===0?<p className={styles.hint}>
+         {say("No recorded legal holds in this authorized record.","Aucune opposition légale enregistrée dans ce dossier.")}</p>:
+        <ul className={styles.eventList}>{holds.map(x=><li key={x.holdId}>
+         {x.active?say("ACTIVE HOLD","OPPOSITION ACTIVE"):say("Rescinded","Levée")} ·
+         {x.reasonCode} · {x.authorityRef} · {readableDate(x.orderedAt)}
+        </li>)}</ul>}
        <h3>{say("Independent release approvals","Approbations indépendantes")}</h3>
        {approvals.length===0?<p className={styles.hint}>
         {say("No approved release reviews visible to this role.","Aucune approbation accessible à ce rôle.")}</p>:

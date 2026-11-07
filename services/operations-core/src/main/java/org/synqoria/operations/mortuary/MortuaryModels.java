@@ -25,6 +25,8 @@ public final class MortuaryModels {
                            UUID actorId,UUID receivingStaffId,String evidenceRef,Instant occurredAt,
   String sealRef,String conditionCode,UUID witnessStaffId,String belongingsRef){}
  public record ApprovalView(String stage,UUID actorId,long caseVersion,Instant createdAt){}
+ public record HoldView(UUID holdId,String authorityRef,String reasonCode,boolean active,
+  Instant orderedAt,Instant rescindedAt){}
  public record AuditView(long version,String action,String fromState,String toState,
                          UUID actorId,Instant occurredAt){}
 }

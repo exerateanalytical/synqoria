@@ -16,9 +16,10 @@ const mortuaryCase=new RegExp("^M27/cases/"+uuid+"$");
 const mortuaryActions=new RegExp("^M27/cases/"+uuid+"/actions$");
 const mortuaryCustody=new RegExp("^M27/cases/"+uuid+"/custody$");
 const mortuaryApprovals=new RegExp("^M27/cases/"+uuid+"/approvals$");
+const mortuaryHolds=new RegExp("^M27/cases/"+uuid+"/holds$");
 const mortuaryAudit=new RegExp("^M27/cases/"+uuid+"/audit$");
 function allow(path:string,method:"GET"|"POST"){
- if(method==="GET")return path==="catalog"||listing.test(path)||record.test(path)||stockBalances.test(path)||domainDetails.test(path)||mortuaryList.test(path)||mortuaryCase.test(path)||mortuaryCustody.test(path)||mortuaryApprovals.test(path)||mortuaryAudit.test(path);
+ if(method==="GET")return path==="catalog"||listing.test(path)||record.test(path)||stockBalances.test(path)||domainDetails.test(path)||mortuaryList.test(path)||mortuaryCase.test(path)||mortuaryCustody.test(path)||mortuaryApprovals.test(path)||mortuaryHolds.test(path)||mortuaryAudit.test(path);
  return listing.test(path)||transitions.test(path)||stockMovement.test(path)||mortuaryList.test(path)||mortuaryActions.test(path);
 }
 function send(error:string,status:number){return NextResponse.json({error},{status,headers:{"Cache-Control":"no-store"}});}
