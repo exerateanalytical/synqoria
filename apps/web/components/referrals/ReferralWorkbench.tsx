@@ -117,7 +117,7 @@ export function ReferralWorkbench({screen}:{screen:Screen}){
    </select></label></div>
   <p className={styles.warning} role="note">{t.warning}</p>
   <nav className={styles.nav} aria-label="Referral workstations">{screens.map(s=>
-   <Link key={s.id} href={"/workforce/referrals/"+s.id}
+   <Link key={s.id} href={"/workforce/clinical/"+s.id}
     aria-current={s.id===screen?"page":undefined}>{s.id} — {s[lang]}</Link>)}</nav>
   <div className={styles.head}><h2>{t.work}</h2>
    <button type="button" disabled={busy} onClick={()=>void refresh()}>{t.refresh}</button></div>

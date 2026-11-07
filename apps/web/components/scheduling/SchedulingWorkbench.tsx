@@ -134,7 +134,7 @@ export function SchedulingWorkbench({screen}:{screen:Screen}){
     <option value="en">English</option><option value="fr">Français</option></select></label></div>
   <p className={styles.warning}>{t.warning}</p>
   <nav className={styles.nav} aria-label="Scheduling workstations">{screens.map(x=>
-   <Link key={x.id} href={"/workforce/scheduling/"+x.id} aria-current={screen===x.id?"page":undefined}>
+   <Link key={x.id} href={"/workforce/clinical/"+x.id} aria-current={screen===x.id?"page":undefined}>
     {x.id} — {x[lang]}</Link>)}</nav>
   <div className={styles.head}><h2>{t.records}</h2>
    <button type="button" disabled={busy} onClick={()=>void refresh()}>{t.reload}</button></div>
@@ -156,7 +156,7 @@ export function SchedulingWorkbench({screen}:{screen:Screen}){
    {selected&&<details className={styles.details}><summary>{t.details}: {selected.id}</summary>
     <dl>{Object.entries(selected).map(([k,v])=><div key={k}><dt>{k.replaceAll("_"," ")}</dt>
      <dd>{String(v??"—")}</dd></div>)}</dl></details>}
-   {screen==="M02-S01"&&selected&&<Link href="/workforce/scheduling/M02-S02">
+   {screen==="M02-S01"&&selected&&<Link href="/workforce/clinical/M02-S02">
     {t.book} — {selected.id.slice(0,8)}</Link>}
   </div>}
   {state==="ready"&&<div className={styles.panel}>

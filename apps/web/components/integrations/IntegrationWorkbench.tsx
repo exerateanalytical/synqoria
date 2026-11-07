@@ -148,7 +148,7 @@ export function IntegrationWorkbench({screen}:{screen:Screen}){
     <option value="en">English</option><option value="fr">Français</option></select></label></div>
   <p className={styles.warning}>{t.warning}</p>
   <nav className={styles.nav} aria-label="Integration management workstations">{screens.map(s=>
-   <Link key={s.id} href={"/workforce/integrations/"+s.id}
+   <Link key={s.id} href={"/workforce/clinical/"+s.id}
     aria-current={screen===s.id?"page":undefined}>{s.id} — {s[lang]}</Link>)}</nav>
   <div className={styles.head}><h2>{t.work}</h2>
    <button disabled={busy} type="button" onClick={()=>void refresh()}>{t.refresh}</button></div>

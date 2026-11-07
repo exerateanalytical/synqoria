@@ -1,6 +1,6 @@
 {
-  "version": "2026-11-05-m04-m06-partial",
-  "notes": "261/261 real route URLs; 16 protected limited API reads, 5 functional nonclinical screens, 240 domain API-locked routes. No operational certification, live source DB integration, or high-risk clinical write approvals.",
+  "version": "2026-11-07-canonical-source-reconciliation",
+  "notes": "One canonical route per screen; alternative module paths are redirects only. 16 M02/M16/M35 source API workstations CI verified; independent hospital identity and institutional acceptance outstanding.",
   "shell_roots": [
     {
       "shell": "workforce",
@@ -167,7 +167,7 @@
       "screen_id": "M02-S01",
       "module": "M02",
       "route": "/workforce/clinical/M02-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "source_api_workflow_ci_verified_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -175,7 +175,7 @@
       "screen_id": "M02-S02",
       "module": "M02",
       "route": "/workforce/clinical/M02-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "source_api_workflow_ci_verified_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -183,7 +183,7 @@
       "screen_id": "M02-S03",
       "module": "M02",
       "route": "/workforce/clinical/M02-S03",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "source_api_workflow_ci_verified_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -191,7 +191,7 @@
       "screen_id": "M02-S04",
       "module": "M02",
       "route": "/workforce/clinical/M02-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "source_api_workflow_ci_verified_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -199,7 +199,7 @@
       "screen_id": "M02-S05",
       "module": "M02",
       "route": "/workforce/clinical/M02-S05",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "source_api_workflow_ci_verified_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -839,7 +839,7 @@
       "screen_id": "M16-S01",
       "module": "M16",
       "route": "/workforce/clinical/M16-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "source_api_workflow_ci_verified_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -847,7 +847,7 @@
       "screen_id": "M16-S02",
       "module": "M16",
       "route": "/workforce/clinical/M16-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "source_api_workflow_ci_verified_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -855,7 +855,7 @@
       "screen_id": "M16-S03",
       "module": "M16",
       "route": "/workforce/clinical/M16-S03",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "source_api_workflow_ci_verified_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -863,7 +863,7 @@
       "screen_id": "M16-S04",
       "module": "M16",
       "route": "/workforce/clinical/M16-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "source_api_workflow_ci_verified_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -871,7 +871,7 @@
       "screen_id": "M16-S05",
       "module": "M16",
       "route": "/workforce/clinical/M16-S05",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "source_api_workflow_ci_verified_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1863,7 +1863,7 @@
       "screen_id": "M35-S01",
       "module": "M35",
       "route": "/workforce/clinical/M35-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "source_api_workflow_ci_verified_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1871,7 +1871,7 @@
       "screen_id": "M35-S02",
       "module": "M35",
       "route": "/workforce/clinical/M35-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "source_api_workflow_ci_verified_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1879,7 +1879,7 @@
       "screen_id": "M35-S03",
       "module": "M35",
       "route": "/workforce/clinical/M35-S03",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "source_api_workflow_ci_verified_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1887,7 +1887,7 @@
       "screen_id": "M35-S04",
       "module": "M35",
       "route": "/workforce/clinical/M35-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "source_api_workflow_ci_verified_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1895,7 +1895,7 @@
       "screen_id": "M35-S05",
       "module": "M35",
       "route": "/workforce/clinical/M35-S05",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "source_api_workflow_ci_verified_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1903,7 +1903,7 @@
       "screen_id": "M35-S06",
       "module": "M35",
       "route": "/workforce/clinical/M35-S06",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "source_api_workflow_ci_verified_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
