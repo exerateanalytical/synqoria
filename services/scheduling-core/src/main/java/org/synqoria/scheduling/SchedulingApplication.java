@@ -26,12 +26,11 @@ public class SchedulingApplication {
  @Bean Clock clock(){return Clock.systemUTC();}
  public record Actor(UUID id,UUID cell,UUID facility,Set<String> grants){
   public Actor{Objects.requireNonNull(id);Objects.requireNonNull(cell);Objects.requireNonNull(facility);grants=Set.copyOf(grants);}
-  public void require(String grant){if(!grants.contains(grant))throw new Problem("permission_denied");}
+  public void require(String grant){if(!grants.contains(grant))throw new Denied("permission_denied");}
  }
  public static final Set<String> PERMISSIONS=Set.of("m02:read","m02:resource_write","m02:slot_publish",
   "m02:book","m02:confirm","m02:arrive","m02:fulfil","m02:cancel",
   "m02:no_show","m02:waitlist","m02:offer","m02:waitlist_accept");
- public record Problem(String code){} // marker not used as exception
  public static final class Denied extends RuntimeException{
   public final String code;public Denied(String code){super(code);this.code=code;}
  }
