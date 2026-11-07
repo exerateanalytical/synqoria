@@ -1,0 +1,704 @@
+{
+ "eventContracts": {
+  "contracts/events/clinical-outbox-envelope-v1.schema.json": {
+   "blob": "1366bf805a7e882099e63d8fc1984f8b4c73efb7"
+  }
+ },
+ "nonVerifiedStatement": "Event contracts, OIDC permission grammar and RLS posture are described from source text. No contract is claimed verified at runtime; unknowns remain null.",
+ "openapiSecurity": {
+  "contracts/openapi/README.md": {
+   "declaresBearerSecurity": false,
+   "declaresOidc": false
+  },
+  "contracts/openapi/synqoria-appointments-quarantine.yaml": {
+   "declaresBearerSecurity": false,
+   "declaresOidc": true
+  },
+  "contracts/openapi/synqoria-foundation.yaml": {
+   "declaresBearerSecurity": false,
+   "declaresOidc": true
+  },
+  "contracts/openapi/synqoria-loopback-read-boundary.yaml": {
+   "declaresBearerSecurity": true,
+   "declaresOidc": true
+  },
+  "contracts/openapi/synqoria-m02-scheduling-v1.yaml": {
+   "declaresBearerSecurity": true,
+   "declaresOidc": false
+  },
+  "contracts/openapi/synqoria-m03-triage-restricted-v1.yaml": {
+   "declaresBearerSecurity": true,
+   "declaresOidc": true
+  },
+  "contracts/openapi/synqoria-m040506-restricted-v1.json": {
+   "declaresBearerSecurity": true,
+   "declaresOidc": true
+  },
+  "contracts/openapi/synqoria-m16-referrals-v1.yaml": {
+   "declaresBearerSecurity": true,
+   "declaresOidc": false
+  },
+  "contracts/openapi/synqoria-m24-hr-v1.yaml": {
+   "declaresBearerSecurity": false,
+   "declaresOidc": true
+  },
+  "contracts/openapi/synqoria-m26-nutrition-v1.yaml": {
+   "declaresBearerSecurity": true,
+   "declaresOidc": true
+  },
+  "contracts/openapi/synqoria-m27-mortuary-v1.yaml": {
+   "declaresBearerSecurity": true,
+   "declaresOidc": true
+  },
+  "contracts/openapi/synqoria-m28-analytics-v1.yaml": {
+   "declaresBearerSecurity": false,
+   "declaresOidc": true
+  },
+  "contracts/openapi/synqoria-m30-content-v1.yaml": {
+   "declaresBearerSecurity": false,
+   "declaresOidc": true
+  },
+  "contracts/openapi/synqoria-m32-privacy-v1.yaml": {
+   "declaresBearerSecurity": true,
+   "declaresOidc": false
+  },
+  "contracts/openapi/synqoria-m34-audit-v1.yaml": {
+   "declaresBearerSecurity": true,
+   "declaresOidc": false
+  },
+  "contracts/openapi/synqoria-m35-integrations-v1.yaml": {
+   "declaresBearerSecurity": true,
+   "declaresOidc": false
+  },
+  "contracts/openapi/synqoria-m38-offline-v1.yaml": {
+   "declaresBearerSecurity": false,
+   "declaresOidc": true
+  },
+  "contracts/openapi/synqoria-m39-fleet-v1.yaml": {
+   "declaresBearerSecurity": false,
+   "declaresOidc": true
+  },
+  "contracts/openapi/synqoria-m40-reliability-v1.yaml": {
+   "declaresBearerSecurity": false,
+   "declaresOidc": true
+  },
+  "contracts/openapi/synqoria-registration-draft.yaml": {
+   "declaresBearerSecurity": false,
+   "declaresOidc": false
+  },
+  "contracts/openapi/synqoria-registration-release-gate.yaml": {
+   "declaresBearerSecurity": false,
+   "declaresOidc": false
+  }
+ },
+ "schemaVersion": "synqoria.reconciliation.contracts.v1",
+ "services": {
+  "services/analytics-core": {
+   "auditTables": [
+    "synqoria_analytics.audit_events"
+   ],
+   "inboxJavaFiles": 0,
+   "inboxTables": [],
+   "migrationFiles": 1,
+   "outboxJavaFiles": 0,
+   "outboxTables": [
+    "synqoria_analytics.outbox"
+   ],
+   "permissionStringCount": 20,
+   "permissionStrings": [
+    "m28:cell_aggregate_read",
+    "m28:compute",
+    "m28:export_approve",
+    "m28:export_download",
+    "m28:export_request",
+    "m28:ingest",
+    "m28:metric_approve",
+    "m28:metric_manage",
+    "m28:quarantine_manage",
+    "m28:read_clinical",
+    "m28:read_financial",
+    "m28:read_operations",
+    "m28:rebuild",
+    "m28:report_approve",
+    "m28:report_manage",
+    "m28:report_read",
+    "m28:report_run",
+    "m28:schedule_manage",
+    "m28:source_manage",
+    "m28:source_verify"
+   ],
+   "policies": 2,
+   "rlsEnabledStatements": 1,
+   "rlsForcedStatements": 1,
+   "tableCount": 13,
+   "usesCellGuc": true,
+   "usesFacilityGuc": true,
+   "verified": "structural inventory of SQL/Java text only; runtime RLS behaviour, token verification and event delivery were NOT exercised by this scan"
+  },
+  "services/audit-core": {
+   "auditTables": [
+    "synqoria_audit.audit_actions",
+    "synqoria_audit.commands",
+    "synqoria_audit.evidence_events",
+    "synqoria_audit.export_requests",
+    "synqoria_audit.ingest_attestations",
+    "synqoria_audit.outbox",
+    "synqoria_audit.retention_holds",
+    "synqoria_audit.retention_reviews",
+    "synqoria_audit.stream_heads"
+   ],
+   "inboxJavaFiles": 0,
+   "inboxTables": [],
+   "migrationFiles": 3,
+   "outboxJavaFiles": 0,
+   "outboxTables": [
+    "synqoria_audit.outbox"
+   ],
+   "permissionStringCount": 10,
+   "permissionStrings": [
+    "m34:export_request",
+    "m34:export_review",
+    "m34:hold_read",
+    "m34:ingest",
+    "m34:manifest_read",
+    "m34:read",
+    "m34:retention_request",
+    "m34:retention_review",
+    "m34:search",
+    "m34:timeline"
+   ],
+   "policies": 1,
+   "rlsEnabledStatements": 1,
+   "rlsForcedStatements": 1,
+   "tableCount": 9,
+   "usesCellGuc": true,
+   "usesFacilityGuc": true,
+   "verified": "structural inventory of SQL/Java text only; runtime RLS behaviour, token verification and event delivery were NOT exercised by this scan"
+  },
+  "services/cell-lifecycle-core": {
+   "auditTables": [
+    "synqoria_fleet.audit_events"
+   ],
+   "inboxJavaFiles": 0,
+   "inboxTables": [],
+   "migrationFiles": 1,
+   "outboxJavaFiles": 0,
+   "outboxTables": [
+    "synqoria_fleet.outbox"
+   ],
+   "permissionStringCount": 15,
+   "permissionStrings": [
+    "m39:cell_operate",
+    "m39:fleet_read",
+    "m39:health_report",
+    "m39:migration_approve",
+    "m39:migration_operate",
+    "m39:migration_plan",
+    "m39:qualify_complete",
+    "m39:qualify_record",
+    "m39:release_approve",
+    "m39:release_manage",
+    "m39:rollout_operate",
+    "m39:route_manage",
+    "m39:route_read",
+    "m39:tenant_approve",
+    "m39:tenant_request"
+   ],
+   "policies": 1,
+   "rlsEnabledStatements": 1,
+   "rlsForcedStatements": 1,
+   "tableCount": 15,
+   "usesCellGuc": true,
+   "usesFacilityGuc": true,
+   "verified": "structural inventory of SQL/Java text only; runtime RLS behaviour, token verification and event delivery were NOT exercised by this scan"
+  },
+  "services/clinical-content-core": {
+   "auditTables": [
+    "synqoria_content.audit_events"
+   ],
+   "inboxJavaFiles": 0,
+   "inboxTables": [],
+   "migrationFiles": 1,
+   "outboxJavaFiles": 0,
+   "outboxTables": [
+    "synqoria_content.outbox"
+   ],
+   "permissionStringCount": 16,
+   "permissionStrings": [
+    "m30:activation_manage",
+    "m30:activation_read",
+    "m30:approval_revoke",
+    "m30:formulary_approve",
+    "m30:formulary_edit",
+    "m30:formulary_read",
+    "m30:mapping_approve",
+    "m30:mapping_propose",
+    "m30:package_author",
+    "m30:package_read",
+    "m30:package_validate",
+    "m30:review_clinical",
+    "m30:review_policy",
+    "m30:rollback",
+    "m30:terminology_import",
+    "m30:terminology_read"
+   ],
+   "policies": 1,
+   "rlsEnabledStatements": 1,
+   "rlsForcedStatements": 1,
+   "tableCount": 14,
+   "usesCellGuc": true,
+   "usesFacilityGuc": true,
+   "verified": "structural inventory of SQL/Java text only; runtime RLS behaviour, token verification and event delivery were NOT exercised by this scan"
+  },
+  "services/clinical-core": {
+   "auditTables": [
+    "clinical_read_audit",
+    "patient_registration_audit",
+    "patient_registration_review_audit",
+    "synqoria_appointment_command_audit_quarantine"
+   ],
+   "inboxJavaFiles": 46,
+   "inboxTables": [
+    "clinical_inbox",
+    "synqoria_longitudinal_inbox_cursor_quarantine",
+    "synqoria_longitudinal_inbox_quarantine"
+   ],
+   "migrationFiles": 22,
+   "outboxJavaFiles": 13,
+   "outboxTables": [
+    "clinical_outbox",
+    "synqoria_appointment_outbox_quarantine",
+    "synqoria_longitudinal_outbox_quarantine",
+    "synqoria_triage_outbox_quarantine",
+    "synqoria_triage_secure_outbox_quarantine"
+   ],
+   "permissionStringCount": 16,
+   "permissionStrings": [
+    "appointment:manage",
+    "appointment:read",
+    "appointment:request",
+    "emergency:request",
+    "facility:view",
+    "patient:read",
+    "patient:register",
+    "triage:assess",
+    "triage:handover",
+    "triage:intake",
+    "triage:manage",
+    "triage:prioritize",
+    "triage:queue",
+    "triage:read",
+    "triage:receive",
+    "triage:sign"
+   ],
+   "policies": 9,
+   "rlsEnabledStatements": 44,
+   "rlsForcedStatements": 44,
+   "tableCount": 36,
+   "usesCellGuc": false,
+   "usesFacilityGuc": false,
+   "verified": "structural inventory of SQL/Java text only; runtime RLS behaviour, token verification and event delivery were NOT exercised by this scan"
+  },
+  "services/hr-payroll-core": {
+   "auditTables": [
+    "synqoria_hr.audit_events"
+   ],
+   "inboxJavaFiles": 0,
+   "inboxTables": [],
+   "migrationFiles": 1,
+   "outboxJavaFiles": 0,
+   "outboxTables": [
+    "synqoria_hr.outbox"
+   ],
+   "permissionStringCount": 25,
+   "permissionStrings": [
+    "m24:attendance_capture",
+    "m24:attendance_review",
+    "m24:comp_read",
+    "m24:confidential_read",
+    "m24:contract_approve",
+    "m24:contract_manage",
+    "m24:export",
+    "m24:leave_decide",
+    "m24:leave_read",
+    "m24:leave_request",
+    "m24:overtime_authorize",
+    "m24:payment_confirm",
+    "m24:payment_instruct",
+    "m24:payroll_approve",
+    "m24:payroll_prepare",
+    "m24:payroll_read",
+    "m24:reconcile",
+    "m24:roster_manage",
+    "m24:roster_read",
+    "m24:roster_review",
+    "m24:rules_approve",
+    "m24:rules_manage",
+    "m24:staff_approve",
+    "m24:staff_manage",
+    "m24:staff_read"
+   ],
+   "policies": 2,
+   "rlsEnabledStatements": 1,
+   "rlsForcedStatements": 1,
+   "tableCount": 23,
+   "usesCellGuc": true,
+   "usesFacilityGuc": true,
+   "verified": "structural inventory of SQL/Java text only; runtime RLS behaviour, token verification and event delivery were NOT exercised by this scan"
+  },
+  "services/identity": {
+   "auditTables": [
+    "synqoria_identity.staff_security_audit"
+   ],
+   "inboxJavaFiles": 0,
+   "inboxTables": [],
+   "migrationFiles": 6,
+   "outboxJavaFiles": 0,
+   "outboxTables": [],
+   "permissionStringCount": 0,
+   "permissionStrings": [],
+   "policies": 11,
+   "rlsEnabledStatements": 5,
+   "rlsForcedStatements": 5,
+   "tableCount": 3,
+   "usesCellGuc": false,
+   "usesFacilityGuc": false,
+   "verified": "structural inventory of SQL/Java text only; runtime RLS behaviour, token verification and event delivery were NOT exercised by this scan"
+  },
+  "services/integration": {
+   "auditTables": [],
+   "inboxJavaFiles": 0,
+   "inboxTables": [],
+   "migrationFiles": 0,
+   "outboxJavaFiles": 0,
+   "outboxTables": [],
+   "permissionStringCount": 0,
+   "permissionStrings": [],
+   "policies": 0,
+   "rlsEnabledStatements": 0,
+   "rlsForcedStatements": 0,
+   "tableCount": 0,
+   "usesCellGuc": false,
+   "usesFacilityGuc": false,
+   "verified": "structural inventory of SQL/Java text only; runtime RLS behaviour, token verification and event delivery were NOT exercised by this scan"
+  },
+  "services/integration-management-core": {
+   "auditTables": [
+    "synqoria_integration.audit_events"
+   ],
+   "inboxJavaFiles": 0,
+   "inboxTables": [],
+   "migrationFiles": 4,
+   "outboxJavaFiles": 0,
+   "outboxTables": [
+    "synqoria_integration.outbox"
+   ],
+   "permissionStringCount": 16,
+   "permissionStrings": [
+    "m35:api_create",
+    "m35:api_publish",
+    "m35:app_request",
+    "m35:app_review",
+    "m35:mapping_approve",
+    "m35:mapping_create",
+    "m35:mapping_validate",
+    "m35:message_ingest",
+    "m35:message_review",
+    "m35:partner_create",
+    "m35:partner_enable",
+    "m35:partner_suspend",
+    "m35:partner_verify",
+    "m35:read",
+    "m35:replay_request",
+    "m35:replay_review"
+   ],
+   "policies": 1,
+   "rlsEnabledStatements": 1,
+   "rlsForcedStatements": 1,
+   "tableCount": 10,
+   "usesCellGuc": true,
+   "usesFacilityGuc": true,
+   "verified": "structural inventory of SQL/Java text only; runtime RLS behaviour, token verification and event delivery were NOT exercised by this scan"
+  },
+  "services/nutrition-core": {
+   "auditTables": [
+    "synqoria_nutrition.audit_events"
+   ],
+   "inboxJavaFiles": 0,
+   "inboxTables": [],
+   "migrationFiles": 1,
+   "outboxJavaFiles": 0,
+   "outboxTables": [
+    "synqoria_nutrition.outbox"
+   ],
+   "permissionStringCount": 19,
+   "permissionStrings": [
+    "m26:ack_record",
+    "m26:clinical_feed",
+    "m26:delivery_read",
+    "m26:delivery_record",
+    "m26:dispatch_approve",
+    "m26:incident_escalate",
+    "m26:incident_resolve",
+    "m26:order_amend",
+    "m26:order_approve",
+    "m26:order_cancel",
+    "m26:order_prescribe",
+    "m26:order_read",
+    "m26:order_revoke",
+    "m26:plan_manage",
+    "m26:plan_release",
+    "m26:prep_record",
+    "m26:subst_decide",
+    "m26:subst_propose",
+    "m26:worklist_read"
+   ],
+   "policies": 1,
+   "rlsEnabledStatements": 1,
+   "rlsForcedStatements": 1,
+   "tableCount": 13,
+   "usesCellGuc": true,
+   "usesFacilityGuc": true,
+   "verified": "structural inventory of SQL/Java text only; runtime RLS behaviour, token verification and event delivery were NOT exercised by this scan"
+  },
+  "services/offline-sync-core": {
+   "auditTables": [
+    "synqoria_offline.audit_events"
+   ],
+   "inboxJavaFiles": 0,
+   "inboxTables": [],
+   "migrationFiles": 1,
+   "outboxJavaFiles": 0,
+   "outboxTables": [
+    "synqoria_offline.outbox"
+   ],
+   "permissionStringCount": 11,
+   "permissionStrings": [
+    "m38:conflict_resolve",
+    "m38:contract_approve",
+    "m38:contract_manage",
+    "m38:device_manage",
+    "m38:head_publish",
+    "m38:history_read",
+    "m38:sync_read",
+    "m38:sync_submit",
+    "m38:transfer_approve",
+    "m38:transfer_operate",
+    "m38:transfer_propose"
+   ],
+   "policies": 1,
+   "rlsEnabledStatements": 1,
+   "rlsForcedStatements": 1,
+   "tableCount": 11,
+   "usesCellGuc": true,
+   "usesFacilityGuc": true,
+   "verified": "structural inventory of SQL/Java text only; runtime RLS behaviour, token verification and event delivery were NOT exercised by this scan"
+  },
+  "services/operations-core": {
+   "auditTables": [
+    "synqoria_operations.audit_events",
+    "synqoria_operations.mortuary_audit_events"
+   ],
+   "inboxJavaFiles": 0,
+   "inboxTables": [],
+   "migrationFiles": 10,
+   "outboxJavaFiles": 0,
+   "outboxTables": [
+    "synqoria_operations.mortuary_outbox",
+    "synqoria_operations.outbox"
+   ],
+   "permissionStringCount": 53,
+   "permissionStrings": [
+    "m21:approve",
+    "m21:close",
+    "m21:match",
+    "m21:order",
+    "m21:qualify",
+    "m21:receive",
+    "m21:submit",
+    "m22:adjust",
+    "m22:approve",
+    "m22:count",
+    "m22:issue",
+    "m22:read",
+    "m22:receive",
+    "m22:release",
+    "m22:reserve",
+    "m22:return",
+    "m23:activate",
+    "m23:commission",
+    "m23:maintenance",
+    "m23:retire",
+    "m23:return",
+    "m25:arrive",
+    "m25:assign",
+    "m25:cancel",
+    "m25:complete",
+    "m25:dispatch",
+    "m25:escalate",
+    "m25:handover",
+    "m27:audit",
+    "m27:authorize",
+    "m27:custody_receive",
+    "m27:handover",
+    "m27:identify",
+    "m27:intake",
+    "m27:read",
+    "m27:review",
+    "m27:store",
+    "m27:transfer",
+    "m29:publish",
+    "m29:review"
+   ],
+   "policies": 4,
+   "rlsEnabledStatements": 4,
+   "rlsForcedStatements": 4,
+   "tableCount": 22,
+   "usesCellGuc": true,
+   "usesFacilityGuc": true,
+   "verified": "structural inventory of SQL/Java text only; runtime RLS behaviour, token verification and event delivery were NOT exercised by this scan"
+  },
+  "services/privacy-core": {
+   "auditTables": [
+    "synqoria_privacy.audit_events"
+   ],
+   "inboxJavaFiles": 0,
+   "inboxTables": [],
+   "migrationFiles": 2,
+   "outboxJavaFiles": 0,
+   "outboxTables": [
+    "synqoria_privacy.outbox"
+   ],
+   "permissionStringCount": 10,
+   "permissionStrings": [
+    "m32:case_create",
+    "m32:case_review",
+    "m32:directive_activate",
+    "m32:directive_create",
+    "m32:directive_revoke",
+    "m32:directive_verify",
+    "m32:disclosure_request",
+    "m32:disclosure_review",
+    "m32:policy_evaluate",
+    "m32:read"
+   ],
+   "policies": 1,
+   "rlsEnabledStatements": 1,
+   "rlsForcedStatements": 1,
+   "tableCount": 7,
+   "usesCellGuc": true,
+   "usesFacilityGuc": true,
+   "verified": "structural inventory of SQL/Java text only; runtime RLS behaviour, token verification and event delivery were NOT exercised by this scan"
+  },
+  "services/referrals-core": {
+   "auditTables": [
+    "synqoria_referral.audit_events"
+   ],
+   "inboxJavaFiles": 0,
+   "inboxTables": [],
+   "migrationFiles": 2,
+   "outboxJavaFiles": 0,
+   "outboxTables": [
+    "synqoria_referral.outbox"
+   ],
+   "permissionStringCount": 9,
+   "permissionStrings": [
+    "m16:attend",
+    "m16:authorize",
+    "m16:cancel",
+    "m16:close",
+    "m16:create",
+    "m16:read",
+    "m16:receiving_review",
+    "m16:send",
+    "m16:transfer"
+   ],
+   "policies": 1,
+   "rlsEnabledStatements": 1,
+   "rlsForcedStatements": 1,
+   "tableCount": 6,
+   "usesCellGuc": true,
+   "usesFacilityGuc": true,
+   "verified": "structural inventory of SQL/Java text only; runtime RLS behaviour, token verification and event delivery were NOT exercised by this scan"
+  },
+  "services/reliability-core": {
+   "auditTables": [
+    "synqoria_reliability.audit_events"
+   ],
+   "inboxJavaFiles": 0,
+   "inboxTables": [],
+   "migrationFiles": 1,
+   "outboxJavaFiles": 0,
+   "outboxTables": [
+    "synqoria_reliability.outbox"
+   ],
+   "permissionStringCount": 16,
+   "permissionStrings": [
+    "m40:backup_read",
+    "m40:backup_record",
+    "m40:backup_verify",
+    "m40:health_read",
+    "m40:incident_manage",
+    "m40:incident_verify",
+    "m40:recovery_authorize",
+    "m40:recovery_operate",
+    "m40:recovery_plan",
+    "m40:recovery_read",
+    "m40:recovery_validate",
+    "m40:reopen_approve",
+    "m40:service_manage",
+    "m40:signal_report",
+    "m40:telemetry_ingest",
+    "m40:telemetry_read"
+   ],
+   "policies": 1,
+   "rlsEnabledStatements": 1,
+   "rlsForcedStatements": 1,
+   "tableCount": 16,
+   "usesCellGuc": true,
+   "usesFacilityGuc": true,
+   "verified": "structural inventory of SQL/Java text only; runtime RLS behaviour, token verification and event delivery were NOT exercised by this scan"
+  },
+  "services/scheduling-core": {
+   "auditTables": [
+    "synqoria_schedule.audit_events"
+   ],
+   "inboxJavaFiles": 0,
+   "inboxTables": [],
+   "migrationFiles": 3,
+   "outboxJavaFiles": 0,
+   "outboxTables": [
+    "synqoria_schedule.outbox"
+   ],
+   "permissionStringCount": 12,
+   "permissionStrings": [
+    "m02:arrive",
+    "m02:book",
+    "m02:cancel",
+    "m02:confirm",
+    "m02:fulfil",
+    "m02:no_show",
+    "m02:offer",
+    "m02:read",
+    "m02:resource_write",
+    "m02:slot_publish",
+    "m02:waitlist",
+    "m02:waitlist_accept"
+   ],
+   "policies": 1,
+   "rlsEnabledStatements": 1,
+   "rlsForcedStatements": 1,
+   "tableCount": 8,
+   "usesCellGuc": true,
+   "usesFacilityGuc": true,
+   "verified": "structural inventory of SQL/Java text only; runtime RLS behaviour, token verification and event delivery were NOT exercised by this scan"
+  }
+ },
+ "servicesWithoutForcedRls": [
+  "services/integration"
+ ],
+ "servicesWithoutOutbox": [
+  "services/identity",
+  "services/integration"
+ ]
+}

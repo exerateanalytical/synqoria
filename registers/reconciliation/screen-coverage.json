@@ -1,0 +1,3445 @@
+{
+ "duplicateStaticEntrypoints": [],
+ "entrypointKinds": {
+  "shared_dynamic_page": 261
+ },
+ "forms": {
+  "fieldLibrary": {
+   "path": "registers/hospital-document-field-library.json",
+   "present": true
+  }
+ },
+ "perScreen": [
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "G-S01",
+   "module": "SHARED",
+   "route": "/workforce/clinical/G-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "G-S02",
+   "module": "SHARED",
+   "route": "/workforce/clinical/G-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "G-S03",
+   "module": "SHARED",
+   "route": "/workforce/clinical/G-S03",
+   "routeStatus": "api_read_subset_not_clinically_complete",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "G-S04",
+   "module": "SHARED",
+   "route": "/workforce/clinical/G-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "G-S05",
+   "module": "SHARED",
+   "route": "/workforce/clinical/G-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "G-S06",
+   "module": "SHARED",
+   "route": "/workforce/clinical/G-S06",
+   "routeStatus": "nonclinical_functional",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "G-S07",
+   "module": "SHARED",
+   "route": "/workforce/clinical/G-S07",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "G-S08",
+   "module": "SHARED",
+   "route": "/workforce/clinical/G-S08",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "G-S09",
+   "module": "SHARED",
+   "route": "/workforce/clinical/G-S09",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "G-S10",
+   "module": "SHARED",
+   "route": "/workforce/clinical/G-S10",
+   "routeStatus": "api_read_subset_not_clinically_complete",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "G-S11",
+   "module": "SHARED",
+   "route": "/workforce/clinical/G-S11",
+   "routeStatus": "nonclinical_functional",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "G-S12",
+   "module": "SHARED",
+   "route": "/workforce/clinical/G-S12",
+   "routeStatus": "nonclinical_functional",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M01-S01",
+   "module": "M01",
+   "route": "/workforce/clinical/M01-S01",
+   "routeStatus": "api_read_subset_not_clinically_complete",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M01-S02",
+   "module": "M01",
+   "route": "/workforce/clinical/M01-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M01-S03",
+   "module": "M01",
+   "route": "/workforce/clinical/M01-S03",
+   "routeStatus": "api_read_subset_not_clinically_complete",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M01-S04",
+   "module": "M01",
+   "route": "/workforce/clinical/M01-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M01-S05",
+   "module": "M01",
+   "route": "/workforce/clinical/M01-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M01-S06",
+   "module": "M01",
+   "route": "/workforce/clinical/M01-S06",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M02-S01",
+   "module": "M02",
+   "route": "/workforce/clinical/M02-S01",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M02-S02",
+   "module": "M02",
+   "route": "/workforce/clinical/M02-S02",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M02-S03",
+   "module": "M02",
+   "route": "/workforce/clinical/M02-S03",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M02-S04",
+   "module": "M02",
+   "route": "/workforce/clinical/M02-S04",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M02-S05",
+   "module": "M02",
+   "route": "/workforce/clinical/M02-S05",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M03-S01",
+   "module": "M03",
+   "route": "/workforce/clinical/M03-S01",
+   "routeStatus": "api_read_subset_not_clinically_complete",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M03-S02",
+   "module": "M03",
+   "route": "/workforce/clinical/M03-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M03-S03",
+   "module": "M03",
+   "route": "/workforce/clinical/M03-S03",
+   "routeStatus": "api_read_subset_not_clinically_complete",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M03-S04",
+   "module": "M03",
+   "route": "/workforce/clinical/M03-S04",
+   "routeStatus": "api_read_subset_not_clinically_complete",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M03-S05",
+   "module": "M03",
+   "route": "/workforce/clinical/M03-S05",
+   "routeStatus": "api_read_subset_not_clinically_complete",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M04-S01",
+   "module": "M04",
+   "route": "/workforce/clinical/M04-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M04-S02",
+   "module": "M04",
+   "route": "/workforce/clinical/M04-S02",
+   "routeStatus": "api_read_subset_not_clinically_complete",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M04-S03",
+   "module": "M04",
+   "route": "/workforce/clinical/M04-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M04-S04",
+   "module": "M04",
+   "route": "/workforce/clinical/M04-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M04-S05",
+   "module": "M04",
+   "route": "/workforce/clinical/M04-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M04-S06",
+   "module": "M04",
+   "route": "/workforce/clinical/M04-S06",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M04-S07",
+   "module": "M04",
+   "route": "/workforce/clinical/M04-S07",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M05-S01",
+   "module": "M05",
+   "route": "/workforce/clinical/M05-S01",
+   "routeStatus": "api_read_subset_not_clinically_complete",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M05-S02",
+   "module": "M05",
+   "route": "/workforce/clinical/M05-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M05-S03",
+   "module": "M05",
+   "route": "/workforce/clinical/M05-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M05-S04",
+   "module": "M05",
+   "route": "/workforce/clinical/M05-S04",
+   "routeStatus": "api_read_subset_not_clinically_complete",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M05-S05",
+   "module": "M05",
+   "route": "/workforce/clinical/M05-S05",
+   "routeStatus": "api_read_subset_not_clinically_complete",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M06-S01",
+   "module": "M06",
+   "route": "/workforce/clinical/M06-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M06-S02",
+   "module": "M06",
+   "route": "/workforce/clinical/M06-S02",
+   "routeStatus": "api_read_subset_not_clinically_complete",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M06-S03",
+   "module": "M06",
+   "route": "/workforce/clinical/M06-S03",
+   "routeStatus": "api_read_subset_not_clinically_complete",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M06-S04",
+   "module": "M06",
+   "route": "/workforce/clinical/M06-S04",
+   "routeStatus": "api_read_subset_not_clinically_complete",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M06-S05",
+   "module": "M06",
+   "route": "/workforce/clinical/M06-S05",
+   "routeStatus": "api_read_subset_not_clinically_complete",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M07-S01",
+   "module": "M07",
+   "route": "/workforce/clinical/M07-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M07-S02",
+   "module": "M07",
+   "route": "/workforce/clinical/M07-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M07-S03",
+   "module": "M07",
+   "route": "/workforce/clinical/M07-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M07-S04",
+   "module": "M07",
+   "route": "/workforce/clinical/M07-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M07-S05",
+   "module": "M07",
+   "route": "/workforce/clinical/M07-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M08-S01",
+   "module": "M08",
+   "route": "/workforce/clinical/M08-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M08-S02",
+   "module": "M08",
+   "route": "/workforce/clinical/M08-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M08-S03",
+   "module": "M08",
+   "route": "/workforce/clinical/M08-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M08-S04",
+   "module": "M08",
+   "route": "/workforce/clinical/M08-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M08-S05",
+   "module": "M08",
+   "route": "/workforce/clinical/M08-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M08-S06",
+   "module": "M08",
+   "route": "/workforce/clinical/M08-S06",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M08-S07",
+   "module": "M08",
+   "route": "/workforce/clinical/M08-S07",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M09-S01",
+   "module": "M09",
+   "route": "/workforce/clinical/M09-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M09-S02",
+   "module": "M09",
+   "route": "/workforce/clinical/M09-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M09-S03",
+   "module": "M09",
+   "route": "/workforce/clinical/M09-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M09-S04",
+   "module": "M09",
+   "route": "/workforce/clinical/M09-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M09-S05",
+   "module": "M09",
+   "route": "/workforce/clinical/M09-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M10-S01",
+   "module": "M10",
+   "route": "/workforce/clinical/M10-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M10-S02",
+   "module": "M10",
+   "route": "/workforce/clinical/M10-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M10-S03",
+   "module": "M10",
+   "route": "/workforce/clinical/M10-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M10-S04",
+   "module": "M10",
+   "route": "/workforce/clinical/M10-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M10-S05",
+   "module": "M10",
+   "route": "/workforce/clinical/M10-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M11-S01",
+   "module": "M11",
+   "route": "/workforce/clinical/M11-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M11-S02",
+   "module": "M11",
+   "route": "/workforce/clinical/M11-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M11-S03",
+   "module": "M11",
+   "route": "/workforce/clinical/M11-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M11-S04",
+   "module": "M11",
+   "route": "/workforce/clinical/M11-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M11-S05",
+   "module": "M11",
+   "route": "/workforce/clinical/M11-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M11-S06",
+   "module": "M11",
+   "route": "/workforce/clinical/M11-S06",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M11-S07",
+   "module": "M11",
+   "route": "/workforce/clinical/M11-S07",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M11-S08",
+   "module": "M11",
+   "route": "/workforce/clinical/M11-S08",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M11-S09",
+   "module": "M11",
+   "route": "/workforce/clinical/M11-S09",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M12-S01",
+   "module": "M12",
+   "route": "/workforce/clinical/M12-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M12-S02",
+   "module": "M12",
+   "route": "/workforce/clinical/M12-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M12-S03",
+   "module": "M12",
+   "route": "/workforce/clinical/M12-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M12-S04",
+   "module": "M12",
+   "route": "/workforce/clinical/M12-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M12-S05",
+   "module": "M12",
+   "route": "/workforce/clinical/M12-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M12-S06",
+   "module": "M12",
+   "route": "/workforce/clinical/M12-S06",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M12-S07",
+   "module": "M12",
+   "route": "/workforce/clinical/M12-S07",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M13-S01",
+   "module": "M13",
+   "route": "/workforce/clinical/M13-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M13-S02",
+   "module": "M13",
+   "route": "/workforce/clinical/M13-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M13-S03",
+   "module": "M13",
+   "route": "/workforce/clinical/M13-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M13-S04",
+   "module": "M13",
+   "route": "/workforce/clinical/M13-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M13-S05",
+   "module": "M13",
+   "route": "/workforce/clinical/M13-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M13-S06",
+   "module": "M13",
+   "route": "/workforce/clinical/M13-S06",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M13-S07",
+   "module": "M13",
+   "route": "/workforce/clinical/M13-S07",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M14-S01",
+   "module": "M14",
+   "route": "/workforce/clinical/M14-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M14-S02",
+   "module": "M14",
+   "route": "/workforce/clinical/M14-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M14-S03",
+   "module": "M14",
+   "route": "/workforce/clinical/M14-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M14-S04",
+   "module": "M14",
+   "route": "/workforce/clinical/M14-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M14-S05",
+   "module": "M14",
+   "route": "/workforce/clinical/M14-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M14-S06",
+   "module": "M14",
+   "route": "/workforce/clinical/M14-S06",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M15-S01",
+   "module": "M15",
+   "route": "/workforce/clinical/M15-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M15-S02",
+   "module": "M15",
+   "route": "/workforce/clinical/M15-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M15-S03",
+   "module": "M15",
+   "route": "/workforce/clinical/M15-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M15-S04",
+   "module": "M15",
+   "route": "/workforce/clinical/M15-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M15-S05",
+   "module": "M15",
+   "route": "/workforce/clinical/M15-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M15-S06",
+   "module": "M15",
+   "route": "/workforce/clinical/M15-S06",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M16-S01",
+   "module": "M16",
+   "route": "/workforce/clinical/M16-S01",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M16-S02",
+   "module": "M16",
+   "route": "/workforce/clinical/M16-S02",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M16-S03",
+   "module": "M16",
+   "route": "/workforce/clinical/M16-S03",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M16-S04",
+   "module": "M16",
+   "route": "/workforce/clinical/M16-S04",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M16-S05",
+   "module": "M16",
+   "route": "/workforce/clinical/M16-S05",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-S01",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-S02",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-S03",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-S04",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P01-S01",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P01-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P01-S02",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P01-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P01-S03",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P01-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P02-S01",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P02-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P02-S02",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P02-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P02-S03",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P02-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P03-S01",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P03-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P03-S02",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P03-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P03-S03",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P03-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P04-S01",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P04-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P04-S02",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P04-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P04-S03",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P04-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P05-S01",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P05-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P05-S02",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P05-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P05-S03",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P05-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P06-S01",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P06-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P06-S02",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P06-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P06-S03",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P06-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P07-S01",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P07-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P07-S02",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P07-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P07-S03",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P07-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P08-S01",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P08-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P08-S02",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P08-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M17-P08-S03",
+   "module": "M17",
+   "route": "/workforce/clinical/M17-P08-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M18-S01",
+   "module": "M18",
+   "route": "/workforce/clinical/M18-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M18-S02",
+   "module": "M18",
+   "route": "/workforce/clinical/M18-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M18-S03",
+   "module": "M18",
+   "route": "/workforce/clinical/M18-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M18-S04",
+   "module": "M18",
+   "route": "/workforce/clinical/M18-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M18-S05",
+   "module": "M18",
+   "route": "/workforce/clinical/M18-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M18-S06",
+   "module": "M18",
+   "route": "/workforce/clinical/M18-S06",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M18-S07",
+   "module": "M18",
+   "route": "/workforce/clinical/M18-S07",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M18-S08",
+   "module": "M18",
+   "route": "/workforce/clinical/M18-S08",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M18-S09",
+   "module": "M18",
+   "route": "/workforce/clinical/M18-S09",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M19-S01",
+   "module": "M19",
+   "route": "/workforce/clinical/M19-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M19-S02",
+   "module": "M19",
+   "route": "/workforce/clinical/M19-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M19-S03",
+   "module": "M19",
+   "route": "/workforce/clinical/M19-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M19-S04",
+   "module": "M19",
+   "route": "/workforce/clinical/M19-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M19-S05",
+   "module": "M19",
+   "route": "/workforce/clinical/M19-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M19-S06",
+   "module": "M19",
+   "route": "/workforce/clinical/M19-S06",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M19-S07",
+   "module": "M19",
+   "route": "/workforce/clinical/M19-S07",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M20-S01",
+   "module": "M20",
+   "route": "/workforce/clinical/M20-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M20-S02",
+   "module": "M20",
+   "route": "/workforce/clinical/M20-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M20-S03",
+   "module": "M20",
+   "route": "/workforce/clinical/M20-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M20-S04",
+   "module": "M20",
+   "route": "/workforce/clinical/M20-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M20-S05",
+   "module": "M20",
+   "route": "/workforce/clinical/M20-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M20-S06",
+   "module": "M20",
+   "route": "/workforce/clinical/M20-S06",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M21-S01",
+   "module": "M21",
+   "route": "/workforce/clinical/M21-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M21-S02",
+   "module": "M21",
+   "route": "/workforce/clinical/M21-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M21-S03",
+   "module": "M21",
+   "route": "/workforce/clinical/M21-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M21-S04",
+   "module": "M21",
+   "route": "/workforce/clinical/M21-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M21-S05",
+   "module": "M21",
+   "route": "/workforce/clinical/M21-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M21-S06",
+   "module": "M21",
+   "route": "/workforce/clinical/M21-S06",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M22-S01",
+   "module": "M22",
+   "route": "/workforce/clinical/M22-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M22-S02",
+   "module": "M22",
+   "route": "/workforce/clinical/M22-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M22-S03",
+   "module": "M22",
+   "route": "/workforce/clinical/M22-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M22-S04",
+   "module": "M22",
+   "route": "/workforce/clinical/M22-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M22-S05",
+   "module": "M22",
+   "route": "/workforce/clinical/M22-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M23-S01",
+   "module": "M23",
+   "route": "/workforce/clinical/M23-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M23-S02",
+   "module": "M23",
+   "route": "/workforce/clinical/M23-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M23-S03",
+   "module": "M23",
+   "route": "/workforce/clinical/M23-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M23-S04",
+   "module": "M23",
+   "route": "/workforce/clinical/M23-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M23-S05",
+   "module": "M23",
+   "route": "/workforce/clinical/M23-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M24-S01",
+   "module": "M24",
+   "route": "/workforce/clinical/M24-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M24-S02",
+   "module": "M24",
+   "route": "/workforce/clinical/M24-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M24-S03",
+   "module": "M24",
+   "route": "/workforce/clinical/M24-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M24-S04",
+   "module": "M24",
+   "route": "/workforce/clinical/M24-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M24-S05",
+   "module": "M24",
+   "route": "/workforce/clinical/M24-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M24-S06",
+   "module": "M24",
+   "route": "/workforce/clinical/M24-S06",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M25-S01",
+   "module": "M25",
+   "route": "/workforce/clinical/M25-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M25-S02",
+   "module": "M25",
+   "route": "/workforce/clinical/M25-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M25-S03",
+   "module": "M25",
+   "route": "/workforce/clinical/M25-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M25-S04",
+   "module": "M25",
+   "route": "/workforce/clinical/M25-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M25-S05",
+   "module": "M25",
+   "route": "/workforce/clinical/M25-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M26-S01",
+   "module": "M26",
+   "route": "/workforce/clinical/M26-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M26-S02",
+   "module": "M26",
+   "route": "/workforce/clinical/M26-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M26-S03",
+   "module": "M26",
+   "route": "/workforce/clinical/M26-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M26-S04",
+   "module": "M26",
+   "route": "/workforce/clinical/M26-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M27-S01",
+   "module": "M27",
+   "route": "/workforce/clinical/M27-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M27-S02",
+   "module": "M27",
+   "route": "/workforce/clinical/M27-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M27-S03",
+   "module": "M27",
+   "route": "/workforce/clinical/M27-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M27-S04",
+   "module": "M27",
+   "route": "/workforce/clinical/M27-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M27-S05",
+   "module": "M27",
+   "route": "/workforce/clinical/M27-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M28-S01",
+   "module": "M28",
+   "route": "/workforce/clinical/M28-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M28-S02",
+   "module": "M28",
+   "route": "/workforce/clinical/M28-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M28-S03",
+   "module": "M28",
+   "route": "/workforce/clinical/M28-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M28-S04",
+   "module": "M28",
+   "route": "/workforce/clinical/M28-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M28-S05",
+   "module": "M28",
+   "route": "/workforce/clinical/M28-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M29-S01",
+   "module": "M29",
+   "route": "/workforce/clinical/M29-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M29-S02",
+   "module": "M29",
+   "route": "/workforce/clinical/M29-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M29-S03",
+   "module": "M29",
+   "route": "/workforce/clinical/M29-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M29-S04",
+   "module": "M29",
+   "route": "/workforce/clinical/M29-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M30-S01",
+   "module": "M30",
+   "route": "/workforce/clinical/M30-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M30-S02",
+   "module": "M30",
+   "route": "/workforce/clinical/M30-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M30-S03",
+   "module": "M30",
+   "route": "/workforce/clinical/M30-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M30-S04",
+   "module": "M30",
+   "route": "/workforce/clinical/M30-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M30-S05",
+   "module": "M30",
+   "route": "/workforce/clinical/M30-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M31-S01",
+   "module": "M31",
+   "route": "/workforce/clinical/M31-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M31-S02",
+   "module": "M31",
+   "route": "/workforce/clinical/M31-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M31-S03",
+   "module": "M31",
+   "route": "/workforce/clinical/M31-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M31-S04",
+   "module": "M31",
+   "route": "/workforce/clinical/M31-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M31-S05",
+   "module": "M31",
+   "route": "/workforce/clinical/M31-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M31-S06",
+   "module": "M31",
+   "route": "/workforce/clinical/M31-S06",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M32-S01",
+   "module": "M32",
+   "route": "/workforce/clinical/M32-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M32-S02",
+   "module": "M32",
+   "route": "/workforce/clinical/M32-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M32-S03",
+   "module": "M32",
+   "route": "/workforce/clinical/M32-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M32-S04",
+   "module": "M32",
+   "route": "/workforce/clinical/M32-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M32-S05",
+   "module": "M32",
+   "route": "/workforce/clinical/M32-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M33-S01",
+   "module": "M33",
+   "route": "/workforce/clinical/M33-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M33-S02",
+   "module": "M33",
+   "route": "/workforce/clinical/M33-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M33-S03",
+   "module": "M33",
+   "route": "/workforce/clinical/M33-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M33-S04",
+   "module": "M33",
+   "route": "/workforce/clinical/M33-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M33-S05",
+   "module": "M33",
+   "route": "/workforce/clinical/M33-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M33-S06",
+   "module": "M33",
+   "route": "/workforce/clinical/M33-S06",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M33-S07",
+   "module": "M33",
+   "route": "/workforce/clinical/M33-S07",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M34-S01",
+   "module": "M34",
+   "route": "/workforce/clinical/M34-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M34-S02",
+   "module": "M34",
+   "route": "/workforce/clinical/M34-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M34-S03",
+   "module": "M34",
+   "route": "/workforce/clinical/M34-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M34-S04",
+   "module": "M34",
+   "route": "/workforce/clinical/M34-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M34-S05",
+   "module": "M34",
+   "route": "/workforce/clinical/M34-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M35-S01",
+   "module": "M35",
+   "route": "/workforce/clinical/M35-S01",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M35-S02",
+   "module": "M35",
+   "route": "/workforce/clinical/M35-S02",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M35-S03",
+   "module": "M35",
+   "route": "/workforce/clinical/M35-S03",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M35-S04",
+   "module": "M35",
+   "route": "/workforce/clinical/M35-S04",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M35-S05",
+   "module": "M35",
+   "route": "/workforce/clinical/M35-S05",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M35-S06",
+   "module": "M35",
+   "route": "/workforce/clinical/M35-S06",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M36-S01",
+   "module": "M36",
+   "route": "/workforce/clinical/M36-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M36-S02",
+   "module": "M36",
+   "route": "/workforce/clinical/M36-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M36-S03",
+   "module": "M36",
+   "route": "/workforce/clinical/M36-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M36-S04",
+   "module": "M36",
+   "route": "/workforce/clinical/M36-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M36-S05",
+   "module": "M36",
+   "route": "/workforce/clinical/M36-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M37-S01",
+   "module": "M37",
+   "route": "/workforce/clinical/M37-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M37-S02",
+   "module": "M37",
+   "route": "/workforce/clinical/M37-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M37-S03",
+   "module": "M37",
+   "route": "/workforce/clinical/M37-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M37-S04",
+   "module": "M37",
+   "route": "/workforce/clinical/M37-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M38-S01",
+   "module": "M38",
+   "route": "/workforce/clinical/M38-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M38-S02",
+   "module": "M38",
+   "route": "/workforce/clinical/M38-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M38-S03",
+   "module": "M38",
+   "route": "/workforce/clinical/M38-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M38-S04",
+   "module": "M38",
+   "route": "/workforce/clinical/M38-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M38-S05",
+   "module": "M38",
+   "route": "/workforce/clinical/M38-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M39-S01",
+   "module": "M39",
+   "route": "/workforce/clinical/M39-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M39-S02",
+   "module": "M39",
+   "route": "/workforce/clinical/M39-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M39-S03",
+   "module": "M39",
+   "route": "/workforce/clinical/M39-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M39-S04",
+   "module": "M39",
+   "route": "/workforce/clinical/M39-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M39-S05",
+   "module": "M39",
+   "route": "/workforce/clinical/M39-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M40-S01",
+   "module": "M40",
+   "route": "/workforce/clinical/M40-S01",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M40-S02",
+   "module": "M40",
+   "route": "/workforce/clinical/M40-S02",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M40-S03",
+   "module": "M40",
+   "route": "/workforce/clinical/M40-S03",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M40-S04",
+   "module": "M40",
+   "route": "/workforce/clinical/M40-S04",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M40-S05",
+   "module": "M40",
+   "route": "/workforce/clinical/M40-S05",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  },
+  {
+   "dynamicEntrypoints": [
+    "apps/web/app/workforce/clinical/[screenId]/page.tsx"
+   ],
+   "entrypointKind": "shared_dynamic_page",
+   "id": "M40-S06",
+   "module": "M40",
+   "route": "/workforce/clinical/M40-S06",
+   "routeStatus": "route_registered_domain_adapter_missing",
+   "staticEntrypoints": []
+  }
+ ],
+ "registerStatusVersusEvidenceDiscrepancies": [
+  {
+   "evidence": "implementation_reference",
+   "id": "M01-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "evidence": "implementation_reference",
+   "id": "M38-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "evidence": "implementation_reference",
+   "id": "M38-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "evidence": "implementation_reference",
+   "id": "M38-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "evidence": "implementation_reference",
+   "id": "M38-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "evidence": "implementation_reference",
+   "id": "M38-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "evidence": "implementation_reference",
+   "id": "M39-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "evidence": "implementation_reference",
+   "id": "M39-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "evidence": "implementation_reference",
+   "id": "M39-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "evidence": "implementation_reference",
+   "id": "M39-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "evidence": "implementation_reference",
+   "id": "M39-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "evidence": "implementation_reference",
+   "id": "M40-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "evidence": "implementation_reference",
+   "id": "M40-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "evidence": "implementation_reference",
+   "id": "M40-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "evidence": "implementation_reference",
+   "id": "M40-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "evidence": "implementation_reference",
+   "id": "M40-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "evidence": "implementation_reference",
+   "id": "M40-S06",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  }
+ ],
+ "reportsAndTemplates": {
+  "crossCatalogIdOverlap": [
+   "P01",
+   "P02",
+   "P03",
+   "P04",
+   "P05",
+   "P06",
+   "P07",
+   "P08",
+   "P09",
+   "P10",
+   "P11",
+   "P12",
+   "P13",
+   "P14",
+   "P15",
+   "P16",
+   "P17",
+   "P18"
+  ],
+  "hospitalDocumentTemplateCatalog": {
+   "byModule": {
+    "M01": 7,
+    "M02": 7,
+    "M03": 7,
+    "M04": 9,
+    "M05": 7,
+    "M06": 7,
+    "M07": 5,
+    "M08": 8,
+    "M09": 7,
+    "M10": 7,
+    "M11": 13,
+    "M12": 8,
+    "M13": 9,
+    "M14": 9,
+    "M15": 8,
+    "M16": 6,
+    "M17": 23,
+    "M18": 6,
+    "M19": 9,
+    "M20": 7,
+    "M21": 7,
+    "M22": 7,
+    "M23": 7,
+    "M24": 9,
+    "M25": 6,
+    "M26": 6,
+    "M27": 7,
+    "M28": 6,
+    "M29": 6,
+    "M30": 6,
+    "M31": 7,
+    "M32": 9,
+    "M33": 8,
+    "M34": 7,
+    "M35": 6,
+    "M36": 6,
+    "M37": 6,
+    "M38": 6,
+    "M39": 6,
+    "M40": 7
+   },
+   "count": 304,
+   "duplicateIds": [],
+   "uniqueIds": 304
+  },
+  "note": "templates are print/form definitions, not workflow implementations; counted separately from screens",
+  "printableCatalogs": {
+   "duplicateIds": [],
+   "entries": 376,
+   "files": 24,
+   "uniqueIds": 376
+  }
+ },
+ "schemaVersion": "synqoria.reconciliation.screens.v1",
+ "screenCount": 261,
+ "screenEvidenceStates": {
+  "catalog_or_test_reference_only": 5,
+  "implementation_reference": 117,
+  "route_registered_only": 127
+ },
+ "screensReferencedByImplementationInMultipleFamilies": {
+  "M01-S02": [
+   "apps/web/app/globals.css",
+   "apps/web/app/workforce"
+  ],
+  "M02-S01": [
+   "apps/web/app/workforce",
+   "apps/web/components/scheduling"
+  ],
+  "M02-S02": [
+   "apps/web/app/workforce",
+   "apps/web/components/scheduling"
+  ],
+  "M02-S03": [
+   "apps/web/app/workforce",
+   "apps/web/components/scheduling"
+  ],
+  "M02-S04": [
+   "apps/web/app/workforce",
+   "apps/web/components/scheduling"
+  ],
+  "M02-S05": [
+   "apps/web/app/workforce",
+   "apps/web/components/scheduling"
+  ],
+  "M03-S04": [
+   "apps/web/app/workforce",
+   "apps/web/lib/clinical-cell.mjs"
+  ],
+  "M16-S01": [
+   "apps/web/app/workforce",
+   "apps/web/components/referrals"
+  ],
+  "M16-S02": [
+   "apps/web/app/workforce",
+   "apps/web/components/referrals"
+  ],
+  "M16-S03": [
+   "apps/web/app/workforce",
+   "apps/web/components/referrals"
+  ],
+  "M16-S04": [
+   "apps/web/app/workforce",
+   "apps/web/components/referrals"
+  ],
+  "M16-S05": [
+   "apps/web/app/workforce",
+   "apps/web/components/referrals"
+  ],
+  "M21-S01": [
+   "apps/web/components/OperationsWorkbench.tsx",
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M21-S02": [
+   "apps/web/components/OperationsWorkbench.tsx",
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M21-S03": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M21-S04": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M21-S05": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M21-S06": [
+   "apps/web/components/OperationsWorkbench.tsx",
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M22-S01": [
+   "apps/web/components/OperationsWorkbench.tsx",
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M22-S02": [
+   "apps/web/components/OperationsWorkbench.tsx",
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M22-S03": [
+   "apps/web/components/OperationsWorkbench.tsx",
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M22-S04": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M22-S05": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M23-S01": [
+   "apps/web/components/OperationsWorkbench.tsx",
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M23-S02": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M23-S03": [
+   "apps/web/components/OperationsWorkbench.tsx",
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M23-S04": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M23-S05": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M24-S01": [
+   "apps/web/app/workforce",
+   "apps/web/components/hr",
+   "services/hr-payroll-core/src/main"
+  ],
+  "M24-S02": [
+   "apps/web/app/workforce",
+   "apps/web/components/hr"
+  ],
+  "M24-S03": [
+   "apps/web/app/workforce",
+   "apps/web/components/hr",
+   "services/hr-payroll-core/src/main"
+  ],
+  "M24-S04": [
+   "apps/web/app/workforce",
+   "apps/web/components/hr"
+  ],
+  "M24-S05": [
+   "apps/web/app/workforce",
+   "apps/web/components/hr",
+   "services/hr-payroll-core/src/main"
+  ],
+  "M24-S06": [
+   "apps/web/app/workforce",
+   "apps/web/components/hr"
+  ],
+  "M25-S01": [
+   "apps/web/components/OperationsWorkbench.tsx",
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M25-S02": [
+   "apps/web/components/OperationsWorkbench.tsx",
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M25-S03": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M25-S04": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M25-S05": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M26-S01": [
+   "apps/web/app/workforce",
+   "apps/web/components/nutrition",
+   "contracts/openapi/synqoria-m26-nutrition-v1.yaml",
+   "services/nutrition-core/src/main"
+  ],
+  "M26-S02": [
+   "apps/web/app/workforce",
+   "apps/web/components/nutrition",
+   "contracts/openapi/synqoria-m26-nutrition-v1.yaml",
+   "services/nutrition-core/src/main"
+  ],
+  "M26-S03": [
+   "apps/web/app/workforce",
+   "apps/web/components/nutrition",
+   "contracts/openapi/synqoria-m26-nutrition-v1.yaml",
+   "services/nutrition-core/src/main"
+  ],
+  "M26-S04": [
+   "apps/web/app/workforce",
+   "apps/web/components/nutrition",
+   "contracts/openapi/synqoria-m26-nutrition-v1.yaml",
+   "services/nutrition-core/src/main"
+  ],
+  "M27-S01": [
+   "apps/web/components/MortuaryWorkbench.tsx",
+   "apps/web/lib/mortuary-screen-catalog.json"
+  ],
+  "M27-S02": [
+   "apps/web/components/MortuaryWorkbench.tsx",
+   "apps/web/lib/mortuary-screen-catalog.json"
+  ],
+  "M27-S03": [
+   "apps/web/components/MortuaryWorkbench.tsx",
+   "apps/web/lib/mortuary-screen-catalog.json"
+  ],
+  "M27-S04": [
+   "apps/web/components/MortuaryWorkbench.tsx",
+   "apps/web/lib/mortuary-screen-catalog.json"
+  ],
+  "M27-S05": [
+   "apps/web/components/MortuaryWorkbench.tsx",
+   "apps/web/lib/mortuary-screen-catalog.json"
+  ],
+  "M28-S01": [
+   "apps/web/app/workforce",
+   "apps/web/components/analytics"
+  ],
+  "M28-S02": [
+   "apps/web/app/workforce",
+   "apps/web/components/analytics"
+  ],
+  "M28-S03": [
+   "apps/web/app/workforce",
+   "apps/web/components/analytics"
+  ],
+  "M28-S04": [
+   "apps/web/app/workforce",
+   "apps/web/components/analytics"
+  ],
+  "M28-S05": [
+   "apps/web/app/workforce",
+   "apps/web/components/analytics"
+  ],
+  "M29-S01": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M29-S02": [
+   "apps/web/components/OperationsWorkbench.tsx",
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M29-S03": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M29-S04": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M30-S01": [
+   "apps/web/app/workforce",
+   "apps/web/components/content",
+   "contracts/openapi/synqoria-m30-content-v1.yaml",
+   "services/clinical-content-core/src/main"
+  ],
+  "M30-S02": [
+   "apps/web/app/workforce",
+   "apps/web/components/content",
+   "contracts/openapi/synqoria-m30-content-v1.yaml",
+   "services/clinical-content-core/src/main"
+  ],
+  "M30-S03": [
+   "apps/web/app/workforce",
+   "apps/web/components/content",
+   "contracts/openapi/synqoria-m30-content-v1.yaml",
+   "services/clinical-content-core/src/main"
+  ],
+  "M30-S04": [
+   "apps/web/app/workforce",
+   "apps/web/components/content"
+  ],
+  "M30-S05": [
+   "apps/web/app/workforce",
+   "apps/web/components/content",
+   "contracts/openapi/synqoria-m30-content-v1.yaml",
+   "services/clinical-content-core/src/main"
+  ],
+  "M31-S01": [
+   "apps/web/app/workforce",
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M31-S02": [
+   "apps/web/components/OperationsWorkbench.tsx",
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M31-S03": [
+   "apps/web/app/workforce",
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M31-S04": [
+   "apps/web/components/OperationsWorkbench.tsx",
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M31-S05": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M31-S06": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M32-S01": [
+   "apps/web/app/workforce",
+   "apps/web/components/privacy"
+  ],
+  "M32-S02": [
+   "apps/web/app/workforce",
+   "apps/web/components/privacy"
+  ],
+  "M32-S03": [
+   "apps/web/app/workforce",
+   "apps/web/components/privacy"
+  ],
+  "M32-S04": [
+   "apps/web/app/workforce",
+   "apps/web/components/privacy"
+  ],
+  "M32-S05": [
+   "apps/web/app/workforce",
+   "apps/web/components/privacy"
+  ],
+  "M34-S01": [
+   "apps/web/app/workforce",
+   "apps/web/components/audit"
+  ],
+  "M34-S02": [
+   "apps/web/app/workforce",
+   "apps/web/components/audit"
+  ],
+  "M34-S03": [
+   "apps/web/app/workforce",
+   "apps/web/components/audit"
+  ],
+  "M34-S04": [
+   "apps/web/app/workforce",
+   "apps/web/components/audit"
+  ],
+  "M34-S05": [
+   "apps/web/app/workforce",
+   "apps/web/components/audit"
+  ],
+  "M35-S01": [
+   "apps/web/app/workforce",
+   "apps/web/components/integrations"
+  ],
+  "M35-S02": [
+   "apps/web/app/workforce",
+   "apps/web/components/integrations"
+  ],
+  "M35-S03": [
+   "apps/web/app/workforce",
+   "apps/web/components/integrations"
+  ],
+  "M35-S04": [
+   "apps/web/app/workforce",
+   "apps/web/components/integrations"
+  ],
+  "M35-S05": [
+   "apps/web/app/workforce",
+   "apps/web/components/integrations"
+  ],
+  "M35-S06": [
+   "apps/web/app/workforce",
+   "apps/web/components/integrations"
+  ],
+  "M37-S01": [
+   "apps/web/components/OperationsWorkbench.tsx",
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M37-S02": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M37-S03": [
+   "apps/web/components/OperationsWorkbench.tsx",
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ],
+  "M37-S04": [
+   "apps/web/lib/operations-screen-catalog.json",
+   "apps/web/lib/operations-screen-flows.json"
+  ]
+ }
+}

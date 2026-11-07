@@ -1,0 +1,30 @@
+name: M01-M37 reconciliation evidence validation (inventory, not acceptance)
+on:
+  pull_request:
+    paths:
+      - 'registers/reconciliation/**'
+      - 'docs/program/reconciliation/**'
+      - 'tests/reconciliation/**'
+      - 'tools/reconciliation/**'
+      - '.github/workflows/reconciliation-validation.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Structural validation, evidence paths at the baseline commit, and negative tests
+        run: python -m unittest discover -s tests/reconciliation -v
+      - name: Byte-identical regeneration at the recorded baseline
+        run: python tools/reconciliation/validate_reconciliation.py --rescan
+      - name: Matrix document in sync
+        run: |
+          python tools/reconciliation/render_matrix.py
+          git diff --exit-code docs/program/reconciliation/MODULE_EVIDENCE_MATRIX.md

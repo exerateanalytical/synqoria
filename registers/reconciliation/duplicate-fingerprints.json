@@ -1,0 +1,130 @@
+{
+ "classNameCollisions": {
+  "Rules": [
+   "services/audit-core",
+   "services/privacy-core"
+  ]
+ },
+ "identicalContentGroups": [
+  [
+   "apps/web/app/workforce/integrations/integrations.module.css",
+   "apps/web/app/workforce/referrals/referrals.module.css",
+   "apps/web/app/workforce/scheduling/scheduling.module.css"
+  ],
+  [
+   "apps/web/components/analytics/analytics.module.css",
+   "apps/web/components/content/content.module.css",
+   "apps/web/components/fleet/fleet.module.css",
+   "apps/web/components/hr/hr.module.css",
+   "apps/web/components/offline/offline.module.css",
+   "apps/web/components/reliability/reliability.module.css"
+  ],
+  [
+   "docs/program/V066_INBOX_OPERATIONS.md",
+   "docs/program/handoffs/P07_B0120_B0129_v066.md"
+  ]
+ ],
+ "method": {
+  "classNameCollision": "same non-generic Java class file name in more than one service: CANDIDATE overlap only",
+  "identicalContent": "git blob SHA equality across different paths (files > 200 bytes, evidence/ excluded): PROVEN byte-identical copies",
+  "openapiOperationCollision": "same HTTP method and normalised path in more than one OpenAPI file: CANDIDATE overlap (may be intentional versions)",
+  "screenIdentity": "duplicate screen ids or routes in registers/screen-routes.json",
+  "tableNameCollision": "same unqualified CREATE TABLE name in more than one service: CANDIDATE overlap (may be intentional per-service tables)"
+ },
+ "openapiOperationCollisions": {
+  "GET /incidents": [
+   "contracts/openapi/synqoria-m26-nutrition-v1.yaml",
+   "contracts/openapi/synqoria-m40-reliability-v1.yaml"
+  ],
+  "GET /runs": [
+   "contracts/openapi/synqoria-m24-hr-v1.yaml",
+   "contracts/openapi/synqoria-m28-analytics-v1.yaml"
+  ],
+  "GET /runs/{}": [
+   "contracts/openapi/synqoria-m24-hr-v1.yaml",
+   "contracts/openapi/synqoria-m28-analytics-v1.yaml"
+  ],
+  "POST /contracts/{}/decision": [
+   "contracts/openapi/synqoria-m24-hr-v1.yaml",
+   "contracts/openapi/synqoria-m38-offline-v1.yaml"
+  ]
+ },
+ "provenOverlap": [
+  [
+   "apps/web/app/workforce/integrations/integrations.module.css",
+   "apps/web/app/workforce/referrals/referrals.module.css",
+   "apps/web/app/workforce/scheduling/scheduling.module.css"
+  ],
+  [
+   "apps/web/components/analytics/analytics.module.css",
+   "apps/web/components/content/content.module.css",
+   "apps/web/components/fleet/fleet.module.css",
+   "apps/web/components/hr/hr.module.css",
+   "apps/web/components/offline/offline.module.css",
+   "apps/web/components/reliability/reliability.module.css"
+  ],
+  [
+   "docs/program/V066_INBOX_OPERATIONS.md",
+   "docs/program/handoffs/P07_B0120_B0129_v066.md"
+  ]
+ ],
+ "schemaVersion": "synqoria.reconciliation.duplicates.v1",
+ "screenRegister": {
+  "duplicateRoutes": [],
+  "duplicateScreenIds": []
+ },
+ "tableNameCollisions": {
+  "audit_events": [
+   "services/analytics-core",
+   "services/cell-lifecycle-core",
+   "services/clinical-content-core",
+   "services/hr-payroll-core",
+   "services/integration-management-core",
+   "services/nutrition-core",
+   "services/offline-sync-core",
+   "services/operations-core",
+   "services/privacy-core",
+   "services/referrals-core",
+   "services/reliability-core",
+   "services/scheduling-core"
+  ],
+  "command_idempotency": [
+   "services/analytics-core",
+   "services/cell-lifecycle-core",
+   "services/clinical-content-core",
+   "services/hr-payroll-core",
+   "services/nutrition-core",
+   "services/offline-sync-core",
+   "services/operations-core",
+   "services/reliability-core"
+  ],
+  "commands": [
+   "services/audit-core",
+   "services/integration-management-core",
+   "services/offline-sync-core",
+   "services/privacy-core",
+   "services/referrals-core",
+   "services/scheduling-core"
+  ],
+  "contracts": [
+   "services/hr-payroll-core",
+   "services/offline-sync-core"
+  ],
+  "outbox": [
+   "services/analytics-core",
+   "services/audit-core",
+   "services/cell-lifecycle-core",
+   "services/clinical-content-core",
+   "services/hr-payroll-core",
+   "services/integration-management-core",
+   "services/nutrition-core",
+   "services/offline-sync-core",
+   "services/operations-core",
+   "services/privacy-core",
+   "services/referrals-core",
+   "services/reliability-core",
+   "services/scheduling-core"
+  ]
+ },
+ "unprovenOverlapNote": "candidates require human review before any consolidation; none were removed or merged by this scan"
+}

@@ -1,0 +1,1097 @@
+{
+ "baselineCommitCount": 902,
+ "baselineSha": "fc4f84eb60e7ab7a023895eabfd8266cbda309c5",
+ "branchSummary": {
+  "notReachable": [
+   "work/claude-m38-device-client-integration-2026-11-07"
+  ],
+  "reachableFromBaseline": 63,
+  "total": 64
+ },
+ "countingPolicy": "inventory evidence only; engineering pass != production integration != hospital acceptance != certification; unknown stays null",
+ "inputs": {
+  "anchors": {
+   "path": "registers/reconciliation/inputs/capability-anchors.json",
+   "sha256": "10d3821bd1cc00935e55938fe165687c7b3b9302017868149a458c2123680fbc"
+  },
+  "ci": {
+   "path": "registers/reconciliation/inputs/ci-runs.json",
+   "sha256": "329423f440b2c33d17203f86fcf1519aa4ef02beaa0f12e63b788f25e42aecd3"
+  },
+  "prs": {
+   "path": "registers/reconciliation/inputs/pr-snapshot.json",
+   "sha256": "dcd9d2907a93d3837f282df129653d18fae8feaaa13ba3f8c48b3631943b8311"
+  }
+ },
+ "lineageStatement": "A closed or merged PR head that is reachable from the baseline has its content in main; no unmerged historical branch content was found outside the listed notReachable branches.",
+ "openPullRequestsNotInBaseline": [
+  56
+ ],
+ "pullRequestSummary": {
+  "CLOSED": 43,
+  "MERGED": 17,
+  "OPEN": 1
+ },
+ "pullRequests": [
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/triage-scoped-workflows-v058",
+   "headSha": "b7aeba143f4da105ce8c728faffdbeda160f4d63",
+   "mergeCommit": "b7aeba143f4da105ce8c728faffdbeda160f4d63",
+   "number": 1,
+   "state": "MERGED",
+   "title": "P06-B0369â€“B0371: scoped M03 staff workflow, transport safety and idempotent intake",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/1"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/triage-safe-command-recovery-v059",
+   "headSha": "abd2c64646087a36477f6a55bc1f988ef5552f99",
+   "mergeCommit": null,
+   "number": 2,
+   "state": "CLOSED",
+   "title": "P06-B0372â€“B0391: 20 verified M03 triage workflow integrations",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/2"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/clinical-encounter-documentation-v060",
+   "headSha": "492000765aebfe602fbcfc49fa885f71601be524",
+   "mergeCommit": null,
+   "number": 3,
+   "state": "CLOSED",
+   "title": "P07-B0001â€“B0060: 60 verified M04/M05/M06 clinical domain operations",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/3"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/clinical-http-integration-v061",
+   "headSha": "ddc924a3911ead1de2a786f88b22e3398752ecbf",
+   "mergeCommit": null,
+   "number": 4,
+   "state": "CLOSED",
+   "title": "P07-B0061â€“B0070: authenticated M04â€“M06 clinical HTTP and staff transport",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/4"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/longitudinal-secure-persistence-v062",
+   "headSha": "3fe8289829946a531f6e398a3a8e229d3c8882a7",
+   "mergeCommit": null,
+   "number": 5,
+   "state": "CLOSED",
+   "title": "P07-B0071â€“B0093: 23 verified encrypted clinical persistence and read integrations",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/5"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/longitudinal-outbox-v063",
+   "headSha": "3caa48e16239907f45374db01f7ade5f4aa98908",
+   "mergeCommit": null,
+   "number": 6,
+   "state": "CLOSED",
+   "title": "P07-B0094â€“B0104: scoped ordered clinical outbox delivery v0.63.0",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/6"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/longitudinal-inbox-v064",
+   "headSha": "6f2711e4f230c97ff9637211e063c0c4c33c95af",
+   "mergeCommit": null,
+   "number": 7,
+   "state": "CLOSED",
+   "title": "P07-B0105â€“B0114: clinical consumer inbox safety foundations (v0.64.0)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/7"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/longitudinal-inbox-integration-v065",
+   "headSha": "b61c71403428509665b32a5d8db5f0b2e0a172f3",
+   "mergeCommit": null,
+   "number": 8,
+   "state": "CLOSED",
+   "title": "P07-B0115â€“B0119: quarantined inbox schema, wire, scoped JDBC and broker ACK gates",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/8"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/longitudinal-inbox-operations-v066",
+   "headSha": "002e1fa99b4efa5d867d9c090dfcd3f3b72f0b25",
+   "mergeCommit": null,
+   "number": 9,
+   "state": "CLOSED",
+   "title": "P07-B0120â€“B0129: ten verified clinical inbox operational safety batches",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/9"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/longitudinal-inbox-admission-v067",
+   "headSha": "b0a1495462f76cc97c57201006bd58ee5e7a1600",
+   "mergeCommit": null,
+   "number": 10,
+   "state": "CLOSED",
+   "title": "P07-B0130â€“B0159: thirty clinical inbox admission and recovery policy batches",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/10"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "reconcile/2026-11-05-preserve-all-workstreams",
+   "headSha": "f441dddef01ad46e97ffcf486de92431d90f484d",
+   "mergeCommit": "f441dddef01ad46e97ffcf486de92431d90f484d",
+   "number": 11,
+   "state": "MERGED",
+   "title": "Reconciliation inventory: preserve P06/P07 divergent histories before integration",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/11"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/ui-controls-coverage-2026-11-05",
+   "headSha": "ebe15a605dfd792c0acf05e66f8b05320cd7bf5d",
+   "mergeCommit": null,
+   "number": 12,
+   "state": "CLOSED",
+   "title": "UI: 261 canonical interactive specimens, controls, dialogs and coverage gates",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/12"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/ui-identity-registration-2026-11-05",
+   "headSha": "1f8b092bd5df8a7e8d315c9a74c5f555e127894d",
+   "mergeCommit": null,
+   "number": 13,
+   "state": "CLOSED",
+   "title": "UI: nine bilingual authentication and M01 patient identity screens with guarded workflows",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/13"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/ui-all-261-specific-2026-11-05",
+   "headSha": "07fcc169e7fdcf152c757c7d09c79fd962ea8b79",
+   "mergeCommit": null,
+   "number": 14,
+   "state": "CLOSED",
+   "title": "UI: all 261 canonical screen-specific prototypes and 14 clinical workflow maps",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/14"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/hospital-document-templates-2026-11-05",
+   "headSha": "17a6406253eb769544fd97949aa8edad99f91fb5",
+   "mergeCommit": null,
+   "number": 15,
+   "state": "CLOSED",
+   "title": "Documents: 304 hospital form and printable PDF templates across all 40 modules",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/15"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/hospital-documents-unified-2026-11-05",
+   "headSha": "46e335af606ae35603839926c5fd23b3250bce67",
+   "mergeCommit": null,
+   "number": 16,
+   "state": "CLOSED",
+   "title": "Hospital documents: reconcile 376 structured forms and 304 PDF sample templates",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/16"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/real-clinical-screens-first-slice-2026-11-05",
+   "headSha": "524bedef6bd6f33bead75524207c6c3f7433aee8",
+   "mergeCommit": null,
+   "number": 17,
+   "state": "CLOSED",
+   "title": "Real staff screens: authenticated BFF, actual patient/triage reads, settings and safe navigation",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/17"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/canonical-261-route-coverage-2026-11-05",
+   "headSha": "805374844eaded1f304bf76e9b222183b92017d5",
+   "mergeCommit": null,
+   "number": 18,
+   "state": "CLOSED",
+   "title": "All 261 application URLs: preserve verified operations, 251 domain-specific fail-closed workstations",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/18"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/clinical-identity-triage-read-integrations-2026-11-05",
+   "headSha": "1b702e4fbd39c7efac579360fd916b8f009c13a9",
+   "mergeCommit": null,
+   "number": 19,
+   "state": "CLOSED",
+   "title": "Operational progression: real M01 patient lookup and M03 reassessment audit + handover reads",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/19"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/m04-m06-read-operations-consolidation-2026-11-05",
+   "headSha": "31ddc403d92046ab94326e649c150c94ecc26a63",
+   "mergeCommit": null,
+   "number": 20,
+   "state": "CLOSED",
+   "title": "M04â€“M06 real read integrations: 8 clinical workstations, scoped BFF, typed evidence, 261-screen gap ledger",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/20"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "plan/240-screens-single-execution-2026-11-05",
+   "headSha": "a8a211bb25bc58bb8fbcd931e20f018f6e2a30b4",
+   "mergeCommit": null,
+   "number": 21,
+   "state": "CLOSED",
+   "title": "Plan: all 240 missing operational screens mapped to 30 exact engineering batches",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/21"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/p03-oidc-assertion-verifier-2026-11-05",
+   "headSha": "da4f596b263d5ed96280bcb709dbdd84969482be",
+   "mergeCommit": null,
+   "number": 22,
+   "state": "CLOSED",
+   "title": "P03/GATE-01: pinned-JWKS staff OIDC proof verification, adversarial tests and CI",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/22"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/reproducible-npm-lock-candidate-2026-11-05",
+   "headSha": "a18a322ba4e7d2b5a0194ca6a0a2d174b8b85420",
+   "mergeCommit": null,
+   "number": 23,
+   "state": "CLOSED",
+   "title": "Build: verified npm v3 lockfile candidate for four SYNQORIA workspaces",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/23"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/real-next-expo-build-corrections-2026-11-05",
+   "headSha": "45a158660e5473597654f89664e394cbf2ac1ab9",
+   "mergeCommit": null,
+   "number": 24,
+   "state": "CLOSED",
+   "title": "Build: compile UX workspace and restrict Expo export to real native platforms",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/24"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/p03-oidc-one-time-replay-2026-11-05",
+   "headSha": "c638e686bf403e5270d4b708fa34c49e21a6bf03",
+   "mergeCommit": null,
+   "number": 25,
+   "state": "CLOSED",
+   "title": "P03: enforce one-time OIDC callback state with atomic storage contract",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/25"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/p03-oidc-replay-postgres-integration-2026-11-05",
+   "headSha": "499f25cab50bc8d6338e73061e757b4a5ecdf49d",
+   "mergeCommit": null,
+   "number": 26,
+   "state": "CLOSED",
+   "title": "P03/GATE-01: live Postgres replay/RLS tests, protected OIDC exchange and introspection",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/26"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/p03-authoritative-staff-grants-2026-11-05",
+   "headSha": "9a5b1ec67e6991b4ebb0c26e0436b8b5bb1ead43",
+   "mergeCommit": null,
+   "number": 27,
+   "state": "CLOSED",
+   "title": "P03-B0034â€“B0039: authoritative staff grants and revocable encrypted identity sessions",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/27"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/p03-b0052-runtime-recovery-2026-11-06",
+   "headSha": "e975629d46c6bd5f0931e6e86c63521b97cb7c4b",
+   "mergeCommit": null,
+   "number": 28,
+   "state": "CLOSED",
+   "title": "P03 B0052â€“B0053: recover signed staff runtime and validate real PostgreSQL roles",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/28"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/p03-b0054-b0063-deployment-guards-2026-11-06",
+   "headSha": "36e0186d0305e5432f9baba3ba30ea3504024b6c",
+   "mergeCommit": null,
+   "number": 29,
+   "state": "CLOSED",
+   "title": "P03-B0054â€“B0063: clinical identity release gates, exact DB policies and verified clinical binding",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/29"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/ops001-shared-auth-patient-read-2026-11-06",
+   "headSha": "f2226ab48f941a88657664b2daa413d06001c54c",
+   "mergeCommit": null,
+   "number": 30,
+   "state": "CLOSED",
+   "title": "SYNQ-OPS-001: eight source-tested shared staff screens, verified OIDC/lookup adapters (partial)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/30"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/p03-b0064-b0093-identity-route-engineering-2026-11-06",
+   "headSha": "0fb7beccd89f1e2421144c7827d48453fb0a6ad7",
+   "mergeCommit": null,
+   "number": 31,
+   "state": "CLOSED",
+   "title": "P03 B0064â€“B0093: 30 source-verified identity route, TLS/IdP bootstrap and denial gates (draft)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/31"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/p03-b0094-b0123-runtime-build-2026-11-06",
+   "headSha": "e143745a9025ddb0f37d982f7e3e47f3e429346a",
+   "mergeCommit": null,
+   "number": 32,
+   "state": "CLOSED",
+   "title": "P03 B0094â€“B0123: 30/30 source-engineering runtime, live PG16 TLS and IdP denial gates (draft)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/32"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/p03-b0124-b0153-contract-guard-engineering-2026-11-06",
+   "headSha": "c89b23a3826998fbf45cf79d93bf66d3229d3d2c",
+   "mergeCommit": null,
+   "number": 33,
+   "state": "CLOSED",
+   "title": "P03 B0124â€“B0153: 30/30 exact SQL role contracts and live PG16 identity gates (draft)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/33"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/operations-seven-module-service-2026-11-06",
+   "headSha": "4ab24efb9eb159732ebe7d339831a2a1cddb69e9",
+   "mergeCommit": "4ab24efb9eb159732ebe7d339831a2a1cddb69e9",
+   "number": 34,
+   "state": "MERGED",
+   "title": "M21/M22/M23/M25/M29/M31/M37: seven Java/Spring Boot operations module foundations + 35 locked screens (draft)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/34"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/latest-stable-stack-governance-2026-11-06",
+   "headSha": "462afed691d632d2b2be25c815d1f61459dbcc97",
+   "mergeCommit": null,
+   "number": 35,
+   "state": "CLOSED",
+   "title": "Stack: Java25 LTS + Java27 CI, PostgreSQL18.6, Node26; latest stable Next/Expo candidates verified (draft)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/35"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/seven-operations-real-workflows-2026-11-06",
+   "headSha": "e14f589c449e6c65520db36dd1fe620ee71b3b0f",
+   "mergeCommit": null,
+   "number": 36,
+   "state": "CLOSED",
+   "title": "Seven operations modules: database-backed workflows, verified staff grants, 35 task-specific workstations (draft)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/36"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/chatgpt-m27-mortuary-2026-11-07",
+   "headSha": "4221eacd3398d708252316d2e1aa228f13749724",
+   "mergeCommit": null,
+   "number": 37,
+   "state": "CLOSED",
+   "title": "M27 Mortuary: verified intake, custody, dual release, witnessed handover and five staffed workstations (draft)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/37"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/claude-m26-nutrition-2026-11-07",
+   "headSha": "ee0ecccf64d4aad5d2d69b2c0ed742037ae57d6a",
+   "mergeCommit": null,
+   "number": 38,
+   "state": "CLOSED",
+   "title": "feat(m26): catering and dietary orders",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/38"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/chatgpt-m32-consent-privacy-2026-11-07",
+   "headSha": "ec06adbc58c90bced7cb1b50b9967c0c6e9f37b1",
+   "mergeCommit": null,
+   "number": 39,
+   "state": "CLOSED",
+   "title": "M32 privacy and consent: independently verified directives, disclosure governance, PostgreSQL RLS (draft)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/39"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/claude-m30-clinical-content-2026-11-07",
+   "headSha": "4ca663afa6d7174c889384652c380e0850502c9f",
+   "mergeCommit": null,
+   "number": 40,
+   "state": "CLOSED",
+   "title": "feat(m30): terminology, formularies and clinical content governance",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/40"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/chatgpt-m34-audit-provenance-2026-11-07",
+   "headSha": "99e69901c1febb75bc860a7864357f965814d157",
+   "mergeCommit": null,
+   "number": 41,
+   "state": "CLOSED",
+   "title": "M34 audit and provenance: attested hash chains, evidence manifests and retention holds (draft)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/41"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/claude-m24-hr-payroll-2026-11-07",
+   "headSha": "c7fc72e6e0e3c1eec0986e40c03904f421aa5546",
+   "mergeCommit": null,
+   "number": 42,
+   "state": "CLOSED",
+   "title": "feat(m24): human resources, staffing and payroll",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/42"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/chatgpt-m02-appointments-2026-11-07",
+   "headSha": "d133374e58f5f785013d4b29832495ad6dde02a1",
+   "mergeCommit": null,
+   "number": 43,
+   "state": "CLOSED",
+   "title": "M02 appointments: conflict-safe scheduling, waiting lists and five workstations (draft)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/43"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/chatgpt-m16-referrals-2026-11-07",
+   "headSha": "aaf8a28fe05a06ea409346ca21b65c300aceb575",
+   "mergeCommit": null,
+   "number": 44,
+   "state": "CLOSED",
+   "title": "M16 referrals: evidence-bound care transitions and five workstations (draft)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/44"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/chatgpt-m35-integration-management-2026-11-07",
+   "headSha": "7bedc1f6966a0c6316ca3d716a7cf2b28f6da040",
+   "mergeCommit": null,
+   "number": 45,
+   "state": "CLOSED",
+   "title": "M35 interoperability governance: partners, APIs, mappings and replay reviews (draft)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/45"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/claude-m28-analytics-bi-2026-11-07",
+   "headSha": "e7a9ff7d65d243eea6e4990bb44508f7fdcad602",
+   "mergeCommit": null,
+   "number": 46,
+   "state": "CLOSED",
+   "title": "M28 Hospital Operations and Business Intelligence (5 screens, draft)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/46"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "integration/synqoria-production-reconciliation-2026-11-07",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "mergeCommit": "b86ea5cf1444aaaf851c8dbb8f5fab66ea0ab4bb",
+   "number": 47,
+   "state": "MERGED",
+   "title": "Consolidate SYNQORIA engineering into main: P06/P07, P03, all 261 canonical screens and 13 services",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/47"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/postmerge-reconciliation-gates-2026-11-07",
+   "headSha": "f1ded5b6d80c75ae9f59e56a91f7dfd5edce927b",
+   "mergeCommit": "d5407e76d7a0058878fcc0cd80df9809d1cf4f28",
+   "number": 48,
+   "state": "MERGED",
+   "title": "Post-merge reconciliation: current 86 source-integrated screens, historical checkpoints and artifact diagnosis",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/48"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/claude-m38-offline-sync-2026-11-07",
+   "headSha": "7cd4c6b4e0f17e32ab5c1c03bb8c70635adccbcd",
+   "mergeCommit": "a26446b6918fb127b273fdfcbfe4cb6f17393299",
+   "number": 50,
+   "state": "MERGED",
+   "title": "M38 Offline synchronization and ownership reconciliation (5 screens, draft)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/50"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/claude-m39-cell-lifecycle-2026-11-07",
+   "headSha": "88422270e8e9d378e33661d23347defdbb0f1727",
+   "mergeCommit": "f1b1c8d49086af07f0d078ea43aa92b61656b327",
+   "number": 51,
+   "state": "MERGED",
+   "title": "M39 Tenant and hospital cell lifecycle (5 screens, draft)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/51"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/claude-m40-reliability-recovery-2026-11-07",
+   "headSha": "b5cdc2e182fd9e2156de4ec70f5249477fc99b41",
+   "mergeCommit": "aa886ccdd1226131532fb9e28fac93f5b43e3c89",
+   "number": 52,
+   "state": "MERGED",
+   "title": "M40 Reliability, backup, recovery and operational telemetry (6 screens, draft)",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/52"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/chatgpt-m39-routing-gate-2026-11-07",
+   "headSha": "348fc521a2306f116c403a929d7d7c21d344fd6d",
+   "mergeCommit": "838228fb98bc792b942e78b320852379c12858ef",
+   "number": 54,
+   "state": "MERGED",
+   "title": "M39: fail-closed signed hospital routing admission and regression tests",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/54"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/chatgpt-m40-backup-integrity-2026-11-07",
+   "headSha": "579c68a398f244b39415d35af58bc6dd89d856c0",
+   "mergeCommit": "a1d616e28ddf2d89f373498e7825fb6fae4941b6",
+   "number": 55,
+   "state": "MERGED",
+   "title": "M40: independent backup artifact digest and size inspection utility",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/55"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": false,
+   "headRef": "work/claude-m38-device-client-integration-2026-11-07",
+   "headSha": "20fcf06f10a07ca4f7fe87eeb006856dcc56fb86",
+   "mergeCommit": null,
+   "number": 56,
+   "state": "OPEN",
+   "title": "M38 offline device client + sync integration (SDK, PWA device panel, interop) - partial per #53",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/56"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/chatgpt-m40-catalogue-verifier-2026-11-07",
+   "headSha": "0ac68bfd16f605768def9bb201340fd05eb442c8",
+   "mergeCommit": "9e7a9c196d2e5b441a1b9106e787c0c59b68aa54",
+   "number": 57,
+   "state": "MERGED",
+   "title": "M40: authenticate backup metadata from catalogue before artifact inspection",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/57"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/chatgpt-m39-health-probe-2026-11-07",
+   "headSha": "5190e089234beda1a91a34064657b85012c28fd7",
+   "mergeCommit": "e31196377924db8f75a65bc13930d3503e39703d",
+   "number": 58,
+   "state": "MERGED",
+   "title": "M39: observe independent HTTPS cell readiness and report fail-closed health",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/58"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/chatgpt-continuous-reconciliation-2026-11-07",
+   "headSha": "f4e7bdea5726d3adbddae6634215d479c2448f7e",
+   "mergeCommit": "1092c6135e3888e56c88c45f01f8602736f0b6b7",
+   "number": 59,
+   "state": "MERGED",
+   "title": "Programme control: reconcile all 40 modules automatically after every main merge",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/59"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/chatgpt-p03-verified-oidc-session-2026-11-07",
+   "headSha": "15f276a5c7c614a27e18555417c619aec869a43e",
+   "mergeCommit": "7fa2881a48518ade0a8ae4fbedc892d33914931f",
+   "number": 61,
+   "state": "MERGED",
+   "title": "P03: cryptographically verify OIDC access tokens before M38 device session binding",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/61"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/chatgpt-m27-canonical-lock-ci-2026-11-07",
+   "headSha": "99c0cef07f300e15fb5b4f74c3d46ceb26e6bb3d",
+   "mergeCommit": "c3e1469b8e4768649ec1503ebda4bf8f6ca8fc03",
+   "number": 62,
+   "state": "MERGED",
+   "title": "M27 CI: install canonical committed workspace lock instead of obsolete PR23",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/62"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/chatgpt-p03-verified-session-route-2026-11-07",
+   "headSha": "3be8b65d84d353c4afaeb9021b0917bebc203f3a",
+   "mergeCommit": "40d9c7fed35122600e44dbe2c7cf22aeb7559f93",
+   "number": 63,
+   "state": "MERGED",
+   "title": "P03: verified no-store Next operations session endpoint for M38 offline client",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/63"
+  },
+  {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true,
+   "headRef": "work/chatgpt-m39-authoritative-routing-fence-2026-11-07",
+   "headSha": "e82ccefe318777b96e6006d946260e83142b1b62",
+   "mergeCommit": "b5f405a988b05556ac6c7dcc4e3693b4de1eacf6",
+   "number": 64,
+   "state": "MERGED",
+   "title": "M39: bind gateway admission to authoritative cell target and current route fence",
+   "url": "https://github.com/exerateanalytical/synqoria/pull/64"
+  }
+ ],
+ "remoteBranches": [
+  {
+   "commitsNotInBaseline": 0,
+   "name": "integration/synqoria-production-reconciliation-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "9ba6ba5cf94685535736a4b10695dccce71b50bf"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "main",
+   "reachableFromBaseline": true,
+   "tip": "fc4f84eb60e7ab7a023895eabfd8266cbda309c5"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "plan/240-screens-single-execution-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "a8a211bb25bc58bb8fbcd931e20f018f6e2a30b4"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "reconcile/2026-11-05-preserve-all-workstreams",
+   "reachableFromBaseline": true,
+   "tip": "f441dddef01ad46e97ffcf486de92431d90f484d"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/canonical-261-route-coverage-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "805374844eaded1f304bf76e9b222183b92017d5"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-continuous-reconciliation-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "f4e7bdea5726d3adbddae6634215d479c2448f7e"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m02-appointments-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "d133374e58f5f785013d4b29832495ad6dde02a1"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m16-referrals-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "aaf8a28fe05a06ea409346ca21b65c300aceb575"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m27-canonical-lock-ci-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "99c0cef07f300e15fb5b4f74c3d46ceb26e6bb3d"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m27-mortuary-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "4221eacd3398d708252316d2e1aa228f13749724"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m32-consent-privacy-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "ec06adbc58c90bced7cb1b50b9967c0c6e9f37b1"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m34-audit-provenance-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "99e69901c1febb75bc860a7864357f965814d157"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m35-integration-management-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "7bedc1f6966a0c6316ca3d716a7cf2b28f6da040"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m39-authoritative-routing-fence-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "e82ccefe318777b96e6006d946260e83142b1b62"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m39-health-probe-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "5190e089234beda1a91a34064657b85012c28fd7"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m39-routing-gate-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "348fc521a2306f116c403a929d7d7c21d344fd6d"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m40-backup-integrity-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "579c68a398f244b39415d35af58bc6dd89d856c0"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m40-catalogue-verifier-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "0ac68bfd16f605768def9bb201340fd05eb442c8"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-p03-verified-oidc-session-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "15f276a5c7c614a27e18555417c619aec869a43e"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-p03-verified-session-route-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "3be8b65d84d353c4afaeb9021b0917bebc203f3a"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/claude-m24-hr-payroll-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "c7fc72e6e0e3c1eec0986e40c03904f421aa5546"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/claude-m26-nutrition-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "ee0ecccf64d4aad5d2d69b2c0ed742037ae57d6a"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/claude-m28-analytics-bi-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "e7a9ff7d65d243eea6e4990bb44508f7fdcad602"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/claude-m30-clinical-content-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "4ca663afa6d7174c889384652c380e0850502c9f"
+  },
+  {
+   "commitsNotInBaseline": 6,
+   "name": "work/claude-m38-device-client-integration-2026-11-07",
+   "reachableFromBaseline": false,
+   "tip": "20fcf06f10a07ca4f7fe87eeb006856dcc56fb86"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/claude-m38-offline-sync-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "7cd4c6b4e0f17e32ab5c1c03bb8c70635adccbcd"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/claude-m39-cell-lifecycle-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "88422270e8e9d378e33661d23347defdbb0f1727"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/claude-m40-reliability-recovery-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "b5cdc2e182fd9e2156de4ec70f5249477fc99b41"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/clinical-encounter-documentation-v060",
+   "reachableFromBaseline": true,
+   "tip": "492000765aebfe602fbcfc49fa885f71601be524"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/clinical-http-integration-v061",
+   "reachableFromBaseline": true,
+   "tip": "ddc924a3911ead1de2a786f88b22e3398752ecbf"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/clinical-identity-triage-read-integrations-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "1b702e4fbd39c7efac579360fd916b8f009c13a9"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/hospital-document-library-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "d962a50af0863e9766519bdd28704916468fd037"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/hospital-document-templates-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "17a6406253eb769544fd97949aa8edad99f91fb5"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/hospital-documents-unified-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "46e335af606ae35603839926c5fd23b3250bce67"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/latest-stable-stack-governance-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "462afed691d632d2b2be25c815d1f61459dbcc97"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/longitudinal-inbox-admission-v067",
+   "reachableFromBaseline": true,
+   "tip": "b0a1495462f76cc97c57201006bd58ee5e7a1600"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/longitudinal-inbox-integration-v065",
+   "reachableFromBaseline": true,
+   "tip": "b61c71403428509665b32a5d8db5f0b2e0a172f3"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/longitudinal-inbox-operations-v066",
+   "reachableFromBaseline": true,
+   "tip": "002e1fa99b4efa5d867d9c090dfcd3f3b72f0b25"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/longitudinal-inbox-v064",
+   "reachableFromBaseline": true,
+   "tip": "6f2711e4f230c97ff9637211e063c0c4c33c95af"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/longitudinal-outbox-v063",
+   "reachableFromBaseline": true,
+   "tip": "3caa48e16239907f45374db01f7ade5f4aa98908"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/longitudinal-secure-persistence-v062",
+   "reachableFromBaseline": true,
+   "tip": "3fe8289829946a531f6e398a3a8e229d3c8882a7"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/m04-m06-read-operations-consolidation-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "31ddc403d92046ab94326e649c150c94ecc26a63"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/operations-seven-module-service-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "4ab24efb9eb159732ebe7d339831a2a1cddb69e9"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/ops001-shared-auth-patient-read-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "f2226ab48f941a88657664b2daa413d06001c54c"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-audited-authorization-hardening-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "cfd298616f5e4d54d449f91d9aa884af6b7e0274"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-authoritative-staff-grants-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "9a5b1ec67e6991b4ebb0c26e0436b8b5bb1ead43"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-b0052-runtime-recovery-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "e975629d46c6bd5f0931e6e86c63521b97cb7c4b"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-b0054-b0063-deployment-guards-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "36e0186d0305e5432f9baba3ba30ea3504024b6c"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-b0064-b0093-identity-route-engineering-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "0fb7beccd89f1e2421144c7827d48453fb0a6ad7"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-b0094-b0123-runtime-build-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "e143745a9025ddb0f37d982f7e3e47f3e429346a"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-b0124-b0153-contract-guard-engineering-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "c89b23a3826998fbf45cf79d93bf66d3229d3d2c"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-oidc-assertion-verifier-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "da4f596b263d5ed96280bcb709dbdd84969482be"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-oidc-one-time-replay-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "c638e686bf403e5270d4b708fa34c49e21a6bf03"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-oidc-replay-postgres-integration-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "499f25cab50bc8d6338e73061e757b4a5ecdf49d"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/postmerge-reconciliation-gates-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "f1ded5b6d80c75ae9f59e56a91f7dfd5edce927b"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/real-clinical-screens-first-slice-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "524bedef6bd6f33bead75524207c6c3f7433aee8"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/real-next-expo-build-corrections-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "45a158660e5473597654f89664e394cbf2ac1ab9"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/reproducible-npm-lock-candidate-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "a18a322ba4e7d2b5a0194ca6a0a2d174b8b85420"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/seven-operations-real-workflows-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "e14f589c449e6c65520db36dd1fe620ee71b3b0f"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/triage-safe-command-recovery-v059",
+   "reachableFromBaseline": true,
+   "tip": "abd2c64646087a36477f6a55bc1f988ef5552f99"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/triage-scoped-workflows-v058",
+   "reachableFromBaseline": true,
+   "tip": "b7aeba143f4da105ce8c728faffdbeda160f4d63"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/ui-all-261-specific-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "07fcc169e7fdcf152c757c7d09c79fd962ea8b79"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/ui-controls-coverage-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "ebe15a605dfd792c0acf05e66f8b05320cd7bf5d"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/ui-identity-registration-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "1f8b092bd5df8a7e8d315c9a74c5f555e127894d"
+  }
+ ],
+ "schemaVersion": "synqoria.reconciliation.manifest.v1",
+ "trackedBytes": 17897720,
+ "trackedFileCount": 3104
+}

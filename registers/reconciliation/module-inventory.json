@@ -1,0 +1,1534 @@
+{
+ "confirmedFullyBuiltModules": null,
+ "confirmedUnbuiltModules": null,
+ "moduleCount": 40,
+ "modules": [
+  {
+   "ciLatestRun": [
+    "success"
+   ],
+   "ciWorkflows": [
+    "Engineering checks (not clinical certification)"
+   ],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 2,
+   "evidencePaths": [
+    ".github/workflows/engineering-checks.yml",
+    "apps/web/app/workforce/patients/new/page.tsx",
+    "apps/web/lib/ops001-patient-lookup.mjs",
+    "contracts/openapi/synqoria-registration-draft.yaml",
+    "contracts/openapi/synqoria-registration-release-gate.yaml",
+    "services/clinical-core/db/migration/V003__patient_identity_consent_foundation.sql",
+    "services/clinical-core/db/migration/V005__patient_registration_foundation.sql",
+    "services/clinical-core/db/migration/V006__identity_lookup_quarantine.sql",
+    "services/clinical-core/db/migration/V007__registration_review_quarantine.sql",
+    "services/clinical-core/src/main/java/org/synqoria/registration/DuplicateCandidateQuery.java"
+   ],
+   "humanReviewed": false,
+   "id": "M01",
+   "migrationCount": 4,
+   "missingFacets": [],
+   "name": "Patient registration and master identity; identifiers, merge lineage",
+   "ownedPathCount": 87,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 6,
+   "services": [],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 12,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [
+    "failure"
+   ],
+   "ciWorkflows": [
+    "M02 booking Java25/27 PostgreSQL18.6 integration",
+    "M02 5-screen Next16 React19 verified build"
+   ],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 2,
+   "evidencePaths": [
+    ".github/workflows/m02-scheduling-pg18.yml",
+    ".github/workflows/m02-scheduling-web.yml",
+    "apps/web/app/api/scheduling/proxy/[...segments]/route.ts",
+    "apps/web/app/workforce/scheduling/[screen]/page.tsx",
+    "apps/web/app/workforce/scheduling/page.tsx",
+    "apps/web/app/workforce/scheduling/scheduling.module.css",
+    "apps/web/components/scheduling/SchedulingWorkbench.tsx",
+    "apps/web/lib/scheduling/client.ts",
+    "apps/web/lib/scheduling/proxy-policy.ts",
+    "contracts/openapi/synqoria-appointments-quarantine.yaml"
+   ],
+   "humanReviewed": false,
+   "id": "M02",
+   "migrationCount": 6,
+   "missingFacets": [],
+   "name": "Appointments and resource scheduling",
+   "ownedPathCount": 106,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 5,
+   "services": [
+    "services/scheduling-core"
+   ],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 3,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 1,
+   "evidencePaths": [
+    "apps/web/app/workforce/clinical/TriageQueueWorkspace.tsx",
+    "apps/web/app/workforce/clinical/TriageReassessmentReview.tsx",
+    "apps/web/components/TriageCaseWorkspace.tsx",
+    "contracts/openapi/synqoria-m03-triage-restricted-v1.yaml",
+    "services/clinical-core/db/migration/V015__triage_workflow_quarantine.sql",
+    "services/clinical-core/db/migration/V016__triage_encrypted_snapshot_quarantine.sql",
+    "services/clinical-core/db/migration/V017__triage_secure_receipts_quarantine.sql",
+    "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql",
+    "services/clinical-core/db/migration/V019__triage_secure_correlated_evidence_quarantine.sql",
+    "services/clinical-core/src/main/java/org/synqoria/triage/TriageAssessmentService.java"
+   ],
+   "humanReviewed": false,
+   "id": "M03",
+   "migrationCount": 5,
+   "missingFacets": [
+    "ciWorkflow"
+   ],
+   "name": "Triage, emergency intake and queues",
+   "ownedPathCount": 51,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 5,
+   "services": [],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 12,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [
+    "failure",
+    "success"
+   ],
+   "ciWorkflows": [
+    "P07 M04-M06 internal domain regression (not certification)",
+    "P07 v0.67.0 Inbox admission and recovery checks (not certification)"
+   ],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 1,
+   "evidencePaths": [
+    ".github/workflows/longitudinal-core.yml",
+    ".github/workflows/v067-inbox-policy.yml",
+    "apps/web/app/workforce/clinical/LongitudinalReadWorkspace.tsx",
+    "apps/web/lib/longitudinal-cell.mjs",
+    "contracts/openapi/synqoria-m040506-restricted-v1.json",
+    "services/clinical-core/db/migration/V020__longitudinal_secure_quarantine.sql",
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal/ClinicalActionInput.java",
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal/ClinicalCaseCore.java",
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal/EncounterActions.java",
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal/LongitudinalAuthenticatedGateway.java"
+   ],
+   "humanReviewed": false,
+   "id": "M04",
+   "migrationCount": 1,
+   "missingFacets": [],
+   "name": "Encounters, admission, transfers, discharge and beds",
+   "ownedPathCount": 122,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 7,
+   "services": [],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 12,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [
+    "failure",
+    "success"
+   ],
+   "ciWorkflows": [
+    "P07 M04-M06 internal domain regression (not certification)",
+    "P07 v0.67.0 Inbox admission and recovery checks (not certification)"
+   ],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 1,
+   "evidencePaths": [
+    ".github/workflows/longitudinal-core.yml",
+    ".github/workflows/v067-inbox-policy.yml",
+    "apps/web/app/workforce/clinical/LongitudinalReadWorkspace.tsx",
+    "apps/web/lib/longitudinal-cell.mjs",
+    "contracts/openapi/synqoria-m040506-restricted-v1.json",
+    "services/clinical-core/db/migration/V020__longitudinal_secure_quarantine.sql",
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal/ClinicalActionInput.java",
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal/ClinicalCaseCore.java",
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal/EncounterActions.java",
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal/LongitudinalAuthenticatedGateway.java"
+   ],
+   "humanReviewed": false,
+   "id": "M05",
+   "migrationCount": 1,
+   "missingFacets": [],
+   "name": "Clinical notes, diagnoses and encounter documentation",
+   "ownedPathCount": 122,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 5,
+   "services": [],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 12,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [
+    "failure",
+    "success"
+   ],
+   "ciWorkflows": [
+    "P07 M04-M06 internal domain regression (not certification)",
+    "P07 v0.67.0 Inbox admission and recovery checks (not certification)"
+   ],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 1,
+   "evidencePaths": [
+    ".github/workflows/longitudinal-core.yml",
+    ".github/workflows/v067-inbox-policy.yml",
+    "apps/web/app/workforce/clinical/LongitudinalReadWorkspace.tsx",
+    "apps/web/lib/longitudinal-cell.mjs",
+    "contracts/openapi/synqoria-m040506-restricted-v1.json",
+    "services/clinical-core/db/migration/V020__longitudinal_secure_quarantine.sql",
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal/ClinicalActionInput.java",
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal/ClinicalCaseCore.java",
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal/EncounterActions.java",
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal/LongitudinalAuthenticatedGateway.java"
+   ],
+   "humanReviewed": false,
+   "id": "M06",
+   "migrationCount": 1,
+   "missingFacets": [],
+   "name": "Observations, vitals and longitudinal clinical measurements",
+   "ownedPathCount": 122,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 5,
+   "services": [],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 12,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [],
+   "humanReviewed": false,
+   "id": "M07",
+   "migrationCount": 0,
+   "missingFacets": [
+    "serviceCode",
+    "persistence",
+    "contract",
+    "serviceTests",
+    "webSource",
+    "ciWorkflow"
+   ],
+   "name": "Allergies, intolerances and reconciliation",
+   "ownedPathCount": 0,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "No source path was attributable to this module by id, owned service or curated anchor. This is NOT proof of absence: source may exist under capability names not yet anchored."
+   ],
+   "screenCount": 5,
+   "services": [],
+   "state": "routes_registered_no_module_source_located",
+   "testPathCount": 0,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [],
+   "humanReviewed": false,
+   "id": "M08",
+   "migrationCount": 0,
+   "missingFacets": [
+    "serviceCode",
+    "persistence",
+    "contract",
+    "serviceTests",
+    "webSource",
+    "ciWorkflow"
+   ],
+   "name": "Medication prescribing and reconciliation",
+   "ownedPathCount": 0,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "No source path was attributable to this module by id, owned service or curated anchor. This is NOT proof of absence: source may exist under capability names not yet anchored."
+   ],
+   "screenCount": 7,
+   "services": [],
+   "state": "routes_registered_no_module_source_located",
+   "testPathCount": 0,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [],
+   "humanReviewed": false,
+   "id": "M09",
+   "migrationCount": 0,
+   "missingFacets": [
+    "serviceCode",
+    "persistence",
+    "contract",
+    "serviceTests",
+    "webSource",
+    "ciWorkflow"
+   ],
+   "name": "Medication administration and dose records",
+   "ownedPathCount": 0,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "No source path was attributable to this module by id, owned service or curated anchor. This is NOT proof of absence: source may exist under capability names not yet anchored."
+   ],
+   "screenCount": 5,
+   "services": [],
+   "state": "routes_registered_no_module_source_located",
+   "testPathCount": 0,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [],
+   "humanReviewed": false,
+   "id": "M10",
+   "migrationCount": 0,
+   "missingFacets": [
+    "serviceCode",
+    "persistence",
+    "contract",
+    "serviceTests",
+    "webSource",
+    "ciWorkflow"
+   ],
+   "name": "Nursing care plans, inpatient tasks and handovers",
+   "ownedPathCount": 0,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "No source path was attributable to this module by id, owned service or curated anchor. This is NOT proof of absence: source may exist under capability names not yet anchored."
+   ],
+   "screenCount": 5,
+   "services": [],
+   "state": "routes_registered_no_module_source_located",
+   "testPathCount": 0,
+   "wave": "B"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [],
+   "humanReviewed": false,
+   "id": "M11",
+   "migrationCount": 0,
+   "missingFacets": [
+    "serviceCode",
+    "persistence",
+    "contract",
+    "serviceTests",
+    "webSource",
+    "ciWorkflow"
+   ],
+   "name": "Laboratory, specimens and result verification",
+   "ownedPathCount": 0,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "No source path was attributable to this module by id, owned service or curated anchor. This is NOT proof of absence: source may exist under capability names not yet anchored."
+   ],
+   "screenCount": 9,
+   "services": [],
+   "state": "routes_registered_no_module_source_located",
+   "testPathCount": 0,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [],
+   "humanReviewed": false,
+   "id": "M12",
+   "migrationCount": 0,
+   "missingFacets": [
+    "serviceCode",
+    "persistence",
+    "contract",
+    "serviceTests",
+    "webSource",
+    "ciWorkflow"
+   ],
+   "name": "Imaging, radiology workflow and PACS references",
+   "ownedPathCount": 0,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "No source path was attributable to this module by id, owned service or curated anchor. This is NOT proof of absence: source may exist under capability names not yet anchored."
+   ],
+   "screenCount": 7,
+   "services": [],
+   "state": "routes_registered_no_module_source_located",
+   "testPathCount": 0,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [],
+   "humanReviewed": false,
+   "id": "M13",
+   "migrationCount": 0,
+   "missingFacets": [
+    "serviceCode",
+    "persistence",
+    "contract",
+    "serviceTests",
+    "webSource",
+    "ciWorkflow"
+   ],
+   "name": "Pharmacy dispensing and medication inventory",
+   "ownedPathCount": 0,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "No source path was attributable to this module by id, owned service or curated anchor. This is NOT proof of absence: source may exist under capability names not yet anchored."
+   ],
+   "screenCount": 7,
+   "services": [],
+   "state": "routes_registered_no_module_source_located",
+   "testPathCount": 0,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [],
+   "humanReviewed": false,
+   "id": "M14",
+   "migrationCount": 0,
+   "missingFacets": [
+    "serviceCode",
+    "persistence",
+    "contract",
+    "serviceTests",
+    "webSource",
+    "ciWorkflow"
+   ],
+   "name": "Surgery, theatre, anesthesia and recovery",
+   "ownedPathCount": 0,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "No source path was attributable to this module by id, owned service or curated anchor. This is NOT proof of absence: source may exist under capability names not yet anchored."
+   ],
+   "screenCount": 6,
+   "services": [],
+   "state": "routes_registered_no_module_source_located",
+   "testPathCount": 0,
+   "wave": "B"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [],
+   "humanReviewed": false,
+   "id": "M15",
+   "migrationCount": 0,
+   "missingFacets": [
+    "serviceCode",
+    "persistence",
+    "contract",
+    "serviceTests",
+    "webSource",
+    "ciWorkflow"
+   ],
+   "name": "Blood bank and transfusion",
+   "ownedPathCount": 0,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "No source path was attributable to this module by id, owned service or curated anchor. This is NOT proof of absence: source may exist under capability names not yet anchored."
+   ],
+   "screenCount": 6,
+   "services": [],
+   "state": "routes_registered_no_module_source_located",
+   "testPathCount": 0,
+   "wave": "B"
+  },
+  {
+   "ciLatestRun": [
+    "failure"
+   ],
+   "ciWorkflows": [
+    "M16 referral Java25/27 PostgreSQL18.6 evidence lifecycle",
+    "M16 5-screen Next16 React19 verified build"
+   ],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 1,
+   "evidencePaths": [
+    ".github/workflows/m16-referrals-pg18.yml",
+    ".github/workflows/m16-referrals-web.yml",
+    "apps/web/app/api/referrals/proxy/[...segments]/route.ts",
+    "apps/web/app/workforce/referrals/[screen]/page.tsx",
+    "apps/web/app/workforce/referrals/page.tsx",
+    "apps/web/app/workforce/referrals/referrals.module.css",
+    "apps/web/components/referrals/ReferralWorkbench.tsx",
+    "apps/web/lib/referrals/client.ts",
+    "apps/web/lib/referrals/proxy-policy.ts",
+    "contracts/openapi/synqoria-m16-referrals-v1.yaml"
+   ],
+   "humanReviewed": false,
+   "id": "M16",
+   "migrationCount": 2,
+   "missingFacets": [],
+   "name": "Referrals and care transitions",
+   "ownedPathCount": 20,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 5,
+   "services": [
+    "services/referrals-core"
+   ],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 3,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [],
+   "humanReviewed": false,
+   "id": "M17",
+   "migrationCount": 0,
+   "missingFacets": [
+    "serviceCode",
+    "persistence",
+    "contract",
+    "serviceTests",
+    "webSource",
+    "ciWorkflow"
+   ],
+   "name": "Specialty clinical packages",
+   "ownedPathCount": 0,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "No source path was attributable to this module by id, owned service or curated anchor. This is NOT proof of absence: source may exist under capability names not yet anchored."
+   ],
+   "screenCount": 28,
+   "services": [],
+   "state": "routes_registered_no_module_source_located",
+   "testPathCount": 0,
+   "wave": "B"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [],
+   "humanReviewed": false,
+   "id": "M18",
+   "migrationCount": 0,
+   "missingFacets": [
+    "serviceCode",
+    "persistence",
+    "contract",
+    "serviceTests",
+    "webSource",
+    "ciWorkflow"
+   ],
+   "name": "Patient portal, mobile access and proxy accounts",
+   "ownedPathCount": 0,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "No source path was attributable to this module by id, owned service or curated anchor. This is NOT proof of absence: source may exist under capability names not yet anchored."
+   ],
+   "screenCount": 9,
+   "services": [],
+   "state": "routes_registered_no_module_source_located",
+   "testPathCount": 0,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [],
+   "humanReviewed": false,
+   "id": "M19",
+   "migrationCount": 0,
+   "missingFacets": [
+    "serviceCode",
+    "persistence",
+    "contract",
+    "serviceTests",
+    "webSource",
+    "ciWorkflow"
+   ],
+   "name": "Charges, invoices, cashier and payment reconciliation",
+   "ownedPathCount": 0,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "No source path was attributable to this module by id, owned service or curated anchor. This is NOT proof of absence: source may exist under capability names not yet anchored."
+   ],
+   "screenCount": 7,
+   "services": [],
+   "state": "routes_registered_no_module_source_located",
+   "testPathCount": 0,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [],
+   "humanReviewed": false,
+   "id": "M20",
+   "migrationCount": 0,
+   "missingFacets": [
+    "serviceCode",
+    "persistence",
+    "contract",
+    "serviceTests",
+    "webSource",
+    "ciWorkflow"
+   ],
+   "name": "Insurance, payer authorization and claims",
+   "ownedPathCount": 0,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "No source path was attributable to this module by id, owned service or curated anchor. This is NOT proof of absence: source may exist under capability names not yet anchored."
+   ],
+   "screenCount": 6,
+   "services": [],
+   "state": "routes_registered_no_module_source_located",
+   "testPathCount": 0,
+   "wave": "B"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [
+    ".github/workflows/operations-seven-domain-ci.yml",
+    ".github/workflows/operations-seven-jdbc-integration.yml",
+    ".github/workflows/operations-seven-next-build-candidate.yml",
+    ".github/workflows/operations-seven-pg16-rls.yml",
+    ".github/workflows/operations-seven-screens-ci.yml",
+    "apps/web/app/api/operations/auth/callback/route.ts",
+    "apps/web/app/api/operations/auth/logout/route.ts",
+    "apps/web/app/api/operations/auth/start/route.ts",
+    "apps/web/app/api/operations/auth/verified-session/route.ts",
+    "apps/web/app/api/operations/proxy/[...segments]/route.ts"
+   ],
+   "humanReviewed": false,
+   "id": "M21",
+   "migrationCount": 10,
+   "missingFacets": [
+    "contract"
+   ],
+   "name": "Procurement and supplier management",
+   "ownedPathCount": 53,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Some module-specific source was attributed but at least one of service code, migrations, contract, service tests is missing from it.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 6,
+   "services": [
+    "services/operations-core"
+   ],
+   "state": "partial_source_located",
+   "testPathCount": 7,
+   "wave": "C"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [
+    ".github/workflows/operations-seven-domain-ci.yml",
+    ".github/workflows/operations-seven-jdbc-integration.yml",
+    ".github/workflows/operations-seven-next-build-candidate.yml",
+    ".github/workflows/operations-seven-pg16-rls.yml",
+    ".github/workflows/operations-seven-screens-ci.yml",
+    "apps/web/app/api/operations/auth/callback/route.ts",
+    "apps/web/app/api/operations/auth/logout/route.ts",
+    "apps/web/app/api/operations/auth/start/route.ts",
+    "apps/web/app/api/operations/auth/verified-session/route.ts",
+    "apps/web/app/api/operations/proxy/[...segments]/route.ts"
+   ],
+   "humanReviewed": false,
+   "id": "M22",
+   "migrationCount": 10,
+   "missingFacets": [
+    "contract"
+   ],
+   "name": "General stores and non-medication inventory",
+   "ownedPathCount": 53,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Some module-specific source was attributed but at least one of service code, migrations, contract, service tests is missing from it.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 5,
+   "services": [
+    "services/operations-core"
+   ],
+   "state": "partial_source_located",
+   "testPathCount": 7,
+   "wave": "B"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [
+    ".github/workflows/operations-seven-domain-ci.yml",
+    ".github/workflows/operations-seven-jdbc-integration.yml",
+    ".github/workflows/operations-seven-next-build-candidate.yml",
+    ".github/workflows/operations-seven-pg16-rls.yml",
+    ".github/workflows/operations-seven-screens-ci.yml",
+    "apps/web/app/api/operations/auth/callback/route.ts",
+    "apps/web/app/api/operations/auth/logout/route.ts",
+    "apps/web/app/api/operations/auth/start/route.ts",
+    "apps/web/app/api/operations/auth/verified-session/route.ts",
+    "apps/web/app/api/operations/proxy/[...segments]/route.ts"
+   ],
+   "humanReviewed": false,
+   "id": "M23",
+   "migrationCount": 10,
+   "missingFacets": [
+    "contract"
+   ],
+   "name": "Assets, biomedical maintenance and facilities",
+   "ownedPathCount": 53,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Some module-specific source was attributed but at least one of service code, migrations, contract, service tests is missing from it.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 5,
+   "services": [
+    "services/operations-core"
+   ],
+   "state": "partial_source_located",
+   "testPathCount": 7,
+   "wave": "B"
+  },
+  {
+   "ciLatestRun": [
+    "failure"
+   ],
+   "ciWorkflows": [
+    "SYNQORIA M24 HR and payroll CI (engineering evidence, not legal or payroll compliance sign-off)"
+   ],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 1,
+   "evidencePaths": [
+    ".github/workflows/m24-hr-ci.yml",
+    "apps/web/app/api/hr/proxy/[...segments]/route.ts",
+    "apps/web/app/workforce/hr/approval/page.tsx",
+    "apps/web/app/workforce/hr/attendance/page.tsx",
+    "apps/web/app/workforce/hr/directory/page.tsx",
+    "apps/web/app/workforce/hr/employment/page.tsx",
+    "apps/web/app/workforce/hr/page.tsx",
+    "apps/web/app/workforce/hr/preparation/page.tsx",
+    "apps/web/app/workforce/hr/roster/page.tsx",
+    "apps/web/components/hr/Approval.tsx"
+   ],
+   "humanReviewed": false,
+   "id": "M24",
+   "migrationCount": 1,
+   "missingFacets": [],
+   "name": "Human resources, staffing and payroll",
+   "ownedPathCount": 38,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 6,
+   "services": [
+    "services/hr-payroll-core"
+   ],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 4,
+   "wave": "C"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [
+    ".github/workflows/operations-seven-domain-ci.yml",
+    ".github/workflows/operations-seven-jdbc-integration.yml",
+    ".github/workflows/operations-seven-next-build-candidate.yml",
+    ".github/workflows/operations-seven-pg16-rls.yml",
+    ".github/workflows/operations-seven-screens-ci.yml",
+    "apps/web/app/api/operations/auth/callback/route.ts",
+    "apps/web/app/api/operations/auth/logout/route.ts",
+    "apps/web/app/api/operations/auth/start/route.ts",
+    "apps/web/app/api/operations/auth/verified-session/route.ts",
+    "apps/web/app/api/operations/proxy/[...segments]/route.ts"
+   ],
+   "humanReviewed": false,
+   "id": "M25",
+   "migrationCount": 10,
+   "missingFacets": [
+    "contract"
+   ],
+   "name": "Transport and ambulance coordination",
+   "ownedPathCount": 53,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Some module-specific source was attributed but at least one of service code, migrations, contract, service tests is missing from it.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 5,
+   "services": [
+    "services/operations-core"
+   ],
+   "state": "partial_source_located",
+   "testPathCount": 7,
+   "wave": "B"
+  },
+  {
+   "ciLatestRun": [
+    "failure"
+   ],
+   "ciWorkflows": [
+    "SYNQORIA M26 nutrition CI (engineering evidence, not clinical certification)"
+   ],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 1,
+   "evidencePaths": [
+    ".github/workflows/m26-nutrition-ci.yml",
+    "apps/web/app/api/nutrition/proxy/[...segments]/route.ts",
+    "apps/web/app/workforce/nutrition/delivery/page.tsx",
+    "apps/web/app/workforce/nutrition/orders/page.tsx",
+    "apps/web/app/workforce/nutrition/page.tsx",
+    "apps/web/app/workforce/nutrition/production/page.tsx",
+    "apps/web/app/workforce/nutrition/worklist/page.tsx",
+    "apps/web/components/nutrition/Delivery.tsx",
+    "apps/web/components/nutrition/Hub.tsx",
+    "apps/web/components/nutrition/Orders.tsx"
+   ],
+   "humanReviewed": false,
+   "id": "M26",
+   "migrationCount": 1,
+   "missingFacets": [],
+   "name": "Catering and dietary orders",
+   "ownedPathCount": 36,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 4,
+   "services": [
+    "services/nutrition-core"
+   ],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 5,
+   "wave": "C"
+  },
+  {
+   "ciLatestRun": [
+    "failure",
+    "success"
+   ],
+   "ciWorkflows": [
+    "M27 mortuary domain Java25 LTS and Java27 verification",
+    "M27 mortuary PostgreSQL18.6 FORCE RLS and custody evidence",
+    "M27 canonical 5-screen React/Next latest-stable build"
+   ],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 1,
+   "evidencePaths": [
+    ".github/workflows/m27-java25-java27.yml",
+    ".github/workflows/m27-pg18-rls-integration.yml",
+    ".github/workflows/m27-web-build.yml",
+    "apps/web/app/workforce/mortuary/mortuary.module.css",
+    "apps/web/app/workforce/mortuary/page.tsx",
+    "apps/web/components/MortuaryWorkbench.tsx",
+    "apps/web/lib/mortuary-screen-catalog.json",
+    "contracts/openapi/synqoria-m27-mortuary-v1.yaml",
+    "services/operations-core/db/migration/V001__seven_operations_cells.sql",
+    "services/operations-core/db/migration/V002__workforce_and_operational_evidence.sql"
+   ],
+   "humanReviewed": false,
+   "id": "M27",
+   "migrationCount": 10,
+   "missingFacets": [],
+   "name": "Mortuary and decedent release",
+   "ownedPathCount": 45,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 5,
+   "services": [
+    "services/operations-core"
+   ],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 7,
+   "wave": "C"
+  },
+  {
+   "ciLatestRun": [
+    "failure"
+   ],
+   "ciWorkflows": [
+    "SYNQORIA M28 analytics and BI CI (engineering evidence, not clinical, financial or governance sign-off)"
+   ],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 1,
+   "evidencePaths": [
+    ".github/workflows/m28-analytics-ci.yml",
+    "apps/web/app/api/analytics/proxy/[...segments]/route.ts",
+    "apps/web/app/workforce/analytics/clinical/page.tsx",
+    "apps/web/app/workforce/analytics/dashboard/page.tsx",
+    "apps/web/app/workforce/analytics/exports/page.tsx",
+    "apps/web/app/workforce/analytics/financial/page.tsx",
+    "apps/web/app/workforce/analytics/page.tsx",
+    "apps/web/app/workforce/analytics/reports/page.tsx",
+    "apps/web/components/analytics/Analytics.tsx",
+    "apps/web/components/analytics/Dashboard.tsx"
+   ],
+   "humanReviewed": false,
+   "id": "M28",
+   "migrationCount": 1,
+   "missingFacets": [],
+   "name": "Hospital operations and business intelligence",
+   "ownedPathCount": 36,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 5,
+   "services": [
+    "services/analytics-core"
+   ],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 4,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [
+    ".github/workflows/operations-seven-domain-ci.yml",
+    ".github/workflows/operations-seven-jdbc-integration.yml",
+    ".github/workflows/operations-seven-next-build-candidate.yml",
+    ".github/workflows/operations-seven-pg16-rls.yml",
+    ".github/workflows/operations-seven-screens-ci.yml",
+    "apps/web/app/api/operations/auth/callback/route.ts",
+    "apps/web/app/api/operations/auth/logout/route.ts",
+    "apps/web/app/api/operations/auth/start/route.ts",
+    "apps/web/app/api/operations/auth/verified-session/route.ts",
+    "apps/web/app/api/operations/proxy/[...segments]/route.ts"
+   ],
+   "humanReviewed": false,
+   "id": "M29",
+   "migrationCount": 10,
+   "missingFacets": [
+    "contract"
+   ],
+   "name": "Facility, department, location and service configuration",
+   "ownedPathCount": 53,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Some module-specific source was attributed but at least one of service code, migrations, contract, service tests is missing from it.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 4,
+   "services": [
+    "services/operations-core"
+   ],
+   "state": "partial_source_located",
+   "testPathCount": 7,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [
+    "failure"
+   ],
+   "ciWorkflows": [
+    "SYNQORIA M30 clinical content CI (engineering evidence, not clinical approval)"
+   ],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 1,
+   "evidencePaths": [
+    ".github/workflows/m30-content-ci.yml",
+    "apps/web/app/api/content/proxy/[...segments]/route.ts",
+    "apps/web/app/workforce/content/activation/page.tsx",
+    "apps/web/app/workforce/content/approvals/page.tsx",
+    "apps/web/app/workforce/content/formulary/page.tsx",
+    "apps/web/app/workforce/content/packages/page.tsx",
+    "apps/web/app/workforce/content/page.tsx",
+    "apps/web/app/workforce/content/terminology/page.tsx",
+    "apps/web/components/content/Activation.tsx",
+    "apps/web/components/content/Approvals.tsx"
+   ],
+   "humanReviewed": false,
+   "id": "M30",
+   "migrationCount": 1,
+   "missingFacets": [],
+   "name": "Terminology, formularies and clinical rule content",
+   "ownedPathCount": 36,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 5,
+   "services": [
+    "services/clinical-content-core"
+   ],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 4,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [
+    ".github/workflows/operations-seven-domain-ci.yml",
+    ".github/workflows/operations-seven-jdbc-integration.yml",
+    ".github/workflows/operations-seven-next-build-candidate.yml",
+    ".github/workflows/operations-seven-pg16-rls.yml",
+    ".github/workflows/operations-seven-screens-ci.yml",
+    "apps/web/app/api/operations/auth/callback/route.ts",
+    "apps/web/app/api/operations/auth/logout/route.ts",
+    "apps/web/app/api/operations/auth/start/route.ts",
+    "apps/web/app/api/operations/auth/verified-session/route.ts",
+    "apps/web/app/api/operations/proxy/[...segments]/route.ts"
+   ],
+   "humanReviewed": false,
+   "id": "M31",
+   "migrationCount": 10,
+   "missingFacets": [
+    "contract"
+   ],
+   "name": "Forms, templates, documents and signatures",
+   "ownedPathCount": 53,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Some module-specific source was attributed but at least one of service code, migrations, contract, service tests is missing from it.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 6,
+   "services": [
+    "services/operations-core"
+   ],
+   "state": "partial_source_located",
+   "testPathCount": 7,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [
+    "failure"
+   ],
+   "ciWorkflows": [
+    "M32 consent privacy Java25/27 and PostgreSQL18.6 isolation tests",
+    "M32 privacy five-screen Next16 React19 verified build"
+   ],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 1,
+   "evidencePaths": [
+    ".github/workflows/m32-privacy-pg18.yml",
+    ".github/workflows/m32-privacy-web.yml",
+    "apps/web/app/api/privacy/proxy/[...segments]/route.ts",
+    "apps/web/app/workforce/privacy/[screen]/page.tsx",
+    "apps/web/app/workforce/privacy/page.tsx",
+    "apps/web/app/workforce/privacy/privacy.module.css",
+    "apps/web/components/privacy/PrivacyWorkbench.tsx",
+    "apps/web/lib/privacy/client.ts",
+    "apps/web/lib/privacy/proxy-policy.ts",
+    "contracts/openapi/synqoria-m32-privacy-v1.yaml"
+   ],
+   "humanReviewed": false,
+   "id": "M32",
+   "migrationCount": 2,
+   "missingFacets": [],
+   "name": "Consent, privacy and disclosure governance",
+   "ownedPathCount": 21,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 5,
+   "services": [
+    "services/privacy-core"
+   ],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 3,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [
+    "failure",
+    "success"
+   ],
+   "ciWorkflows": [
+    "SYNQORIA P03 pinned OIDC staff verification",
+    "SYNQORIA P03 verified OIDC session boundary (synthetic signed tokens)"
+   ],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [
+    ".github/workflows/p03-oidc-verification.yml",
+    ".github/workflows/p03-verified-session-ci.yml",
+    "apps/web/app/api/auth/logout/route.ts",
+    "apps/web/app/api/auth/oidc/callback/route.ts",
+    "apps/web/app/api/auth/oidc/start/route.ts",
+    "apps/web/app/api/auth/status/route.ts",
+    "apps/web/lib/oidc-code-exchange.mjs",
+    "apps/web/lib/oidc-login-flow.mjs",
+    "apps/web/lib/oidc-staff-verification.mjs",
+    "apps/web/lib/opaque-staff-session.mjs"
+   ],
+   "humanReviewed": false,
+   "id": "M33",
+   "migrationCount": 6,
+   "missingFacets": [
+    "contract"
+   ],
+   "name": "Identity, access and workforce privileges",
+   "ownedPathCount": 69,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Some module-specific source was attributed but at least one of service code, migrations, contract, service tests is missing from it."
+   ],
+   "screenCount": 7,
+   "services": [],
+   "state": "partial_source_located",
+   "testPathCount": 12,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [
+    "failure"
+   ],
+   "ciWorkflows": [
+    "M34 audit Java25/27 and PostgreSQL18.6 evidence integrity",
+    "M34 audit five-screen Next16 React19 build"
+   ],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 1,
+   "evidencePaths": [
+    ".github/workflows/m34-audit-pg18.yml",
+    ".github/workflows/m34-audit-web.yml",
+    "apps/web/app/api/audit/proxy/[...segments]/route.ts",
+    "apps/web/app/workforce/audit/[screen]/page.tsx",
+    "apps/web/app/workforce/audit/audit.module.css",
+    "apps/web/app/workforce/audit/page.tsx",
+    "apps/web/components/audit/AuditWorkbench.tsx",
+    "apps/web/lib/audit/client.ts",
+    "apps/web/lib/audit/proxy-policy.ts",
+    "contracts/openapi/synqoria-m34-audit-v1.yaml"
+   ],
+   "humanReviewed": false,
+   "id": "M34",
+   "migrationCount": 3,
+   "missingFacets": [],
+   "name": "Audit, provenance and evidence retention",
+   "ownedPathCount": 22,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 5,
+   "services": [
+    "services/audit-core"
+   ],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 3,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [
+    "failure"
+   ],
+   "ciWorkflows": [
+    "M35 integration governance Java25/27 PostgreSQL18.6",
+    "M35 6-screen Next16 React19 verified build"
+   ],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 1,
+   "evidencePaths": [
+    ".github/workflows/m35-integration-pg18.yml",
+    ".github/workflows/m35-integrations-web.yml",
+    "apps/web/app/api/integrations/proxy/[...segments]/route.ts",
+    "apps/web/app/workforce/integrations/[screen]/page.tsx",
+    "apps/web/app/workforce/integrations/integrations.module.css",
+    "apps/web/app/workforce/integrations/page.tsx",
+    "apps/web/components/integrations/IntegrationWorkbench.tsx",
+    "apps/web/lib/integrations/client.ts",
+    "apps/web/lib/integrations/proxy-policy.ts",
+    "contracts/openapi/synqoria-m35-integrations-v1.yaml"
+   ],
+   "humanReviewed": false,
+   "id": "M35",
+   "migrationCount": 4,
+   "missingFacets": [],
+   "name": "Interoperability and API developer product",
+   "ownedPathCount": 22,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 6,
+   "services": [
+    "services/integration-management-core"
+   ],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 3,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [],
+   "humanReviewed": false,
+   "id": "M36",
+   "migrationCount": 0,
+   "missingFacets": [
+    "serviceCode",
+    "persistence",
+    "contract",
+    "serviceTests",
+    "webSource",
+    "ciWorkflow"
+   ],
+   "name": "Device, analyzer and bedside gateway integration",
+   "ownedPathCount": 0,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "No source path was attributable to this module by id, owned service or curated anchor. This is NOT proof of absence: source may exist under capability names not yet anchored."
+   ],
+   "screenCount": 5,
+   "services": [],
+   "state": "routes_registered_no_module_source_located",
+   "testPathCount": 0,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [],
+   "ciWorkflows": [],
+   "claimedBy": null,
+   "clinicalAccepted": false,
+   "confidence": "low",
+   "contractCount": 0,
+   "evidencePaths": [
+    ".github/workflows/operations-seven-domain-ci.yml",
+    ".github/workflows/operations-seven-jdbc-integration.yml",
+    ".github/workflows/operations-seven-next-build-candidate.yml",
+    ".github/workflows/operations-seven-pg16-rls.yml",
+    ".github/workflows/operations-seven-screens-ci.yml",
+    "apps/web/app/api/operations/auth/callback/route.ts",
+    "apps/web/app/api/operations/auth/logout/route.ts",
+    "apps/web/app/api/operations/auth/start/route.ts",
+    "apps/web/app/api/operations/auth/verified-session/route.ts",
+    "apps/web/app/api/operations/proxy/[...segments]/route.ts"
+   ],
+   "humanReviewed": false,
+   "id": "M37",
+   "migrationCount": 10,
+   "missingFacets": [
+    "contract"
+   ],
+   "name": "Notifications, communication and escalation",
+   "ownedPathCount": 53,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Some module-specific source was attributed but at least one of service code, migrations, contract, service tests is missing from it.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 4,
+   "services": [
+    "services/operations-core"
+   ],
+   "state": "partial_source_located",
+   "testPathCount": 7,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [
+    "success"
+   ],
+   "ciWorkflows": [
+    "SYNQORIA M38 offline synchronization CI (engineering evidence, not clinical approval or security certification)",
+    "SYNQORIA P03 verified OIDC session boundary (synthetic signed tokens)"
+   ],
+   "claimedBy": "PR #50 (server) / #56 (device client)",
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 1,
+   "evidencePaths": [
+    ".github/workflows/m38-offline-ci.yml",
+    "apps/web/app/api/offline/proxy/[...segments]/route.ts",
+    "apps/web/app/workforce/offline/conflicts/page.tsx",
+    "apps/web/app/workforce/offline/history/page.tsx",
+    "apps/web/app/workforce/offline/page.tsx",
+    "apps/web/app/workforce/offline/queue/page.tsx",
+    "apps/web/app/workforce/offline/status/page.tsx",
+    "apps/web/app/workforce/offline/transfers/page.tsx",
+    "apps/web/components/offline/Conflicts.tsx",
+    "apps/web/components/offline/History.tsx"
+   ],
+   "humanReviewed": false,
+   "id": "M38",
+   "migrationCount": 1,
+   "missingFacets": [],
+   "name": "Offline synchronization and ownership reconciliation",
+   "ownedPathCount": 35,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 5,
+   "services": [
+    "services/offline-sync-core"
+   ],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 4,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [
+    "success"
+   ],
+   "ciWorkflows": [
+    "SYNQORIA M39 cell health observer (synthetic)",
+    "SYNQORIA M39 fleet lifecycle CI (engineering evidence, not operational acceptance; no real cell is touched)"
+   ],
+   "claimedBy": "PR #51 and follow-ups",
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 1,
+   "evidencePaths": [
+    ".github/workflows/m39-cell-health-observer-ci.yml",
+    ".github/workflows/m39-fleet-ci.yml",
+    "apps/web/app/api/fleet/proxy/[...segments]/route.ts",
+    "apps/web/app/workforce/fleet/fleet/page.tsx",
+    "apps/web/app/workforce/fleet/migration/page.tsx",
+    "apps/web/app/workforce/fleet/page.tsx",
+    "apps/web/app/workforce/fleet/provisioning/page.tsx",
+    "apps/web/app/workforce/fleet/qualification/page.tsx",
+    "apps/web/app/workforce/fleet/releases/page.tsx",
+    "apps/web/components/fleet/Fleet.tsx"
+   ],
+   "humanReviewed": false,
+   "id": "M39",
+   "migrationCount": 1,
+   "missingFacets": [],
+   "name": "Tenant and cell lifecycle, routing and fleet releases",
+   "ownedPathCount": 44,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 5,
+   "services": [
+    "services/cell-lifecycle-core"
+   ],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 7,
+   "wave": "A"
+  },
+  {
+   "ciLatestRun": [
+    "success"
+   ],
+   "ciWorkflows": [
+    "SYNQORIA M40 artifact integrity utility (synthetic only)",
+    "SYNQORIA M40 catalogue-bound backup integrity (synthetic)",
+    "SYNQORIA M40 reliability CI (engineering evidence, not operational acceptance; no recovery guarantee)"
+   ],
+   "claimedBy": "PR #52 and follow-ups",
+   "clinicalAccepted": false,
+   "confidence": "medium",
+   "contractCount": 1,
+   "evidencePaths": [
+    ".github/workflows/m40-artifact-integrity-ci.yml",
+    ".github/workflows/m40-catalogue-inspection-ci.yml",
+    ".github/workflows/m40-reliability-ci.yml",
+    "apps/web/app/api/reliability/proxy/[...segments]/route.ts",
+    "apps/web/app/workforce/reliability/backups/page.tsx",
+    "apps/web/app/workforce/reliability/health/page.tsx",
+    "apps/web/app/workforce/reliability/incidents/page.tsx",
+    "apps/web/app/workforce/reliability/page.tsx",
+    "apps/web/app/workforce/reliability/recovery/page.tsx",
+    "apps/web/app/workforce/reliability/telemetry/page.tsx"
+   ],
+   "humanReviewed": false,
+   "id": "M40",
+   "migrationCount": 1,
+   "missingFacets": [],
+   "name": "Reliability, backup, recovery and operational telemetry",
+   "ownedPathCount": 46,
+   "productionIntegrated": "not_verified",
+   "rationale": [
+    "Service code, migrations, an OpenAPI contract and service tests are all attributable by id/ownership. Behaviour, runtime integration and clinical acceptance were not evaluated.",
+    "Attribution relies on curated anchors (see anchors); several slices are quarantined or shared across modules."
+   ],
+   "screenCount": 6,
+   "services": [
+    "services/reliability-core"
+   ],
+   "state": "engineering_slice_service_db_contract_tests",
+   "testPathCount": 6,
+   "wave": "A"
+  }
+ ],
+ "productionReadyPercent": null,
+ "schemaVersion": "synqoria.reconciliation.inventory.v1",
+ "stateCounts": {
+  "engineering_slice_service_db_contract_tests": 18,
+  "partial_source_located": 8,
+  "routes_registered_no_module_source_located": 14
+ },
+ "unbuiltCountRule": "null until every module has a definitive human audit; routes_registered_no_module_source_located is an UNKNOWN, not an unbuilt count"
+}

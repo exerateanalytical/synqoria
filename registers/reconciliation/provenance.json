@@ -1,0 +1,534 @@
+{
+ "eventContracts": [
+  "contracts/events/clinical-outbox-envelope-v1.schema.json"
+ ],
+ "method": "paths from git ls-tree at the baseline; tables from CREATE TABLE statements; HTTP entrypoints from handler/mapping annotations; operations counted from OpenAPI method keys. Counts are structural, not behavioural.",
+ "openapiContracts": {
+  "contracts/openapi/synqoria-appointments-quarantine.yaml": {
+   "blob": "2d29d0ebba2685a7435b894666f0332c59f4ae85",
+   "operations": 1,
+   "paths": 1
+  },
+  "contracts/openapi/synqoria-foundation.yaml": {
+   "blob": "c3c2700b326ea3261d0d4053ba1161dce61fb9f5",
+   "operations": 2,
+   "paths": 2
+  },
+  "contracts/openapi/synqoria-loopback-read-boundary.yaml": {
+   "blob": "71d2f7bc4e80fb99070879fbc423c2893413f82f",
+   "operations": 4,
+   "paths": 4
+  },
+  "contracts/openapi/synqoria-m02-scheduling-v1.yaml": {
+   "blob": "82f52c6e7beb230aa98c0049bdc0fc6ce10a2778",
+   "operations": 9,
+   "paths": 9
+  },
+  "contracts/openapi/synqoria-m03-triage-restricted-v1.yaml": {
+   "blob": "57b927c02781ea7ac89d35e447a32ee362afc49e",
+   "operations": 5,
+   "paths": 5
+  },
+  "contracts/openapi/synqoria-m040506-restricted-v1.json": {
+   "blob": "6434e40a0cc4037072b947ca3eb3e4f9025f7010",
+   "operations": 7,
+   "paths": 7
+  },
+  "contracts/openapi/synqoria-m16-referrals-v1.yaml": {
+   "blob": "7b77c986184e0c95a0374f52560bc68785ae5121",
+   "operations": 4,
+   "paths": 3
+  },
+  "contracts/openapi/synqoria-m24-hr-v1.yaml": {
+   "blob": "f5d1b0eeb18968ff0269126f737b1709c3c7da9e",
+   "operations": 58,
+   "paths": 50
+  },
+  "contracts/openapi/synqoria-m26-nutrition-v1.yaml": {
+   "blob": "3a5e3c2f72a6f52df875d1de18369cbd01eec42e",
+   "operations": 34,
+   "paths": 31
+  },
+  "contracts/openapi/synqoria-m27-mortuary-v1.yaml": {
+   "blob": "b7c440db9ab7f305335bbccc83a406ce96a1273b",
+   "operations": 8,
+   "paths": 7
+  },
+  "contracts/openapi/synqoria-m28-analytics-v1.yaml": {
+   "blob": "2b5605b19e4d0d1a6accc9d71a63570e4192e582",
+   "operations": 31,
+   "paths": 28
+  },
+  "contracts/openapi/synqoria-m30-content-v1.yaml": {
+   "blob": "8df5d69008b5f62adc5b82cec1ca40d458d3aa7f",
+   "operations": 30,
+   "paths": 25
+  },
+  "contracts/openapi/synqoria-m32-privacy-v1.yaml": {
+   "blob": "5e6ffd464c4f699872b6d7f469d083b0cc139151",
+   "operations": 12,
+   "paths": 9
+  },
+  "contracts/openapi/synqoria-m34-audit-v1.yaml": {
+   "blob": "7432185c00aaf62d4797ba3a42cec84b10ed5c09",
+   "operations": 13,
+   "paths": 11
+  },
+  "contracts/openapi/synqoria-m35-integrations-v1.yaml": {
+   "blob": "21fb8c6dd9b1139ea0b35f0854697b94f4d649bb",
+   "operations": 13,
+   "paths": 13
+  },
+  "contracts/openapi/synqoria-m38-offline-v1.yaml": {
+   "blob": "ad062d9525ed1c325910a6b8ecd8031d4ecbac50",
+   "operations": 25,
+   "paths": 21
+  },
+  "contracts/openapi/synqoria-m39-fleet-v1.yaml": {
+   "blob": "2a1c4276a4070201ade5b9fa4002a7046119d548",
+   "operations": 33,
+   "paths": 27
+  },
+  "contracts/openapi/synqoria-m40-reliability-v1.yaml": {
+   "blob": "1d34eb5abdec9b89246e6e6c3d797bff84f01f1f",
+   "operations": 29,
+   "paths": 25
+  },
+  "contracts/openapi/synqoria-registration-draft.yaml": {
+   "blob": "cd96f168b6ff44e73fac2dda83f8f713389c008d",
+   "operations": 0,
+   "paths": 0
+  },
+  "contracts/openapi/synqoria-registration-release-gate.yaml": {
+   "blob": "952029dd0ad0cd9534e8af53df6d79a473759d1f",
+   "operations": 0,
+   "paths": 0
+  }
+ },
+ "schemaVersion": "synqoria.reconciliation.provenance.v1",
+ "services": {
+  "services/analytics-core": {
+   "classCount": 7,
+   "httpEntrypointFiles": 1,
+   "javaMainFiles": 7,
+   "javaTestFiles": 2,
+   "migrations": [
+    "services/analytics-core/db/migration/V001__m28_analytics.sql"
+   ],
+   "tables": [
+    "synqoria_analytics.audit_events",
+    "synqoria_analytics.command_idempotency",
+    "synqoria_analytics.export_downloads",
+    "synqoria_analytics.exports",
+    "synqoria_analytics.facts",
+    "synqoria_analytics.ingest_events",
+    "synqoria_analytics.metric_definitions",
+    "synqoria_analytics.metric_values",
+    "synqoria_analytics.outbox",
+    "synqoria_analytics.report_definitions",
+    "synqoria_analytics.report_runs",
+    "synqoria_analytics.schedules",
+    "synqoria_analytics.sources"
+   ]
+  },
+  "services/audit-core": {
+   "classCount": 4,
+   "httpEntrypointFiles": 1,
+   "javaMainFiles": 4,
+   "javaTestFiles": 2,
+   "migrations": [
+    "services/audit-core/db/migration/V001__m34_audit_provenance_evidence.sql",
+    "services/audit-core/db/migration/V002__m34_attested_envelope_and_chain_guards.sql",
+    "services/audit-core/db/migration/V003__m34_evidence_admission_integrity.sql"
+   ],
+   "tables": [
+    "synqoria_audit.audit_actions",
+    "synqoria_audit.commands",
+    "synqoria_audit.evidence_events",
+    "synqoria_audit.export_requests",
+    "synqoria_audit.ingest_attestations",
+    "synqoria_audit.outbox",
+    "synqoria_audit.retention_holds",
+    "synqoria_audit.retention_reviews",
+    "synqoria_audit.stream_heads"
+   ]
+  },
+  "services/cell-lifecycle-core": {
+   "classCount": 10,
+   "httpEntrypointFiles": 1,
+   "javaMainFiles": 10,
+   "javaTestFiles": 4,
+   "migrations": [
+    "services/cell-lifecycle-core/db/migration/V001__m39_fleet.sql"
+   ],
+   "tables": [
+    "synqoria_fleet.audit_events",
+    "synqoria_fleet.cell_health",
+    "synqoria_fleet.cells",
+    "synqoria_fleet.command_idempotency",
+    "synqoria_fleet.directory_state",
+    "synqoria_fleet.migrations",
+    "synqoria_fleet.outbox",
+    "synqoria_fleet.provisioning_requests",
+    "synqoria_fleet.qualification_checks",
+    "synqoria_fleet.qualifications",
+    "synqoria_fleet.release_manifests",
+    "synqoria_fleet.rollout_cells",
+    "synqoria_fleet.rollouts",
+    "synqoria_fleet.routes",
+    "synqoria_fleet.tenants"
+   ]
+  },
+  "services/clinical-content-core": {
+   "classCount": 8,
+   "httpEntrypointFiles": 1,
+   "javaMainFiles": 8,
+   "javaTestFiles": 2,
+   "migrations": [
+    "services/clinical-content-core/db/migration/V001__m30_clinical_content.sql"
+   ],
+   "tables": [
+    "synqoria_content.activations",
+    "synqoria_content.approvals",
+    "synqoria_content.audit_events",
+    "synqoria_content.code_system_versions",
+    "synqoria_content.code_systems",
+    "synqoria_content.command_idempotency",
+    "synqoria_content.concept_mappings",
+    "synqoria_content.concept_synonyms",
+    "synqoria_content.concepts",
+    "synqoria_content.formulary_entries",
+    "synqoria_content.golden_cases",
+    "synqoria_content.outbox",
+    "synqoria_content.rule_packages",
+    "synqoria_content.validation_runs"
+   ]
+  },
+  "services/clinical-core": {
+   "classCount": 299,
+   "httpEntrypointFiles": 7,
+   "javaMainFiles": 299,
+   "javaTestFiles": 190,
+   "migrations": [
+    "services/clinical-core/db/migration/V001__hospital_scope_foundation.sql",
+    "services/clinical-core/db/migration/V002__outbox_inbox_foundation.sql",
+    "services/clinical-core/db/migration/V003__patient_identity_consent_foundation.sql",
+    "services/clinical-core/db/migration/V004__clinical_read_audit_foundation.sql",
+    "services/clinical-core/db/migration/V005__patient_registration_foundation.sql",
+    "services/clinical-core/db/migration/V006__identity_lookup_quarantine.sql",
+    "services/clinical-core/db/migration/V007__registration_review_quarantine.sql",
+    "services/clinical-core/db/migration/V008__registration_review_event_quarantine.sql",
+    "services/clinical-core/db/migration/V009__review_event_digest_contract_quarantine.sql",
+    "services/clinical-core/db/migration/V010__review_audit_outbox_quarantine.sql",
+    "services/clinical-core/db/migration/V011__review_command_replay_quarantine.sql",
+    "services/clinical-core/db/migration/V012__appointment_reservation_quarantine.sql",
+    "services/clinical-core/db/migration/V013__appointment_restricted_audit_quarantine.sql",
+    "services/clinical-core/db/migration/V014__appointment_idempotency_quarantine.sql",
+    "services/clinical-core/db/migration/V015__triage_workflow_quarantine.sql",
+    "services/clinical-core/db/migration/V016__triage_encrypted_snapshot_quarantine.sql",
+    "services/clinical-core/db/migration/V017__triage_secure_receipts_quarantine.sql",
+    "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql",
+    "services/clinical-core/db/migration/V019__triage_secure_correlated_evidence_quarantine.sql",
+    "services/clinical-core/db/migration/V020__longitudinal_secure_quarantine.sql",
+    "services/clinical-core/db/migration/V021__longitudinal_outbox_delivery_quarantine.sql",
+    "services/clinical-core/db/migration/V022__longitudinal_inbox_consumer_quarantine.sql"
+   ],
+   "tables": [
+    "clinical_inbox",
+    "clinical_outbox",
+    "clinical_read_audit",
+    "hospital_cells",
+    "hospital_departments",
+    "hospital_facilities",
+    "hospital_locations",
+    "hospital_tenants",
+    "patient_consent_records",
+    "patient_identifier_tokens",
+    "patient_identity_lookup",
+    "patient_master_index",
+    "patient_registration_audit",
+    "patient_registration_command_claim",
+    "patient_registration_demographics",
+    "patient_registration_review_audit",
+    "patient_registration_review_decisions",
+    "patient_registration_review_events",
+    "synqoria_appointment_command_audit_quarantine",
+    "synqoria_appointment_idempotency_quarantine",
+    "synqoria_appointment_outbox_quarantine",
+    "synqoria_appointment_reservations_quarantine",
+    "synqoria_longitudinal_cases_quarantine",
+    "synqoria_longitudinal_delivery_quarantine",
+    "synqoria_longitudinal_events_quarantine",
+    "synqoria_longitudinal_inbox_cursor_quarantine",
+    "synqoria_longitudinal_inbox_quarantine",
+    "synqoria_longitudinal_outbox_quarantine",
+    "synqoria_longitudinal_receipts_quarantine",
+    "synqoria_triage_cases_quarantine",
+    "synqoria_triage_events_quarantine",
+    "synqoria_triage_outbox_quarantine",
+    "synqoria_triage_secure_cases_quarantine",
+    "synqoria_triage_secure_events_quarantine",
+    "synqoria_triage_secure_outbox_quarantine",
+    "synqoria_triage_secure_receipts_quarantine"
+   ]
+  },
+  "services/hr-payroll-core": {
+   "classCount": 7,
+   "httpEntrypointFiles": 1,
+   "javaMainFiles": 7,
+   "javaTestFiles": 2,
+   "migrations": [
+    "services/hr-payroll-core/db/migration/V001__m24_hr_payroll.sql"
+   ],
+   "tables": [
+    "synqoria_hr.attendance_records",
+    "synqoria_hr.audit_events",
+    "synqoria_hr.command_idempotency",
+    "synqoria_hr.contracts",
+    "synqoria_hr.coverage_requirements",
+    "synqoria_hr.departments",
+    "synqoria_hr.holidays",
+    "synqoria_hr.leave_requests",
+    "synqoria_hr.leave_types",
+    "synqoria_hr.outbox",
+    "synqoria_hr.pay_adjustments",
+    "synqoria_hr.pay_periods",
+    "synqoria_hr.payment_accounts",
+    "synqoria_hr.payment_instructions",
+    "synqoria_hr.payroll_lines",
+    "synqoria_hr.payroll_runs",
+    "synqoria_hr.positions",
+    "synqoria_hr.roster_shifts",
+    "synqoria_hr.rosters",
+    "synqoria_hr.rule_sets",
+    "synqoria_hr.shift_templates",
+    "synqoria_hr.staff",
+    "synqoria_hr.staff_changes"
+   ]
+  },
+  "services/identity": {
+   "classCount": 0,
+   "httpEntrypointFiles": 0,
+   "javaMainFiles": 0,
+   "javaTestFiles": 0,
+   "migrations": [
+    "services/identity/db/identity_runtime_login_principals_v1.sql",
+    "services/identity/db/oidc_replay_roles_rls_v1.sql",
+    "services/identity/db/oidc_replay_state_candidate.sql",
+    "services/identity/db/staff_security_audit_v1.sql",
+    "services/identity/db/staff_session_janitor_v1.sql",
+    "services/identity/db/staff_sessions_v1.sql"
+   ],
+   "tables": [
+    "synqoria_identity.oidc_replay_state",
+    "synqoria_identity.staff_security_audit",
+    "synqoria_identity.staff_sessions"
+   ]
+  },
+  "services/integration": {
+   "classCount": 0,
+   "httpEntrypointFiles": 0,
+   "javaMainFiles": 0,
+   "javaTestFiles": 0,
+   "migrations": [],
+   "tables": []
+  },
+  "services/integration-management-core": {
+   "classCount": 3,
+   "httpEntrypointFiles": 1,
+   "javaMainFiles": 3,
+   "javaTestFiles": 1,
+   "migrations": [
+    "services/integration-management-core/db/migration/V001__m35_partner_integration_control.sql",
+    "services/integration-management-core/db/migration/V002__m35_immutable_control_transitions.sql",
+    "services/integration-management-core/db/migration/V003__m35_replay_status_width.sql",
+    "services/integration-management-core/db/migration/V004__m35_source_event_type_integrity.sql"
+   ],
+   "tables": [
+    "synqoria_integration.api_products",
+    "synqoria_integration.audit_events",
+    "synqoria_integration.commands",
+    "synqoria_integration.developer_apps",
+    "synqoria_integration.mapping_versions",
+    "synqoria_integration.messages",
+    "synqoria_integration.outbox",
+    "synqoria_integration.partner_proofs",
+    "synqoria_integration.partners",
+    "synqoria_integration.replay_requests"
+   ]
+  },
+  "services/nutrition-core": {
+   "classCount": 9,
+   "httpEntrypointFiles": 1,
+   "javaMainFiles": 9,
+   "javaTestFiles": 3,
+   "migrations": [
+    "services/nutrition-core/db/migration/V001__m26_nutrition_core.sql"
+   ],
+   "tables": [
+    "synqoria_nutrition.allergy_snapshots",
+    "synqoria_nutrition.audit_events",
+    "synqoria_nutrition.command_idempotency",
+    "synqoria_nutrition.consumed_events",
+    "synqoria_nutrition.delivery_incidents",
+    "synqoria_nutrition.dietary_orders",
+    "synqoria_nutrition.fasting_instructions",
+    "synqoria_nutrition.meal_services",
+    "synqoria_nutrition.outbox",
+    "synqoria_nutrition.patient_context",
+    "synqoria_nutrition.production_batches",
+    "synqoria_nutrition.substitutions",
+    "synqoria_nutrition.trays"
+   ]
+  },
+  "services/offline-sync-core": {
+   "classCount": 6,
+   "httpEntrypointFiles": 1,
+   "javaMainFiles": 6,
+   "javaTestFiles": 2,
+   "migrations": [
+    "services/offline-sync-core/db/migration/V001__m38_offline_sync.sql"
+   ],
+   "tables": [
+    "synqoria_offline.audit_events",
+    "synqoria_offline.command_idempotency",
+    "synqoria_offline.commands",
+    "synqoria_offline.conflicts",
+    "synqoria_offline.contracts",
+    "synqoria_offline.devices",
+    "synqoria_offline.outbox",
+    "synqoria_offline.ownership_transfers",
+    "synqoria_offline.reconciliations",
+    "synqoria_offline.record_heads",
+    "synqoria_offline.record_revisions"
+   ]
+  },
+  "services/operations-core": {
+   "classCount": 17,
+   "httpEntrypointFiles": 2,
+   "javaMainFiles": 17,
+   "javaTestFiles": 7,
+   "migrations": [
+    "services/operations-core/db/migration/V001__seven_operations_cells.sql",
+    "services/operations-core/db/migration/V002__workforce_and_operational_evidence.sql",
+    "services/operations-core/db/migration/V003__stock_journal_command_uniqueness.sql",
+    "services/operations-core/db/migration/V004__seven_domain_records.sql",
+    "services/operations-core/db/migration/V005__mortuary_custody_release.sql",
+    "services/operations-core/db/migration/V006__mortuary_release_fence.sql",
+    "services/operations-core/db/migration/V007__mortuary_authority_integrity.sql",
+    "services/operations-core/db/migration/V008__mortuary_bay_evidence_binding.sql",
+    "services/operations-core/db/migration/V009__mortuary_participant_bound_evidence.sql",
+    "services/operations-core/db/migration/V010__mortuary_case_immutable_lifecycle.sql"
+   ],
+   "tables": [
+    "synqoria_operations.audit_events",
+    "synqoria_operations.command_idempotency",
+    "synqoria_operations.document_versions",
+    "synqoria_operations.external_evidence",
+    "synqoria_operations.facility_publications",
+    "synqoria_operations.items",
+    "synqoria_operations.maintenance_orders",
+    "synqoria_operations.mortuary_audit_events",
+    "synqoria_operations.mortuary_authority_evidence",
+    "synqoria_operations.mortuary_cases",
+    "synqoria_operations.mortuary_commands",
+    "synqoria_operations.mortuary_custody_events",
+    "synqoria_operations.mortuary_legal_holds",
+    "synqoria_operations.mortuary_outbox",
+    "synqoria_operations.mortuary_release_reviews",
+    "synqoria_operations.notification_jobs",
+    "synqoria_operations.outbox",
+    "synqoria_operations.procurement_orders",
+    "synqoria_operations.stock_balances",
+    "synqoria_operations.stock_movements",
+    "synqoria_operations.transport_assignments",
+    "synqoria_operations.workforce_grants"
+   ]
+  },
+  "services/privacy-core": {
+   "classCount": 4,
+   "httpEntrypointFiles": 1,
+   "javaMainFiles": 4,
+   "javaTestFiles": 2,
+   "migrations": [
+    "services/privacy-core/db/migration/V001__m32_consent_privacy_governance.sql",
+    "services/privacy-core/db/migration/V002__m32_evidence_revocation_advisory_fence.sql"
+   ],
+   "tables": [
+    "synqoria_privacy.audit_events",
+    "synqoria_privacy.authority_evidence",
+    "synqoria_privacy.commands",
+    "synqoria_privacy.directives",
+    "synqoria_privacy.disclosures",
+    "synqoria_privacy.outbox",
+    "synqoria_privacy.privacy_cases"
+   ]
+  },
+  "services/referrals-core": {
+   "classCount": 3,
+   "httpEntrypointFiles": 1,
+   "javaMainFiles": 3,
+   "javaTestFiles": 1,
+   "migrations": [
+    "services/referrals-core/db/migration/V001__m16_referral_transition_evidence.sql",
+    "services/referrals-core/db/migration/V002__m16_recorded_lifecycle_guards.sql"
+   ],
+   "tables": [
+    "synqoria_referral.audit_events",
+    "synqoria_referral.authority_proofs",
+    "synqoria_referral.commands",
+    "synqoria_referral.outbox",
+    "synqoria_referral.referrals",
+    "synqoria_referral.transition_events"
+   ]
+  },
+  "services/reliability-core": {
+   "classCount": 8,
+   "httpEntrypointFiles": 1,
+   "javaMainFiles": 8,
+   "javaTestFiles": 2,
+   "migrations": [
+    "services/reliability-core/db/migration/V001__m40_reliability.sql"
+   ],
+   "tables": [
+    "synqoria_reliability.audit_events",
+    "synqoria_reliability.backup_verifications",
+    "synqoria_reliability.backups",
+    "synqoria_reliability.command_idempotency",
+    "synqoria_reliability.health_signals",
+    "synqoria_reliability.incident_timeline",
+    "synqoria_reliability.incidents",
+    "synqoria_reliability.outbox",
+    "synqoria_reliability.recoveries",
+    "synqoria_reliability.recovery_steps",
+    "synqoria_reliability.recovery_validations",
+    "synqoria_reliability.rpo_rto_measurements",
+    "synqoria_reliability.service_dependencies",
+    "synqoria_reliability.services",
+    "synqoria_reliability.telemetry_access_log",
+    "synqoria_reliability.telemetry_events"
+   ]
+  },
+  "services/scheduling-core": {
+   "classCount": 3,
+   "httpEntrypointFiles": 1,
+   "javaMainFiles": 3,
+   "javaTestFiles": 1,
+   "migrations": [
+    "services/scheduling-core/db/migration/V001__m02_resource_appointments.sql",
+    "services/scheduling-core/db/migration/V002__m02_rescheduling_transition.sql",
+    "services/scheduling-core/db/migration/V003__m02_appointment_safety_and_audit.sql"
+   ],
+   "tables": [
+    "synqoria_schedule.appointments",
+    "synqoria_schedule.audit_events",
+    "synqoria_schedule.commands",
+    "synqoria_schedule.outbox",
+    "synqoria_schedule.patient_proofs",
+    "synqoria_schedule.resources",
+    "synqoria_schedule.slots",
+    "synqoria_schedule.waitlist"
+   ]
+  }
+ }
+}
