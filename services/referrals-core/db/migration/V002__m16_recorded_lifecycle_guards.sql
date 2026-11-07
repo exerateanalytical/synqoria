@@ -13,11 +13,10 @@ CREATE TRIGGER m16_initial_state BEFORE INSERT ON synqoria_referral.referrals
  FOR EACH ROW EXECUTE FUNCTION synqoria_referral.intake_guard();
 
 CREATE FUNCTION synqoria_referral.recorded_history_required() RETURNS trigger LANGUAGE plpgsql AS $f$
-DECLARE from_status varchar(16);
 BEGIN
- SELECT from_status INTO from_status FROM synqoria_referral.transition_events
-  WHERE cell_id=NEW.cell_id AND facility_id=NEW.facility_id
-   AND referral_id=NEW.id AND version=NEW.version AND to_status=NEW.status;
+ PERFORM 1 FROM synqoria_referral.transition_events AS evt
+  WHERE evt.cell_id=NEW.cell_id AND evt.facility_id=NEW.facility_id
+   AND evt.referral_id=NEW.id AND evt.version=NEW.version AND evt.to_status=NEW.status;
  IF NOT FOUND OR
  NOT EXISTS(SELECT 1 FROM synqoria_referral.audit_events
   WHERE cell_id=NEW.cell_id AND facility_id=NEW.facility_id
