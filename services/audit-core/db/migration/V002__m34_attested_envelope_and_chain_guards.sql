@@ -57,22 +57,42 @@ CREATE TRIGGER m34_stream_head_guard BEFORE INSERT OR UPDATE OR DELETE ON synqor
 REVOKE ALL ON FUNCTION synqoria_audit.stream_head_guard() FROM PUBLIC;
 
 -- A reviewed retention/export scope cannot be replaced during decision.
-CREATE OR REPLACE FUNCTION synqoria_audit.review_guard() RETURNS trigger LANGUAGE plpgsql AS $f$
+-- Replace generic review trigger with schema-specific functions:
+-- PostgreSQL PL/pgSQL may still resolve referenced fields in an unused branch.
+DROP TRIGGER m34_export_review_guard ON synqoria_audit.export_requests;
+DROP TRIGGER m34_retention_review_guard ON synqoria_audit.retention_reviews;
+DROP FUNCTION synqoria_audit.review_guard();
+
+CREATE FUNCTION synqoria_audit.export_review_guard() RETURNS trigger LANGUAGE plpgsql AS $f$
 BEGIN
  IF TG_OP='DELETE' THEN RAISE EXCEPTION 'audit_review_delete_denied' USING ERRCODE='23514';END IF;
- IF NEW.version<>OLD.version+1 OR OLD.status<>'PROPOSED' OR
-  NEW.status NOT IN('APPROVED','DENIED')
-  OR ROW(NEW.id,NEW.cell_id,NEW.facility_id,NEW.stream_id,NEW.requested_by,NEW.created_at)
-  IS DISTINCT FROM ROW(OLD.id,OLD.cell_id,OLD.facility_id,OLD.stream_id,OLD.requested_by,OLD.created_at)
- THEN RAISE EXCEPTION 'audit_review_transition_denied' USING ERRCODE='23514';END IF;
- IF TG_TABLE_NAME='export_requests' AND
-  ROW(NEW.purpose,NEW.recipient,NEW.from_sequence,NEW.to_sequence,NEW.expires_at)
-  IS DISTINCT FROM ROW(OLD.purpose,OLD.recipient,OLD.from_sequence,OLD.to_sequence,OLD.expires_at)
-  THEN RAISE EXCEPTION 'audit_export_scope_immutable' USING ERRCODE='23514';END IF;
- IF TG_TABLE_NAME='retention_reviews' AND
-  ROW(NEW.policy,NEW.reason) IS DISTINCT FROM ROW(OLD.policy,OLD.reason)
-  THEN RAISE EXCEPTION 'audit_retention_scope_immutable' USING ERRCODE='23514';END IF;
+ IF NEW.version<>OLD.version+1 OR OLD.status<>'PROPOSED'
+  OR NEW.status NOT IN('APPROVED','DENIED') OR
+  ROW(NEW.id,NEW.cell_id,NEW.facility_id,NEW.stream_id,NEW.requested_by,NEW.created_at,
+      NEW.purpose,NEW.recipient,NEW.from_sequence,NEW.to_sequence,NEW.expires_at)
+  IS DISTINCT FROM
+  ROW(OLD.id,OLD.cell_id,OLD.facility_id,OLD.stream_id,OLD.requested_by,OLD.created_at,
+      OLD.purpose,OLD.recipient,OLD.from_sequence,OLD.to_sequence,OLD.expires_at)
+ THEN RAISE EXCEPTION 'audit_export_scope_immutable' USING ERRCODE='23514';END IF;
  RETURN NEW;
 END $f$;
-REVOKE ALL ON FUNCTION synqoria_audit.review_guard() FROM PUBLIC;
+CREATE FUNCTION synqoria_audit.retention_review_guard() RETURNS trigger LANGUAGE plpgsql AS $f$
+BEGIN
+ IF TG_OP='DELETE' THEN RAISE EXCEPTION 'audit_review_delete_denied' USING ERRCODE='23514';END IF;
+ IF NEW.version<>OLD.version+1 OR OLD.status<>'PROPOSED'
+  OR NEW.status NOT IN('APPROVED','DENIED') OR
+  ROW(NEW.id,NEW.cell_id,NEW.facility_id,NEW.stream_id,NEW.requested_by,NEW.created_at,
+      NEW.policy,NEW.reason)
+  IS DISTINCT FROM
+  ROW(OLD.id,OLD.cell_id,OLD.facility_id,OLD.stream_id,OLD.requested_by,OLD.created_at,
+      OLD.policy,OLD.reason)
+ THEN RAISE EXCEPTION 'audit_retention_scope_immutable' USING ERRCODE='23514';END IF;
+ RETURN NEW;
+END $f$;
+CREATE TRIGGER m34_export_review_guard BEFORE UPDATE OR DELETE ON synqoria_audit.export_requests
+ FOR EACH ROW EXECUTE FUNCTION synqoria_audit.export_review_guard();
+CREATE TRIGGER m34_retention_review_guard BEFORE UPDATE OR DELETE ON synqoria_audit.retention_reviews
+ FOR EACH ROW EXECUTE FUNCTION synqoria_audit.retention_review_guard();
+REVOKE ALL ON FUNCTION synqoria_audit.export_review_guard() FROM PUBLIC;
+REVOKE ALL ON FUNCTION synqoria_audit.retention_review_guard() FROM PUBLIC;
 COMMIT;
