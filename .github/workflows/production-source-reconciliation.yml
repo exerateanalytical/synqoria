@@ -27,6 +27,8 @@ jobs:
           test -f apps/web/app/workforce/clinical/'[screenId]'/page.tsx
           test -f registers/canonical-screens.json
   web:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
@@ -34,25 +36,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '26'
-      - name: Align production web candidate to current tested generation only in runner
-        run: |
-          node - <<'NODE'
-          const fs=require('node:fs');
-          const path='apps/web/package.json';
-          const obj=JSON.parse(fs.readFileSync(path,'utf8'));
-          obj.dependencies['@synqoria/ux-core']='0.63.0';
-          obj.dependencies.next='16.4.5';
-          obj.dependencies.react='19.3.1';
-          obj.dependencies['react-dom']='19.3.1';
-          obj.devDependencies['@types/react']='19.3.0';
-          fs.writeFileSync(path,JSON.stringify(obj,null,2)+'\n');
-          for(const p of ['apps/staff-mobile/package.json','apps/patient-mobile/package.json']){
-            const x=JSON.parse(fs.readFileSync(p,'utf8'));
-            x.dependencies['@synqoria/ux-core']='0.63.0';
-            fs.writeFileSync(p,JSON.stringify(x,null,2)+'\n');
-          }
-          NODE
-      - name: Recompute candidate lock and install, without changing user source
+      - name: Resolve exact production workspace lock and install
         run: |
           npm install --package-lock-only --ignore-scripts --no-audit --no-fund
           npm ci --no-audit --no-fund
@@ -61,6 +45,17 @@ jobs:
           node --test tests/production_canonical_source_reconciliation.test.mjs
           npm run build --workspace @synqoria/ux-core
           npm run build --workspace @synqoria/web
+      - name: Commit reproducible lockfile only after complete consolidated web build
+        if: github.event_name == 'push' && github.ref == 'refs/heads/integration/synqoria-production-reconciliation-2026-11-07'
+        run: |
+          set -euo pipefail
+          if ! git diff --quiet -- package-lock.json; then
+            git config user.name "synqoria-lock-reconciler[bot]"
+            git config user.email "synqoria-lock-reconciler@users.noreply.github.com"
+            git add package-lock.json
+            git commit -m "build(integration): commit exact tested npm workspace lockfile"
+            git push origin HEAD:integration/synqoria-production-reconciliation-2026-11-07
+          fi
       - name: Production release boundary
         if: always()
         run: echo 'Source application compilation only; no live hospital deployment or clinical acceptance.'
