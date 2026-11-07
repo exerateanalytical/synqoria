@@ -1,0 +1,50 @@
+.root{margin:24px auto;max-width:1320px;padding:0 0 32px;color:#22313d;min-width:0}
+.intro{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;margin:0 0 24px}
+.intro>div:first-child{flex:1 1 300px;min-width:0}
+.intro h1{margin:5px 0 8px;font-size:clamp(22px,3vw,30px);line-height:1.22;letter-spacing:-.02em;color:#1d3443}
+.eyebrow{font-size:12px;font-weight:750;color:#3f6472;text-transform:uppercase;letter-spacing:.09em}
+.subtitle{margin:0 0 10px;font-size:15px;font-weight:650}
+.hint{font-size:13px;color:#546472;line-height:1.55}
+.controls{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}
+.controls button{min-height:44px}
+.columns{display:grid;grid-template-columns:minmax(245px,.75fr) minmax(0,1.7fr);gap:16px}
+.mainColumn{display:grid;align-content:start;gap:16px;min-width:0}
+.panel,.gate{background:#fff;border:1px solid #ccd5db;border-radius:12px;padding:clamp(16px,2.5vw,24px);min-width:0}
+.panel h2,.gate h2{font-size:18px;line-height:1.35;margin:0 0 14px}
+.panel h3{font-size:16px;margin:24px 0 10px}
+.list{padding:0;list-style:none;display:grid;gap:8px;margin:12px 0}
+.caseButton{text-align:left;width:100%;background:#f8faf9;color:#243746;border:1px solid #b9c9c9;border-radius:8px;padding:12px;display:grid;gap:5px;min-height:75px}
+.caseButton:hover,.caseButton[aria-pressed="true"]{border:2px solid #2c686b;background:#f0f5f1}
+.caseButton strong{font-size:14px;overflow-wrap:anywhere}
+.caseButton span{font-size:12px;font-weight:650}
+.caseButton small{color:#536572}
+.field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:650;color:#263b47;min-width:0}
+.field input{font-size:16px;min-width:0;width:100%;min-height:46px;background:#fff;border:1px solid #697c85;color:#1c2d38;border-radius:7px;padding:10px 12px}
+.field small{font-size:12px;font-weight:400;color:#627078;line-height:1.4}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0 20px}
+.cardHeading{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:12px}
+.state{border:1px solid #9ab1b3;color:#254953;background:#edf3f0;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:750}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.facts div{border-radius:8px;background:#f7f8f5;border:1px solid #e0e5df;padding:11px;min-width:0}
+.facts dt{font-size:12px;color:#52636f;font-weight:650}
+.facts dd{font-size:13px;font-weight:550;overflow-wrap:anywhere;margin:6px 0 0}
+.actionPanel{margin-top:24px;padding:18px;border:1px solid #bdd0cb;border-radius:9px;background:#f9faf7}
+.actionPanel h3{margin:0 0 8px}
+.primary,.primaryLink{display:inline-flex;align-items:center;justify-content:center;min-height:46px;max-width:100%;background:#284f51;color:#fff;border:1px solid #284f51;border-radius:8px;font-weight:700;padding:10px 16px;text-decoration:none;cursor:pointer}
+.primary:disabled{cursor:not-allowed;opacity:.55}
+.quiet{border:1px solid #839698;color:#27464e;background:#fff;border-radius:7px;padding:8px 13px;cursor:pointer}
+.notice{border:1px solid #997a43;border-radius:8px;background:#fff9ee;color:#644c20;padding:14px;overflow-wrap:anywhere}
+.legal{border-left:3px solid #759a92;background:#f1f5f2;padding:12px;font-size:13px}
+.tableWrap{max-width:100%;overflow:auto}
+.table{border-collapse:collapse;width:100%;min-width:480px;font-size:13px}
+.table th,.table td{border-bottom:1px solid #dce2e1;padding:10px;text-align:left;overflow-wrap:anywhere}
+.table th{font-size:12px;color:#475b61}
+.eventList{padding:0;list-style:none;display:grid;gap:8px}
+.eventList li{padding:9px;border-left:2px solid #a3b9b6;background:#f6f8f6;font-size:13px}
+.links{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px}
+.links a{min-height:44px;display:inline-flex;align-items:center;color:#214e54}
+.root button:focus-visible,.root input:focus-visible,.root a:focus-visible{outline:3px solid #175cd3;outline-offset:3px}
+@media(max-width:900px){.columns{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:640px){.fields,.facts{grid-template-columns:minmax(0,1fr)}.controls{width:100%}.controls button{flex:1}.panel{padding:16px}}
+@media print{.controls,.list,.links,.actionPanel,.notice{display:none}.columns{display:block}.panel{border:0;padding:8px}.root{color:#111}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
