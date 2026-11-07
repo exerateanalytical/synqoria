@@ -1,0 +1,242 @@
+openapi: 3.1.0
+info:
+  title: SYNQORIA M02 scheduling API
+  version: 1.0.0
+  description: >
+    Authenticated hospital-cell scoped management contracts. All authority evidence
+    is independently issued. No institutional clinical or legal certification is
+    claimed by this engineering contract.
+servers:
+  - url: https://scheduling.example.invalid
+security:
+  - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth: {type: http, scheme: bearer, bearerFormat: JWT}
+  parameters:
+    Idempotency:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema: {type: string, format: uuid}
+  schemas:
+    CommandReply:
+      type: object
+      required: [id, status, version]
+      properties:
+        id: {type: string, format: uuid}
+        status: {type: string}
+        version: {type: integer, minimum: 1}
+    Resource:
+      type: object
+      required: [resourceCode, resourceType]
+      properties:
+        resourceCode: {type: string, pattern: '^[A-Z][A-Z0-9_]{1,63}$'}
+        resourceType: {type: string, enum: [CLINIC, ROOM, PROVIDER, EQUIPMENT]}
+    Slot:
+      type: object
+      required: [resourceId, startsAt, endsAt]
+      properties:
+        resourceId: {type: string, format: uuid}
+        startsAt: {type: string, format: date-time}
+        endsAt: {type: string, format: date-time}
+    Booking:
+      type: object
+      required: [patientRef, proofId, slotId]
+      properties:
+        patientRef: {type: string, format: uuid}
+        proofId: {type: string, format: uuid}
+        slotId: {type: string, format: uuid}
+    Wait:
+      type: object
+      required: [patientRef, proofId, resourceId]
+      properties:
+        patientRef: {type: string, format: uuid}
+        proofId: {type: string, format: uuid}
+        resourceId: {type: string, format: uuid}
+    Version:
+      type: object
+      required: [expectedVersion]
+      properties:
+        expectedVersion: {type: integer, minimum: 1}
+    SlotMove:
+      type: object
+      required: [expectedVersion, slotId]
+      properties:
+        expectedVersion: {type: integer, minimum: 1}
+        slotId: {type: string, format: uuid}
+paths:
+  /api/v1/scheduling/{collection}:
+    get:
+      operationId: listScopedScheduling
+      parameters:
+        - name: collection
+          in: path
+          required: true
+          schema: {type: string}
+        - name: limit
+          in: query
+          required: false
+          schema: {type: integer, minimum: 1, maximum: 100, default: 25}
+      responses:
+        '200':
+          description: Authorized scoped records
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/scheduling/resources:
+    post:
+      operationId: registerSchedulingResource
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Resource'
+      responses:
+        '201':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/scheduling/slots:
+    post:
+      operationId: publishAvailableSlot
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Slot'
+      responses:
+        '201':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/scheduling/appointments:
+    post:
+      operationId: requestAppointment
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Booking'
+      responses:
+        '201':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/scheduling/appointments/{id}/{action}:
+    post:
+      operationId: transitionAppointment
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+        - name: id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+        - name: action
+          in: path
+          required: true
+          schema: {type: string, pattern: '^[a-z-]+$'}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Version'
+      responses:
+        '201':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/scheduling/appointments/{id}/reschedule:
+    post:
+      operationId: rescheduleAppointment
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+        - name: id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SlotMove'
+      responses:
+        '201':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/scheduling/waitlist:
+    post:
+      operationId: joinResourceWaitlist
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Wait'
+      responses:
+        '201':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/scheduling/waitlist/{id}/offer:
+    post:
+      operationId: offerWaitlistSlot
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+        - name: id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SlotMove'
+      responses:
+        '201':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
+  /api/v1/scheduling/waitlist/{id}/accept:
+    post:
+      operationId: acceptWaitlistSlot
+      parameters:
+        - $ref: '#/components/parameters/Idempotency'
+        - name: id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Version'
+      responses:
+        '201':
+          description: Authorized scoped state change or review
+        '401': {description: Authentication required}
+        '403': {description: Access denied}
+        '409': {description: Conflict, stale version, or external proof missing}
