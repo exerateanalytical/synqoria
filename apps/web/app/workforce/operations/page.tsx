@@ -49,6 +49,7 @@ export default function SevenOperationsCatalogue(){
     </article>;
    })}
   </section>
+  <nav aria-label="Mortuary workstream" className={styles.screenList}><Link href="/workforce/mortuary">M27 — Mortuary / Gestion mortuaire (five authorized workstations)</Link></nav>
   <footer className={styles.footer}>Secure workstations use a server-only session gateway. Orders and approvals require
    verified institutional authorizations. No automated clinical decisions.</footer>
  </main>;
