@@ -1,0 +1,150 @@
+openapi: 3.1.0
+info:
+  title: SYNQORIA M34 Audit, Provenance and Evidence Governance API
+  version: 1.0.0
+  description: >
+    Cell/facility-scoped metadata-only, independently attested source evidence.
+    Export is an integrity manifest, not a clinical data file. Retention review
+    never deletes records.
+servers:
+  - url: https://audit.example.invalid
+security:
+  - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth: {type: http, scheme: bearer, bearerFormat: JWT}
+  parameters:
+    Idempotency:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema: {type: string, format: uuid}
+    EntityId:
+      name: id
+      in: path
+      required: true
+      schema: {type: string, format: uuid}
+    Limit:
+      name: limit
+      in: query
+      schema: {type: integer, minimum: 1, maximum: 100, default: 25}
+  schemas:
+    Ingest:
+      type: object
+      required: [streamId, sourceId, sourceEventId, sourceActor, sequence,
+        action, outcome, payloadSha256, proofId, occurredAt]
+      properties:
+        streamId: {type: string, format: uuid}
+        sourceId: {type: string, format: uuid}
+        sourceEventId: {type: string, format: uuid}
+        sourceActor: {type: string, format: uuid}
+        subjectRef: {type: string, format: uuid}
+        sequence: {type: integer, minimum: 1}
+        action: {type: string}
+        outcome: {type: string, enum: [SUCCESS, DENIED, ERROR]}
+        payloadSha256: {type: string, pattern: '^[0-9a-f]{64}$'}
+        proofId: {type: string, format: uuid}
+        occurredAt: {type: string, format: date-time}
+    ExportRequest:
+      type: object
+      required: [streamId, purpose, recipient, fromSequence, toSequence, expiresAt]
+      properties:
+        streamId: {type: string, format: uuid}
+        purpose: {type: string}
+        recipient: {type: string}
+        fromSequence: {type: integer, minimum: 1}
+        toSequence: {type: integer, minimum: 1}
+        expiresAt: {type: string, format: date-time}
+    RetentionReview:
+      type: object
+      required: [streamId, policy, reason]
+      properties:
+        streamId: {type: string, format: uuid}
+        policy: {type: string}
+        reason: {type: string}
+    Decision:
+      type: object
+      required: [expectedVersion, approve, reason]
+      properties:
+        expectedVersion: {type: integer, minimum: 1}
+        approve: {type: boolean}
+        reason: {type: string}
+paths:
+  /api/v1/audit/events:
+    get:
+      operationId: listAuditEvents
+      parameters: [{$ref: '#/components/parameters/Limit'}]
+      responses: {'200': {description: Authorized scoped audit events}}
+  /api/v1/audit/events/{id}:
+    get:
+      operationId: auditEventDetail
+      parameters: [{$ref: '#/components/parameters/EntityId'}]
+      responses: {'200': {description: Authorized immutable event}}
+  /api/v1/audit/streams/{id}/timeline:
+    get:
+      operationId: provenanceTimeline
+      parameters: [{$ref: '#/components/parameters/EntityId'}, {$ref: '#/components/parameters/Limit'}]
+      responses: {'200': {description: Ordered provenance timeline}}
+  /api/v1/audit/streams/{id}/verify:
+    get:
+      operationId: verifyEvidenceChain
+      parameters: [{$ref: '#/components/parameters/EntityId'}]
+      responses: {'200': {description: SHA-256 chain verified only when complete}}
+  /api/v1/audit/ingest:
+    post:
+      operationId: ingestAttestedEvidence
+      parameters: [{$ref: '#/components/parameters/Idempotency'}]
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/Ingest'}}}
+      responses: {'201': {description: Attested digest event persisted}}
+  /api/v1/audit/exports:
+    get:
+      operationId: listExportRequests
+      parameters: [{$ref: '#/components/parameters/Limit'}]
+      responses: {'200': {description: Controlled export requests}}
+    post:
+      operationId: requestEvidenceExport
+      parameters: [{$ref: '#/components/parameters/Idempotency'}]
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/ExportRequest'}}}
+      responses: {'201': {description: Manifest review requested}}
+  /api/v1/audit/exports/{id}/review:
+    post:
+      operationId: reviewEvidenceExport
+      parameters: [{$ref: '#/components/parameters/EntityId'}, {$ref: '#/components/parameters/Idempotency'}]
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/Decision'}}}
+      responses: {'200': {description: Independently reviewed, no clinical file created}}
+  /api/v1/audit/exports/{id}/manifest:
+    get:
+      operationId: inspectEvidenceManifest
+      parameters: [{$ref: '#/components/parameters/EntityId'}]
+      responses: {'200': {description: Metadata digest manifest, not a clinical export}}
+  /api/v1/audit/retention/holds:
+    get:
+      operationId: listIndependentLegalHolds
+      parameters: [{$ref: '#/components/parameters/Limit'}]
+      responses: {'200': {description: Active and rescinded holds}}
+  /api/v1/audit/retention/reviews:
+    get:
+      operationId: listRetentionReviews
+      parameters: [{$ref: '#/components/parameters/Limit'}]
+      responses: {'200': {description: Non-destructive retention reviews}}
+    post:
+      operationId: requestRetentionReview
+      parameters: [{$ref: '#/components/parameters/Idempotency'}]
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/RetentionReview'}}}
+      responses: {'201': {description: Retention review proposed}}
+  /api/v1/audit/retention/reviews/{id}/review:
+    post:
+      operationId: independentlyReviewRetention
+      parameters: [{$ref: '#/components/parameters/EntityId'}, {$ref: '#/components/parameters/Idempotency'}]
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/Decision'}}}
+      responses: {'200': {description: No data purged or deleted}}
