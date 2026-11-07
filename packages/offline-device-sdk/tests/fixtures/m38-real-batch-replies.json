@@ -1,0 +1,224 @@
+{
+  "source" : "SyncService on PostgreSQL 18 (SdkInteropFixtureTest)",
+  "scenarios" : [ {
+    "name" : "applied",
+    "request" : {
+      "deviceId" : "6ef7712e-2ac2-46c0-9da3-722c09f0a5c3",
+      "commands" : [ {
+        "commandId" : "cc67930a-e539-48aa-8d42-7e38ae356a0d",
+        "seq" : 1,
+        "operationType" : "note.add",
+        "recordType" : "note",
+        "recordKey" : "r1",
+        "baseVersion" : 1,
+        "baseEpoch" : 1,
+        "fields" : [ "text" ],
+        "payload" : {
+          "text" : "synthetic"
+        },
+        "createdLocalAt" : "2026-11-07T05:59:00Z",
+        "expiresAt" : "2026-11-08T06:00:00Z"
+      } ]
+    },
+    "reply" : {
+      "deviceId" : "6ef7712e-2ac2-46c0-9da3-722c09f0a5c3",
+      "results" : [ {
+        "commandId" : "cc67930a-e539-48aa-8d42-7e38ae356a0d",
+        "seq" : 1,
+        "status" : "APPLIED",
+        "code" : "applied",
+        "appliedVersion" : 2,
+        "conflictId" : null
+      } ],
+      "cursor" : 1,
+      "serverTime" : "2026-11-07T06:00:00Z"
+    }
+  }, {
+    "name" : "duplicate",
+    "request" : {
+      "deviceId" : "6ef7712e-2ac2-46c0-9da3-722c09f0a5c3",
+      "commands" : [ {
+        "commandId" : "cc67930a-e539-48aa-8d42-7e38ae356a0d",
+        "seq" : 1,
+        "operationType" : "note.add",
+        "recordType" : "note",
+        "recordKey" : "r1",
+        "baseVersion" : 1,
+        "baseEpoch" : 1,
+        "fields" : [ "text" ],
+        "payload" : {
+          "text" : "synthetic"
+        },
+        "createdLocalAt" : "2026-11-07T05:59:00Z",
+        "expiresAt" : "2026-11-08T06:00:00Z"
+      } ]
+    },
+    "reply" : {
+      "deviceId" : "6ef7712e-2ac2-46c0-9da3-722c09f0a5c3",
+      "results" : [ {
+        "commandId" : "cc67930a-e539-48aa-8d42-7e38ae356a0d",
+        "seq" : 1,
+        "status" : "DUPLICATE",
+        "code" : "applied",
+        "appliedVersion" : 2,
+        "conflictId" : null,
+        "originalStatus" : "APPLIED"
+      } ],
+      "cursor" : 1,
+      "serverTime" : "2026-11-07T06:00:00Z"
+    }
+  }, {
+    "name" : "conflict-stale-base",
+    "request" : {
+      "deviceId" : "6ef7712e-2ac2-46c0-9da3-722c09f0a5c3",
+      "commands" : [ {
+        "commandId" : "ebf0ee2f-647a-490b-b1a0-c8199025f9fb",
+        "seq" : 2,
+        "operationType" : "note.add",
+        "recordType" : "note",
+        "recordKey" : "r2",
+        "baseVersion" : 1,
+        "baseEpoch" : 1,
+        "fields" : [ "text" ],
+        "payload" : {
+          "text" : "synthetic"
+        },
+        "createdLocalAt" : "2026-11-07T05:59:00Z",
+        "expiresAt" : "2026-11-08T06:00:00Z"
+      } ]
+    },
+    "reply" : {
+      "deviceId" : "6ef7712e-2ac2-46c0-9da3-722c09f0a5c3",
+      "results" : [ {
+        "commandId" : "ebf0ee2f-647a-490b-b1a0-c8199025f9fb",
+        "seq" : 2,
+        "status" : "CONFLICT",
+        "code" : "stale_base",
+        "appliedVersion" : null,
+        "conflictId" : "ffc9bbb9-0d49-434e-a1bf-b31d16925a99"
+      } ],
+      "cursor" : 2,
+      "serverTime" : "2026-11-07T06:00:00Z"
+    }
+  }, {
+    "name" : "rejected-safety-gate",
+    "request" : {
+      "deviceId" : "6ef7712e-2ac2-46c0-9da3-722c09f0a5c3",
+      "commands" : [ {
+        "commandId" : "c7e9eceb-3b79-4e89-8671-ac7c4e479e26",
+        "seq" : 3,
+        "operationType" : "meds.give",
+        "recordType" : "note",
+        "recordKey" : "r3",
+        "baseVersion" : 1,
+        "baseEpoch" : 1,
+        "fields" : [ "text" ],
+        "payload" : {
+          "text" : "synthetic"
+        },
+        "createdLocalAt" : "2026-11-07T05:59:00Z",
+        "expiresAt" : "2026-11-08T06:00:00Z"
+      } ]
+    },
+    "reply" : {
+      "deviceId" : "6ef7712e-2ac2-46c0-9da3-722c09f0a5c3",
+      "results" : [ {
+        "commandId" : "c7e9eceb-3b79-4e89-8671-ac7c4e479e26",
+        "seq" : 3,
+        "status" : "REJECTED",
+        "code" : "safety_gate_required",
+        "appliedVersion" : null,
+        "conflictId" : null
+      } ],
+      "cursor" : 3,
+      "serverTime" : "2026-11-07T06:00:00Z"
+    }
+  }, {
+    "name" : "expired",
+    "request" : {
+      "deviceId" : "6ef7712e-2ac2-46c0-9da3-722c09f0a5c3",
+      "commands" : [ {
+        "commandId" : "71c0c117-c294-4265-b8c2-cb3a34b048db",
+        "seq" : 4,
+        "operationType" : "note.add",
+        "recordType" : "note",
+        "recordKey" : "r3",
+        "baseVersion" : 1,
+        "baseEpoch" : 1,
+        "fields" : [ "text" ],
+        "payload" : {
+          "text" : "synthetic"
+        },
+        "createdLocalAt" : "2026-11-07T05:59:00Z",
+        "expiresAt" : "2026-11-07T06:00:01Z"
+      } ]
+    },
+    "reply" : {
+      "deviceId" : "6ef7712e-2ac2-46c0-9da3-722c09f0a5c3",
+      "results" : [ {
+        "commandId" : "71c0c117-c294-4265-b8c2-cb3a34b048db",
+        "seq" : 4,
+        "status" : "EXPIRED",
+        "code" : "command_expired",
+        "appliedVersion" : null,
+        "conflictId" : null
+      } ],
+      "cursor" : 4,
+      "serverTime" : "2026-11-07T06:00:05Z"
+    }
+  }, {
+    "name" : "retry-frozen-then-not-processed",
+    "request" : {
+      "deviceId" : "6ef7712e-2ac2-46c0-9da3-722c09f0a5c3",
+      "commands" : [ {
+        "commandId" : "71f17f91-3a89-4810-a1bb-e2d1703ed396",
+        "seq" : 5,
+        "operationType" : "note.add",
+        "recordType" : "note",
+        "recordKey" : "r4",
+        "baseVersion" : 1,
+        "baseEpoch" : 1,
+        "fields" : [ "text" ],
+        "payload" : {
+          "text" : "synthetic"
+        },
+        "createdLocalAt" : "2026-11-07T05:59:05Z",
+        "expiresAt" : "2026-11-08T06:00:10Z"
+      }, {
+        "commandId" : "6e7a1bfe-57ec-4dfa-9450-4505b25ff7f6",
+        "seq" : 6,
+        "operationType" : "note.add",
+        "recordType" : "note",
+        "recordKey" : "r1",
+        "baseVersion" : 2,
+        "baseEpoch" : 1,
+        "fields" : [ "text" ],
+        "payload" : {
+          "text" : "synthetic"
+        },
+        "createdLocalAt" : "2026-11-07T05:59:05Z",
+        "expiresAt" : "2026-11-08T06:00:10Z"
+      } ]
+    },
+    "reply" : {
+      "deviceId" : "6ef7712e-2ac2-46c0-9da3-722c09f0a5c3",
+      "results" : [ {
+        "commandId" : "71f17f91-3a89-4810-a1bb-e2d1703ed396",
+        "seq" : 5,
+        "status" : "RETRY",
+        "code" : "record_frozen",
+        "appliedVersion" : null,
+        "conflictId" : null
+      }, {
+        "commandId" : "6e7a1bfe-57ec-4dfa-9450-4505b25ff7f6",
+        "seq" : 6,
+        "status" : "NOT_PROCESSED",
+        "code" : "batch_stopped",
+        "appliedVersion" : null,
+        "conflictId" : null
+      } ],
+      "cursor" : 4,
+      "serverTime" : "2026-11-07T06:00:05Z"
+    }
+  } ]
+}

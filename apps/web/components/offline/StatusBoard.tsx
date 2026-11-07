@@ -1,6 +1,7 @@
 "use client";
 import {useState} from "react";
 import {ActionButton,ActionError,Badge,Empty,Field,FailureView,Loading,Notice,OfFrame,fmtTime,styles,toneFor,useLoad,useOf} from "./ui";
+import DevicePanel from "./DevicePanel";
 import {call,newKey} from "../../lib/offline/client";
 import type {Failure} from "../../lib/offline/client";
 import {enumLabel} from "../../lib/offline/i18n";
@@ -30,9 +31,9 @@ function Body(){
  const why=!picked?t("disabled.select"):picked.status!=="ACTIVE"?t("disabled.status",{status:enumLabel(lang,"device",picked.status)}):reason.trim().length<5?t("disabled.input"):null;
  return <>
   <ul className={styles.hub}>
-   <li className={styles.card}><h3>{t("st.openConflicts")}</h3><strong className={styles.mono}>{d.openConflicts}</strong></li>
-   <li className={styles.card}><h3>{t("st.frozen")}</h3><strong className={styles.mono}>{d.frozenRecords}</strong></li>
-   <li className={styles.card}><h3>{t("st.transfers")}</h3><strong className={styles.mono}>{d.openTransfers}</strong></li>
+   <li className={styles.card}><h2>{t("st.openConflicts")}</h2><strong className={styles.mono}>{d.openConflicts}</strong></li>
+   <li className={styles.card}><h2>{t("st.frozen")}</h2><strong className={styles.mono}>{d.frozenRecords}</strong></li>
+   <li className={styles.card}><h2>{t("st.transfers")}</h2><strong className={styles.mono}>{d.openTransfers}</strong></li>
   </ul>
   <p className={styles.hint}>{t("st.localNote")}</p>
   <section className={styles.panel} aria-labelledby="dev-h">
@@ -64,6 +65,7 @@ function Body(){
    <ActionError failure={fail} onReload={s.reload}/>
    {msg&&<Notice>{msg}</Notice>}
   </section>
+  <DevicePanel/>
  </>;
 }
 export default function StatusBoard(){return <OfFrame active="status" title="st.title" intro="st.intro"><Body/></OfFrame>;}

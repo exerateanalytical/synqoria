@@ -1,0 +1,8 @@
+{
+  "name": "@synqoria/offline-device-sdk",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "M38 offline device client SDK (platform-neutral TypeScript). Not a workspace member: no dependency or lockfile change.",
+  "main": "src/index.ts"
+}
