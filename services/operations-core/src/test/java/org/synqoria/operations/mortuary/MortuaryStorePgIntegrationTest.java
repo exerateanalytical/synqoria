@@ -60,13 +60,16 @@ final class MortuaryStorePgIntegrationTest {
    UUID.randomUUID(),CELL,FAC,subject,caseId,action,version,kind,ref,"synthetic-authority-ci",approver);
  }
  private void incoming(UUID subject){
+  roster();
   evidence(subject,null,"RECEIVE",0,"DEATH_CONFIRMED",DEATH,ISSUER);
   evidence(subject,null,"RECEIVE",0,"IDENTITY_ATTESTED",INTAKE_REF,ISSUER);
+  evidence(subject,null,"RECEIVE",0,"INTAKE_AUTHORIZED","INTAKE-AUTH-M27",ISSUER);
+  evidence(subject,null,"RECEIVE",0,"BELONGINGS_SEALED","BELONG-SEAL-M27",ISSUER);
  }
  private CaseView receive(MortuaryStore s,UUID subject){
   incoming(subject);
   return s.receive(who(INTAKE,"m27:intake"),
-   new Intake(subject,INTAKE_REF,DEATH,UUID.randomUUID()));
+   new Intake(subject,INTAKE_REF,DEATH,"UNIT-ICU","INTAKE-AUTH-M27","BELONG-SEAL-M27",RECEIVER,UUID.randomUUID()));
  }
  private CaseView identify(MortuaryStore s,CaseView c){
   evidence(c.decedentRef(),c.caseId(),"IDENTIFY",c.version(),
@@ -95,7 +98,12 @@ final class MortuaryStorePgIntegrationTest {
  }
  private Change cmd(String action,long v,String proof,String bay,UUID receive,
                     String recipient,String authority){
-  return new Change(action,v,UUID.randomUUID(),proof,bay,receive,recipient,authority);
+  String seal=Set.of("STORE","TRANSFER").contains(action)?"CASE-SEAL-M27":null;
+  String condition=Set.of("STORE","TRANSFER").contains(action)?"SEALED_OK":null;
+  UUID witness=action.equals("HANDOVER")?RECEIVER:null;
+  String belongings=action.equals("HANDOVER")?"BELONGINGS-RELEASE-M27":null;
+  return new Change(action,v,UUID.randomUUID(),proof,bay,receive,recipient,authority,
+   seal,condition,witness,belongings);
  }
  private long rows(String table,UUID id){
   final Set<String> allowed=Set.of("mortuary_custody_events","mortuary_release_reviews",
@@ -108,7 +116,7 @@ final class MortuaryStorePgIntegrationTest {
   pgOnly();
   var s=store();
   UUID subject=UUID.randomUUID();
-  var input=new Intake(subject,INTAKE_REF,DEATH,UUID.randomUUID());
+  var input=new Intake(subject,INTAKE_REF,DEATH,"UNIT-ICU","INTAKE-AUTH-M27","BELONG-SEAL-M27",RECEIVER,UUID.randomUUID());
   assertThrows(WorkflowViolation.class,()->s.receive(who(INTAKE,"m27:intake"),input));
   incoming(subject);
   var accepted=s.receive(who(INTAKE,"m27:intake"),input);
@@ -116,7 +124,7 @@ final class MortuaryStorePgIntegrationTest {
   assertEquals(1,accepted.version());
   assertEquals(accepted.caseId(),s.receive(who(INTAKE,"m27:intake"),input).caseId());
   assertThrows(WorkflowViolation.class,()->s.receive(who(INTAKE,"m27:intake"),
-   new Intake(subject,INTAKE_REF,"CHANGED-DEATH",input.commandId())));
+   new Intake(subject,INTAKE_REF,"CHANGED-DEATH","UNIT-ICU","INTAKE-AUTH-M27","BELONG-SEAL-M27",RECEIVER,input.commandId())));
   assertThrows(Exception.class,()->new JdbcTemplate(runtime()).update(
    "DELETE FROM synqoria_operations.mortuary_custody_events WHERE case_id=?",accepted.caseId()));
   assertThrows(Exception.class,()->new JdbcTemplate(runtime()).update(
@@ -159,6 +167,7 @@ final class MortuaryStorePgIntegrationTest {
   assertEquals("RELEASE_AUTHORIZED",c.state());
   evidence(subject,id,"HANDOVER",c.version(),"HANDOVER_RECEIPT","HANDOVER-M27",ISSUER);
   evidence(subject,id,"HANDOVER",c.version(),"RECIPIENT_VERIFIED",recipient,ISSUER);
+  evidence(subject,id,"HANDOVER",c.version(),"BELONGINGS_RELEASED","BELONGINGS-RELEASE-M27",ISSUER);
   var sameReviewerHandover=cmd("HANDOVER",c.version(),"HANDOVER-M27",null,null,recipient,legal);
   assertThrows(WorkflowViolation.class,()->s.change(who(REVIEWER,"m27:handover"),id,
    sameReviewerHandover));
