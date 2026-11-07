@@ -174,6 +174,13 @@ final class MortuaryStorePgIntegrationTest {
   c=s.change(who(HANDOVER,"m27:handover"),id,
    cmd("HANDOVER",c.version(),"HANDOVER-M27",null,null,recipient,legal));
   assertEquals("RELEASED",c.state());
+  // External legal authorities may not retroactively activate a hold on a released body.
+  final UUID completedCase=id;
+  assertThrows(Exception.class,()->admin().update(
+   "INSERT INTO synqoria_operations.mortuary_legal_holds "+
+   "(hold_id,cell_id,facility_id,case_id,authority_ref,reason_code,ordered_by) "+
+   "VALUES(?,?,?,?,?,?,?)",UUID.randomUUID(),CELL,FAC,completedCase,
+   "RETROACTIVE-HOLD-DENIED","COURT_REVIEW",AUTHORITY));
   assertNotNull(c.releasedAt());
   assertNull(c.currentStorage());
   assertEquals(4,rows("mortuary_custody_events",id));
@@ -211,5 +218,30 @@ final class MortuaryStorePgIntegrationTest {
   assertEquals("RELEASE_REVIEWED",c.state());
   assertThrows(WorkflowViolation.class,()->s.change(who(APPROVER,"m27:authorize"),heldCase,
    cmd("AUTHORIZE_RELEASE",immutable.version(),null,null,null,"RECIPIENT-M27","LEGAL-M27")));
+ }
+ @Test void exclusivePhysicalBayAndTransactionRollbackPreventsDoubleCustody(){
+  pgOnly();var s=store();
+  var first=store(s,identify(s,receive(s,UUID.randomUUID())));
+  assertEquals("STORED",first.state());
+  var second=identify(s,receive(s,UUID.randomUUID()));
+  final var pending=second;
+  assertThrows(Exception.class,()->store(s,pending));
+  var after=s.one(who(OFFICER,"m27:read"),pending.caseId());
+  assertEquals("IDENTIFIED",after.state());
+  assertEquals(2,after.version());
+  assertEquals(1,rows("mortuary_custody_events",pending.caseId()));
+  assertEquals(2,rows("mortuary_audit_events",pending.caseId()));
+ }
+ @Test void mismatchedBodyIdentityOrExpiredAuthorityCannotApproveTransfer(){
+  pgOnly();var s=store();
+  var accepted=receive(s,UUID.randomUUID());
+  final var pending=accepted;
+  evidence(UUID.randomUUID(),pending.caseId(),"IDENTIFY",pending.version(),
+   "IDENTITY_VERIFIED","WRONG-SUBJECT-M27",ISSUER);
+  assertThrows(WorkflowViolation.class,()->s.change(who(OFFICER,"m27:identify"),
+   pending.caseId(),cmd("IDENTIFY",pending.version(),"WRONG-SUBJECT-M27",null,null,null,null)));
+  var current=s.one(who(OFFICER,"m27:read"),pending.caseId());
+  assertEquals("RECEIVED",current.state());
+  assertEquals(1,rows("mortuary_audit_events",pending.caseId()));
  }
 }
