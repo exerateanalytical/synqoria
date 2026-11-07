@@ -45,15 +45,17 @@
         63,
         64,
         66,
-        67
+        67,
+        72
       ],
       "futureOrder": [
-        "M21/M22/M25/M29/M37 internal source handoff package PR #67 is merged; external supplier finance/ERP, physical barcode devices, GPS providers, actual remote-cell configuration consumers, SMTP/SMS/push delivery and receipts remain explicitly NOT configured or deployed",
-        "Continue M39 Kong/Envoy real data plane and M40 PostgreSQL WAL/PITR with proper workload OIDC, mTLS, backup restore evidence and least privilege",
-        "Review Claude's new M23 Issue #68 after work is pushed, validate exact tests and source, merge only after review; do not duplicate M23",
-        "Use Claude's merged PR #65 forensic inventory as partial historical evidence; 30/30 audit packages not claimed, confirmed module unbuilt/fully-built counts remain unknown"
+        "Issue #70 production-source verification merged PR #72; Java25 M03 synthetic CI is NOT clinical PostgreSQL/OIDC acceptance and operations OpenAPI DTO contract is NOT external provider integration",
+        "Issue #71 human forensic review of 14 UNKNOWN modules: examine existing code/shared contexts and historical branches; never infer not built from missing path names",
+        "Continue M39 live Kong/Envoy data plane, M40 real WAL/PITR disaster recovery; configured workload mTLS and physical hospital pilots remain not completed",
+        "Review Claude's exclusive M23 Issue #68 preventive maintenance changes after latest main, no overlapping code generation",
+        "Retain external provider integrations M21 finance, M22 physical scanner, M25 GPS, M29 independent cross-cell apply/ack, M37 outbound SMS/email/push as unverified despite internal source handoffs"
       ],
-      "lastCompleted": "Single PR #67 five-module durable integration handoffs (M21/M22/M25/M29/M37), merged 1fe44c85805e3bf963129dbce1f973cf43bc0f98, five blocking CI workflows green, V012/25 FORCE RLS"
+      "lastCompleted": "Issue #70: PR #72 merged b37b516da6aa13fd6bba0140866116d617662499. New M03 Java25 CI 13 existing test entrypoints, 269 actual invocations / 263 parameterized synthetic scenarios passed; existing 21 operations controller route OpenAPI 3.1 and 16 Java record DTO source parity CI; pinned Claude forensic PR65 historical-only scope test repaired; all five checks passed."
     }
   },
   "verifiedClaims": {
@@ -88,6 +90,10 @@
     "M37": {
       "pr": 67,
       "scope": "Merged due notification read and transactional SKIP LOCKED bounded leasing/retry metadata; credentialed external SMTP/SMS/push workers, delivery receipt verification and clinical alert acceptance pending."
+    },
+    "M03": {
+      "pr": 72,
+      "scope": "M03 Java25 synthetic real Java source compilation and 269 test invocations (263 parameterized cases) now verified in dedicated CI; not real PostgreSQL hospital auth, no certified clinical deployment. Existing triage source was reused unchanged."
     }
   },
   "handoffRule": "Every push/merge must regenerate current-platform-reconciliation.json. A changed module must have evidence, owner, new/modified paths, contract compatibility, CI link, merge SHA, blockers, and next permitted work. Use PRs as work units and merge only independently verified source. Do not claim clinical release.",
