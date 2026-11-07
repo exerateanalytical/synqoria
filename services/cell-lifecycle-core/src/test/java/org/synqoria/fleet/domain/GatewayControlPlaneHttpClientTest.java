@@ -66,10 +66,10 @@ class GatewayControlPlaneHttpClientTest {
  }
  private GatewayRouteAdmission admission(){
   GatewayControlPlaneHttpClient c=client();
-  return new GatewayRouteAdmission(KEY,CLOCK,c,c,
-   cell->cell.equals(A)?URI.create("https://a.cell.svc.cluster.local:8443/"):
-     cell.equals(B)?URI.create("https://b.cell.svc.cluster.local:8443/"):null,
-   ".svc.cluster.local");
+  var registry=new GatewayCellDestinationRegistry(Map.of(
+   A,URI.create("https://a.cell.svc.cluster.local:8443/"),
+   B,URI.create("https://b.cell.svc.cluster.local:8443/")),".svc.cluster.local");
+  return new GatewayRouteAdmission(KEY,CLOCK,c,c,registry,".svc.cluster.local");
  }
  private static void denied(String code,Runnable op){
   var e=assertThrows(Rejected.class,op::run);
@@ -164,6 +164,24 @@ class GatewayControlPlaneHttpClientTest {
  @Test void transportRejectsMissingMutualTlsContextOrTokenProvider(){
   assertThrows(NullPointerException.class,()->new MutualTlsExchange(null,()->"x".repeat(48)));
   assertThrows(NullPointerException.class,()->new MutualTlsExchange(javax.net.ssl.SSLContext.getDefault(),null));
+ }
+ @Test void registryRejectsMissingTargetAndAnyExternalUrl(){
+  var registry=new GatewayCellDestinationRegistry(
+   Map.of(A,URI.create("https://a.cell.svc.cluster.local:8443/")),".svc.cluster.local");
+  assertEquals(1,registry.count());
+  assertThrows(IllegalStateException.class,()->registry.resolve(B));
+  for(String bad:new String[]{
+    "http://a.cell.svc.cluster.local/",
+    "https://a.cell.svc.cluster.local.evil.example/",
+    "https://operator@a.cell.svc.cluster.local/",
+    "https://a.cell.svc.cluster.local/path",
+    "https://a.cell.svc.cluster.local/?route=x",
+    "https://a.cell.svc.cluster.local/#r",
+    "https://127.0.0.1/"
+  }){
+   assertThrows(IllegalArgumentException.class,()->new GatewayCellDestinationRegistry(
+    Map.of(A,URI.create(bad)),".svc.cluster.local"));
+  }
  }
  @Test void returnedRawHttpReplyDefensivelyCopiesBody(){
   byte[] b="{}".getBytes(StandardCharsets.UTF_8);
