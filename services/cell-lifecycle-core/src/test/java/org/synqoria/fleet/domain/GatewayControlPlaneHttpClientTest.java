@@ -144,7 +144,7 @@ class GatewayControlPlaneHttpClientTest {
  }
  @Test void rejectsMalformedOrOversizedAndInvalidUtf8WithoutFallback(){
   override="[";assertThrows(RuntimeException.class,()->client().fetch(ROUTE));
-  override="x".repeat(MAX_JSON_BYTES+1);
+  override="x".repeat(GatewayControlPlaneHttpClient.MAX_JSON_BYTES+1);
   assertThrows(IllegalStateException.class,()->client().fetch(ROUTE));
   var c=new GatewayControlPlaneHttpClient(ORIGIN,"fleet-control.svc.cluster.local",
     u->new Reply(200,u,"application/json","no-store",new byte[]{(byte)0xff}),json);
