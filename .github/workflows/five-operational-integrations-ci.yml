@@ -32,7 +32,7 @@ jobs:
             sleep 1
           done
           docker exec synqoria-ops-five psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 -c "CREATE ROLE synqoria_operations_runtime LOGIN NOINHERIT NOSUPERUSER NOCREATEROLE NOCREATEDB NOREPLICATION NOBYPASSRLS PASSWORD 'ops-ci-only'"
-          for migration in services/operations-core/db/migration/V{001,002,003,004}__*.sql services/operations-core/db/migration/V011__m22_scoped_stock_count_review.sql; do
+          for migration in services/operations-core/db/migration/V0*.sql; do
             echo "Applying $migration"
             docker exec -i synqoria-ops-five psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < "$migration"
           done
