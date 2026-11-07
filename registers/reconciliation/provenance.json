@@ -206,7 +206,7 @@
   },
   "services/clinical-core": {
    "classCount": 299,
-   "httpEntrypointFiles": 7,
+   "httpEntrypointFiles": 6,
    "javaMainFiles": 299,
    "javaTestFiles": 190,
    "migrations": [

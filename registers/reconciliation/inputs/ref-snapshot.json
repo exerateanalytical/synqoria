@@ -1,0 +1,642 @@
+{
+ "baselineSha": "fc4f84eb60e7ab7a023895eabfd8266cbda309c5",
+ "branches": [
+  {
+   "commitsNotInBaseline": 0,
+   "name": "integration/synqoria-production-reconciliation-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "9ba6ba5cf94685535736a4b10695dccce71b50bf"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "main",
+   "reachableFromBaseline": true,
+   "tip": "fc4f84eb60e7ab7a023895eabfd8266cbda309c5"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "plan/240-screens-single-execution-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "a8a211bb25bc58bb8fbcd931e20f018f6e2a30b4"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "reconcile/2026-11-05-preserve-all-workstreams",
+   "reachableFromBaseline": true,
+   "tip": "f441dddef01ad46e97ffcf486de92431d90f484d"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/canonical-261-route-coverage-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "805374844eaded1f304bf76e9b222183b92017d5"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-continuous-reconciliation-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "f4e7bdea5726d3adbddae6634215d479c2448f7e"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m02-appointments-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "d133374e58f5f785013d4b29832495ad6dde02a1"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m16-referrals-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "aaf8a28fe05a06ea409346ca21b65c300aceb575"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m27-canonical-lock-ci-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "99c0cef07f300e15fb5b4f74c3d46ceb26e6bb3d"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m27-mortuary-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "4221eacd3398d708252316d2e1aa228f13749724"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m32-consent-privacy-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "ec06adbc58c90bced7cb1b50b9967c0c6e9f37b1"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m34-audit-provenance-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "99e69901c1febb75bc860a7864357f965814d157"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m35-integration-management-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "7bedc1f6966a0c6316ca3d716a7cf2b28f6da040"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m39-authoritative-routing-fence-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "e82ccefe318777b96e6006d946260e83142b1b62"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m39-health-probe-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "5190e089234beda1a91a34064657b85012c28fd7"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m39-routing-gate-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "348fc521a2306f116c403a929d7d7c21d344fd6d"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m40-backup-integrity-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "579c68a398f244b39415d35af58bc6dd89d856c0"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-m40-catalogue-verifier-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "0ac68bfd16f605768def9bb201340fd05eb442c8"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-p03-verified-oidc-session-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "15f276a5c7c614a27e18555417c619aec869a43e"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/chatgpt-p03-verified-session-route-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "3be8b65d84d353c4afaeb9021b0917bebc203f3a"
+  },
+  {
+   "commitsNotInBaseline": 3,
+   "name": "work/claude-m01-m37-forensic-reconciliation-2026-11-07",
+   "reachableFromBaseline": false,
+   "tip": "95a4faa847134767e3eb11263d22402077fb5732"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/claude-m24-hr-payroll-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "c7fc72e6e0e3c1eec0986e40c03904f421aa5546"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/claude-m26-nutrition-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "ee0ecccf64d4aad5d2d69b2c0ed742037ae57d6a"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/claude-m28-analytics-bi-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "e7a9ff7d65d243eea6e4990bb44508f7fdcad602"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/claude-m30-clinical-content-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "4ca663afa6d7174c889384652c380e0850502c9f"
+  },
+  {
+   "commitsNotInBaseline": 7,
+   "name": "work/claude-m38-device-client-integration-2026-11-07",
+   "reachableFromBaseline": false,
+   "tip": "909fd8ec7986f659306400d029b4ae0c12c95f7c"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/claude-m38-offline-sync-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "7cd4c6b4e0f17e32ab5c1c03bb8c70635adccbcd"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/claude-m39-cell-lifecycle-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "88422270e8e9d378e33661d23347defdbb0f1727"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/claude-m40-reliability-recovery-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "b5cdc2e182fd9e2156de4ec70f5249477fc99b41"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/clinical-encounter-documentation-v060",
+   "reachableFromBaseline": true,
+   "tip": "492000765aebfe602fbcfc49fa885f71601be524"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/clinical-http-integration-v061",
+   "reachableFromBaseline": true,
+   "tip": "ddc924a3911ead1de2a786f88b22e3398752ecbf"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/clinical-identity-triage-read-integrations-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "1b702e4fbd39c7efac579360fd916b8f009c13a9"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/hospital-document-library-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "d962a50af0863e9766519bdd28704916468fd037"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/hospital-document-templates-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "17a6406253eb769544fd97949aa8edad99f91fb5"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/hospital-documents-unified-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "46e335af606ae35603839926c5fd23b3250bce67"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/latest-stable-stack-governance-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "462afed691d632d2b2be25c815d1f61459dbcc97"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/longitudinal-inbox-admission-v067",
+   "reachableFromBaseline": true,
+   "tip": "b0a1495462f76cc97c57201006bd58ee5e7a1600"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/longitudinal-inbox-integration-v065",
+   "reachableFromBaseline": true,
+   "tip": "b61c71403428509665b32a5d8db5f0b2e0a172f3"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/longitudinal-inbox-operations-v066",
+   "reachableFromBaseline": true,
+   "tip": "002e1fa99b4efa5d867d9c090dfcd3f3b72f0b25"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/longitudinal-inbox-v064",
+   "reachableFromBaseline": true,
+   "tip": "6f2711e4f230c97ff9637211e063c0c4c33c95af"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/longitudinal-outbox-v063",
+   "reachableFromBaseline": true,
+   "tip": "3caa48e16239907f45374db01f7ade5f4aa98908"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/longitudinal-secure-persistence-v062",
+   "reachableFromBaseline": true,
+   "tip": "3fe8289829946a531f6e398a3a8e229d3c8882a7"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/m04-m06-read-operations-consolidation-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "31ddc403d92046ab94326e649c150c94ecc26a63"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/operations-seven-module-service-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "4ab24efb9eb159732ebe7d339831a2a1cddb69e9"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/ops001-shared-auth-patient-read-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "f2226ab48f941a88657664b2daa413d06001c54c"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-audited-authorization-hardening-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "cfd298616f5e4d54d449f91d9aa884af6b7e0274"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-authoritative-staff-grants-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "9a5b1ec67e6991b4ebb0c26e0436b8b5bb1ead43"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-b0052-runtime-recovery-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "e975629d46c6bd5f0931e6e86c63521b97cb7c4b"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-b0054-b0063-deployment-guards-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "36e0186d0305e5432f9baba3ba30ea3504024b6c"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-b0064-b0093-identity-route-engineering-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "0fb7beccd89f1e2421144c7827d48453fb0a6ad7"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-b0094-b0123-runtime-build-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "e143745a9025ddb0f37d982f7e3e47f3e429346a"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-b0124-b0153-contract-guard-engineering-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "c89b23a3826998fbf45cf79d93bf66d3229d3d2c"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-oidc-assertion-verifier-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "da4f596b263d5ed96280bcb709dbdd84969482be"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-oidc-one-time-replay-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "c638e686bf403e5270d4b708fa34c49e21a6bf03"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/p03-oidc-replay-postgres-integration-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "499f25cab50bc8d6338e73061e757b4a5ecdf49d"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/postmerge-reconciliation-gates-2026-11-07",
+   "reachableFromBaseline": true,
+   "tip": "f1ded5b6d80c75ae9f59e56a91f7dfd5edce927b"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/real-clinical-screens-first-slice-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "524bedef6bd6f33bead75524207c6c3f7433aee8"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/real-next-expo-build-corrections-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "45a158660e5473597654f89664e394cbf2ac1ab9"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/reproducible-npm-lock-candidate-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "a18a322ba4e7d2b5a0194ca6a0a2d174b8b85420"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/seven-operations-real-workflows-2026-11-06",
+   "reachableFromBaseline": true,
+   "tip": "e14f589c449e6c65520db36dd1fe620ee71b3b0f"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/triage-safe-command-recovery-v059",
+   "reachableFromBaseline": true,
+   "tip": "abd2c64646087a36477f6a55bc1f988ef5552f99"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/triage-scoped-workflows-v058",
+   "reachableFromBaseline": true,
+   "tip": "b7aeba143f4da105ce8c728faffdbeda160f4d63"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/ui-all-261-specific-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "07fcc169e7fdcf152c757c7d09c79fd962ea8b79"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/ui-controls-coverage-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "ebe15a605dfd792c0acf05e66f8b05320cd7bf5d"
+  },
+  {
+   "commitsNotInBaseline": 0,
+   "name": "work/ui-identity-registration-2026-11-05",
+   "reachableFromBaseline": true,
+   "tip": "1f8b092bd5df8a7e8d315c9a74c5f555e127894d"
+  }
+ ],
+ "capturedFrom": "git for-each-ref refs/remotes/origin and refs/remotes/pr/* at baseline fc4f84eb60e7ab7a023895eabfd8266cbda309c5",
+ "prs": {
+  "1": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "10": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "11": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "12": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "13": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "14": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "15": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "16": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "17": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "18": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "19": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "2": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "20": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "21": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "22": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "23": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "24": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "25": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "26": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "27": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "28": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "29": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "3": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "30": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "31": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "32": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "33": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "34": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "35": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "36": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "37": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "38": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "39": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "4": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "40": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "41": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "42": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "43": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "44": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "45": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "46": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "47": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "48": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "5": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "50": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "51": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "52": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "54": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "55": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "56": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": false
+  },
+  "57": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "58": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "59": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "6": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "61": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "62": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "63": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "64": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "7": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "8": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  },
+  "9": {
+   "headObjectPresent": true,
+   "headReachableFromBaseline": true
+  }
+ }
+}

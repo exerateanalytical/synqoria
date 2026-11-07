@@ -22,6 +22,10 @@
   "prs": {
    "path": "registers/reconciliation/inputs/pr-snapshot.json",
    "sha256": "c3b31978c9847f083dd0130b2d28f299363f31501e6d7a341b0cd08755ce46ae"
+  },
+  "refs": {
+   "path": "registers/reconciliation/inputs/ref-snapshot.json",
+   "sha256": "43d18994cf855b0b72edc746785b99c6bf35a475b4d5da01f39228d177a3ebc0"
   }
  },
  "lineageStatement": "A closed or merged PR head that is reachable from the baseline has its content in main; no unmerged historical branch content was found outside the listed notReachable branches.",
@@ -828,10 +832,10 @@
    "tip": "3be8b65d84d353c4afaeb9021b0917bebc203f3a"
   },
   {
-   "commitsNotInBaseline": 1,
+   "commitsNotInBaseline": 3,
    "name": "work/claude-m01-m37-forensic-reconciliation-2026-11-07",
    "reachableFromBaseline": false,
-   "tip": "e5d1a2c115c9ec26e7fd206b24ee53964ac2aacd"
+   "tip": "95a4faa847134767e3eb11263d22402077fb5732"
   },
   {
    "commitsNotInBaseline": 0,
@@ -858,10 +862,10 @@
    "tip": "4ca663afa6d7174c889384652c380e0850502c9f"
   },
   {
-   "commitsNotInBaseline": 6,
+   "commitsNotInBaseline": 7,
    "name": "work/claude-m38-device-client-integration-2026-11-07",
    "reachableFromBaseline": false,
-   "tip": "20fcf06f10a07ca4f7fe87eeb006856dcc56fb86"
+   "tip": "909fd8ec7986f659306400d029b4ae0c12c95f7c"
   },
   {
    "commitsNotInBaseline": 0,

@@ -50,9 +50,8 @@ class Repo:
         return subprocess.check_output(["git", "-C", self.root, "show", "%s:%s" % (self.sha, path)]).decode("utf-8", "replace")
 
     def grep(self, pattern, scopes, files_only=True, word=False):
-        args = ["grep", "-I", "-E", "-n" if not files_only else "-l"]
-        if not files_only:
-            args = ["grep", "-I", "-E", "-o", "-n"]
+        # -w (git's own word matching) instead of \b: Windows and Linux git regex libraries disagree on \b
+        args = ["grep", "-I", "-w", "-E", "-l"] if files_only else ["grep", "-I", "-w", "-E", "-o", "-n"]
         args += [pattern, self.sha, "--"] + scopes
         out = self.git(*args, check=False)
         pre = self.sha + ":"
@@ -128,24 +127,34 @@ def under(path, prefix):
 
 
 # ---------------------------------------------------------------- packages 01-05
-def pkg01_manifest(R, inputs):
-    prs = inputs["prs"]["prs"]
+def capture_refs(R, inputs):
+    """ONLINE-ish helper (local git refs only): writes the pinned ref snapshot. The scan itself reads the snapshot so results do not depend on which refs a checkout fetched."""
     branches = []
     for line in R.git("for-each-ref", "--format=%(refname)%09%(objectname)", "refs/remotes/origin").splitlines():
-        ref, sha = line.split("\t")
+        ref, sha = line.split("	")
         name = ref[len("refs/remotes/origin/"):]
         if name == "HEAD":
             continue
         anc = subprocess.run(["git", "-C", R.root, "merge-base", "--is-ancestor", sha, R.sha]).returncode == 0
         ahead = int(R.git("rev-list", "--count", "%s..%s" % (R.sha, sha)).strip() or 0) if not anc else 0
         branches.append({"name": name, "tip": sha, "reachableFromBaseline": anc, "commitsNotInBaseline": ahead})
-    branches.sort(key=lambda b: b["name"])
-    pr_rows = []
-    for p in prs:
+    prs = {}
+    for p in inputs["prs"]["prs"]:
         have = subprocess.run(["git", "-C", R.root, "cat-file", "-e", p["headSha"] + "^{commit}"], capture_output=True).returncode == 0
         anc = have and subprocess.run(["git", "-C", R.root, "merge-base", "--is-ancestor", p["headSha"], R.sha]).returncode == 0
-        pr_rows.append({"number": p["number"], "state": p["state"], "title": p["title"], "headRef": p["headRef"], "headSha": p["headSha"], "headObjectPresent": have,
-                        "headReachableFromBaseline": anc, "mergeCommit": p["mergeCommit"], "url": p["url"]})
+        prs[str(p["number"])] = {"headObjectPresent": have, "headReachableFromBaseline": anc}
+    return {"capturedFrom": "git for-each-ref refs/remotes/origin and refs/remotes/pr/* at baseline " + R.sha, "baselineSha": R.sha, "branches": sorted(branches, key=lambda x: x["name"]), "prs": prs}
+
+
+def pkg01_manifest(R, inputs):
+    prs = inputs["prs"]["prs"]
+    refs = inputs["refs"]
+    branches = refs["branches"]
+    pr_rows = []
+    for p in prs:
+        r = refs["prs"][str(p["number"])]
+        pr_rows.append({"number": p["number"], "state": p["state"], "title": p["title"], "headRef": p["headRef"], "headSha": p["headSha"], "headObjectPresent": r["headObjectPresent"],
+                        "headReachableFromBaseline": r["headReachableFromBaseline"], "mergeCommit": p["mergeCommit"], "url": p["url"]})
     ncommits = int(R.git("rev-list", "--count", R.sha).strip())
     files = R.files()
     return {
@@ -324,7 +333,7 @@ def pkg05_duplicates(R, prov):
 def load_inputs(root):
     inputs = {"meta": {}}
     base = os.path.join(root, "registers", "reconciliation", "inputs")
-    for name, key in (("pr-snapshot.json", "prs"), ("ci-runs.json", "ci"), ("capability-anchors.json", "anchors")):
+    for name, key in (("pr-snapshot.json", "prs"), ("ci-runs.json", "ci"), ("capability-anchors.json", "anchors"), ("ref-snapshot.json", "refs")):
         p = os.path.join(base, name)
         raw = open(p, "rb").read()
         inputs[key] = json.loads(raw.decode("utf-8"))
@@ -350,7 +359,7 @@ def module_evidence(R, inputs, canon, prov):
     sr = {s["id"]: s for s in canon["screens"]}
     screen_refs = collections.defaultdict(set)
     # screen references: file -> ids
-    out = R.git("grep", "-I", "-E", "-o", SCREEN_RE, R.sha, "--", "services", "apps", "packages", "tests", "tools", "contracts", check=False)
+    out = R.git("grep", "-I", "-w", "-E", "-o", SCREEN_RE, R.sha, "--", "services", "apps", "packages", "tests", "tools", "contracts", check=False)
     pre = R.sha + ":"
     for line in out.splitlines():
         if not line.startswith(pre):
@@ -659,9 +668,16 @@ def main():
     ap.add_argument("--baseline", required=True)
     ap.add_argument("--repo", default=".")
     ap.add_argument("--out", default="registers/reconciliation")
+    ap.add_argument("--capture-refs", action="store_true")
     a = ap.parse_args()
     root = os.path.abspath(a.repo)
     R = Repo(root, a.baseline)
+    if a.capture_refs:
+        base = os.path.join(root, "registers", "reconciliation", "inputs")
+        pr_only = {"prs": json.load(open(os.path.join(base, "pr-snapshot.json"), encoding="utf-8"))}
+        jdump(os.path.join(base, "ref-snapshot.json"), capture_refs(R, pr_only))
+        print("captured refs at", R.sha)
+        return 0
     inputs = load_inputs(root)
     out = os.path.join(root, a.out)
     manifest = pkg01_manifest(R, inputs)
