@@ -1,0 +1,11 @@
+{
+  "id": "P07-B0154",
+  "title": "Trusted issuer revocation epoch and credential validity fence for consumers",
+  "source": "services/clinical-core/src/main/java/org/synqoria/longitudinal/inboxops/InboxCredentialRevocationEpoch.java",
+  "test": "services/clinical-core/src/test/java/org/synqoria/longitudinal/inboxops/InboxCredentialRevocationEpochTest.java",
+  "evidence": "evidence/v067/P07-B0154.log",
+  "exit_code": 0,
+  "focused_assertions": 5,
+  "verification": "Java21 pure policy tests only",
+  "clinical_release": "DENIED"
+}

@@ -1,3 +1,7 @@
+# SYNQORIA v0.62.0 — restricted P07 persistence implementation checkpoint
+
+This source adds **23 individually tested feature-level slices** P07-B0071–B0093 covering encrypted snapshots, quarantined scoped JDBC persistence, authoritative provisioning, note index and observation correction lineage. It is **not** a production PostgreSQL/OIDC deployment or a clinically certified system. See `SYNQORIA_STATUS_v0.62.0.md`, `docs/engineering/P07_LONGITUDINAL_SECURE_PERSISTENCE_v0.62.0.md`, `evidence/v620/` and the GitHub stacked PR. Do not overwrite the authoritative `SYNQORIA_CURRENT.zip` until the parallel development branches have been reconciled.
+
 > **Current internally verified source checkpoint: v0.57.0**. Certification work is deferred at user direction; security/clinical release gates stay closed.
 
 # SYNQORIA — Africa medical intelligence synchronized

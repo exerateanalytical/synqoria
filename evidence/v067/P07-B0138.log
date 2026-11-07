@@ -1,0 +1,7 @@
+P07-B0138 | EncounterTransition
+INDIVIDUAL_TEST_CMD: java -cp .classes/138 org.synqoria.longitudinal.inboxops.InboxEncounterTransitionTest
+EXIT_CODE: 0
+PASS P07-B0138 EncounterTransition assertions=6
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: e3bf5a9b0e2c021fb58fec0fde3890d8fc3b8a930ff74b503e9b545a2beddc14
+TEST_SHA256: 333987c1d6e08e5ed99682fd5e0cb143acf4acab036acf145acd119a485981ae

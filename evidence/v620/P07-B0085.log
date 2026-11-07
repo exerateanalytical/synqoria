@@ -1,0 +1,24 @@
+command=["python", "-m", "unittest", "tests.test_v620_quarantine", "-v"]
+exit_code=0
+stdout:
+
+stderr:
+test_01_is_next_unique_version (tests.test_v620_quarantine.V620Quarantine.test_01_is_next_unique_version) ... ok
+test_02_four_scoped_tables (tests.test_v620_quarantine.V620Quarantine.test_02_four_scoped_tables) ... ok
+test_03_rls_enabled_and_forced (tests.test_v620_quarantine.V620Quarantine.test_03_rls_enabled_and_forced) ... ok
+test_04_public_revoked (tests.test_v620_quarantine.V620Quarantine.test_04_public_revoked) ... ok
+test_05_no_runtime_grants_policies_bypass (tests.test_v620_quarantine.V620Quarantine.test_05_no_runtime_grants_policies_bypass) ... ok
+test_06_exact_receipt_event_fk (tests.test_v620_quarantine.V620Quarantine.test_06_exact_receipt_event_fk) ... ok
+test_07_append_only_evidence (tests.test_v620_quarantine.V620Quarantine.test_07_append_only_evidence) ... ok
+test_08_scope_guards (tests.test_v620_quarantine.V620Quarantine.test_08_scope_guards) ... ok
+test_09_jdbc_locked_and_atomic (tests.test_v620_quarantine.V620Quarantine.test_09_jdbc_locked_and_atomic) ... ok
+test_10_no_native_serialization (tests.test_v620_quarantine.V620Quarantine.test_10_no_native_serialization) ... ok
+test_11_lock_matches_bytes (tests.test_v620_quarantine.V620Quarantine.test_11_lock_matches_bytes) ... ok
+test_12_quarantined_release_semantics (tests.test_v620_quarantine.V620Quarantine.test_12_quarantined_release_semantics) ... ok
+test_13_no_test_store_runtime (tests.test_v620_quarantine.V620Quarantine.test_13_no_test_store_runtime) ... ok
+test_14_aad_includes_all_scopes (tests.test_v620_quarantine.V620Quarantine.test_14_aad_includes_all_scopes) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.002s
+
+OK

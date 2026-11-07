@@ -1,0 +1,7 @@
+P07-B0133 | SchemaNegotiation
+INDIVIDUAL_TEST_CMD: java -cp .classes/133 org.synqoria.longitudinal.inboxops.InboxSchemaNegotiationTest
+EXIT_CODE: 0
+PASS P07-B0133 SchemaNegotiation assertions=6
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 42ad22fd2e1245e6bf245b3a167dbcdd20dd219b0b963f24ddf75a2b580f6b96
+TEST_SHA256: 57fabd2188e88af4482da4aa570804d4fcb4a92ea91c5b011da3f71e902bfda1

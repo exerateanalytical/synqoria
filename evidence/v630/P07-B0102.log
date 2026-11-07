@@ -1,0 +1,4 @@
+command=["java", "-ea", "-cp", "/mnt/data/synqoria_v63_work/.v630-classes", "org.synqoria.longitudinal.LongitudinalOutboxJdbcContractTest", "claim"]
+exit_code=0
+PASS JDBC outbox claim (20 synthetic assertions)
+

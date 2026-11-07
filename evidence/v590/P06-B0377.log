@@ -1,0 +1,24 @@
+COMMAND: node --test --test-name-pattern=B0377: /mnt/data/synqoria_v59_work/packages/ux-core/tests/triage-v59-typed-tasks.test.cjs
+EXIT_CODE: 0
+TAP version 13
+# Subtest: B0377: escalation documents explicit human rationale, acknowledgement and resolution
+ok 1 - B0377: escalation documents explicit human rationale, acknowledgement and resolution
+  ---
+  duration_ms: 76.130582
+  type: 'test'
+  ...
+# Subtest: B0377: reassessment lifecycle never calculates patient priority
+ok 2 - B0377: reassessment lifecycle never calculates patient priority
+  ---
+  duration_ms: 0.803201
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 200.575869

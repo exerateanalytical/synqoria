@@ -1,0 +1,65 @@
+command=["java", "-ea", "-cp", "/mnt/data/synqoria_v62_work/.v620-classes", "org.synqoria.longitudinal.ClinicalVerticalBatchTest", "all"]
+exit_code=0
+STDOUT:
+PASS P07-B0001 encounter.checkin
+PASS P07-B0002 encounter.activate
+PASS P07-B0003 encounter.assign_clinician
+PASS P07-B0004 encounter.join_team
+PASS P07-B0005 encounter.leave_team
+PASS P07-B0006 encounter.change_responsible
+PASS P07-B0007 encounter.request_admission
+PASS P07-B0008 encounter.approve_admission
+PASS P07-B0009 encounter.propose_bed
+PASS P07-B0010 encounter.release_bed_proposal
+PASS P07-B0011 encounter.record_room
+PASS P07-B0012 encounter.record_location
+PASS P07-B0013 encounter.request_transfer
+PASS P07-B0014 encounter.accept_transfer
+PASS P07-B0015 encounter.cancel_transfer
+PASS P07-B0016 encounter.record_accepted_transfer
+PASS P07-B0017 encounter.record_leave
+PASS P07-B0018 encounter.record_return
+PASS P07-B0019 encounter.submit_discharge_plan
+PASS P07-B0020 encounter.authorize_discharge
+PASS P07-B0021 note.create_draft
+PASS P07-B0022 note.title_draft
+PASS P07-B0023 note.write_draft
+PASS P07-B0024 note.set_section
+PASS P07-B0025 note.remove_section
+PASS P07-B0026 note.add_diagnosis
+PASS P07-B0027 note.remove_diagnosis
+PASS P07-B0028 note.add_problem
+PASS P07-B0029 note.rename_problem
+PASS P07-B0030 note.attach_reference
+PASS P07-B0031 note.detach_reference
+PASS P07-B0032 note.mark_confidential
+PASS P07-B0033 note.request_review
+PASS P07-B0034 note.reviewer_comment
+PASS P07-B0035 note.request_revision
+PASS P07-B0036 note.ready_to_sign
+PASS P07-B0037 note.sign
+PASS P07-B0038 note.start_amendment
+PASS P07-B0039 note.sign_amendment
+PASS P07-B0040 note.entered_in_error
+PASS P07-B0041 observation.capture_numeric
+PASS P07-B0042 observation.capture_text
+PASS P07-B0043 observation.capture_categorical
+PASS P07-B0044 observation.attach_device
+PASS P07-B0045 observation.record_context
+PASS P07-B0046 observation.attach_source
+PASS P07-B0047 observation.add_metadata
+PASS P07-B0048 observation.remove_metadata
+PASS P07-B0049 observation.request_verification
+PASS P07-B0050 observation.verify
+PASS P07-B0051 observation.reject
+PASS P07-B0052 observation.request_recheck
+PASS P07-B0053 observation.capture_correction
+PASS P07-B0054 observation.verify_correction
+PASS P07-B0055 observation.invalidate
+PASS P07-B0056 observation.create_set
+PASS P07-B0057 observation.join_set
+PASS P07-B0058 observation.complete_set
+PASS P07-B0059 observation.timeline
+PASS P07-B0060 observation.correction_lineage
+
+STDERR:

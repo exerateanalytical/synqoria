@@ -1,0 +1,201 @@
+{
+  "version": "0.63.0",
+  "phase": "P07",
+  "previous_latest": "P07-B0093",
+  "new_batches": 11,
+  "passed": 11,
+  "requested_remaining_from_previous_100": 77,
+  "remaining_after_this_execution": 66,
+  "run_at_utc": "2026-10-31T18:21:43.426435+00:00",
+  "real_postgresql_ran": false,
+  "broker_integration_ran": false,
+  "clinical_certification": "DEFERRED_NOT_PASSED",
+  "batches": [
+    {
+      "id": "P07-B0094",
+      "module": "M04/M05/M06",
+      "implemented": "Privacy-minimal validated outbox event reference",
+      "cmd": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v63_work/.v630-classes",
+        "org.synqoria.longitudinal.LongitudinalOutboxDeliveryTest",
+        "metadata"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/P07-B0094.log",
+      "sha256": "91b6f089a3c1ce2b726c74b716e82c224ddc2733b1945b83e43098b126cb66a1"
+    },
+    {
+      "id": "P07-B0095",
+      "module": "M04/M05/M06",
+      "implemented": "Worker permit scope, expiry and fail-closed authorization gate",
+      "cmd": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v63_work/.v630-classes",
+        "org.synqoria.longitudinal.LongitudinalOutboxDeliveryTest",
+        "permit-scope"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/P07-B0095.log",
+      "sha256": "9cb24f86db87f720328ed8e957dc60d43331794f0c6a974e168540deca90c1ef"
+    },
+    {
+      "id": "P07-B0096",
+      "module": "M04/M05/M06",
+      "implemented": "Per-encounter revision-ordered publication across multiple events",
+      "cmd": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v63_work/.v630-classes",
+        "org.synqoria.longitudinal.LongitudinalOutboxDeliveryTest",
+        "ordered"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/P07-B0096.log",
+      "sha256": "f7bb98458ee3056b530ab722c43c65af15f07b7c82a35ec6c6f72e2b3a2813dd"
+    },
+    {
+      "id": "P07-B0097",
+      "module": "M04/M05/M06",
+      "implemented": "Concurrent worker single-lease ownership without later-event overtaking",
+      "cmd": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v63_work/.v630-classes",
+        "org.synqoria.longitudinal.LongitudinalOutboxDeliveryTest",
+        "concurrent"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/P07-B0097.log",
+      "sha256": "b584a9cdd37a0a23e8ac272c25ee9ff0ba6ec1d555bd3c0975bb566d21fec883"
+    },
+    {
+      "id": "P07-B0098",
+      "module": "M04/M05/M06",
+      "implemented": "Token-fenced acknowledgement rejecting expired or mismatched evidence",
+      "cmd": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v63_work/.v630-classes",
+        "org.synqoria.longitudinal.LongitudinalOutboxDeliveryTest",
+        "ack-fence"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/P07-B0098.log",
+      "sha256": "86fbabc3b27c9761cb6aec163b5391e82c05788ff323532fe4534e6452c32a2d"
+    },
+    {
+      "id": "P07-B0099",
+      "module": "M04/M05/M06",
+      "implemented": "Broker failure release with bounded retry and delayed redelivery",
+      "cmd": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v63_work/.v630-classes",
+        "org.synqoria.longitudinal.LongitudinalOutboxDeliveryTest",
+        "broker-failure"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/P07-B0099.log",
+      "sha256": "2c502274b9167e9d3833346fa9517bcfd210f61cca86b5695479d33bc9838f38"
+    },
+    {
+      "id": "P07-B0100",
+      "module": "M04/M05/M06",
+      "implemented": "Uncertain acknowledgement at-least-once redelivery and consumer dedupe contract",
+      "cmd": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v63_work/.v630-classes",
+        "org.synqoria.longitudinal.LongitudinalOutboxDeliveryTest",
+        "ack-uncertain"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/P07-B0100.log",
+      "sha256": "dfa6300494c0b3a01815faad6939a08ede95b9780b8ab70e80a7a2de8258e4c0"
+    },
+    {
+      "id": "P07-B0101",
+      "module": "M04/M05/M06",
+      "implemented": "Terminal parking after bounded attempts, poisoning fence preserving event order",
+      "cmd": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v63_work/.v630-classes",
+        "org.synqoria.longitudinal.LongitudinalOutboxDeliveryTest",
+        "park"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/P07-B0101.log",
+      "sha256": "ca84446700eba98c05a8b50d2b2b683353276cda008eb00a270060011de4bd5e"
+    },
+    {
+      "id": "P07-B0102",
+      "module": "M04/M05/M06",
+      "implemented": "Scoped PostgreSQL JDBC lease and bounded progressive delivery projection",
+      "cmd": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v63_work/.v630-classes",
+        "org.synqoria.longitudinal.LongitudinalOutboxJdbcContractTest",
+        "claim"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/P07-B0102.log",
+      "sha256": "3abe1c137da88718c137d2dcc3966230923d6f425b4092c7c894dd0d7b2d1cb5"
+    },
+    {
+      "id": "P07-B0103",
+      "module": "M04/M05/M06",
+      "implemented": "JDBC CAS acknowledgement, failed-delivery deferral, scope/RLS echo contract",
+      "cmd": [
+        "java",
+        "-ea",
+        "-cp",
+        "/mnt/data/synqoria_v63_work/.v630-classes",
+        "org.synqoria.longitudinal.LongitudinalOutboxJdbcContractTest",
+        "defer"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/P07-B0103.log",
+      "sha256": "3e3939b12823edf53ce455850990be0aef2d8705664b3215987a3ce238f1f3d9"
+    },
+    {
+      "id": "P07-B0104",
+      "module": "M04/M05/M06",
+      "implemented": "V021 forced-RLS no-grant delivery schema with immutable migration checksum",
+      "cmd": [
+        "python",
+        "-m",
+        "unittest",
+        "tests.test_v630_outbox",
+        "-v"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v630/P07-B0104.log",
+      "sha256": "c13589fd87b9eba541db72f4d005843519c3902f4e1cc8305e0df0bc89174b1a"
+    }
+  ]
+}

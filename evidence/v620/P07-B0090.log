@@ -1,0 +1,6 @@
+command=["java", "-ea", "-cp", "/mnt/data/synqoria_v62_work/.v620-classes", "org.synqoria.longitudinal.LongitudinalSupplementalReadsTest", "lineage"]
+exit_code=0
+stdout:
+PASS supplemental reads lineage (4 focused assertions)
+
+stderr:

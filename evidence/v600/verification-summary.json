@@ -1,0 +1,41 @@
+{
+  "checkpoint": "v0.60.0",
+  "base": "v0.59.0 local source PR #2",
+  "base_zip_sha256": "467fb39f0e770eb358faad18a19a6900ed648a750a7a856987dd25e8f806021b",
+  "source_branch": "work/clinical-encounter-documentation-v060",
+  "target_batches": 60,
+  "verified_domain_operations": 60,
+  "remaining_from_target": 0,
+  "tested_modules": {
+    "M04": 20,
+    "M05": 20,
+    "M06": 20
+  },
+  "individual_java_processes_passed": 60,
+  "adversarial_assertions_passed": 35,
+  "node_ux_tests_passed": 286,
+  "all_java_source_test_compile_exit": 0,
+  "checks": {
+    "full_java_compile": 0,
+    "individual_domain_batches": 0,
+    "adversarial_domain": 0,
+    "ux_core_node_regression": 0,
+    "canonical_inventory_baseline": 0,
+    "canonical_navigation_contract": 0,
+    "historical_checkpoint_consistency": 0,
+    "status_matrix_denial": 0,
+    "source_shell": 0,
+    "source_safety": 0,
+    "native_locked_shells": 0,
+    "native_v180": 0,
+    "native_v200": 0,
+    "native_v210": 0,
+    "native_v230": 0
+  },
+  "combined_source_register_timeout": "unverified composite, equivalent discrete checks passed",
+  "production_postgresql_rls_qualified": false,
+  "certified_modules": 0,
+  "accepted_screens": 0,
+  "external_release_gate": "DENIED",
+  "timestamp_utc": "2026-10-31T13:15:44.077373+00:00"
+}

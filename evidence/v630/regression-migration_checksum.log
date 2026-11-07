@@ -1,0 +1,4 @@
+command=["python", "tools/migration_checksum_gate.py", "services/clinical-core/db/migration", "registers/migration-sha256-lock.json"]
+exit_code=0
+{"latest": 21, "locked": 21}
+

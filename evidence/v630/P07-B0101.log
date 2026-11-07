@@ -1,0 +1,4 @@
+command=["java", "-ea", "-cp", "/mnt/data/synqoria_v63_work/.v630-classes", "org.synqoria.longitudinal.LongitudinalOutboxDeliveryTest", "park"]
+exit_code=0
+PASS outbox park 27 assertions (synthetic store)
+

@@ -1,0 +1,492 @@
+{
+  "checkpoint": "v0.60.0",
+  "generated_at_utc": "2026-10-31T13:13:43.003968+00:00",
+  "target": 60,
+  "completed": 60,
+  "failed": 0,
+  "evidence": "separate Java process with assertions enabled for each unique clinical domain operation",
+  "database_integration_qualified": false,
+  "clinical_certified": false,
+  "batches": [
+    {
+      "id": "P07-B0001",
+      "operation": "encounter.checkin",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0001.log",
+      "stdout_sha256": "8cb22e410ee09f95a6b84930b282091a74c478a65d93cfabda9dd3bd123c17b1"
+    },
+    {
+      "id": "P07-B0002",
+      "operation": "encounter.activate",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0002.log",
+      "stdout_sha256": "a071e527411bc58c4eae014cb18ed77d20635bd494f065a1175d08259daf8249"
+    },
+    {
+      "id": "P07-B0003",
+      "operation": "encounter.assign_clinician",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0003.log",
+      "stdout_sha256": "e0ab8d071e0754d2e8a8cdf3141ff2daa15c44c60377c8b187ce96f3516ef0c3"
+    },
+    {
+      "id": "P07-B0004",
+      "operation": "encounter.join_team",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0004.log",
+      "stdout_sha256": "77f8708c98b9ac6bfe08935288e72b638e7c15b945255f9be0cf42e5523561f7"
+    },
+    {
+      "id": "P07-B0005",
+      "operation": "encounter.leave_team",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0005.log",
+      "stdout_sha256": "5b36de55f9cf07e39d797ead8fc4f38838c38d2057e86e518df75971fff25daf"
+    },
+    {
+      "id": "P07-B0006",
+      "operation": "encounter.change_responsible",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0006.log",
+      "stdout_sha256": "1e2ef761efd282a3a597fc0ae162edd18d756f3c56c69e21d4defb96b75f284e"
+    },
+    {
+      "id": "P07-B0007",
+      "operation": "encounter.request_admission",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0007.log",
+      "stdout_sha256": "9035b20fe7e4f00ad6f145b47e86cc9ddd96e6a7228ef5df55c68b1970877693"
+    },
+    {
+      "id": "P07-B0008",
+      "operation": "encounter.approve_admission",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0008.log",
+      "stdout_sha256": "c84cb5a9740cb996d630c1e8c5373c250919f1dac049cd6ec1e57920a5080de9"
+    },
+    {
+      "id": "P07-B0009",
+      "operation": "encounter.propose_bed",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0009.log",
+      "stdout_sha256": "a96bea6534b9b160955b540a61d4806d0da56c80a99022f18cdfdbe4739bf9b8"
+    },
+    {
+      "id": "P07-B0010",
+      "operation": "encounter.release_bed_proposal",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0010.log",
+      "stdout_sha256": "96b9c243acc79b529570c0b9245c55acea0d90452305a4dbc418f3a1461e126b"
+    },
+    {
+      "id": "P07-B0011",
+      "operation": "encounter.record_room",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0011.log",
+      "stdout_sha256": "c3d920f6f7511f0a60144ef86aef3e60419648954dbc5073dccb4d1f6751c598"
+    },
+    {
+      "id": "P07-B0012",
+      "operation": "encounter.record_location",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0012.log",
+      "stdout_sha256": "97fd6cf5b5036caa5af46a01368488e24498d89412ada4a44059d99e74ad328a"
+    },
+    {
+      "id": "P07-B0013",
+      "operation": "encounter.request_transfer",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0013.log",
+      "stdout_sha256": "bb6a32336d23569cd1fd54a4e65f5873d31d5fa854b8e2844f360a40067bbc06"
+    },
+    {
+      "id": "P07-B0014",
+      "operation": "encounter.accept_transfer",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0014.log",
+      "stdout_sha256": "14ebf32184f3d8dd4bcc742fdd33f66deed70900975c5f493f0bf1f030eb8c2e"
+    },
+    {
+      "id": "P07-B0015",
+      "operation": "encounter.cancel_transfer",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0015.log",
+      "stdout_sha256": "93aa1fcdc3737a97c3fa0a4e58503259e91e277faee47a2885de31a5c80bd56d"
+    },
+    {
+      "id": "P07-B0016",
+      "operation": "encounter.record_accepted_transfer",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0016.log",
+      "stdout_sha256": "22c6796892dd7115cca689b8bd7e4f8ae2c8e9dd55ac8ecfe8f6869437ccbd5a"
+    },
+    {
+      "id": "P07-B0017",
+      "operation": "encounter.record_leave",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0017.log",
+      "stdout_sha256": "ef67a9e980382c429166e2efea5a16bda3ab7734f745bf55ea678cb1247062e7"
+    },
+    {
+      "id": "P07-B0018",
+      "operation": "encounter.record_return",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0018.log",
+      "stdout_sha256": "3b65c8bdb36e4e86cb1cdd684835911dcceecefd6c44502fadc2ad51d908432d"
+    },
+    {
+      "id": "P07-B0019",
+      "operation": "encounter.submit_discharge_plan",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0019.log",
+      "stdout_sha256": "707ff6f190c40fdde427091195492c83f334e2a39f42576e0ccf76231c59b548"
+    },
+    {
+      "id": "P07-B0020",
+      "operation": "encounter.authorize_discharge",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0020.log",
+      "stdout_sha256": "05c14549dfa51e25c1b28cc2e2e00d1ab2968e05f95444a529c644ce7900b185"
+    },
+    {
+      "id": "P07-B0021",
+      "operation": "note.create_draft",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0021.log",
+      "stdout_sha256": "098f3ed736d3ab22c0e7f772c5395b172120d78166a504f18f7695d524480368"
+    },
+    {
+      "id": "P07-B0022",
+      "operation": "note.title_draft",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0022.log",
+      "stdout_sha256": "9693f4c1a5a53b1cd180e2e8419c43a1ff407bb5a282ed03099311812fd19470"
+    },
+    {
+      "id": "P07-B0023",
+      "operation": "note.write_draft",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0023.log",
+      "stdout_sha256": "88c816b86e1264a371c37b38d874f6947d6fd3e9da019cc3afd452e88f5d960e"
+    },
+    {
+      "id": "P07-B0024",
+      "operation": "note.set_section",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0024.log",
+      "stdout_sha256": "6b4091e670e976435fb60d608733ea9437300be6c72981957daa4b06c724a069"
+    },
+    {
+      "id": "P07-B0025",
+      "operation": "note.remove_section",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0025.log",
+      "stdout_sha256": "0d9e1b249a46335bf347a3a6808ec81ee5a6c721d82b3cb17ae6a123cbd51f72"
+    },
+    {
+      "id": "P07-B0026",
+      "operation": "note.add_diagnosis",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0026.log",
+      "stdout_sha256": "c351527c0b1aeaf1cd830a72ab59ae89c212c261430484a633f19e0a46d77299"
+    },
+    {
+      "id": "P07-B0027",
+      "operation": "note.remove_diagnosis",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0027.log",
+      "stdout_sha256": "bddb8dfdf352fef8fe1895731b655dc3fba8f8879fe6cf790f7f55e61a41d108"
+    },
+    {
+      "id": "P07-B0028",
+      "operation": "note.add_problem",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0028.log",
+      "stdout_sha256": "37b3ea6d592566723d24fc7869e460646f4c56c035fd8e94c4df31d0353d047b"
+    },
+    {
+      "id": "P07-B0029",
+      "operation": "note.rename_problem",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0029.log",
+      "stdout_sha256": "bb69bbf8302c12cb971058f706e3774af19d76e5862b67196aaec91f10d1404c"
+    },
+    {
+      "id": "P07-B0030",
+      "operation": "note.attach_reference",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0030.log",
+      "stdout_sha256": "768f1d307ce2765809f4724da06922d7076169d283471a405d64fc4d922e8bea"
+    },
+    {
+      "id": "P07-B0031",
+      "operation": "note.detach_reference",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0031.log",
+      "stdout_sha256": "e7da15cc81535a8a07f114662c82f571d87d2cc10f8e43e333d43d51d0a7b375"
+    },
+    {
+      "id": "P07-B0032",
+      "operation": "note.mark_confidential",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0032.log",
+      "stdout_sha256": "e9184dfeca71c2d38273ce25508d97469eeb788ac81bbd25058b1233f4dd70d5"
+    },
+    {
+      "id": "P07-B0033",
+      "operation": "note.request_review",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0033.log",
+      "stdout_sha256": "184683758d94c3e4eb8499632b2825b19bf7c0aa1569da191318eb1dcfcbd06d"
+    },
+    {
+      "id": "P07-B0034",
+      "operation": "note.reviewer_comment",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0034.log",
+      "stdout_sha256": "3c899e95d389d4382d2ca199ffc60c2fb23588efa99d86d9b95b8bc7b052a70b"
+    },
+    {
+      "id": "P07-B0035",
+      "operation": "note.request_revision",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0035.log",
+      "stdout_sha256": "894ce83c70ce9dd375d138292ebb08fa59ef45bed83679b6e2320c378eae3237"
+    },
+    {
+      "id": "P07-B0036",
+      "operation": "note.ready_to_sign",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0036.log",
+      "stdout_sha256": "bd9a37dc68b439c7431954f0f28ea371fd326be0e5930deec6f7619508a350e8"
+    },
+    {
+      "id": "P07-B0037",
+      "operation": "note.sign",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0037.log",
+      "stdout_sha256": "d8ea2edec56febc653a9353e084aa442014e7e5541153a738a85d84a06a2266c"
+    },
+    {
+      "id": "P07-B0038",
+      "operation": "note.start_amendment",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0038.log",
+      "stdout_sha256": "9680814aa2ec1c4e53c097921c4c6b3d4593827676c792670efbf2d446c0a61e"
+    },
+    {
+      "id": "P07-B0039",
+      "operation": "note.sign_amendment",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0039.log",
+      "stdout_sha256": "1aa9c7ebc2786b5dc6afe9120bccf2e07cf5b5b65110e25b025ed18ae85e9386"
+    },
+    {
+      "id": "P07-B0040",
+      "operation": "note.entered_in_error",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0040.log",
+      "stdout_sha256": "7956d6cfa982f8ef64c3d19a0a164ab523f78e2766fac5f91ef233d5d1b1d227"
+    },
+    {
+      "id": "P07-B0041",
+      "operation": "observation.capture_numeric",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0041.log",
+      "stdout_sha256": "1adf55f3fa457112e599e07424b4fcf44fd1eb5f0ec8da80458a768a2e9a885c"
+    },
+    {
+      "id": "P07-B0042",
+      "operation": "observation.capture_text",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0042.log",
+      "stdout_sha256": "493415ca551b4e05b4dd14affcf37ce4f331a168e1dc3971a15136354ee84aa0"
+    },
+    {
+      "id": "P07-B0043",
+      "operation": "observation.capture_categorical",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0043.log",
+      "stdout_sha256": "182b848413cfe9f4be5a2ade8ecc5dffef85d21f6153faa7ff0a2eba1c13bdac"
+    },
+    {
+      "id": "P07-B0044",
+      "operation": "observation.attach_device",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0044.log",
+      "stdout_sha256": "5ab9e6aec31a11d135761cc676ea5ccd7c5b38d6b1704b5dcb475b00a0576956"
+    },
+    {
+      "id": "P07-B0045",
+      "operation": "observation.record_context",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0045.log",
+      "stdout_sha256": "58fbb6fcbce2d3f77b997368538b9ae990355e8c5a06570af27e9c974f28a5aa"
+    },
+    {
+      "id": "P07-B0046",
+      "operation": "observation.attach_source",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0046.log",
+      "stdout_sha256": "73058009a8d182449cf8c453490906854a692945ef4e2e2f1df1a2e03353282e"
+    },
+    {
+      "id": "P07-B0047",
+      "operation": "observation.add_metadata",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0047.log",
+      "stdout_sha256": "b6e9ebf46b655026779214cf7e0f877e401393f080f348ab55ecd68940ddd98a"
+    },
+    {
+      "id": "P07-B0048",
+      "operation": "observation.remove_metadata",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0048.log",
+      "stdout_sha256": "15ecfabacbae9e891936d715d38e4ae4f846ac29513913d089ba3618d6b7bb5e"
+    },
+    {
+      "id": "P07-B0049",
+      "operation": "observation.request_verification",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0049.log",
+      "stdout_sha256": "53a19d347654b0bb64e250d105fcb18344f7b12aa09eb3b88eb715016f74d676"
+    },
+    {
+      "id": "P07-B0050",
+      "operation": "observation.verify",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0050.log",
+      "stdout_sha256": "98148cdd8d053be50642f62ecee3628c2aacccfbf9099f4ffda561d01dd090f0"
+    },
+    {
+      "id": "P07-B0051",
+      "operation": "observation.reject",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0051.log",
+      "stdout_sha256": "8a05451ec6dc73b3df1396d58860fcc6c2ccaceaa9c4fb82596c10c024a9a436"
+    },
+    {
+      "id": "P07-B0052",
+      "operation": "observation.request_recheck",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0052.log",
+      "stdout_sha256": "a4d741488925e58c321238d5d7a415d0b3f009c41ac00fe956de5cab094a635b"
+    },
+    {
+      "id": "P07-B0053",
+      "operation": "observation.capture_correction",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0053.log",
+      "stdout_sha256": "5e7b55a9a0d029e76379a3f060a3569411ae277ff5b76fb78c52976c98dcf4d7"
+    },
+    {
+      "id": "P07-B0054",
+      "operation": "observation.verify_correction",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0054.log",
+      "stdout_sha256": "5c9e559581a9c7dae741f20ca270f620478c07b62073fee421343a7e923e09b6"
+    },
+    {
+      "id": "P07-B0055",
+      "operation": "observation.invalidate",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0055.log",
+      "stdout_sha256": "5ebc0ad2676ccb88f8548926fea72f1c7332e9113311d2272f01d0a75e594b30"
+    },
+    {
+      "id": "P07-B0056",
+      "operation": "observation.create_set",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0056.log",
+      "stdout_sha256": "c0b7ce4b9ad3fb023ba303f2ab0b97f1823765a6d4ea3ceb3dedde77ed57a9e5"
+    },
+    {
+      "id": "P07-B0057",
+      "operation": "observation.join_set",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0057.log",
+      "stdout_sha256": "76f0df24c67c66e1f52fcba79c47235c77389b3afb49fb4169211a09aa93ee79"
+    },
+    {
+      "id": "P07-B0058",
+      "operation": "observation.complete_set",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0058.log",
+      "stdout_sha256": "29dc355dae83d0198f149638d823281e54ecd5297e5749d762eef863551b1e35"
+    },
+    {
+      "id": "P07-B0059",
+      "operation": "observation.timeline",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0059.log",
+      "stdout_sha256": "c1116af4e4467365c1d37d688fbf7d0182c16383e15865fad6bf3ccc07cf2027"
+    },
+    {
+      "id": "P07-B0060",
+      "operation": "observation.correction_lineage",
+      "passed": true,
+      "exit_code": 0,
+      "log": "evidence/v600/P07-B0060.log",
+      "stdout_sha256": "4026cc63333b5766be69d213a6a06fdf72d9240301d558d1814419eedd1c67e9"
+    }
+  ]
+}

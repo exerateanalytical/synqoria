@@ -1,0 +1,7 @@
+P07-B0149 | AuditEvidenceChain
+INDIVIDUAL_TEST_CMD: java -cp .classes/149 org.synqoria.longitudinal.inboxops.InboxAuditEvidenceChainTest
+EXIT_CODE: 0
+PASS P07-B0149 AuditEvidenceChain assertions=5
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 33ae233037beb3eaff783bddb0b070df214fd5646aa01f86dd82922535c48455
+TEST_SHA256: 9cb32f19ca93385f3e863c571acd79203594b727bf56b6e7eec468d330a288a5

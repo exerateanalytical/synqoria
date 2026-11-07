@@ -1,0 +1,90 @@
+{
+  "checkpoint": "v0.64.0",
+  "base_branch": "work/longitudinal-outbox-v063",
+  "base_sha": "3caa48e16239907f45374db01f7ade5f4aa98908",
+  "batches": [
+    {
+      "id": "P07-B0105",
+      "scenario": "envelope",
+      "result": "passed",
+      "exit_code": 0,
+      "assertions": 4,
+      "command": "java -cp \"$BUILD\" org.synqoria.longitudinal.LongitudinalInboxSafetyTest envelope"
+    },
+    {
+      "id": "P07-B0106",
+      "scenario": "consumer-permit",
+      "result": "passed",
+      "exit_code": 0,
+      "assertions": 3,
+      "command": "java -cp \"$BUILD\" org.synqoria.longitudinal.LongitudinalInboxSafetyTest consumer-permit"
+    },
+    {
+      "id": "P07-B0107",
+      "scenario": "dedupe",
+      "result": "passed",
+      "exit_code": 0,
+      "assertions": 4,
+      "command": "java -cp \"$BUILD\" org.synqoria.longitudinal.LongitudinalInboxSafetyTest dedupe"
+    },
+    {
+      "id": "P07-B0108",
+      "scenario": "sequence-gate",
+      "result": "passed",
+      "exit_code": 0,
+      "assertions": 5,
+      "command": "java -cp \"$BUILD\" org.synqoria.longitudinal.LongitudinalInboxSafetyTest sequence-gate"
+    },
+    {
+      "id": "P07-B0109",
+      "scenario": "lease-fence",
+      "result": "passed",
+      "exit_code": 0,
+      "assertions": 3,
+      "command": "java -cp \"$BUILD\" org.synqoria.longitudinal.LongitudinalInboxSafetyTest lease-fence"
+    },
+    {
+      "id": "P07-B0110",
+      "scenario": "retries",
+      "result": "passed",
+      "exit_code": 0,
+      "assertions": 5,
+      "command": "java -cp \"$BUILD\" org.synqoria.longitudinal.LongitudinalInboxSafetyTest retries"
+    },
+    {
+      "id": "P07-B0111",
+      "scenario": "redrive",
+      "result": "passed",
+      "exit_code": 0,
+      "assertions": 3,
+      "command": "java -cp \"$BUILD\" org.synqoria.longitudinal.LongitudinalInboxSafetyTest redrive"
+    },
+    {
+      "id": "P07-B0112",
+      "scenario": "commit",
+      "result": "passed",
+      "exit_code": 0,
+      "assertions": 3,
+      "command": "java -cp \"$BUILD\" org.synqoria.longitudinal.LongitudinalInboxSafetyTest commit"
+    },
+    {
+      "id": "P07-B0113",
+      "scenario": "processor",
+      "result": "passed",
+      "exit_code": 0,
+      "assertions": 6,
+      "command": "java -cp \"$BUILD\" org.synqoria.longitudinal.LongitudinalInboxSafetyTest processor"
+    },
+    {
+      "id": "P07-B0114",
+      "scenario": "receipt-privacy",
+      "result": "passed",
+      "exit_code": 0,
+      "assertions": 4,
+      "command": "java -cp \"$BUILD\" org.synqoria.longitudinal.LongitudinalInboxSafetyTest receipt-privacy"
+    }
+  ],
+  "new_assertions": 40,
+  "all_verified": true,
+  "scope": "synthetic pure-Java integration port, not live Kafka/DB"
+}

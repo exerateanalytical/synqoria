@@ -1,0 +1,116 @@
+{
+  "version": "0.61.0",
+  "base": "v0.60.0 PR #3 domain source",
+  "target": 60,
+  "completed": 10,
+  "remaining": 50,
+  "compile_source_count": 237,
+  "compile_test_count": 138,
+  "compile_exit_code": 0,
+  "batches": [
+    {
+      "batch": "P07-B0061",
+      "implemented_area": "strict scoped clinical command JSON decoding",
+      "status": "verified_application_integration_test_not_clinically_certified",
+      "tests": 1,
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v610/P07-B0061.log",
+      "stdout_sha256": "353f2e01449672930a9c8663d7281dbe50043838674679df7fa29997cca2774b"
+    },
+    {
+      "batch": "P07-B0062",
+      "implemented_area": "authenticated encounter POST and case summary",
+      "status": "verified_application_integration_test_not_clinically_certified",
+      "tests": 1,
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v610/P07-B0062.log",
+      "stdout_sha256": "be030a56e68b30a43c362fa1bba0ce732532fee82d7a85bcfb20f86b20e3d6e5"
+    },
+    {
+      "batch": "P07-B0063",
+      "implemented_area": "clinical note creation and confidential note GET",
+      "status": "verified_application_integration_test_not_clinically_certified",
+      "tests": 1,
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v610/P07-B0063.log",
+      "stdout_sha256": "d039401bd1b5978c4f0babab6fe6ea4485f1f9f91a6acff8489bf396cf0676a2"
+    },
+    {
+      "batch": "P07-B0064",
+      "implemented_area": "observation recording/verification and filtered GET",
+      "status": "verified_application_integration_test_not_clinically_certified",
+      "tests": 1,
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v610/P07-B0064.log",
+      "stdout_sha256": "fc3658468f6aa0375cc2776eed33d1e957986877137fc51b659f2e4fb7407786"
+    },
+    {
+      "batch": "P07-B0065",
+      "implemented_area": "scope denial and verified admission",
+      "status": "verified_application_integration_test_not_clinically_certified",
+      "tests": 1,
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v610/P07-B0065.log",
+      "stdout_sha256": "8ce32adc3fa84f948e337d48f62a5668ce23d6e7873ad1083153eb1b7a8c41e6"
+    },
+    {
+      "batch": "P07-B0066",
+      "implemented_area": "audit evidence bounded cursor page",
+      "status": "verified_application_integration_test_not_clinically_certified",
+      "tests": 1,
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v610/P07-B0066.log",
+      "stdout_sha256": "800a21e6ea344e316c7b1aecf1da46cbe6689ece3fe67b637f5704c27a47e5af"
+    },
+    {
+      "batch": "P07-B0067",
+      "implemented_area": "idempotent replay and revision conflicts",
+      "status": "verified_application_integration_test_not_clinically_certified",
+      "tests": 1,
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v610/P07-B0067.log",
+      "stdout_sha256": "87dc01b5e750fde6566bfc366c10e91df9ae0ecedb196588ae3658de326b7d8e"
+    },
+    {
+      "batch": "P07-B0068",
+      "implemented_area": "HTTP request-smuggling/header/IDOR rejection",
+      "status": "verified_application_integration_test_not_clinically_certified",
+      "tests": 1,
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v610/P07-B0068.log",
+      "stdout_sha256": "e3e40907a66a7b5708de46a0ef0c16aebc30630cb6413592343049e3c79f20ac"
+    },
+    {
+      "batch": "P07-B0069",
+      "implemented_area": "versioned OpenAPI parity and safety contract",
+      "status": "verified_application_integration_test_not_clinically_certified",
+      "tests": 5,
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v610/P07-B0069.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "batch": "P07-B0070",
+      "implemented_area": "TypeScript staff client with context abort and privacy-minimal decoders",
+      "status": "verified_application_integration_test_not_clinically_certified",
+      "tests": 6,
+      "exit_code": 0,
+      "passed": true,
+      "log": "evidence/v610/P07-B0070.log",
+      "stdout_sha256": "668a5d10cf0b3fbeea5504a02b30ad48bcb6da2cc9895c980610b0c6b98b9bcc"
+    }
+  ],
+  "created_at_utc": "2026-10-31T15:38:17.724273+00:00",
+  "live_database_qualified": false,
+  "production_identity_qualified": false,
+  "certification": "DEFERRED_NOT_CERTIFIED"
+}

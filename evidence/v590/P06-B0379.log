@@ -1,0 +1,36 @@
+COMMAND: node --test --test-name-pattern=B0379: /mnt/data/synqoria_v59_work/packages/ux-core/tests/triage-v59-patient-scope-review.test.cjs
+EXIT_CODE: 0
+TAP version 13
+# Subtest: B0379: worklist fetches exactly 50 scoped cases per request and preserves requested order
+ok 1 - B0379: worklist fetches exactly 50 scoped cases per request and preserves requested order
+  ---
+  duration_ms: 2.561704
+  type: 'test'
+  ...
+# Subtest: B0379: invalid or duplicate case ID is denied before network request
+ok 2 - B0379: invalid or duplicate case ID is denied before network request
+  ---
+  duration_ms: 0.779057
+  type: 'test'
+  ...
+# Subtest: B0379: a malicious server cannot inject an unrequested case
+ok 3 - B0379: a malicious server cannot inject an unrequested case
+  ---
+  duration_ms: 0.431896
+  type: 'test'
+  ...
+# Subtest: B0379: context switch while loading aborts old patient data
+ok 4 - B0379: context switch while loading aborts old patient data
+  ---
+  duration_ms: 9.223603
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 123.363116

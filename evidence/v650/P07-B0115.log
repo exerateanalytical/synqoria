@@ -1,0 +1,4 @@
+$ python tests/test_v065_inbox_schema.py
+PASS P07-B0115 quarantined inbox SQL: 19 scope/security checks; NOT live PostgreSQL
+
+EXIT_CODE=0

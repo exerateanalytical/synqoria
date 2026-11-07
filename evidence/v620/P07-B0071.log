@@ -1,0 +1,6 @@
+command=["java", "-ea", "-cp", "/mnt/data/synqoria_v62_work/.v620-classes", "org.synqoria.longitudinal.LongitudinalDurabilityTest", "snapshot"]
+exit_code=0
+stdout:
+PASS snapshot 8 assertions
+
+stderr:

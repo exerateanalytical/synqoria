@@ -1,0 +1,7 @@
+P07-B0146 | PoisonEventDisposition
+INDIVIDUAL_TEST_CMD: java -cp .classes/146 org.synqoria.longitudinal.inboxops.InboxPoisonEventDispositionTest
+EXIT_CODE: 0
+PASS P07-B0146 PoisonEventDisposition assertions=6
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: f0861322e6b6add2c472a5ff9a5fed3941f918074a9501530c83acb941f106b2
+TEST_SHA256: f0965b976d0582a5e7c9294c894655d2a7a044e169a24a8236c8f3affd77d669

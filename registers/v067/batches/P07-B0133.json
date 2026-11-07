@@ -1,0 +1,11 @@
+{
+  "id": "P07-B0133",
+  "title": "Bounded event schema compatibility and monotonic security version floor",
+  "source": "services/clinical-core/src/main/java/org/synqoria/longitudinal/inboxops/InboxSchemaNegotiation.java",
+  "test": "services/clinical-core/src/test/java/org/synqoria/longitudinal/inboxops/InboxSchemaNegotiationTest.java",
+  "evidence": "evidence/v067/P07-B0133.log",
+  "exit_code": 0,
+  "focused_assertions": 6,
+  "verification": "Java21 pure policy tests only",
+  "clinical_release": "DENIED"
+}

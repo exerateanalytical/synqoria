@@ -1,0 +1,7 @@
+P07-B0154 | CredentialRevocationEpoch
+INDIVIDUAL_TEST_CMD: java -cp .classes/154 org.synqoria.longitudinal.inboxops.InboxCredentialRevocationEpochTest
+EXIT_CODE: 0
+PASS P07-B0154 CredentialRevocationEpoch assertions=5
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 3c77fdf8a65d7be7d422e3d5ee85918b34cc201ad836a955937070f2da0ba8bd
+TEST_SHA256: 2329ee517cbce06e1dc792e7f672498565e391b1df144c60c684ed6bd65f31f4

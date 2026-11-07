@@ -1,0 +1,31 @@
+{
+  "version": "0.65.0",
+  "phase": "P07",
+  "lineage_base": "6f2711e4f230c97ff9637211e063c0c4c33c95af",
+  "completed": [
+    {
+      "id": "P07-B0115",
+      "exit_code": 0
+    },
+    {
+      "id": "P07-B0116",
+      "exit_code": 0
+    },
+    {
+      "id": "P07-B0117",
+      "exit_code": 0
+    },
+    {
+      "id": "P07-B0118",
+      "exit_code": 0
+    },
+    {
+      "id": "P07-B0119",
+      "kind": "outbox_to_inbox_metadata_parity",
+      "exit_code": 0,
+      "verification": "local compile with upstream EventRef API-compatible test stub; full stacked branch not compiled"
+    }
+  ],
+  "next_candidate": "P07-B0120",
+  "clinical_release": "DENIED"
+}

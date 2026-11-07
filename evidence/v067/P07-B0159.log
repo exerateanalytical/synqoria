@@ -1,0 +1,7 @@
+P07-B0159 | AtomicEventBatchFence
+INDIVIDUAL_TEST_CMD: java -cp .classes/159 org.synqoria.longitudinal.inboxops.InboxAtomicEventBatchFenceTest
+EXIT_CODE: 0
+PASS P07-B0159 AtomicEventBatchFence assertions=5
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 63b6b02d9fc5685ba086ce0d2ae606e56e421ccfd578651bbefa95a035c44ab3
+TEST_SHA256: c941a6452f825283d4fcb5b04e4912c053b11e48dd82ebe898a14dbff6cb328d

@@ -1,0 +1,7 @@
+P07-B0151 | RedriveReservationCAS
+INDIVIDUAL_TEST_CMD: java -cp .classes/151 org.synqoria.longitudinal.inboxops.InboxRedriveReservationCASTest
+EXIT_CODE: 0
+PASS P07-B0151 RedriveReservationCAS assertions=6
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 0420705487028f9606175804d4dfc287053a05b5db233b7a751d1b796157fa9f
+TEST_SHA256: 4635f241687902260bc0c4f9ea59127b777ed6e5a5a5a70cbe19900d135a7072

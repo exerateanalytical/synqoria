@@ -1,0 +1,6 @@
+command=["java", "-ea", "-cp", "/mnt/data/synqoria_v62_work/.v620-classes", "org.synqoria.longitudinal.LongitudinalHttpBoundaryTest", "P07-B0064"]
+exit_code=0
+STDOUT:
+PASS P07-B0064
+
+STDERR:

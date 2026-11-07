@@ -1,0 +1,7 @@
+P07-B0148 | CausalAckBarrier
+INDIVIDUAL_TEST_CMD: java -cp .classes/148 org.synqoria.longitudinal.inboxops.InboxCausalAckBarrierTest
+EXIT_CODE: 0
+PASS P07-B0148 CausalAckBarrier assertions=5
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: c36f23290dd5bfd3e21de85b712c66efd157ff2f9ee696a45a13ce31798b4709
+TEST_SHA256: e37d74dcadd91681c7a4c8282c676678134520b81a7762d081e63b132e0a3d9b

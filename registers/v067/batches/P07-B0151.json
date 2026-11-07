@@ -1,0 +1,11 @@
+{
+  "id": "P07-B0151",
+  "title": "Single-use incident redrive reservation guarded by holder and generation",
+  "source": "services/clinical-core/src/main/java/org/synqoria/longitudinal/inboxops/InboxRedriveReservationCAS.java",
+  "test": "services/clinical-core/src/test/java/org/synqoria/longitudinal/inboxops/InboxRedriveReservationCASTest.java",
+  "evidence": "evidence/v067/P07-B0151.log",
+  "exit_code": 0,
+  "focused_assertions": 6,
+  "verification": "Java21 pure policy tests only",
+  "clinical_release": "DENIED"
+}

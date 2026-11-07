@@ -1,0 +1,4 @@
+command=["java", "-ea", "-cp", ".v630-classes", "org.synqoria.longitudinal.LongitudinalOutboxDeliveryTest", "all"]
+exit_code=0
+PASS outbox all 65 assertions (synthetic store)
+

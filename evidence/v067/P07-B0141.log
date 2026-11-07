@@ -1,0 +1,7 @@
+P07-B0141 | MetadataAllowlist
+INDIVIDUAL_TEST_CMD: java -cp .classes/141 org.synqoria.longitudinal.inboxops.InboxMetadataAllowlistTest
+EXIT_CODE: 0
+PASS P07-B0141 MetadataAllowlist assertions=5
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 988c35316812bb7bcf7bedde3db316130a38e839390ed6d1986f0f392e8cdc0b
+TEST_SHA256: 3512270ac3dcdfb823ceb39eba2f17ba93e18b93535903fb6573c9e1f9160a5d

@@ -1,0 +1,7 @@
+P07-B0152 | EvidenceRetentionFence
+INDIVIDUAL_TEST_CMD: java -cp .classes/152 org.synqoria.longitudinal.inboxops.InboxEvidenceRetentionFenceTest
+EXIT_CODE: 0
+PASS P07-B0152 EvidenceRetentionFence assertions=5
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 49c36fe68c42cc2c798d67fc5b9dc535bf6ba518e81d6e6e255112ec46f1f546
+TEST_SHA256: 64e1909f065d5b80155a1243a0434522f1700b60c28a362f77796b8d5526da7a

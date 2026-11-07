@@ -1,0 +1,61 @@
+{
+  "checkpoint": "v0.58.0",
+  "base_git_commit": "9fdbf95f0ad85cc3867185acfbd19b00be8d80d1",
+  "request_target": 60,
+  "actual_completed": 3,
+  "not_completed": 57,
+  "next_batch": "P06-B0372",
+  "certification": "deferred; not granted",
+  "verified": [
+    {
+      "id": "P06-B0369",
+      "tests": 10,
+      "pass": 10,
+      "exit_code": 0,
+      "command": "node --test packages/ux-core/tests/triage-v58-staff-workflow.test.cjs"
+    },
+    {
+      "id": "P06-B0370",
+      "tests": 6,
+      "pass": 6,
+      "exit_code": 0,
+      "command": "node --test packages/ux-core/tests/triage-v58-transport-security.test.cjs"
+    },
+    {
+      "id": "P06-B0371",
+      "tests": 8,
+      "pass": 8,
+      "exit_code": 0,
+      "command": "node --test packages/ux-core/tests/triage-v58-arrival-session.test.cjs"
+    }
+  ],
+  "regressions": {
+    "ux": {
+      "tests": 224,
+      "pass": 224,
+      "exit_code": 0
+    },
+    "registers": {
+      "exit_code": 0,
+      "modules": 40,
+      "screens": 261
+    },
+    "source": {
+      "exit_code": 0
+    },
+    "java_compilation": {
+      "files": 363,
+      "exit_code": 0
+    },
+    "status_matrix": {
+      "exit_code": 0
+    }
+  },
+  "unverified": [
+    "live PostgreSQL/RLS",
+    "production OIDC/MFA",
+    "Next.js/Expo real builds",
+    "clinical approvals",
+    "independent security review"
+  ]
+}

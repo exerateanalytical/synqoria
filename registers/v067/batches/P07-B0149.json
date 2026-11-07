@@ -1,0 +1,11 @@
+{
+  "id": "P07-B0149",
+  "title": "Immutable privacy-minimal SHA256 audit record linking actor, decision and event revision",
+  "source": "services/clinical-core/src/main/java/org/synqoria/longitudinal/inboxops/InboxAuditEvidenceChain.java",
+  "test": "services/clinical-core/src/test/java/org/synqoria/longitudinal/inboxops/InboxAuditEvidenceChainTest.java",
+  "evidence": "evidence/v067/P07-B0149.log",
+  "exit_code": 0,
+  "focused_assertions": 5,
+  "verification": "Java21 pure policy tests only",
+  "clinical_release": "DENIED"
+}

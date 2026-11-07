@@ -1,0 +1,24 @@
+COMMAND: node --test --test-name-pattern=B0385: /mnt/data/synqoria_v59_work/packages/ux-core/tests/triage-v59-presentation-native.test.cjs
+EXIT_CODE: 0
+TAP version 13
+# Subtest: B0385: audit receipt is proven against matching revision, digest and operation
+ok 1 - B0385: audit receipt is proven against matching revision, digest and operation
+  ---
+  duration_ms: 2.342493
+  type: 'test'
+  ...
+# Subtest: B0385: forged digest and duplicate audit revision cannot confirm a clinical write
+ok 2 - B0385: forged digest and duplicate audit revision cannot confirm a clinical write
+  ---
+  duration_ms: 0.542622
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 312.185598

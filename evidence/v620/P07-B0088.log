@@ -1,0 +1,6 @@
+command=["java", "-ea", "-cp", "/mnt/data/synqoria_v62_work/.v620-classes", "org.synqoria.longitudinal.LongitudinalJDBCWireLoopbackTest"]
+exit_code=0
+stdout:
+PASS trusted loopback JDBC protocol wiring (7 assertions; no live DB)
+
+stderr:

@@ -1,0 +1,15 @@
+command=["python", "-m", "unittest", "tests.test_longitudinal_contract", "-v"]
+exit_code=0
+STDOUT:
+
+STDERR:
+test_bounded_reads (tests.test_longitudinal_contract.TestM040506Contract.test_bounded_reads) ... ok
+test_command_has_no_actor_provenance_or_client_scope (tests.test_longitudinal_contract.TestM040506Contract.test_command_has_no_actor_provenance_or_client_scope) ... ok
+test_no_online_production_guarantee (tests.test_longitudinal_contract.TestM040506Contract.test_no_online_production_guarantee) ... ok
+test_route_parity (tests.test_longitudinal_contract.TestM040506Contract.test_route_parity) ... ok
+test_security_every_operation (tests.test_longitudinal_contract.TestM040506Contract.test_security_every_operation) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

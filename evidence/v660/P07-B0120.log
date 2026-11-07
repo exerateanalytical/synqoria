@@ -1,0 +1,4 @@
+java --release 21 compile exit=0
+java -ea LongitudinalInboxBrokerRecordTest
+PASS B0120 broker binding 5 checks
+exit_code=0

@@ -1,0 +1,7 @@
+P07-B0132 | BrokerRouteFence
+INDIVIDUAL_TEST_CMD: java -cp .classes/132 org.synqoria.longitudinal.inboxops.InboxBrokerRouteFenceTest
+EXIT_CODE: 0
+PASS P07-B0132 BrokerRouteFence assertions=5
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 59936381cd07eb2c3d78b86f53ff010ca63f7382bbb0ca75e4e20a34dd85deb4
+TEST_SHA256: 7e0c5a8723fb39348e068fae0846cb350cb6bbc975155f4c3a630ce272b122ef

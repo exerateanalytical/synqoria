@@ -1,0 +1,7 @@
+P07-B0157 | EscalationWindow
+INDIVIDUAL_TEST_CMD: java -cp .classes/157 org.synqoria.longitudinal.inboxops.InboxEscalationWindowTest
+EXIT_CODE: 0
+PASS P07-B0157 EscalationWindow assertions=5
+TEST_ENV: Java 21, isolated pure policy boundary; NO live PostgreSQL, Kafka, OIDC, KMS or production clinical verification
+SOURCE_SHA256: 35e6119616f3705e3e7d00608cee847c0018e41de2780c326ccc41a351e5fd54
+TEST_SHA256: 83df2eb7300902b1276bab10c58715d02315f6b46468a18f97e8621ffdc11afd
