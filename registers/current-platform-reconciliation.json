@@ -1,0 +1,557 @@
+{
+  "schemaVersion": "synqoria.reconciliation.v1",
+  "generatedAtUtc": "2026-11-07T11:44:45+00:00",
+  "mainShaInspected": "1092c6135e3888e56c88c45f01f8602736f0b6b7",
+  "canonical": {
+    "plannedModules": 40,
+    "canonicalScreens": 261
+  },
+  "countingPolicy": {
+    "locatedSource": "file naming signal only; NOT proof module is implemented",
+    "missingSource": "no matching file path; NOT proof module is unbuilt",
+    "engineeringClaim": "historical PR/handoff evidence, NOT production acceptance",
+    "fullyBuiltModules": null,
+    "unbuiltModules": null,
+    "productionReadyPercent": null
+  },
+  "summary": {
+    "moduleEntries": 40,
+    "modulesWithPathSignals": 12,
+    "modulesWithoutPathSignals": 28,
+    "confirmedUnbuiltModules": null,
+    "confirmedFullyBuiltModules": null,
+    "clinicallyAcceptedModules": 0,
+    "openPrs": 1
+  },
+  "activeWork": {
+    "claude": {
+      "pr": 56,
+      "issue": 53,
+      "branch": "work/claude-m38-device-client-integration-2026-11-07",
+      "exclusiveScope": [
+        "packages/offline-device-sdk",
+        "apps/web/components/offline",
+        "apps/web/lib/offline",
+        "apps/web/app/api/offline"
+      ],
+      "reportedProgress": {
+        "verifiedPackages": 17,
+        "totalPackages": 30,
+        "partialPackages": 12,
+        "designOnlyPackages": 1
+      },
+      "mergeGate": "verified server-side session, browser end-to-end and shared builds; no automatic merge"
+    },
+    "integrationLead": {
+      "exclusiveScope": [
+        "M39 fleet/gateway/platform integration",
+        "M40 backup/recovery/observability integration",
+        "P03 verified identity",
+        "shared dependency/React build repair",
+        "source consolidation and reconciliation"
+      ],
+      "lastMergedPrs": [
+        54,
+        55,
+        57,
+        58
+      ],
+      "futureOrder": [
+        "fix shared M27 @synqoria/ux-core package resolution",
+        "verify P03 OIDC session endpoint / signature and scope",
+        "rebase and accept M38 PR #56 when required evidence passes",
+        "finish M39 gateway routing with real service discovery and auth",
+        "finish M40 agents and disposable PITR test",
+        "40-module evidence-to-code reconciliation and backlog prioritization"
+      ]
+    }
+  },
+  "openPullRequests": [
+    {
+      "number": 56,
+      "title": "M38 offline device client + sync integration (SDK, PWA device panel, interop) - partial per #53",
+      "head": "80a7d5d10be8ef6e10005f41d0b1633ec2ffa09d",
+      "branch": "work/claude-m38-device-client-integration-2026-11-07",
+      "base": "main",
+      "draft": false
+    }
+  ],
+  "modules": [
+    {
+      "id": "M01",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M02",
+      "codeSignals": 3,
+      "exampleSourcePaths": [
+        "services/scheduling-core/db/migration/V001__m02_resource_appointments.sql",
+        "services/scheduling-core/db/migration/V002__m02_rescheduling_transition.sql",
+        "services/scheduling-core/db/migration/V003__m02_appointment_safety_and_audit.sql"
+      ],
+      "sourceEvidence": "located",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M03",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M04",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M05",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M06",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M07",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M08",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M09",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M10",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M11",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M12",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M13",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M14",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M15",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M16",
+      "codeSignals": 2,
+      "exampleSourcePaths": [
+        "services/referrals-core/db/migration/V001__m16_referral_transition_evidence.sql",
+        "services/referrals-core/db/migration/V002__m16_recorded_lifecycle_guards.sql"
+      ],
+      "sourceEvidence": "located",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M17",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M18",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M19",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M20",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M21",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M22",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M23",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M24",
+      "codeSignals": 1,
+      "exampleSourcePaths": [
+        "services/hr-payroll-core/db/migration/V001__m24_hr_payroll.sql"
+      ],
+      "sourceEvidence": "located",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M25",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M26",
+      "codeSignals": 1,
+      "exampleSourcePaths": [
+        "services/nutrition-core/db/migration/V001__m26_nutrition_core.sql"
+      ],
+      "sourceEvidence": "located",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M27",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M28",
+      "codeSignals": 1,
+      "exampleSourcePaths": [
+        "services/analytics-core/db/migration/V001__m28_analytics.sql"
+      ],
+      "sourceEvidence": "located",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M29",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M30",
+      "codeSignals": 1,
+      "exampleSourcePaths": [
+        "services/clinical-content-core/db/migration/V001__m30_clinical_content.sql"
+      ],
+      "sourceEvidence": "located",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M31",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M32",
+      "codeSignals": 2,
+      "exampleSourcePaths": [
+        "services/privacy-core/db/migration/V001__m32_consent_privacy_governance.sql",
+        "services/privacy-core/db/migration/V002__m32_evidence_revocation_advisory_fence.sql"
+      ],
+      "sourceEvidence": "located",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M33",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M34",
+      "codeSignals": 3,
+      "exampleSourcePaths": [
+        "services/audit-core/db/migration/V001__m34_audit_provenance_evidence.sql",
+        "services/audit-core/db/migration/V002__m34_attested_envelope_and_chain_guards.sql",
+        "services/audit-core/db/migration/V003__m34_evidence_admission_integrity.sql"
+      ],
+      "sourceEvidence": "located",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M35",
+      "codeSignals": 4,
+      "exampleSourcePaths": [
+        "services/integration-management-core/db/migration/V001__m35_partner_integration_control.sql",
+        "services/integration-management-core/db/migration/V002__m35_immutable_control_transitions.sql",
+        "services/integration-management-core/db/migration/V003__m35_replay_status_width.sql",
+        "services/integration-management-core/db/migration/V004__m35_source_event_type_integrity.sql"
+      ],
+      "sourceEvidence": "located",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M36",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M37",
+      "codeSignals": 0,
+      "exampleSourcePaths": [],
+      "sourceEvidence": "not_located_by_path_heuristic",
+      "implementation": "evidence_review_required",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": null
+    },
+    {
+      "id": "M38",
+      "codeSignals": 19,
+      "exampleSourcePaths": [
+        "apps/web/components/offline/Conflicts.tsx",
+        "apps/web/components/offline/History.tsx",
+        "apps/web/components/offline/Hub.tsx",
+        "apps/web/components/offline/Queue.tsx",
+        "apps/web/components/offline/StatusBoard.tsx",
+        "apps/web/components/offline/Transfers.tsx",
+        "apps/web/components/offline/ui.tsx",
+        "apps/web/lib/offline/client.ts",
+        "apps/web/lib/offline/i18n.ts",
+        "apps/web/lib/offline/proxy-policy.ts",
+        "services/offline-sync-core/db/migration/V001__m38_offline_sync.sql",
+        "services/offline-sync-core/src/main/java/org/synqoria/offline/Api.java"
+      ],
+      "sourceEvidence": "located",
+      "implementation": "engineering_source_claimed_needs_system_acceptance",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": {
+        "pr": 50,
+        "scope": "M38 backend source merged on main; not a complete device-client or accepted module"
+      }
+    },
+    {
+      "id": "M39",
+      "codeSignals": 23,
+      "exampleSourcePaths": [
+        "apps/web/components/fleet/Fleet.tsx",
+        "apps/web/components/fleet/Hub.tsx",
+        "apps/web/components/fleet/Migration.tsx",
+        "apps/web/components/fleet/Provisioning.tsx",
+        "apps/web/components/fleet/Qualification.tsx",
+        "apps/web/components/fleet/Releases.tsx",
+        "apps/web/components/fleet/ui.tsx",
+        "apps/web/lib/fleet/client.ts",
+        "apps/web/lib/fleet/i18n.ts",
+        "apps/web/lib/fleet/proxy-policy.ts",
+        "services/cell-lifecycle-core/db/migration/V001__m39_fleet.sql",
+        "services/cell-lifecycle-core/src/main/java/org/synqoria/fleet/Api.java"
+      ],
+      "sourceEvidence": "located",
+      "implementation": "engineering_source_claimed_needs_system_acceptance",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": {
+        "pr": 51,
+        "scope": "M39 management-plane source merged; later routing gate/health observer integration PRs #54,#58; real provisioner outstanding"
+      }
+    },
+    {
+      "id": "M40",
+      "codeSignals": 22,
+      "exampleSourcePaths": [
+        "apps/web/components/reliability/Backups.tsx",
+        "apps/web/components/reliability/Health.tsx",
+        "apps/web/components/reliability/Hub.tsx",
+        "apps/web/components/reliability/Incidents.tsx",
+        "apps/web/components/reliability/Recovery.tsx",
+        "apps/web/components/reliability/Telemetry.tsx",
+        "apps/web/components/reliability/Validation.tsx",
+        "apps/web/components/reliability/ui.tsx",
+        "apps/web/lib/reliability/client.ts",
+        "apps/web/lib/reliability/i18n.ts",
+        "apps/web/lib/reliability/proxy-policy.ts",
+        "services/reliability-core/db/migration/V001__m40_reliability.sql"
+      ],
+      "sourceEvidence": "located",
+      "implementation": "engineering_source_claimed_needs_system_acceptance",
+      "productionIntegrated": "not_verified",
+      "clinicalAccepted": false,
+      "attestedEngineeringEvidence": {
+        "pr": 52,
+        "scope": "M40 reliability source merged; later artifact integrity PRs #55,#57; actual WAL/PITR outstanding"
+      }
+    }
+  ],
+  "nextAction": "Resolve evidence gaps with an independently reviewed implementation manifest; never recreate a module on path-signal absence alone."
+}
