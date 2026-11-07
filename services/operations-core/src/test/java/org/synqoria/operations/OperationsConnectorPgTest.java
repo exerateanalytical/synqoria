@@ -103,10 +103,10 @@ final class OperationsConnectorPgTest {
  }
  @Test void m29CompositeCursorNeverSkipsEqualTimestampPublication(){
   ready();
-  UUID config=item("M29","CONFIGURATION","PUBLISHED","{\"title\":\"ward config\"}");
   Instant same=Instant.now().truncatedTo(ChronoUnit.SECONDS);
   UUID aId=UUID.randomUUID(),bId=UUID.randomUUID();
   for(UUID pub:List.of(aId,bId)){
+   UUID config=item("M29","CONFIGURATION","PUBLISHED","{\"title\":\"ward config\"}");
    admin().update("INSERT INTO synqoria_operations.facility_publications "+
     "(publication_id,cell_id,facility_id,item_id,config_key,schema_version,item_version,"+
     "content_digest,published_by,published_at) VALUES(?,?,?,?,?,?,?,?,?,?)",
