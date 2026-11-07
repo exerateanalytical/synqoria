@@ -83,7 +83,7 @@ class OperationsContractParity(unittest.TestCase):
                 continue
             with self.subTest(record=name):
                 java=(ROOT/source_file).read_text(encoding="utf-8")
-                match=re.search(r"public record "+re.escape(name)+r"\\((.*?)\\)\\s*\\{",java,re.S)
+                match=re.search(r"public record "+re.escape(name)+r"\((.*?)\)\s*\{",java,re.S)
                 self.assertIsNotNone(match,"missing Java record "+name)
                 chunks=re.split(r",(?!(?:[^<>]*>))",match.group(1))
                 fields={chunk.strip().split()[-1] for chunk in chunks if chunk.strip()}
