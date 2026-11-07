@@ -252,4 +252,58 @@ final class MortuaryStorePgIntegrationTest {
   assertEquals("RECEIVED",current.state());
   assertEquals(1,rows("mortuary_audit_events",pending.caseId()));
  }
+ @Test void revokedDeathOrIdentityBeforeReleaseAlwaysFailsClosed(){
+  pgOnly();var service=store();
+  var first=store(service,identify(service,receive(service,UUID.randomUUID())));
+  admin().update("UPDATE synqoria_operations.mortuary_authority_evidence "+
+   "SET revoked_at=clock_timestamp() "+
+   "WHERE cell_id=? AND facility_id=? AND decedent_ref=? "+
+   "AND for_action='RECEIVE' AND proof_kind='DEATH_CONFIRMED'",
+   CELL,FAC,first.decedentRef());
+  evidence(first.decedentRef(),first.caseId(),"REVIEW_RELEASE",first.version(),
+   "LEGAL_RELEASE","LEGAL-REVOCATION-CI",ISSUER);
+  evidence(first.decedentRef(),first.caseId(),"REVIEW_RELEASE",first.version(),
+   "RECIPIENT_VERIFIED","RECIPIENT-REVOCATION-CI",ISSUER);
+  final var deniedDeath=first;
+  assertThrows(WorkflowViolation.class,()->service.change(who(REVIEWER,"m27:review"),
+   deniedDeath.caseId(),cmd("REVIEW_RELEASE",deniedDeath.version(),null,null,null,
+    "RECIPIENT-REVOCATION-CI","LEGAL-REVOCATION-CI")));
+  assertEquals("STORED",service.one(who(OFFICER,"m27:read"),first.caseId()).state());
+  var second=store(service,identify(service,receive(service,UUID.randomUUID())));
+  admin().update("UPDATE synqoria_operations.mortuary_authority_evidence "+
+   "SET revoked_at=clock_timestamp() "+
+   "WHERE cell_id=? AND facility_id=? AND decedent_ref=? "+
+   "AND for_action='IDENTIFY' AND proof_kind='IDENTITY_VERIFIED'",
+   CELL,FAC,second.decedentRef());
+  final var deniedIdentity=second;
+  assertThrows(WorkflowViolation.class,()->service.change(who(REVIEWER,"m27:review"),
+   deniedIdentity.caseId(),cmd("REVIEW_RELEASE",deniedIdentity.version(),null,null,null,
+    "RECIPIENT-REVOCATION-CI","LEGAL-REVOCATION-CI")));
+  assertEquals("STORED",service.one(who(OFFICER,"m27:read"),second.caseId()).state());
+ }
+ @Test void independentLegalReviewProofRevokedAfterReviewPreventsSecondAuthorization(){
+  pgOnly();var service=store();
+  var item=store(service,identify(service,receive(service,UUID.randomUUID())));
+  final String legal="LEGAL-REVOKE-AFTER-REVIEW",recipient="RECIP-REVOKE-CI";
+  evidence(item.decedentRef(),item.caseId(),"REVIEW_RELEASE",item.version(),
+   "LEGAL_RELEASE",legal,ISSUER);
+  evidence(item.decedentRef(),item.caseId(),"REVIEW_RELEASE",item.version(),
+   "RECIPIENT_VERIFIED",recipient,ISSUER);
+  item=service.change(who(REVIEWER,"m27:review"),item.caseId(),
+   cmd("REVIEW_RELEASE",item.version(),null,null,null,recipient,legal));
+  assertEquals("RELEASE_REVIEWED",item.state());
+  evidence(item.decedentRef(),item.caseId(),"AUTHORIZE_RELEASE",item.version(),
+   "RELEASE_AUTHORIZATION",legal,ISSUER);
+  evidence(item.decedentRef(),item.caseId(),"AUTHORIZE_RELEASE",item.version(),
+   "RECIPIENT_VERIFIED",recipient,ISSUER);
+  admin().update("UPDATE synqoria_operations.mortuary_authority_evidence "+
+   "SET revoked_at=clock_timestamp() "+
+   "WHERE cell_id=? AND facility_id=? AND case_id=? "+
+   "AND for_action='REVIEW_RELEASE' AND proof_kind='LEGAL_RELEASE'",
+   CELL,FAC,item.caseId());
+  final var pending=item;
+  assertThrows(WorkflowViolation.class,()->service.change(who(APPROVER,"m27:authorize"),
+   pending.caseId(),cmd("AUTHORIZE_RELEASE",pending.version(),null,null,null,recipient,legal)));
+  assertEquals("RELEASE_REVIEWED",service.one(who(OFFICER,"m27:read"),item.caseId()).state());
+ }
 }
