@@ -7,6 +7,7 @@ on:
       - 'services/clinical-core/src/test/java/org/synqoria/triage/**'
       - 'contracts/openapi/synqoria-m03-triage-restricted-v1.yaml'
       - '.github/workflows/m03-triage-java25-ci.yml'
+      - 'tools/run_m03_triage_java25.py'
   push:
     branches: [main]
     paths:
@@ -35,26 +36,8 @@ jobs:
           find services/clinical-core/src/main/java services/clinical-core/src/test/java/org/synqoria/triage -type f -name '*.java' | sort > /tmp/synqoria-m03-sources.list
           test "$(wc -l < /tmp/synqoria-m03-sources.list)" -ge 20
           javac --release 25 -encoding UTF-8 -d /tmp/synqoria-m03-classes @/tmp/synqoria-m03-sources.list
-      - name: Run all M03 existing Java main-style regression and integration tests
-        shell: bash
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          from pathlib import Path
-          import re, subprocess, sys
-          root=Path("services/clinical-core/src/test/java/org/synqoria/triage")
-          classes=[]
-          for path in sorted(root.glob("*Test.java")):
-              text=path.read_text(encoding="utf-8")
-              if re.search(r'public\s+static\s+void\s+main\s*\(',text):
-                  classes.append("org.synqoria.triage."+path.stem)
-          if len(classes)<8:
-              raise SystemExit(f"Missing triage test entrypoints: found {len(classes)}")
-          for name in classes:
-              print("RUN",name,flush=True)
-              subprocess.run(["java","-ea","-cp","/tmp/synqoria-m03-classes",name],check=True,timeout=40)
-          print(f"M03_Java25_synthetic_test_entrypoints_passed={len(classes)}")
-          PY
+      - name: Run all existing M03 Java standalone and individually parameterized batch integration tests
+        run: python tools/run_m03_triage_java25.py
       - name: M03 evidence boundary
         run: |
           echo 'Java25 synthetic triage domain/HTTP boundary tests; not real hospital OIDC, actual PostgreSQL restricted-role integration, or clinical acceptance'
