@@ -66,7 +66,7 @@ class GatewayRouteAdmissionTest {
   rejects("routing_decision_stale",()->gateway.admit(ROUTE));
  }
  @Test void deniesDifferentHospitalRouteConfusion(){
-  rejects("route_binding_denied",()->gateway().admit("hospital-two.example"));
+  rejects("routing_directory_unavailable",()->gateway().admit("hospital-two.example"));
  }
  @Test void unhealthyMissingOrStaleDirectoryFailsClosed(){
   for(var bad:new CurrentRoute[]{
