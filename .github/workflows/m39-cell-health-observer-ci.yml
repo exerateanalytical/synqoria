@@ -1,0 +1,27 @@
+name: SYNQORIA M39 cell health observer (synthetic)
+on:
+  pull_request:
+    paths:
+      - 'tools/m39_cell_health_observer.py'
+      - 'tests/test_m39_cell_health_observer.py'
+      - '.github/workflows/m39-cell-health-observer-ci.yml'
+  push:
+    paths:
+      - 'tools/m39_cell_health_observer.py'
+      - 'tests/test_m39_cell_health_observer.py'
+      - '.github/workflows/m39-cell-health-observer-ci.yml'
+permissions:
+  contents: read
+jobs:
+  synthetic-observer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Test fail-closed probe and reporting logic
+        run: python -m unittest discover -s tests -p 'test_m39_cell_health_observer.py' -v
+      - name: Scope disclaimer
+        run: echo 'Synthetic tests only; no live hospital cell, identity provider or gateway configured.'
