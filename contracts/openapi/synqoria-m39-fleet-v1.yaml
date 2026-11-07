@@ -564,6 +564,867 @@ paths:
           $ref: '#/components/responses/NotFound'
         '422':
           $ref: '#/components/responses/Invalid'
+  /routing/{routeKey}/fence:
+    get:
+      operationId: routingFence
+      summary: Authoritative target, epoch, directory and cell health fence
+      description: |
+        Management-plane-only, independently authenticated live routing fence;
+        requires m39:route_read. One scoped PostgreSQL statement snapshot
+        binds target cell, epoch, directory version and latest observed health.
+        This response is NOT a clinical permission or a gateway destination URL.
+      parameters:
+      - name: routeKey
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: '^[a-z0-9][a-z0-9.-]{2,119}
+    post:
+      operationId: routeSwitch
+      summary: Route switch
+      description: Requires `m39:route_manage`.
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      x-permission: m39:route_manage
+      responses:
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '200':
+          $ref: '#/components/responses/Result'
+        '201':
+          $ref: '#/components/responses/Result'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Invalid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Switch'
+  /releases:
+    get:
+      operationId: releaseList
+      summary: Release list
+      description: Requires `m39:fleet_read`.
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 25
+          minimum: 1
+          maximum: 200
+      x-permission: m39:fleet_read
+      responses:
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '200':
+          $ref: '#/components/responses/Result'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Invalid'
+    post:
+      operationId: releaseCreate
+      summary: Release create
+      description: Requires `m39:release_manage`.
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      x-permission: m39:release_manage
+      responses:
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '200':
+          $ref: '#/components/responses/Result'
+        '201':
+          $ref: '#/components/responses/Result'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Invalid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManifestRequest'
+  /releases/{id}/decision:
+    post:
+      operationId: releaseDecision
+      summary: Release decision
+      description: Requires `m39:release_approve`.
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      x-permission: m39:release_approve
+      responses:
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '200':
+          $ref: '#/components/responses/Result'
+        '201':
+          $ref: '#/components/responses/Result'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Invalid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Decision'
+  /rollouts:
+    get:
+      operationId: rolloutList
+      summary: Rollout list
+      description: Requires `m39:fleet_read`.
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 25
+          minimum: 1
+          maximum: 200
+      x-permission: m39:fleet_read
+      responses:
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '200':
+          $ref: '#/components/responses/Result'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Invalid'
+    post:
+      operationId: rolloutStart
+      summary: Rollout start
+      description: Requires `m39:rollout_operate`.
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      x-permission: m39:rollout_operate
+      responses:
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '200':
+          $ref: '#/components/responses/Result'
+        '201':
+          $ref: '#/components/responses/Result'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Invalid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RolloutRequest'
+  /rollouts/{id}:
+    get:
+      operationId: rollout
+      summary: Rollout
+      description: Requires `m39:fleet_read`.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      x-permission: m39:fleet_read
+      responses:
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '200':
+          $ref: '#/components/responses/Result'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Invalid'
+  /rollouts/{id}/cells/{cellId}/evidence:
+    post:
+      operationId: rolloutEvidence
+      summary: Rollout evidence
+      description: Requires `m39:rollout_operate`.
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: cellId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      x-permission: m39:rollout_operate
+      responses:
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '200':
+          $ref: '#/components/responses/Result'
+        '201':
+          $ref: '#/components/responses/Result'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Invalid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Evidence'
+  /rollouts/{id}/advance:
+    post:
+      operationId: rolloutAdvance
+      summary: Rollout advance
+      description: Requires `m39:rollout_operate`.
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      x-permission: m39:rollout_operate
+      responses:
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '200':
+          $ref: '#/components/responses/Result'
+        '201':
+          $ref: '#/components/responses/Result'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Invalid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Advance'
+  /rollouts/{id}/stop:
+    post:
+      operationId: rolloutStop
+      summary: Rollout stop
+      description: Requires `m39:rollout_operate`.
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      x-permission: m39:rollout_operate
+      responses:
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '200':
+          $ref: '#/components/responses/Result'
+        '201':
+          $ref: '#/components/responses/Result'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Invalid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Stop'
+  /migrations:
+    get:
+      operationId: migrationList
+      summary: Migration list
+      description: Requires `m39:fleet_read`.
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 25
+          minimum: 1
+          maximum: 200
+      x-permission: m39:fleet_read
+      responses:
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '200':
+          $ref: '#/components/responses/Result'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Invalid'
+    post:
+      operationId: migrationPlan
+      summary: Migration plan
+      description: Requires `m39:migration_plan`.
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      x-permission: m39:migration_plan
+      responses:
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '200':
+          $ref: '#/components/responses/Result'
+        '201':
+          $ref: '#/components/responses/Result'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Invalid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Plan'
+  /migrations/{id}:
+    get:
+      operationId: migration
+      summary: Migration
+      description: Requires `m39:fleet_read`.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      x-permission: m39:fleet_read
+      responses:
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '200':
+          $ref: '#/components/responses/Result'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Invalid'
+  /migrations/{id}/steps:
+    post:
+      operationId: migrationStep
+      summary: Migration step
+      description: Requires `m39:migration_operate`.
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      x-permission: m39:migration_operate
+      responses:
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '200':
+          $ref: '#/components/responses/Result'
+        '201':
+          $ref: '#/components/responses/Result'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Invalid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StepRequest'
+  /migrations/{id}/rollback:
+    post:
+      operationId: migrationRollback
+      summary: Migration rollback
+      description: Requires `m39:migration_operate`.
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      x-permission: m39:migration_operate
+      responses:
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '200':
+          $ref: '#/components/responses/Result'
+        '201':
+          $ref: '#/components/responses/Result'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Invalid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Rollback'
+components:
+  securitySchemes:
+    oidc:
+      type: openIdConnect
+      openIdConnectUrl: https://idp.invalid/.well-known/openid-configuration
+      description: Placeholder; issuer configured per hospital cell. Claims synqoria_cell, synqoria_facility, synqoria_permissions, synqoria_grant_expires.
+  parameters:
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    Result:
+      description: Resource, page or result object (see operation description)
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    Unauthorized:
+      description: identity_denied or grant_expired
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: permission_denied, grant_denied or tenant_scope_denied or an independence rule (*_must_be_independent)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Absent or outside the caller's cell/facility
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Conflict:
+      description: stale_version, idempotency_collision, invalid_transition, stale_placement_epoch, not_qualified, incompatible_release, evidence_mismatch,
+        verification_failed, irreversible, rollout_stopped, stage_not_open, stage_incomplete, health_gate_failed, qualification_incomplete, migration_in_progress,
+        residency_violation, duplicate_record
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Invalid:
+      description: Semantic validation failure
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    RoutingFence:
+      type: object
+      additionalProperties: false
+      required: [routeKey, cellId, placementEpoch, directoryVersion, cellState, health, observedAt]
+      properties:
+        routeKey:
+          type: string
+        cellId:
+          type: string
+          format: uuid
+        placementEpoch:
+          type: integer
+          format: int64
+          minimum: 0
+        directoryVersion:
+          type: integer
+          format: int64
+          minimum: 0
+        cellState:
+          type: string
+          enum: [ACTIVE]
+        health:
+          type: string
+          enum: [HEALTHY, DEGRADED]
+        observedAt:
+          type: string
+          format: date-time
+    Error:
+      type: object
+      required:
+      - error
+      - details
+      properties:
+        error:
+          type: string
+        details:
+          type: array
+          items:
+            type: string
+    ProvisionRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        requestKey:
+          type: string
+        tenantKey:
+          type: string
+        tenantName:
+          type: string
+        region:
+          type: string
+        tier:
+          type: string
+        capacityUnits:
+          type: integer
+        serviceProfile:
+          type: array
+          items:
+            type: string
+        storageIsolation:
+          type: string
+        residencyPolicy:
+          type: string
+        rollbackMetadata:
+          type: object
+          additionalProperties: true
+      required:
+      - capacityUnits
+    Decision:
+      type: object
+      additionalProperties: false
+      properties:
+        expectedVersion:
+          type: integer
+        approve:
+          type: boolean
+      required:
+      - expectedVersion
+      - approve
+    ApplyRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        expectedVersion:
+          type: integer
+        executorResult:
+          type: string
+        failureCode:
+          type: string
+      required:
+      - expectedVersion
+    RollbackRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        expectedVersion:
+          type: integer
+        reason:
+          type: string
+      required:
+      - expectedVersion
+    Transition:
+      type: object
+      additionalProperties: false
+      properties:
+        expectedVersion:
+          type: integer
+        to:
+          type: string
+        reason:
+          type: string
+      required:
+      - expectedVersion
+    CheckRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        checkKey:
+          type: string
+        result:
+          type: string
+        evidenceRef:
+          type: string
+        detail:
+          type: string
+    Complete:
+      type: object
+      additionalProperties: false
+      properties:
+        expectedVersion:
+          type: integer
+      required:
+      - expectedVersion
+    HealthReport:
+      type: object
+      additionalProperties: false
+      properties:
+        status:
+          type: string
+        observedAt:
+          type: string
+          format: date-time
+        releaseKey:
+          type: string
+    RouteRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        routeKey:
+          type: string
+        cellId:
+          type: string
+          format: uuid
+    Switch:
+      type: object
+      additionalProperties: false
+      properties:
+        expectedVersion:
+          type: integer
+        expectedEpoch:
+          type: integer
+        toCell:
+          type: string
+          format: uuid
+        reason:
+          type: string
+      required:
+      - expectedVersion
+      - expectedEpoch
+    ManifestRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        releaseKey:
+          type: string
+        artifactDigest:
+          type: string
+        minSchema:
+          type: integer
+        maxSchema:
+          type: integer
+      required:
+      - minSchema
+      - maxSchema
+    RolloutRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        manifestId:
+          type: string
+          format: uuid
+        stages:
+          type: array
+          items:
+            type: array
+            items:
+              type: string
+              format: uuid
+    Evidence:
+      type: object
+      additionalProperties: false
+      properties:
+        status:
+          type: string
+        evidenceRef:
+          type: string
+        artifactDigest:
+          type: string
+    Advance:
+      type: object
+      additionalProperties: false
+      properties:
+        expectedVersion:
+          type: integer
+      required:
+      - expectedVersion
+    Stop:
+      type: object
+      additionalProperties: false
+      properties:
+        expectedVersion:
+          type: integer
+        reason:
+          type: string
+      required:
+      - expectedVersion
+    Plan:
+      type: object
+      additionalProperties: false
+      properties:
+        sourceCell:
+          type: string
+          format: uuid
+        targetCell:
+          type: string
+          format: uuid
+        routeId:
+          type: string
+          format: uuid
+    StepRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        expectedVersion:
+          type: integer
+        step:
+          type: string
+        evidence:
+          type: string
+        sourceDigest:
+          type: string
+        targetDigest:
+          type: string
+        lagMs:
+          type: integer
+        expectedEpoch:
+          type: integer
+      required:
+      - expectedVersion
+    Rollback:
+      type: object
+      additionalProperties: false
+      properties:
+        expectedVersion:
+          type: integer
+        reason:
+          type: string
+        expectedEpoch:
+          type: integer
+      required:
+      - expectedVersion
+x-permissions:
+  vocabulary:
+  - m39:cell_operate
+  - m39:fleet_read
+  - m39:health_report
+  - m39:migration_approve
+  - m39:migration_operate
+  - m39:migration_plan
+  - m39:qualify_complete
+  - m39:qualify_record
+  - m39:release_approve
+  - m39:release_manage
+  - m39:rollout_operate
+  - m39:route_manage
+  - m39:route_read
+  - m39:tenant_approve
+  - m39:tenant_request
+  checker:
+  - m39:migration_approve
+  - m39:qualify_complete
+  - m39:release_approve
+  - m39:tenant_approve
+
+      x-permission: m39:route_read
+      responses:
+        '200':
+          description: Live, routable authoritative target
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoutingFence'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Invalid'
+        '503':
+          $ref: '#/components/responses/Unavailable'
   /routes/{id}/switch:
     post:
       operationId: routeSwitch
