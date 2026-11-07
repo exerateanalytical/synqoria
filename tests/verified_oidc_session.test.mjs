@@ -11,7 +11,7 @@ const CELL="00000000-0000-4000-8000-000000000011";
 const FAC="00000000-0000-4000-8000-000000000022";
 const USER="00000000-0000-4000-8000-000000000033";
 const issuer="https://id.example.org/realms/synqoria",audience="synqoria-operations";
-const options={issuer,audience,jwks,now:TIME};
+const options={issuer,audience,jwks,now:TIME,expectedCell:CELL,expectedFacility:FAC};
 const claims={iss:issuer,aud:audience,sub:USER,synqoria_cell:CELL,synqoria_facility:FAC,exp:T+300,iat:T-30,nbf:T-30,synqoria_grant_expires:T+200,synqoria_permissions:["m38:sync_submit","m38:sync_read"]};
 function jwt(payload=claims,header={alg:"RS256",typ:"JWT",kid:"current"}){
  const part=s=>Buffer.from(JSON.stringify(s)).toString("base64url");
