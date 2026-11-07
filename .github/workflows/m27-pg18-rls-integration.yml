@@ -37,6 +37,9 @@ jobs:
             echo "MIGRATION $migration"
             docker exec -i synqoria-m27-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < "$migration"
           done
+      - name: Apply M27 concurrency safety fence and single-custody-bay constraint
+        run: |
+          docker exec -i synqoria-m27-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < services/operations-core/db/migration/V006__mortuary_release_fence.sql
       - name: Confirm 22 FORCE RLS tables and strict runtime read-only external authority
         run: |
           set -euo pipefail

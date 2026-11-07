@@ -130,15 +130,17 @@ public final class MortuaryStore {
  private void proof(OperationWorkflow.Actor actor,UUID decedent,UUID id,String action,
                     long version,String kind,String external){
   String ref=code(external);
-  Long found=jdbc.queryForObject(
-   "SELECT count(*) FROM synqoria_operations.mortuary_authority_evidence " +
+  // Lock the verified proof until the custody/release transaction commits.
+  // A simultaneous independent revocation cannot invalidate an already-read proof mid-command.
+  List<UUID> found=jdbc.query(
+   "SELECT proof_id FROM synqoria_operations.mortuary_authority_evidence " +
    "WHERE cell_id=? AND facility_id=? AND decedent_ref=? " +
    "AND case_id IS NOT DISTINCT FROM ?::uuid AND for_action=? AND expected_version=? " +
    "AND proof_kind=? AND external_ref=? AND approved_by<>? AND revoked_at IS NULL " +
-   "AND valid_from<=clock_timestamp() AND valid_until>clock_timestamp()",
-   Long.class,actor.cell(),actor.facility(),decedent,id,action,version,kind,ref,actor.actor());
-  if(found==null||found!=1)
-   throw new WorkflowViolation("independent_mortuary_evidence_required");
+   "AND valid_from<=clock_timestamp() AND valid_until>clock_timestamp() FOR SHARE",
+   (rs,i)->rs.getObject("proof_id",UUID.class),
+   actor.cell(),actor.facility(),decedent,id,action,version,kind,ref,actor.actor());
+  if(found.isEmpty())throw new WorkflowViolation("independent_mortuary_evidence_required");
  }
  private void noLegalHolds(OperationWorkflow.Actor actor,UUID id){
   Long active=jdbc.queryForObject(
@@ -149,13 +151,13 @@ public final class MortuaryStore {
  }
  private void receiverOnShift(OperationWorkflow.Actor actor,UUID id){
   nonNull(id);
-  Long accepted=jdbc.queryForObject(
-   "SELECT count(*) FROM synqoria_operations.workforce_grants "+
+  List<UUID> accepted=jdbc.query(
+   "SELECT actor_id FROM synqoria_operations.workforce_grants "+
    "WHERE cell_id=? AND facility_id=? AND actor_id=? AND active "+
    "AND shift_from<=clock_timestamp() AND shift_until>clock_timestamp() "+
-   "AND valid_until>clock_timestamp() AND 'm27:custody_receive'=ANY(permissions)",
-   Long.class,actor.cell(),actor.facility(),id);
-  if(accepted==null||accepted!=1)throw new WorkflowViolation("custody_receiver_not_on_shift");
+   "AND valid_until>clock_timestamp() AND 'm27:custody_receive'=ANY(permissions) FOR SHARE",
+   (rs,i)->rs.getObject("actor_id",UUID.class),actor.cell(),actor.facility(),id);
+  if(accepted.size()!=1)throw new WorkflowViolation("custody_receiver_not_on_shift");
  }
  private void event(OperationWorkflow.Actor actor,UUID command,UUID id,long version,
                    String action,String previous,String next,String detailsHash){
