@@ -37,3 +37,30 @@ python tests/test_m39_openapi_contract.py
 ```
 
 CI must also run the existing M39 Java 25/PostgreSQL 18.6 service verification and consolidated-source integration. Synthetic tests prove failure handling but do **not** prove a deployed gateway.
+
+
+## Authenticated management-plane HTTPS client / bootstrap registry (2026-11-07)
+
+The production-oriented integration seam now includes:
+
+- \`GatewayControlPlaneHttpClient\` for the **real** HTTPS \`GET /api/v1/fleet/routing/{routeKey}\` signed-decision and \`GET /api/v1/fleet/routing/{routeKey}/fence\` live-directory reads. It rejects user-derived route keys, unexpected URLs, redirects, bad statuses/content types, missing \`no-store\`, malformed UTF-8/JSON, invalid UUIDs/epochs/timestamps/signatures, and response bodies over 8 KiB.
+- \`GatewayControlPlaneHttpClient.MutualTlsExchange\` builds a private Java 25 HTTP/2 client with no redirects, HTTPS peer-name verification, a caller-provided **workload** TLS context, and strict two/three-second connect/request timeouts. Its workload-only OAuth2 token provider is called afresh for every read; browser/clinical staff tokens must never be passed to it. The transport is not bootstrapped until actual workload certificate/key/trust-store provisioning is performed.
+- \`GatewayCellDestinationRegistry\` is an immutable deployment-provisioned UUID→internal HTTPS upstream allowlist. Unknown cells fail closed. The registry is never constructed from an upstream API response, user-provided URL or \`Host\` header.
+- \`GatewayControlPlaneHttpClientTest\` verifies full signed-envelope and live-fence decoding and fail-closed error cases with an injected HTTP exchange, including a two-cell switch. This is a deterministic HTTP-boundary test; the test transport is synthetic.
+
+**Still not done:** an operational Kong/Envoy HTTP filter or edge router, real issued workload client certificates and live OAuth2 credential exchange, actual two-cell HTTPS upstream connectivity, production traffic epoch fencing/stream draining, DNS/network-policy control, secret rotation, and live end-to-end tests. A successful CI build or fake exchange does not establish these. Keep routing unavailable in deployments without those controls. Do not count this as clinical hospital acceptance.
+
+A deployment adapter can wire the two interfaces directly:
+
+\`\`\`java
+GatewayControlPlaneHttpClient management = new GatewayControlPlaneHttpClient(
+    trustedFleetControlOrigin, trustedFleetControlDnsName,
+    new GatewayControlPlaneHttpClient.MutualTlsExchange(workloadSslContext, workloadTokens),
+    jacksonJsonMapper);
+GatewayCellDestinationRegistry registry =
+    new GatewayCellDestinationRegistry(trustedDeploymentCellUrls, ".svc.cluster.local");
+GatewayRouteAdmission admission = new GatewayRouteAdmission(
+    secretRoutingKey, clock, management, management, registry, ".svc.cluster.local");
+// The actual gateway MUST separately enforce OIDC clinical RBAC + mTLS upstream
+// and re-fence against a fresh epoch immediately before stream forwarding.
+\`\`\`
