@@ -1,0 +1,381 @@
+{
+ "capturedFrom": "gh run list --limit 300 (all branches; latest run per workflow name; online snapshot - NOT necessarily at the baseline SHA)",
+ "runs": [
+  {
+   "workflow": "Engineering checks (not clinical certification)",
+   "conclusion": "success",
+   "headSha": "20fcf06f10a07ca4f7fe87eeb006856dcc56fb86",
+   "headBranch": "work/claude-m38-device-client-integration-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42375026369",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "M02 5-screen Next16 React19 verified build",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456590",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "M02 booking Java25/27 PostgreSQL18.6 integration",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456534",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "M16 5-screen Next16 React19 verified build",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456504",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "M16 referral Java25/27 PostgreSQL18.6 evidence lifecycle",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456662",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "M27 canonical 5-screen React/Next latest-stable build",
+   "conclusion": "success",
+   "headSha": "20fcf06f10a07ca4f7fe87eeb006856dcc56fb86",
+   "headBranch": "work/claude-m38-device-client-integration-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42375026251",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "M27 mortuary PostgreSQL18.6 FORCE RLS and custody evidence",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456509",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "M27 mortuary domain Java25 LTS and Java27 verification",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456572",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "M32 consent privacy Java25/27 and PostgreSQL18.6 isolation tests",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456431",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "M32 privacy five-screen Next16 React19 verified build",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456436",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "M34 audit Java25/27 and PostgreSQL18.6 evidence integrity",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456544",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "M34 audit five-screen Next16 React19 build",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456533",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "M35 6-screen Next16 React19 verified build",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456414",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "M35 integration governance Java25/27 PostgreSQL18.6",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456370",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "OPS001 Next.js pinned-lock candidate build",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456549",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "P03 B0053 least privilege PostgreSQL identities",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456429",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "P07 M04-M06 internal domain regression (not certification)",
+   "conclusion": "success",
+   "headSha": "e82ccefe318777b96e6006d946260e83142b1b62",
+   "headBranch": "work/chatgpt-m39-authoritative-routing-fence-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42374250431",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "P07 v0.67.0 Inbox admission and recovery checks (not certification)",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456371",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA M24 HR and payroll CI (engineering evidence, not legal or payroll compliance sign-off)",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456469",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA M26 nutrition CI (engineering evidence, not clinical certification)",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456324",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA M28 analytics and BI CI (engineering evidence, not clinical, financial or governance sign-off)",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456466",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA M30 clinical content CI (engineering evidence, not clinical approval)",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456441",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA M38 offline device client CI (engineering evidence, not hospital acceptance or certification)",
+   "conclusion": "failure",
+   "headSha": "20fcf06f10a07ca4f7fe87eeb006856dcc56fb86",
+   "headBranch": "work/claude-m38-device-client-integration-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42375026185",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA M38 offline synchronization CI (engineering evidence, not clinical approval or security certification)",
+   "conclusion": "success",
+   "headSha": "20fcf06f10a07ca4f7fe87eeb006856dcc56fb86",
+   "headBranch": "work/claude-m38-device-client-integration-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42375026147",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA M39 cell health observer (synthetic)",
+   "conclusion": "success",
+   "headSha": "41751410bb5e353ab8a0d61ab6841c9a573e48b7",
+   "headBranch": "work/claude-m38-device-client-integration-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42373844230",
+   "event": "push"
+  },
+  {
+   "workflow": "SYNQORIA M39 fleet lifecycle CI (engineering evidence, not operational acceptance; no real cell is touched)",
+   "conclusion": "success",
+   "headSha": "e82ccefe318777b96e6006d946260e83142b1b62",
+   "headBranch": "work/chatgpt-m39-authoritative-routing-fence-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42374250482",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA M39 generated route fence contract sync",
+   "conclusion": "success",
+   "headSha": "01b66e9d75032113c9e1c5ae0dd8d3aa508ff1dc",
+   "headBranch": "work/chatgpt-m39-authoritative-routing-fence-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42374035520",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA M40 artifact integrity utility (synthetic only)",
+   "conclusion": "success",
+   "headSha": "41751410bb5e353ab8a0d61ab6841c9a573e48b7",
+   "headBranch": "work/claude-m38-device-client-integration-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42373844236",
+   "event": "push"
+  },
+  {
+   "workflow": "SYNQORIA M40 catalogue-bound backup integrity (synthetic)",
+   "conclusion": "success",
+   "headSha": "41751410bb5e353ab8a0d61ab6841c9a573e48b7",
+   "headBranch": "work/claude-m38-device-client-integration-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42373844231",
+   "event": "push"
+  },
+  {
+   "workflow": "SYNQORIA M40 reliability CI (engineering evidence, not operational acceptance; no recovery guarantee)",
+   "conclusion": "success",
+   "headSha": "b5cdc2e182fd9e2156de4ec70f5249477fc99b41",
+   "headBranch": "work/claude-m40-reliability-recovery-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42336041036",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA OPS001 shared staff screens",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456563",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA P03 OIDC one-use callback replay",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456685",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA P03 audited authorization hardening",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456491",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA P03 identity replay PostgreSQL integration",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456461",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA P03 pinned OIDC staff verification",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456379",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA P03 restricted staff-session janitor",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456580",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA P03 staff grants and identity gate",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456453",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA P03 staff session PostgreSQL integration",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456329",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA P03 verified OIDC session boundary (synthetic signed tokens)",
+   "conclusion": "success",
+   "headSha": "20fcf06f10a07ca4f7fe87eeb006856dcc56fb86",
+   "headBranch": "work/claude-m38-device-client-integration-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42375021232",
+   "event": "push"
+  },
+  {
+   "workflow": "SYNQORIA P03 verified session route and Next build",
+   "conclusion": "success",
+   "headSha": "20fcf06f10a07ca4f7fe87eeb006856dcc56fb86",
+   "headBranch": "work/claude-m38-device-client-integration-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42375021197",
+   "event": "push"
+  },
+  {
+   "workflow": "SYNQORIA UI prototype contract checks",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456746",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA all-screen source and Next build gate",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456350",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA automatic post-merge reconciliation",
+   "conclusion": "success",
+   "headSha": "8ce6f891827080b9fee270cbd896c171a5037167",
+   "headBranch": "main",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42374410072",
+   "event": "push"
+  },
+  {
+   "workflow": "SYNQORIA consolidated-source integration (not hospital release)",
+   "conclusion": "success",
+   "headSha": "20fcf06f10a07ca4f7fe87eeb006856dcc56fb86",
+   "headBranch": "work/claude-m38-device-client-integration-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42375026318",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA hospital document template contracts and Next build",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456374",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA hospital printable document library",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456464",
+   "event": "pull_request"
+  },
+  {
+   "workflow": "SYNQORIA identity UI build and browser gates",
+   "conclusion": "failure",
+   "headSha": "9ba6ba5cf94685535736a4b10695dccce71b50bf",
+   "headBranch": "integration/synqoria-production-reconciliation-2026-11-07",
+   "url": "https://github.com/exerateanalytical/synqoria/actions/runs/42330456325",
+   "event": "pull_request"
+  }
+ ]
+}

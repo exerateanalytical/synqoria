@@ -1,0 +1,594 @@
+{
+ "schemaVersion": "synqoria.reconciliation.anchors.v1",
+ "purpose": "Curated, reviewable attribution of source locations to canonical modules where the source is named by capability rather than by module id. Every anchor is verified by the scanner (paths must exist at the baseline SHA and the citation document must exist). An anchor is an ATTRIBUTION CLAIM about where code lives, never a statement that the module is complete.",
+ "serviceOwnership": {
+  "services/scheduling-core": {
+   "modules": [
+    "M02"
+   ],
+   "citation": "docs/program/M02_SCHEDULING_ENGINEERING_2026-11-07.md"
+  },
+  "services/referrals-core": {
+   "modules": [
+    "M16"
+   ],
+   "citation": "docs/program/M16_REFERRALS_ENGINEERING_2026-11-07.md"
+  },
+  "services/hr-payroll-core": {
+   "modules": [
+    "M24"
+   ],
+   "citation": "docs/program/handoffs/M24_HR_PAYROLL_2026-11-07.md"
+  },
+  "services/nutrition-core": {
+   "modules": [
+    "M26"
+   ],
+   "citation": "docs/program/handoffs/M26_NUTRITION_2026-11-07.md"
+  },
+  "services/analytics-core": {
+   "modules": [
+    "M28"
+   ],
+   "citation": "docs/program/handoffs/M28_ANALYTICS_2026-11-07.md"
+  },
+  "services/clinical-content-core": {
+   "modules": [
+    "M30"
+   ],
+   "citation": "docs/program/handoffs/M30_CLINICAL_CONTENT_2026-11-07.md"
+  },
+  "services/privacy-core": {
+   "modules": [
+    "M32"
+   ],
+   "citation": "docs/program/M32_PRIVACY_ENGINEERING_2026-11-07.md"
+  },
+  "services/audit-core": {
+   "modules": [
+    "M34"
+   ],
+   "citation": "docs/program/M34_AUDIT_PROVENANCE_ENGINEERING_2026-11-07.md"
+  },
+  "services/integration-management-core": {
+   "modules": [
+    "M35"
+   ],
+   "citation": "docs/program/M35_INTEGRATIONS_ENGINEERING_2026-11-07.md"
+  },
+  "services/offline-sync-core": {
+   "modules": [
+    "M38"
+   ],
+   "citation": "docs/program/handoffs/M38_OFFLINE_SYNC_2026-11-07.md"
+  },
+  "services/cell-lifecycle-core": {
+   "modules": [
+    "M39"
+   ],
+   "citation": "docs/program/handoffs/M39_CELL_LIFECYCLE_2026-11-07.md"
+  },
+  "services/reliability-core": {
+   "modules": [
+    "M40"
+   ],
+   "citation": "docs/program/handoffs/M40_RELIABILITY_2026-11-07.md"
+  },
+  "services/operations-core": {
+   "modules": [
+    "M21",
+    "M22",
+    "M23",
+    "M25",
+    "M27",
+    "M29",
+    "M31",
+    "M37"
+   ],
+   "citation": "docs/program/SEVEN_OPERATIONS_MODULES_PLAN_2026-11-06.md",
+   "note": "M27 mortuary has its own sub-package; the other seven share one catalogue-driven workflow engine"
+  }
+ },
+ "pathAnchors": [
+  {
+   "module": "M01",
+   "paths": [
+    "services/clinical-core/src/main/java/org/synqoria/registration",
+    "services/clinical-core/db/migration/V003__patient_identity_consent_foundation.sql",
+    "services/clinical-core/db/migration/V005__patient_registration_foundation.sql",
+    "services/clinical-core/db/migration/V006__identity_lookup_quarantine.sql",
+    "services/clinical-core/db/migration/V007__registration_review_quarantine.sql",
+    "contracts/openapi/synqoria-registration-draft.yaml",
+    "contracts/openapi/synqoria-registration-release-gate.yaml"
+   ],
+   "citation": "docs/program/V012_REGISTRATION_IMPLEMENTATION_REVIEW.md",
+   "scope": "registration, identity lookup and review slices; quarantined, not live-integrated"
+  },
+  {
+   "module": "M02",
+   "paths": [
+    "services/clinical-core/src/main/java/org/synqoria/scheduling",
+    "services/clinical-core/db/migration/V012__appointment_reservation_quarantine.sql",
+    "services/clinical-core/db/migration/V013__appointment_restricted_audit_quarantine.sql",
+    "services/clinical-core/db/migration/V014__appointment_idempotency_quarantine.sql",
+    "contracts/openapi/synqoria-appointments-quarantine.yaml"
+   ],
+   "citation": "docs/program/M02_SCHEDULING_TRANSACTION_CONTRACT.md",
+   "scope": "earlier quarantined scheduling slice that predates services/scheduling-core (possible overlap, see duplicate map)"
+  },
+  {
+   "module": "M03",
+   "paths": [
+    "services/clinical-core/src/main/java/org/synqoria/triage",
+    "services/clinical-core/db/migration/V015__triage_workflow_quarantine.sql",
+    "services/clinical-core/db/migration/V016__triage_encrypted_snapshot_quarantine.sql",
+    "services/clinical-core/db/migration/V017__triage_secure_receipts_quarantine.sql",
+    "services/clinical-core/db/migration/V018__triage_secure_genesis_quarantine.sql",
+    "services/clinical-core/db/migration/V019__triage_secure_correlated_evidence_quarantine.sql",
+    "contracts/openapi/synqoria-m03-triage-restricted-v1.yaml"
+   ],
+   "citation": "docs/engineering/M03_TRIAGE_v0.57.0_INTERNAL.md",
+   "scope": "restricted triage queue, persistence and HTTP; quarantined"
+  },
+  {
+   "module": "M04",
+   "paths": [
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal",
+    "services/clinical-core/db/migration/V020__longitudinal_secure_quarantine.sql",
+    "contracts/openapi/synqoria-m040506-restricted-v1.json"
+   ],
+   "citation": "docs/engineering/P07_LONGITUDINAL_CORE_v0.60.0.md",
+   "scope": "shared longitudinal slice; attribution to M04 versus M05/M06 is NOT verified at record level"
+  },
+  {
+   "module": "M05",
+   "paths": [
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal",
+    "services/clinical-core/db/migration/V020__longitudinal_secure_quarantine.sql",
+    "contracts/openapi/synqoria-m040506-restricted-v1.json"
+   ],
+   "citation": "docs/engineering/P07_LONGITUDINAL_CORE_v0.60.0.md",
+   "scope": "shared longitudinal slice; attribution to M04 versus M05/M06 is NOT verified at record level"
+  },
+  {
+   "module": "M06",
+   "paths": [
+    "services/clinical-core/src/main/java/org/synqoria/longitudinal",
+    "services/clinical-core/db/migration/V020__longitudinal_secure_quarantine.sql",
+    "contracts/openapi/synqoria-m040506-restricted-v1.json"
+   ],
+   "citation": "docs/engineering/P07_LONGITUDINAL_CORE_v0.60.0.md",
+   "scope": "shared longitudinal slice; attribution to M04 versus M05/M06 is NOT verified at record level"
+  },
+  {
+   "module": "M33",
+   "paths": [
+    "services/identity/db",
+    "services/clinical-core/src/main/java/org/synqoria/security",
+    "apps/web/lib/verified-oidc-session.mjs",
+    "apps/web/lib/operations-verified-session.mjs",
+    "apps/web/lib/operations-auth.ts"
+   ],
+   "citation": "docs/program/P03_VERIFIED_OIDC_OFFLINE_SESSION_HANDOFF_2026-11-07.md",
+   "scope": "staff identity, sessions, OIDC verification (P03); not a workforce-privilege administration module"
+  },
+  {
+   "module": "M24",
+   "paths": [
+    "apps/web/components/hr",
+    "apps/web/lib/hr",
+    "apps/web/app/workforce/hr",
+    "apps/web/app/api/hr"
+   ],
+   "citation": "docs/program/handoffs/M24_HR_PAYROLL_2026-11-07.md",
+   "scope": "M24 web screens"
+  },
+  {
+   "module": "M26",
+   "paths": [
+    "apps/web/components/nutrition",
+    "apps/web/lib/nutrition",
+    "apps/web/app/workforce/nutrition",
+    "apps/web/app/api/nutrition"
+   ],
+   "citation": "docs/program/handoffs/M26_NUTRITION_2026-11-07.md",
+   "scope": "M26 web screens"
+  },
+  {
+   "module": "M28",
+   "paths": [
+    "apps/web/components/analytics",
+    "apps/web/lib/analytics",
+    "apps/web/app/workforce/analytics",
+    "apps/web/app/api/analytics"
+   ],
+   "citation": "docs/program/handoffs/M28_ANALYTICS_2026-11-07.md",
+   "scope": "M28 web screens"
+  },
+  {
+   "module": "M30",
+   "paths": [
+    "apps/web/components/content",
+    "apps/web/lib/content",
+    "apps/web/app/workforce/content",
+    "apps/web/app/api/content"
+   ],
+   "citation": "docs/program/handoffs/M30_CLINICAL_CONTENT_2026-11-07.md",
+   "scope": "M30 web screens"
+  },
+  {
+   "module": "M32",
+   "paths": [
+    "apps/web/components/privacy",
+    "apps/web/lib/privacy",
+    "apps/web/app/workforce/privacy",
+    "apps/web/app/api/privacy"
+   ],
+   "citation": "docs/program/M32_PRIVACY_ENGINEERING_2026-11-07.md",
+   "scope": "M32 web screens"
+  },
+  {
+   "module": "M34",
+   "paths": [
+    "apps/web/components/audit",
+    "apps/web/lib/audit",
+    "apps/web/app/workforce/audit",
+    "apps/web/app/api/audit"
+   ],
+   "citation": "docs/program/M34_AUDIT_PROVENANCE_ENGINEERING_2026-11-07.md",
+   "scope": "M34 web screens"
+  },
+  {
+   "module": "M35",
+   "paths": [
+    "apps/web/components/integrations",
+    "apps/web/lib/integrations",
+    "apps/web/app/workforce/integrations",
+    "apps/web/app/api/integrations"
+   ],
+   "citation": "docs/program/M35_INTEGRATIONS_ENGINEERING_2026-11-07.md",
+   "scope": "M35 web screens"
+  },
+  {
+   "module": "M16",
+   "paths": [
+    "apps/web/components/referrals",
+    "apps/web/lib/referrals",
+    "apps/web/app/workforce/referrals",
+    "apps/web/app/api/referrals"
+   ],
+   "citation": "docs/program/M16_REFERRALS_ENGINEERING_2026-11-07.md",
+   "scope": "M16 web screens"
+  },
+  {
+   "module": "M02",
+   "paths": [
+    "apps/web/components/scheduling",
+    "apps/web/lib/scheduling",
+    "apps/web/app/workforce/scheduling",
+    "apps/web/app/api/scheduling"
+   ],
+   "citation": "docs/program/M02_SCHEDULING_ENGINEERING_2026-11-07.md",
+   "scope": "M02 web screens"
+  },
+  {
+   "module": "M38",
+   "paths": [
+    "apps/web/components/offline",
+    "apps/web/lib/offline",
+    "apps/web/app/workforce/offline",
+    "apps/web/app/api/offline"
+   ],
+   "citation": "docs/program/handoffs/M38_OFFLINE_SYNC_2026-11-07.md",
+   "scope": "M38 server-backed web screens (device client is PR #56, not in baseline)"
+  },
+  {
+   "module": "M39",
+   "paths": [
+    "apps/web/components/fleet",
+    "apps/web/lib/fleet",
+    "apps/web/app/workforce/fleet",
+    "apps/web/app/api/fleet"
+   ],
+   "citation": "docs/program/handoffs/M39_CELL_LIFECYCLE_2026-11-07.md",
+   "scope": "M39 web screens"
+  },
+  {
+   "module": "M40",
+   "paths": [
+    "apps/web/components/reliability",
+    "apps/web/lib/reliability",
+    "apps/web/app/workforce/reliability",
+    "apps/web/app/api/reliability"
+   ],
+   "citation": "docs/program/handoffs/M40_RELIABILITY_2026-11-07.md",
+   "scope": "M40 web screens"
+  },
+  {
+   "module": "M21",
+   "paths": [
+    "apps/web/components/OperationsWorkbench.tsx",
+    "apps/web/lib/operations-screen-catalog.json",
+    "apps/web/lib/operations-screen-flows.json",
+    "apps/web/app/workforce/operations",
+    "apps/web/app/api/operations"
+   ],
+   "citation": "docs/program/SEVEN_OPERATIONS_MODULES_PLAN_2026-11-06.md",
+   "scope": "shared catalogue-driven operations workbench; screens of the seven modules share one component and one route family (not module-specific code)"
+  },
+  {
+   "module": "M22",
+   "paths": [
+    "apps/web/components/OperationsWorkbench.tsx",
+    "apps/web/lib/operations-screen-catalog.json",
+    "apps/web/lib/operations-screen-flows.json",
+    "apps/web/app/workforce/operations",
+    "apps/web/app/api/operations"
+   ],
+   "citation": "docs/program/SEVEN_OPERATIONS_MODULES_PLAN_2026-11-06.md",
+   "scope": "shared catalogue-driven operations workbench; screens of the seven modules share one component and one route family (not module-specific code)"
+  },
+  {
+   "module": "M23",
+   "paths": [
+    "apps/web/components/OperationsWorkbench.tsx",
+    "apps/web/lib/operations-screen-catalog.json",
+    "apps/web/lib/operations-screen-flows.json",
+    "apps/web/app/workforce/operations",
+    "apps/web/app/api/operations"
+   ],
+   "citation": "docs/program/SEVEN_OPERATIONS_MODULES_PLAN_2026-11-06.md",
+   "scope": "shared catalogue-driven operations workbench; screens of the seven modules share one component and one route family (not module-specific code)"
+  },
+  {
+   "module": "M25",
+   "paths": [
+    "apps/web/components/OperationsWorkbench.tsx",
+    "apps/web/lib/operations-screen-catalog.json",
+    "apps/web/lib/operations-screen-flows.json",
+    "apps/web/app/workforce/operations",
+    "apps/web/app/api/operations"
+   ],
+   "citation": "docs/program/SEVEN_OPERATIONS_MODULES_PLAN_2026-11-06.md",
+   "scope": "shared catalogue-driven operations workbench; screens of the seven modules share one component and one route family (not module-specific code)"
+  },
+  {
+   "module": "M29",
+   "paths": [
+    "apps/web/components/OperationsWorkbench.tsx",
+    "apps/web/lib/operations-screen-catalog.json",
+    "apps/web/lib/operations-screen-flows.json",
+    "apps/web/app/workforce/operations",
+    "apps/web/app/api/operations"
+   ],
+   "citation": "docs/program/SEVEN_OPERATIONS_MODULES_PLAN_2026-11-06.md",
+   "scope": "shared catalogue-driven operations workbench; screens of the seven modules share one component and one route family (not module-specific code)"
+  },
+  {
+   "module": "M31",
+   "paths": [
+    "apps/web/components/OperationsWorkbench.tsx",
+    "apps/web/lib/operations-screen-catalog.json",
+    "apps/web/lib/operations-screen-flows.json",
+    "apps/web/app/workforce/operations",
+    "apps/web/app/api/operations"
+   ],
+   "citation": "docs/program/SEVEN_OPERATIONS_MODULES_PLAN_2026-11-06.md",
+   "scope": "shared catalogue-driven operations workbench; screens of the seven modules share one component and one route family (not module-specific code)"
+  },
+  {
+   "module": "M37",
+   "paths": [
+    "apps/web/components/OperationsWorkbench.tsx",
+    "apps/web/lib/operations-screen-catalog.json",
+    "apps/web/lib/operations-screen-flows.json",
+    "apps/web/app/workforce/operations",
+    "apps/web/app/api/operations"
+   ],
+   "citation": "docs/program/SEVEN_OPERATIONS_MODULES_PLAN_2026-11-06.md",
+   "scope": "shared catalogue-driven operations workbench; screens of the seven modules share one component and one route family (not module-specific code)"
+  },
+  {
+   "module": "M27",
+   "paths": [
+    "apps/web/components/MortuaryWorkbench.tsx",
+    "apps/web/lib/mortuary-screen-catalog.json",
+    "apps/web/app/workforce/mortuary"
+   ],
+   "citation": "docs/program/M27_MORTUARY_ENGINEERING_2026-11-07.md",
+   "scope": "M27 web screens"
+  },
+  {
+   "module": "M03",
+   "paths": [
+    "apps/web/components/TriageCaseWorkspace.tsx",
+    "apps/web/app/workforce/clinical/TriageQueueWorkspace.tsx",
+    "apps/web/app/workforce/clinical/TriageReassessmentReview.tsx",
+    "services/clinical-core/src/test/java/org/synqoria/triage"
+   ],
+   "citation": "docs/engineering/M03_TRIAGE_v0.57.0_INTERNAL.md",
+   "scope": "triage web workspaces and triage service tests"
+  },
+  {
+   "module": "M01",
+   "paths": [
+    "apps/web/app/workforce/patients",
+    "apps/web/lib/ops001-patient-lookup.mjs",
+    "services/clinical-core/src/test/java/org/synqoria/registration"
+   ],
+   "citation": "docs/program/V012_REGISTRATION_IMPLEMENTATION_REVIEW.md",
+   "scope": "patient lookup web path and registration service tests"
+  },
+  {
+   "module": "M04",
+   "paths": [
+    "services/clinical-core/src/test/java/org/synqoria/longitudinal",
+    "apps/web/lib/longitudinal-cell.mjs",
+    "apps/web/app/workforce/clinical/LongitudinalReadWorkspace.tsx"
+   ],
+   "citation": "docs/engineering/P07_LONGITUDINAL_CORE_v0.60.0.md",
+   "scope": "shared longitudinal read workspace and tests; per-module attribution unverified"
+  },
+  {
+   "module": "M05",
+   "paths": [
+    "services/clinical-core/src/test/java/org/synqoria/longitudinal",
+    "apps/web/lib/longitudinal-cell.mjs",
+    "apps/web/app/workforce/clinical/LongitudinalReadWorkspace.tsx"
+   ],
+   "citation": "docs/engineering/P07_LONGITUDINAL_CORE_v0.60.0.md",
+   "scope": "shared longitudinal read workspace and tests; per-module attribution unverified"
+  },
+  {
+   "module": "M06",
+   "paths": [
+    "services/clinical-core/src/test/java/org/synqoria/longitudinal",
+    "apps/web/lib/longitudinal-cell.mjs",
+    "apps/web/app/workforce/clinical/LongitudinalReadWorkspace.tsx"
+   ],
+   "citation": "docs/engineering/P07_LONGITUDINAL_CORE_v0.60.0.md",
+   "scope": "shared longitudinal read workspace and tests; per-module attribution unverified"
+  },
+  {
+   "module": "M33",
+   "paths": [
+    "apps/web/app/api/auth",
+    "apps/web/lib/oidc-code-exchange.mjs",
+    "apps/web/lib/oidc-login-flow.mjs",
+    "apps/web/lib/oidc-staff-verification.mjs",
+    "apps/web/lib/opaque-staff-session.mjs",
+    "apps/web/lib/postgres-staff-session-store.mjs",
+    "apps/web/lib/staff-role-capability-policy.mjs",
+    "tests/audited_staff_login.test.mjs",
+    "tests/identity_db_schema_policies.test.mjs",
+    "tests/verified_oidc_session.test.mjs",
+    "tests/operations_verified_session.test.mjs",
+    "services/clinical-core/src/test/java/org/synqoria/security",
+    ".github/workflows/p03-verified-session-ci.yml",
+    ".github/workflows/p03-oidc-verification.yml"
+   ],
+   "citation": "docs/program/P03_VERIFIED_OIDC_OFFLINE_SESSION_HANDOFF_2026-11-07.md",
+   "scope": "P03 staff authentication web path, tests and CI; not workforce-privilege administration"
+  },
+  {
+   "module": "M21",
+   "paths": [
+    ".github/workflows/operations-seven-domain-ci.yml",
+    ".github/workflows/operations-seven-jdbc-integration.yml",
+    ".github/workflows/operations-seven-pg16-rls.yml",
+    ".github/workflows/operations-seven-screens-ci.yml",
+    ".github/workflows/operations-seven-next-build-candidate.yml"
+   ],
+   "citation": "docs/program/SEVEN_OPERATIONS_MODULES_PLAN_2026-11-06.md",
+   "scope": "shared seven-module operations CI (not module-specific jobs)"
+  },
+  {
+   "module": "M22",
+   "paths": [
+    ".github/workflows/operations-seven-domain-ci.yml",
+    ".github/workflows/operations-seven-jdbc-integration.yml",
+    ".github/workflows/operations-seven-pg16-rls.yml",
+    ".github/workflows/operations-seven-screens-ci.yml",
+    ".github/workflows/operations-seven-next-build-candidate.yml"
+   ],
+   "citation": "docs/program/SEVEN_OPERATIONS_MODULES_PLAN_2026-11-06.md",
+   "scope": "shared seven-module operations CI (not module-specific jobs)"
+  },
+  {
+   "module": "M23",
+   "paths": [
+    ".github/workflows/operations-seven-domain-ci.yml",
+    ".github/workflows/operations-seven-jdbc-integration.yml",
+    ".github/workflows/operations-seven-pg16-rls.yml",
+    ".github/workflows/operations-seven-screens-ci.yml",
+    ".github/workflows/operations-seven-next-build-candidate.yml"
+   ],
+   "citation": "docs/program/SEVEN_OPERATIONS_MODULES_PLAN_2026-11-06.md",
+   "scope": "shared seven-module operations CI (not module-specific jobs)"
+  },
+  {
+   "module": "M25",
+   "paths": [
+    ".github/workflows/operations-seven-domain-ci.yml",
+    ".github/workflows/operations-seven-jdbc-integration.yml",
+    ".github/workflows/operations-seven-pg16-rls.yml",
+    ".github/workflows/operations-seven-screens-ci.yml",
+    ".github/workflows/operations-seven-next-build-candidate.yml"
+   ],
+   "citation": "docs/program/SEVEN_OPERATIONS_MODULES_PLAN_2026-11-06.md",
+   "scope": "shared seven-module operations CI (not module-specific jobs)"
+  },
+  {
+   "module": "M29",
+   "paths": [
+    ".github/workflows/operations-seven-domain-ci.yml",
+    ".github/workflows/operations-seven-jdbc-integration.yml",
+    ".github/workflows/operations-seven-pg16-rls.yml",
+    ".github/workflows/operations-seven-screens-ci.yml",
+    ".github/workflows/operations-seven-next-build-candidate.yml"
+   ],
+   "citation": "docs/program/SEVEN_OPERATIONS_MODULES_PLAN_2026-11-06.md",
+   "scope": "shared seven-module operations CI (not module-specific jobs)"
+  },
+  {
+   "module": "M31",
+   "paths": [
+    ".github/workflows/operations-seven-domain-ci.yml",
+    ".github/workflows/operations-seven-jdbc-integration.yml",
+    ".github/workflows/operations-seven-pg16-rls.yml",
+    ".github/workflows/operations-seven-screens-ci.yml",
+    ".github/workflows/operations-seven-next-build-candidate.yml"
+   ],
+   "citation": "docs/program/SEVEN_OPERATIONS_MODULES_PLAN_2026-11-06.md",
+   "scope": "shared seven-module operations CI (not module-specific jobs)"
+  },
+  {
+   "module": "M37",
+   "paths": [
+    ".github/workflows/operations-seven-domain-ci.yml",
+    ".github/workflows/operations-seven-jdbc-integration.yml",
+    ".github/workflows/operations-seven-pg16-rls.yml",
+    ".github/workflows/operations-seven-screens-ci.yml",
+    ".github/workflows/operations-seven-next-build-candidate.yml"
+   ],
+   "citation": "docs/program/SEVEN_OPERATIONS_MODULES_PLAN_2026-11-06.md",
+   "scope": "shared seven-module operations CI (not module-specific jobs)"
+  },
+  {
+   "module": "M04",
+   "paths": [
+    ".github/workflows/longitudinal-core.yml",
+    ".github/workflows/v067-inbox-policy.yml"
+   ],
+   "citation": "docs/engineering/P07_LONGITUDINAL_CORE_v0.60.0.md",
+   "scope": "P07 longitudinal CI shared by M04-M06"
+  },
+  {
+   "module": "M05",
+   "paths": [
+    ".github/workflows/longitudinal-core.yml",
+    ".github/workflows/v067-inbox-policy.yml"
+   ],
+   "citation": "docs/engineering/P07_LONGITUDINAL_CORE_v0.60.0.md",
+   "scope": "P07 longitudinal CI shared by M04-M06"
+  },
+  {
+   "module": "M06",
+   "paths": [
+    ".github/workflows/longitudinal-core.yml",
+    ".github/workflows/v067-inbox-policy.yml"
+   ],
+   "citation": "docs/engineering/P07_LONGITUDINAL_CORE_v0.60.0.md",
+   "scope": "P07 longitudinal CI shared by M04-M06"
+  },
+  {
+   "module": "M01",
+   "paths": [
+    ".github/workflows/engineering-checks.yml",
+    "tools/check_java_security.sh"
+   ],
+   "citation": "docs/program/V012_REGISTRATION_IMPLEMENTATION_REVIEW.md",
+   "scope": "engineering-checks runs tools/check_java_security.sh which executes the registration unit tests (8 org.synqoria.registration entries)"
+  }
+ ]
+}

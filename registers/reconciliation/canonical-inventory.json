@@ -1,0 +1,2660 @@
+{
+ "integrity": {
+  "everyScreenHasRoute": true,
+  "moduleIdsUnique": true,
+  "screenIdsUnique": true,
+  "screensByModule": {
+   "M01": 6,
+   "M02": 5,
+   "M03": 5,
+   "M04": 7,
+   "M05": 5,
+   "M06": 5,
+   "M07": 5,
+   "M08": 7,
+   "M09": 5,
+   "M10": 5,
+   "M11": 9,
+   "M12": 7,
+   "M13": 7,
+   "M14": 6,
+   "M15": 6,
+   "M16": 5,
+   "M17": 28,
+   "M18": 9,
+   "M19": 7,
+   "M20": 6,
+   "M21": 6,
+   "M22": 5,
+   "M23": 5,
+   "M24": 6,
+   "M25": 5,
+   "M26": 4,
+   "M27": 5,
+   "M28": 5,
+   "M29": 4,
+   "M30": 5,
+   "M31": 6,
+   "M32": 5,
+   "M33": 7,
+   "M34": 5,
+   "M35": 6,
+   "M36": 5,
+   "M37": 4,
+   "M38": 5,
+   "M39": 5,
+   "M40": 6,
+   "SHARED": 12
+  }
+ },
+ "moduleCount": 40,
+ "modules": [
+  {
+   "id": "M01",
+   "name": "Patient registration and master identity; identifiers, merge lineage",
+   "owner": "Registration / core",
+   "wave": "A"
+  },
+  {
+   "id": "M02",
+   "name": "Appointments and resource scheduling",
+   "owner": "Scheduling / service",
+   "wave": "A"
+  },
+  {
+   "id": "M03",
+   "name": "Triage, emergency intake and queues",
+   "owner": "Emergency care / core",
+   "wave": "A"
+  },
+  {
+   "id": "M04",
+   "name": "Encounters, admission, transfers, discharge and beds",
+   "owner": "ADT / core",
+   "wave": "A"
+  },
+  {
+   "id": "M05",
+   "name": "Clinical notes, diagnoses and encounter documentation",
+   "owner": "Clinical records / core",
+   "wave": "A"
+  },
+  {
+   "id": "M06",
+   "name": "Observations, vitals and longitudinal clinical measurements",
+   "owner": "Clinical observations / core",
+   "wave": "A"
+  },
+  {
+   "id": "M07",
+   "name": "Allergies, intolerances and reconciliation",
+   "owner": "Allergy management / core",
+   "wave": "A"
+  },
+  {
+   "id": "M08",
+   "name": "Medication prescribing and reconciliation",
+   "owner": "Prescribing / core",
+   "wave": "A"
+  },
+  {
+   "id": "M09",
+   "name": "Medication administration and dose records",
+   "owner": "Nursing medication / core",
+   "wave": "A"
+  },
+  {
+   "id": "M10",
+   "name": "Nursing care plans, inpatient tasks and handovers",
+   "owner": "Nursing / core",
+   "wave": "B"
+  },
+  {
+   "id": "M11",
+   "name": "Laboratory, specimens and result verification",
+   "owner": "Laboratory / service",
+   "wave": "A"
+  },
+  {
+   "id": "M12",
+   "name": "Imaging, radiology workflow and PACS references",
+   "owner": "Imaging / service",
+   "wave": "A"
+  },
+  {
+   "id": "M13",
+   "name": "Pharmacy dispensing and medication inventory",
+   "owner": "Pharmacy / service",
+   "wave": "A"
+  },
+  {
+   "id": "M14",
+   "name": "Surgery, theatre, anesthesia and recovery",
+   "owner": "Perioperative care / core extension",
+   "wave": "B"
+  },
+  {
+   "id": "M15",
+   "name": "Blood bank and transfusion",
+   "owner": "Transfusion / service plus bedside core interface",
+   "wave": "B"
+  },
+  {
+   "id": "M16",
+   "name": "Referrals and care transitions",
+   "owner": "Care coordination / core",
+   "wave": "A"
+  },
+  {
+   "id": "M17",
+   "name": "Specialty clinical packages",
+   "owner": "Specialty leads / core extensions",
+   "wave": "B"
+  },
+  {
+   "id": "M18",
+   "name": "Patient portal, mobile access and proxy accounts",
+   "owner": "Patient engagement / service",
+   "wave": "A"
+  },
+  {
+   "id": "M19",
+   "name": "Charges, invoices, cashier and payment reconciliation",
+   "owner": "Revenue / service",
+   "wave": "A"
+  },
+  {
+   "id": "M20",
+   "name": "Insurance, payer authorization and claims",
+   "owner": "Claims / revenue service",
+   "wave": "B"
+  },
+  {
+   "id": "M21",
+   "name": "Procurement and supplier management",
+   "owner": "Procurement / service",
+   "wave": "C"
+  },
+  {
+   "id": "M22",
+   "name": "General stores and non-medication inventory",
+   "owner": "Stores / service",
+   "wave": "B"
+  },
+  {
+   "id": "M23",
+   "name": "Assets, biomedical maintenance and facilities",
+   "owner": "Engineering / service",
+   "wave": "B"
+  },
+  {
+   "id": "M24",
+   "name": "Human resources, staffing and payroll",
+   "owner": "HR / service",
+   "wave": "C"
+  },
+  {
+   "id": "M25",
+   "name": "Transport and ambulance coordination",
+   "owner": "Transport / service",
+   "wave": "B"
+  },
+  {
+   "id": "M26",
+   "name": "Catering and dietary orders",
+   "owner": "Nutrition operations / service",
+   "wave": "C"
+  },
+  {
+   "id": "M27",
+   "name": "Mortuary and decedent release",
+   "owner": "Mortuary / service",
+   "wave": "C"
+  },
+  {
+   "id": "M28",
+   "name": "Hospital operations and business intelligence",
+   "owner": "Analytics / read services",
+   "wave": "A"
+  },
+  {
+   "id": "M29",
+   "name": "Facility, department, location and service configuration",
+   "owner": "Administration / management plane + local copies",
+   "wave": "A"
+  },
+  {
+   "id": "M30",
+   "name": "Terminology, formularies and clinical rule content",
+   "owner": "Clinical informatics / local content service",
+   "wave": "A"
+  },
+  {
+   "id": "M31",
+   "name": "Forms, templates, documents and signatures",
+   "owner": "Document governance / core + object storage",
+   "wave": "A"
+  },
+  {
+   "id": "M32",
+   "name": "Consent, privacy and disclosure governance",
+   "owner": "Privacy / core policy module",
+   "wave": "A"
+  },
+  {
+   "id": "M33",
+   "name": "Identity, access and workforce privileges",
+   "owner": "Security / local-capable IAM",
+   "wave": "A"
+  },
+  {
+   "id": "M34",
+   "name": "Audit, provenance and evidence retention",
+   "owner": "Security audit / independent archival",
+   "wave": "A"
+  },
+  {
+   "id": "M35",
+   "name": "Interoperability and API developer product",
+   "owner": "Integration / service",
+   "wave": "A"
+  },
+  {
+   "id": "M36",
+   "name": "Device, analyzer and bedside gateway integration",
+   "owner": "Device integration / local gateways",
+   "wave": "A"
+  },
+  {
+   "id": "M37",
+   "name": "Notifications, communication and escalation",
+   "owner": "Communications / workers",
+   "wave": "A"
+  },
+  {
+   "id": "M38",
+   "name": "Offline synchronization and ownership reconciliation",
+   "owner": "Sync operations / cell-local service",
+   "wave": "A"
+  },
+  {
+   "id": "M39",
+   "name": "Tenant and cell lifecycle, routing and fleet releases",
+   "owner": "Platform operations / management plane",
+   "wave": "A"
+  },
+  {
+   "id": "M40",
+   "name": "Reliability, backup, recovery and operational telemetry",
+   "owner": "SRE / per-cell agents and operations tools",
+   "wave": "A"
+  }
+ ],
+ "schemaVersion": "synqoria.reconciliation.canonical.v1",
+ "screenCount": 261,
+ "screens": [
+  {
+   "id": "G-S01",
+   "layout": "F",
+   "module": "SHARED",
+   "name": "Sign in",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/G-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "G-S02",
+   "layout": "F",
+   "module": "SHARED",
+   "name": "MFA and account recovery",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/G-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "G-S03",
+   "layout": "F",
+   "module": "SHARED",
+   "name": "Facility role and shift selection",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/G-S03",
+   "routeStatus": "api_read_subset_not_clinically_complete"
+  },
+  {
+   "id": "G-S04",
+   "layout": "H",
+   "module": "SHARED",
+   "name": "Role home and task hub",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/G-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "G-S05",
+   "layout": "L",
+   "module": "SHARED",
+   "name": "Global patient search",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/G-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "G-S06",
+   "layout": "F",
+   "module": "SHARED",
+   "name": "Personal settings and accessibility",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/G-S06",
+   "routeStatus": "nonclinical_functional"
+  },
+  {
+   "id": "G-S07",
+   "layout": "F",
+   "module": "SHARED",
+   "name": "Session lock and reauthentication",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/G-S07",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "G-S08",
+   "layout": "D",
+   "module": "SHARED",
+   "name": "Access denied and access request",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/G-S08",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "G-S09",
+   "layout": "X",
+   "module": "SHARED",
+   "name": "Emergency access request",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/G-S09",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "G-S10",
+   "layout": "D",
+   "module": "SHARED",
+   "name": "Connectivity and service interruption",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/G-S10",
+   "routeStatus": "api_read_subset_not_clinically_complete"
+  },
+  {
+   "id": "G-S11",
+   "layout": "D",
+   "module": "SHARED",
+   "name": "Help and support",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/G-S11",
+   "routeStatus": "nonclinical_functional"
+  },
+  {
+   "id": "G-S12",
+   "layout": "D",
+   "module": "SHARED",
+   "name": "Not found or retired feature",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/G-S12",
+   "routeStatus": "nonclinical_functional"
+  },
+  {
+   "id": "M01-S01",
+   "layout": "L",
+   "module": "M01",
+   "name": "Patient search",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M01-S01",
+   "routeStatus": "api_read_subset_not_clinically_complete"
+  },
+  {
+   "id": "M01-S02",
+   "layout": "F",
+   "module": "M01",
+   "name": "New patient registration",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M01-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M01-S03",
+   "layout": "D",
+   "module": "M01",
+   "name": "Patient identity profile",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M01-S03",
+   "routeStatus": "api_read_subset_not_clinically_complete"
+  },
+  {
+   "id": "M01-S04",
+   "layout": "F",
+   "module": "M01",
+   "name": "Demographic correction",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M01-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M01-S05",
+   "layout": "X",
+   "module": "M01",
+   "name": "Duplicate identity review",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M01-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M01-S06",
+   "layout": "X",
+   "module": "M01",
+   "name": "Merge approval and lineage",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M01-S06",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M02-S01",
+   "layout": "B",
+   "module": "M02",
+   "name": "Appointment calendar",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M02-S01",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted"
+  },
+  {
+   "id": "M02-S02",
+   "layout": "F",
+   "module": "M02",
+   "name": "Appointment booking",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M02-S02",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted"
+  },
+  {
+   "id": "M02-S03",
+   "layout": "D",
+   "module": "M02",
+   "name": "Appointment detail",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M02-S03",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted"
+  },
+  {
+   "id": "M02-S04",
+   "layout": "L",
+   "module": "M02",
+   "name": "Waitlist and rescheduling",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M02-S04",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted"
+  },
+  {
+   "id": "M02-S05",
+   "layout": "F",
+   "module": "M02",
+   "name": "Resource availability",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M02-S05",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted"
+  },
+  {
+   "id": "M03-S01",
+   "layout": "B",
+   "module": "M03",
+   "name": "Triage queue",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M03-S01",
+   "routeStatus": "api_read_subset_not_clinically_complete"
+  },
+  {
+   "id": "M03-S02",
+   "layout": "F",
+   "module": "M03",
+   "name": "Emergency intake",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M03-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M03-S03",
+   "layout": "F",
+   "module": "M03",
+   "name": "Triage assessment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M03-S03",
+   "routeStatus": "api_read_subset_not_clinically_complete"
+  },
+  {
+   "id": "M03-S04",
+   "layout": "F",
+   "module": "M03",
+   "name": "Triage reassessment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M03-S04",
+   "routeStatus": "api_read_subset_not_clinically_complete"
+  },
+  {
+   "id": "M03-S05",
+   "layout": "X",
+   "module": "M03",
+   "name": "Queue assignment and handover",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M03-S05",
+   "routeStatus": "api_read_subset_not_clinically_complete"
+  },
+  {
+   "id": "M04-S01",
+   "layout": "L",
+   "module": "M04",
+   "name": "Encounter worklist",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M04-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M04-S02",
+   "layout": "D",
+   "module": "M04",
+   "name": "Encounter overview",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M04-S02",
+   "routeStatus": "api_read_subset_not_clinically_complete"
+  },
+  {
+   "id": "M04-S03",
+   "layout": "F",
+   "module": "M04",
+   "name": "Admission assessment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M04-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M04-S04",
+   "layout": "B",
+   "module": "M04",
+   "name": "Bed board",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M04-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M04-S05",
+   "layout": "X",
+   "module": "M04",
+   "name": "Transfer coordination",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M04-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M04-S06",
+   "layout": "F",
+   "module": "M04",
+   "name": "Discharge planning",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M04-S06",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M04-S07",
+   "layout": "X",
+   "module": "M04",
+   "name": "Discharge authorization",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M04-S07",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M05-S01",
+   "layout": "D",
+   "module": "M05",
+   "name": "Clinical workspace",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M05-S01",
+   "routeStatus": "api_read_subset_not_clinically_complete"
+  },
+  {
+   "id": "M05-S02",
+   "layout": "F",
+   "module": "M05",
+   "name": "Note editor",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M05-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M05-S03",
+   "layout": "L",
+   "module": "M05",
+   "name": "Diagnosis and problem list",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M05-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M05-S04",
+   "layout": "X",
+   "module": "M05",
+   "name": "Note signing review",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M05-S04",
+   "routeStatus": "api_read_subset_not_clinically_complete"
+  },
+  {
+   "id": "M05-S05",
+   "layout": "D",
+   "module": "M05",
+   "name": "Signed note and amendments",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M05-S05",
+   "routeStatus": "api_read_subset_not_clinically_complete"
+  },
+  {
+   "id": "M06-S01",
+   "layout": "F",
+   "module": "M06",
+   "name": "Observation capture",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M06-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M06-S02",
+   "layout": "L",
+   "module": "M06",
+   "name": "Observation verification queue",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M06-S02",
+   "routeStatus": "api_read_subset_not_clinically_complete"
+  },
+  {
+   "id": "M06-S03",
+   "layout": "X",
+   "module": "M06",
+   "name": "Observation verification",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M06-S03",
+   "routeStatus": "api_read_subset_not_clinically_complete"
+  },
+  {
+   "id": "M06-S04",
+   "layout": "T",
+   "module": "M06",
+   "name": "Longitudinal measurements",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M06-S04",
+   "routeStatus": "api_read_subset_not_clinically_complete"
+  },
+  {
+   "id": "M06-S05",
+   "layout": "F",
+   "module": "M06",
+   "name": "Observation correction",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M06-S05",
+   "routeStatus": "api_read_subset_not_clinically_complete"
+  },
+  {
+   "id": "M07-S01",
+   "layout": "D",
+   "module": "M07",
+   "name": "Allergy summary",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M07-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M07-S02",
+   "layout": "F",
+   "module": "M07",
+   "name": "Allergy entry",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M07-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M07-S03",
+   "layout": "X",
+   "module": "M07",
+   "name": "Allergy reconciliation",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M07-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M07-S04",
+   "layout": "D",
+   "module": "M07",
+   "name": "Allergy detail and history",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M07-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M07-S05",
+   "layout": "F",
+   "module": "M07",
+   "name": "Allergy status correction",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M07-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M08-S01",
+   "layout": "L",
+   "module": "M08",
+   "name": "Medication worklist",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M08-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M08-S02",
+   "layout": "X",
+   "module": "M08",
+   "name": "Medication reconciliation",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M08-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M08-S03",
+   "layout": "F",
+   "module": "M08",
+   "name": "Prescription editor",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M08-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M08-S04",
+   "layout": "X",
+   "module": "M08",
+   "name": "Medication safety review",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M08-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M08-S05",
+   "layout": "D",
+   "module": "M08",
+   "name": "Medication order detail",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M08-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M08-S06",
+   "layout": "F",
+   "module": "M08",
+   "name": "Medication hold and cancellation",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M08-S06",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M08-S07",
+   "layout": "L",
+   "module": "M08",
+   "name": "Medication reassessment queue",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M08-S07",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M09-S01",
+   "layout": "B",
+   "module": "M09",
+   "name": "Medication administration record",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M09-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M09-S02",
+   "layout": "X",
+   "module": "M09",
+   "name": "Bedside dose verification",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M09-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M09-S03",
+   "layout": "F",
+   "module": "M09",
+   "name": "Administration recording",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M09-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M09-S04",
+   "layout": "F",
+   "module": "M09",
+   "name": "Omitted refused or held dose",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M09-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M09-S05",
+   "layout": "X",
+   "module": "M09",
+   "name": "Administration correction",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M09-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M10-S01",
+   "layout": "L",
+   "module": "M10",
+   "name": "Ward nursing worklist",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M10-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M10-S02",
+   "layout": "F",
+   "module": "M10",
+   "name": "Nursing care plan",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M10-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M10-S03",
+   "layout": "F",
+   "module": "M10",
+   "name": "Nursing task execution",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M10-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M10-S04",
+   "layout": "X",
+   "module": "M10",
+   "name": "Shift handover",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M10-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M10-S05",
+   "layout": "X",
+   "module": "M10",
+   "name": "Care plan review",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M10-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M11-S01",
+   "layout": "L",
+   "module": "M11",
+   "name": "Laboratory orders",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M11-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M11-S02",
+   "layout": "F",
+   "module": "M11",
+   "name": "Laboratory request",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M11-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M11-S03",
+   "layout": "F",
+   "module": "M11",
+   "name": "Specimen collection",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M11-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M11-S04",
+   "layout": "X",
+   "module": "M11",
+   "name": "Specimen receipt and rejection",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M11-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M11-S05",
+   "layout": "L",
+   "module": "M11",
+   "name": "Laboratory bench worklist",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M11-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M11-S06",
+   "layout": "F",
+   "module": "M11",
+   "name": "Result entry",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M11-S06",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M11-S07",
+   "layout": "X",
+   "module": "M11",
+   "name": "Result verification and release",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M11-S07",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M11-S08",
+   "layout": "L",
+   "module": "M11",
+   "name": "Critical result acknowledgement",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M11-S08",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M11-S09",
+   "layout": "D",
+   "module": "M11",
+   "name": "Laboratory report and amendment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M11-S09",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M12-S01",
+   "layout": "L",
+   "module": "M12",
+   "name": "Imaging requests",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M12-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M12-S02",
+   "layout": "F",
+   "module": "M12",
+   "name": "Imaging request and screening",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M12-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M12-S03",
+   "layout": "B",
+   "module": "M12",
+   "name": "Imaging schedule",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M12-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M12-S04",
+   "layout": "L",
+   "module": "M12",
+   "name": "Acquisition worklist",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M12-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M12-S05",
+   "layout": "D",
+   "module": "M12",
+   "name": "Study viewer launch",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M12-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M12-S06",
+   "layout": "F",
+   "module": "M12",
+   "name": "Radiology report editor",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M12-S06",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M12-S07",
+   "layout": "X",
+   "module": "M12",
+   "name": "Radiology verification and amendment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M12-S07",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M13-S01",
+   "layout": "L",
+   "module": "M13",
+   "name": "Dispensing queue",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M13-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M13-S02",
+   "layout": "F",
+   "module": "M13",
+   "name": "Dispensing workbench",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M13-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M13-S03",
+   "layout": "X",
+   "module": "M13",
+   "name": "Clinical release review",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M13-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M13-S04",
+   "layout": "X",
+   "module": "M13",
+   "name": "Dispensing handover",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M13-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M13-S05",
+   "layout": "X",
+   "module": "M13",
+   "name": "Dispensing exceptions",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M13-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M13-S06",
+   "layout": "L",
+   "module": "M13",
+   "name": "Medication stock and expiry",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M13-S06",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M13-S07",
+   "layout": "F",
+   "module": "M13",
+   "name": "Medication receipt return and adjustment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M13-S07",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M14-S01",
+   "layout": "B",
+   "module": "M14",
+   "name": "Theatre schedule",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M14-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M14-S02",
+   "layout": "F",
+   "module": "M14",
+   "name": "Surgical booking",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M14-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M14-S03",
+   "layout": "X",
+   "module": "M14",
+   "name": "Preoperative readiness",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M14-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M14-S04",
+   "layout": "F",
+   "module": "M14",
+   "name": "Anesthesia assessment and record",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M14-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M14-S05",
+   "layout": "F",
+   "module": "M14",
+   "name": "Intraoperative record",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M14-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M14-S06",
+   "layout": "X",
+   "module": "M14",
+   "name": "Recovery and handover",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M14-S06",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M15-S01",
+   "layout": "L",
+   "module": "M15",
+   "name": "Blood unit inventory",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M15-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M15-S02",
+   "layout": "F",
+   "module": "M15",
+   "name": "Blood unit intake and screening",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M15-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M15-S03",
+   "layout": "X",
+   "module": "M15",
+   "name": "Compatibility and reservation",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M15-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M15-S04",
+   "layout": "F",
+   "module": "M15",
+   "name": "Blood unit issue and return",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M15-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M15-S05",
+   "layout": "X",
+   "module": "M15",
+   "name": "Bedside transfusion verification",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M15-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M15-S06",
+   "layout": "F",
+   "module": "M15",
+   "name": "Transfusion monitoring and reaction",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M15-S06",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M16-S01",
+   "layout": "L",
+   "module": "M16",
+   "name": "Referral worklist",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M16-S01",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted"
+  },
+  {
+   "id": "M16-S02",
+   "layout": "F",
+   "module": "M16",
+   "name": "Referral preparation",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M16-S02",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted"
+  },
+  {
+   "id": "M16-S03",
+   "layout": "X",
+   "module": "M16",
+   "name": "Referral acceptance review",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M16-S03",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted"
+  },
+  {
+   "id": "M16-S04",
+   "layout": "X",
+   "module": "M16",
+   "name": "Transition handover",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M16-S04",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted"
+  },
+  {
+   "id": "M16-S05",
+   "layout": "F",
+   "module": "M16",
+   "name": "Referral follow-up and closure",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M16-S05",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted"
+  },
+  {
+   "id": "M17-S01",
+   "layout": "L",
+   "module": "M17",
+   "name": "Specialty service worklist",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-S02",
+   "layout": "F",
+   "module": "M17",
+   "name": "Specialty episode enrolment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-S03",
+   "layout": "D",
+   "module": "M17",
+   "name": "Specialty longitudinal overview",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-S04",
+   "layout": "F",
+   "module": "M17",
+   "name": "Specialty outcome and closure",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P01-S01",
+   "layout": "F",
+   "module": "M17",
+   "name": "Obstetrics and gynecology assessment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P01-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P01-S02",
+   "layout": "F",
+   "module": "M17",
+   "name": "Obstetrics and gynecology treatment record",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P01-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P01-S03",
+   "layout": "F",
+   "module": "M17",
+   "name": "Obstetrics and gynecology follow-up",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P01-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P02-S01",
+   "layout": "F",
+   "module": "M17",
+   "name": "Pediatrics and neonatology assessment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P02-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P02-S02",
+   "layout": "F",
+   "module": "M17",
+   "name": "Pediatrics and neonatology treatment record",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P02-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P02-S03",
+   "layout": "F",
+   "module": "M17",
+   "name": "Pediatrics and neonatology follow-up",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P02-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P03-S01",
+   "layout": "F",
+   "module": "M17",
+   "name": "Cardiology assessment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P03-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P03-S02",
+   "layout": "F",
+   "module": "M17",
+   "name": "Cardiology treatment record",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P03-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P03-S03",
+   "layout": "F",
+   "module": "M17",
+   "name": "Cardiology follow-up",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P03-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P04-S01",
+   "layout": "F",
+   "module": "M17",
+   "name": "Dentistry assessment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P04-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P04-S02",
+   "layout": "F",
+   "module": "M17",
+   "name": "Dentistry treatment record",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P04-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P04-S03",
+   "layout": "F",
+   "module": "M17",
+   "name": "Dentistry follow-up",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P04-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P05-S01",
+   "layout": "F",
+   "module": "M17",
+   "name": "Dermatology assessment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P05-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P05-S02",
+   "layout": "F",
+   "module": "M17",
+   "name": "Dermatology treatment record",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P05-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P05-S03",
+   "layout": "F",
+   "module": "M17",
+   "name": "Dermatology follow-up",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P05-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P06-S01",
+   "layout": "F",
+   "module": "M17",
+   "name": "Endocrinology and chronic disease assessment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P06-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P06-S02",
+   "layout": "F",
+   "module": "M17",
+   "name": "Endocrinology and chronic disease treatment record",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P06-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P06-S03",
+   "layout": "F",
+   "module": "M17",
+   "name": "Endocrinology and chronic disease follow-up",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P06-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P07-S01",
+   "layout": "F",
+   "module": "M17",
+   "name": "Oncology assessment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P07-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P07-S02",
+   "layout": "F",
+   "module": "M17",
+   "name": "Oncology treatment record",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P07-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P07-S03",
+   "layout": "F",
+   "module": "M17",
+   "name": "Oncology follow-up",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P07-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P08-S01",
+   "layout": "F",
+   "module": "M17",
+   "name": "Rehabilitation assessment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P08-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P08-S02",
+   "layout": "F",
+   "module": "M17",
+   "name": "Rehabilitation treatment record",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P08-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M17-P08-S03",
+   "layout": "F",
+   "module": "M17",
+   "name": "Rehabilitation follow-up",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M17-P08-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M18-S01",
+   "layout": "H",
+   "module": "M18",
+   "name": "Patient home",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M18-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M18-S02",
+   "layout": "D",
+   "module": "M18",
+   "name": "My health record",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M18-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M18-S03",
+   "layout": "F",
+   "module": "M18",
+   "name": "Patient appointment booking",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M18-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M18-S04",
+   "layout": "D",
+   "module": "M18",
+   "name": "Patient appointment detail",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M18-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M18-S05",
+   "layout": "L",
+   "module": "M18",
+   "name": "Patient messages",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M18-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M18-S06",
+   "layout": "F",
+   "module": "M18",
+   "name": "Patient message composer",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M18-S06",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M18-S07",
+   "layout": "X",
+   "module": "M18",
+   "name": "Proxy access management",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M18-S07",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M18-S08",
+   "layout": "D",
+   "module": "M18",
+   "name": "Patient bills and payments",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M18-S08",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M18-S09",
+   "layout": "F",
+   "module": "M18",
+   "name": "Patient preferences and correction requests",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M18-S09",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M19-S01",
+   "layout": "D",
+   "module": "M19",
+   "name": "Billing account",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M19-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M19-S02",
+   "layout": "F",
+   "module": "M19",
+   "name": "Charge capture",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M19-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M19-S03",
+   "layout": "X",
+   "module": "M19",
+   "name": "Invoice review and issue",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M19-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M19-S04",
+   "layout": "F",
+   "module": "M19",
+   "name": "Cashier payment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M19-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M19-S05",
+   "layout": "D",
+   "module": "M19",
+   "name": "Payment receipt",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M19-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M19-S06",
+   "layout": "X",
+   "module": "M19",
+   "name": "Refund and reversal",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M19-S06",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M19-S07",
+   "layout": "X",
+   "module": "M19",
+   "name": "Cashier shift reconciliation",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M19-S07",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M20-S01",
+   "layout": "X",
+   "module": "M20",
+   "name": "Payer eligibility review",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M20-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M20-S02",
+   "layout": "F",
+   "module": "M20",
+   "name": "Payer authorization request",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M20-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M20-S03",
+   "layout": "L",
+   "module": "M20",
+   "name": "Authorization tracking",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M20-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M20-S04",
+   "layout": "F",
+   "module": "M20",
+   "name": "Claim preparation",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M20-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M20-S05",
+   "layout": "D",
+   "module": "M20",
+   "name": "Claim submission and adjudication",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M20-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M20-S06",
+   "layout": "X",
+   "module": "M20",
+   "name": "Claim appeal and settlement",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M20-S06",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M21-S01",
+   "layout": "L",
+   "module": "M21",
+   "name": "Procurement requisitions",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M21-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M21-S02",
+   "layout": "F",
+   "module": "M21",
+   "name": "Requisition editor",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M21-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M21-S03",
+   "layout": "X",
+   "module": "M21",
+   "name": "Purchase approval",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M21-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M21-S04",
+   "layout": "F",
+   "module": "M21",
+   "name": "Purchase order",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M21-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M21-S05",
+   "layout": "X",
+   "module": "M21",
+   "name": "Goods receipt and invoice matching",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M21-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M21-S06",
+   "layout": "D",
+   "module": "M21",
+   "name": "Supplier directory and qualification",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M21-S06",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M22-S01",
+   "layout": "L",
+   "module": "M22",
+   "name": "Stores inventory",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M22-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M22-S02",
+   "layout": "F",
+   "module": "M22",
+   "name": "Stores receipt",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M22-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M22-S03",
+   "layout": "F",
+   "module": "M22",
+   "name": "Stock request and issue",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M22-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M22-S04",
+   "layout": "F",
+   "module": "M22",
+   "name": "Stock transfer and return",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M22-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M22-S05",
+   "layout": "X",
+   "module": "M22",
+   "name": "Stock count and adjustment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M22-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M23-S01",
+   "layout": "L",
+   "module": "M23",
+   "name": "Asset register",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M23-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M23-S02",
+   "layout": "D",
+   "module": "M23",
+   "name": "Asset detail and commissioning",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M23-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M23-S03",
+   "layout": "L",
+   "module": "M23",
+   "name": "Maintenance work orders",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M23-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M23-S04",
+   "layout": "F",
+   "module": "M23",
+   "name": "Maintenance execution",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M23-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M23-S05",
+   "layout": "X",
+   "module": "M23",
+   "name": "Asset return to service or retirement",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M23-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M24-S01",
+   "layout": "L",
+   "module": "M24",
+   "name": "Staff directory",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M24-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M24-S02",
+   "layout": "F",
+   "module": "M24",
+   "name": "Employment record",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M24-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M24-S03",
+   "layout": "B",
+   "module": "M24",
+   "name": "Staff roster",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M24-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M24-S04",
+   "layout": "X",
+   "module": "M24",
+   "name": "Attendance and leave review",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M24-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M24-S05",
+   "layout": "F",
+   "module": "M24",
+   "name": "Payroll preparation",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M24-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M24-S06",
+   "layout": "X",
+   "module": "M24",
+   "name": "Payroll approval and payment reconciliation",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M24-S06",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M25-S01",
+   "layout": "B",
+   "module": "M25",
+   "name": "Transport dispatch board",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M25-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M25-S02",
+   "layout": "F",
+   "module": "M25",
+   "name": "Transport request",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M25-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M25-S03",
+   "layout": "F",
+   "module": "M25",
+   "name": "Dispatch assignment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M25-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M25-S04",
+   "layout": "F",
+   "module": "M25",
+   "name": "Transport execution and handover",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M25-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M25-S05",
+   "layout": "D",
+   "module": "M25",
+   "name": "Transport history and exceptions",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M25-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M26-S01",
+   "layout": "L",
+   "module": "M26",
+   "name": "Dietary patient worklist",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M26-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M26-S02",
+   "layout": "F",
+   "module": "M26",
+   "name": "Dietary order",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M26-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M26-S03",
+   "layout": "B",
+   "module": "M26",
+   "name": "Meal production plan",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M26-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M26-S04",
+   "layout": "F",
+   "module": "M26",
+   "name": "Meal delivery and acknowledgement",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M26-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M27-S01",
+   "layout": "L",
+   "module": "M27",
+   "name": "Mortuary register",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M27-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M27-S02",
+   "layout": "F",
+   "module": "M27",
+   "name": "Mortuary intake",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M27-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M27-S03",
+   "layout": "F",
+   "module": "M27",
+   "name": "Storage and custody transfer",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M27-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M27-S04",
+   "layout": "X",
+   "module": "M27",
+   "name": "Decedent release review",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M27-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M27-S05",
+   "layout": "F",
+   "module": "M27",
+   "name": "Decedent handover record",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M27-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M28-S01",
+   "layout": "H",
+   "module": "M28",
+   "name": "Hospital operations dashboard",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M28-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M28-S02",
+   "layout": "T",
+   "module": "M28",
+   "name": "Clinical service analytics",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M28-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M28-S03",
+   "layout": "T",
+   "module": "M28",
+   "name": "Financial analytics",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M28-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M28-S04",
+   "layout": "L",
+   "module": "M28",
+   "name": "Report catalogue and execution",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M28-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M28-S05",
+   "layout": "D",
+   "module": "M28",
+   "name": "Report export and history",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M28-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M29-S01",
+   "layout": "D",
+   "module": "M29",
+   "name": "Facility hierarchy",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M29-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M29-S02",
+   "layout": "F",
+   "module": "M29",
+   "name": "Location and service editor",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M29-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M29-S03",
+   "layout": "L",
+   "module": "M29",
+   "name": "Service catalogue",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M29-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M29-S04",
+   "layout": "X",
+   "module": "M29",
+   "name": "Configuration impact and publication",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M29-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M30-S01",
+   "layout": "L",
+   "module": "M30",
+   "name": "Terminology browser",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M30-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M30-S02",
+   "layout": "F",
+   "module": "M30",
+   "name": "Formulary editor",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M30-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M30-S03",
+   "layout": "D",
+   "module": "M30",
+   "name": "Clinical rule package workbench",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M30-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M30-S04",
+   "layout": "X",
+   "module": "M30",
+   "name": "Content validation and approval",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M30-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M30-S05",
+   "layout": "X",
+   "module": "M30",
+   "name": "Content activation and rollback",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M30-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M31-S01",
+   "layout": "L",
+   "module": "M31",
+   "name": "Template catalogue",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M31-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M31-S02",
+   "layout": "F",
+   "module": "M31",
+   "name": "Template editor",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M31-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M31-S03",
+   "layout": "X",
+   "module": "M31",
+   "name": "Template preview and approval",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M31-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M31-S04",
+   "layout": "F",
+   "module": "M31",
+   "name": "Document workbench",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M31-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M31-S05",
+   "layout": "X",
+   "module": "M31",
+   "name": "Document signature and amendment",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M31-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M31-S06",
+   "layout": "D",
+   "module": "M31",
+   "name": "Document archive and print",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M31-S06",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M32-S01",
+   "layout": "D",
+   "module": "M32",
+   "name": "Consent and privacy overview",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M32-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M32-S02",
+   "layout": "F",
+   "module": "M32",
+   "name": "Consent directive capture",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M32-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M32-S03",
+   "layout": "X",
+   "module": "M32",
+   "name": "Consent verification and revocation",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M32-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M32-S04",
+   "layout": "X",
+   "module": "M32",
+   "name": "Disclosure request review",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M32-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M32-S05",
+   "layout": "L",
+   "module": "M32",
+   "name": "Privacy requests and incidents",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M32-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M33-S01",
+   "layout": "L",
+   "module": "M33",
+   "name": "Workforce accounts",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M33-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M33-S02",
+   "layout": "F",
+   "module": "M33",
+   "name": "Account onboarding and verification",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M33-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M33-S03",
+   "layout": "F",
+   "module": "M33",
+   "name": "Role and permission policy",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M33-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M33-S04",
+   "layout": "X",
+   "module": "M33",
+   "name": "Clinical privilege review",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M33-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M33-S05",
+   "layout": "X",
+   "module": "M33",
+   "name": "Access reviews and revocation",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M33-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M33-S06",
+   "layout": "D",
+   "module": "M33",
+   "name": "Sessions and authentication security",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M33-S06",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M33-S07",
+   "layout": "X",
+   "module": "M33",
+   "name": "Emergency access review",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M33-S07",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M34-S01",
+   "layout": "L",
+   "module": "M34",
+   "name": "Audit search",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M34-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M34-S02",
+   "layout": "D",
+   "module": "M34",
+   "name": "Audit event detail",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M34-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M34-S03",
+   "layout": "T",
+   "module": "M34",
+   "name": "Clinical provenance timeline",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M34-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M34-S04",
+   "layout": "X",
+   "module": "M34",
+   "name": "Audit evidence export",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M34-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M34-S05",
+   "layout": "X",
+   "module": "M34",
+   "name": "Retention hold and disposal review",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M34-S05",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M35-S01",
+   "layout": "L",
+   "module": "M35",
+   "name": "Partner integration directory",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M35-S01",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted"
+  },
+  {
+   "id": "M35-S02",
+   "layout": "D",
+   "module": "M35",
+   "name": "Developer API catalogue",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M35-S02",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted"
+  },
+  {
+   "id": "M35-S03",
+   "layout": "F",
+   "module": "M35",
+   "name": "Developer application and credentials",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M35-S03",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted"
+  },
+  {
+   "id": "M35-S04",
+   "layout": "L",
+   "module": "M35",
+   "name": "Integration message monitor",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M35-S04",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted"
+  },
+  {
+   "id": "M35-S05",
+   "layout": "X",
+   "module": "M35",
+   "name": "Mapping and contract validation",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M35-S05",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted"
+  },
+  {
+   "id": "M35-S06",
+   "layout": "X",
+   "module": "M35",
+   "name": "Quarantine and replay review",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M35-S06",
+   "routeStatus": "source_api_workflow_ci_verified_unaccepted"
+  },
+  {
+   "id": "M36-S01",
+   "layout": "L",
+   "module": "M36",
+   "name": "Device and gateway fleet",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M36-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M36-S02",
+   "layout": "F",
+   "module": "M36",
+   "name": "Device enrolment and mapping",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M36-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M36-S03",
+   "layout": "X",
+   "module": "M36",
+   "name": "Patient device association",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M36-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M36-S04",
+   "layout": "X",
+   "module": "M36",
+   "name": "Device data review and quarantine",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M36-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M36-S05",
+   "layout": "D",
+   "module": "M36",
+   "name": "Gateway diagnostics",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M36-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M37-S01",
+   "layout": "L",
+   "module": "M37",
+   "name": "Notification inbox",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M37-S01",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M37-S02",
+   "layout": "D",
+   "module": "M37",
+   "name": "Notification detail and acknowledgement",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M37-S02",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M37-S03",
+   "layout": "F",
+   "module": "M37",
+   "name": "Communication template and routing",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M37-S03",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M37-S04",
+   "layout": "L",
+   "module": "M37",
+   "name": "Delivery failures and escalation",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M37-S04",
+   "routeStatus": "existing_module_source_integrated_unaccepted"
+  },
+  {
+   "id": "M38-S01",
+   "layout": "D",
+   "module": "M38",
+   "name": "Offline synchronization status",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M38-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M38-S02",
+   "layout": "L",
+   "module": "M38",
+   "name": "Pending changes queue",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M38-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M38-S03",
+   "layout": "X",
+   "module": "M38",
+   "name": "Synchronization conflict review",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M38-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M38-S04",
+   "layout": "X",
+   "module": "M38",
+   "name": "Ownership transfer review",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M38-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M38-S05",
+   "layout": "T",
+   "module": "M38",
+   "name": "Reconciliation history",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M38-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M39-S01",
+   "layout": "L",
+   "module": "M39",
+   "name": "Tenant and cell fleet",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M39-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M39-S02",
+   "layout": "F",
+   "module": "M39",
+   "name": "Tenant provisioning",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M39-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M39-S03",
+   "layout": "X",
+   "module": "M39",
+   "name": "Cell qualification",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M39-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M39-S04",
+   "layout": "B",
+   "module": "M39",
+   "name": "Fleet release rollout",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M39-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M39-S05",
+   "layout": "X",
+   "module": "M39",
+   "name": "Cell migration and routing",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M39-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M40-S01",
+   "layout": "H",
+   "module": "M40",
+   "name": "Service health and capacity",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M40-S01",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M40-S02",
+   "layout": "D",
+   "module": "M40",
+   "name": "Incident workspace",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M40-S02",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M40-S03",
+   "layout": "L",
+   "module": "M40",
+   "name": "Backup catalogue and verification",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M40-S03",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M40-S04",
+   "layout": "X",
+   "module": "M40",
+   "name": "Recovery plan and execution",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M40-S04",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M40-S05",
+   "layout": "X",
+   "module": "M40",
+   "name": "Recovery validation and reopening",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M40-S05",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  },
+  {
+   "id": "M40-S06",
+   "layout": "T",
+   "module": "M40",
+   "name": "Operational telemetry explorer",
+   "registerCodeStatus": "not_implemented",
+   "route": "/workforce/clinical/M40-S06",
+   "routeStatus": "route_registered_domain_adapter_missing"
+  }
+ ],
+ "sources": {
+  "modules": {
+   "blob": "dee80c0bd6bc0425ed98f0af77e7fc8abb0a22e1",
+   "path": "registers/canonical-modules.json"
+  },
+  "routes": {
+   "blob": "0918f325a675d7f4bb8ead6b1dceba8f1acc688c",
+   "path": "registers/screen-routes.json"
+  },
+  "screens": {
+   "blob": "6188e64d647bcbe9bf5c6d193e33b6886bbc2223",
+   "path": "registers/canonical-screens.json"
+  }
+ }
+}

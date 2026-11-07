@@ -1,0 +1,570 @@
+{
+ "confirmedCount": 12,
+ "handoff": {
+  "assignClaudeNext": [
+   "BL-004",
+   "BL-009",
+   "BL-010",
+   "BL-011",
+   "BL-012",
+   "BL-001",
+   "BL-005",
+   "BL-006",
+   "BL-007",
+   "BL-008",
+   "BL-002"
+  ],
+  "assignIntegrationLead": [
+   "BL-003",
+   "BL-015",
+   "BL-014"
+  ],
+  "assignModuleOwner": [
+   "BL-013"
+  ],
+  "crossModuleDependencies": [
+   "M21, M22, M23, M25, M29, M31, M37 share services/operations-core: one contract task covers all seven",
+   "M04, M05, M06 share one longitudinal slice: attribution must be settled once before per-module work",
+   "any change touching M27 shells depends on the integration lead's ux-core/React fix",
+   "audit of the 14 unknown modules depends on the capability-anchors file being extended by a human reviewer"
+  ],
+  "modulesNeedingNoFurtherImplementation": [],
+  "modulesNeedingNoFurtherImplementationNote": "none can be named: that needs a signed human review (implemented_and_verified); no module has one",
+  "modulesPositivelyConfirmedNeverBuilt": [],
+  "modulesPositivelyConfirmedNeverBuiltNote": "none: confirmed absence needs a signed human audit; the 14 unknown modules are audit candidates, not build orders",
+  "modulesRequiringIntegration": [
+   "M01",
+   "M02",
+   "M04",
+   "M05",
+   "M06",
+   "M16",
+   "M24",
+   "M26",
+   "M27",
+   "M28",
+   "M30",
+   "M32",
+   "M34",
+   "M35",
+   "M38",
+   "M39",
+   "M40"
+  ],
+  "modulesUnknown": [
+   "M07",
+   "M08",
+   "M09",
+   "M10",
+   "M11",
+   "M12",
+   "M13",
+   "M14",
+   "M15",
+   "M17",
+   "M18",
+   "M19",
+   "M20",
+   "M36"
+  ],
+  "modulesWithConfirmedFunctionalityGaps": [
+   "M03",
+   "M21",
+   "M22",
+   "M23",
+   "M25",
+   "M29",
+   "M31",
+   "M33",
+   "M37"
+  ],
+  "simplestFirst": [
+   "BL-004",
+   "BL-009",
+   "BL-010",
+   "BL-011",
+   "BL-012",
+   "BL-003",
+   "BL-005",
+   "BL-006"
+  ]
+ },
+ "itemCount": 15,
+ "items": [
+  {
+   "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
+   "boundedPrScope": [
+    "the module's own paths only"
+   ],
+   "confirmed": true,
+   "dependsOn": [],
+   "effort": "S",
+   "evidence": [
+    {
+     "attributedPathCount": 51,
+     "missingFacets": [
+      "ciWorkflow"
+     ],
+     "module": "M03",
+     "state": "engineering_slice_service_db_contract_tests"
+    }
+   ],
+   "id": "BL-004",
+   "kind": "facet-gap",
+   "ownerSuggestion": "owner of M03 (per ownership register)",
+   "rank": 1,
+   "severity": "high",
+   "title": "M03: missing ciWorkflow in attributed source"
+  },
+  {
+   "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
+   "boundedPrScope": [
+    "the module's own paths only"
+   ],
+   "confirmed": true,
+   "dependsOn": [],
+   "effort": "S",
+   "evidence": [
+    {
+     "attributedPathCount": 53,
+     "missingFacets": [
+      "contract"
+     ],
+     "module": "M29",
+     "state": "partial_source_located"
+    }
+   ],
+   "id": "BL-009",
+   "kind": "facet-gap",
+   "ownerSuggestion": "owner of M29 (per ownership register)",
+   "rank": 2,
+   "severity": "high",
+   "title": "M29: missing contract in attributed source"
+  },
+  {
+   "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
+   "boundedPrScope": [
+    "the module's own paths only"
+   ],
+   "confirmed": true,
+   "dependsOn": [],
+   "effort": "S",
+   "evidence": [
+    {
+     "attributedPathCount": 53,
+     "missingFacets": [
+      "contract"
+     ],
+     "module": "M31",
+     "state": "partial_source_located"
+    }
+   ],
+   "id": "BL-010",
+   "kind": "facet-gap",
+   "ownerSuggestion": "owner of M31 (per ownership register)",
+   "rank": 3,
+   "severity": "high",
+   "title": "M31: missing contract in attributed source"
+  },
+  {
+   "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
+   "boundedPrScope": [
+    "the module's own paths only"
+   ],
+   "confirmed": true,
+   "dependsOn": [],
+   "effort": "S",
+   "evidence": [
+    {
+     "attributedPathCount": 69,
+     "missingFacets": [
+      "contract"
+     ],
+     "module": "M33",
+     "state": "partial_source_located"
+    }
+   ],
+   "id": "BL-011",
+   "kind": "facet-gap",
+   "ownerSuggestion": "owner of M33 (per ownership register)",
+   "rank": 4,
+   "severity": "high",
+   "title": "M33: missing contract in attributed source"
+  },
+  {
+   "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
+   "boundedPrScope": [
+    "the module's own paths only"
+   ],
+   "confirmed": true,
+   "dependsOn": [],
+   "effort": "S",
+   "evidence": [
+    {
+     "attributedPathCount": 53,
+     "missingFacets": [
+      "contract"
+     ],
+     "module": "M37",
+     "state": "partial_source_located"
+    }
+   ],
+   "id": "BL-012",
+   "kind": "facet-gap",
+   "ownerSuggestion": "owner of M37 (per ownership register)",
+   "rank": 5,
+   "severity": "high",
+   "title": "M37: missing contract in attributed source"
+  },
+  {
+   "acceptance": "each module has a recorded human audit with source paths or an explicit confirmed-absent finding signed in the evidence matrix",
+   "assignTo": "claude",
+   "boundedPrScope": [
+    "docs/program/reconciliation/**",
+    "registers/reconciliation/inputs/capability-anchors.json"
+   ],
+   "confirmed": false,
+   "dependsOn": [],
+   "effort": "L",
+   "evidence": [
+    {
+     "finding": "no source attributed by id/ownership/anchor; status UNKNOWN (not proven unbuilt)",
+     "modules": [
+      "M07",
+      "M08",
+      "M09",
+      "M11",
+      "M12",
+      "M13",
+      "M18",
+      "M19",
+      "M36"
+     ]
+    }
+   ],
+   "id": "BL-001",
+   "kind": "audit",
+   "ownerSuggestion": "reconciliation reviewer (not the module builder)",
+   "rank": 6,
+   "severity": "high",
+   "title": "Human audit of modules with no attributed source (wave A): M07, M08, M09, M11, M12, M13, M18, M19, M36"
+  },
+  {
+   "acceptance": "every listed screen is either re-statused with evidence or the evidence is explained",
+   "assignTo": "integration-lead",
+   "boundedPrScope": [
+    "registers/screen-routes.json (integration lead only)"
+   ],
+   "confirmed": true,
+   "dependsOn": [],
+   "effort": "S",
+   "evidence": [
+    {
+     "finding": "register status disagrees with inventory evidence",
+     "screens": [
+      "M01-S02",
+      "M38-S01",
+      "M38-S02",
+      "M38-S03",
+      "M38-S04",
+      "M38-S05",
+      "M39-S01",
+      "M39-S02",
+      "M39-S03",
+      "M39-S04",
+      "M39-S05",
+      "M40-S01",
+      "M40-S02",
+      "M40-S03",
+      "M40-S04",
+      "M40-S05",
+      "M40-S06"
+     ]
+    }
+   ],
+   "id": "BL-003",
+   "kind": "register-drift",
+   "ownerSuggestion": "integration lead (owns registers/screen-routes.json)",
+   "rank": 7,
+   "severity": "medium",
+   "title": "Reconcile screen register statuses with source references (17 screens)"
+  },
+  {
+   "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
+   "boundedPrScope": [
+    "the module's own paths only"
+   ],
+   "confirmed": true,
+   "dependsOn": [],
+   "effort": "S",
+   "evidence": [
+    {
+     "attributedPathCount": 53,
+     "missingFacets": [
+      "contract"
+     ],
+     "module": "M21",
+     "state": "partial_source_located"
+    }
+   ],
+   "id": "BL-005",
+   "kind": "facet-gap",
+   "ownerSuggestion": "owner of M21 (per ownership register)",
+   "rank": 8,
+   "severity": "medium",
+   "title": "M21: missing contract in attributed source"
+  },
+  {
+   "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
+   "boundedPrScope": [
+    "the module's own paths only"
+   ],
+   "confirmed": true,
+   "dependsOn": [],
+   "effort": "S",
+   "evidence": [
+    {
+     "attributedPathCount": 53,
+     "missingFacets": [
+      "contract"
+     ],
+     "module": "M22",
+     "state": "partial_source_located"
+    }
+   ],
+   "id": "BL-006",
+   "kind": "facet-gap",
+   "ownerSuggestion": "owner of M22 (per ownership register)",
+   "rank": 9,
+   "severity": "medium",
+   "title": "M22: missing contract in attributed source"
+  },
+  {
+   "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
+   "boundedPrScope": [
+    "the module's own paths only"
+   ],
+   "confirmed": true,
+   "dependsOn": [],
+   "effort": "S",
+   "evidence": [
+    {
+     "attributedPathCount": 53,
+     "missingFacets": [
+      "contract"
+     ],
+     "module": "M23",
+     "state": "partial_source_located"
+    }
+   ],
+   "id": "BL-007",
+   "kind": "facet-gap",
+   "ownerSuggestion": "owner of M23 (per ownership register)",
+   "rank": 10,
+   "severity": "medium",
+   "title": "M23: missing contract in attributed source"
+  },
+  {
+   "acceptance": "the missing facets exist and pass module CI, or the gap is explained as intentionally out of scope",
+   "assignTo": "claude",
+   "boundedPrScope": [
+    "the module's own paths only"
+   ],
+   "confirmed": true,
+   "dependsOn": [],
+   "effort": "S",
+   "evidence": [
+    {
+     "attributedPathCount": 53,
+     "missingFacets": [
+      "contract"
+     ],
+     "module": "M25",
+     "state": "partial_source_located"
+    }
+   ],
+   "id": "BL-008",
+   "kind": "facet-gap",
+   "ownerSuggestion": "owner of M25 (per ownership register)",
+   "rank": 11,
+   "severity": "medium",
+   "title": "M25: missing contract in attributed source"
+  },
+  {
+   "acceptance": "transactional outbox or documented reason events are not required",
+   "assignTo": "module-owner-then-integration-lead",
+   "boundedPrScope": [
+    "services/identity/db/**"
+   ],
+   "confirmed": true,
+   "dependsOn": [],
+   "effort": "M",
+   "evidence": [
+    {
+     "service": "services/identity",
+     "tableCount": 3
+    }
+   ],
+   "id": "BL-013",
+   "kind": "event-gap",
+   "ownerSuggestion": "service owner",
+   "rank": 12,
+   "severity": "medium",
+   "title": "services/identity: no outbox table found although it persists data"
+  },
+  {
+   "acceptance": "each module has a recorded human audit with source paths or an explicit confirmed-absent finding signed in the evidence matrix",
+   "assignTo": "claude",
+   "boundedPrScope": [
+    "docs/program/reconciliation/**",
+    "registers/reconciliation/inputs/capability-anchors.json"
+   ],
+   "confirmed": false,
+   "dependsOn": [
+    "BL-001"
+   ],
+   "effort": "L",
+   "evidence": [
+    {
+     "finding": "no source attributed by id/ownership/anchor; status UNKNOWN (not proven unbuilt)",
+     "modules": [
+      "M10",
+      "M14",
+      "M15",
+      "M17",
+      "M20"
+     ]
+    }
+   ],
+   "id": "BL-002",
+   "kind": "audit",
+   "ownerSuggestion": "reconciliation reviewer (not the module builder)",
+   "rank": 13,
+   "severity": "medium",
+   "title": "Human audit of modules with no attributed source (wave B): M10, M14, M15, M17, M20"
+  },
+  {
+   "acceptance": "overlaps are confirmed intentional per-service tables or consolidated",
+   "assignTo": "integration-lead",
+   "boundedPrScope": [
+    "service db/**"
+   ],
+   "confirmed": false,
+   "dependsOn": [],
+   "effort": "M",
+   "evidence": [
+    {
+     "collisions": {
+      "audit_events": [
+       "services/analytics-core",
+       "services/cell-lifecycle-core",
+       "services/clinical-content-core",
+       "services/hr-payroll-core",
+       "services/integration-management-core",
+       "services/nutrition-core",
+       "services/offline-sync-core",
+       "services/operations-core",
+       "services/privacy-core",
+       "services/referrals-core",
+       "services/reliability-core",
+       "services/scheduling-core"
+      ],
+      "command_idempotency": [
+       "services/analytics-core",
+       "services/cell-lifecycle-core",
+       "services/clinical-content-core",
+       "services/hr-payroll-core",
+       "services/nutrition-core",
+       "services/offline-sync-core",
+       "services/operations-core",
+       "services/reliability-core"
+      ],
+      "commands": [
+       "services/audit-core",
+       "services/integration-management-core",
+       "services/offline-sync-core",
+       "services/privacy-core",
+       "services/referrals-core",
+       "services/scheduling-core"
+      ],
+      "contracts": [
+       "services/hr-payroll-core",
+       "services/offline-sync-core"
+      ],
+      "outbox": [
+       "services/analytics-core",
+       "services/audit-core",
+       "services/cell-lifecycle-core",
+       "services/clinical-content-core",
+       "services/hr-payroll-core",
+       "services/integration-management-core",
+       "services/nutrition-core",
+       "services/offline-sync-core",
+       "services/operations-core",
+       "services/privacy-core",
+       "services/referrals-core",
+       "services/reliability-core",
+       "services/scheduling-core"
+      ]
+     }
+    }
+   ],
+   "id": "BL-015",
+   "kind": "duplication-candidate",
+   "ownerSuggestion": "integration lead",
+   "rank": 14,
+   "severity": "medium",
+   "title": "Review table-name collisions across services (5)"
+  },
+  {
+   "acceptance": "each group is intentionally mirrored (documented) or consolidated",
+   "assignTo": "integration-lead",
+   "boundedPrScope": [
+    "listed duplicate paths only"
+   ],
+   "confirmed": true,
+   "dependsOn": [],
+   "effort": "S",
+   "evidence": [
+    {
+     "groups": [
+      [
+       "apps/web/app/workforce/integrations/integrations.module.css",
+       "apps/web/app/workforce/referrals/referrals.module.css",
+       "apps/web/app/workforce/scheduling/scheduling.module.css"
+      ],
+      [
+       "apps/web/components/analytics/analytics.module.css",
+       "apps/web/components/content/content.module.css",
+       "apps/web/components/fleet/fleet.module.css",
+       "apps/web/components/hr/hr.module.css",
+       "apps/web/components/offline/offline.module.css",
+       "apps/web/components/reliability/reliability.module.css"
+      ],
+      [
+       "docs/program/V066_INBOX_OPERATIONS.md",
+       "docs/program/handoffs/P07_B0120_B0129_v066.md"
+      ]
+     ]
+    }
+   ],
+   "id": "BL-014",
+   "kind": "duplication",
+   "ownerSuggestion": "integration lead",
+   "rank": 15,
+   "severity": "low",
+   "title": "Review 3 groups of byte-identical files at different paths"
+  }
+ ],
+ "note": "confirmed=false items are audit work, not proven gaps. No item instructs rebuilding a module from a naming signal.",
+ "ranking": "severity (high>medium>low), then confirmed before unconfirmed, then id",
+ "schemaVersion": "synqoria.reconciliation.backlog.v1"
+}

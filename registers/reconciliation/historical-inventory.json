@@ -1,0 +1,443 @@
+{
+ "archiveAndEvidenceGroups": {
+  "docs/archive": {
+   "bytes": 18625,
+   "files": 16
+  },
+  "docs/recovery": {
+   "bytes": 13077,
+   "files": 7
+  },
+  "evidence/CUMULATIVE_FILE_SHA256.json": {
+   "bytes": 255904,
+   "files": 1
+  },
+  "evidence/INITIAL_MANIFEST_SHA256.json": {
+   "bytes": 1954,
+   "files": 1
+  },
+  "evidence/INITIAL_TEST_RESULTS.txt": {
+   "bytes": 271,
+   "files": 1
+  },
+  "evidence/README.md": {
+   "bytes": 226,
+   "files": 1
+  },
+  "evidence/batches": {
+   "bytes": 2771214,
+   "files": 440
+  },
+  "evidence/seed": {
+   "bytes": 103225,
+   "files": 1
+  },
+  "evidence/v067": {
+   "bytes": 16001,
+   "files": 31
+  },
+  "evidence/v230-changed-files.json": {
+   "bytes": 11322,
+   "files": 1
+  },
+  "evidence/v240-changed-files.json": {
+   "bytes": 9149,
+   "files": 1
+  },
+  "evidence/v250-changed-files.json": {
+   "bytes": 11179,
+   "files": 1
+  },
+  "evidence/v260-changed-files.json": {
+   "bytes": 2823,
+   "files": 1
+  },
+  "evidence/v270-changed-files.json": {
+   "bytes": 11936,
+   "files": 1
+  },
+  "evidence/v280-changed-files.json": {
+   "bytes": 13859,
+   "files": 1
+  },
+  "evidence/v290-changed-files.json": {
+   "bytes": 1459,
+   "files": 1
+  },
+  "evidence/v290-file-manifest.json": {
+   "bytes": 133830,
+   "files": 1
+  },
+  "evidence/v300-changed-files.json": {
+   "bytes": 5674,
+   "files": 1
+  },
+  "evidence/v300-file-manifest.json": {
+   "bytes": 138662,
+   "files": 1
+  },
+  "evidence/v310-changed-files.json": {
+   "bytes": 618,
+   "files": 1
+  },
+  "evidence/v310-file-manifest.json": {
+   "bytes": 140108,
+   "files": 1
+  },
+  "evidence/v320-file-manifest.json": {
+   "bytes": 143702,
+   "files": 1
+  },
+  "evidence/v320-status.json": {
+   "bytes": 460,
+   "files": 1
+  },
+  "evidence/v330-file-manifest.json": {
+   "bytes": 145011,
+   "files": 1
+  },
+  "evidence/v350-changed-files.json": {
+   "bytes": 598,
+   "files": 1
+  },
+  "evidence/v350-file-manifest.json": {
+   "bytes": 147647,
+   "files": 1
+  },
+  "evidence/v360-file-manifest.json": {
+   "bytes": 148958,
+   "files": 1
+  },
+  "evidence/v370-file-manifest.json": {
+   "bytes": 150285,
+   "files": 1
+  },
+  "evidence/v380-file-manifest.json": {
+   "bytes": 150939,
+   "files": 1
+  },
+  "evidence/v390-file-manifest.json": {
+   "bytes": 151596,
+   "files": 1
+  },
+  "evidence/v410-concurrent-file-manifest.json": {
+   "bytes": 152643,
+   "files": 1
+  },
+  "evidence/v420-concurrent-manifest.json": {
+   "bytes": 153209,
+   "files": 1
+  },
+  "evidence/v510": {
+   "bytes": 108665,
+   "files": 97
+  },
+  "evidence/v520": {
+   "bytes": 160834,
+   "files": 187
+  },
+  "evidence/v530": {
+   "bytes": 92036,
+   "files": 4
+  },
+  "evidence/v540": {
+   "bytes": 81507,
+   "files": 79
+  },
+  "evidence/v550": {
+   "bytes": 55677,
+   "files": 22
+  },
+  "evidence/v560": {
+   "bytes": 198320,
+   "files": 98
+  },
+  "evidence/v570": {
+   "bytes": 95166,
+   "files": 21
+  },
+  "evidence/v580": {
+   "bytes": 1349,
+   "files": 1
+  },
+  "evidence/v590": {
+   "bytes": 32710,
+   "files": 25
+  },
+  "evidence/v600": {
+   "bytes": 29140,
+   "files": 63
+  },
+  "evidence/v610": {
+   "bytes": 80725,
+   "files": 19
+  },
+  "evidence/v620": {
+   "bytes": 102191,
+   "files": 48
+  },
+  "evidence/v630": {
+   "bytes": 149675,
+   "files": 34
+  },
+  "evidence/v640": {
+   "bytes": 3694,
+   "files": 3
+  },
+  "evidence/v650": {
+   "bytes": 976,
+   "files": 5
+  },
+  "evidence/v660": {
+   "bytes": 1500,
+   "files": 10
+  },
+  "evidence/verification": {
+   "bytes": 43414,
+   "files": 14
+  }
+ },
+ "batchRegisters": [
+  "registers/v067/batches/P07-B0130.json",
+  "registers/v067/batches/P07-B0131.json",
+  "registers/v067/batches/P07-B0132.json",
+  "registers/v067/batches/P07-B0133.json",
+  "registers/v067/batches/P07-B0134.json",
+  "registers/v067/batches/P07-B0135.json",
+  "registers/v067/batches/P07-B0136.json",
+  "registers/v067/batches/P07-B0137.json",
+  "registers/v067/batches/P07-B0138.json",
+  "registers/v067/batches/P07-B0139.json",
+  "registers/v067/batches/P07-B0140.json",
+  "registers/v067/batches/P07-B0141.json",
+  "registers/v067/batches/P07-B0142.json",
+  "registers/v067/batches/P07-B0143.json",
+  "registers/v067/batches/P07-B0144.json",
+  "registers/v067/batches/P07-B0145.json",
+  "registers/v067/batches/P07-B0146.json",
+  "registers/v067/batches/P07-B0147.json",
+  "registers/v067/batches/P07-B0148.json",
+  "registers/v067/batches/P07-B0149.json",
+  "registers/v067/batches/P07-B0150.json",
+  "registers/v067/batches/P07-B0151.json",
+  "registers/v067/batches/P07-B0152.json",
+  "registers/v067/batches/P07-B0153.json",
+  "registers/v067/batches/P07-B0154.json",
+  "registers/v067/batches/P07-B0155.json",
+  "registers/v067/batches/P07-B0156.json",
+  "registers/v067/batches/P07-B0157.json",
+  "registers/v067/batches/P07-B0158.json",
+  "registers/v067/batches/P07-B0159.json",
+  "registers/v067/summary.json",
+  "registers/v310-blockers.json",
+  "registers/v440-batch-status.json",
+  "registers/v450-batch-status.json",
+  "registers/v470-batch-status.json",
+  "registers/v480-batch-status.json",
+  "registers/v510-feature-batches.json",
+  "registers/v520-blockers.json",
+  "registers/v530-reconciled-60-batches.json",
+  "registers/v540-60-batches.json",
+  "registers/v540-blockers.json",
+  "registers/v550-blockers.json",
+  "registers/v550-implementation-batches.json",
+  "registers/v560-blockers.json",
+  "registers/v560-implementation-batches.json",
+  "registers/v570-implementation-batches.json",
+  "registers/v590-implementation-batches.json",
+  "registers/v600-implementation-batches.json",
+  "registers/v610-blockers.json",
+  "registers/v610-implementation-batches.json",
+  "registers/v620-implementation-batches.json",
+  "registers/v630-implementation-batches.json",
+  "registers/v640-inbox-batches.json",
+  "registers/v650-inbox-integration-batches.json",
+  "registers/v660-B0120-verified.json",
+  "registers/v660-B0121-verified.json",
+  "registers/v660-B0122-verified.json",
+  "registers/v660-B0123-verified.json",
+  "registers/v660-B0124-verified.json",
+  "registers/v660-B0125-verified.json",
+  "registers/v660-B0126-verified.json",
+  "registers/v660-B0127-verified.json",
+  "registers/v660-B0128-verified.json",
+  "registers/v660-B0129-verified.json",
+  "registers/v660-inbox-operations-batches.json"
+ ],
+ "binaryArchiveNote": "SYNQORIA_Baseline_v0.1.0.zip is a seed archive; its contents were not unpacked or attributed (unknown, not unbuilt)",
+ "binaryArchivesInRepository": [
+  "evidence/seed/SYNQORIA_Baseline_v0.1.0.zip"
+ ],
+ "engineeringAndHandoffDocuments": [
+  "docs/program/CONTINUOUS_RECONCILIATION_AND_NEXT_EXECUTION_2026-11-07.md",
+  "docs/program/M02_SCHEDULING_ENGINEERING_2026-11-07.md",
+  "docs/program/M16_REFERRALS_ENGINEERING_2026-11-07.md",
+  "docs/program/M27_MORTUARY_ENGINEERING_2026-11-07.md",
+  "docs/program/M32_PRIVACY_ENGINEERING_2026-11-07.md",
+  "docs/program/M34_AUDIT_PROVENANCE_ENGINEERING_2026-11-07.md",
+  "docs/program/M35_INTEGRATIONS_ENGINEERING_2026-11-07.md",
+  "docs/program/P03_VERIFIED_OIDC_OFFLINE_SESSION_HANDOFF_2026-11-07.md",
+  "docs/program/PRODUCTION_SOURCE_RECONCILIATION_2026-11-07.md",
+  "docs/program/SYNQORIA_MULTI_CHAT_HANDOFF.md",
+  "docs/program/V010_TRANSACTION_AND_MOBILE_REVIEW.md",
+  "docs/program/V011_INTEGRATION_AND_SAFETY_REVIEW.md",
+  "docs/program/V012_REGISTRATION_IMPLEMENTATION_REVIEW.md",
+  "docs/program/V013_REGISTRATION_AUTHORITY_REVIEW.md",
+  "docs/program/V014_REVIEW_AND_INTAKE_BOUNDARY.md",
+  "docs/program/V015_REVIEW_AND_MOBILE_GUARDS.md",
+  "docs/program/V016_REVIEW_EVENT_AND_LOCKED_INTAKE.md",
+  "docs/program/V017_OIDC_AND_NATIVE_PRIVACY_REVIEW.md",
+  "docs/program/V018_SECURITY_AND_MOBILE_REVIEW.md",
+  "docs/program/V019_REVIEW_AND_ACCESSIBILITY.md",
+  "docs/program/V021_REVIEW_AND_NATIVE_GATES.md",
+  "docs/program/V022_REVIEW_JOURNAL_AND_NATIVE_PRIVACY.md",
+  "docs/program/V023_SCOPED_REVIEW_AND_NATIVE_SECURITY.md",
+  "docs/program/V024_REVIEW_JDBC_AND_WEB_SHELL.md",
+  "docs/program/V025_POSTGRES_ADAPTER_AND_ACCESSIBLE_MORE_REVIEW.md",
+  "docs/program/V026_ENGINEERING_AND_REVIEW_GATES.md",
+  "docs/program/V027_BUILD_AND_REVIEW_INTEGRITY.md",
+  "docs/program/V030_APPOINTMENT_DOMAIN_REVIEW.md",
+  "docs/program/V045_ENGINEERING.md",
+  "docs/program/V047_RECONCILIATION.md",
+  "docs/program/V048_RECONCILIATION.md",
+  "docs/program/V050_ENGINEERING_REVIEW.md",
+  "docs/program/handoffs/GITHUB_RECONCILIATION_2026-11-05.md",
+  "docs/program/handoffs/M24_HR_PAYROLL_2026-11-07.md",
+  "docs/program/handoffs/M26_NUTRITION_2026-11-07.md",
+  "docs/program/handoffs/M28_ANALYTICS_2026-11-07.md",
+  "docs/program/handoffs/M30_CLINICAL_CONTENT_2026-11-07.md",
+  "docs/program/handoffs/M38_OFFLINE_SYNC_2026-11-07.md",
+  "docs/program/handoffs/M39_CELL_LIFECYCLE_2026-11-07.md",
+  "docs/program/handoffs/M40_RELIABILITY_2026-11-07.md",
+  "docs/program/handoffs/P03_B0094_B0123_RUNTIME_BUILD_2026-11-06.md",
+  "docs/program/handoffs/P06_B0369_B0371_v058_PR1.md",
+  "docs/program/handoffs/P06_B0372_B0391_v059_PR2.md",
+  "docs/program/handoffs/P07_B0001_B0060_v060.md",
+  "docs/program/handoffs/P07_B0061_B0070_v061_PR4.md",
+  "docs/program/handoffs/P07_B0071_B0093_v062.md",
+  "docs/program/handoffs/P07_B0120_B0129_v066.md",
+  "docs/program/handoffs/P07_B0130_B0159_v067.md",
+  "docs/program/handoffs/P07_B0130_B0159_v067_RESERVATION.txt",
+  "docs/program/handoffs/SYNQORIA_CROSS_CHAT_RECONCILIATION_2026-11-04.md"
+ ],
+ "engineeringNotes": [
+  "docs/engineering/M03_TRIAGE_AUDIT_CONTINUITY_v0.55.0.md",
+  "docs/engineering/M03_TRIAGE_HTTP_v0.56.0_INTERNAL.md",
+  "docs/engineering/M03_TRIAGE_v0.51.0_INTERNAL.md",
+  "docs/engineering/M03_TRIAGE_v0.52.0_RESTRICTED_PERSISTENCE_INTERNAL.md",
+  "docs/engineering/M03_TRIAGE_v0.53.0_AUTHENTICATED_COMMAND_SOURCE.md",
+  "docs/engineering/M03_TRIAGE_v0.53.0_RECONCILED_INTERNAL.md",
+  "docs/engineering/M03_TRIAGE_v0.54.0_HTTP_GENESIS_INTERNAL.md",
+  "docs/engineering/M03_TRIAGE_v0.57.0_INTERNAL.md",
+  "docs/engineering/P07_LONGITUDINAL_CORE_v0.60.0.md",
+  "docs/engineering/P07_LONGITUDINAL_HTTP_v0.61.0.md",
+  "docs/engineering/P07_LONGITUDINAL_OUTBOX_v0.63.0.md",
+  "docs/engineering/P07_LONGITUDINAL_SECURE_PERSISTENCE_v0.62.0.md"
+ ],
+ "inaccessibleHistory": "worktrees outside this repository, unpushed local branches and PR review comments were not accessible to this scan and are not claimed",
+ "prLineage": {
+  "closedUnmergedPrsWithHeadInBaseline": [
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27,
+   28,
+   29,
+   30,
+   31,
+   32,
+   33,
+   35,
+   36,
+   37,
+   38,
+   39,
+   40,
+   41,
+   42,
+   43,
+   44,
+   45,
+   46
+  ],
+  "closedUnmergedPrsWithHeadNOTInBaseline": [],
+  "mergedPrs": [
+   1,
+   11,
+   34,
+   47,
+   48,
+   50,
+   51,
+   52,
+   54,
+   55,
+   57,
+   58,
+   59,
+   61,
+   62,
+   63,
+   64
+  ]
+ },
+ "quarantinedOrRecoveredSources": [
+  "docs/recovery/v0271/V012__appointment_read_quarantine.sql",
+  "docs/recovery/v0271/run_v0271_recovery_batches.py",
+  "docs/recovery/v0271/run_v0271_regression.py",
+  "docs/recovery/v0271/test_v0271_scheduling_ddl.py"
+ ],
+ "schemaVersion": "synqoria.reconciliation.historical.v1",
+ "statusCheckpointDocuments": [
+  "SYNQORIA_STATUS_v0.52.0.md",
+  "SYNQORIA_STATUS_v0.54.0.md",
+  "SYNQORIA_STATUS_v0.55.0.md",
+  "SYNQORIA_STATUS_v0.56.0.md",
+  "SYNQORIA_STATUS_v0.57.0.md",
+  "SYNQORIA_STATUS_v0.59.0.md",
+  "SYNQORIA_STATUS_v0.60.0.md",
+  "SYNQORIA_STATUS_v0.61.0.md",
+  "SYNQORIA_STATUS_v0.62.0.md",
+  "SYNQORIA_STATUS_v0.63.0.md",
+  "docs/program/STATUS_v0.33.0.md",
+  "docs/program/STATUS_v0.34.0.md",
+  "docs/program/STATUS_v0.35.0.md",
+  "docs/program/STATUS_v0.36.0.md",
+  "docs/program/STATUS_v0.37.0.md",
+  "docs/program/STATUS_v0.38.0.md",
+  "docs/program/STATUS_v0.39.0.md",
+  "docs/program/STATUS_v0.40.0.md",
+  "docs/program/STATUS_v0.41.0_concurrent.md",
+  "docs/program/STATUS_v0.41.0_working_branch.md",
+  "docs/program/STATUS_v0.42.0.md",
+  "docs/program/STATUS_v0.42.0_concurrent.md",
+  "docs/program/STATUS_v0.43.0.md",
+  "docs/program/STATUS_v0.45.0.md",
+  "docs/program/STATUS_v0.47.0.md",
+  "docs/program/STATUS_v0.48.0.md",
+  "docs/program/STATUS_v0.49.0.md",
+  "docs/program/STATUS_v0.50.0.md",
+  "docs/program/STATUS_v0.58.0.md"
+ ]
+}
