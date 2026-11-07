@@ -43,7 +43,10 @@ test("operational UI preview is responsive and cannot execute unverified privile
  for(const token of ["viewItems","allowedActions","allowedMovements","displayedFields"])
   assert.match(workbench,new RegExp(token));
  const details=read("apps/web/app/workforce/operations/[module]/[screen]/page.tsx");
- assert.match(details,/OperationsWorkbench/);
+ assert.match(details,/redirect\("\/workforce\/clinical\/"\+screen\)/);
+ const canonicalRoute=read("apps/web/app/workforce/clinical/[screenId]/page.tsx");
+ assert.match(canonicalRoute,/OperationsWorkbench/);
+ assert.match(canonicalRoute,/opsCatalog\.modules\.find/);
  const ui=read("apps/web/components/OperationsWorkbench.tsx");
  assert.match(ui,/M21/);
  assert.match(ui,/M22/);
