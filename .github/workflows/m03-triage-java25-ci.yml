@@ -1,0 +1,43 @@
+name: SYNQORIA M03 real triage Java 25 regression (synthetic; not clinical certification)
+on:
+  pull_request:
+    paths:
+      - 'services/clinical-core/src/main/java/org/synqoria/triage/**'
+      - 'services/clinical-core/src/main/java/org/synqoria/security/**'
+      - 'services/clinical-core/src/test/java/org/synqoria/triage/**'
+      - 'contracts/openapi/synqoria-m03-triage-restricted-v1.yaml'
+      - '.github/workflows/m03-triage-java25-ci.yml'
+      - 'tools/run_m03_triage_java25.py'
+  push:
+    branches: [main]
+    paths:
+      - 'services/clinical-core/src/main/java/org/synqoria/triage/**'
+      - 'services/clinical-core/src/main/java/org/synqoria/security/**'
+      - 'services/clinical-core/src/test/java/org/synqoria/triage/**'
+      - 'contracts/openapi/synqoria-m03-triage-restricted-v1.yaml'
+      - '.github/workflows/m03-triage-java25-ci.yml'
+permissions:
+  contents: read
+jobs:
+  triage-java25:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+      - name: Compile ACTUAL M03 Java sources and all existing triage synthetic integration tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/synqoria-m03-classes
+          find services/clinical-core/src/main/java services/clinical-core/src/test/java/org/synqoria/triage -type f -name '*.java' | sort > /tmp/synqoria-m03-sources.list
+          test "$(wc -l < /tmp/synqoria-m03-sources.list)" -ge 20
+          javac --release 25 -encoding UTF-8 -d /tmp/synqoria-m03-classes @/tmp/synqoria-m03-sources.list
+      - name: Run all existing M03 Java standalone and individually parameterized batch integration tests
+        run: python tools/run_m03_triage_java25.py
+      - name: M03 evidence boundary
+        run: |
+          echo 'Java25 synthetic triage domain/HTTP boundary tests; not real hospital OIDC, actual PostgreSQL restricted-role integration, or clinical acceptance'
