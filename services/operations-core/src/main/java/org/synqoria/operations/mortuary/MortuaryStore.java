@@ -81,7 +81,10 @@ public final class MortuaryStore {
  private CaseView view(ResultSet rs)throws SQLException{
   var end=rs.getTimestamp("released_at");
   return new CaseView(rs.getObject("case_id",UUID.class),
-   rs.getObject("decedent_ref",UUID.class),rs.getString("state"),rs.getLong("version"),
+   rs.getObject("decedent_ref",UUID.class),
+   rs.getString("originating_unit_ref"),rs.getString("belongings_seal_ref"),
+   rs.getObject("intake_receiving_staff",UUID.class),
+   rs.getString("state"),rs.getLong("version"),
    rs.getString("current_storage"),rs.getTimestamp("received_at").toInstant(),
    end==null?null:end.toInstant());
  }
@@ -175,19 +178,26 @@ public final class MortuaryStore {
    evt,actor.cell(),actor.facility(),id,version,action,payload);
  }
  private void custody(OperationWorkflow.Actor actor,UUID id,long version,String type,
-                      String from,String to,UUID receiver,String ref){
+                      String from,String to,UUID receiver,String ref,String seal,String condition,
+                      UUID witness,String belongings){
   jdbc.update("INSERT INTO synqoria_operations.mortuary_custody_events "+
    "(event_id,cell_id,facility_id,case_id,case_version,event_type,from_storage,to_storage,"+
-   "actor_id,receiving_staff_id,evidence_ref) VALUES(?,?,?,?,?,?,?,?,?,?,?)",
+   "actor_id,receiving_staff_id,evidence_ref,seal_ref,condition_code,witness_staff_id,belongings_ref) "+
+   "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
    UUID.randomUUID(),actor.cell(),actor.facility(),id,version,type,from,to,
-   actor.actor(),receiver,code(ref));
+   actor.actor(),receiver,code(ref),seal,condition,witness,belongings);
  }
  public CaseView receive(OperationWorkflow.Actor actor,Intake req){
   actor.require("m27:intake");
   if(req==null)throw new WorkflowViolation("invalid_mortuary_intake");
   UUID deceased=nonNull(req.decedentRef()),cmd=nonNull(req.commandId());
   String intake=code(req.intakeRef()),death=code(req.deathRef());
-  String hash=hashParts("RECEIVE",deceased.toString(),intake,death);
+  String origin=code(req.originatingUnitRef()),authorization=code(req.authorizationRef());
+  String seal=code(req.belongingsSealRef());
+  UUID receiver=nonNull(req.receivingStaffId());
+  if(receiver.equals(actor.actor()))throw new WorkflowViolation("independent_intake_receiver_required");
+  String hash=hashParts("RECEIVE",deceased.toString(),intake,death,origin,authorization,seal,
+   receiver.toString());
   return scoped(actor,()->{
    UUID prior=start(actor,cmd,hash);
    if(prior!=null)return replay(actor,prior,1);
@@ -197,12 +207,17 @@ public final class MortuaryStore {
    // Never create a death record from an unverified/administrative claim.
    proof(actor,deceased,null,"RECEIVE",0,"DEATH_CONFIRMED",death);
    proof(actor,deceased,null,"RECEIVE",0,"IDENTITY_ATTESTED",intake);
+   proof(actor,deceased,null,"RECEIVE",0,"INTAKE_AUTHORIZED",authorization);
+   proof(actor,deceased,null,"RECEIVE",0,"BELONGINGS_SEALED",seal);
+   receiverOnShift(actor,receiver);
    UUID id=UUID.randomUUID();
    jdbc.update("INSERT INTO synqoria_operations.mortuary_cases "+
-    "(case_id,cell_id,facility_id,decedent_ref,intake_ref,death_ref,state,version,intake_actor,last_actor) "+
-    "VALUES(?,?,?,?,?,?,'RECEIVED',1,?,?)",
-    id,actor.cell(),actor.facility(),deceased,intake,death,actor.actor(),actor.actor());
-   custody(actor,id,1,"INTAKE",null,null,null,intake);
+    "(case_id,cell_id,facility_id,decedent_ref,intake_ref,death_ref,originating_unit_ref,"+
+    "intake_authorization_ref,belongings_seal_ref,intake_receiving_staff,state,version,intake_actor,last_actor) "+
+    "VALUES(?,?,?,?,?,?,?,?,?,?,'RECEIVED',1,?,?)",
+    id,actor.cell(),actor.facility(),deceased,intake,death,origin,authorization,seal,receiver,
+    actor.actor(),actor.actor());
+   custody(actor,id,1,"INTAKE",null,null,receiver,intake,seal,"SEALED",null,seal);
    event(actor,cmd,id,1,"RECEIVE",null,"RECEIVED",hash);
    finish(actor,cmd,id,1);
    return caseView(actor,id);
@@ -218,7 +233,9 @@ public final class MortuaryStore {
   String hash=hashParts("CHANGE",caseId.toString(),action.name(),String.valueOf(req.expectedVersion()),
    req.evidenceRef(),req.storageCode(),
    req.receivingStaffId()==null?null:req.receivingStaffId().toString(),
-   req.recipientRef(),req.authorityRef());
+   req.recipientRef(),req.authorityRef(),req.sealRef(),req.conditionCode(),
+   req.witnessStaffId()==null?null:req.witnessStaffId().toString(),
+   req.belongingsReleaseRef());
   return scoped(actor,()->{
    UUID prior=start(actor,req.commandId(),hash);
    if(prior!=null){
@@ -236,12 +253,14 @@ public final class MortuaryStore {
       "IDENTITY_VERIFIED",req.evidenceRef());
     case STORE -> {
      destination=code(req.storageCode());
+     code(req.sealRef());code(req.conditionCode());
      receiverOnShift(actor,receiver);
      proof(actor,before.decedentRef(),caseId,"STORE",before.version(),
       "STORAGE_SAFE",req.evidenceRef());
     }
     case TRANSFER -> {
      destination=code(req.storageCode());
+     code(req.sealRef());code(req.conditionCode());
      MortuaryWorkflow.validateTransfer(before.currentStorage(),destination,actor.actor(),receiver);
      receiverOnShift(actor,receiver);
      proof(actor,before.decedentRef(),caseId,"TRANSFER",before.version(),
@@ -306,6 +325,13 @@ public final class MortuaryStore {
       "RECIPIENT_VERIFIED",req.recipientRef());
      proof(actor,before.decedentRef(),caseId,"HANDOVER",before.version(),
       "HANDOVER_RECEIPT",req.evidenceRef());
+     UUID witness=nonNull(req.witnessStaffId());
+     if(witness.equals(actor.actor())||witness.equals(before.intakeActor())||
+        witness.equals(review.get("actor_id"))||witness.equals(auth.get("actor_id")))
+      throw new WorkflowViolation("independent_handover_witness_required");
+     receiverOnShift(actor,witness);
+     proof(actor,before.decedentRef(),caseId,"HANDOVER",before.version(),
+      "BELONGINGS_RELEASED",req.belongingsReleaseRef());
      destination=null;
     }
    }
@@ -320,9 +346,10 @@ public final class MortuaryStore {
    if(changed!=1)throw new WorkflowViolation("stale_version");
    if(action==MortuaryWorkflow.Action.STORE||action==MortuaryWorkflow.Action.TRANSFER)
     custody(actor,caseId,version,action.name(),before.currentStorage(),destination,receiver,
-     req.evidenceRef());
+      req.evidenceRef(),code(req.sealRef()),code(req.conditionCode()),null,null);
    if(action==MortuaryWorkflow.Action.HANDOVER)
-    custody(actor,caseId,version,"HANDOVER",before.currentStorage(),null,null,req.evidenceRef());
+    custody(actor,caseId,version,"HANDOVER",before.currentStorage(),null,null,req.evidenceRef(),
+      null,null,nonNull(req.witnessStaffId()),code(req.belongingsReleaseRef()));
    event(actor,req.commandId(),caseId,version,action.name(),from,decision.next().name(),hash);
    finish(actor,req.commandId(),caseId,version);
    return caseView(actor,caseId);
@@ -348,7 +375,9 @@ public final class MortuaryStore {
     (rs,i)->new CustodyView(rs.getLong("case_version"),rs.getString("event_type"),
       rs.getString("from_storage"),rs.getString("to_storage"),
       rs.getObject("actor_id",UUID.class),rs.getObject("receiving_staff_id",UUID.class),
-      rs.getString("evidence_ref"),rs.getTimestamp("occurred_at").toInstant()),
+      rs.getString("evidence_ref"),rs.getTimestamp("occurred_at").toInstant(),
+      rs.getString("seal_ref"),rs.getString("condition_code"),
+      rs.getObject("witness_staff_id",UUID.class),rs.getString("belongings_ref")),
     actor.cell(),actor.facility(),id);
   });
  }
