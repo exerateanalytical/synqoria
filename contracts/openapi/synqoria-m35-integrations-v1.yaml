@@ -139,7 +139,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Version'
       responses:
-        '201':
+        '200':
           description: Authorized scoped state change or review
         '401': {description: Authentication required}
         '403': {description: Access denied}
@@ -177,7 +177,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Version'
       responses:
-        '201':
+        '200':
           description: Authorized scoped state change or review
         '401': {description: Authentication required}
         '403': {description: Access denied}
@@ -219,7 +219,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Version'
       responses:
-        '201':
+        '200':
           description: Authorized scoped state change or review
         '401': {description: Authentication required}
         '403': {description: Access denied}
@@ -261,7 +261,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Version'
       responses:
-        '201':
+        '200':
           description: Authorized scoped state change or review
         '401': {description: Authentication required}
         '403': {description: Access denied}
@@ -299,7 +299,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Version'
       responses:
-        '201':
+        '200':
           description: Authorized scoped state change or review
         '401': {description: Authentication required}
         '403': {description: Access denied}
@@ -337,7 +337,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Decision'
       responses:
-        '201':
+        '200':
           description: Authorized scoped state change or review
         '401': {description: Authentication required}
         '403': {description: Access denied}
