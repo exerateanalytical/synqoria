@@ -20,7 +20,8 @@ import { parseBatchResult } from "./validate.ts";
 
 export type SyncStatus = "IDLE" | "PROGRESS" | "RETRY_LATER" | "SUSPENDED" | "LEADER_ELSEWHERE" | "OFFLINE" | "WIPED";
 export type SyncReport = { status: SyncStatus; reason?: string; delayMs?: number; sent: number; applied: number; duplicate: number; conflicted: number; denied: number; expired: number; requeued: number };
-type State = { cursor: number; inflight: { batchKey: string; seqs: number[] } | null; failures: number };
+type State = { cursor: number; inflight: { batchKey: string; seqs: number[] } | null; failures: number; lastProbe?: number };
+export const PROBE_INTERVAL_MS = 5 * 60_000;
 const STATE = "sync/state", SUSPENDED = "sync/suspended";
 
 export type EngineDeps = {
@@ -98,7 +99,7 @@ export class SyncEngine {
     if (entries.length === 0) { st.inflight = null; await this.save(st); return this.syncOnce(); }
    } else {
     entries = (await d.queue.list(["QUEUED"])).slice(0, MAX_BATCH);
-    if (entries.length === 0) return empty("IDLE");
+    if (entries.length === 0) return (await this.probe(st)) ?? empty("IDLE");
     st.inflight = { batchKey: (d.newBatchKey ?? (() => globalThis.crypto.randomUUID()))(), seqs: entries.map(e => e.seq) };
     await this.save(st);
    }
@@ -137,6 +138,24 @@ export class SyncEngine {
    if (e instanceof LockedError) return empty("SUSPENDED", "store_locked");
    throw e;
   }
+ }
+
+ /**
+  * Idle revocation/expiry probe: with nothing to send the engine would never learn that the device was revoked. At most every PROBE_INTERVAL_MS it asks the
+  * server for this device's cursor (a read, scoped by the verified token): REVOKED or unknown wipes the device, 401/403 suspends it. Returns null when all is well.
+  */
+ private async probe(st: State): Promise<SyncReport | null> {
+  const d = this.d;
+  if (st.lastProbe !== undefined && d.clock() - st.lastProbe < PROBE_INTERVAL_MS) return null;
+  const r = await d.transport.cursor(d.binding.deviceId);
+  if (r.ok) {
+   st.lastProbe = d.clock(); await this.save(st);
+   if (r.data.status === "ACTIVE") return null;
+   return this.onFailure({ kind: "forbidden", status: 403, code: "device_revoked" }, st);
+  }
+  if (r.kind === "network" || r.kind === "unavailable") return null;       // an unreachable server proves nothing; try again next tick
+  if (r.kind === "notfound") return this.onFailure({ kind: "forbidden", status: 403, code: "device_revoked" }, st);
+  return this.onFailure(r, st);
  }
 
  private async onFailure(f: { kind: string; status: number; code: string }, st: State): Promise<SyncReport> {

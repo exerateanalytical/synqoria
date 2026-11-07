@@ -59,8 +59,9 @@ test("proxy allow-list admits only documented browser routes: the installed devi
  for (const p of ["status", "devices", "heads", "contracts", "commands", `commands/${U}`, "conflicts", `conflicts/${U}`, "transfers", "reconciliations"]) assert.ok(policy.isAllowed("GET", p), p);
  for (const p of [`devices/${U}/revocation`, `conflicts/${U}/resolution`, "transfers", `transfers/${U}/freeze`, `transfers/${U}/fence`, `transfers/${U}/decision`, `transfers/${U}/completion`, `transfers/${U}/abort`])
   assert.ok(policy.isAllowed("POST", p), p);
- for (const p of ["heads", `heads/${U}/revisions`, "contracts", `contracts/${U}/decision`, "devices", "../x", "actuator/health", `conflicts/${U}/delete`, "conflicts/not-a-uuid/resolution"])
+ for (const p of ["heads", `heads/${U}/revisions`, "contracts", `contracts/${U}/decision`, "../x", "actuator/health", `conflicts/${U}/delete`, "conflicts/not-a-uuid/resolution"])
   assert.ok(!policy.isAllowed("POST", p), p);
+ assert.ok(policy.isAllowed("POST", "devices"), "enrollment is forwarded; the service enforces m38:device_manage");
  assert.ok(policy.isAllowed("POST", "sync/batches") && policy.isAllowed("GET", `devices/${U}/cursor`), "the installed device uploads its own queue and reads its cursor");
  assert.ok(!policy.isAllowed("GET", "sync/batches") && !policy.isAllowed("GET", `transfers/${U}/freeze`), "mutations are not readable");
  assert.ok(read("app/api/offline/proxy/[...segments]/route.ts").includes("1048576"), "a full 50-command batch must fit the proxy body bound");

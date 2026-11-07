@@ -32,7 +32,7 @@ test("the CSRF value is read only in device.ts, sent only on writes, and tokens 
  assert.ok(/credentials: "same-origin"/.test(t) && /cache: "no-store"/.test(t));
  assert.ok(!/Authorization/.test(t), "the SDK never sets Authorization; the HttpOnly cookie plus the server-side proxy do");
  const session = readFileSync(join(web, "app", "api", "offline", "session", "route.ts"), "utf8");
- assert.ok(!/token\b[^\n]*NextResponse\.json/.test(session) && /Cache-Control/.test(session) && /NextResponse\.json\(\{userId:sub,scope:/.test(session), "the session route returns identifiers and expiry only");
+ assert.ok(session.includes("NextResponse.json(r.session,") && !/NextResponse\.json\([^)]*token/.test(session) && session.includes("Cache-Control"), "the session route returns only the verified identifiers and expiry");
 });
 
 test("GET requests carry no CSRF header or idempotency key; every write carries both", async () => {

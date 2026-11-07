@@ -4,7 +4,7 @@
 import {spawn, execFileSync} from "node:child_process";
 import {createServer} from "node:https";
 import {generateKeyPairSync, createSign, randomUUID} from "node:crypto";
-import {mkdtempSync, readFileSync, readdirSync, writeFileSync} from "node:fs";
+import {existsSync, mkdtempSync, readFileSync, readdirSync, unlinkSync, writeFileSync} from "node:fs";
 import {tmpdir} from "node:os";
 import {join, dirname} from "node:path";
 import {fileURLToPath} from "node:url";
@@ -13,10 +13,11 @@ const here = dirname(fileURLToPath(import.meta.url));
 const repo = join(here, "..", "..", "..", "..");
 const b64u = b => Buffer.from(b).toString("base64url");
 export const ISSUER_PORT = Number(process.env.RIG_ISSUER_PORT ?? 9443), SERVICE_PORT = Number(process.env.RIG_SERVICE_PORT ?? 8099);
-export const ISSUER = `https://localhost:${ISSUER_PORT}`, AUDIENCE = "synqoria-offline", BASE = `http://127.0.0.1:${SERVICE_PORT}/api/v1/offline`;
+const TLS = process.env.RIG_TLS === "1";            // the Next proxy only talks to an https service origin
+export const ISSUER = `https://localhost:${ISSUER_PORT}`, AUDIENCE = "synqoria-offline", ORIGIN = TLS ? `https://localhost:${SERVICE_PORT}` : `http://127.0.0.1:${SERVICE_PORT}`, BASE = `${ORIGIN}/api/v1/offline`;
 
 export class Rig {
- constructor() { this.dir = mkdtempSync(join(tmpdir(), "m38-rig-")); this.kid = "rig-key-1"; this.clockSkew = 0; }
+ constructor() { this.dir = process.env.RIG_DIR ?? mkdtempSync(join(tmpdir(), "m38-rig-")); this.kid = "rig-key-1"; this.clockSkew = 0; }
  psql(sql) {
   const c = process.env.RIG_PG_CONTAINER;
   return execFileSync("docker", ["exec", "-i", c, "psql", "-U", process.env.RIG_PG_USER ?? "postgres", "-d", process.env.RIG_PG_DB, "-v", "ON_ERROR_STOP=1", "-X", "-q", "-At"], {input: sql, encoding: "utf8"});
@@ -26,7 +27,10 @@ export class Rig {
   this.privateKey = privateKey;
   const jwk = {...publicKey.export({format: "jwk"}), kid: this.kid, alg: "RS256", use: "sig"};
   const key = join(this.dir, "k.pem"), cert = join(this.dir, "c.pem"), trust = join(this.dir, "trust.p12");
-  execFileSync("openssl", ["req", "-x509", "-newkey", "rsa:2048", "-nodes", "-keyout", key, "-out", cert, "-days", "1", "-subj", "/CN=localhost", "-addext", "subjectAltName=DNS:localhost,IP:127.0.0.1"], {stdio: "ignore"});
+  if (!existsSync(cert)) execFileSync("openssl", ["req", "-x509", "-newkey", "rsa:2048", "-nodes", "-keyout", key, "-out", cert, "-days", "1", "-subj", "/CN=localhost", "-addext", "subjectAltName=DNS:localhost,IP:127.0.0.1"], {stdio: "ignore"});
+  const keystore = join(this.dir, "server.p12");
+  if (!existsSync(keystore)) execFileSync("openssl", ["pkcs12", "-export", "-inkey", key, "-in", cert, "-out", keystore, "-passout", "pass:changeit", "-name", "rig"], {stdio: "ignore"});
+  if (existsSync(trust)) unlinkSync(trust);
   const keytool = process.env.JAVA_HOME ? join(process.env.JAVA_HOME, "bin", "keytool") : "keytool";
   execFileSync(keytool, ["-importcert", "-alias", "rig", "-file", cert, "-keystore", trust, "-storetype", "PKCS12", "-storepass", "changeit", "-noprompt"], {stdio: "ignore"});
   this.http = createServer({key: readFileSync(key), cert: readFileSync(cert)}, (req, res) => {
@@ -47,7 +51,7 @@ export class Rig {
   if (!jar) throw new Error("build the service first: mvn -DskipTests package in services/offline-sync-core");
   const java = process.env.JAVA_HOME ? join(process.env.JAVA_HOME, "bin", "java") : "java";
   this.svc = spawn(java, [`-Djavax.net.ssl.trustStore=${trust}`, "-Djavax.net.ssl.trustStorePassword=changeit", "-jar", join(target, jar)], {
-   env: {...process.env, SERVER_PORT: String(SERVICE_PORT), SYNQORIA_OFFLINE_JDBC_URL: process.env.RIG_JDBC_URL, SYNQORIA_OFFLINE_DB_USERNAME: "synqoria_offline_runtime", SYNQORIA_OFFLINE_DB_PASSWORD: "rig-runtime",
+   env: {...process.env, SERVER_PORT: String(SERVICE_PORT), ...(TLS ? {SERVER_SSL_ENABLED: "true", SERVER_SSL_KEY_STORE: keystore, SERVER_SSL_KEY_STORE_PASSWORD: "changeit", SERVER_SSL_KEY_STORE_TYPE: "PKCS12"} : {}), SYNQORIA_OFFLINE_JDBC_URL: process.env.RIG_JDBC_URL, SYNQORIA_OFFLINE_DB_USERNAME: "synqoria_offline_runtime", SYNQORIA_OFFLINE_DB_PASSWORD: "rig-runtime",
     SYNQORIA_OFFLINE_OIDC_ISSUER: ISSUER, SYNQORIA_OFFLINE_OIDC_AUDIENCE: AUDIENCE}, stdio: ["ignore", "pipe", "pipe"]});
   this.log = "";
   this.svc.stdout.on("data", d => { this.log += d; }); this.svc.stderr.on("data", d => { this.log += d; });

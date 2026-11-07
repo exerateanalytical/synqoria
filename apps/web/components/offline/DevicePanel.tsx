@@ -2,6 +2,7 @@
 import Link from "next/link";
 import {useCallback,useEffect,useRef,useState} from "react";
 import {ActionButton,Badge,Empty,Field,Notice,fmtTime,styles,toneFor,useOf} from "./ui";
+import {call,newKey} from "../../lib/offline/client";
 import {bindDevice,forgetBinding,openDevice,readSession,savedBinding} from "../../lib/offline/device";
 import type {Device} from "../../lib/offline/device";
 import {errorKey,enumLabel} from "../../lib/offline/i18n";
@@ -14,6 +15,7 @@ const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]
 export default function DevicePanel(){
  const {t,lang,online}=useOf();
  const [session,setSession]=useState<Session|null>(null);
+ const [blocked,setBlocked]=useState(false);
  const [binding,setBinding]=useState<DeviceBinding|null>(null);
  const [deviceId,setDeviceId]=useState("");
  const [device,setDevice]=useState<Device|null>(null);
@@ -36,8 +38,8 @@ export default function DevicePanel(){
  useEffect(()=>{
   let live=true;
   (async()=>{
-   const s=await readSession();if(!live)return;
-   setSession(s);sessionRef.current=s;
+   const st=await readSession();if(!live)return;
+   const s=st.session;setSession(s);setBlocked(st.blocked);sessionRef.current=s;
    const b=savedBinding();setBinding(b);
    if(b){const d=await openDevice(b,()=>sessionRef.current);if(!live)return;setDevice(d);await refresh(d);}
   })();
@@ -68,13 +70,24 @@ export default function DevicePanel(){
   window.addEventListener("online",onOnline);
   return()=>{window.removeEventListener("online",onOnline);device.scheduler.stop();};
  },[device]);
- const noDevice=!device?t("disabled.select"):null;
+ const [enroll,setEnroll]=useState({key:"",label:"",user:"",minutes:"480",limit:"200",confirm:false});
+ const [enrolled,setEnrolled]=useState<string|null>(null);
+ const setE=(k:keyof typeof enroll)=>(e:{target:{value:string}})=>setEnroll(v=>({...v,[k]:e.target.value}));
+ const enrollUser=enroll.user||session?.userId||"";
+ const enrollWhy=!session?t("dv.noSession"):!/^[A-Za-z0-9][A-Za-z0-9_.-]{5,63}$/.test(enroll.key)||!enroll.label.trim()||!UUID.test(enrollUser)||!(Number(enroll.minutes)>=5&&Number(enroll.minutes)<=1440)||!(Number(enroll.limit)>=1&&Number(enroll.limit)<=5000)||!enroll.confirm?t("disabled.input"):null;
+ const doEnroll=()=>run(async()=>{
+  const r=await call<{id:string}>("POST","devices",{body:{deviceKey:enroll.key,label:enroll.label.trim(),boundUser:enrollUser,sessionMinutes:Number(enroll.minutes),queueLimit:Number(enroll.limit)},key:newKey()});
+  if(!r.ok)throw new Error(r.code);
+  setEnrolled(r.data.id);setEnroll(v=>({...v,key:"",label:"",confirm:false}));setMsg(t("dv.enrolled"));
+ });
+ const noDevice=!device?t("dv.noDevice"):null;
 
  return <section className={styles.panel} aria-labelledby="dv-h">
   <h2 id="dv-h">{t("dv.title")}</h2>
   <p className={styles.hint}>{t("dv.intro")}</p>
   {!online&&<Notice>{t("dv.offline")}</Notice>}
   <h3>{t("dv.session")}</h3>
+  {blocked&&<p className={`${styles.banner} ${styles.bannerWarn}`} role="alert">{t("dv.identityBlocked")}</p>}
   {session?<dl className={styles.kv}><dt>{t("dv.user")}</dt><dd className={styles.mono}>{session.userId.slice(0,8)}</dd><dt>{t("dv.scope")}</dt><dd className={styles.mono}>{session.scope.split("/").map(x=>x.slice(0,8)).join(" / ")}</dd>
    <dt>{t("dv.expires")}</dt><dd>{fmtTime(lang,new Date(session.expiresAt).toISOString())}</dd></dl>:<p className={styles.hint}>{t("dv.noSession")}</p>}
   <h3>{t("dv.binding")}</h3>
@@ -91,6 +104,18 @@ export default function DevicePanel(){
    <ActionButton label={t("dv.export")} tone="secondary" busy={busy} reason={noDevice??(unlocked?null:t("dv.locked"))} onClick={exportMeta}/>
   </div>
   {report&&<p role="status">{t("dv.report",{sent:report.sent,applied:report.applied,duplicate:report.duplicate,conflicted:report.conflicted,denied:report.denied,expired:report.expired,requeued:report.requeued})}{report.delayMs?` ${t("dv.retry",{s:Math.ceil(report.delayMs/1000)})}`:""}</p>}
+  <h3>{t("dv.enroll")}</h3>
+  <p className={styles.hint}>{t("dv.enrollNote")}</p>
+  <div className={styles.formGrid}>
+   <Field id="en-key" label={t("dv.enrollKey")}><input id="en-key" className={styles.input} value={enroll.key} onChange={setE("key")}/></Field>
+   <Field id="en-label" label={t("dv.enrollLabel")}><input id="en-label" className={styles.input} maxLength={120} value={enroll.label} onChange={setE("label")}/></Field>
+   <Field id="en-user" label={t("dv.enrollUser")}><input id="en-user" className={`${styles.input} ${styles.mono}`} placeholder={session?.userId??""} value={enroll.user} onChange={e=>setEnroll(v=>({...v,user:e.target.value.trim()}))}/></Field>
+   <Field id="en-min" label={t("dv.enrollMinutes")}><input id="en-min" inputMode="numeric" className={styles.input} value={enroll.minutes} onChange={setE("minutes")}/></Field>
+   <Field id="en-lim" label={t("dv.enrollLimit")}><input id="en-lim" inputMode="numeric" className={styles.input} value={enroll.limit} onChange={setE("limit")}/></Field>
+   <label className={styles.checkRow}><input type="checkbox" checked={enroll.confirm} onChange={e=>setEnroll(v=>({...v,confirm:e.target.checked}))}/> {t("dv.enrollConfirm")}</label>
+  </div>
+  <div className={styles.actions}><ActionButton label={t("dv.enrollAction")} busy={busy} reason={enrollWhy} onClick={doEnroll}/></div>
+  {enrolled&&<p role="status">{t("dv.enrolledId")}: <span className={styles.mono}>{enrolled}</span></p>}
   <h3>{t("dv.queue")}</h3>
   {entries.length===0?<Empty message="dv.empty" hint={false}/>:<>
    <div className={styles.tableWrap}><table className={styles.table}>

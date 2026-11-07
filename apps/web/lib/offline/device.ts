@@ -1,6 +1,6 @@
 // Browser wiring of the M38 device SDK to the existing same-origin proxy and the existing operations sign-in (P03/OIDC).
 // No tokens are handled here: the HttpOnly cookie travels with same-origin requests; the SDK only sees fetch + the CSRF value.
-import {ContractCache,DurableQueue,Diagnostics,EncryptedStore,IdbKeyVault,IdbStore,KeyManager,LeaderElector,SyncEngine,Transport,redactedExport,applyLockPolicy,DEFAULT_DEVICE_POLICY,SyncScheduler,DEFAULT_SCHEDULER} from "../../../../packages/offline-device-sdk/src/index.ts";
+import {ContractCache,DurableQueue,Diagnostics,EncryptedStore,IdbKeyVault,IdbStore,KeyManager,LeaderElector,SyncEngine,Transport,redactedExport,applyLockPolicy,DEFAULT_DEVICE_POLICY,SyncScheduler,DEFAULT_SCHEDULER,verifyBinding} from "../../../../packages/offline-device-sdk/src/index.ts";
 import type {DeviceBinding,Session} from "../../../../packages/offline-device-sdk/src/index.ts";
 
 const CSRF_COOKIE="__Host-synq_ops_csrf";
@@ -11,29 +11,26 @@ function csrf():string{
  const pair=document.cookie.split("; ").find(x=>x.startsWith(CSRF_COOKIE+"="));
  return pair?decodeURIComponent(pair.slice(CSRF_COOKIE.length+1)):"";
 }
-export async function readSession():Promise<Session|null>{
+export type SessionState={session:Session|null;blocked:boolean};
+/** blocked = the server refuses to vouch for an identity (verifier not integrated / unavailable): enrollment, unlock and sync stay disabled. */
+export async function readSession():Promise<SessionState>{
  try{
   const r=await fetch("/api/offline/session",{credentials:"same-origin",cache:"no-store"});
-  if(!r.ok)return null;
+  if(r.status===503)return {session:null,blocked:true};
+  if(!r.ok)return {session:null,blocked:false};
   const j=await r.json() as Session;
-  return typeof j.userId==="string"&&typeof j.scope==="string"&&typeof j.expiresAt==="number"?j:null;
- }catch{return null;}
+  return typeof j.userId==="string"&&typeof j.scope==="string"&&typeof j.expiresAt==="number"?{session:j,blocked:false}:{session:null,blocked:false};
+ }catch{return {session:null,blocked:true};}
 }
 export function savedBinding():DeviceBinding|null{
  try{const raw=window.localStorage.getItem(BINDING_KEY);return raw?JSON.parse(raw) as DeviceBinding:null;}catch{return null;}
 }
-/**
- * Binding is a SERVER fact. This only records it locally after the server confirmed that the device exists in this hospital scope and is ACTIVE
- * (GET devices/{id}/cursor is scoped by the verified token). A device id the server does not know, or that is revoked, is never stored.
- */
+/** Binding is a SERVER fact: verified against the server's device list (existence, ACTIVE, bound to exactly this user, live window) before it is stored locally. */
 export async function bindDevice(deviceId:string,session:Session):Promise<{ok:true;binding:DeviceBinding}|{ok:false;code:string}>{
- const t=new Transport({fetch:(u,i)=>fetch(u,i),csrf});
- const r=await t.cursor(deviceId);
- if(!r.ok)return {ok:false,code:r.kind==="notfound"?"device_not_found":r.code};
- if(r.data.status!=="ACTIVE")return {ok:false,code:"device_not_active"};
- const binding:DeviceBinding={deviceId,userId:session.userId,scope:session.scope};
- try{window.localStorage.setItem(BINDING_KEY,JSON.stringify(binding));}catch{return {ok:false,code:"storage_unavailable"};}
- return {ok:true,binding};
+ const r=await verifyBinding(new Transport({fetch:(u,i)=>fetch(u,i),csrf}),deviceId,session,Date.now());
+ if(!r.ok)return r;
+ try{window.localStorage.setItem(BINDING_KEY,JSON.stringify(r.binding));}catch{return {ok:false,code:"storage_unavailable"};}
+ return r;
 }
 export function forgetBinding(){try{window.localStorage.removeItem(BINDING_KEY);}catch{/* ignore */}}
 

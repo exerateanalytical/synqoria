@@ -63,44 +63,85 @@ Not modelled: malware on the device, malicious browser extensions, compromised O
 M38 publishes **no** attachment endpoint, so none was built or invented. Proposal for a future versioned contract: `POST /attachments` (create upload, returns id + chunk size <= 256 KiB), `PUT /attachments/{id}/chunks/{n}` (idempotent by chunk index, SHA-256 header), `POST /attachments/{id}/completion` (whole-file SHA-256, size), `GET /attachments/{id}` metadata. Requires: a new M38 contract version (1.1.0), RLS-scoped storage, malware scanning, size/type allow-list, retention rules, and an SDK queue entry type that references (never embeds) the file.
 
 ## 6. Status of the 30 packages (honest)
-Legend: **V** implemented and verified by the tests named; **P** partially implemented or verified; **D** design/documentation only; **-** not done.
+Legend: **V** implemented and verified by the named tests/evidence; **P** partial (what is missing is stated); **B** partial and **blocked** on an external dependency or a missing server capability (named); **D** design/documentation only. Evidence kinds: *Node* = SDK tests, *live* = real Spring service + PostgreSQL 18 + HTTPS OIDC issuer, *e2e* = the same through the real Next route handlers (cookie, CSRF, Origin, allow-list), *browser* = executed in a real Chromium 152 (the desktop app's embedded browser) via `packages/offline-device-sdk/browser-check` and the UI stack.
 | # | Status | Notes |
 |---|---|---|
 | 01 | V | inventory above |
 | 02 | V | ADR-M38-device-client |
-| 03 | P | typed, strictly validating client; hand-written, parity-tested against the OpenAPI (not generated); no server version-negotiation endpoint exists, so the client pins `1.0.0` |
-| 04 | P | binding verified against the server (`GET devices/{id}/cursor`, ACTIVE) before it is stored; registration itself stays administrative (no self-registration API); UI typed, not rendered in a browser |
-| 05 | P | AES-GCM + key lifecycle verified in Node; `IdbStore`/`IdbKeyVault` not exercised in a real browser; no Expo/SecureStore adapter |
+| 03 | B | typed, strictly validating client (`src/transport.ts`, `src/validate.ts`; Node), parity-tested against the OpenAPI (`tests/test_m38_device_sdk_contract.py`); pinned to contract 1.0.0. **Blocked:** M38 publishes no version-negotiation endpoint (proposal below); the client is not generated from the OpenAPI |
+| 04 | B | binding is verified against the server's own device list (exists, ACTIVE, bound to exactly the signed-in user, live window): `src/binding.ts` (Node + live + browser); enrollment reuses `POST /devices` through the proxy, privileged (`m38:device_manage` enforced by the service: ordinary user 403), hospital-scoped, idempotent and audited (e2e: audit row names the administrator). **Blocked:** a verified session source from the P03 contract (the local verifier is an adapter, off by default) |
+| 05 | V | web PWA: AES-256-GCM, non-extractable key, slot-bound ciphertext, lock/unlock, crypto-shred - `src/crypto.ts`, `src/idb.ts` (Node, in-memory IndexedDB double, **browser**: real IndexedDB bytes contain no clinical text, key not exportable, survives reload, wipe empties both stores). Native Expo adapters are an approved *separate* workstream (not in this PR) |
 | 06 | V | atomic enqueue, append-only sequence, quotas, retention (`core`) |
 | 07 | V | admission matrix (`core`); server re-adjudicates |
 | 08 | V | `SyncScheduler` (injected timers): drain, idle polling, nudge on enqueue/`online`, bounded jittered retry, stops on suspension/wipe, never overlaps; wired in the device panel after a verified unlock. Verified with fake timers (`scheduler`); the browser wiring is typed, not run in a browser |
 | 09 | V | <= 50, batch keys, partial/retryable outcomes, cursor persistence (`sync`) |
-| 10 | P | restart/kill/partition/expiry verified with the in-memory store, and `IdbStore`/`IdbKeyVault` logic verified against an in-memory IndexedDB **double** (`idb`); not with a real browser engine or a real process kill |
-| 11 | P | stale/invalid epoch and frozen records refused locally and answered by the server fixture; no lease acquisition API exists on the server to wire |
-| 12 | P | exact server codes preserved; deterministic resolution request builder with reviewer != author, verified **live** (the real service also refuses the author with 403); conflicted entries link to the existing server-backed S03 screen; the resolution is not performed from the local queue view |
+| 10 | V | restart, kill, partition and expiry: Node + live (crash after server applied -> identical batch resent, applied once); **browser**: real page reload keeps the encrypted queue and continues the sequence; a restarted engine resends the same batch key |
+| 11 | B | stale/invalid epoch and frozen records refused on the device (`src/admission.ts`) and fenced by the real service (live); **Blocked:** no lease/fence acquisition API exists on the server - nothing to wire (proposal below) |
+| 12 | V | exact server codes preserved (`src/conflict.ts`); deterministic resolution request, reviewer != author checked on the device **and** by the service through the proxy (e2e: author 403 `resolver_must_be_independent`, no permission 403, missing CSRF 403, reviewer 200, replay 409); the existing S03 screen renders the real conflict (local vs authoritative version, fields, epoch) in the browser; conflicted entries in the device panel link to it |
 | 13 | D | proposal only (section 5) |
 | 14 | V | local per-command states + exact server code; list in DevicePanel |
-| 15 | P | suspend/lock/wipe on expiry and revocation verified in the SDK; UI not browser-verified |
-| 16 | P | LOCK/WIPE policy and retention verified; policy is not remotely configurable |
+| 15 | V | expiry (401) suspends and locks, revocation wipes, an idle probe detects revocation even with nothing to send (`src/sync.ts`); Node + live (real 401/403) + **browser** (lock refuses reads, wipe empties IndexedDB and forgets the binding) |
+| 16 | B | LOCK/WIPE policy and bounded retention verified (Node + browser wipe). **Blocked:** no remote retention-policy API (proposal below); policy values are code constants |
 | 17 | V | lease election verified with racing instances; Web Locks adapter wired into the scheduler and verified against a lock-API double (a real browser lock manager was not run) |
-| 18 | P | EN/FR parity enforced by test, existing design tokens; no accessibility audit, no screen-reader test |
+| 18 | P | EN/FR key parity enforced by test; **browser** checks on the status screen: 0 unlabeled controls, 0 duplicate ids, 0 contrast failures (WCAG AA computed over all text), skip link and 3 px focus ring on Tab, no horizontal overflow at 375 px in EN and FR, tables become cards on mobile, heading order fixed. Not done: screen-reader testing and a formal audit of the other four screens |
 | 19 | V | allow-list sanitiser, leak test over a full run |
 | 20 | V | metadata-only export (SDK + button); no payload, key, command id |
-| 21 | P | DevicePanel on the existing status screen; the other existing pages were already server-backed |
-| 22 | P | uses the existing cookie sign-in; no hard-coded grants; no end-to-end run against a live IdP |
+| 21 | V | the existing screens are server-backed (no new route); **browser**: status screen with devices/counters and the conflict screen render real service data through Next -> proxy -> service; device panel mounted on the status screen; the other three screens were not screenshotted (they are unchanged M38 screens covered by the e2e GET checks) |
+| 22 | B | cookie sign-in + proxy + permissions without hardcoded grants verified end to end against the real service (e2e, browser). **Blocked:** the verified session source is a local adapter pending the P03 contract; the integration lead owns it. Fails closed (503) by default |
 | 23 | V | `tests/test_m38_device_sdk_contract.py` (drift proven by a negative run) |
 | 24 | V | **live run**: the SDK drives the real Spring service over HTTP (JWTs validated against a real HTTPS OIDC issuer) on real PostgreSQL 18 with forced RLS, synthetic records, device-bound accounts (`tests/live`, 10 tests). Not covered: the Next proxy and cookie sign-in in front of the service |
 | 25 | V | drop / drop-after-processing / duplicate / http 503 / retry budget (`sync`) against the fake and the recorded real replies |
 | 26 | V | live: another hospital's tokens see no devices/heads, get 404 for the device and cursor; a device bound to hospital A refuses a hospital-B session; PostgreSQL RLS is in the path |
 | 27 | V | live against the real service: expired token (401), grant longer than 15 minutes (401), missing `m38:sync_submit` (403), wrong user (`device_user_mismatch`), revoked device (`device_revoked` then wipe), maker/checker on conflict resolution, wrong issuer/audience (401). The IdP is a local test issuer, not P03 |
-| 28 | P | static and direct privacy checks; no penetration test |
+| 28 | V | encrypted storage in a real browser; redacted logs (Node leak test); XSS (no HTML injection, server codes constrained to a vocabulary, React escaping); CSRF + Origin + allow-list + body/query bounds + idempotency through the real Next handlers (e2e: 6 tests); session route verified by 4 identity tests. This is not a penetration test |
 | 29 | V* | dedicated workflow (below). *Result for the pushed SHA is on the PR |
 | 30 | V | this note |
-Totals: **V 17**, **P 12**, **D 1**, **not done 0** (30 packages). 30/30 is **not** claimed; a **V** means implemented and verified by the named tests, and the notes say what each verification does and does not cover.
+Totals: **V 23**, **P 1**, **B (blocked on external dependency / missing server API) 5**, **D 1** (30 packages). 30/30 is **not** claimed. The blocked and design-only packages cannot be completed by this workstream without the named external decisions or server capabilities.
+
+
+## 6b. Continuation (integration lead's directive on PR #56)
+Reconciled with `main` (merge commit; no conflicts; M39/M40 paths untouched). Changes since the first verified head:
+* **Session route now fails closed.** `GET /api/offline/session` no longer decodes claims: it answers **503 `identity_verification_not_integrated`** unless `SYNQORIA_OFFLINE_SESSION_VERIFIER=jwks` and an audience are configured, and then only returns a session after `lib/offline/identity.ts` verifies the RS256 signature against the issuer's JWKS (algorithm allow-list, exact issuer, audience, exp/nbf, subject, cell/facility, grant <= 15 min; JWKS over https, same origin as the issuer, bounded, cached 5 min). Any failure -> no session. The device panel shows a blocked banner and keeps enrollment, unlock and sync disabled. The verifier is an *adapter pending the P03 contract / a vetted JOSE library*; replacing it does not change callers. Not enabled by default anywhere.
+* **Device enrollment** reuses the existing service: the proxy forwards `POST devices`; the service enforces `m38:device_manage`, scope, idempotency and the audit trail. UI: "Enroll a device (administrators)" on the existing status screen, available only with a verified session, with an explicit scope confirmation.
+* **Binding verification** (`src/binding.ts`) replaces the previous "cursor + ACTIVE" check, which could not prove the bound user.
+* **Idle revocation probe** (`PROBE_INTERVAL_MS`): a device with nothing to send still discovers revocation.
+* **Proxy defect found by the e2e test and fixed:** Spring answers an invalid/expired bearer with an *empty* 401 body, which the proxy turned into 503 `offline_unavailable`; the device would have retried forever instead of suspending. The proxy now maps empty 401/403 to `identity_denied`/`permission_denied`.
+* **UI defects found in the browser and fixed:** the "Language" label wrapped mid-word, stat cards showed list bullets, disabled-button reasons said "Select a record first" when no device was bound, heading levels skipped h2.
+
+### Browser evidence (executed, not CI)
+Chromium 152.0.7977 (the desktop app's embedded browser), `http://localhost` secure context, SDK compiled with `tsc` (no bundler) by `browser-check/serve.mjs`:
+| Check | Result |
+|---|---|
+| WebCrypto + IndexedDB + Web Locks present | pass |
+| AES key non-extractable and persisted as a CryptoKey | pass |
+| IndexedDB bytes contain no clinical text / record key / identifier | pass |
+| failing transaction rolled back; queue readable after "restart" with the persisted key; locked store refuses reads; WIPE empties both databases | pass (8/8) |
+| dropped connection -> SUBMITTED; restarted engine (after lease expiry) resends the **identical batch key**; applied; payload purged | pass (3/3) |
+| real page reload: encrypted queue intact, sequence continues, still ciphertext | pass (3/3) |
+| two tabs: the second cannot run while the first holds the sync Web Lock | pass |
+| two tabs x 150 concurrent store transactions on one counter | 300 exactly (no lost update) |
+| UI stack (real service over HTTPS + Next route handlers + OIDC issuer): cookie -> verified session -> status screen with real devices; bind via server verification; unlock; refresh approved operations; sync (idle); lock; wipe; conflict screen with real data | pass |
+Re-run with `node packages/offline-device-sdk/browser-check/serve.mjs` and open `http://localhost:8321/?phase=all` (and `write`/`read`, `hold`/`try`, `counter`). **These browser runs are manual evidence and are not part of CI** (no browser runner is available as a repository dependency).
+
+### Missing server capabilities (backend contract proposals; nothing was invented or simulated)
+1. **Version negotiation:** `GET /api/v1/offline/version` -> `{contract:"1.0.0", min:"1.0.0"}`; clients refuse unknown majors. Needs a new M38 minor version.
+2. **Ownership leases/fencing for devices:** `POST /leases` (record, epoch) -> lease id + expiry, `POST /leases/{id}/renewal|release`, commands carry the lease id; the server fences expired leases. Needs schema (leases table, trigger), RLS, tests.
+3. **Remote retention/lock policy:** `GET /device-policy` (per scope: queue/terminal retention, logout mode, session limits), versioned and audited; the SDK already takes these values as configuration.
+4. **Attachments:** see section 5.
+5. **Session introspection:** a verified identity endpoint belongs to P03 (the integration lead).
+
+### Operational notes (errors and recovery)
+* Banner "identity cannot be verified" -> the verifier is not integrated or the issuer is unreachable; nothing is stored or sent; resolve the identity configuration, then reload.
+* `device_user_mismatch` / `device_not_active` at binding -> the device is bound to someone else or revoked; ask an administrator to enroll a new device.
+* `session_expired` (401) -> the device locks itself; sign in again, then *Unlock*; queued changes are kept.
+* `device_revoked` -> the device wipes itself and cannot resume; its already-uploaded commands remain as server evidence.
+* `retry_budget_spent` -> 12 failed attempts; check connectivity and resume. `protocol_error` -> the server answered outside the contract; stop and escalate.
+* A wiped device loses unsent changes by design; the UI warns before wiping.
 
 ## 7. Verification evidence
-* `node --test packages/offline-device-sdk/tests/` -> **47 pass, 0 fail, 10 skipped** (core 13, sync 17, interop 7, security 4, scheduler 3, idb 3; the 10 skipped are the live-rig tests, which run only with `SYNQORIA_LIVE_RIG=1`).
-* **Live rig** (`SYNQORIA_LIVE_RIG=1`, real service jar + PostgreSQL 18 + HTTPS OIDC issuer + openssl/keytool): **10 pass, 0 fail**; the CI job `live-rig` runs it on every push.
+* `node --test packages/offline-device-sdk/tests/` -> **48 pass, 0 fail, 16 skipped** (core 13, sync 19, interop 7, security 4, scheduler 3, idb 3; the 16 skipped are the 11 live-rig and 5 proxy-e2e tests, which run only with the rig).
+* **Proxy end-to-end** (`tests/e2e/launch.mjs`, real Next route handlers + real service + PostgreSQL 18): **6 pass**. `node --test tests/m38_identity.test.mjs` -> **4 pass**.
+* **Live rig** (`SYNQORIA_LIVE_RIG=1`, real service jar + PostgreSQL 18 + HTTPS OIDC issuer + openssl/keytool): **11 pass, 0 fail**; the CI jobs `live-rig` and `proxy-e2e` run them on every push.
 * `tsc -p packages/offline-device-sdk/tsconfig.json` (TypeScript 5.8.3, strict, `erasableSyntaxOnly`) -> no errors. Web DevicePanel/device.ts/session route type-check under the web tsconfig flags (css-module declaration supplied by Next).
 * `python tests/test_m38_device_sdk_contract.py` -> 9 routes, contract 1.0.0; negative run (renamed route and field) fails as intended.
 * `node --test tests/m38_offline_frontend.test.mjs` -> 9/9 (updated for the device routes and the 1 MiB bound).
@@ -108,7 +149,7 @@ Totals: **V 17**, **P 12**, **D 1**, **not done 0** (30 packages). 30/30 is **no
 * GitHub Actions for the exact pushed SHA: see the PR.
 
 ## 8. Real limitations
-No real browser/emulator/device run (IndexedDB is verified only against an in-memory double; service worker/background sync and mobile shells are untested); no attachment transfer; no Expo adapters; the live rig bypasses the Next proxy and cookie sign-in (it talks to the service directly with test-issuer JWTs); `next build` and web `tsc` fail in CI for reasons that pre-date this branch (duplicate React types in the shared module shells, missing `@synqoria/ux-core@0.57.0` for the M27 lane); remote retention policy absent; no accessibility audit.
+Browser evidence is manual (embedded Chromium), not CI; no emulator/real device, service worker/background sync or mobile-shell runs; no attachment transfer; no Expo adapters; the proxy e2e and the UI stack use a local test issuer and a local verifier adapter, not P03; `next build` and web `tsc` fail in CI for reasons that pre-date this branch (duplicate React types in the shared module shells, missing `@synqoria/ux-core@0.57.0` for the M27 lane); remote retention policy absent; no accessibility audit.
 
 ## 9. Integration dependencies for the integration lead
 1. Approve storage dependencies if native shells are wanted (`expo-sqlite`, `expo-secure-store`) - adapters then implement `Store`/`KeyVault`.

@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {SyncEngine, MemoryStore, KeyManager, MemoryKeyVault} from "../src/index.ts";
+import {SyncEngine, MemoryStore, KeyManager, MemoryKeyVault, verifyBinding} from "../src/index.ts";
 import {FakeServer, makeClient, ready, input, uuid, DEVICE, USER, SCOPE} from "./helpers.mjs";
 
 const states = async c => (await c.queue.list()).map(e => e.state);
@@ -225,4 +225,36 @@ test("payload bounds are enforced before the wire", async () => {
  const big = await c.transport.call("POST", "/sync/batches", {body: {x: "y".repeat(1_100_000)}});
  assert.equal(big.code, "request_too_large");
  assert.equal(s.requests.filter(r => r.path === "/sync/batches").length, 0);
+});
+
+test("binding is verified against the server: unknown, revoked, other user and expired windows are refused", async () => {
+ const s = new FakeServer(), c = await ready(s), now = c.t.now;
+ const sess = {userId: USER, scope: SCOPE, expiresAt: now + 1e6};
+ assert.deepEqual(await verifyBinding(c.transport, DEVICE, sess, now), {ok: true, binding: {deviceId: DEVICE, userId: USER, scope: SCOPE}});
+ assert.equal((await verifyBinding(c.transport, "99999999-9999-4999-8999-999999999999", sess, now)).code, "device_not_found");
+ assert.equal((await verifyBinding(c.transport, DEVICE, {...sess, userId: "33333333-3333-4333-8333-333333333333"}, now)).code, "device_user_mismatch");
+ s.devices.get(DEVICE).status = "REVOKED";
+ assert.equal((await verifyBinding(c.transport, DEVICE, sess, now)).code, "device_not_active");
+ s.devices.get(DEVICE).status = "ACTIVE";
+ assert.equal((await verifyBinding(c.transport, DEVICE, sess, now + 9 * 3600_000)).code, "device_session_expired");
+ s.sessionExpired = true;
+ assert.equal((await verifyBinding(c.transport, DEVICE, sess, now)).code, "session_expired");
+});
+
+test("idle probe: a revoked or unknown device wipes itself even with nothing to send; an unreachable server proves nothing", async () => {
+ const s = new FakeServer(), c = await ready(s);
+ assert.equal((await c.engine.syncOnce()).status, "IDLE");
+ assert.equal(s.requests.filter(r => r.path.endsWith("/cursor")).length, 1, "first idle tick probes the server");
+ await c.engine.syncOnce();
+ assert.equal(s.requests.filter(r => r.path.endsWith("/cursor")).length, 1, "and then at most every five minutes");
+ c.t.now += 6 * 60_000; c.sessionState.session = {...c.sessionState.session, expiresAt: c.t.now + 1e6};
+ s.faults.push({at: s.callCount + 1, kind: "drop"});
+ assert.equal((await c.engine.syncOnce()).status, "IDLE", "network failure: no conclusion");
+ s.devices.get(DEVICE).status = "REVOKED";
+ const r = await c.engine.syncOnce();
+ assert.equal(r.status, "WIPED"); assert.equal(r.reason, "device_revoked");
+ assert.equal(c.store.raw().size, 1, "only the suspension marker remains");
+ const t = new FakeServer(), d = await ready(t);
+ t.devices.clear();                                                           // the server does not know this device any more (or never in this hospital)
+ assert.equal((await d.engine.syncOnce()).status, "WIPED");
 });

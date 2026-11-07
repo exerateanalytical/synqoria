@@ -49,7 +49,13 @@ async function proxy(request:NextRequest,context:RouteContext,method:"GET"|"POST
   const raw=await upstream.text();
   if(raw.length>2097152)return send("offline_unavailable",503);
   let data;
-  try{data=JSON.parse(raw);}catch{return send("offline_unavailable",503);}
+  try{data=JSON.parse(raw);}
+  catch{
+   // Spring Security answers an invalid/expired bearer token with an EMPTY 401 body. Keep that meaning so the device suspends instead of retrying forever.
+   if(upstream.status===401)return send("identity_denied",401);
+   if(upstream.status===403)return send("permission_denied",403);
+   return send("offline_unavailable",503);
+  }
   return NextResponse.json(data,{status:upstream.status,headers:{"Cache-Control":"no-store","X-Content-Type-Options":"nosniff"}});
  }catch{return send("offline_unavailable",503);}
 }

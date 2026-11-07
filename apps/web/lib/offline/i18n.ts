@@ -72,6 +72,12 @@ const en = {
  // This device (packages 04, 14-16, 20-22)
  "nav.device": "This device",
  "dv.title": "This device", "dv.intro": "The offline queue on this device: what is waiting, what the server decided, and the controls to sync, lock or wipe. Clinical actions are never decided here; the server is the authority.",
+ "dv.identityBlocked": "The server cannot yet verify your identity for this device, so enrolling, unlocking and synchronizing are disabled. Nothing is stored or sent.",
+ "dv.enroll": "Enroll a device (administrators)", "dv.enrollNote": "A privileged operation: the server checks your m38:device_manage permission and hospital scope and records it in the audit trail. The bound user must be a staff member of this hospital scope.",
+ "dv.enrollKey": "Device key (letters, digits, - _ .)", "dv.enrollLabel": "Label", "dv.enrollUser": "Bound staff user id (defaults to you)", "dv.enrollMinutes": "Session window (minutes)", "dv.enrollLimit": "Queue limit",
+ "dv.enrollConfirm": "I confirm this staff member belongs to my hospital scope", "dv.enrollAction": "Enroll device", "dv.enrolled": "Device enrolled.", "dv.enrolledId": "Device id",
+ "err.invalid_device": "The device details are not valid.",
+ "dv.noDevice": "Bind a registered device first.",
  "dv.session": "Signed-in session", "dv.noSession": "No valid session. Sign in to use this device.", "dv.scope": "Hospital scope", "dv.user": "User", "dv.expires": "Session ends",
  "dv.binding": "Device binding", "dv.deviceId": "Device id (registered by an administrator)", "dv.verify": "Verify with the server and bind", "dv.bound": "Bound to this user and hospital scope.", "dv.notBound": "This browser is not bound to a registered device.",
  "dv.forget": "Forget binding", "dv.unlock": "Unlock local storage", "dv.locked": "Local storage is locked.", "dv.unlocked": "Local storage is unlocked.", "dv.suspended": "Synchronization is suspended: {reason}",
@@ -84,6 +90,7 @@ const en = {
  "err.device_not_found": "The server does not know this device in your hospital scope.", "err.device_not_active": "This device is not active (revoked devices cannot be used).", "err.storage_unavailable": "This browser cannot store the binding.",
  "err.session_expired": "Your session ended. Sign in again; queued changes are kept.", "err.store_locked": "Local storage is locked.", "err.cross_scope_denied": "This session belongs to a different hospital scope than the device.",
  "err.retry_budget_spent": "Too many failed attempts; synchronization stopped. Check the connection, then resume.", "err.protocol_error": "The server answered in an unexpected way; synchronization stopped.", "err.device_user_mismatch": "This device is bound to a different user.",
+ "err.identity_verification_not_integrated": "Identity verification is not integrated yet; the device stays disabled.",
  "err.no_session": "No valid session.", "err.contracts_not_loaded": "Approved operations have not been loaded yet.", "err.session_not_valid": "Sign in again before resuming."
 } as const;
 
@@ -154,6 +161,12 @@ const fr: Record<Key, string> = {
  "hs.reviewer": "Réviseur", "hs.automatic": "Automatique", "hs.final": "Version finale", "hs.finalEpoch": "Époque", "hs.evidence": "Preuve",
  "nav.device": "Cet appareil",
  "dv.title": "Cet appareil", "dv.intro": "La file hors ligne de cet appareil : ce qui attend, ce que le serveur a décidé et les commandes pour synchroniser, verrouiller ou effacer. Aucune action clinique n’est décidée ici ; le serveur fait autorité.",
+ "dv.identityBlocked": "Le serveur ne peut pas encore vérifier votre identité pour cet appareil : l’enregistrement, le déverrouillage et la synchronisation sont désactivés. Rien n’est stocké ni envoyé.",
+ "dv.enroll": "Enregistrer un appareil (administrateurs)", "dv.enrollNote": "Opération privilégiée : le serveur vérifie votre autorisation m38:device_manage et votre périmètre hospitalier, et l’inscrit à la piste d’audit. L’utilisateur lié doit être un membre du personnel de ce périmètre.",
+ "dv.enrollKey": "Clé de l’appareil (lettres, chiffres, - _ .)", "dv.enrollLabel": "Libellé", "dv.enrollUser": "Identifiant du personnel lié (vous par défaut)", "dv.enrollMinutes": "Fenêtre de session (minutes)", "dv.enrollLimit": "Limite de file",
+ "dv.enrollConfirm": "Je confirme que ce membre du personnel appartient à mon périmètre hospitalier", "dv.enrollAction": "Enregistrer l’appareil", "dv.enrolled": "Appareil enregistré.", "dv.enrolledId": "Identifiant de l’appareil",
+ "err.invalid_device": "Les informations de l’appareil ne sont pas valides.",
+ "dv.noDevice": "Liez d’abord un appareil enregistré.",
  "dv.session": "Session ouverte", "dv.noSession": "Aucune session valide. Connectez-vous pour utiliser cet appareil.", "dv.scope": "Périmètre hospitalier", "dv.user": "Utilisateur", "dv.expires": "Fin de session",
  "dv.binding": "Liaison de l’appareil", "dv.deviceId": "Identifiant de l’appareil (enregistré par un administrateur)", "dv.verify": "Vérifier auprès du serveur et lier", "dv.bound": "Lié à cet utilisateur et à ce périmètre hospitalier.", "dv.notBound": "Ce navigateur n’est lié à aucun appareil enregistré.",
  "dv.forget": "Oublier la liaison", "dv.unlock": "Déverrouiller le stockage local", "dv.locked": "Le stockage local est verrouillé.", "dv.unlocked": "Le stockage local est déverrouillé.", "dv.suspended": "La synchronisation est suspendue : {reason}",
@@ -166,6 +179,7 @@ const fr: Record<Key, string> = {
  "err.device_not_found": "Le serveur ne connaît pas cet appareil dans votre périmètre hospitalier.", "err.device_not_active": "Cet appareil n’est pas actif (un appareil révoqué est inutilisable).", "err.storage_unavailable": "Ce navigateur ne peut pas enregistrer la liaison.",
  "err.session_expired": "Votre session est terminée. Reconnectez-vous ; les changements en file sont conservés.", "err.store_locked": "Le stockage local est verrouillé.", "err.cross_scope_denied": "Cette session appartient à un autre périmètre hospitalier que l’appareil.",
  "err.retry_budget_spent": "Trop d’échecs ; la synchronisation est arrêtée. Vérifiez la connexion puis reprenez.", "err.protocol_error": "Le serveur a répondu de façon inattendue ; la synchronisation est arrêtée.", "err.device_user_mismatch": "Cet appareil est lié à un autre utilisateur.",
+ "err.identity_verification_not_integrated": "La vérification d’identité n’est pas encore intégrée ; l’appareil reste désactivé.",
  "err.no_session": "Aucune session valide.", "err.contracts_not_loaded": "Les opérations approuvées ne sont pas encore chargées.", "err.session_not_valid": "Reconnectez-vous avant de reprendre."
 };
 

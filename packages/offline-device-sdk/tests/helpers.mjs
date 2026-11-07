@@ -40,7 +40,8 @@ export class FakeServer {
  route(method, path, q, body, headers) {
   if (this.sessionExpired) return this.json(401, {error: "grant_expired"});
   if (method === "GET" && path === "/contracts") return this.json(200, this.contracts);
-  if (method === "GET" && path === "/heads") return this.json(200, {items: [...this.heads.values()], page: 0, size: 100, total: this.heads.size});
+  if (method === "GET" && path === "/devices") return this.json(200, [...this.devices].map(([id, d]) => ({id, status: d.status, boundUser: d.boundUser, sessionExpiresAt: new Date(Date.parse("2026-11-07T10:00:00Z") + 8 * 3600_000).toISOString()})));
+ if (method === "GET" && path === "/heads") return this.json(200, {items: [...this.heads.values()], page: 0, size: 100, total: this.heads.size});
   let m;
   if (method === "GET" && (m = path.match(/^\/devices\/([^/]+)\/cursor$/))) {
    const d = this.devices.get(m[1]); if (!d) return this.json(404, {error: "not_found"});

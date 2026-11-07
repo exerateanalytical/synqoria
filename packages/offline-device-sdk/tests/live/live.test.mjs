@@ -3,7 +3,7 @@
 import test, {before, after} from "node:test";
 import assert from "node:assert/strict";
 import {randomUUID} from "node:crypto";
-import {KeyManager, MemoryKeyVault, EncryptedStore, MemoryStore, DurableQueue, ContractCache, Transport, SyncEngine, LeaderElector, Diagnostics, buildResolution} from "../../src/index.ts";
+import {verifyBinding, KeyManager, MemoryKeyVault, EncryptedStore, MemoryStore, DurableQueue, ContractCache, Transport, SyncEngine, LeaderElector, Diagnostics, buildResolution} from "../../src/index.ts";
 import {Rig, BASE} from "./rig.mjs";
 
 const live = process.env.SYNQORIA_LIVE_RIG === "1";
@@ -190,4 +190,17 @@ T("bounds against the real service: 51 commands and malformed bodies are refused
  const bad = await fetch(BASE + "/sync/batches", {method: "POST", headers: {Authorization: "Bearer " + t, "Content-Type": "application/json", "Idempotency-Key": randomUUID()}, body: "{not json"});
  assert.equal(bad.status, 400);
  assert.equal((await fetch(BASE + "/sync/batches", {method: "POST", headers: {Authorization: "Bearer " + t, "Content-Type": "application/json"}, body: "{}"})).status, 422, "Idempotency-Key is mandatory");
+});
+
+T("binding verification against the real service: only the bound user, only in the right hospital, only while ACTIVE", async () => {
+ const dev = await device("nurse");
+ const n = client("nurse", dev), sess = {userId: ids.nurse, scope: scopeA, expiresAt: Date.now() + 600_000};
+ assert.equal((await verifyBinding(n.transport, dev.id, sess, Date.now())).ok, true);
+ const other = client("nurse2", dev, {token: () => tok("nurse2", PERMS.nurse)});
+ assert.equal((await verifyBinding(other.transport, dev.id, {...sess, userId: ids.nurse2}, Date.now())).code, "device_user_mismatch");
+ const foreign = client("nurse", dev, {token: () => rig.token({sub: ids.nurse, ...B, perms: PERMS.nurse})});
+ assert.equal((await verifyBinding(foreign.transport, dev.id, {...sess, scope: `${B.cell}/${B.facility}`}, Date.now())).code, "device_not_found", "another hospital cannot learn the device exists");
+ const d = (await ok(rig.api(maker(), "GET", "/devices"))).find(x => x.id === dev.id);
+ await ok(rig.api(maker(), "POST", `/devices/${dev.id}/revocation`, {expectedVersion: d.version, reason: "binding test revocation"}));
+ assert.equal((await verifyBinding(n.transport, dev.id, sess, Date.now())).code, "device_not_active");
 });
