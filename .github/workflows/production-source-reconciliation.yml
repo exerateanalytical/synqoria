@@ -1,0 +1,66 @@
+name: SYNQORIA consolidated-source integration (not hospital release)
+on:
+  push:
+    branches:
+      - integration/synqoria-production-reconciliation-2026-11-07
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  canonical:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - name: Prohibit duplicate operational screens and missing source ownership
+        run: node --test tests/production_canonical_source_reconciliation.test.mjs
+      - name: Verify source tree includes critical engineering modules
+        run: |
+          set -euo pipefail
+          for service in operations-core scheduling-core referrals-core integration-management-core \
+            hr-payroll-core nutrition-core analytics-core clinical-content-core \
+            privacy-core audit-core; do test -f "services/$service/pom.xml" || exit 1; done
+          test -f apps/web/app/workforce/clinical/'[screenId]'/page.tsx
+          test -f registers/canonical-screens.json
+  web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - name: Align production web candidate to current tested generation only in runner
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const path='apps/web/package.json';
+          const obj=JSON.parse(fs.readFileSync(path,'utf8'));
+          obj.dependencies['@synqoria/ux-core']='0.63.0';
+          obj.dependencies.next='16.4.5';
+          obj.dependencies.react='19.3.1';
+          obj.dependencies['react-dom']='19.3.1';
+          obj.devDependencies['@types/react']='19.3.0';
+          fs.writeFileSync(path,JSON.stringify(obj,null,2)+'\n');
+          for(const p of ['apps/staff-mobile/package.json','apps/patient-mobile/package.json']){
+            const x=JSON.parse(fs.readFileSync(p,'utf8'));
+            x.dependencies['@synqoria/ux-core']='0.63.0';
+            fs.writeFileSync(p,JSON.stringify(x,null,2)+'\n');
+          }
+          NODE
+      - name: Recompute candidate lock and install, without changing user source
+        run: |
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          npm ci --no-audit --no-fund
+      - name: Compile all canonical workstations with consolidated dependencies
+        run: |
+          node --test tests/production_canonical_source_reconciliation.test.mjs
+          npm run build --workspace @synqoria/ux-core
+          npm run build --workspace @synqoria/web
+      - name: Production release boundary
+        if: always()
+        run: echo 'Source application compilation only; no live hospital deployment or clinical acceptance.'
