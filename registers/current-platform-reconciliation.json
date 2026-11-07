@@ -1,7 +1,7 @@
 {
   "schemaVersion": "synqoria.reconciliation.v1",
-  "generatedAtUtc": "2026-11-07T11:55:45+00:00",
-  "mainShaInspected": "7fa2881a48518ade0a8ae4fbedc892d33914931f",
+  "generatedAtUtc": "2026-11-07T12:20:49+00:00",
+  "mainShaInspected": "c3e1469b8e4768649ec1503ebda4bf8f6ca8fc03",
   "canonical": {
     "plannedModules": 40,
     "canonicalScreens": 261
