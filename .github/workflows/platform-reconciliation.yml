@@ -1,0 +1,68 @@
+name: SYNQORIA automatic post-merge reconciliation
+on:
+  push:
+    branches: [main]
+  pull_request:
+    paths:
+      - 'tools/reconcile_platform.py'
+      - 'registers/engineering-ownership.json'
+      - 'tests/test_platform_reconciliation.py'
+      - '.github/workflows/platform-reconciliation.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: read
+concurrency:
+  group: synqoria-reconcile-main
+  cancel-in-progress: false
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout canonical repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Regression test evidence accounting
+        run: python -m unittest discover -s tests -p 'test_platform_reconciliation.py' -v
+      - name: Read actual open pull requests (never use a cached PR count)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api --paginate --slurp "repos/${GITHUB_REPOSITORY}/pulls?state=open&per_page=100" > /tmp/synqoria-open-prs.json
+      - name: Produce evidence-conservative 40-module report
+        run: python tools/reconcile_platform.py --open-prs /tmp/synqoria-open-prs.json
+      - name: Preserve reconciliation report as CI artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: synqoria-reconciliation-${{ github.sha }}
+          path: registers/current-platform-reconciliation.json
+          retention-days: 90
+      - name: Reconcile latest main and commit the status register
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "synqoria-reconciliation[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Read latest main again so changes merged during the job are not lost.
+          git fetch origin main
+          git checkout main
+          git reset --hard origin/main
+          gh api --paginate --slurp "repos/${GITHUB_REPOSITORY}/pulls?state=open&per_page=100" > /tmp/synqoria-open-prs.json
+          python tools/reconcile_platform.py --open-prs /tmp/synqoria-open-prs.json
+          git add registers/current-platform-reconciliation.json
+          if git diff --cached --quiet; then
+            echo "No changes to reconciliation register"
+            exit 0
+          fi
+          git commit -m "chore(reconcile): refresh module and PR evidence after main update [skip ci]"
+          # A concurrent merge may invalidate this push: fail loudly, never force-push.
+          git push origin HEAD:main

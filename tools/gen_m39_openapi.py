@@ -146,6 +146,37 @@ doc = {
     },
     "x-permissions": {"vocabulary": perms, "checker": sorted(PERM_CONST[c] for c in ("TENANT_APPROVE", "QUALIFY_COMPLETE", "RELEASE_APPROVE", "MIGRATION_APPROVE"))},
 }
+# Gateway's independently authenticated live directory fence is a strict response.
+# It cannot be replaced with arbitrary "Result" data or treated as clinical authorization.
+fence = doc["paths"]["/routing/{routeKey}/fence"]["get"]
+fence["summary"] = "Authoritative current hospital-cell route and health fence"
+fence["description"] = (
+    "Requires `m39:route_read`. One scoped PostgreSQL statement snapshot binds "
+    "current cell UUID, placement epoch, directory version and recent healthy "
+    "status. This management-plane response cannot authorize clinical access."
+)
+fence["responses"]["200"] = {
+    "description": "Current routable target, version and observed cell health",
+    "content": {"application/json": {"schema": {"$ref": "#/components/schemas/RoutingFence"}}},
+}
+fence["responses"]["503"] = {
+    "description": "Route not currently routable or authoritative directory unavailable",
+    "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}},
+}
+doc["components"]["schemas"]["RoutingFence"] = {
+    "type": "object", "additionalProperties": False,
+    "required": ["routeKey", "cellId", "placementEpoch", "directoryVersion", "cellState", "health", "observedAt"],
+    "properties": {
+        "routeKey": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{2,119}$"},
+        "cellId": {"type": "string", "format": "uuid"},
+        "placementEpoch": {"type": "integer", "format": "int64", "minimum": 0},
+        "directoryVersion": {"type": "integer", "format": "int64", "minimum": 0},
+        "cellState": {"type": "string", "enum": ["ACTIVE"]},
+        "health": {"type": "string", "enum": ["HEALTHY", "DEGRADED"]},
+        "observedAt": {"type": "string", "format": "date-time"},
+    },
+}
+
 out = ROOT / "contracts/openapi/synqoria-m39-fleet-v1.yaml"
 out.write_text(yaml.safe_dump(doc, sort_keys=False, allow_unicode=True, width=140), encoding="utf-8")
 print(f"wrote {out.relative_to(ROOT)}: {sum(len(v) for v in paths.values())} operations, {len(schemas)} request schemas, {len(perms)} permissions")

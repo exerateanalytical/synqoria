@@ -6,6 +6,9 @@ on:
   pull_request:
     paths:
       - 'apps/web/**'
+      - 'packages/ux-core/**'
+      - 'package-lock.json'
+      - 'package.json'
       - 'tests/mortuary_screen_contract.test.mjs'
       - '.github/workflows/m27-web-build.yml'
 permissions:
@@ -19,34 +22,32 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '26'
-      - name: Borrow separately owned PR23 SHA-pinned lockfile in runner only
+          cache: npm
+      - name: Assert canonical source lock and version alignment
         run: |
           set -euo pipefail
-          git fetch --no-tags origin refs/heads/work/reproducible-npm-lock-candidate-2026-11-05:refs/remotes/origin/m27-pr23
-          git show refs/remotes/origin/m27-pr23:package-lock.json > package-lock.json
-          echo "6fa90a4aa72db790d86b7782d45ced40389b5f8987da65138fae7548b5f9eb2b  package-lock.json" | sha256sum -c -
-      - name: Review compatible PR24 Expo packages and latest stable Next 16.4/React 19.3 candidate
-        run: |
-          git fetch --no-tags origin refs/heads/work/real-next-expo-build-corrections-2026-11-05:refs/remotes/origin/m27-pr24
-          for path in apps/staff-mobile/package.json apps/patient-mobile/package.json; do
-            git show "refs/remotes/origin/m27-pr24:$path" > "$path"
-          done
           node - <<'NODE'
-          const fs=require('node:fs'),path='apps/web/package.json';
-          const web=JSON.parse(fs.readFileSync(path,'utf8'));
-          web.dependencies.next='16.4.5';
-          web.dependencies.react='19.3.1';
-          web.dependencies['react-dom']='19.3.1';
-          web.devDependencies['@types/react']='19.3.0';
-          fs.writeFileSync(path,JSON.stringify(web,null,2)+'\n');
+          const fs=require('node:fs');
+          const root=JSON.parse(fs.readFileSync('package.json','utf8'));
+          const lock=JSON.parse(fs.readFileSync('package-lock.json','utf8'));
+          const ux=JSON.parse(fs.readFileSync('packages/ux-core/package.json','utf8'));
+          if(root.version!==lock.version||root.version!==ux.version)throw Error('workspace_version_drift');
+          for(const folder of ['apps/web','apps/staff-mobile','apps/patient-mobile']){
+           const pkg=JSON.parse(fs.readFileSync(folder+'/package.json','utf8'));
+           if(pkg.version!==root.version||pkg.dependencies['@synqoria/ux-core']!==ux.version)
+            throw Error('workspace_ux_version_drift:'+folder);
+           if(lock.packages[folder]?.version!==undefined&&lock.packages[folder].version!==pkg.version)
+            throw Error('workspace_lock_version_drift:'+folder);
+           if(lock.packages[folder]?.dependencies?.['@synqoria/ux-core']!==ux.version)
+            throw Error('lock_ux_dependency_drift:'+folder);
+          }
+          if(!root.workspaces.includes('packages/ux-core'))throw Error('ux_workspace_missing');
           NODE
-      - name: Resolve lock and install exact workspaces in CI only
-        run: |
-          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
-          npm ci --no-audit --no-fund
+      - name: Install exactly committed root npm workspaces
+        run: npm ci --no-audit --no-fund
       - name: Verify all five M27 canonical screen contracts and safe backend routes
         run: node --test tests/mortuary_screen_contract.test.mjs tests/operations_screen_catalog.test.mjs
-      - name: Build UX core and actual Next.js 16.4 hospital workstations
+      - name: Build UX core and actual Next.js hospital workstations
         run: |
           npm run build --workspace @synqoria/ux-core
           npm run build --workspace @synqoria/web
