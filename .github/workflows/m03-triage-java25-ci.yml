@@ -32,7 +32,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p /tmp/synqoria-m03-classes
-          find services/clinical-core/src/main/java/org/synqoria/triage services/clinical-core/src/main/java/org/synqoria/security services/clinical-core/src/test/java/org/synqoria/triage -type f -name '*.java' | sort > /tmp/synqoria-m03-sources.list
+          find services/clinical-core/src/main/java services/clinical-core/src/test/java/org/synqoria/triage -type f -name '*.java' | sort > /tmp/synqoria-m03-sources.list
           test "$(wc -l < /tmp/synqoria-m03-sources.list)" -ge 20
           javac --release 25 -encoding UTF-8 -d /tmp/synqoria-m03-classes @/tmp/synqoria-m03-sources.list
       - name: Run all M03 existing Java main-style regression and integration tests
