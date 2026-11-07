@@ -1,0 +1,29 @@
+name: SYNQORIA M40 catalogue-bound backup integrity (synthetic)
+on:
+  pull_request:
+    paths:
+      - 'tools/m40_catalogue_backup_inspector.py'
+      - 'tools/m40_verify_backup_artifact.py'
+      - 'tests/test_m40_catalogue_backup_inspector.py'
+      - '.github/workflows/m40-catalogue-inspection-ci.yml'
+  push:
+    paths:
+      - 'tools/m40_catalogue_backup_inspector.py'
+      - 'tools/m40_verify_backup_artifact.py'
+      - 'tests/test_m40_catalogue_backup_inspector.py'
+      - '.github/workflows/m40-catalogue-inspection-ci.yml'
+permissions:
+  contents: read
+jobs:
+  catalogue-inspection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Verify tests against synthetic artifacts and catalogue metadata
+        run: python -m unittest discover -s tests -p 'test_m40_catalogue_backup_inspector.py' -v
+      - name: Mark remaining governance gate
+        run: echo 'Read-only artifact inspection only. No backup status upgrade, WAL replay, or recovery acceptance.'
