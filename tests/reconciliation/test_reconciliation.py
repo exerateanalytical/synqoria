@@ -93,7 +93,13 @@ class Positive(unittest.TestCase):
         if not os.path.isdir(os.path.join(REPO, ".git")) or not HAVE_BASELINE:
             self.skipTest("needs git history")
         base = json.load(open(os.path.join(OUT, "manifest.json"), encoding="utf-8"))["baselineSha"]
-        out = subprocess.run(["git", "-C", REPO, "diff", "--name-only", base, "HEAD"], capture_output=True, text=True).stdout.split()
+        # Scope of the original Claude forensic PR #65, not all future main merges.
+        forensic_head = "f15932b70fd127c91bcfd8dd0156a55a530385b6"
+        if subprocess.run(["git", "-C", REPO, "cat-file", "-e", forensic_head + "^{commit}"],
+                          capture_output=True).returncode != 0:
+            self.skipTest("historical forensic PR head not present")
+        out = subprocess.run(["git", "-C", REPO, "diff", "--name-only", base, forensic_head],
+                             capture_output=True, text=True, check=True).stdout.split()
         allowed = ("docs/program/reconciliation/", "registers/reconciliation/", "tests/reconciliation/", "tools/reconciliation/", ".github/workflows/reconciliation-validation.yml")
         bad = [p for p in out if not p.startswith(allowed)]
         self.assertEqual(bad, [], "paths outside the permitted reconciliation scope")
