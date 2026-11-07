@@ -59,7 +59,7 @@ jobs:
         run: grep -h "Tests run" services/offline-sync-core/target/surefire-reports/*.txt || true
       - name: Explicitly deny clinical use
         if: always()
-        run: echo "Synthetic fixtures only; no real patient, device or hospital data was used and no offline operation here has clinical approval.
+        run: echo "Synthetic fixtures only; no real patient, device or hospital data was used and no offline operation here has clinical approval."
   java-27-compat:
     name: Java 27 compatibility lane (informational, non-gating)
     runs-on: ubuntu-latest
