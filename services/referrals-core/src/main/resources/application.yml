@@ -1,0 +1,22 @@
+server:
+  port: ${SYNQORIA_REFERRAL_PORT:8116}
+  error:
+    include-message: never
+spring:
+  application:
+    name: synqoria-referrals-core
+  datasource:
+    url: ${SYNQORIA_REFERRAL_JDBC_URL}
+    username: ${SYNQORIA_REFERRAL_DB_USERNAME}
+    password: ${SYNQORIA_REFERRAL_DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 0
+  sql:
+    init:
+      mode: never
+synqoria:
+  referrals:
+    issuer: ${SYNQORIA_REFERRAL_OIDC_ISSUER}
+    audience: ${SYNQORIA_REFERRAL_OIDC_AUDIENCE}
+    role: ${SYNQORIA_REFERRAL_DB_RUNTIME_ROLE:synqoria_referral_runtime}
