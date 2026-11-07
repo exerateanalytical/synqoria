@@ -37,10 +37,10 @@ jobs:
             echo "MIGRATION $migration"
             docker exec -i synqoria-m27-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < "$migration"
           done
-      - name: Apply M27 concurrency, immutable authority evidence and legal hold guards
+      - name: Apply M27 concurrency, immutable authority evidence, legal hold and bay binding guards
         run: |
           set -euo pipefail
-          for migration in services/operations-core/db/migration/V006__mortuary_release_fence.sql services/operations-core/db/migration/V007__mortuary_authority_integrity.sql; do
+          for migration in services/operations-core/db/migration/V006__mortuary_release_fence.sql services/operations-core/db/migration/V007__mortuary_authority_integrity.sql services/operations-core/db/migration/V008__mortuary_bay_evidence_binding.sql; do
             docker exec -i synqoria-m27-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < "$migration"
           done
       - name: Confirm 22 FORCE RLS tables and strict runtime read-only external authority

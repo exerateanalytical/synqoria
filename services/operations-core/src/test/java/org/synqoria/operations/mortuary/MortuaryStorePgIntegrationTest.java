@@ -52,12 +52,16 @@ final class MortuaryStorePgIntegrationTest {
  }
  private void evidence(UUID subject,UUID caseId,String action,long version,
                         String kind,String ref,UUID approver){
+  evidence(subject,caseId,action,version,kind,ref,approver,null);
+ }
+ private void evidence(UUID subject,UUID caseId,String action,long version,
+                        String kind,String ref,UUID approver,String storageCode){
   admin().update("INSERT INTO synqoria_operations.mortuary_authority_evidence " +
    "(proof_id,cell_id,facility_id,decedent_ref,case_id,for_action,expected_version,"+
-   "proof_kind,external_ref,authority_issuer,approved_by,valid_from,valid_until,digest_sha256) "+
+   "proof_kind,external_ref,authority_issuer,approved_by,valid_from,valid_until,digest_sha256,storage_code) "+
    "VALUES(?,?,?,?,?,?,?,?,?,?,?,clock_timestamp()-interval '5 minutes',"+
-   "clock_timestamp()+interval '2 hours',repeat('a',64))",
-   UUID.randomUUID(),CELL,FAC,subject,caseId,action,version,kind,ref,"synthetic-authority-ci",approver);
+   "clock_timestamp()+interval '2 hours',repeat('a',64),?)",
+   UUID.randomUUID(),CELL,FAC,subject,caseId,action,version,kind,ref,"synthetic-authority-ci",approver,storageCode);
  }
  private void incoming(UUID subject){
   roster();
@@ -92,8 +96,8 @@ final class MortuaryStorePgIntegrationTest {
  }
  private CaseView store(MortuaryStore s,CaseView c){
   roster();
-  evidence(c.decedentRef(),c.caseId(),"STORE",c.version(),"STORAGE_SAFE","SAFE-BAY-M27",ISSUER);
   String assignedBay="BAY-"+c.caseId().toString().substring(0,8);
+  evidence(c.decedentRef(),c.caseId(),"STORE",c.version(),"STORAGE_SAFE","SAFE-BAY-M27",ISSUER,assignedBay);
   return s.change(who(OFFICER,"m27:store"),c.caseId(),cmd("STORE",c.version(),
    "SAFE-BAY-M27",assignedBay,RECEIVER,null,null));
  }
@@ -146,7 +150,7 @@ final class MortuaryStorePgIntegrationTest {
   assertEquals("BAY-"+id.toString().substring(0,8),c.currentStorage());
   var invalidTransfer=cmd("TRANSFER",c.version(),"ACCEPT-M27",c.currentStorage(),RECEIVER,null,null);
   assertThrows(WorkflowViolation.class,()->s.change(who(OFFICER,"m27:transfer"),id,invalidTransfer));
-  evidence(subject,id,"TRANSFER",c.version(),"CUSTODY_ACCEPTED","ACCEPT-M27",ISSUER);
+  evidence(subject,id,"TRANSFER",c.version(),"CUSTODY_ACCEPTED","ACCEPT-M27",ISSUER,"BAY-02");
   c=s.change(who(OFFICER,"m27:transfer"),id,
    cmd("TRANSFER",c.version(),"ACCEPT-M27","BAY-02",RECEIVER,null,null));
   assertEquals("BAY-02",c.currentStorage());
@@ -241,7 +245,7 @@ final class MortuaryStorePgIntegrationTest {
   // Deliberately request the same occupied physical bay while all ordinary cases
   // receive unique bay fixtures. The case write, custody and audit must roll back.
   evidence(pending.decedentRef(),pending.caseId(),"STORE",pending.version(),
-   "STORAGE_SAFE","SAFE-BAY-M27",ISSUER);
+   "STORAGE_SAFE","SAFE-BAY-M27",ISSUER,first.currentStorage());
   final var sameBay=cmd("STORE",pending.version(),"SAFE-BAY-M27",
    first.currentStorage(),RECEIVER,null,null);
   assertThrows(Exception.class,()->s.change(who(OFFICER,"m27:store"),
@@ -360,6 +364,27 @@ final class MortuaryStorePgIntegrationTest {
    "UPDATE synqoria_operations.mortuary_legal_holds "+
    "SET active=true,rescinded_at=NULL WHERE hold_id=?",hold));
   assertFalse(service.legalHolds(who(REVIEWER,"m27:review"),caseId).getFirst().active());
+ }
+
+
+ @Test void storageAuthorityEvidenceMustBindExactPhysicalDestination(){
+  pgOnly();var service=store();
+  var identified=identify(service,receive(service,UUID.randomUUID()));
+  String approvedBay="ATTESTED-BAY-"+identified.caseId().toString().substring(0,8);
+  String unapprovedBay="OTHER-BAY-"+identified.caseId().toString().substring(0,8);
+  evidence(identified.decedentRef(),identified.caseId(),"STORE",identified.version(),
+   "STORAGE_SAFE","STORAGE-ATTEST-CI",ISSUER,approvedBay);
+  final var pending=identified;
+  assertThrows(WorkflowViolation.class,()->service.change(who(OFFICER,"m27:store"),
+   pending.caseId(),cmd("STORE",pending.version(),"STORAGE-ATTEST-CI",unapprovedBay,
+    RECEIVER,null,null)));
+  assertEquals("IDENTIFIED",service.one(who(OFFICER,"m27:read"),pending.caseId()).state());
+  var stored=service.change(who(OFFICER,"m27:store"),pending.caseId(),
+   cmd("STORE",pending.version(),"STORAGE-ATTEST-CI",approvedBay,RECEIVER,null,null));
+  assertEquals(approvedBay,stored.currentStorage());
+  assertThrows(Exception.class,()->admin().update(
+   "UPDATE synqoria_operations.mortuary_authority_evidence "+
+   "SET storage_code=? WHERE case_id=? AND for_action='STORE'",unapprovedBay,pending.caseId()));
  }
 
 }

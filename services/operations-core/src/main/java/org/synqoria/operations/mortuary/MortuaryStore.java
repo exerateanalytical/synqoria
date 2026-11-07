@@ -132,17 +132,23 @@ public final class MortuaryStore {
  }
  private void proof(OperationWorkflow.Actor actor,UUID decedent,UUID id,String action,
                     long version,String kind,String external){
+  proof(actor,decedent,id,action,version,kind,external,null);
+ }
+ private void proof(OperationWorkflow.Actor actor,UUID decedent,UUID id,String action,
+                    long version,String kind,String external,String authorizedStorage){
   String ref=code(external);
+  String bay=authorizedStorage==null?null:code(authorizedStorage);
   // Lock the verified proof until the custody/release transaction commits.
   // A simultaneous independent revocation cannot invalidate an already-read proof mid-command.
   List<UUID> found=jdbc.query(
    "SELECT proof_id FROM synqoria_operations.mortuary_authority_evidence " +
    "WHERE cell_id=? AND facility_id=? AND decedent_ref=? " +
    "AND case_id IS NOT DISTINCT FROM ?::uuid AND for_action=? AND expected_version=? " +
-   "AND proof_kind=? AND external_ref=? AND approved_by<>? AND revoked_at IS NULL " +
+   "AND proof_kind=? AND external_ref=? AND storage_code IS NOT DISTINCT FROM ?::varchar " +
+   "AND approved_by<>? AND revoked_at IS NULL " +
    "AND valid_from<=clock_timestamp() AND valid_until>clock_timestamp()",
    (rs,i)->rs.getObject("proof_id",UUID.class),
-   actor.cell(),actor.facility(),decedent,id,action,version,kind,ref,actor.actor());
+   actor.cell(),actor.facility(),decedent,id,action,version,kind,ref,bay,actor.actor());
   if(found.isEmpty())throw new WorkflowViolation("independent_mortuary_evidence_required");
  }
  /**
@@ -290,7 +296,7 @@ public final class MortuaryStore {
       throw new WorkflowViolation("custody_receiver_must_be_independent");
      receiverOnShift(actor,receiver);
      proof(actor,before.decedentRef(),caseId,"STORE",before.version(),
-      "STORAGE_SAFE",req.evidenceRef());
+      "STORAGE_SAFE",req.evidenceRef(),destination);
     }
     case TRANSFER -> {
      destination=code(req.storageCode());
@@ -298,7 +304,7 @@ public final class MortuaryStore {
      MortuaryWorkflow.validateTransfer(before.currentStorage(),destination,actor.actor(),receiver);
      receiverOnShift(actor,receiver);
      proof(actor,before.decedentRef(),caseId,"TRANSFER",before.version(),
-      "CUSTODY_ACCEPTED",req.evidenceRef());
+      "CUSTODY_ACCEPTED",req.evidenceRef(),destination);
     }
     case REVIEW_RELEASE -> {
      if(actor.actor().equals(before.intakeActor()))
