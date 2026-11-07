@@ -24,6 +24,7 @@ import {IntegrationWorkbench,type Screen as IntegrationScreen} from "../../../..
 import opsCatalog from "../../../../lib/operations-screen-catalog.json";
 import mortuaryCatalog from "../../../../lib/mortuary-screen-catalog.json";
 import {OperationsWorkbench} from "../../../../components/OperationsWorkbench";
+import {MaintenancePanel} from "../../../../components/maintenance/MaintenancePanel";
 import {MortuaryWorkbench} from "../../../../components/MortuaryWorkbench";
 import {PrivacyWorkbench,type Screen as PrivacyScreen} from "../../../../components/privacy/PrivacyWorkbench";
 import {AuditWorkbench,type Screen as AuditScreen} from "../../../../components/audit/AuditWorkbench";
@@ -89,10 +90,14 @@ export default async function OperationalScreen({params}:{params:Promise<{screen
  if(screen.module==="M34")return <AuditWorkbench screen={screenId as AuditScreen}/>;
  const operationsModule=opsCatalog.modules.find(x=>x.id===screen.module);
  const opsScreen=operationsModule?.screens.find(x=>x.id===screenId);
- if(operationsModule&&opsScreen)return <OperationsWorkbench
+ if(operationsModule&&opsScreen){
+  const workbench=<OperationsWorkbench
    moduleId={operationsModule.id} screenId={opsScreen.id}
    name={opsScreen.name} nameFr={opsScreen.nameFr}
    action={opsScreen.primaryAction} inputGroups={opsScreen.dataInputGroups}/>;
+  // M23 only: read-only preventive-maintenance views on the existing M23-S01/S03/S05 screens (no new route).
+  return operationsModule.id==="M23"?<>{workbench}<MaintenancePanel screenId={opsScreen.id}/></>:workbench;
+ }
  if(screen.module==="M27"){
   const mortuary=mortuaryCatalog.screens.find(x=>x.id===screenId);
   if(mortuary)return <MortuaryWorkbench screenId={mortuary.id} name={mortuary.name}

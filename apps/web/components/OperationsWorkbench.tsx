@@ -28,7 +28,7 @@ const SHAPES:Record<string,{recordTypes:string[];fields:Field[]}>={
  M23:{recordTypes:["ASSET","WORK_ORDER"],fields:[
   D("title","Asset / work order","text",true),D("serial","Serial number"),D("manufacturer","Manufacturer"),
   D("model","Equipment model"),D("serviceRef","Service identifier"),D("locationRef","Facility location"),
-  D("safetyClass","Biomedical safety class"),D("assetRef","Asset UUID"),D("technicianRef","Assigned technician"),
+  D("safetyClass","Biomedical safety class"),D("assetRef","Asset UUID"),D("technicianRef","Assigned technician (workforce member UUID on shift)"),
   D("workOrderRef","Work order reference"),D("inspectionRef","Independent inspection"),D("conditionCode","Condition"),
   D("dueAt","Maintenance due date","datetime"),D("description","Maintenance notes")]},
  M25:{recordTypes:["TRIP","VEHICLE"],fields:[

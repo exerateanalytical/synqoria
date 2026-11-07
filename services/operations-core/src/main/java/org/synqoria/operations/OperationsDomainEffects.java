@@ -58,6 +58,7 @@ final class OperationsDomainEffects {
     "WHERE cell_id=? AND facility_id=? AND item_id=? AND asset_ref=? AND state='VERIFIED'",
     Long.class,after.cell(),after.facility(),work,after.id());
    if(verified==null||verified!=1)throw new WorkflowViolation("maintenance_clearance_not_verified");
+   MaintenanceGuards.requireCalibrationCurrent(jdbc,after);
   }
   if(module.equals("M25")&&type.equals("TRIP"))transport(jdbc,after,action);
   if(module.equals("M29"))configuration(jdbc,after,action);
@@ -104,16 +105,21 @@ final class OperationsDomainEffects {
      "(cell_id,facility_id,item_id,asset_ref,due_at) VALUES(?,?,?,?,?)",
      item.cell(),item.facility(),item.id(),asset,java.sql.Timestamp.from(time(item,"dueAt")));
    }
-   case "ASSIGN_WORK" -> update(jdbc,"UPDATE synqoria_operations.maintenance_orders "+
-    "SET technician_ref=?,state='ASSIGNED' WHERE item_id=? AND cell_id=? AND facility_id=? AND state='OPEN'",
-    str(item,"technicianRef"),item.id(),item.cell(),item.facility());
+   case "ASSIGN_WORK" -> {
+    MaintenanceGuards.requireAssetOffline(jdbc,item);
+    String technician=MaintenanceGuards.requireLiveTechnician(jdbc,item,str(item,"technicianRef")).toString();
+    update(jdbc,"UPDATE synqoria_operations.maintenance_orders "+
+     "SET technician_ref=?,state='ASSIGNED' WHERE item_id=? AND cell_id=? AND facility_id=? AND state='OPEN'",
+     technician,item.id(),item.cell(),item.facility());
+   }
    case "COMPLETE_WORK" -> update(jdbc,"UPDATE synqoria_operations.maintenance_orders "+
     "SET inspection_ref=?,state='COMPLETED' WHERE item_id=? AND cell_id=? AND facility_id=? AND state='ASSIGNED'",
     str(item,"inspectionRef"),item.id(),item.cell(),item.facility());
-   case "VERIFY_WORK" -> update(jdbc,"UPDATE synqoria_operations.maintenance_orders "+
+   case "VERIFY_WORK" -> { MaintenanceGuards.requireIndependentVerifier(jdbc,item);
+    update(jdbc,"UPDATE synqoria_operations.maintenance_orders "+
     "SET state='VERIFIED',verified_at=clock_timestamp() "+
     "WHERE item_id=? AND cell_id=? AND facility_id=? AND state='COMPLETED'",
-    item.id(),item.cell(),item.facility());
+    item.id(),item.cell(),item.facility()); }
    default -> {}
   }
  }

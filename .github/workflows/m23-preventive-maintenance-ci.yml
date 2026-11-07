@@ -1,0 +1,80 @@
+name: M23 preventive maintenance - Java25 / PostgreSQL18.6 / FORCE RLS / contract parity (engineering, not hospital acceptance)
+on:
+  pull_request:
+    paths:
+      - 'services/operations-core/**'
+      - 'contracts/openapi/synqoria-m23-maintenance-v1.yaml'
+      - 'tests/test_m23_openapi_contract.py'
+      - 'tests/m23_maintenance_frontend.test.mjs'
+      - 'apps/web/components/maintenance/**'
+      - 'apps/web/app/api/operations/proxy/**'
+      - 'docs/program/handoffs/M23_*'
+      - '.github/workflows/m23-preventive-maintenance-ci.yml'
+  push:
+    paths:
+      - 'services/operations-core/**'
+      - 'contracts/openapi/synqoria-m23-maintenance-v1.yaml'
+      - 'tests/test_m23_openapi_contract.py'
+      - '.github/workflows/m23-preventive-maintenance-ci.yml'
+permissions:
+  contents: read
+jobs:
+  contract:
+    name: M23 OpenAPI parity (routes, permissions, request records, idempotency)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install 'PyYAML==6.0.3'
+      - run: python tests/test_m23_openapi_contract.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Web guards (read-only proxy allow-list, panel, canonical screens unchanged)
+        run: node --test tests/m23_maintenance_frontend.test.mjs tests/operations_screen_catalog.test.mjs
+  java25-pg18:
+    name: M23 Java25 + PostgreSQL18.6 maintenance integration (restricted runtime role, FORCE RLS)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+          cache-dependency-path: services/operations-core/pom.xml
+      - name: Disposable PostgreSQL18.6, restricted non-owner runtime role, all migrations V001-V013
+        run: |
+          set -euo pipefail
+          docker run -d --name synqoria-m23-pg -e POSTGRES_PASSWORD=ops-ci-admin -e POSTGRES_DB=ops_ci -p 127.0.0.1:5432:5432 postgres:18.6
+          for i in $(seq 1 60); do
+            docker exec synqoria-m23-pg psql -U postgres -d ops_ci -Atc 'SELECT 1' 2>/dev/null | grep -qx 1 && break
+            sleep 1
+          done
+          docker exec synqoria-m23-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 -c "CREATE ROLE synqoria_operations_runtime LOGIN NOINHERIT NOSUPERUSER NOCREATEROLE NOCREATEDB NOREPLICATION NOBYPASSRLS PASSWORD 'ops-ci-only'"
+          for migration in services/operations-core/db/migration/V0*.sql; do
+            docker exec -i synqoria-m23-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < "$migration"
+          done
+          n=$(docker exec synqoria-m23-pg psql -U postgres -d ops_ci -Atc "SELECT count(*) FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='synqoria_operations' AND c.relname LIKE 'pm\_%' AND c.relkind='r' AND c.relrowsecurity AND c.relforcerowsecurity")
+          test "$n" = 10
+      - name: M23 rules, maintenance integration and the existing M23 regression
+        working-directory: services/operations-core
+        env:
+          SYNQORIA_OPS_PG_TEST: '1'
+          SYNQORIA_OPS_TEST_JDBC_URL: jdbc:postgresql://127.0.0.1:5432/ops_ci
+          SYNQORIA_OPS_TEST_DB_USER: synqoria_operations_runtime
+          SYNQORIA_OPS_TEST_DB_PASSWORD: ops-ci-only
+          SYNQORIA_OPS_TEST_ADMIN_JDBC_URL: jdbc:postgresql://127.0.0.1:5432/ops_ci
+          SYNQORIA_OPS_TEST_ADMIN_USER: postgres
+          SYNQORIA_OPS_TEST_ADMIN_PASSWORD: ops-ci-admin
+        run: mvn -B -ntp -Dtest='MaintenanceRulesTest,MaintenancePgIntegrationTest,OperationsBusinessPgIntegrationTest' test
+      - name: Print exact test evidence
+        if: always()
+        run: grep -h 'Tests run' services/operations-core/target/surefire-reports/*.txt || true
+      - name: Evidence boundary
+        if: always()
+        run: echo 'Synthetic fixtures on a disposable database. No manufacturer certification, real issuer, supplier attestation, GL posting or hospital release is implied.'

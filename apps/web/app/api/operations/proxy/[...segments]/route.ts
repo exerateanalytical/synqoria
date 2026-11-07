@@ -11,6 +11,10 @@ const stockBalances=new RegExp("^M22/items/"+uuid+"/balances$");
 const domainDetails=new RegExp("^"+moduleIds+"/items/"+uuid+"/details$");
 const transitions=new RegExp("^"+moduleIds+"/items/"+uuid+"/transitions$");
 const stockMovement=new RegExp("^M22/items/"+uuid+"/movements$");
+// M23 preventive maintenance: READ-ONLY views for the existing M23 screens. Planning, linking, calibration and approvals are not proxied.
+const m23Reads=/^M23\/maintenance\/(?:policies|plans|calendar|planner\/health|inspections\/pending)$/;
+const m23Limited=/^M23\/maintenance\/(?:plans|calendar|inspections\/pending)$/;
+const isoInstant=/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,9})?Z$/;
 const mortuaryList=/^M27\/cases$/;
 const mortuaryCase=new RegExp("^M27/cases/"+uuid+"$");
 const mortuaryActions=new RegExp("^M27/cases/"+uuid+"/actions$");
@@ -19,7 +23,7 @@ const mortuaryApprovals=new RegExp("^M27/cases/"+uuid+"/approvals$");
 const mortuaryHolds=new RegExp("^M27/cases/"+uuid+"/holds$");
 const mortuaryAudit=new RegExp("^M27/cases/"+uuid+"/audit$");
 function allow(path:string,method:"GET"|"POST"){
- if(method==="GET")return path==="catalog"||listing.test(path)||record.test(path)||stockBalances.test(path)||domainDetails.test(path)||mortuaryList.test(path)||mortuaryCase.test(path)||mortuaryCustody.test(path)||mortuaryApprovals.test(path)||mortuaryHolds.test(path)||mortuaryAudit.test(path);
+ if(method==="GET")return path==="catalog"||listing.test(path)||record.test(path)||stockBalances.test(path)||domainDetails.test(path)||mortuaryList.test(path)||mortuaryCase.test(path)||mortuaryCustody.test(path)||mortuaryApprovals.test(path)||mortuaryHolds.test(path)||mortuaryAudit.test(path)||m23Reads.test(path);
  return listing.test(path)||transitions.test(path)||stockMovement.test(path)||mortuaryList.test(path)||mortuaryActions.test(path);
 }
 function send(error:string,status:number){return NextResponse.json({error},{status,headers:{"Cache-Control":"no-store"}});}
@@ -39,12 +43,23 @@ async function proxy(request:NextRequest,context:RouteContext,method:"GET"|"POST
  if(method==="GET"){
   const limit=request.nextUrl.searchParams.get("limit");
   if(limit!==null){
-   if((!listing.test(path)&&!mortuaryList.test(path))||!/^\d{1,3}$/.test(limit)||Number(limit)>100||Number(limit)<1)
+   if((!listing.test(path)&&!mortuaryList.test(path)&&!m23Limited.test(path))||!/^\d{1,3}$/.test(limit)||Number(limit)>100||Number(limit)<1)
     return send("invalid_limit",400);
    url.searchParams.set("limit",limit);
   }
-  if([...request.nextUrl.searchParams.keys()].some(k=>k!=="limit"))
+  const extra=path==="M23/maintenance/calendar"?["from","to"]:path==="M23/maintenance/planner/health"?["staleAfterMinutes"]:[];
+  if([...request.nextUrl.searchParams.keys()].some(k=>k!=="limit"&&!extra.includes(k)))
    return send("unsupported_filter",400);
+  if(path==="M23/maintenance/calendar"){
+   const from=request.nextUrl.searchParams.get("from"),to=request.nextUrl.searchParams.get("to");
+   if(!from||!to||!isoInstant.test(from)||!isoInstant.test(to))return send("invalid_range",400);
+   url.searchParams.set("from",from);url.searchParams.set("to",to);
+  }
+  const stale=request.nextUrl.searchParams.get("staleAfterMinutes");
+  if(stale!==null){
+   if(!/^\d{1,4}$/.test(stale)||Number(stale)<1||Number(stale)>1440)return send("invalid_threshold",400);
+   url.searchParams.set("staleAfterMinutes",stale);
+  }
  }
  let body:string|undefined;
  if(method==="POST"){
