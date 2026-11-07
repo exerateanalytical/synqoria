@@ -1424,7 +1424,11 @@ x-permissions:
         '422':
           $ref: '#/components/responses/Invalid'
         '503':
-          $ref: '#/components/responses/Unavailable'
+          description: No currently routable target or directory unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
   /routes/{id}/switch:
     post:
       operationId: routeSwitch
