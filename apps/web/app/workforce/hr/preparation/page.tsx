@@ -1,2 +1,4 @@
-import {Preparation} from "../../../../components/hr/Preparation";
-export default function Page(){return <Preparation/>;}
+import {redirect} from "next/navigation";
+export default function LegacyM24Screen5(){
+ redirect("/workforce/clinical/M24-S05");
+}

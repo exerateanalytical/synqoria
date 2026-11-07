@@ -1,6 +1,6 @@
 {
-  "version": "2026-11-07-canonical-source-reconciliation",
-  "notes": "One canonical route per screen; alternative module paths are redirects only. 16 M02/M16/M35 source API workstations CI verified; independent hospital identity and institutional acceptance outstanding.",
+  "version": "2026-11-07-reconciled-canonical-source",
+  "notes": "All 86 source-integrated M02/M16/M21–M32/M34/M35/M37 workstations retain one canonical clinical/{ID} route; older module URLs redirect. All other routes remain explicitly gated/unaccepted.",
   "shell_roots": [
     {
       "shell": "workforce",
@@ -1279,7 +1279,7 @@
       "screen_id": "M21-S01",
       "module": "M21",
       "route": "/workforce/clinical/M21-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1287,7 +1287,7 @@
       "screen_id": "M21-S02",
       "module": "M21",
       "route": "/workforce/clinical/M21-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1295,7 +1295,7 @@
       "screen_id": "M21-S03",
       "module": "M21",
       "route": "/workforce/clinical/M21-S03",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1303,7 +1303,7 @@
       "screen_id": "M21-S04",
       "module": "M21",
       "route": "/workforce/clinical/M21-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1311,7 +1311,7 @@
       "screen_id": "M21-S05",
       "module": "M21",
       "route": "/workforce/clinical/M21-S05",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1319,7 +1319,7 @@
       "screen_id": "M21-S06",
       "module": "M21",
       "route": "/workforce/clinical/M21-S06",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1327,7 +1327,7 @@
       "screen_id": "M22-S01",
       "module": "M22",
       "route": "/workforce/clinical/M22-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1335,7 +1335,7 @@
       "screen_id": "M22-S02",
       "module": "M22",
       "route": "/workforce/clinical/M22-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1343,7 +1343,7 @@
       "screen_id": "M22-S03",
       "module": "M22",
       "route": "/workforce/clinical/M22-S03",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1351,7 +1351,7 @@
       "screen_id": "M22-S04",
       "module": "M22",
       "route": "/workforce/clinical/M22-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1359,7 +1359,7 @@
       "screen_id": "M22-S05",
       "module": "M22",
       "route": "/workforce/clinical/M22-S05",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1367,7 +1367,7 @@
       "screen_id": "M23-S01",
       "module": "M23",
       "route": "/workforce/clinical/M23-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1375,7 +1375,7 @@
       "screen_id": "M23-S02",
       "module": "M23",
       "route": "/workforce/clinical/M23-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1383,7 +1383,7 @@
       "screen_id": "M23-S03",
       "module": "M23",
       "route": "/workforce/clinical/M23-S03",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1391,7 +1391,7 @@
       "screen_id": "M23-S04",
       "module": "M23",
       "route": "/workforce/clinical/M23-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1399,7 +1399,7 @@
       "screen_id": "M23-S05",
       "module": "M23",
       "route": "/workforce/clinical/M23-S05",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1407,7 +1407,7 @@
       "screen_id": "M24-S01",
       "module": "M24",
       "route": "/workforce/clinical/M24-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1415,7 +1415,7 @@
       "screen_id": "M24-S02",
       "module": "M24",
       "route": "/workforce/clinical/M24-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1423,7 +1423,7 @@
       "screen_id": "M24-S03",
       "module": "M24",
       "route": "/workforce/clinical/M24-S03",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1431,7 +1431,7 @@
       "screen_id": "M24-S04",
       "module": "M24",
       "route": "/workforce/clinical/M24-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1439,7 +1439,7 @@
       "screen_id": "M24-S05",
       "module": "M24",
       "route": "/workforce/clinical/M24-S05",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1447,7 +1447,7 @@
       "screen_id": "M24-S06",
       "module": "M24",
       "route": "/workforce/clinical/M24-S06",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1455,7 +1455,7 @@
       "screen_id": "M25-S01",
       "module": "M25",
       "route": "/workforce/clinical/M25-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1463,7 +1463,7 @@
       "screen_id": "M25-S02",
       "module": "M25",
       "route": "/workforce/clinical/M25-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1471,7 +1471,7 @@
       "screen_id": "M25-S03",
       "module": "M25",
       "route": "/workforce/clinical/M25-S03",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1479,7 +1479,7 @@
       "screen_id": "M25-S04",
       "module": "M25",
       "route": "/workforce/clinical/M25-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1487,7 +1487,7 @@
       "screen_id": "M25-S05",
       "module": "M25",
       "route": "/workforce/clinical/M25-S05",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1495,7 +1495,7 @@
       "screen_id": "M26-S01",
       "module": "M26",
       "route": "/workforce/clinical/M26-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1503,7 +1503,7 @@
       "screen_id": "M26-S02",
       "module": "M26",
       "route": "/workforce/clinical/M26-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1511,7 +1511,7 @@
       "screen_id": "M26-S03",
       "module": "M26",
       "route": "/workforce/clinical/M26-S03",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1519,7 +1519,7 @@
       "screen_id": "M26-S04",
       "module": "M26",
       "route": "/workforce/clinical/M26-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1527,7 +1527,7 @@
       "screen_id": "M27-S01",
       "module": "M27",
       "route": "/workforce/clinical/M27-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1535,7 +1535,7 @@
       "screen_id": "M27-S02",
       "module": "M27",
       "route": "/workforce/clinical/M27-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1543,7 +1543,7 @@
       "screen_id": "M27-S03",
       "module": "M27",
       "route": "/workforce/clinical/M27-S03",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1551,7 +1551,7 @@
       "screen_id": "M27-S04",
       "module": "M27",
       "route": "/workforce/clinical/M27-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1559,7 +1559,7 @@
       "screen_id": "M27-S05",
       "module": "M27",
       "route": "/workforce/clinical/M27-S05",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1567,7 +1567,7 @@
       "screen_id": "M28-S01",
       "module": "M28",
       "route": "/workforce/clinical/M28-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1575,7 +1575,7 @@
       "screen_id": "M28-S02",
       "module": "M28",
       "route": "/workforce/clinical/M28-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1583,7 +1583,7 @@
       "screen_id": "M28-S03",
       "module": "M28",
       "route": "/workforce/clinical/M28-S03",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1591,7 +1591,7 @@
       "screen_id": "M28-S04",
       "module": "M28",
       "route": "/workforce/clinical/M28-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1599,7 +1599,7 @@
       "screen_id": "M28-S05",
       "module": "M28",
       "route": "/workforce/clinical/M28-S05",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1607,7 +1607,7 @@
       "screen_id": "M29-S01",
       "module": "M29",
       "route": "/workforce/clinical/M29-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1615,7 +1615,7 @@
       "screen_id": "M29-S02",
       "module": "M29",
       "route": "/workforce/clinical/M29-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1623,7 +1623,7 @@
       "screen_id": "M29-S03",
       "module": "M29",
       "route": "/workforce/clinical/M29-S03",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1631,7 +1631,7 @@
       "screen_id": "M29-S04",
       "module": "M29",
       "route": "/workforce/clinical/M29-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1639,7 +1639,7 @@
       "screen_id": "M30-S01",
       "module": "M30",
       "route": "/workforce/clinical/M30-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1647,7 +1647,7 @@
       "screen_id": "M30-S02",
       "module": "M30",
       "route": "/workforce/clinical/M30-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1655,7 +1655,7 @@
       "screen_id": "M30-S03",
       "module": "M30",
       "route": "/workforce/clinical/M30-S03",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1663,7 +1663,7 @@
       "screen_id": "M30-S04",
       "module": "M30",
       "route": "/workforce/clinical/M30-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1671,7 +1671,7 @@
       "screen_id": "M30-S05",
       "module": "M30",
       "route": "/workforce/clinical/M30-S05",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1679,7 +1679,7 @@
       "screen_id": "M31-S01",
       "module": "M31",
       "route": "/workforce/clinical/M31-S01",
-      "implementation_status": "nonclinical_functional",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1687,7 +1687,7 @@
       "screen_id": "M31-S02",
       "module": "M31",
       "route": "/workforce/clinical/M31-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1695,7 +1695,7 @@
       "screen_id": "M31-S03",
       "module": "M31",
       "route": "/workforce/clinical/M31-S03",
-      "implementation_status": "nonclinical_functional",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1703,7 +1703,7 @@
       "screen_id": "M31-S04",
       "module": "M31",
       "route": "/workforce/clinical/M31-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1711,7 +1711,7 @@
       "screen_id": "M31-S05",
       "module": "M31",
       "route": "/workforce/clinical/M31-S05",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1719,7 +1719,7 @@
       "screen_id": "M31-S06",
       "module": "M31",
       "route": "/workforce/clinical/M31-S06",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1727,7 +1727,7 @@
       "screen_id": "M32-S01",
       "module": "M32",
       "route": "/workforce/clinical/M32-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1735,7 +1735,7 @@
       "screen_id": "M32-S02",
       "module": "M32",
       "route": "/workforce/clinical/M32-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1743,7 +1743,7 @@
       "screen_id": "M32-S03",
       "module": "M32",
       "route": "/workforce/clinical/M32-S03",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1751,7 +1751,7 @@
       "screen_id": "M32-S04",
       "module": "M32",
       "route": "/workforce/clinical/M32-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1759,7 +1759,7 @@
       "screen_id": "M32-S05",
       "module": "M32",
       "route": "/workforce/clinical/M32-S05",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1823,7 +1823,7 @@
       "screen_id": "M34-S01",
       "module": "M34",
       "route": "/workforce/clinical/M34-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1831,7 +1831,7 @@
       "screen_id": "M34-S02",
       "module": "M34",
       "route": "/workforce/clinical/M34-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1839,7 +1839,7 @@
       "screen_id": "M34-S03",
       "module": "M34",
       "route": "/workforce/clinical/M34-S03",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1847,7 +1847,7 @@
       "screen_id": "M34-S04",
       "module": "M34",
       "route": "/workforce/clinical/M34-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1855,7 +1855,7 @@
       "screen_id": "M34-S05",
       "module": "M34",
       "route": "/workforce/clinical/M34-S05",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1951,7 +1951,7 @@
       "screen_id": "M37-S01",
       "module": "M37",
       "route": "/workforce/clinical/M37-S01",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1959,7 +1959,7 @@
       "screen_id": "M37-S02",
       "module": "M37",
       "route": "/workforce/clinical/M37-S02",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1967,7 +1967,7 @@
       "screen_id": "M37-S03",
       "module": "M37",
       "route": "/workforce/clinical/M37-S03",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },
@@ -1975,7 +1975,7 @@
       "screen_id": "M37-S04",
       "module": "M37",
       "route": "/workforce/clinical/M37-S04",
-      "implementation_status": "route_registered_domain_adapter_missing",
+      "implementation_status": "existing_module_source_integrated_unaccepted",
       "clinical_accepted": false,
       "clinical_commands_enabled": false
     },

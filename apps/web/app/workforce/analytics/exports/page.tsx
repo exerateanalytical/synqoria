@@ -1,2 +1,4 @@
-import Exports from "../../../../components/analytics/Exports";
-export default function Page(){ return <Exports/>; }
+import {redirect} from "next/navigation";
+export default function LegacyM28Screen5(){
+ redirect("/workforce/clinical/M28-S05");
+}

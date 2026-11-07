@@ -38,3 +38,18 @@ test("Canonical display module labels are derived from authority register, not s
  assert.ok(!page.includes('M16:"Maternal'));
  assert.ok(!page.includes('M35:"Quality'));
 });
+
+test("All preserved Claude, operations, privacy and audit sources render through canonical paths",()=>{
+ const ids=["M24-S01","M24-S02","M24-S03","M24-S04","M24-S05","M24-S06","M26-S01","M26-S02","M26-S03","M26-S04","M28-S01","M28-S02","M28-S03","M28-S04","M28-S05","M30-S01","M30-S02","M30-S03","M30-S04","M30-S05","M32-S01","M32-S02","M32-S03","M32-S04","M32-S05","M34-S01","M34-S02","M34-S03","M34-S04","M34-S05","M21-S01","M21-S02","M21-S03","M21-S04","M21-S05","M21-S06","M22-S01","M22-S02","M22-S03","M22-S04","M22-S05","M23-S01","M23-S02","M23-S03","M23-S04","M23-S05","M25-S01","M25-S02","M25-S03","M25-S04","M25-S05","M29-S01","M29-S02","M29-S03","M29-S04","M31-S01","M31-S02","M31-S03","M31-S04","M31-S05","M31-S06","M37-S01","M37-S02","M37-S03","M37-S04","M27-S01","M27-S02","M27-S03","M27-S04","M27-S05"];
+ assert.equal(ids.length,70);assert.equal(new Set(ids).size,70);
+ const page=read("apps/web/app/workforce/clinical/[screenId]/page.tsx");
+ for(const x of ["M24-S01","M26-S01","M28-S02","M30-S05","M32","M34","M27"])
+  assert.ok(page.includes(x)||page.includes('screen.module==="'+x+'"'),x);
+ for(const id of ids){
+  const route=routes.find(x=>x.screen_id===id);
+  assert.equal(route.route,"/workforce/clinical/"+id);
+  assert.equal(status.find(x=>x.id===id).accepted,false);
+ }
+ const legacy=read("apps/web/app/workforce/operations/[module]/[screen]/page.tsx");
+ assert.ok(legacy.includes('redirect("/workforce/clinical/"+screen)'));
+});

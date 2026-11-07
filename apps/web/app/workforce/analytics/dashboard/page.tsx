@@ -1,2 +1,4 @@
-import Dashboard from "../../../../components/analytics/Dashboard";
-export default function Page(){ return <Dashboard/>; }
+import {redirect} from "next/navigation";
+export default function LegacyM28Screen1(){
+ redirect("/workforce/clinical/M28-S01");
+}

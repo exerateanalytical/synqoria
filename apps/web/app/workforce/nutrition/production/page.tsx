@@ -1,3 +1,4 @@
-﻿import {Production} from "../../../../components/nutrition/Production";
-export default function Page(){return <Production/>;}
-
+import {redirect} from "next/navigation";
+export default function LegacyM26Screen3(){
+ redirect("/workforce/clinical/M26-S03");
+}

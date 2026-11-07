@@ -1,2 +1,4 @@
-import Analytics from "../../../../components/analytics/Analytics";
-export default function Page(){ return <Analytics domain="FINANCIAL"/>; }
+import {redirect} from "next/navigation";
+export default function LegacyM28Screen3(){
+ redirect("/workforce/clinical/M28-S03");
+}

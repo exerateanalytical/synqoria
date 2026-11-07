@@ -1,2 +1,4 @@
-import {Approval} from "../../../../components/hr/Approval";
-export default function Page(){return <Approval/>;}
+import {redirect} from "next/navigation";
+export default function LegacyM24Screen6(){
+ redirect("/workforce/clinical/M24-S06");
+}
