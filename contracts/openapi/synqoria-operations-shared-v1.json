@@ -1,0 +1,1393 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "SYNQORIA shared operations and durable connectors source contract",
+    "version": "1.0.0-draft",
+    "description": "Source-contract discovery for existing Java 25 controllers. M27 decedent/custody remains governed by the independent synqoria-m27-mortuary-v1.yaml. No hospital release or supplier/provider delivery certification."
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Shared operations"
+    },
+    {
+      "name": "Operational integrations"
+    },
+    {
+      "name": "Durable connector handoffs"
+    }
+  ],
+  "paths": {
+    "/api/v1/operations/{module}/items": {
+      "get": {
+        "tags": [
+          "Shared operations"
+        ],
+        "summary": "Verified staff GET /api/v1/operations/{module}/items",
+        "operationId": "OperationsApi_get___module__items",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "module-specific grant from ModuleCatalog / OperationsStore",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "module",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "M21",
+                "M22",
+                "M23",
+                "M25",
+                "M27",
+                "M29",
+                "M31",
+                "M33",
+                "M37"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Shared operations"
+        ],
+        "summary": "Verified staff POST /api/v1/operations/{module}/items",
+        "operationId": "OperationsApi_post___module__items",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "module-specific grant from ModuleCatalog / OperationsStore",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "module",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "M21",
+                "M22",
+                "M23",
+                "M25",
+                "M27",
+                "M29",
+                "M31",
+                "M33",
+                "M37"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Typed request shape is enforced by the Java record and domain service; not a caller-provided scope."
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operations/{module}/items/{itemId}": {
+      "get": {
+        "tags": [
+          "Shared operations"
+        ],
+        "summary": "Verified staff GET /api/v1/operations/{module}/items/{itemId}",
+        "operationId": "OperationsApi_get___module__items__itemId_",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "module-specific grant from ModuleCatalog / OperationsStore",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "module",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "M21",
+                "M22",
+                "M23",
+                "M25",
+                "M27",
+                "M29",
+                "M31",
+                "M33",
+                "M37"
+              ]
+            }
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        }
+      }
+    },
+    "/api/v1/operations/{module}/items/{itemId}/details": {
+      "get": {
+        "tags": [
+          "Shared operations"
+        ],
+        "summary": "Verified staff GET /api/v1/operations/{module}/items/{itemId}/details",
+        "operationId": "OperationsApi_get___module__items__itemId__details",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "module-specific grant from ModuleCatalog / OperationsStore",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "module",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "M21",
+                "M22",
+                "M23",
+                "M25",
+                "M27",
+                "M29",
+                "M31",
+                "M33",
+                "M37"
+              ]
+            }
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        }
+      }
+    },
+    "/api/v1/operations/{module}/items/{itemId}/transitions": {
+      "post": {
+        "tags": [
+          "Shared operations"
+        ],
+        "summary": "Verified staff POST /api/v1/operations/{module}/items/{itemId}/transitions",
+        "operationId": "OperationsApi_post___module__items__itemId__transitions",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "module-specific grant from ModuleCatalog / OperationsStore",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "module",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "M21",
+                "M22",
+                "M23",
+                "M25",
+                "M27",
+                "M29",
+                "M31",
+                "M33",
+                "M37"
+              ]
+            }
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Typed request shape is enforced by the Java record and domain service; not a caller-provided scope."
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operations/catalog": {
+      "get": {
+        "tags": [
+          "Shared operations"
+        ],
+        "summary": "Verified staff GET /api/v1/operations/catalog",
+        "operationId": "OperationsApi_get__catalog",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "verified current workforce admission",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        }
+      }
+    },
+    "/api/v1/operations/connectors/M21/procurement-exports": {
+      "get": {
+        "tags": [
+          "Durable connector handoffs"
+        ],
+        "summary": "Verified staff GET /api/v1/operations/connectors/M21/procurement-exports",
+        "operationId": "OperationsConnectorApi_get__M21_procurement_exports",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "m21:read",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        }
+      }
+    },
+    "/api/v1/operations/connectors/M21/procurement-exports/{itemId}": {
+      "post": {
+        "tags": [
+          "Durable connector handoffs"
+        ],
+        "summary": "Verified staff POST /api/v1/operations/connectors/M21/procurement-exports/{itemId}",
+        "operationId": "OperationsConnectorApi_post__M21_procurement_exports__itemId_",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "m21:close",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        }
+      }
+    },
+    "/api/v1/operations/connectors/M22/barcode-stock": {
+      "get": {
+        "tags": [
+          "Durable connector handoffs"
+        ],
+        "summary": "Verified staff GET /api/v1/operations/connectors/M22/barcode-stock",
+        "operationId": "OperationsConnectorApi_get__M22_barcode_stock",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "m22:read",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "sku",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "lot",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "bin",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        }
+      }
+    },
+    "/api/v1/operations/connectors/M25/vehicle-reservations": {
+      "post": {
+        "tags": [
+          "Durable connector handoffs"
+        ],
+        "summary": "Verified staff POST /api/v1/operations/connectors/M25/vehicle-reservations",
+        "operationId": "OperationsConnectorApi_post__M25_vehicle_reservations",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "m25:assign",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Typed request shape is enforced by the Java record and domain service; not a caller-provided scope."
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operations/connectors/M25/vehicle-reservations/{reservationId}/cancel": {
+      "post": {
+        "tags": [
+          "Durable connector handoffs"
+        ],
+        "summary": "Verified staff POST /api/v1/operations/connectors/M25/vehicle-reservations/{reservationId}/cancel",
+        "operationId": "OperationsConnectorApi_post__M25_vehicle_reservations__reservationId__cancel",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "m25:cancel",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "reservationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        }
+      }
+    },
+    "/api/v1/operations/connectors/M29/publications": {
+      "get": {
+        "tags": [
+          "Durable connector handoffs"
+        ],
+        "summary": "Verified staff GET /api/v1/operations/connectors/M29/publications",
+        "operationId": "OperationsConnectorApi_get__M29_publications",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "m29:read",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "afterAt",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "afterId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        }
+      }
+    },
+    "/api/v1/operations/connectors/M37/delivery-leases": {
+      "post": {
+        "tags": [
+          "Durable connector handoffs"
+        ],
+        "summary": "Verified staff POST /api/v1/operations/connectors/M37/delivery-leases",
+        "operationId": "OperationsConnectorApi_post__M37_delivery_leases",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "m37:deliver",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        }
+      }
+    },
+    "/api/v1/operations/integrations/M21/procurement-reconciliation": {
+      "get": {
+        "tags": [
+          "Operational integrations"
+        ],
+        "summary": "Verified staff GET /api/v1/operations/integrations/M21/procurement-reconciliation",
+        "operationId": "OperationsIntegrationApi_get__M21_procurement_reconciliation",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "m21:read",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        }
+      }
+    },
+    "/api/v1/operations/integrations/M22/stock-counts/{countId}/review": {
+      "post": {
+        "tags": [
+          "Operational integrations"
+        ],
+        "summary": "Verified staff POST /api/v1/operations/integrations/M22/stock-counts/{countId}/review",
+        "operationId": "OperationsIntegrationApi_post__M22_stock_counts__countId__review",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "m22:adjust",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "countId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Typed request shape is enforced by the Java record and domain service; not a caller-provided scope."
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operations/integrations/M22/stock-counts/{itemId}": {
+      "post": {
+        "tags": [
+          "Operational integrations"
+        ],
+        "summary": "Verified staff POST /api/v1/operations/integrations/M22/stock-counts/{itemId}",
+        "operationId": "OperationsIntegrationApi_post__M22_stock_counts__itemId_",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "m22:count",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Typed request shape is enforced by the Java record and domain service; not a caller-provided scope."
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operations/integrations/M25/available-vehicles": {
+      "get": {
+        "tags": [
+          "Operational integrations"
+        ],
+        "summary": "Verified staff GET /api/v1/operations/integrations/M25/available-vehicles",
+        "operationId": "OperationsIntegrationApi_get__M25_available_vehicles",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "m25:read",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        }
+      }
+    },
+    "/api/v1/operations/integrations/M29/publication-feed": {
+      "get": {
+        "tags": [
+          "Operational integrations"
+        ],
+        "summary": "Verified staff GET /api/v1/operations/integrations/M29/publication-feed",
+        "operationId": "OperationsIntegrationApi_get__M29_publication_feed",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "m29:read",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        }
+      }
+    },
+    "/api/v1/operations/integrations/M37/due-deliveries": {
+      "get": {
+        "tags": [
+          "Operational integrations"
+        ],
+        "summary": "Verified staff GET /api/v1/operations/integrations/M37/due-deliveries",
+        "operationId": "OperationsIntegrationApi_get__M37_due_deliveries",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "m37:deliver",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        }
+      }
+    },
+    "/api/v1/operations/M22/items/{itemId}/balances": {
+      "get": {
+        "tags": [
+          "Shared operations"
+        ],
+        "summary": "Verified staff GET /api/v1/operations/M22/items/{itemId}/balances",
+        "operationId": "OperationsApi_get__M22_items__itemId__balances",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "m22:read",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        }
+      }
+    },
+    "/api/v1/operations/M22/items/{itemId}/movements": {
+      "post": {
+        "tags": [
+          "Shared operations"
+        ],
+        "summary": "Verified staff POST /api/v1/operations/M22/items/{itemId}/movements",
+        "operationId": "OperationsApi_post__M22_items__itemId__movements",
+        "security": [
+          {
+            "facilityStaffJwt": []
+          }
+        ],
+        "x-synqoria-current-workforce-admission": true,
+        "x-synqoria-cell-and-facility-rls": true,
+        "x-synqoria-required-grant": "movement-dependent m22:receive|reserve|issue|release|return",
+        "x-synqoria-deployment-status": "source-integrated-not-hospital-accepted",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified workforce-scoped JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScopedResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No verified identity"
+          },
+          "403": {
+            "description": "Permission, shift, or scope rejected"
+          },
+          "404": {
+            "description": "Resource unavailable in authorized scope"
+          },
+          "409": {
+            "description": "Revision, idempotency, or state conflict"
+          },
+          "503": {
+            "description": "Trusted workforce authority unavailable; fail closed"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Typed request shape is enforced by the Java record and domain service; not a caller-provided scope."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "facilityStaffJwt": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "P03 resource-server signature/issuer/audience validation followed by independent current authoritative workforce grant, cell and facility check"
+      }
+    },
+    "schemas": {
+      "ScopedResult": {
+        "description": "Existing Java controller's typed result; do not derive cell/facility identity from browser inputs.",
+        "oneOf": [
+          {
+            "type": "object"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
