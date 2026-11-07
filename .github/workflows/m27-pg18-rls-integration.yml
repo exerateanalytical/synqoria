@@ -1,0 +1,67 @@
+name: M27 mortuary PostgreSQL18.6 FORCE RLS and custody evidence
+on:
+  push:
+    branches:
+      - work/chatgpt-m27-mortuary-2026-11-07
+  pull_request:
+    paths:
+      - 'services/operations-core/**'
+      - '.github/workflows/m27-pg18-rls-integration.yml'
+permissions:
+  contents: read
+jobs:
+  m27-pg18-real:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+          cache-dependency-path: services/operations-core/pom.xml
+      - name: Start disposable independent-role PostgreSQL 18.6
+        run: |
+          set -euo pipefail
+          docker run -d --name synqoria-m27-pg -e POSTGRES_PASSWORD=ci-only -e POSTGRES_DB=ops_ci -p 127.0.0.1:5432:5432 postgres:18.6
+          for i in $(seq 1 50); do
+            docker exec synqoria-m27-pg psql -U postgres -d ops_ci -Atc 'SELECT 1' 2>/dev/null | grep -qx 1 && break
+            sleep 1
+          done
+          docker exec synqoria-m27-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 -c "CREATE ROLE synqoria_operations_runtime LOGIN NOINHERIT NOSUPERUSER NOCREATEROLE NOCREATEDB NOREPLICATION NOBYPASSRLS PASSWORD 'ops-ci-only'"
+      - name: Apply V001 to V005 in sequence as non-runtime migrator
+        run: |
+          set -euo pipefail
+          for migration in services/operations-core/db/migration/V00{1,2,3,4,5}__*.sql; do
+            echo "MIGRATION $migration"
+            docker exec -i synqoria-m27-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 < "$migration"
+          done
+      - name: Confirm 22 FORCE RLS tables and strict runtime read-only external authority
+        run: |
+          set -euo pipefail
+          n=$(docker exec synqoria-m27-pg psql -U postgres -d ops_ci -Atc "SELECT count(*) FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='synqoria_operations' AND c.relkind='r' AND c.relrowsecurity AND c.relforcerowsecurity")
+          test "$n" = 22
+          docker exec synqoria-m27-pg psql -U postgres -d ops_ci -v ON_ERROR_STOP=1 -c "SET ROLE synqoria_operations_runtime; SELECT count(*) FROM synqoria_operations.mortuary_cases;" | grep -q '0'
+          for rel in mortuary_authority_evidence mortuary_legal_holds mortuary_custody_events mortuary_release_reviews mortuary_audit_events mortuary_outbox; do
+            result=$(docker exec synqoria-m27-pg psql -U postgres -d ops_ci -Atc "SELECT has_table_privilege('synqoria_operations_runtime','synqoria_operations.$rel','DELETE')") 
+            test "$result" = f
+          done
+          for rel in mortuary_authority_evidence mortuary_legal_holds; do
+            result=$(docker exec synqoria-m27-pg psql -U postgres -d ops_ci -Atc "SELECT has_table_privilege('synqoria_operations_runtime','synqoria_operations.$rel','INSERT,UPDATE')") 
+            test "$result" = f
+          done
+      - name: Real JDBC mortuary state, custody, legal hold, identity and release tests
+        working-directory: services/operations-core
+        env:
+          SYNQORIA_OPS_PG_TEST: '1'
+          SYNQORIA_OPS_TEST_JDBC_URL: jdbc:postgresql://127.0.0.1:5432/ops_ci
+          SYNQORIA_OPS_TEST_DB_USER: synqoria_operations_runtime
+          SYNQORIA_OPS_TEST_DB_PASSWORD: ops-ci-only
+          SYNQORIA_OPS_TEST_ADMIN_JDBC_URL: jdbc:postgresql://127.0.0.1:5432/ops_ci
+          SYNQORIA_OPS_TEST_ADMIN_USER: postgres
+          SYNQORIA_OPS_TEST_ADMIN_PASSWORD: ci-only
+        run: mvn -B -ntp -Dtest=MortuaryStorePgIntegrationTest test
+      - name: Never infer clinical production from synthetic evidence
+        if: always()
+        run: echo "No real decedent, staff identity, hospital document or legal authority used in this isolated CI."
