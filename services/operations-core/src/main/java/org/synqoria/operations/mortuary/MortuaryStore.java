@@ -145,6 +145,35 @@ public final class MortuaryStore {
    actor.cell(),actor.facility(),decedent,id,action,version,kind,ref,actor.actor());
   if(found.isEmpty())throw new WorkflowViolation("independent_mortuary_evidence_required");
  }
+ /**
+  * Revocation-safe legal death/identity revalidation at EVERY release transition.
+  * A physician/civil registrar may withdraw identity/death proof after intake;
+  * a valid first-time intake must not silently authorize a later release.
+  * The advisory fence serializes independent intake-proof revocations, while the
+  * locked case row serializes case-specific proof revisions.
+  */
+ private void freshIdentityForRelease(OperationWorkflow.Actor actor,
+                                      MortuaryWorkflow.Snapshot item){
+  jdbc.queryForList("SELECT pg_advisory_xact_lock(hashtextextended(?::text,27))",
+   item.decedentRef().toString());
+  Map<String,Object> refs=jdbc.queryForMap(
+   "SELECT death_ref,intake_ref FROM synqoria_operations.mortuary_cases " +
+   "WHERE cell_id=? AND facility_id=? AND case_id=?",
+   actor.cell(),actor.facility(),item.caseId());
+  proof(actor,item.decedentRef(),null,"RECEIVE",0,"DEATH_CONFIRMED",
+   (String)refs.get("death_ref"));
+  proof(actor,item.decedentRef(),null,"RECEIVE",0,"IDENTITY_ATTESTED",
+   (String)refs.get("intake_ref"));
+  Long current=jdbc.queryForObject(
+   "SELECT count(*) FROM synqoria_operations.mortuary_authority_evidence " +
+   "WHERE cell_id=? AND facility_id=? AND decedent_ref=? AND case_id=? " +
+   "AND for_action='IDENTIFY' AND expected_version=1 " +
+   "AND proof_kind='IDENTITY_VERIFIED' AND approved_by<>? " +
+   "AND revoked_at IS NULL AND valid_from<=clock_timestamp() AND valid_until>clock_timestamp()",
+   Long.class,actor.cell(),actor.facility(),item.decedentRef(),item.caseId(),actor.actor());
+  if(current==null||current<1)
+   throw new WorkflowViolation("mortuary_identity_proof_revoked");
+ }
  private void noLegalHolds(OperationWorkflow.Actor actor,UUID id){
   Long active=jdbc.queryForObject(
    "SELECT count(*) FROM synqoria_operations.mortuary_legal_holds "+
@@ -244,7 +273,10 @@ public final class MortuaryStore {
    }
    var before=load(actor,caseId,true);
    var decision=MortuaryWorkflow.decide(before,action,req.expectedVersion(),actor);
-   if(decision.releaseSafetyCritical())noLegalHolds(actor,caseId);
+   if(decision.releaseSafetyCritical()){
+    noLegalHolds(actor,caseId);
+    freshIdentityForRelease(actor,before);
+   }
    String from=before.state().name();
    String destination=before.currentStorage();
    UUID receiver=req.receivingStaffId();
@@ -280,7 +312,7 @@ public final class MortuaryStore {
       code(req.authorityRef()),code(req.recipientRef()),before.version()+1);
     }
     case AUTHORIZE_RELEASE -> {
-     var reviews=jdbc.queryForList("SELECT actor_id,authority_ref,recipient_ref "+
+     var reviews=jdbc.queryForList("SELECT actor_id,authority_ref,recipient_ref,case_version "+
       "FROM synqoria_operations.mortuary_release_reviews "+
       "WHERE cell_id=? AND facility_id=? AND case_id=? AND stage='REVIEW'",
       actor.cell(),actor.facility(),caseId);
@@ -292,6 +324,8 @@ public final class MortuaryStore {
      if(!authority.equals(review.get("authority_ref"))||
         !recipient.equals(review.get("recipient_ref")))
       throw new WorkflowViolation("release_scope_mismatch");
+     proof(actor,before.decedentRef(),caseId,"REVIEW_RELEASE",
+      ((Number)review.get("case_version")).longValue()-1,"LEGAL_RELEASE",authority);
      proof(actor,before.decedentRef(),caseId,"AUTHORIZE_RELEASE",before.version(),
       "RELEASE_AUTHORIZATION",authority);
      proof(actor,before.decedentRef(),caseId,"AUTHORIZE_RELEASE",before.version(),
@@ -304,7 +338,7 @@ public final class MortuaryStore {
     }
     case HANDOVER -> {
      var approvals=jdbc.queryForList(
-      "SELECT actor_id,stage,authority_ref,recipient_ref "+
+      "SELECT actor_id,stage,authority_ref,recipient_ref,case_version "+
       "FROM synqoria_operations.mortuary_release_reviews "+
       "WHERE cell_id=? AND facility_id=? AND case_id=? ORDER BY stage",
       actor.cell(),actor.facility(),caseId);
@@ -321,6 +355,12 @@ public final class MortuaryStore {
      if(!code(req.authorityRef()).equals(auth.get("authority_ref"))||
         !code(req.recipientRef()).equals(auth.get("recipient_ref")))
       throw new WorkflowViolation("release_scope_mismatch");
+     proof(actor,before.decedentRef(),caseId,"REVIEW_RELEASE",
+      ((Number)review.get("case_version")).longValue()-1,"LEGAL_RELEASE",
+      req.authorityRef());
+     proof(actor,before.decedentRef(),caseId,"AUTHORIZE_RELEASE",
+      ((Number)auth.get("case_version")).longValue()-1,"RELEASE_AUTHORIZATION",
+      req.authorityRef());
      proof(actor,before.decedentRef(),caseId,"HANDOVER",before.version(),
       "RECIPIENT_VERIFIED",req.recipientRef());
      proof(actor,before.decedentRef(),caseId,"HANDOVER",before.version(),
