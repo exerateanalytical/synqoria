@@ -286,6 +286,8 @@ public final class MortuaryStore {
     case STORE -> {
      destination=code(req.storageCode());
      code(req.sealRef());code(req.conditionCode());
+     if(receiver!=null&&receiver.equals(actor.actor()))
+      throw new WorkflowViolation("custody_receiver_must_be_independent");
      receiverOnShift(actor,receiver);
      proof(actor,before.decedentRef(),caseId,"STORE",before.version(),
       "STORAGE_SAFE",req.evidenceRef());
