@@ -1,0 +1,36 @@
+server:
+  port: ${SYNQORIA_FLEET_PORT:8100}
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+  max-http-request-header-size: 16KB
+  tomcat:
+    max-swallow-size: 8MB
+spring:
+  application:
+    name: synqoria-cell-lifecycle-core
+  servlet:
+    multipart:
+      enabled: false
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+  datasource:
+    url: ${SYNQORIA_FLEET_JDBC_URL}
+    username: ${SYNQORIA_FLEET_DB_USERNAME}
+    password: ${SYNQORIA_FLEET_DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 0
+      connection-timeout: 5000
+  sql:
+    init:
+      mode: never
+synqoria:
+  fleet:
+    issuer: ${SYNQORIA_FLEET_OIDC_ISSUER}
+    audience: ${SYNQORIA_FLEET_OIDC_AUDIENCE}
+    db-runtime-role: ${SYNQORIA_FLEET_DB_RUNTIME_ROLE:synqoria_fleet_runtime}
+    facility-zone: ${SYNQORIA_FLEET_FACILITY_ZONE:UTC}
+    routing-key: ${SYNQORIA_FLEET_ROUTING_KEY}
