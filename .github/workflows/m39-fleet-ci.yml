@@ -21,6 +21,9 @@ on:
       - 'apps/web/components/fleet/**'
       - 'apps/web/lib/fleet/**'
       - 'tests/m39_fleet_frontend.test.mjs'
+      - 'tests/test_m39_openapi_contract.py'
+      - 'tools/gen_m39_openapi.py'
+      - 'docs/runbooks/M39_AUTHORITATIVE_GATEWAY_FENCE_2026-11-07.md'
       - '.github/workflows/m39-fleet-ci.yml'
 permissions:
   contents: read
