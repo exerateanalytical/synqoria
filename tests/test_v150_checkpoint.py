@@ -17,8 +17,11 @@ for item in e['results']:
  assert not any(b[k] for k in ['clinical_screen_implementation','independently_reviewed','clinically_reviewed','accepted','external_certification'])
  assert (r/item['evidence_log']).exists()
 assert len(s['items'])==261
-assert all(not item.get('implemented',False) and not item.get('accepted',False) for item in s['items'])
+# The archived v0.15 batch evidence remains historical. The live screen matrix
+# now records later source integrations and must not be reset to the 2026-11-05 state.
+assert sum(bool(item.get('implemented',False)) for item in s['items'])==86
+assert all(not item.get('accepted',False) and not item.get('clinically_reviewed',False) for item in s['items'])
 assert all(x['certification']=='not_certified' for x in p['phases'] if x['id'] in ['P01','P02','P05'])
 assert ids['P01-B0002']['status']=='blocked_attempt_not_completed'
 assert l['release_status']=='NOT_CERTIFIED'
-print('PASS v0.15.0 10 unique verified non-clinical increments, 261 unimplemented screens, no release claims')
+print('PASS v0.15.0 10 unique verified non-clinical increments, 261 canonical screens, newer source integrations separately tracked, no release claims')

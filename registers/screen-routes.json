@@ -1,6 +1,6 @@
 {
   "version": "2026-11-07-reconciled-canonical-source",
-  "notes": "All 86 source-integrated M02/M16/M21–M32/M34/M35/M37 workstations retain one canonical clinical/{ID} route; older module URLs redirect. All other routes remain explicitly gated/unaccepted.",
+  "notes": "Current 2026-11-07 source integration counts; historical 2026-11-05 240 locked route gaps remain in operational-completion-gaps-v1.json. No integrated source route is an institutionally accepted clinical workflow.",
   "shell_roots": [
     {
       "shell": "workforce",
@@ -2111,8 +2111,10 @@
   "route_summary": {
     "registered": 261,
     "apiReadSubsets": 16,
-    "nonclinicalFunctional": 5,
-    "domainLocked": 240,
+    "nonclinicalFunctional": 3,
+    "domainLocked": 156,
+    "sourceApiCiVerified": 16,
+    "existingModuleSourceIntegrated": 70,
     "clinicallyAccepted": 0,
     "clinicallyCertifiedModules": 0
   }

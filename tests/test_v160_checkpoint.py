@@ -20,9 +20,10 @@ for row in e['results']:
 for phase in p['phases']:
  assert phase['batches_completed']==sum(x['id'].startswith(phase['id']+'-') and not x['status'].startswith('blocked') for x in l['batches'])
 assert len(s['items'])==261 and len(m['items'])==40
-assert all(not x['implemented'] and not x['accepted'] and not x['clinically_reviewed'] for x in s['items'])
+assert sum(bool(x['implemented']) for x in s['items'])==86
+assert all(not x['accepted'] and not x['clinically_reviewed'] for x in s['items'])
 assert all(not x['implemented'] and not x['accepted'] for x in m['items'])
 assert l['release_status']=='NOT_CERTIFIED'
 # Historical v0.16.0 milestone may be completed; current next_batch advances independently.
 assert 'P05-B0027' in ids
-print('PASS v0.16.0 10 individually tested nonclinical increments, 40 modules, 261 locked screens, no release')
+print('PASS v0.16.0 10 individually tested nonclinical increments, 40 modules, 261 canonical screens, source integration newer than checkpoint, no release')

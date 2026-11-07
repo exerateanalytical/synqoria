@@ -27,7 +27,12 @@ class Checks(unittest.TestCase):
   self.assertTrue(probe('test-dsn','synqoria_review',runner=run,which=lambda x:'/usr/bin/psql')['ready'])
   self.assertFalse(probe('','synqoria_review')['ready'])
  def test_build_probe(self):
-  r=build_audit(ROOT);self.assertFalse(r['build_ready']);self.assertIn('missing_root_lockfile',r['issues'])
+  # Main now contains the exact pinned npm lock: an installed checkout can be
+  # build-ready. Preserve the historical fail-closed missing-lock case in a fixture.
+  r=build_audit(ROOT);self.assertNotIn('missing_root_lockfile',r['issues'])
+  with tempfile.TemporaryDirectory() as absent:
+   fixture=Path(absent)
+   self.assertIn('missing_root_lockfile',build_audit(fixture)['issues'])
   with tempfile.TemporaryDirectory() as d:
    p=Path(d);(p/'package-lock.json').write_text('{}');(p/'package.json').write_text('{"version":"1.0.0"}')
    for app,modules in {'web':('next','react','react-dom'),'staff-mobile':('expo','react-native'),'patient-mobile':('expo','react-native')}.items():
