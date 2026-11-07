@@ -52,16 +52,25 @@ final class MortuaryStorePgIntegrationTest {
  }
  private void evidence(UUID subject,UUID caseId,String action,long version,
                         String kind,String ref,UUID approver){
-  evidence(subject,caseId,action,version,kind,ref,approver,null);
+  evidence(subject,caseId,action,version,kind,ref,approver,null,null);
  }
  private void evidence(UUID subject,UUID caseId,String action,long version,
                         String kind,String ref,UUID approver,String storageCode){
+  evidence(subject,caseId,action,version,kind,ref,approver,storageCode,null);
+ }
+ private void evidence(UUID subject,UUID caseId,String action,long version,
+                        String kind,String ref,UUID approver,String storageCode,String recipient){
+  UUID receiver=Set.of("STORAGE_SAFE","CUSTODY_ACCEPTED").contains(kind)?RECEIVER:null;
+  UUID witness=Set.of("HANDOVER_RECEIPT","BELONGINGS_RELEASED").contains(kind)?RECEIVER:null;
+  String boundRecipient="RECIPIENT_VERIFIED".equals(kind)?ref:recipient;
   admin().update("INSERT INTO synqoria_operations.mortuary_authority_evidence " +
    "(proof_id,cell_id,facility_id,decedent_ref,case_id,for_action,expected_version,"+
-   "proof_kind,external_ref,authority_issuer,approved_by,valid_from,valid_until,digest_sha256,storage_code) "+
+   "proof_kind,external_ref,authority_issuer,approved_by,valid_from,valid_until,digest_sha256,"+
+   "storage_code,receiving_staff_id,witness_staff_id,recipient_ref) "+
    "VALUES(?,?,?,?,?,?,?,?,?,?,?,clock_timestamp()-interval '5 minutes',"+
-   "clock_timestamp()+interval '2 hours',repeat('a',64),?)",
-   UUID.randomUUID(),CELL,FAC,subject,caseId,action,version,kind,ref,"synthetic-authority-ci",approver,storageCode);
+   "clock_timestamp()+interval '2 hours',repeat('a',64),?,?,?,?)",
+   UUID.randomUUID(),CELL,FAC,subject,caseId,action,version,kind,ref,
+   "synthetic-authority-ci",approver,storageCode,receiver,witness,boundRecipient);
  }
  private void incoming(UUID subject){
   roster();
@@ -157,7 +166,7 @@ final class MortuaryStorePgIntegrationTest {
   final String recipient="RECIPIENT-VERIFY-M27",legal="RELEASE-AUTH-M27";
   var makerAttempt=cmd("REVIEW_RELEASE",c.version(),null,null,null,recipient,legal);
   assertThrows(WorkflowViolation.class,()->s.change(who(INTAKE,"m27:review"),id,makerAttempt));
-  evidence(subject,id,"REVIEW_RELEASE",c.version(),"LEGAL_RELEASE",legal,ISSUER);
+  evidence(subject,id,"REVIEW_RELEASE",c.version(),"LEGAL_RELEASE",legal,ISSUER,null,recipient);
   evidence(subject,id,"REVIEW_RELEASE",c.version(),"RECIPIENT_VERIFIED",recipient,ISSUER);
   c=s.change(who(REVIEWER,"m27:review"),id,
    cmd("REVIEW_RELEASE",c.version(),null,null,null,recipient,legal));
@@ -165,14 +174,14 @@ final class MortuaryStorePgIntegrationTest {
   var sameReviewerAttempt=cmd("AUTHORIZE_RELEASE",c.version(),null,null,null,recipient,legal);
   assertThrows(WorkflowViolation.class,()->s.change(who(REVIEWER,"m27:authorize"),id,
    sameReviewerAttempt));
-  evidence(subject,id,"AUTHORIZE_RELEASE",c.version(),"RELEASE_AUTHORIZATION",legal,ISSUER);
+  evidence(subject,id,"AUTHORIZE_RELEASE",c.version(),"RELEASE_AUTHORIZATION",legal,ISSUER,null,recipient);
   evidence(subject,id,"AUTHORIZE_RELEASE",c.version(),"RECIPIENT_VERIFIED",recipient,ISSUER);
   c=s.change(who(APPROVER,"m27:authorize"),id,
    cmd("AUTHORIZE_RELEASE",c.version(),null,null,null,recipient,legal));
   assertEquals("RELEASE_AUTHORIZED",c.state());
-  evidence(subject,id,"HANDOVER",c.version(),"HANDOVER_RECEIPT","HANDOVER-M27",ISSUER);
+  evidence(subject,id,"HANDOVER",c.version(),"HANDOVER_RECEIPT","HANDOVER-M27",ISSUER,null,recipient);
   evidence(subject,id,"HANDOVER",c.version(),"RECIPIENT_VERIFIED",recipient,ISSUER);
-  evidence(subject,id,"HANDOVER",c.version(),"BELONGINGS_RELEASED","BELONGINGS-RELEASE-M27",ISSUER);
+  evidence(subject,id,"HANDOVER",c.version(),"BELONGINGS_RELEASED","BELONGINGS-RELEASE-M27",ISSUER,null,recipient);
   var sameReviewerHandover=cmd("HANDOVER",c.version(),"HANDOVER-M27",null,null,recipient,legal);
   assertThrows(WorkflowViolation.class,()->s.change(who(REVIEWER,"m27:handover"),id,
    sameReviewerHandover));
@@ -212,7 +221,7 @@ final class MortuaryStorePgIntegrationTest {
    "VALUES(?,?,?,?,?,?,?)",hold,CELL,FAC,c.caseId(),"HOLD-M27","INVESTIGATION",AUTHORITY);
   assertThrows(WorkflowViolation.class,()->s.change(who(REVIEWER,"m27:review"),heldCase,
    cmd("REVIEW_RELEASE",heldVersion,null,null,null,"RECIPIENT-M27","LEGAL-M27")));
-  evidence(c.decedentRef(),c.caseId(),"REVIEW_RELEASE",c.version(),"LEGAL_RELEASE","LEGAL-M27",ISSUER);
+  evidence(c.decedentRef(),c.caseId(),"REVIEW_RELEASE",c.version(),"LEGAL_RELEASE","LEGAL-M27",ISSUER,null,"RECIPIENT-M27");
   evidence(c.decedentRef(),c.caseId(),"REVIEW_RELEASE",c.version(),"RECIPIENT_VERIFIED","RECIPIENT-M27",ISSUER);
   assertThrows(WorkflowViolation.class,()->s.change(who(REVIEWER,"m27:review"),heldCase,
    cmd("REVIEW_RELEASE",heldVersion,null,null,null,"RECIPIENT-M27","LEGAL-M27")));
@@ -277,7 +286,7 @@ final class MortuaryStorePgIntegrationTest {
    "AND for_action='RECEIVE' AND proof_kind='DEATH_CONFIRMED'",
    CELL,FAC,first.decedentRef());
   evidence(first.decedentRef(),first.caseId(),"REVIEW_RELEASE",first.version(),
-   "LEGAL_RELEASE","LEGAL-REVOCATION-CI",ISSUER);
+   "LEGAL_RELEASE","LEGAL-REVOCATION-CI",ISSUER,null,"RECIPIENT-REVOCATION-CI");
   evidence(first.decedentRef(),first.caseId(),"REVIEW_RELEASE",first.version(),
    "RECIPIENT_VERIFIED","RECIPIENT-REVOCATION-CI",ISSUER);
   final var deniedDeath=first;
@@ -302,14 +311,14 @@ final class MortuaryStorePgIntegrationTest {
   var item=store(service,identify(service,receive(service,UUID.randomUUID())));
   final String legal="LEGAL-REVOKE-AFTER-REVIEW",recipient="RECIP-REVOKE-CI";
   evidence(item.decedentRef(),item.caseId(),"REVIEW_RELEASE",item.version(),
-   "LEGAL_RELEASE",legal,ISSUER);
+   "LEGAL_RELEASE",legal,ISSUER,null,recipient);
   evidence(item.decedentRef(),item.caseId(),"REVIEW_RELEASE",item.version(),
    "RECIPIENT_VERIFIED",recipient,ISSUER);
   item=service.change(who(REVIEWER,"m27:review"),item.caseId(),
    cmd("REVIEW_RELEASE",item.version(),null,null,null,recipient,legal));
   assertEquals("RELEASE_REVIEWED",item.state());
   evidence(item.decedentRef(),item.caseId(),"AUTHORIZE_RELEASE",item.version(),
-   "RELEASE_AUTHORIZATION",legal,ISSUER);
+   "RELEASE_AUTHORIZATION",legal,ISSUER,null,recipient);
   evidence(item.decedentRef(),item.caseId(),"AUTHORIZE_RELEASE",item.version(),
    "RECIPIENT_VERIFIED",recipient,ISSUER);
   admin().update("UPDATE synqoria_operations.mortuary_authority_evidence "+
@@ -385,6 +394,62 @@ final class MortuaryStorePgIntegrationTest {
   assertThrows(Exception.class,()->admin().update(
    "UPDATE synqoria_operations.mortuary_authority_evidence "+
    "SET storage_code=? WHERE case_id=? AND for_action='STORE'",unapprovedBay,pending.caseId()));
+ }
+
+
+ @Test void authorityParticipantBindingsRejectWrongCustodyReceiverAndWitness(){
+  pgOnly();
+  var service=store();
+  var c=identify(service,receive(service,UUID.randomUUID()));
+  UUID otherReceiver=UUID.fromString("27000000-0000-4000-8000-000000000012");
+  admin().update("INSERT INTO synqoria_operations.workforce_grants "+
+   "(cell_id,facility_id,actor_id,grant_revision,permissions,active,"+
+   "shift_from,shift_until,valid_until,approved_by,source_ref) "+
+   "VALUES(?,?,?,1,ARRAY['m27:custody_receive']::text[],true,"+
+   "clock_timestamp()-interval '1 hour',clock_timestamp()+interval '1 hour',"+
+   "clock_timestamp()+interval '2 hours',?,'independent-roster-ci')",
+   CELL,FAC,otherReceiver,AUTHORITY);
+  String bay="BOUND-BAY-"+c.caseId().toString().substring(0,8);
+  evidence(c.decedentRef(),c.caseId(),"STORE",c.version(),"STORAGE_SAFE",
+   "BOUND-RECEIVER-CI",ISSUER,bay);
+  final var pending=c;
+  assertThrows(WorkflowViolation.class,()->service.change(who(OFFICER,"m27:store"),
+   pending.caseId(),cmd("STORE",pending.version(),"BOUND-RECEIVER-CI",bay,otherReceiver,null,null)));
+  c=service.change(who(OFFICER,"m27:store"),pending.caseId(),
+   cmd("STORE",pending.version(),"BOUND-RECEIVER-CI",bay,RECEIVER,null,null));
+  assertEquals("STORED",c.state());
+  final String recipient="BOUND-RECIPIENT-CI",legal="BOUND-LEGAL-CI";
+  evidence(c.decedentRef(),c.caseId(),"REVIEW_RELEASE",c.version(),
+   "LEGAL_RELEASE",legal,ISSUER,null,recipient);
+  evidence(c.decedentRef(),c.caseId(),"REVIEW_RELEASE",c.version(),
+   "RECIPIENT_VERIFIED",recipient,ISSUER);
+  c=service.change(who(REVIEWER,"m27:review"),c.caseId(),
+   cmd("REVIEW_RELEASE",c.version(),null,null,null,recipient,legal));
+  evidence(c.decedentRef(),c.caseId(),"AUTHORIZE_RELEASE",c.version(),
+   "RELEASE_AUTHORIZATION",legal,ISSUER,null,recipient);
+  evidence(c.decedentRef(),c.caseId(),"AUTHORIZE_RELEASE",c.version(),
+   "RECIPIENT_VERIFIED",recipient,ISSUER);
+  c=service.change(who(APPROVER,"m27:authorize"),c.caseId(),
+   cmd("AUTHORIZE_RELEASE",c.version(),null,null,null,recipient,legal));
+  evidence(c.decedentRef(),c.caseId(),"HANDOVER",c.version(),
+   "HANDOVER_RECEIPT","BOUND-HANDOVER-CI",ISSUER,null,recipient);
+  evidence(c.decedentRef(),c.caseId(),"HANDOVER",c.version(),
+   "RECIPIENT_VERIFIED",recipient,ISSUER);
+  evidence(c.decedentRef(),c.caseId(),"HANDOVER",c.version(),
+   "BELONGINGS_RELEASED","BELONGINGS-RELEASE-M27",ISSUER,null,recipient);
+  final var authorized=c;
+  var spoof=new Change("HANDOVER",authorized.version(),UUID.randomUUID(),
+   "BOUND-HANDOVER-CI",null,null,recipient,legal,null,null,otherReceiver,
+   "BELONGINGS-RELEASE-M27");
+  assertThrows(WorkflowViolation.class,()->service.change(who(HANDOVER,"m27:handover"),
+   authorized.caseId(),spoof));
+  assertEquals("RELEASE_AUTHORIZED",service.one(who(OFFICER,"m27:read"),authorized.caseId()).state());
+  var correct=service.change(who(HANDOVER,"m27:handover"),authorized.caseId(),
+   cmd("HANDOVER",authorized.version(),"BOUND-HANDOVER-CI",null,null,recipient,legal));
+  assertEquals("RELEASED",correct.state());
+  assertThrows(Exception.class,()->admin().update(
+   "UPDATE synqoria_operations.mortuary_authority_evidence SET witness_staff_id=? "+
+   "WHERE case_id=? AND proof_kind='HANDOVER_RECEIPT'",otherReceiver,authorized.caseId()));
  }
 
 }

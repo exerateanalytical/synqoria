@@ -132,23 +132,30 @@ public final class MortuaryStore {
  }
  private void proof(OperationWorkflow.Actor actor,UUID decedent,UUID id,String action,
                     long version,String kind,String external){
-  proof(actor,decedent,id,action,version,kind,external,null);
+  proof(actor,decedent,id,action,version,kind,external,null,null,null,null);
  }
  private void proof(OperationWorkflow.Actor actor,UUID decedent,UUID id,String action,
-                    long version,String kind,String external,String authorizedStorage){
+                    long version,String kind,String external,String authorizedStorage,
+                    UUID expectedReceiver,UUID expectedWitness,String expectedRecipient){
   String ref=code(external);
   String bay=authorizedStorage==null?null:code(authorizedStorage);
-  // Lock the verified proof until the custody/release transaction commits.
-  // A simultaneous independent revocation cannot invalidate an already-read proof mid-command.
+  String recipient=expectedRecipient==null?null:code(expectedRecipient);
+  // A separately issued proof must bind the exact receiving custodian,
+  // handover witness, verified recipient and physical bay at time of use.
+  // V006 case/advisory fences serialize revocation against case operations.
   List<UUID> found=jdbc.query(
    "SELECT proof_id FROM synqoria_operations.mortuary_authority_evidence " +
    "WHERE cell_id=? AND facility_id=? AND decedent_ref=? " +
    "AND case_id IS NOT DISTINCT FROM ?::uuid AND for_action=? AND expected_version=? " +
    "AND proof_kind=? AND external_ref=? AND storage_code IS NOT DISTINCT FROM ?::varchar " +
+   "AND receiving_staff_id IS NOT DISTINCT FROM ?::uuid " +
+   "AND witness_staff_id IS NOT DISTINCT FROM ?::uuid " +
+   "AND recipient_ref IS NOT DISTINCT FROM ?::varchar " +
    "AND approved_by<>? AND revoked_at IS NULL " +
    "AND valid_from<=clock_timestamp() AND valid_until>clock_timestamp()",
    (rs,i)->rs.getObject("proof_id",UUID.class),
-   actor.cell(),actor.facility(),decedent,id,action,version,kind,ref,bay,actor.actor());
+   actor.cell(),actor.facility(),decedent,id,action,version,kind,ref,bay,
+   expectedReceiver,expectedWitness,recipient,actor.actor());
   if(found.isEmpty())throw new WorkflowViolation("independent_mortuary_evidence_required");
  }
  /**
@@ -296,7 +303,7 @@ public final class MortuaryStore {
       throw new WorkflowViolation("custody_receiver_must_be_independent");
      receiverOnShift(actor,receiver);
      proof(actor,before.decedentRef(),caseId,"STORE",before.version(),
-      "STORAGE_SAFE",req.evidenceRef(),destination);
+      "STORAGE_SAFE",req.evidenceRef(),destination,receiver,null,null);
     }
     case TRANSFER -> {
      destination=code(req.storageCode());
@@ -304,15 +311,15 @@ public final class MortuaryStore {
      MortuaryWorkflow.validateTransfer(before.currentStorage(),destination,actor.actor(),receiver);
      receiverOnShift(actor,receiver);
      proof(actor,before.decedentRef(),caseId,"TRANSFER",before.version(),
-      "CUSTODY_ACCEPTED",req.evidenceRef(),destination);
+      "CUSTODY_ACCEPTED",req.evidenceRef(),destination,receiver,null,null);
     }
     case REVIEW_RELEASE -> {
      if(actor.actor().equals(before.intakeActor()))
       throw new WorkflowViolation("maker_checker_denied");
      proof(actor,before.decedentRef(),caseId,"REVIEW_RELEASE",before.version(),
-      "LEGAL_RELEASE",req.authorityRef());
+      "LEGAL_RELEASE",req.authorityRef(),null,null,null,req.recipientRef());
      proof(actor,before.decedentRef(),caseId,"REVIEW_RELEASE",before.version(),
-      "RECIPIENT_VERIFIED",req.recipientRef());
+      "RECIPIENT_VERIFIED",req.recipientRef(),null,null,null,req.recipientRef());
      jdbc.update("INSERT INTO synqoria_operations.mortuary_release_reviews "+
       "(approval_id,cell_id,facility_id,case_id,stage,actor_id,authority_ref,recipient_ref,case_version) "+
       "VALUES(?,?,?,?, 'REVIEW',?,?,?,?)",
@@ -333,11 +340,11 @@ public final class MortuaryStore {
         !recipient.equals(review.get("recipient_ref")))
       throw new WorkflowViolation("release_scope_mismatch");
      proof(actor,before.decedentRef(),caseId,"REVIEW_RELEASE",
-      ((Number)review.get("case_version")).longValue()-1,"LEGAL_RELEASE",authority);
+      ((Number)review.get("case_version")).longValue()-1,"LEGAL_RELEASE",authority,null,null,null,recipient);
      proof(actor,before.decedentRef(),caseId,"AUTHORIZE_RELEASE",before.version(),
-      "RELEASE_AUTHORIZATION",authority);
+      "RELEASE_AUTHORIZATION",authority,null,null,null,recipient);
      proof(actor,before.decedentRef(),caseId,"AUTHORIZE_RELEASE",before.version(),
-      "RECIPIENT_VERIFIED",recipient);
+      "RECIPIENT_VERIFIED",recipient,null,null,null,recipient);
      jdbc.update("INSERT INTO synqoria_operations.mortuary_release_reviews "+
       "(approval_id,cell_id,facility_id,case_id,stage,actor_id,authority_ref,recipient_ref,case_version) "+
       "VALUES(?,?,?,?, 'AUTHORIZE',?,?,?,?)",
@@ -365,21 +372,21 @@ public final class MortuaryStore {
       throw new WorkflowViolation("release_scope_mismatch");
      proof(actor,before.decedentRef(),caseId,"REVIEW_RELEASE",
       ((Number)review.get("case_version")).longValue()-1,"LEGAL_RELEASE",
-      req.authorityRef());
+      req.authorityRef(),null,null,null,req.recipientRef());
      proof(actor,before.decedentRef(),caseId,"AUTHORIZE_RELEASE",
       ((Number)auth.get("case_version")).longValue()-1,"RELEASE_AUTHORIZATION",
-      req.authorityRef());
+      req.authorityRef(),null,null,null,req.recipientRef());
      proof(actor,before.decedentRef(),caseId,"HANDOVER",before.version(),
-      "RECIPIENT_VERIFIED",req.recipientRef());
-     proof(actor,before.decedentRef(),caseId,"HANDOVER",before.version(),
-      "HANDOVER_RECEIPT",req.evidenceRef());
+      "RECIPIENT_VERIFIED",req.recipientRef(),null,null,null,req.recipientRef());
      UUID witness=nonNull(req.witnessStaffId());
      if(witness.equals(actor.actor())||witness.equals(before.intakeActor())||
         witness.equals(review.get("actor_id"))||witness.equals(auth.get("actor_id")))
       throw new WorkflowViolation("independent_handover_witness_required");
      receiverOnShift(actor,witness);
      proof(actor,before.decedentRef(),caseId,"HANDOVER",before.version(),
-      "BELONGINGS_RELEASED",req.belongingsReleaseRef());
+      "HANDOVER_RECEIPT",req.evidenceRef(),null,null,witness,req.recipientRef());
+     proof(actor,before.decedentRef(),caseId,"HANDOVER",before.version(),
+      "BELONGINGS_RELEASED",req.belongingsReleaseRef(),null,null,witness,req.recipientRef());
      destination=null;
     }
    }

@@ -19,13 +19,13 @@ All 5 screens use `apps/web/components/MortuaryWorkbench.tsx`, the existing auth
 - A CASE is a pseudonymous pointer to an externally validated decedent identity, **not** a replacement MPI, death registry or patient identity authority.
 - Legal death, identity, intake authorization, belongings seals, storage safety, custody acceptance, recipient identity, legal release, independent second approval, final handover and belongings return are independently signed and provisioned to a **read-only-to-runtime** proof table. API claims alone can never satisfy these requirements.
 - Exact `synqoria_cell` and `synqoria_facility` in signed issuer/audience JWT, shift/revision-bound independently managed workforce grants, module action capability, maker-checker, distinct two approval officers, third handover actor and separate custody witness.
-- PostgreSQL **V005–V008**: eight new FORCE RLS mortuary tables, physical compartment uniqueness, versioned immutable custody history, immutable release approvals, legal hold fence, evidence issuer revocation lock, transactional idempotency/audit/outbox.
+- PostgreSQL **V005–V009**: eight new FORCE RLS mortuary tables, physical compartment uniqueness, versioned immutable custody history, immutable release approvals, legal hold fence, evidence issuer revocation lock, transactional idempotency/audit/outbox.
 - No free-text patient identity/death details are in the outbox. No case, custody, approval or audit deletion grant to runtime.
 
 ## Engineering acceptance versus hospital acceptance
 Check GitHub Actions for the exact final commit, **never count failed, running or source-only checks as passing**:
 1. M27 Java25/Java27 domain unit suite
-2. Real disposable PG18.6 V001–V006 migration and least-privilege RLS
+2. Real disposable PG18.6 V001–V009 migration and least-privilege RLS
 3. M27 real JDBC integration, death verification, custody/holding bay, two-person release/handover/release denial
 4. Actual Next16.4.5/React19.3.1 five-screen build with PR23/PR24 dependency **CI-only** overlays
 5. M27 canonical five-screen source contract
@@ -41,3 +41,8 @@ Check GitHub Actions for the exact final commit, **never count failed, running o
 - New independent STORE/TRANSFER proofs bind the exact intended physical bay. Historical unbound proofs fail closed at runtime, but can still be revoked.
 - Java matches the independent authorized bay to the requested destination. Issuers cannot rebind already-issued evidence; occupancy uniqueness remains enforced.
 - Dedicated disposable PG tests cover wrong-bay rejection, right-bay acceptance and binding immutability. Clinical acceptance remains denied.
+
+## M27 participant-bound evidence V009
+- Proof of custody/storage must bind the actual receiving staff ID and physical bay; legal release authorizations name the independently verified recipient; final handover and belongings receipts bind both actual witness and recipient.
+- Issuer cannot alter bindings on an existing proof. Previously issued unbound proof remains revocable but cannot authorize a new movement.
+- Disposable PG18.6 integration regression validates a second valid on-shift receiver or witness cannot use someone else's proof. No real institutional legal/clinical approval is implied.
