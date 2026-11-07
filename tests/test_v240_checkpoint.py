@@ -20,9 +20,14 @@ for x in report['results']:
 for phase in ph['phases']:
  assert phase['batches_completed']==sum(x['id'].startswith(phase['id']+'-') and not x['status'].startswith('blocked') for x in ledger['batches'])
  assert phase['certification']!='certified'
-for f,n in [('module-status-matrix.json',40),('screen-status-matrix.json',261)]:
- d=load('registers/'+f);assert d['version']==ledger['version'] and len(d['items'])==n
- assert all(not x['implemented'] and not x['tested'] and not x['clinically_reviewed'] and not x['accepted'] for x in d['items'])
+modules_live=load('registers/module-status-matrix.json')
+assert modules_live['version']==ledger['version'] and len(modules_live['items'])==40
+assert all(not x['implemented'] and not x['accepted'] for x in modules_live['items'])
+screens_live=load('registers/screen-status-matrix.json')
+assert len(screens_live['items'])==261
+assert sum(x['implemented'] for x in screens_live['items'])==86
+assert sum(x['tested'] for x in screens_live['items'])==16
+assert all(not x['clinically_reviewed'] and not x['accepted'] for x in screens_live['items'])
 assert len(load('registers/canonical-modules.json')['module_register'])==40
 assert len(load('registers/canonical-screens.json')['screen_register'])==261
 for app in ['web','staff-mobile','patient-mobile']:

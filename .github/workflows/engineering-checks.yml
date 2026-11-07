@@ -98,6 +98,10 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Execute and record real Next/Expo build attempts (NOT clinical release)
         run: python3 tools/run_app_builds.py
+      - name: Inspect links in compiled artifacts after failure
+        if: failure()
+        run: |
+          find apps/web/.next apps/staff-mobile/dist apps/patient-mobile/dist -type l -printf '%p -> %l\n' 2>/dev/null | head -n 30 || true
       - name: Preserve build attempt evidence even on failure
         if: always()
         uses: actions/upload-artifact@v4

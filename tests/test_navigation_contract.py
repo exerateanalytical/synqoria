@@ -1,55 +1,53 @@
+"""Verify canonical routes against current source state and historical screen-gaps checkpoint."""
 from pathlib import Path
 import json
-
-root = Path(__file__).resolve().parents[1]
-read = lambda name: json.loads((root / name).read_text(encoding='utf-8'))
-screens = read('registers/canonical-screens.json')['screen_register']
-modules = read('registers/canonical-modules.json')['module_register']
-routes = read('registers/screen-routes.json')
-gaps = read('registers/operational-completion-gaps-v1.json')['capabilities']
-
-assert len(screens) == len(routes['screens']) == len(gaps) == 261
-assert len({x['id'] for x in screens}) == 261
-assert len({x['screen_id'] for x in routes['screens']}) == 261
-assert len({x['screenId'] for x in gaps}) == 261
-assert {x['screen_id'] for x in routes['screens']} == {x['id'] for x in screens}
-assert {x['screenId'] for x in gaps} == {x['id'] for x in screens}
-
-states = {
-    'domain_locked': 'route_registered_domain_adapter_missing',
-    'scoped_read_only_partial': 'api_read_subset_not_clinically_complete',
-    'functional_nonclinical_partial': 'nonclinical_functional',
-}
-by_id = {x['screenId']: x for x in gaps}
-route_paths = set()
-counts = {key: 0 for key in states}
+root=Path(__file__).resolve().parents[1]
+read=lambda f:json.loads((root/f).read_text(encoding='utf-8'))
+screens=read('registers/canonical-screens.json')['screen_register']
+modules=read('registers/canonical-modules.json')['module_register']
+routes=read('registers/screen-routes.json')
+gaps=read('registers/operational-completion-gaps-v1.json')
+status=read('registers/screen-status-matrix.json')
+assert len(screens)==len(routes['screens'])==len(gaps['capabilities'])==len(status['items'])==261
+assert len(modules)==40
+canon={x['id']:x for x in screens}
+history={x['screenId']:x for x in gaps['capabilities']}
+statuses={x['id']:x for x in status['items']}
+assert len(canon)==len(history)==len(statuses)==261
+paths=set()
+counts={}
+historical={}
+integrated={'source_api_workflow_ci_verified_unaccepted','existing_module_source_integrated_unaccepted'}
 for row in routes['screens']:
-    entry = by_id[row['screen_id']]
-    counts[entry['implementationState']] += 1
-    assert row['module'] == entry['module']
-    assert row['implementation_status'] == states[entry['implementationState']]
-    assert row['clinical_accepted'] is False
-    assert row['clinical_commands_enabled'] is False
-    assert entry['domainWorkflowAccepted'] is False
-    assert entry['clinicalCertification'] is False
-    assert row['route'] == '/workforce/clinical/' + row['screen_id']
-    assert row['route'] not in route_paths
-    route_paths.add(row['route'])
-
-assert counts == {
-    'domain_locked': 240,
-    'scoped_read_only_partial': 16,
-    'functional_nonclinical_partial': 5,
+    key=row['screen_id']
+    assert row['module']==canon[key]['module']==history[key]['module']
+    assert row['route']=='/workforce/clinical/'+key and row['route'] not in paths
+    paths.add(row['route'])
+    assert row['clinical_accepted'] is False and row['clinical_commands_enabled'] is False
+    assert history[key]['domainWorkflowAccepted'] is False and history[key]['clinicalCertification'] is False
+    assert statuses[key]['accepted'] is False and statuses[key]['clinically_reviewed'] is False
+    if row['implementation_status'] in integrated:
+        assert statuses[key]['implemented'] is True
+    counts[row['implementation_status']]=counts.get(row['implementation_status'],0)+1
+    older=history[key]['implementationState']
+    historical[older]=historical.get(older,0)+1
+assert historical=={'domain_locked':240,'scoped_read_only_partial':16,'functional_nonclinical_partial':5}
+expected={
+ 'route_registered_domain_adapter_missing':156,
+ 'api_read_subset_not_clinically_complete':16,
+ 'nonclinical_functional':3,
+ 'source_api_workflow_ci_verified_unaccepted':16,
+ 'existing_module_source_integrated_unaccepted':70
 }
-assert routes['route_summary']['registered'] == 261
-assert routes['route_summary']['domainLocked'] == 240
-assert routes['route_summary']['apiReadSubsets'] == 16
-assert routes['route_summary']['nonclinicalFunctional'] == 5
-assert routes['route_summary']['clinicallyAccepted'] == 0
-assert routes['route_summary']['clinicallyCertifiedModules'] == 0
-assert len(routes['shell_roots']) == 3
-assert {x['shell'] for x in routes['shell_roots']} == {'workforce', 'portal', 'platform'}
-assert all(x['path'].startswith('/') and x['status'] == 'shell_source_only' for x in routes['shell_roots'])
-assert len({x['path'] for x in routes['shell_roots']}) == 3
-assert len({x['id'] for x in modules}) == 40
-print('PASS: 261 unique navigable routes; 240 locked, 16 scoped reads, 5 nonclinical; no clinical completion claimed')
+assert counts==expected,counts
+assert routes['route_summary']=={
+ 'registered':261,'apiReadSubsets':16,'nonclinicalFunctional':3,
+ 'domainLocked':156,'sourceApiCiVerified':16,'existingModuleSourceIntegrated':70,
+ 'clinicallyAccepted':0,'clinicallyCertifiedModules':0
+}
+assert gaps['date']=='2026-11-05' and gaps['missingDomainIntegration']==240
+shells=routes['shell_roots']
+assert len(shells)==3 and {x['shell'] for x in shells}=={'workforce','portal','platform'}
+assert all(x['path'].startswith('/') and x['status']=='shell_source_only' for x in shells)
+assert len({x['path'] for x in shells})==3
+print('PASS: 261 unique canonical URLs; 86 source-integrated, 156 locked, historical checkpoint preserved; zero clinical acceptance')

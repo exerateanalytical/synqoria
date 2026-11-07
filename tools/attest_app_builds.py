@@ -37,6 +37,7 @@ def attest(root, checks):
         for item in sorted(output.rglob('*')):
             if item.is_symlink():
                 issues.append('symlink_in_build_output:' + name)
+                print('BUILD_OUTPUT_SYMLINK:', name, item.relative_to(root), '->', item.readlink(), file=sys.stderr)
                 continue
             if not item.is_file():
                 continue
