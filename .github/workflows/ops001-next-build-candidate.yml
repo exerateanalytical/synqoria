@@ -33,10 +33,14 @@ jobs:
         run: npm run build --workspace @synqoria/ux-core
       - name: Compile the entire actual Next.js workforce web application
         run: npm run build --workspace @synqoria/web
-      - name: Install pinned Playwright Chromium for browser-only UI verification
+      - name: Use pre-installed Chrome on the GitHub Ubuntu image with pinned Playwright API
         run: |
-          npm install --global playwright@1.56.1
-          playwright install chromium
+          set -euo pipefail
+          npm install --global playwright@1.56.1 --no-audit --no-fund
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)"
+          test -n "$CHROME"
+          "$CHROME" --version
+          echo "SYNQORIA_CHROME_EXECUTABLE=$CHROME" >> "$GITHUB_ENV"
       - name: Verify 8 screen routes across 6 responsive browser widths
         run: node tests/ops001_browser_smoke.cjs
       - name: Preserve screenshot evidence for independent visual audit
