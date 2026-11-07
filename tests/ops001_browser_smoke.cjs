@@ -34,7 +34,12 @@ async function serverReady(){
 let browser=null;
 (async()=>{
  await serverReady();
- browser=await chromium.launch({headless:true,args:["--no-sandbox"]});
+ const configuredBrowser=process.env.SYNQORIA_CHROME_EXECUTABLE;
+ if(configuredBrowser&&!path.isAbsolute(configuredBrowser)){
+  throw Error("Browser executable must be a fully qualified trusted runner path");
+ }
+ browser=await chromium.launch({headless:true,args:["--no-sandbox"],
+  ...(configuredBrowser?{executablePath:configuredBrowser}:{})});
  let checked=0;
  for(const width of widths){
   const context=await browser.newContext({viewport:{width,height:900},
